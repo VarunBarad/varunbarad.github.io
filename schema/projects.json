@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "title": "Projects",
+  "description": "All project's data",
+  "type": "object",
+  "properties": {
+    "projectDetail": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": "string",
+          "description": "string",
+          "date": "string",
+          "clients": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "technologies": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "image": {
+            "type": "string",
+            "description": "name of the image without extension"
+          },
+          "sourceLink": "string",
+          "projectLink": "string"
+        },
+        "required": [
+          "title",
+          "description",
+          "date",
+          "clients",
+          "technologies"
+        ]
+      }
+    }
+  }
+}

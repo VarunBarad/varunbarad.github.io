@@ -1,0 +1,319 @@
+{
+  "projectDetail": [
+    {
+      "id": "attendanceTracker",
+      "title": "Attendance Tracker",
+      "description": "I made this as my Capstone Project for Udacity's Android Nanodegree. This was my chance to assimilate everything I learned during the Nanodegree and make something useful with it.\nDuring college, we found it cumbersome to track our attendance in various classes. That was the origin for this app. I made it so that there is a streamlined way for students to keep track of their attendance.",
+      "date": "January 2018",
+      "clients": [
+        {
+          "title": "Any college student",
+          "url": "#"
+        }
+      ],
+      "technologies": [
+        "Android",
+        "AdMob",
+        "Firebase Analytics"
+      ],
+      "image": {
+        "path": "attendance-tracker.png",
+        "description": "Attendance Tracker"
+      },
+      "sourceLinks": [
+        {
+          "title": "GitHub",
+          "url": "https://github.com/VarunBarad/Attendance-Tracker/"
+        }
+      ],
+      "projectLinks": [
+        {
+          "title": "Play Store",
+          "url": "https://play.google.com/store/apps/details?id=com.varunbarad.attendancetracker"
+        }
+      ]
+    },
+    {
+      "id": "udaanAndroidApp",
+      "title": "Udaan Android App",
+      "description": "Udaan is the annual tech-fest of BVM Engineering College. The Development Team of Udaan has seen to all the IT related needs of the festival, including but no limited to making a companion website along with native apps for both Android & Windows platforms. We have been doing it every year since 2015.",
+      "date": "March 2017",
+      "clients": [
+        {
+          "title": "BVM College",
+          "url": "#"
+        }
+      ],
+      "technologies": [
+        "Android"
+      ],
+      "image": {
+        "path": "udaan.png",
+        "description": "Udaan"
+      },
+      "sourceLink": [
+        {
+          "title": "GitHub",
+          "url": "https://github.com/bvmites/udaan17-android-app/"
+        }
+      ],
+      "projectLink": [
+        {
+          "title": "Play Store",
+          "url": "https://play.google.com/store/apps/details?id=in.udaan17.android"
+        }
+      ]
+    },
+    {
+      "id": "popMovies",
+      "title": "Pop Movies",
+      "description": "I made this project as part of my coursework for Udacity's Android Nanodegree. This taught me the use of REST APIs, loading images from network and local data persistence in an Android application.",
+      "date": "October 2017",
+      "clients": [
+        {
+          "title": "Udacity Nanodegree",
+          "url": "#"
+        }
+      ],
+      "technologies": [
+        "Android"
+      ],
+      "image": {
+        "path": "pop-movies.png",
+        "description": "Pop Movies"
+      },
+      "sourceLink": [
+        {
+          "title": "GitHub",
+          "url": "https://github.com/VarunBarad/PopularMovies"
+        }
+      ]
+    },
+    {
+      "id": "droidBakery",
+      "title": "Droid Bakery",
+      "description": "I made this project as part of my coursework for Udacity's Android Nanodegree. This taught me how to play videos on Android from network using a famous library named ExoPlayer.",
+      "date": "November 2017",
+      "clients": [
+        {
+          "title": "Udacity Nanodegree",
+          "url": "#"
+        }
+      ],
+      "technologies": [
+        "Android",
+        "ExoPlayer"
+      ],
+      "image": {
+        "path": "droid-bakery.png",
+        "description": "Droid Bakery"
+      },
+      "sourceLink": [
+        {
+          "title": "GitHub",
+          "url": "https://github.com/VarunBarad/BakingApp"
+        }
+      ]
+    },
+    {
+      "id": "crawded",
+      "title": "Crawded",
+      "description": "Worked a paid internship at Crawded which was an education startup focused on building a platform where students can interact with other students and teachers but the interaction remains related only to knowledge sharing.\nA vast number of features in the original SchoolWeb application were made by me and I was responsible for developing the initial \"Feed\" in their main application.",
+      "date": "Jan - Jun 2015",
+      "clients": [
+        {
+          "title": "Crawded Technologies Pvt. Ltd.",
+          "url": "http://www.crawded.com/"
+        }
+      ],
+      "technologies": [
+        "Android"
+      ],
+      "image": {
+        "path": "crawded.png",
+        "description": "Crawded"
+      },
+      "projectLinks": [
+        {
+          "title": "Crawded",
+          "url": "https://play.google.com/store/apps/details?id=com.crawded.android.crawded"
+        },
+        {
+          "title": "SchoolWEB",
+          "url": "https://play.google.com/store/apps/details?id=com.schoolweb.android"
+        }
+      ]
+    },
+    {
+      "id": "dptkContacts",
+      "title": "DPTK Contacts",
+      "description": "DP Trade-King is a stock-broking and wealth management firm based at Anand. They required an application which helped them to provide up-to-date contact information of each of their offices and employees both to their employees and their customers.\nSo I made a desktop application using Kotlin which would parse data provided by them in Excel files and upload it to Firebase, from where it would be pulled down by the Android application for their use.",
+      "date": "July 2017",
+      "clients": [
+        {
+          "title": "DP TradeKING",
+          "url": "http://dptradeking.com/"
+        }
+      ],
+      "technologies": [
+        "Android",
+        "Kotlin",
+        "Firebase"
+      ],
+      "image": {
+        "path": "dptk.png",
+        "description": "DP TradeKING"
+      },
+      "sourceLink": [
+        {
+          "title": "Android App",
+          "url": "https://github.com/VarunBarad/dptk-contacts-app"
+        },
+        {
+          "title": "Desktop Uploader",
+          "url": "https://github.com/VarunBarad/dptk-contacts-uploader"
+        }
+      ]
+    },
+    {
+      "id": "wallpaperChanger",
+      "title": "WALLPAPER CHANGER",
+      "description": "I was bored of seeing the same wallpaper and Gnome, the DE I was using, didn't have any inbuilt feature to cycle between wallpapers. So I decided to use this opportunity to try and dip my hands in Kotlin.",
+      "date": "October 2016",
+      "clients": [
+        {
+          "title": "Myself",
+          "url": "#"
+        }
+      ],
+      "technologies": [
+        "Kotlin",
+        "Gnome"
+      ],
+      "image": {
+        "path": "wallpaper.png",
+        "description": "Wallpaper Changer"
+      },
+      "sourceLink": [
+        {
+          "title": "GitHub",
+          "url": "https://github.com/VarunBarad/wallpaper-changer"
+        }
+      ]
+    },
+    {
+      "id": "digitalJoker",
+      "title": "Digital Joker",
+      "description": "I made this project as part of my coursework for Udacity's Android Nanodegree. This taught me to use Gradle to create separate free and paid versions of an app, and including different features based on whether the app is free or paid. It also taught me how to separate an app into different modules for better code reuse.",
+      "date": "November 2017",
+      "clients": [
+        {
+          "title": "Udacity Nanodegree",
+          "url": "#"
+        }
+      ],
+      "technologies": [
+        "Android",
+        "Gradle"
+      ],
+      "image": {
+        "path": "digital-joker.png",
+        "description": "Digital Joker"
+      },
+      "sourceLink": [
+        {
+          "title": "GitHub",
+          "url": "https://github.com/VarunBarad/Digital-Joker/"
+        }
+      ]
+    },
+    {
+      "id": "udaanSmsWebApp",
+      "title": "Udaan-16 SMS Web App",
+      "description": "This was a web-app made by Team Udaan for Udaan-16. Event managers could use this to send SMS to all their participants, who had qualified for next round, about the time and location of next round. I was the one who wired the UI created by my team-mates with the API using JavaScript.",
+      "date": "March 2016",
+      "clients": [
+        {
+          "title": "BVM College",
+          "url": "#"
+        }
+      ],
+      "technologies": [
+        "JavaScript"
+      ],
+      "image": {
+        "path": "udaan.png",
+        "description": "Udaan-16 SMS"
+      },
+      "sourceLink": [
+        {
+          "title": "GitHub",
+          "url": "https://github.com/bvmites/udaan16-sms-web-app"
+        }
+      ]
+    },
+    {
+      "id": "veggKart",
+      "title": "VegGKart",
+      "description": "A friend of mine was approached for making an Android application for an already existing grocery shopping site. He built an HTTP API and called me in to develop the Android app which uses that API.",
+      "date": "Aug - Sep 2016",
+      "clients": [
+        {
+          "title": "Anish Meena",
+          "url": "https://github.com/coder09"
+        }
+      ],
+      "technologies": [
+        "Android"
+      ],
+      "image": {
+        "path": "veggkart.png",
+        "description": "VegGKart"
+      },
+      "sourceLink": [
+        {
+          "title": "GitHub",
+          "url": "https://github.com/VarunBarad/veggkart"
+        }
+      ]
+    }
+  ],
+  "technologies": [
+    {
+      "name": "AdMob",
+      "tag": "admob"
+    },
+    {
+      "name": "Android",
+      "tag": "android"
+    },
+    {
+      "name": "ExoPlayer",
+      "tag": "exo-player"
+    },
+    {
+      "name": "Firebase",
+      "tag": "firebase"
+    },
+    {
+      "name": "Firebase Analytics",
+      "tag": "firebase-analytics"
+    },
+    {
+      "name": "Gnome",
+      "tag": "gnome"
+    },
+    {
+      "name": "Gradle",
+      "tag": "gradle"
+    },
+    {
+      "name": "JavaScript",
+      "tag": "javascript"
+    },
+    {
+      "name": "Kotlin",
+      "tag": "kotlin"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+---
+layout: default
+---
+
+<div class="page-title text-uppercase col-12 text-center">{{page.tag}}</div>
+<div class="categories col-12">
+  {% for category in site.categories %}
+  <a href="/category/{{category[0]}}" class="badge badge-warning">#{{category[0]}}</a>
+  {% endfor %}
+  <a href="/blogs" class="badge badge-warning">#All</a>
+</div>
+{% assign sortedCategories = site.categories | sort %}
+<div class="posts">
+  <div class="post-list">
+    {% for post in site.categories[page.tag] %}
+    <div class="col-sm-8 post">
+      <a href="{{post.url}}" class="post-title" target="_blank">{{post.title}}</a>
+      <div class="post-description">{{post.excerpt}}</div>
+    </div>
+    {% endfor %}
+  </div>
+</div>

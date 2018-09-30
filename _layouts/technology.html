@@ -1,0 +1,84 @@
+---
+layout: default
+---
+
+<div class="page-title text-uppercase col-12 text-center">{{page.tag}}</div>
+<div class="portfolio text-center">
+  <div class="categories col-sm-10 offset-lg-1 offset-md-1 offset-sm-1">
+    {% for technology in site.data.projects.technologies %}
+    <a href="{{site.url}}/technology/{{technology.tag}}"
+       class="badge badge-warning">#{{technology.name}}</a>
+    {% endfor %}
+    <a href="{{site.url}}/portfolio"
+       class="badge badge-warning">#All</a>
+  </div>
+  <div class="row">
+    {% for project in site.data.projects.projectDetail %}
+    {% if project.technologies contains page.tag %}
+    <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3 project">
+      <a href="#" data-toggle="modal" data-target="#{{project.id}}">
+        <div class="card">
+          <img src="/assets/images/projects/{{project.image.path}}" alt="{{project.image.description}}"
+               class="card-img-top">
+          <div class="card-title">{{project.image.description}}</div>
+        </div>
+      </a>
+    </div>
+    <div class="modal fade" id="{{project.id}}" tabindex="-1" role="dialog" aria-labelledby="projectModal"
+         aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">{{project.title}}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="text-center">
+              <img src="/assets/images/projects/{{project.image.path}}" alt="{{project.image.description}}"
+                   class="modal-image img-fluid">
+            </div>
+            <div class="project-description">{{project.description}}</div>
+            <div class="project-details">
+              <div>Date: {{project.date}}</div>
+              {% if project.clients %}
+              <div>Clients:
+                {% for client in project.clients %}
+                <a href="{{client.url}}" target="_blank">{{client.title}}</a>
+                {% endfor %}
+              </div>
+              {% endif %}
+              {% if project.projectLinks %}
+              <div>Project:
+                {% for projectLink in project.projectLinks %}
+                <a href="{{projectLink.url}}" target="_blank">{{projectLink.title}}</a>
+                {% endfor %}
+              </div>
+              {% endif %}
+              {% if project.sourceLinks %}
+              <div>Source:
+                {% for sourceLink in project.sourceLinks %}
+                <a href="{{sourceLink.url}}" target="_blank">{{sourceLink.title}}</a>
+                {% endfor %}
+              </div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div class="categories">
+              <div>
+                {% for technology in project.technologies %}
+                <a href="{{site.url}}/technology/{{technology}}"
+                   class="badge badge-warning">#{{technology}}</a>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+  </div>
+</div>

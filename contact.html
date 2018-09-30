@@ -1,0 +1,28 @@
+---
+layout: default
+---
+
+<div class="page-title col-12 text-center text-uppercase">Contact</div>
+
+{% assign contactDetails = site.data.personal.contact %}
+
+<div class="col-12 contact-form">
+  <div class="col-12 col-sm-12 col-md-6 col-lg-5 col-xl-5">
+    <form id="contactForm" onsubmit="return submitForm(event)">
+      <div class="form-group">
+        <input type="text" class="form-control" id="name" placeholder="Name" required>
+      </div>
+      <div class="form-group">
+        <input type="email" class="form-control" id="email" placeholder="Email" required>
+      </div>
+      <div class="form-group">
+        <textarea class="form-control" id="message" placeholder="Message" required></textarea>
+      </div>
+      <button type="submit" class="submit-button" id="submit">Submit</button>
+    </form>
+  </div>
+</div>
+
+<div class="col-12 contact-details">
+  <a href="mailto:{{contactDetails.email}}">{{contactDetails.email}}</a>
+</div>

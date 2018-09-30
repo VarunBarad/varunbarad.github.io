@@ -1,0 +1,22 @@
+---
+layout: default
+---
+<div class="post-container">
+  <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+    <div>
+      <div class="page-title text-uppercase text-center">{{page.title}}</div>
+      <div class="post-date text-center">{{page.date | date: '%B %d, %Y'}}</div>
+      <div class="post-content">{{content}}</div>
+    </div>
+
+    <div class="post-categories-container">
+      Categories:
+      <div>
+        {% for category in page.categories %}
+        <a href="/category/{{category}}" class="badge badge-warning">#{{category}}</a>
+        {% endfor %}
+        <a href="/blogs" class="badge badge-warning">#All</a>
+      </div>
+    </div>
+  </div>
+</div>

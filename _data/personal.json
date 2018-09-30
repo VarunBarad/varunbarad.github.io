@@ -1,0 +1,58 @@
+{
+  "about": {
+    "name": "Varun Barad",
+    "tagLine": "Android Developer & Lifelong Learner",
+    "photo": {
+      "path": "./assets/images/profile.png",
+      "description": "Profile picture - Varun Barad"
+    },
+    "aboutText": "Hi, I\'m Varun, an Android Developer who enjoys learning new skills and using them to make people\'s lives easier. I recently developed an app for students to help them keep track of their attendance.\nI\'d love to combine my passion for learning with my software development skills to continue to develop tools which simplify people\'s lives.",
+    "resume": {
+      "path": "https://drive.google.com/open?id=1coq24eMHnKwS-CMCC1KSGwRF0chcs_h3",
+      "description": "Download my resume"
+    },
+    "certificates": [
+      {
+        "title": "Android Developer Nanodegree",
+        "description": "",
+        "url": "https://confirm.udacity.com/PGPG9AU9"
+      }
+    ]
+  },
+  "contact": {
+    "email": "barad.varun29@gmail.com",
+    "phone": "+91 9879842236",
+    "socialLinks": [
+      {
+        "name": "GitHub",
+        "profileUrl": "https://github.com/VarunBarad",
+        "profileIcon": "fa-github"
+      },
+      {
+        "name": "Twitter",
+        "profileUrl": "https://twitter.com/varun_barad",
+        "profileIcon": "fa-twitter"
+      },
+      {
+        "name": "Medium",
+        "profileUrl": "https://medium.com/@VarunBarad",
+        "profileIcon": "fa-medium"
+      },
+      {
+        "name": "LinkedIn",
+        "profileUrl": "https://linkedin.com/in/varunbarad",
+        "profileIcon": "fa-linkedin"
+      },
+      {
+        "name": "Stack Overflow",
+        "profileUrl": "https://stackoverflow.com/users/4717436/varunbarad",
+        "profileIcon": "fa-stack-overflow"
+      },
+      {
+        "name": "CodePen",
+        "profileUrl": "https://codepen.io/VarunBarad",
+        "profileIcon": "fa-codepen"
+      }
+    ]
+  }
+}

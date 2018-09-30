@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "title": "Personal data",
+  "description": "This data will be used throughout the website",
+  "type": "object",
+  "properties": {
+    "about": {
+      "type": "object",
+      "properties": {
+        "name": "string",
+        "tagLine": "string",
+        "photo": {
+          "type": "string",
+          "description": "photo name without extension"
+        },
+        "aboutText": "string",
+        "resume": {
+          "type": "string",
+          "description": "filename without extension"
+        },
+        "certificates": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": "string",
+              "description": "string",
+              "url": "string"
+            },
+            "required": ["title"]
+          }
+        }
+      },
+      "required": ["name", "aboutText"]
+    },
+    "contact": {
+      "type": "object",
+      "properties": {
+        "email": "string",
+        "phone": "string",
+        "socialLinks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": "string",
+              "profileUrl": "string",
+              "profileIcon": {
+                "type": "string",
+                "description": "A font-awesome icon identifier or any other icon set identifier"
+              }
+            },
+            "required": ["profileUrl"]
+          }
+        }
+      },
+      "required": ["email"]
+    }
+  }
+}

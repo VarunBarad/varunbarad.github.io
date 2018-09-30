@@ -1,0 +1,5 @@
+<div class="footer">
+  {% for socialItem in site.data.personal.contact.socialLinks %}
+  <a href="{{socialItem.profileUrl}}" target="_blank"><i class="fab {{socialItem.profileIcon}} social-links"></i></a>
+  {% endfor %}
+</div>
