@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Critical mistakes to avoid in Android development"
-date:   2018-03-14 00:00:00 +0530
+date:   2018-03-14 01:00:00 +0530
 categories: 
   - "android"
 ---
