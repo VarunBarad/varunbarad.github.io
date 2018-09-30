@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Simplifying User-Experience for rating your Android app"
-date:   2018-02-15 01:00:00 +0530
+date:   2018-02-15 12:00:00 +0530
 categories: 
   - "android"
 ---

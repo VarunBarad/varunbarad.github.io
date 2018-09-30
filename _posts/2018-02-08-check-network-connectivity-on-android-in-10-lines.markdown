@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Check network connectivity on Android in 10 lines"
-date:   2018-02-08 01:00:00 +0530
+date:   2018-02-08 12:00:00 +0530
 categories: 
   - "android"
 ---
