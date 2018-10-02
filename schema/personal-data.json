@@ -55,6 +55,13 @@
         }
       },
       "required": ["email"]
+    },
+    "developer": {
+      "type": "object",
+      "properties": {
+        "name": "string",
+        "url": "string"
+      }
     }
   }
 }
