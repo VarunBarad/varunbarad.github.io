@@ -154,6 +154,7 @@ body {
 
 .posts {
   padding-top: 2em;
+  width: 100%;
   .post-list {
     display: flex;
     flex-direction: column;
@@ -163,6 +164,9 @@ body {
       margin-bottom: 8px;
       p {
         margin: 0;
+      }
+      .post-description {
+        text-align: justify;
       }
     }
   }
