@@ -126,6 +126,10 @@ Care needs to be taken that the patient doesn't slip into deeper sedation state.
 - Why are heart-beats and breathing not as affected as the sensory receptors?
 - As we move from sea-level air pressure to lower air pressure areas at higher altitude, we adjust our breathing without us giving it even a single conscious thought, if a patient under general anesthetic were to face such change in pressure will their body handle that change itself or will it cause any complication?
 
+## Disclaimer
+
+I am not a doctor and I don't pose as one on the internet. This post is just a compilation of what I found while learning about this topic.
+
 ### Sources
 
 - [How Stuff Works - Anesthetics (https://science.howstuffworks.com/anesthesia.htm)][source-how-stuff-works-anesthetics]
