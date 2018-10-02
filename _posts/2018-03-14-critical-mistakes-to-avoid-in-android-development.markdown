@@ -5,6 +5,11 @@ date:   2018-03-14 12:00:00 +0530
 categories: 
   - "android"
 ---
+Charlie Munger has said that avoiding to be stupid is more beneficial when compared to trying to be intelligent.
+So, let's take a look at some mistakes that we can avoid while walking the path of Android development.
+
+<!-- end excerpt -->
+
 As many pioneers and leaders in different fields have paraphrased:
 
 > In any endeavor, it is important to know what are the top few things that need to be done right. But, it is equally important, if not more, to know the top few things which people should avoid at all costs.

@@ -5,6 +5,10 @@ date:   2018-08-13 12:00:00 +0530
 categories: 
   - "medicine"
 ---
+A post on the different categories of anesthetics and their working mechanisms and differences.
+
+<!-- end excerpt -->
+
 Anesthetics are used to relieve people of the feeling of pain.
 
 There are three types of anesthetics based on their site of action:

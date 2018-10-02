@@ -5,6 +5,10 @@ date:   2018-02-15 12:00:00 +0530
 categories: 
   - "android"
 ---
+Make it easy for your users to rate your Android app.
+
+<!-- end excerpt -->
+
 Who doesn’t want their users to leave ratings for their application on the Play Store? But it is not the top thing on users’ minds (unless they are really annoyed by your app). Even if they want to rate your app, it is a rather cumbersome process for them to:
 
 1. Open the Play Store (temporarily abandoning whatever they are doing)
