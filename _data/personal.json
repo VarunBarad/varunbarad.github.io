@@ -13,9 +13,19 @@
     },
     "certificates": [
       {
-        "title": "Android Developer Nanodegree",
+        "title": "Android Developer Nanodegree - Udacity",
         "description": "",
         "url": "https://confirm.udacity.com/PGPG9AU9"
+      },
+      {
+        "title": "Responsive Web Design - freeCodeCamp",
+        "description": "",
+        "url": "https://www.freecodecamp.org/certification/varunbarad/responsive-web-design"
+      },
+      {
+        "title": "JavaScript Algorithms and Data Structures - freeCodeCamp",
+        "description": "",
+        "url": "https://www.freecodecamp.org/certification/varunbarad/javascript-algorithms-and-data-structures"
       }
     ]
   },
