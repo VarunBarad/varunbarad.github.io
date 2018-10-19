@@ -6,7 +6,7 @@ layout: default
     <div>
       <div class="page-title text-uppercase text-center">{{page.title}}</div>
       <div class="post-date text-center">{{page.date | date: '%B %d, %Y'}}</div>
-      <div class="post-content">{{content}}</div>
+      <div class="post-content">{{ page.content | remove: page.excerpt }}</div>
     </div>
 
     <div class="post-categories-container">
