@@ -15,7 +15,7 @@ permalink: "/blog"
   <div class="post-list">
     {% for post in site.posts %}
     <div class="col-sm-6 post">
-      <a href="{{post.url}}" class="post-title" target="_blank">{{post.title}}</a>
+      <a href="{{post.url}}" class="post-title">{{post.title}}</a>
       <div class="post-description">{{post.excerpt}}</div>
     </div>
     {% endfor %}
