@@ -18,6 +18,8 @@ The way Android provides to check for network connectivity is just 10 lines of c
 As you can see in the code-block below, it is quite easy to wrap the connectivity check logic in a function.
 
 {% highlight java %}
+// Java code sample
+
 public class ConnectivityHelper {
   public static boolean isConnectedToNetwork(Context context) {
     ConnectivityManager connectivityManager =
@@ -31,6 +33,18 @@ public class ConnectivityHelper {
     
     return isConnected;
   }
+}
+{% endhighlight %}
+
+{% highlight kotlin %}
+// Kotlin code sample
+
+// The next line should be the first statement in the file
+@file:JvmName("ConnectivityHelper") // This line is only needed if you don't want caller statement in Java to change
+
+fun isConnectedToNetwork(context: Context): Boolean {
+  val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager?
+  return connectivityManager?.activeNetworkInfo?.isConnectedOrConnecting() ?: false
 }
 {% endhighlight %}
 
