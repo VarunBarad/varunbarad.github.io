@@ -27,7 +27,6 @@ excerpt_separator: "<!-- end excerpt -->"
 
 # Build settings
 markdown: kramdown
-#theme: minima
 theme: jekyll-theme-midnight
 plugins:
   - jekyll-feed
@@ -53,6 +52,10 @@ defaults:
       type: technology
     values:
       layout: "technology"
+
+# Kramdown settings
+kramdown:
+  auto_ids: true
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
