@@ -180,6 +180,9 @@ body {
   }
   .post-content {
     margin-top: 2em;
+    img {
+      @extend .img-fluid;
+    }
   }
   .post-categories-container {
     display: flex;
