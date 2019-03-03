@@ -185,7 +185,7 @@ if len(patch_files) > 0:
 
 ## Full Code
 
-```python3
+```python
 #!/usr/bin/python3
 
 import os
