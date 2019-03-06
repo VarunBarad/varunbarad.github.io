@@ -270,7 +270,5 @@ if __name__ == "__main__":
 This is my solution to the problem I faced of taking a backup of my projects which also included unfinished work of mine. If you have any other suggestions regarding these or any other topics under the sky, [contact me][varun-contact] or tweet to me [@varun_barad][varun-twitter].
 
 [github-gist]: https://gist.github.com/VarunBarad/c291e98dd426b0da1322171290d7bbd0
-[source-nhlbi-us]: https://www.nhlbi.nih.gov/health-topics/how-lungs-work
-[source-wikipedia-respiratory-center]: https://en.wikipedia.org/wiki/Respiratory_center
 [varun-contact]: https://varunbarad.com/contact
 [varun-twitter]: https://twitter.com/varun_barad
