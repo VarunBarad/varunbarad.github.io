@@ -4,7 +4,7 @@ title:  "Don't worry about specializing yet!"
 date:   2019-03-19 12:00:00 +0530
 categories: 
   - "programming"
-  - "personal growth"
+  - "personal-growth"
 ---
 
 What technologies should I be learning, so that they prove helpful in my career?
