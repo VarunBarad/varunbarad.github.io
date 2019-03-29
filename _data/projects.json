@@ -187,8 +187,7 @@
         }
       ],
       "technologies": [
-        "Kotlin",
-        "Gnome"
+        "Kotlin"
       ],
       "image": {
         "path": "wallpaper.png",
@@ -298,10 +297,6 @@
     {
       "name": "Firebase Analytics",
       "tag": "firebase-analytics"
-    },
-    {
-      "name": "Gnome",
-      "tag": "gnome"
     },
     {
       "name": "Gradle",
