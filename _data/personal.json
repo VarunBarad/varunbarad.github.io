@@ -6,7 +6,7 @@
       "path": "./assets/images/profile.png",
       "description": "Profile picture - Varun Barad"
     },
-    "aboutText": "Hi, I am Varun - a developer who enjoys learning new skills. I'm currently an Android Developer for Deliverr, Canada. As the capstone project for my Android Nanodegree I developed an app for students to help them keep track of their attendance.\nI\'d love to combine my passion for learning with my software development skills to continue to develop tools which simplify people\'s lives.",
+    "aboutText": "Hi, I am Varun - a developer who enjoys learning new skills. I'm currently an Android Developer for Deliverr, Canada. As the capstone project for my Android Nanodegree I developed an app for students to help them keep track of their attendance.\nI'd love to combine my passion for learning with my software development skills to continue to develop tools which simplify people's lives.",
     "resume": {
       "path": "https://drive.google.com/open?id=1coq24eMHnKwS-CMCC1KSGwRF0chcs_h3",
       "description": "Download my resume"
@@ -30,7 +30,7 @@
     ]
   },
   "contact": {
-    "email": "contact@varunbarad.com",
+    "email": "varun@varunbarad.com",
     "socialLinks": [
       {
         "name": "GitHub",
