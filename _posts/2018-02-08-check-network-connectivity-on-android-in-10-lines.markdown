@@ -42,8 +42,8 @@ public class ConnectivityHelper {
 // The next line should be the first statement in the file
 @file:JvmName("ConnectivityHelper") // This line is only needed if you don't want caller statement in Java to change
 
-fun isConnectedToNetwork(context: Context): Boolean {
-  val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager?
+fun Context.isConnectedToNetwork(): Boolean {
+  val connectivityManager = this.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager?
   return connectivityManager?.activeNetworkInfo?.isConnectedOrConnecting() ?: false
 }
 {% endhighlight %}
@@ -65,10 +65,19 @@ You also need to have the `ACCESS_NETWORK_STATE` permission added in your manife
 Now anywhere that you need to check the connection, you only need to
 
 {% highlight java %}
+// Java code sample
 if (ConnectivityHelper.isConnectedToNetwork(context)) {
-  //Show the connected screen
+  // Show the connected screen
 } else {
-  //Show disconnected screen
+  // Show disconnected screen
+}
+{% endhighlight %}
+{% highlight kotlin %}
+// Kotlin code sample
+if (context.isConnectedToInternet()) {
+  // Show the connected screen
+} else {
+  // Show disconnected screen
 }
 {% endhighlight %}
 
