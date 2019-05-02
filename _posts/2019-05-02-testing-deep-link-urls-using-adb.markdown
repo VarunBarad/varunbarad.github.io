@@ -24,5 +24,5 @@ adb shell am start -a android.intent.action.VIEW -d "https://varunbarad.com/blog
 
 This was just a quick ADB tip that I have learnt and wanted to share with you. If you have any more such tips or tricks, I would love to hear about them on [twitter thread for this article][twitter-thread-article]. Feel free to contact me for anything else that you would like to talk about [@varun_barad][varun-twitter].
 
-[twitter-thread-article]: https://twitter.com/varun_barad
+[twitter-thread-article]: https://twitter.com/varun_barad/status/1123999186574303234
 [varun-twitter]: https://twitter.com/varun_barad
