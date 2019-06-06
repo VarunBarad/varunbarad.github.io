@@ -27,24 +27,37 @@
 
   </div>
   <div class="content row">
-    
+    <div class="post-container">
+  <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+    <div>
+      <div class="page-title text-uppercase text-center">Testing Deep-Link URLs using ADB</div>
+      <div class="post-date text-center">May 02, 2019</div>
+      <div class="post-content"><!-- end excerpt -->
 
-<div class="row text-center home">
-  <div class="row">
-    <img src="./assets/images/profile.png" alt="Profile picture - Varun Barad" class="center-block">
-  </div>
-  <div class="row">
-    <div class="name">Hi, I'm Varun Barad</div>
-  </div>
-  <div class="row"><br></div>
-  <div class="row about">
-    <div class="col-md-3 col-xs-1"></div>
-    <div class="col-md-6 col-xs-10">
-      <p>I enjoy building quality software and learning new skills. I currently work as an Android Developer at <a href="https://www.deliverr.ca/">Deliverr, Canada</a>.</p>
-      <p>Got my Android Developer Nanodegree in January 2018. I have previously worked on apps for a startup, my college and some just for my learning.</p>
-      <p>I have been working on Android stuff for the past 4 years. You can find my resume <a href="./assets/documents/Resume%20-%20Varun%20Barad.pdf">here</a></p>
+<p>ADB is a treasure trove and I regularly keep finding some gem from it. Recently I was working on creating some new deep-link integrations for the company I work at. The below command fires an event similar to one that gets fired when we click on a link in the device itself.</p>
+
+<p>The pattern for command to trigger the deep-link is as below:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>adb shell am start <span class="nt">-a</span> android.intent.action.VIEW <span class="nt">-d</span> <span class="s2">"your-link-goes-inside-these-quotes"</span>
+</code></pre></div></div>
+
+<p>Example</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>adb shell am start <span class="nt">-a</span> android.intent.action.VIEW <span class="nt">-d</span> <span class="s2">"https://varunbarad.com/blog"</span>
+</code></pre></div></div>
+
+<p>This was just a quick ADB tip that I have learnt and wanted to share with you. If you have any more such tips or tricks, I would love to hear about them on <a href="https://twitter.com/varun_barad/status/1123999186574303234">twitter thread for this article</a>. Feel free to contact me for anything else that you would like to talk about <a href="https://twitter.com/varun_barad">@varun_barad</a>.</p>
+
+</div>
     </div>
-    <div class="col-md-3 col-xs-1"></div>
+
+    <div class="post-categories-container">
+      Categories:
+      <div>
+        
+        <a href="/category/android" class="badge badge-warning">#android</a>
+        
+        <a href="/blog" class="badge badge-warning">#All</a>
+      </div>
+    </div>
   </div>
 </div>
 
