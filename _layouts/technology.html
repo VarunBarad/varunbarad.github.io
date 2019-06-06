@@ -1,10 +1,8 @@
 ---
 layout: default
-permalink: "/portfolio"
 ---
 
-<div class="col-12 text-center text-uppercase page-title">Portfolio</div>
-
+<div class="page-title text-uppercase col-12 text-center">{{page.tag}}</div>
 <div class="portfolio text-center">
   <div class="categories col-sm-10 offset-lg-1 offset-md-1 offset-sm-1">
     {% for technology in site.data.projects.technologies %}
@@ -16,6 +14,7 @@ permalink: "/portfolio"
   </div>
   <div class="row">
     {% for project in site.data.projects.projectDetail %}
+    {% if project.technologies contains page.tag %}
     <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3 project">
       <a href="#" data-toggle="modal" data-target="#{{project.id}}">
         <div class="card">
@@ -66,9 +65,20 @@ permalink: "/portfolio"
               {% endif %}
             </div>
           </div>
+          <div class="modal-footer">
+            <div class="categories">
+              <div>
+                {% for technology in project.technologies %}
+                <a href="{{site.url}}/technology/{{technology}}"
+                   class="badge badge-warning">#{{technology}}</a>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+    {% endif %}
     {% endfor %}
   </div>
 </div>

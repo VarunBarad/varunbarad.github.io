@@ -1,0 +1,11 @@
+<div class="footer">
+  <div>
+    {% for socialItem in site.data.personal.contact.socialLinks %}
+    <a href="{{socialItem.profileUrl}}" target="_blank"><i class="fab {{socialItem.profileIcon}} social-links"></i></a>
+    {% endfor %}
+  </div>
+  <div class="developer-attribution">
+    {% assign developerData = site.data.personal.developer %}
+    Made by <a href="{{developerData.url}}" target="_blank">{{developerData.name}}</a>
+  </div>
+</div>
