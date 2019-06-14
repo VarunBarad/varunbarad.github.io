@@ -36,10 +36,10 @@ plugins:
 collections:
   category:
     output: true
-    permalink: /:collection/:name
+    permalink: /:collection/:name/
   technology:
     output: true
-    permalink: /:collection/:name
+    permalink: /:collection/:name/
 
 environment: development
 
