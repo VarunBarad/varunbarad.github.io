@@ -41,6 +41,8 @@ collections:
     output: true
     permalink: /:collection/:name
 
+environment: development
+
 defaults:
   -
     scope:
