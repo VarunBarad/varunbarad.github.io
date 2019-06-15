@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/assets/css/style.css?v=3567019903fb86dd3c35068e61c06e6222a41c85">
+  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=3567019903fb86dd3c35068e61c06e6222a41c85">
+  <link rel="icon" type="image/png" href="/favicon.png"/>
+  <title>Varun Barad - Curious Developer</title>
+</head>
+<body>
+<div>
+  <div id="header">
+    <div class="row header">
+  <div class="title col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+    <a href="/"><div class="title">Varun Barad</div></a>
+  </div>
+  <div class="col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8">
+    <nav class="menu text-right">
+  <a href="/portfolio">Portfolio</a>
+  <a href="/blog">Blog</a>
+  <a href="/contact">Contact</a>
+</nav>
+
+  </div>
+</div>
+
+  </div>
+  <div class="content row">
+    <div class="post-container">
+  <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+    <div>
+      <div class="page-title text-uppercase text-center">Check network connectivity on Android in 10 lines</div>
+      <div class="post-date text-center">February 08, 2018</div>
+      <div class="post-content"><!-- end excerpt -->
+
+<p>Have you ever wanted to show different things to your user based on whether they are connected to the network or not? Well, Android provides a simple way to check for an active network connection.</p>
+
+<p>Note: This is checking whether or not the device is connected to a network (and not whether it is connected to Internet or not).</p>
+
+<p>The way Android provides to check for network connectivity is just 10 lines of code. But me being the lazy coder that I am, I just write that code inside a helper method once and then use that one-line method call everywhere that I need to check for connectivity.</p>
+
+<p>As you can see in the code-block below, it is quite easy to wrap the connectivity check logic in a function.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">// Java code sample
+</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ConnectivityHelper</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">isConnectedToNetwork</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">ConnectivityManager</span> <span class="n">connectivityManager</span> <span class="o">=</span>
+        <span class="o">(</span><span class="n">ConnectivityManager</span><span class="o">)</span> <span class="n">context</span><span class="o">.</span><span class="na">getSystemService</span><span class="o">(</span><span class="n">Context</span><span class="o">.</span><span class="na">CONNECTIVITY_SERVICE</span><span class="o">);</span>
+    
+    <span class="kt">boolean</span> <span class="n">isConnected</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">connectivityManager</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">NetworkInfo</span> <span class="n">activeNetwork</span> <span class="o">=</span> <span class="n">connectivityManager</span><span class="o">.</span><span class="na">getActiveNetworkInfo</span><span class="o">();</span>
+      <span class="n">isConnected</span> <span class="o">=</span> <span class="o">(</span><span class="n">activeNetwork</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="o">(</span><span class="n">activeNetwork</span><span class="o">.</span><span class="na">isConnectedOrConnecting</span><span class="o">());</span>
+    <span class="o">}</span>
+    
+    <span class="k">return</span> <span class="n">isConnected</span><span class="o">;</span>
+  <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="c1">// Kotlin code sample
+</span>
+<span class="c1">// The next line should be the first statement in the file
+</span><span class="n">@file</span><span class="p">:</span><span class="n">JvmName</span><span class="p">(</span><span class="s">"ConnectivityHelper"</span><span class="p">)</span> <span class="c1">// This line is only needed if you don't want caller statement in Java to change
+</span>
+<span class="k">fun</span> <span class="nf">Context</span><span class="p">.</span><span class="n">isConnectedToNetwork</span><span class="p">():</span> <span class="n">Boolean</span> <span class="p">{</span>
+  <span class="kd">val</span> <span class="py">connectivityManager</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">getSystemService</span><span class="p">(</span><span class="n">Context</span><span class="p">.</span><span class="n">CONNECTIVITY_SERVICE</span><span class="p">)</span> <span class="k">as</span> <span class="n">ConnectivityManager</span><span class="p">?</span>
+  <span class="k">return</span> <span class="n">connectivityManager</span><span class="o">?.</span><span class="n">activeNetworkInfo</span><span class="o">?.</span><span class="n">isConnectedOrConnecting</span><span class="p">()</span> <span class="o">?:</span> <span class="k">false</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>You also need to have the <code class="highlighter-rouge">ACCESS_NETWORK_STATE</code> permission added in your manifest like below.</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;manifest</span> <span class="err">...</span><span class="nt">&gt;</span>
+  
+  <span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">"android.permission.ACCESS_NETWORK_STATE"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;application</span> <span class="err">...</span><span class="nt">&gt;</span>
+    ...
+  <span class="nt">&lt;/application&gt;</span>
+<span class="nt">&lt;/manifest&gt;</span></code></pre></figure>
+
+<h3 id="done">Done</h3>
+
+<p>Now anywhere that you need to check the connection, you only need to</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">// Java code sample
+</span>
+<span class="k">if</span> <span class="o">(</span><span class="n">ConnectivityHelper</span><span class="o">.</span><span class="na">isConnectedToNetwork</span><span class="o">(</span><span class="n">context</span><span class="o">))</span> <span class="o">{</span>
+  <span class="c1">// Show the connected screen
+</span>
+<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+  <span class="c1">// Show disconnected screen
+</span>
+<span class="o">}</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="c1">// Kotlin code sample
+</span><span class="k">if</span> <span class="p">(</span><span class="n">context</span><span class="p">.</span><span class="n">isConnectedToInternet</span><span class="p">())</span> <span class="p">{</span>
+  <span class="c1">// Show the connected screen
+</span><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="c1">// Show disconnected screen
+</span><span class="p">}</span></code></pre></figure>
+
+<h2 id="further-reading">Further reading</h2>
+
+<p>The <a href="https://developer.android.com/training/monitoring-device-state/connectivity-monitoring.html">Official Documentations</a> are a good place to find more about this.</p>
+
+<p>If you know of a better way for this, <a href="https://varunbarad.com/contact">contact me</a> or tweet to me <a href="https://twitter.com/varun_barad">@varun_barad</a>. You can even send me ideas for any other topics that you would like to know about.</p>
+
+</div>
+    </div>
+
+    <div class="post-categories-container">
+      Categories:
+      <div>
+        
+        <a href="/category/android" class="badge badge-warning">#android</a>
+        
+        <a href="/blog" class="badge badge-warning">#All</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+  <div>
+    <div class="footer">
+  <div>
+    
+    <a href="https://github.com/VarunBarad" target="_blank"><i class="fab fa-github social-links"></i></a>
+    
+    <a href="https://twitter.com/varun_barad" target="_blank"><i class="fab fa-twitter social-links"></i></a>
+    
+    <a href="https://medium.com/@VarunBarad" target="_blank"><i class="fab fa-medium social-links"></i></a>
+    
+    <a href="https://linkedin.com/in/varunbarad" target="_blank"><i class="fab fa-linkedin social-links"></i></a>
+    
+    <a href="https://stackoverflow.com/users/4717436/varunbarad" target="_blank"><i class="fab fa-stack-overflow social-links"></i></a>
+    
+    <a href="https://codepen.io/VarunBarad" target="_blank"><i class="fab fa-codepen social-links"></i></a>
+    
+  </div>
+  <div class="developer-attribution">
+    
+    Made by <a href="https://dixita0607.github.io" target="_blank">Dixita Ganatra</a>
+  </div>
+</div>
+
+  </div>
+</div>
+
+<script src="/assets/js/jquery.min.js?v=3567019903fb86dd3c35068e61c06e6222a41c85"></script>
+<script src="/assets/js/bootstrap.min.js?v=3567019903fb86dd3c35068e61c06e6222a41c85"></script>
+<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+<script src="/assets/js/contact.js?v=3567019903fb86dd3c35068e61c06e6222a41c85"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-127878946-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-127878946-1');
+</script>
+
+
+</body>
+</html>
