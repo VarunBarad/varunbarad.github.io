@@ -1,4 +1,74 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://varunbarad.com/" rel="alternate" type="text/html" /><updated>2019-06-15T15:58:02+05:30</updated><id>https://varunbarad.com/feed.xml</id><title type="html">Varun Barad - Curious Developer</title><subtitle>My online home where I post about new things I learn or find interesting.</subtitle><author><name>Varun Barad</name></author><entry><title type="html">Make git forget a tracked file</title><link href="https://varunbarad.com/programming/2019/06/06/make-git-forget-a-tracked-file.html" rel="alternate" type="text/html" title="Make git forget a tracked file" /><published>2019-06-06T12:00:00+05:30</published><updated>2019-06-06T12:00:00+05:30</updated><id>https://varunbarad.com/programming/2019/06/06/make-git-forget-a-tracked-file</id><content type="html" xml:base="https://varunbarad.com/programming/2019/06/06/make-git-forget-a-tracked-file.html">&lt;p&gt;What to do when you are tracking a file with git but then want to remove it from VCS while keeping it in your file system.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://varunbarad.com/" rel="alternate" type="text/html" /><updated>2019-08-17T00:02:55+05:30</updated><id>https://varunbarad.com/feed.xml</id><title type="html">Varun Barad - Curious Developer</title><subtitle>My online home where I post about new things I learn or find interesting.</subtitle><author><name>Varun Barad</name></author><entry><title type="html">Switching RxJava schedulers between app code and corresponding tests</title><link href="https://varunbarad.com/programming/rx-java/2019/08/16/switching-schedulers-between-app-and-test-code.html" rel="alternate" type="text/html" title="Switching RxJava schedulers between app code and corresponding tests" /><published>2019-08-16T12:00:00+05:30</published><updated>2019-08-16T12:00:00+05:30</updated><id>https://varunbarad.com/programming/rx-java/2019/08/16/switching-schedulers-between-app-and-test-code</id><content type="html" xml:base="https://varunbarad.com/programming/rx-java/2019/08/16/switching-schedulers-between-app-and-test-code.html">&lt;p&gt;A simple way to switch between using appropriate schedulers in app code and using trampoline schedulers for tests.&lt;/p&gt;
+
+&lt;!-- end excerpt --&gt;
+
+&lt;p&gt;When using RxJava we need to specify the schedulers which we want to use to 1) perform the given task and 2) return result of the operation chain.&lt;/p&gt;
+
+&lt;p&gt;One of the interesting ways I found while working on a take-home challenge for a company was as below:&lt;/p&gt;
+
+&lt;div class=&quot;language-kotlin highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;VarunSchedulers&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;py&quot;&gt;schedulers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;RxSchedulers&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;RxSchedulers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Default&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;fun&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;enableTesting&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;schedulers&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;RxSchedulers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Test&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;fun&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;disableTesting&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;schedulers&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;RxSchedulers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Default&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;fun&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;io&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Scheduler&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;schedulers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;io&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;fun&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;computation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Scheduler&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;schedulers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;computation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;fun&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Scheduler&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;schedulers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;sealed&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RxSchedulers&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;abstract&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fun&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;io&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Scheduler&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;abstract&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fun&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;computation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Scheduler&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;abstract&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fun&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Scheduler&lt;/span&gt;
+
+        &lt;span class=&quot;kd&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Test&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;RxSchedulers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fun&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;io&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Scheduler&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Schedulers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;trampoline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fun&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;computation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Scheduler&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Schedulers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;trampoline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fun&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Scheduler&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Schedulers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;trampoline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;kd&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Default&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;RxSchedulers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fun&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;io&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Scheduler&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Schedulers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;io&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fun&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;computation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Scheduler&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Schedulers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;computation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fun&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Scheduler&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AndroidSchedulers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mainThread&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now let’s take the example of fetching a network query, we can simply do this&lt;/p&gt;
+
+&lt;div class=&quot;language-kotlin highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;pandaService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getListOfPandas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;subscribeOn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;VarunSchedulers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;io&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;observeOn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;VarunSchedulers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;And when we write our unit-tests we can easily turn testing-mode on and off using the &lt;code class=&quot;highlighter-rouge&quot;&gt;@Before&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;@After&lt;/code&gt; methods.&lt;/p&gt;
+
+&lt;div class=&quot;language-kotlin highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SomeTestClass&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;@Before&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;fun&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setupTests&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;VarunSchedulers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;enableTesting&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    
+    &lt;span class=&quot;n&quot;&gt;@After&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;fun&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;tearDown&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;VarunSchedulers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;disableTesting&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    
+    &lt;span class=&quot;c1&quot;&gt;// Write your tests
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now whenever we are inside tests, then automatically the &lt;code class=&quot;highlighter-rouge&quot;&gt;trampoline&lt;/code&gt; schedulers are assigned and respectively appropriate schedulers by default in case we are not in tests.&lt;/p&gt;
+
+&lt;p&gt;If you have more such tricks up your sleeve or something in here isn’t clear to you or you just want to chat then hit me up on twitter &lt;a href=&quot;https://twitter.com/varun_barad&quot;&gt;@varun_barad&lt;/a&gt;.&lt;/p&gt;</content><author><name>Varun Barad</name></author><summary type="html">A simple way to switch between using appropriate schedulers in app code and using trampoline schedulers for tests.</summary></entry><entry><title type="html">Make git forget a tracked file</title><link href="https://varunbarad.com/programming/2019/06/06/make-git-forget-a-tracked-file.html" rel="alternate" type="text/html" title="Make git forget a tracked file" /><published>2019-06-06T12:00:00+05:30</published><updated>2019-06-06T12:00:00+05:30</updated><id>https://varunbarad.com/programming/2019/06/06/make-git-forget-a-tracked-file</id><content type="html" xml:base="https://varunbarad.com/programming/2019/06/06/make-git-forget-a-tracked-file.html">&lt;p&gt;What to do when you are tracking a file with git but then want to remove it from VCS while keeping it in your file system.&lt;/p&gt;
 
 &lt;!-- end excerpt --&gt;
 
@@ -761,76 +831,4 @@ It involves an injection into the cerebro-spinal fluid or the epidural space jus
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://science.howstuffworks.com/anesthesia.htm&quot;&gt;How Stuff Works - Anesthetics (https://science.howstuffworks.com/anesthesia.htm)&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.drugs.com/pro/novocain.html&quot;&gt;Novocaine/Procaine (https://www.drugs.com/pro/novocain.html)&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Varun Barad</name></author><summary type="html">A post on the different categories of anesthetics and their working mechanisms and differences.</summary></entry><entry><title type="html">Critical mistakes to avoid in Android development</title><link href="https://varunbarad.com/android/2018/03/14/critical-mistakes-to-avoid-in-android-development.html" rel="alternate" type="text/html" title="Critical mistakes to avoid in Android development" /><published>2018-03-14T12:00:00+05:30</published><updated>2018-03-14T12:00:00+05:30</updated><id>https://varunbarad.com/android/2018/03/14/critical-mistakes-to-avoid-in-android-development</id><content type="html" xml:base="https://varunbarad.com/android/2018/03/14/critical-mistakes-to-avoid-in-android-development.html">&lt;p&gt;Charlie Munger has said that avoiding to be stupid is more beneficial when compared to trying to be intelligent.
-So, let’s take a look at some mistakes that we can avoid while walking the path of Android development.&lt;/p&gt;
-
-&lt;!-- end excerpt --&gt;
-
-&lt;p&gt;As many pioneers and leaders in different fields have paraphrased:&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;In any endeavor, it is important to know what are the top few things that need to be done right. But, it is equally important, if not more, to know the top few things which people should avoid at all costs.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;My posts up until now have been about how to perform a particular task on Android. Heeding the above saying, today I will be writing about the first five mistakes which I think should be avoided by Android developers.&lt;/p&gt;
-
-&lt;h2 id=&quot;not-putting-all-the-strings-to-be-displayed-in-stringsxml&quot;&gt;Not putting all the strings to be displayed in strings.xml&lt;/h2&gt;
-
-&lt;p&gt;This provides for a poor internationalization experience, as you will have to design your own ways of displaying the correct version of a message based on the user’s locale.&lt;/p&gt;
-
-&lt;p&gt;If the messages are in strings.xml, then they can easily be translated and integrated into the app. The Android OS then seamlessly handles which string resource to use based on the locale that the user has set on their device.&lt;/p&gt;
-
-&lt;p&gt;Here are a few of the reasons given by users to not use string-resources:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Need context to access:&lt;/strong&gt; If you wish to display that string to UI, you will inevitably need/have some kind of context there too. Just use that same context to fetch the string&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;But I only need it in this one place:&lt;/strong&gt; There is no telling when tomorrow you might need to have that same string in some other file. It is better to invest an extra minute to provide insurance against future problems&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Complex string with run-time data:&lt;/strong&gt; Friends, Android has you covered. There are parameterized strings supported by the platform with a syntax similar to the one used in Java’s &lt;code class=&quot;highlighter-rouge&quot;&gt;String.format()&lt;/code&gt;. More than that, plural-strings (using different strings based on the quantity of something) are also supported. Check out &lt;a href=&quot;https://stackoverflow.com/questions/2397613/are-parameters-in-strings-xml-possible&quot; title=&quot;Parameterized Strings&quot;&gt;this StackOverflow post&lt;/a&gt; for parameterized strings and the &lt;a href=&quot;https://developer.android.com/guide/topics/resources/string-resource.html&quot; title=&quot;Plural Strings&quot;&gt;official documentation&lt;/a&gt; for plural-strings.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;not-using-data-binding&quot;&gt;Not using data-binding&lt;/h2&gt;
-
-&lt;p&gt;Who likes to write cumbersome &lt;code class=&quot;highlighter-rouge&quot;&gt;findViewById&lt;/code&gt; calls and then maintain the reference to those views in their current namespace? Also, in that case we need to keep our view-id’s so that we are sure of which view-id we are using in &lt;code class=&quot;highlighter-rouge&quot;&gt;findViewById&lt;/code&gt; . This is because autocomplete in Android Studio will suggest every id (from all layouts), but only those present in the current layout tree will be available to &lt;code class=&quot;highlighter-rouge&quot;&gt;findViewById&lt;/code&gt; . Non-existent ones will return &lt;code class=&quot;highlighter-rouge&quot;&gt;null&lt;/code&gt; (probably causing a &lt;code class=&quot;highlighter-rouge&quot;&gt;NullPointerException&lt;/code&gt;).&lt;/p&gt;
-
-&lt;p&gt;Google has made it extremely easy to integrate data-binding into any app (new/existing) and eliminate all those pesky boilerplate view-reference stuff.&lt;/p&gt;
-
-&lt;p&gt;A few of the benefits of using data-binding (over not using it) are:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;References to only present views available (trying to refer to an absent component will show an error while editing the file in AS. It will also throw a compile-time error instead of biting you at runtime.).&lt;/li&gt;
-  &lt;li&gt;A bit faster due to it needing to traverse the whole layout-tree only once as opposed to every-time when &lt;code class=&quot;highlighter-rouge&quot;&gt;findViewById&lt;/code&gt; is called.&lt;/li&gt;
-  &lt;li&gt;Your working namespace (class/function) remains clean, and you don’t have to keep a reference to all the views.&lt;/li&gt;
-  &lt;li&gt;You can use as few of the features in data-binding as just using it to eliminate &lt;code class=&quot;highlighter-rouge&quot;&gt;findViewById&lt;/code&gt; calls to much more advanced features (like in this post, George Mount of Google tries to write a single adapter for all the recycler-views in an app).&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;not-hiding-api-keys&quot;&gt;Not hiding API keys&lt;/h2&gt;
-
-&lt;p&gt;This is a common problem which is domain-agnostic and made mostly by junior developers in almost all the areas. Once you commit some piece of code to version control it remains there forever. Even if you remove that API key in future commits, anyone who has access to that repository can view the key from its history and all sorts of problems can follow.&lt;/p&gt;
-
-&lt;p&gt;You can take a look at &lt;a href=&quot;https://varunbarad.com/android/2018/02/01/hiding-api-keys-from-your-android-repository.html&quot;&gt;this post&lt;/a&gt; to figure out how to hide your API keys from your repository while still including them in the build process and making them available in your code.&lt;/p&gt;
-
-&lt;h2 id=&quot;not-taking-activity-life-cycle-into-account&quot;&gt;Not taking activity life-cycle into account&lt;/h2&gt;
-
-&lt;p&gt;Any type of configuration change will cause the current activity to be destroyed and created again. To make sure that the transition is seamless for the user, we need to store the state our app was in just before the configuration change. Then we can recreate it just how the user expects it to be using the state after our activity is created anew following the configuration change.&lt;/p&gt;
-
-&lt;p&gt;While on the subject, we should also store the app’s state when our current activity moves to stopped state. After that, our app may be killed as per the system’s need of resources.&lt;/p&gt;
-
-&lt;h2 id=&quot;not-learning-the-keyboard-shortcuts-in-android-studio&quot;&gt;Not learning the keyboard shortcuts in Android Studio&lt;/h2&gt;
-
-&lt;p&gt;This might not be something which reflects in the code you write, but it highly affects your total workflow. Android Studio is built on top of IntelliJ Idea (an IDE famous for its keyboard friendliness). This means that there is a lot to be gained in developer productivity by simply investing a bit of time in learning different keyboard shortcuts. Here are some of my favorite resources to help you with that:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;KeyPromoter -&lt;/strong&gt;  This is an IntelliJ plugin (available in AS) which would display a giant ugly dialogue, showing the shortcut command for the action you just performed, whenever you use your mouse to do something. Trust me, this one will annoy the hell out of you and kind of force you to learn those shortcuts. You can find and download it from the plugins section of Android Studio settings.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Cheat-sheet -&lt;/strong&gt; &lt;a href=&quot;https://resources.jetbrains.com/storage/products/intellij-idea/docs/IntelliJIDEA_ReferenceCard.pdf&quot;&gt;This is an official printable cheat-sheet&lt;/a&gt; for the keyboard shortcuts by Jetbrains (the company behind IntelliJ). Versions for both Windows and Mac are available.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Official Guide-&lt;/strong&gt;  &lt;a href=&quot;https://www.jetbrains.com/help/idea/mastering-intellij-idea-keyboard-shortcuts.html&quot;&gt;This is the official guide&lt;/a&gt; provided by Jetbrains to mastering keyboard shortcuts on IntelliJ platform.&lt;/li&gt;
-  &lt;li&gt;Also check out these two videos
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=hdrAlhRI5vM&quot;&gt;Android Studio Shortcuts&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=eOV2owswDkE&quot;&gt;Android Studio: (About) 10 Things You (Probably) Didn’t Know You Could Do&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;thats-all-folks&quot;&gt;That’s all folks&lt;/h3&gt;
-
-&lt;p&gt;These are the five things which I think anyone working in Android development should focus on first. If you have any other suggestions regarding these or any other topics under the sky, &lt;a href=&quot;https://varunbarad.com/contact&quot;&gt;contact me&lt;/a&gt; or tweet to me &lt;a href=&quot;https://twitter.com/varun_barad&quot;&gt;@varun_barad&lt;/a&gt;.&lt;/p&gt;</content><author><name>Varun Barad</name></author><summary type="html">Charlie Munger has said that avoiding to be stupid is more beneficial when compared to trying to be intelligent. So, let’s take a look at some mistakes that we can avoid while walking the path of Android development.</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>Varun Barad</name></author><summary type="html">A post on the different categories of anesthetics and their working mechanisms and differences.</summary></entry></feed>
