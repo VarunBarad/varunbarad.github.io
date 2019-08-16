@@ -4,7 +4,7 @@ title:  "Switching RxJava schedulers between app code and corresponding tests"
 date:   2019-08-16 12:00:00 +0530
 categories:
   - "programming"
-  - "rx-java"
+  - "rxjava"
 ---
 
 A simple way to switch between using appropriate schedulers in app code and using trampoline schedulers for tests. 

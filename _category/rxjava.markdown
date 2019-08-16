@@ -1,4 +1,4 @@
 ---
 layout: category
-tag: rx-java
+tag: rxjava
 ---
