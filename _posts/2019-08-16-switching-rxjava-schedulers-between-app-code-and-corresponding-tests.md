@@ -54,7 +54,7 @@ object VarunSchedulers {
 Now let's take the example of fetching a network query, we can simply do this
 
 ```kotlin
-pandaService.getListOfPandas()
+pandaService.getCutestPanda()
     .subscribeOn(VarunSchedulers.io())
     .observeOn(VarunSchedulers.main())
     ...
