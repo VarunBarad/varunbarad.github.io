@@ -1,4 +1,94 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://varunbarad.com/" rel="alternate" type="text/html" /><updated>2019-08-17T09:01:13+05:30</updated><id>https://varunbarad.com/feed.xml</id><title type="html">Varun Barad - Curious Developer</title><subtitle>My online home where I post about new things I learn or find interesting.</subtitle><author><name>Varun Barad</name></author><entry><title type="html">Switching RxJava schedulers between app code and corresponding tests</title><link href="https://varunbarad.com/programming/rx-java/2019/08/16/switching-rxjava-schedulers-between-app-code-and-corresponding-tests.html" rel="alternate" type="text/html" title="Switching RxJava schedulers between app code and corresponding tests" /><published>2019-08-16T12:00:00+05:30</published><updated>2019-08-16T12:00:00+05:30</updated><id>https://varunbarad.com/programming/rx-java/2019/08/16/switching-rxjava-schedulers-between-app-code-and-corresponding-tests</id><content type="html" xml:base="https://varunbarad.com/programming/rx-java/2019/08/16/switching-rxjava-schedulers-between-app-code-and-corresponding-tests.html">&lt;p&gt;A simple way to switch between using appropriate schedulers in app code and using trampoline schedulers for tests.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://varunbarad.com/" rel="alternate" type="text/html" /><updated>2019-09-30T14:47:25+05:30</updated><id>https://varunbarad.com/feed.xml</id><title type="html">Varun Barad - Curious Developer</title><subtitle>My online home where I post about new things I learn or find interesting.</subtitle><author><name>Varun Barad</name></author><entry><title type="html">JavaScript 30 - Building a Drum Kit</title><link href="https://varunbarad.com/programming/web/javascript-30/2019/09/30/javascript-30-building-a-drum-kit.html" rel="alternate" type="text/html" title="JavaScript 30 - Building a Drum Kit" /><published>2019-09-30T12:00:00+05:30</published><updated>2019-09-30T12:00:00+05:30</updated><id>https://varunbarad.com/programming/web/javascript-30/2019/09/30/javascript-30-building-a-drum-kit</id><content type="html" xml:base="https://varunbarad.com/programming/web/javascript-30/2019/09/30/javascript-30-building-a-drum-kit.html">&lt;p&gt;I started the JavaScript30 challenge from Wes Bos today and learnt how to build a simple drum-kit.&lt;/p&gt;
+
+&lt;!-- end excerpt --&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://wesbos.com&quot; target=&quot;_blank&quot;&gt;Wes Bos&lt;/a&gt; has created a &lt;a href=&quot;https://javascript30.com&quot; target=&quot;_blank&quot;&gt;course&lt;/a&gt; to get you confident in your JS skills in 30 days. In it you work on a new project daily for 30 days and in each project you make something using vanilla JS without any frameworks or libraries.&lt;/p&gt;
+
+&lt;p&gt;Today I started the challenge and first project was to make a drum-kit where different sounds are played based on the keyboard button you press. And the corresponding button gets highlighted on screen.&lt;/p&gt;
+
+&lt;p&gt;The key concepts I learned from today’s challenge were:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Setting event-listeners with JS&lt;/li&gt;
+  &lt;li&gt;Working with keyboard events and identifying key-codes&lt;/li&gt;
+  &lt;li&gt;Playing audio and restarting the audio when it is already playing&lt;/li&gt;
+  &lt;li&gt;How to sync JS code with CSS transitions&lt;/li&gt;
+  &lt;li&gt;What value &lt;code class=&quot;highlighter-rouge&quot;&gt;this&lt;/code&gt; takes inside the event listener function&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;setting-event-listeners-with-js&quot;&gt;Setting event-listeners with JS&lt;/h2&gt;
+
+&lt;p&gt;The syntax for this is very simple&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addEventListener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'&amp;lt;event-name&amp;gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;call&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;when&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;is&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fired&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;You can find a list of supported events &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/Events&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt; but beware, the complete list of events is too large and you might never need to use most of them.&lt;/p&gt;
+
+&lt;h2 id=&quot;working-with-keyboard-events-and-identifying-key-codes&quot;&gt;Working with keyboard events and identifying key-codes&lt;/h2&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;handleKeyDownEvent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;keyCode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addEventListener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'keydown'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;handleKeyDownEvent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Here we attach an event-listener for the &lt;code class=&quot;highlighter-rouge&quot;&gt;keydown&lt;/code&gt; event to the &lt;code class=&quot;highlighter-rouge&quot;&gt;window&lt;/code&gt; object since we want to capture the events across our whole web-page.
+Then we find out which key was pressed based on the &lt;code class=&quot;highlighter-rouge&quot;&gt;keyCode&lt;/code&gt; value passed via the fired event.&lt;/p&gt;
+
+&lt;p&gt;Wes has created a &lt;a href=&quot;https://keycode.info&quot; target=&quot;_blank&quot;&gt;nifty little website (https://keycode.info)&lt;/a&gt; which we can use to find the corresponding &lt;code class=&quot;highlighter-rouge&quot;&gt;keyCode&lt;/code&gt; for any key.&lt;/p&gt;
+
+&lt;h2 id=&quot;playing-audio-and-restarting-the-audio-when-it-is-already-playing&quot;&gt;Playing audio and restarting the audio when it is already playing&lt;/h2&gt;
+
+&lt;p&gt;In this project we have a set of buttons on the screen corresponding to different keys on the keyboard. And each button has a corresponding &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;audio&amp;gt;&lt;/code&gt; element on the page. The goal is to play the corresponding audio when a valid key is pressed on the keyboard.&lt;/p&gt;
+
+&lt;p&gt;So after detecting which key is pressed using the &lt;code class=&quot;highlighter-rouge&quot;&gt;keyCode&lt;/code&gt; attribute, we select the corresponding &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;audio&amp;gt;&lt;/code&gt; element using a pre-specified &lt;code class=&quot;highlighter-rouge&quot;&gt;data-key&lt;/code&gt; attribute in HTML and call the &lt;code class=&quot;highlighter-rouge&quot;&gt;audioElement.play();&lt;/code&gt; method on it.&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;audioElement&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;`audio[data-key=&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;keyCode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;]`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;audioElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;currentTime&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;audioElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;play&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In the above code-block you might have observed that I set the &lt;code class=&quot;highlighter-rouge&quot;&gt;current-time&lt;/code&gt; of that element to &lt;code class=&quot;highlighter-rouge&quot;&gt;0&lt;/code&gt; before calling &lt;code class=&quot;highlighter-rouge&quot;&gt;play&lt;/code&gt; on it. This is done because when an &lt;code class=&quot;highlighter-rouge&quot;&gt;audio&lt;/code&gt; is still playing (that is it has not finished) and we call &lt;code class=&quot;highlighter-rouge&quot;&gt;.play()&lt;/code&gt; on it, this new call gets ignored. Therefore we reset the play-time for that particular audio element so that it correctly registers and plays 2 consecutive commands of the same key.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-sync-js-code-with-css-transitions&quot;&gt;How to sync JS code with CSS transitions&lt;/h2&gt;
+
+&lt;p&gt;When a key is pressed, we highlight the corresponding button for a short duration on the screen while playing sound for it. To highlight the button, we just add a class &lt;code class=&quot;highlighter-rouge&quot;&gt;playing&lt;/code&gt; to it which scales it up and changes the border a bit. The second part of that is to remove the &lt;code class=&quot;highlighter-rouge&quot;&gt;playing&lt;/code&gt; class as soon as the transition is finished so as to return the button to normal state.&lt;/p&gt;
+
+&lt;p&gt;For this I initially thought of using &lt;code class=&quot;highlighter-rouge&quot;&gt;setTimeout&lt;/code&gt; with the same time-out as that mentioned in CSS as transition duration. Wes pointed out the flaw in it is that when we decide to update the transition duration we would need to make sure to update it in both the places (in CSS and in JS).&lt;/p&gt;
+
+&lt;p&gt;So a better way to synchronize CSS transitions with JS is again to use &lt;strong&gt;events&lt;/strong&gt;. Here we specifically use &lt;code class=&quot;highlighter-rouge&quot;&gt;transitionend&lt;/code&gt; event on the buttons like below.&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;removeButtonHighlight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;propertyName&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'transform'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;classList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;remove&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'playing'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelectorAll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'.keys'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;forEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;button&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;button&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addEventListener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'transitionend'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;removeButtonHighlight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In above code, we select each button and then add the &lt;code class=&quot;highlighter-rouge&quot;&gt;transitionend&lt;/code&gt; event-listener for it so now it will call &lt;code class=&quot;highlighter-rouge&quot;&gt;removeButtonHighlight&lt;/code&gt; only and exactly when any transition on any of those buttons ends.&lt;/p&gt;
+
+&lt;p&gt;After that we simply remove the &lt;code class=&quot;highlighter-rouge&quot;&gt;playing&lt;/code&gt; class from that button so that it returns back to its original/normal state. You might have noticed that I have put a check of &lt;code class=&quot;highlighter-rouge&quot;&gt;event.propertyName === 'transform'&lt;/code&gt;. I would suggest you try and remove that check and &lt;code class=&quot;highlighter-rouge&quot;&gt;console.log&lt;/code&gt; the event to find out why I might have put that check in.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-value-this-takes-inside-the-event-listener-function&quot;&gt;What value &lt;code class=&quot;highlighter-rouge&quot;&gt;this&lt;/code&gt; takes inside the event-listener function&lt;/h2&gt;
+
+&lt;p&gt;One of the toughest concept to learn and correctly understand in JS is &lt;code class=&quot;highlighter-rouge&quot;&gt;this&lt;/code&gt; or more specifically, what &lt;code class=&quot;highlighter-rouge&quot;&gt;this&lt;/code&gt; means at different points of execution in our code.&lt;/p&gt;
+
+&lt;p&gt;In the last code-block you have noticed that I simply did &lt;code class=&quot;highlighter-rouge&quot;&gt;this.classList.remove('playing')&lt;/code&gt; instead of trying to select that particular element using any other method.&lt;/p&gt;
+
+&lt;p&gt;It is so because in that particular case the value of &lt;code class=&quot;highlighter-rouge&quot;&gt;this&lt;/code&gt; is whatever object the function &lt;code class=&quot;highlighter-rouge&quot;&gt;removeButtonHighlight&lt;/code&gt; has been called.&lt;/p&gt;
+
+&lt;p&gt;So when we attach an event-listener on each of our button and on triggering of those events, they call &lt;code class=&quot;highlighter-rouge&quot;&gt;removeButtonHighlight&lt;/code&gt; with the context of that particular button. So there &lt;code class=&quot;highlighter-rouge&quot;&gt;this&lt;/code&gt; is referring directly to the button on which the event listener has been triggered.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;Hope I have been able to explain what I learned in today’s challenge. Hit me up on twitter &lt;a href=&quot;https://twitter.com/varun_barad&quot; target=&quot;_blank&quot;&gt;@varun_barad&lt;/a&gt; in case you haven’t understood something from this article or you have something new for me to learn.&lt;/p&gt;
+
+&lt;p&gt;In any case, don’t forget to check out the &lt;a href=&quot;https://javascript30.com&quot; target=&quot;_blank&quot;&gt;JavaScript30 challenge&lt;/a&gt; from Wes Bos. It is an awesome way to get some JS confidence.&lt;/p&gt;</content><author><name>Varun Barad</name></author><summary type="html">I started the JavaScript30 challenge from Wes Bos today and learnt how to build a simple drum-kit.</summary></entry><entry><title type="html">Switching RxJava schedulers between app code and corresponding tests</title><link href="https://varunbarad.com/programming/rx-java/2019/08/16/switching-rxjava-schedulers-between-app-code-and-corresponding-tests.html" rel="alternate" type="text/html" title="Switching RxJava schedulers between app code and corresponding tests" /><published>2019-08-16T12:00:00+05:30</published><updated>2019-08-16T12:00:00+05:30</updated><id>https://varunbarad.com/programming/rx-java/2019/08/16/switching-rxjava-schedulers-between-app-code-and-corresponding-tests</id><content type="html" xml:base="https://varunbarad.com/programming/rx-java/2019/08/16/switching-rxjava-schedulers-between-app-code-and-corresponding-tests.html">&lt;p&gt;A simple way to switch between using appropriate schedulers in app code and using trampoline schedulers for tests.&lt;/p&gt;
 
 &lt;!-- end excerpt --&gt;
 
@@ -669,166 +759,4 @@ Since the first item in that list is always the name of our program so we ignore
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Apgar_score&quot;&gt;Wikipedia - Apgar score (https://en.wikipedia.org/wiki/Apgar_score)&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Varun Barad</name></author><summary type="html">A quick method used to check whether a newborn needs immediate medical care.</summary></entry><entry><title type="html">How anesthetics work</title><link href="https://varunbarad.com/medicine/2018/08/13/how-anesthetics-work.html" rel="alternate" type="text/html" title="How anesthetics work" /><published>2018-08-13T12:00:00+05:30</published><updated>2018-08-13T12:00:00+05:30</updated><id>https://varunbarad.com/medicine/2018/08/13/how-anesthetics-work</id><content type="html" xml:base="https://varunbarad.com/medicine/2018/08/13/how-anesthetics-work.html">&lt;p&gt;A post on the different categories of anesthetics and their working mechanisms and differences.&lt;/p&gt;
-
-&lt;!-- end excerpt --&gt;
-
-&lt;p&gt;Anesthetics are used to relieve people of the feeling of pain.&lt;/p&gt;
-
-&lt;p&gt;There are three types of anesthetics based on their site of action:&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;Local anesthetic&lt;/li&gt;
-  &lt;li&gt;Regional anesthetic&lt;/li&gt;
-  &lt;li&gt;General anesthetic&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;local-anesthetic&quot;&gt;Local anesthetic&lt;/h2&gt;
-
-&lt;p&gt;Local anesthetics are applied when very specific parts of the patient are to be made numb.&lt;/p&gt;
-
-&lt;p&gt;Examples:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Dentists giving anesthetic injection before performing a root canal operation&lt;/li&gt;
-  &lt;li&gt;Numbing out a toe before removing infected nail&lt;/li&gt;
-  &lt;li&gt;Applied in low doses around hip during delivery to numb off labor pain (the injections for this are generally given in the spinal discs located between vertebrae)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;These can be of 2 kinds:&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;Topical (applied externally as a cream, gel or spray)&lt;/li&gt;
-  &lt;li&gt;Injected (the anesthetic is injected with the use of a syringe for deeper effect)&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Sometimes a topical anesthetic is applied before giving the injection (to avoid the pain of injection or of the drug itself) for deeper anesthetic so as to numb out the pain of injection also.&lt;/p&gt;
-
-&lt;p&gt;Local anesthetics bind with the neurotransmitters of that area thus blocking their receptors making them essentially unavailable for transporting pain signals.&lt;/p&gt;
-
-&lt;p&gt;These are very simple with ultra rare cases of any long-lasting effects and can thus be safely administered by a standard medical practitioner.&lt;/p&gt;
-
-&lt;p&gt;Example: Procaine, Lidocaine&lt;/p&gt;
-
-&lt;p&gt;One of the problem with these drugs is that they are vaso-dilators (they expanding blood vessels) and can sometimes cause excessive blood loss. This is easily counter-acted by epinephrine.&lt;/p&gt;
-
-&lt;h2 id=&quot;regional-anesthetic&quot;&gt;Regional anesthetic&lt;/h2&gt;
-
-&lt;p&gt;Regional anesthetics are applied when a larger part of the body is to be numbed out.&lt;/p&gt;
-
-&lt;p&gt;Examples:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Numbing a whole foot (applied at the hip of that particular foot so that the whole set of nerves transporting signals to and from that foot get blocked)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Sub-categories:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Peripheral regional anesthesia &lt;br /&gt;
-Administered to numb-out usually a limb&lt;/li&gt;
-  &lt;li&gt;Central anesthesia (not same as general anesthesia) &lt;br /&gt;
-It involves an injection into the cerebro-spinal fluid or the epidural space just outside spinal canal&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Regional anesthetics are generally local anesthetics applied in larger quantity at strategic sites so that the whole bunch of nerves going to the targeted region get blocked.&lt;/p&gt;
-
-&lt;p&gt;These generally need more precautions than local anesthetics since it has higher chance of something going wrong.&lt;/p&gt;
-
-&lt;p&gt;Women who have given birth are probably very familiar with the central anesthetic technique known as an epidural. In this procedure, an anesthesiologist inserts a catheter into the epidural space, typically in the lower back area. This continuously feeds drugs such as lidocaine as well as fentanyl or clonidine to provide pain relief, resulting in a loss of sensation from the waist down.&lt;/p&gt;
-
-&lt;p&gt;Spinal blocks, which are injected into the cerebrospinal fluid, are often used for other procedures below the waist, such as Cesarean sections or hernia surgery. They tend to paralyze further than epidurals.&lt;/p&gt;
-
-&lt;h2 id=&quot;general-anesthetic&quot;&gt;General anesthetic&lt;/h2&gt;
-
-&lt;p&gt;General anesthetics are used when the patient needs to be “put under” or made completely unconscious.&lt;/p&gt;
-
-&lt;p&gt;Examples:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Knee replacement&lt;/li&gt;
-  &lt;li&gt;Heart bypass&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Much less is known about the exact functioning of general anesthetics, but so far it has been understood that these function in the fat-based medium of the cells.&lt;/p&gt;
-
-&lt;p&gt;The current accepted theory is that they affect the spinal cord (which is why you end up immobile), the brain stem reticular activating system (which explains the unconsciousness) and the cerebral cortex (which results in changes in electrical activity on an electroencephalogram).&lt;/p&gt;
-
-&lt;p&gt;A whole team of anesthetic specialists is needed when the patient is to be put under general anesthetic so that their condition can be constantly monitored and corrective procedures taken in case the patient’s condition gets worse.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Nitrous-Oxide is a popular choice for use as general anesthetic, it is administered in the form of inhaled gas.&lt;/li&gt;
-  &lt;li&gt;Other types of general anesthetics(like Valium) can also be administered through an IV line.&lt;/li&gt;
-  &lt;li&gt;It is quick to start its effects and similarly quick to wear off.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;notes&quot;&gt;Notes:&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;You’ll most likely be instructed not to eat for several hours before surgery. It’s possible for someone under general anesthesia to aspirate, or breathe in, the contents of the stomach.&lt;/li&gt;
-  &lt;li&gt;When you’re under general anesthesia, you’ll be wearing a breathing mask or breathing tube, because the muscles become too relaxed to keep your airways open.&lt;/li&gt;
-  &lt;li&gt;Several different things are continuously monitored while you’re under – pulse oximetry (oxygen level in the blood), heart rate, blood pressure, respiratory rate, carbon dioxide exhalation levels, temperature, the concentration of the anesthetic and brain activity. There’s also an alarm that goes off if your oxygen level drops below a certain point.&lt;/li&gt;
-  &lt;li&gt;There are 4 stages of general anesthesia
-    &lt;ul&gt;
-      &lt;li&gt;&lt;strong&gt;Induction:&lt;/strong&gt; The patient is given the medication and may start to feel its effects but hasn’t yet fallen unconscious.&lt;/li&gt;
-      &lt;li&gt;&lt;strong&gt;Excitement:&lt;/strong&gt; Twitching and irregular breathing patterns or heart rates. Patients don’t remember any of this as they are unconscious. Very short stage which progresses rapidly to next one.&lt;/li&gt;
-      &lt;li&gt;&lt;strong&gt;Relaxed/Anesthetized:&lt;/strong&gt; The muscles relax and breathing becomes regular. This is the target stage.&lt;/li&gt;
-      &lt;li&gt;&lt;strong&gt;Overdose:&lt;/strong&gt; This isn’t part of the regular process. This overdose can result in halting heart or breath which may lead to brain damage or death if swift action isn’t taken.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;procedural-sedation-bonus-category&quot;&gt;Procedural Sedation (Bonus category)&lt;/h2&gt;
-
-&lt;p&gt;Procedural sedation is much like general sedation in terms of its area of effect (it also works on the whole body) but in way milder doses.&lt;/p&gt;
-
-&lt;p&gt;The patient is usually awake and can respond to questions, but is not necessarily aware of what’s happening to/around him. The patient is usually in a sleepy and relaxed state.&lt;/p&gt;
-
-&lt;p&gt;Due to low dosages, the side-effects observed with general anesthesia are usually not observed in case of procedural sedation.&lt;/p&gt;
-
-&lt;p&gt;Alternate names:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Conscious sedation&lt;/li&gt;
-  &lt;li&gt;Twilight anesthesia&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Care needs to be taken that the patient doesn’t slip into deeper sedation state.&lt;/p&gt;
-
-&lt;h3 id=&quot;notes-1&quot;&gt;Notes&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Normally anesthetics are administered with analgesics that also help in dulling-down the pain.&lt;/li&gt;
-  &lt;li&gt;While administering anesthetics, many-a-times some kind of vaso-constrictor is used to counter-act the vaso-dilator action of the anesthetic&lt;/li&gt;
-  &lt;li&gt;Local anesthetics are usually mixed with different diluents including (but not limited to)
-    &lt;ul&gt;
-      &lt;li&gt;Sterile saline solution&lt;/li&gt;
-      &lt;li&gt;Sterile distilled water&lt;/li&gt;
-      &lt;li&gt;Spinal Fluid&lt;/li&gt;
-      &lt;li&gt;Sterile dextrose solution (for hyperbaric technique)
-        &lt;ul&gt;
-          &lt;li&gt;Hyperbaric solutions in spinal anesthesia are solutions that have a density greater than that of spinal fluid.&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;After surgery, the patient goes to a PACU (post-anesthesia care unit).
-    &lt;ul&gt;
-      &lt;li&gt;Often the patient will be given warm IV fluids to counteract both the dehydration resulting from anesthesia as well as shivering from changes in body temperature.&lt;/li&gt;
-      &lt;li&gt;As analgesic effect wears off, the patient also receives some sort of pain-relief medication.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;questions&quot;&gt;Questions&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Why do general anesthetic medicines only affect those part of brain related to conscious/non-autonomic functions?&lt;/li&gt;
-  &lt;li&gt;Can the patient who is put under general anesthetic still see dreams?&lt;/li&gt;
-  &lt;li&gt;Why are heart-beats and breathing not as affected as the sensory receptors?&lt;/li&gt;
-  &lt;li&gt;As we move from sea-level air pressure to lower air pressure areas at higher altitude, we adjust our breathing without us giving it even a single conscious thought, if a patient under general anesthetic were to face such change in pressure will their body handle that change itself or will it cause any complication?&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;disclaimer&quot;&gt;Disclaimer&lt;/h2&gt;
-
-&lt;p&gt;I am not a doctor and I don’t pose as one on the internet. This post is just a compilation of what I found while learning about this topic.&lt;/p&gt;
-
-&lt;h3 id=&quot;sources&quot;&gt;Sources&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://science.howstuffworks.com/anesthesia.htm&quot;&gt;How Stuff Works - Anesthetics (https://science.howstuffworks.com/anesthesia.htm)&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.drugs.com/pro/novocain.html&quot;&gt;Novocaine/Procaine (https://www.drugs.com/pro/novocain.html)&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Varun Barad</name></author><summary type="html">A post on the different categories of anesthetics and their working mechanisms and differences.</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>Varun Barad</name></author><summary type="html">A quick method used to check whether a newborn needs immediate medical care.</summary></entry></feed>
