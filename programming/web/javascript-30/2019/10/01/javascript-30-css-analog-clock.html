@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/assets/css/style.css?v=973487b2e50d975a833a9578d082eee57d770725">
+  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=973487b2e50d975a833a9578d082eee57d770725">
+  <link rel="icon" type="image/png" href="/favicon.png"/>
+  <title>Varun Barad - Curious Developer</title>
+</head>
+<body>
+<div>
+  <div id="header">
+    <div class="row header">
+  <div class="title col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+    <a href="/"><div class="title">Varun Barad</div></a>
+  </div>
+  <div class="col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8">
+    <nav class="menu text-right">
+  <a href="/portfolio">Portfolio</a>
+  <a href="/blog">Blog</a>
+  <a href="/contact">Contact</a>
+</nav>
+
+  </div>
+</div>
+
+  </div>
+  <div class="content row">
+    <div class="post-container">
+  <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+    <div>
+      <div class="page-title text-uppercase text-center">JavaScript 30 - CSS Analog Clock</div>
+      <div class="post-date text-center">October 01, 2019</div>
+      <div class="post-content"><!-- end excerpt -->
+
+<p>Today I am continuing my work on <a href="https://javascript30.com">JS30 challenge</a> and building a simple analog clock using CSS shapes and then animate it with CSS transforms timed using JS.</p>
+
+<p>The key concepts I learned from today’s challenge were:</p>
+
+<ul>
+  <li>Changing rotation center of an object in CSS</li>
+  <li>CSS Transition timing function</li>
+  <li>A weird reverse-jump in animation whenever any clock hand crosses 12 o’clock mark.</li>
+</ul>
+
+<h2 id="changing-rotation-center-of-an-object-in-css">Changing rotation center of an object in CSS</h2>
+
+<p>By default an object in CSS rotates around its center. But in our clock we need to rotate them around one of their corners. Therefore we need to change their CSS origins</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.hand</span> <span class="p">{</span>
+    <span class="nl">transform-origin</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>The above snippet moves the origin point for all CSS transforms to the right end of that element.</p>
+
+<h2 id="css-transition-timing-function">CSS Transition timing function</h2>
+
+<p>You can provide a timing function for your CSS transitions so that they follow it for their rate of change during the duration of your transitions.</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.hand</span> <span class="p">{</span>
+    <span class="nl">transition-timing-function</span><span class="p">:</span> <span class="n">ease-in-out</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>There are many built-in transition timing functions but I generally liked the <code class="highlighter-rouge">ease-in-out</code> for how its acceleration and deceleration feel much like natural movements. You can check out the rest of them if you like.</p>
+
+<p>My favorite ability in this was that we can provide our custom timing functions using what is known as a bezier curve specification. For example:</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.hand</span> <span class="p">{</span>
+    <span class="nl">transition-timing-function</span><span class="p">:</span> <span class="n">cubic-bezier</span><span class="p">(</span><span class="m">0.42</span><span class="p">,</span> <span class="m">0.0</span><span class="p">,</span> <span class="m">0.58</span><span class="p">,</span> <span class="m">1.0</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>In the above code-sample I have written the <code class="highlighter-rouge">cubic-bezier</code> format of the <code class="highlighter-rouge">ease-in-out</code> timing function but you can customize the bezier curve to your heart’s content using those 2 anchor points.</p>
+
+<h1 id="a-weird-reverse-jump-in-animation-whenever-any-clock-hand-crosses-12-oclock-mark">A weird reverse-jump in animation whenever any clock hand crosses 12 o’clock mark</h1>
+
+<p>The hands of my clock were moving nicely from 12 to 12 but when they were just going to reach 12 they would do a weird jump and instead of moving 1 tick forward from right before 12 to 12, they would perform a full reverse circle and reach 12 from that side.</p>
+
+<p>This problem was occurring because of how we calculated the angles of rotation. We used the below equation for counting number of seconds.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">secondsDegrees</span> <span class="o">=</span> <span class="p">((</span><span class="nx">seconds</span> <span class="o">/</span> <span class="mi">60</span><span class="p">)</span> <span class="o">*</span> <span class="mi">360</span><span class="p">)</span> <span class="o">+</span> <span class="mi">90</span><span class="p">;</span>
+<span class="c1">// Here 90 degrees is the initial offset to make clock-hands start at 12</span>
+</code></pre></div></div>
+
+<p>With this what would happen is as below:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Seconds</th>
+      <th style="text-align: center">Degrees</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">90</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">15</td>
+      <td style="text-align: center">180</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">30</td>
+      <td style="text-align: center">270</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">45</td>
+      <td style="text-align: center">360</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">60 (or 0)</td>
+      <td style="text-align: center">90</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>So the main issue is that when reaching the 60 second mark it rotates counter-clockwise because the final value of clock-hand handle (90) is less than its current value (360). So instead of the transition being a smooth forward transition, it jumps counter-clockwise and that’s where we see that queer problem.</p>
+
+<p>A very quick way to deal with this is to keep the degrees calculation so that they are always increasing. The result with that would be something like this:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Seconds</th>
+      <th style="text-align: center">Degrees</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">90</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">15</td>
+      <td style="text-align: center">180</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">30</td>
+      <td style="text-align: center">270</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">45</td>
+      <td style="text-align: center">360</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">60 (or 0)</td>
+      <td style="text-align: center">450</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>If you want to discuss anything that was unclear in today’s article then hit me up on twitter <a href="https://twitter.com/varun_barad">@varun_barad</a>.</p>
+
+</div>
+    </div>
+
+    <div class="post-categories-container">
+      Categories:
+      <div>
+        
+        <a href="/category/programming" class="badge badge-warning">#programming</a>
+        
+        <a href="/category/web" class="badge badge-warning">#web</a>
+        
+        <a href="/category/javascript-30" class="badge badge-warning">#javascript-30</a>
+        
+        <a href="/blog" class="badge badge-warning">#All</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+  <div>
+    <div class="footer">
+  <div>
+    
+    <a href="https://github.com/VarunBarad" target="_blank"><i class="fab fa-github social-links"></i></a>
+    
+    <a href="https://twitter.com/varun_barad" target="_blank"><i class="fab fa-twitter social-links"></i></a>
+    
+    <a href="https://medium.com/@VarunBarad" target="_blank"><i class="fab fa-medium social-links"></i></a>
+    
+    <a href="https://linkedin.com/in/varunbarad" target="_blank"><i class="fab fa-linkedin social-links"></i></a>
+    
+    <a href="https://stackoverflow.com/users/4717436/varunbarad" target="_blank"><i class="fab fa-stack-overflow social-links"></i></a>
+    
+    <a href="https://codepen.io/VarunBarad" target="_blank"><i class="fab fa-codepen social-links"></i></a>
+    
+  </div>
+  <div class="developer-attribution">
+    
+    Made by <a href="https://dixita0607.github.io" target="_blank">Dixita Ganatra</a>
+  </div>
+</div>
+
+  </div>
+</div>
+
+<script src="/assets/js/jquery.min.js?v=973487b2e50d975a833a9578d082eee57d770725"></script>
+<script src="/assets/js/bootstrap.min.js?v=973487b2e50d975a833a9578d082eee57d770725"></script>
+<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+<script src="/assets/js/contact.js?v=973487b2e50d975a833a9578d082eee57d770725"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-127878946-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-127878946-1');
+</script>
+
+
+</body>
+</html>

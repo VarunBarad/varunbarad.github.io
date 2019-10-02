@@ -1,4 +1,129 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://varunbarad.com/" rel="alternate" type="text/html" /><updated>2019-09-30T14:47:25+05:30</updated><id>https://varunbarad.com/feed.xml</id><title type="html">Varun Barad - Curious Developer</title><subtitle>My online home where I post about new things I learn or find interesting.</subtitle><author><name>Varun Barad</name></author><entry><title type="html">JavaScript 30 - Building a Drum Kit</title><link href="https://varunbarad.com/programming/web/javascript-30/2019/09/30/javascript-30-building-a-drum-kit.html" rel="alternate" type="text/html" title="JavaScript 30 - Building a Drum Kit" /><published>2019-09-30T12:00:00+05:30</published><updated>2019-09-30T12:00:00+05:30</updated><id>https://varunbarad.com/programming/web/javascript-30/2019/09/30/javascript-30-building-a-drum-kit</id><content type="html" xml:base="https://varunbarad.com/programming/web/javascript-30/2019/09/30/javascript-30-building-a-drum-kit.html">&lt;p&gt;I started the JavaScript30 challenge from Wes Bos today and learnt how to build a simple drum-kit.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://varunbarad.com/" rel="alternate" type="text/html" /><updated>2019-10-02T09:36:41+05:30</updated><id>https://varunbarad.com/feed.xml</id><title type="html">Varun Barad - Curious Developer</title><subtitle>My online home where I post about new things I learn or find interesting.</subtitle><author><name>Varun Barad</name></author><entry><title type="html">JavaScript 30 - CSS Analog Clock</title><link href="https://varunbarad.com/programming/web/javascript-30/2019/10/01/javascript-30-css-analog-clock.html" rel="alternate" type="text/html" title="JavaScript 30 - CSS Analog Clock" /><published>2019-10-01T12:00:00+05:30</published><updated>2019-10-01T12:00:00+05:30</updated><id>https://varunbarad.com/programming/web/javascript-30/2019/10/01/javascript-30-css-analog-clock</id><content type="html" xml:base="https://varunbarad.com/programming/web/javascript-30/2019/10/01/javascript-30-css-analog-clock.html">&lt;p&gt;Day 2 of JS30 challenge where I built an analog clock with CSS and animate its changes using JS and CSS.&lt;/p&gt;
+
+&lt;!-- end excerpt --&gt;
+
+&lt;p&gt;Today I am continuing my work on &lt;a href=&quot;https://javascript30.com&quot;&gt;JS30 challenge&lt;/a&gt; and building a simple analog clock using CSS shapes and then animate it with CSS transforms timed using JS.&lt;/p&gt;
+
+&lt;p&gt;The key concepts I learned from today’s challenge were:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Changing rotation center of an object in CSS&lt;/li&gt;
+  &lt;li&gt;CSS Transition timing function&lt;/li&gt;
+  &lt;li&gt;A weird reverse-jump in animation whenever any clock hand crosses 12 o’clock mark.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;changing-rotation-center-of-an-object-in-css&quot;&gt;Changing rotation center of an object in CSS&lt;/h2&gt;
+
+&lt;p&gt;By default an object in CSS rotates around its center. But in our clock we need to rotate them around one of their corners. Therefore we need to change their CSS origins&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;.hand&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;transform-origin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;100%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The above snippet moves the origin point for all CSS transforms to the right end of that element.&lt;/p&gt;
+
+&lt;h2 id=&quot;css-transition-timing-function&quot;&gt;CSS Transition timing function&lt;/h2&gt;
+
+&lt;p&gt;You can provide a timing function for your CSS transitions so that they follow it for their rate of change during the duration of your transitions.&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;.hand&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;transition-timing-function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ease-in-out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;There are many built-in transition timing functions but I generally liked the &lt;code class=&quot;highlighter-rouge&quot;&gt;ease-in-out&lt;/code&gt; for how its acceleration and deceleration feel much like natural movements. You can check out the rest of them if you like.&lt;/p&gt;
+
+&lt;p&gt;My favorite ability in this was that we can provide our custom timing functions using what is known as a bezier curve specification. For example:&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;.hand&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;transition-timing-function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cubic-bezier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0.42&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0.58&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In the above code-sample I have written the &lt;code class=&quot;highlighter-rouge&quot;&gt;cubic-bezier&lt;/code&gt; format of the &lt;code class=&quot;highlighter-rouge&quot;&gt;ease-in-out&lt;/code&gt; timing function but you can customize the bezier curve to your heart’s content using those 2 anchor points.&lt;/p&gt;
+
+&lt;h1 id=&quot;a-weird-reverse-jump-in-animation-whenever-any-clock-hand-crosses-12-oclock-mark&quot;&gt;A weird reverse-jump in animation whenever any clock hand crosses 12 o’clock mark&lt;/h1&gt;
+
+&lt;p&gt;The hands of my clock were moving nicely from 12 to 12 but when they were just going to reach 12 they would do a weird jump and instead of moving 1 tick forward from right before 12 to 12, they would perform a full reverse circle and reach 12 from that side.&lt;/p&gt;
+
+&lt;p&gt;This problem was occurring because of how we calculated the angles of rotation. We used the below equation for counting number of seconds.&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;secondsDegrees&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;seconds&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;60&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;360&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;90&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// Here 90 degrees is the initial offset to make clock-hands start at 12&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;With this what would happen is as below:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Seconds&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Degrees&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;90&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;15&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;180&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;30&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;270&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;45&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;360&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;60 (or 0)&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;90&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;So the main issue is that when reaching the 60 second mark it rotates counter-clockwise because the final value of clock-hand handle (90) is less than its current value (360). So instead of the transition being a smooth forward transition, it jumps counter-clockwise and that’s where we see that queer problem.&lt;/p&gt;
+
+&lt;p&gt;A very quick way to deal with this is to keep the degrees calculation so that they are always increasing. The result with that would be something like this:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Seconds&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Degrees&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;90&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;15&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;180&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;30&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;270&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;45&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;360&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;60 (or 0)&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;450&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;If you want to discuss anything that was unclear in today’s article then hit me up on twitter &lt;a href=&quot;https://twitter.com/varun_barad&quot;&gt;@varun_barad&lt;/a&gt;.&lt;/p&gt;</content><author><name>Varun Barad</name></author><summary type="html">Day 2 of JS30 challenge where I built an analog clock with CSS and animate its changes using JS and CSS.</summary></entry><entry><title type="html">JavaScript 30 - Building a Drum Kit</title><link href="https://varunbarad.com/programming/web/javascript-30/2019/09/30/javascript-30-building-a-drum-kit.html" rel="alternate" type="text/html" title="JavaScript 30 - Building a Drum Kit" /><published>2019-09-30T12:00:00+05:30</published><updated>2019-09-30T12:00:00+05:30</updated><id>https://varunbarad.com/programming/web/javascript-30/2019/09/30/javascript-30-building-a-drum-kit</id><content type="html" xml:base="https://varunbarad.com/programming/web/javascript-30/2019/09/30/javascript-30-building-a-drum-kit.html">&lt;p&gt;I started the JavaScript30 challenge from Wes Bos today and learnt how to build a simple drum-kit.&lt;/p&gt;
 
 &lt;!-- end excerpt --&gt;
 
@@ -675,88 +800,4 @@ Since the first item in that list is always the name of our program so we ignore
   &lt;li&gt;&lt;a href=&quot;https://www.verywellhealth.com/physiology-of-breathing-998219&quot;&gt;Verywell Health (https://www.verywellhealth.com/physiology-of-breathing-998219)&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.nhlbi.nih.gov/health-topics/how-lungs-work&quot;&gt;National Heart, Lung and Blood Institute, US (https://www.nhlbi.nih.gov/health-topics/how-lungs-work)&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Respiratory_center&quot;&gt;Wikipedia - Respiratory center (https://en.wikipedia.org/wiki/Respiratory_center)&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Varun Barad</name></author><summary type="html">Ever wondered how our breathing is regulated? Let me take you on a ride down the wind-pipe.</summary></entry><entry><title type="html">APGAR score</title><link href="https://varunbarad.com/medicine/2018/10/19/apgar-score.html" rel="alternate" type="text/html" title="APGAR score" /><published>2018-10-19T12:00:00+05:30</published><updated>2018-10-19T12:00:00+05:30</updated><id>https://varunbarad.com/medicine/2018/10/19/apgar-score</id><content type="html" xml:base="https://varunbarad.com/medicine/2018/10/19/apgar-score.html">&lt;p&gt;A quick method used to check whether a newborn needs immediate medical care.&lt;/p&gt;
-
-&lt;!-- end excerpt --&gt;
-
-&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
-
-&lt;p&gt;The Apgar score is a method to quickly summarize the health of newborn children against infant mortality. Virginia Apgar, an anesthesiologist at NewYork–Presbyterian Hospital, developed the score in 1952 to quantify the effects of obstetric anesthesia on babies.&lt;/p&gt;
-
-&lt;p&gt;The Apgar score is determined by evaluating the newborn baby on 5 simple criteria, each on a scale of zero to two. Then summing up the five values thus obtained gives a final Apgar score on the scale of zero to ten.&lt;/p&gt;
-
-&lt;p&gt;The five criteria are summarized using words with APGAR as acronym:&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;Appearance&lt;/li&gt;
-  &lt;li&gt;Pulse&lt;/li&gt;
-  &lt;li&gt;Grimace&lt;/li&gt;
-  &lt;li&gt;Activity&lt;/li&gt;
-  &lt;li&gt;Respiratory effort&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;criteria&quot;&gt;Criteria&lt;/h2&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt; &lt;/th&gt;
-      &lt;th&gt;Score of 0&lt;/th&gt;
-      &lt;th&gt;Score of 1&lt;/th&gt;
-      &lt;th&gt;Score of 2&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Appearance (Skin Color)&lt;/td&gt;
-      &lt;td&gt;Blue or pale all over&lt;/td&gt;
-      &lt;td&gt;Blue at extremities; Body pink&lt;/td&gt;
-      &lt;td&gt;Completely pink&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Pulse (Heart-beat)&lt;/td&gt;
-      &lt;td&gt;Absent&lt;/td&gt;
-      &lt;td&gt;Less than 100 beats per minute&lt;/td&gt;
-      &lt;td&gt;More than 100 beats per minute&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Grimace (Reflex irritability)&lt;/td&gt;
-      &lt;td&gt;No response to stimulation&lt;/td&gt;
-      &lt;td&gt;Grimace on suction or aggressive stimulation&lt;/td&gt;
-      &lt;td&gt;Cry on stimulation&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Activity&lt;/td&gt;
-      &lt;td&gt;None&lt;/td&gt;
-      &lt;td&gt;Flexed arms and legs&lt;/td&gt;
-      &lt;td&gt;Active movement&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Respiratory effort&lt;/td&gt;
-      &lt;td&gt;Absent&lt;/td&gt;
-      &lt;td&gt;Weak, irregular gasping&lt;/td&gt;
-      &lt;td&gt;Strong robust cry&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&quot;interpretation-of-scores&quot;&gt;Interpretation of scores&lt;/h2&gt;
-
-&lt;p&gt;The test is generally done at 1 and 5 minutes after birth and may be repeated later if the score is and remains low.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;7 and above are generally normal&lt;/li&gt;
-  &lt;li&gt;4 to 6 are considered fairly low&lt;/li&gt;
-  &lt;li&gt;3 or below are regarded as critically low and imply need of immediate resuscitative efforts&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Apgar test’s purpose is to quickly determine whether or not a newborn needs immediate medical care.&lt;/p&gt;
-
-&lt;h2 id=&quot;disclaimer&quot;&gt;Disclaimer&lt;/h2&gt;
-
-&lt;p&gt;I am not a doctor and I don’t pose as one on the internet. This post is just a compilation of what I found while learning about this topic.&lt;/p&gt;
-
-&lt;h3 id=&quot;sources&quot;&gt;Sources&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Apgar_score&quot;&gt;Wikipedia - Apgar score (https://en.wikipedia.org/wiki/Apgar_score)&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Varun Barad</name></author><summary type="html">A quick method used to check whether a newborn needs immediate medical care.</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>Varun Barad</name></author><summary type="html">Ever wondered how our breathing is regulated? Let me take you on a ride down the wind-pipe.</summary></entry></feed>
