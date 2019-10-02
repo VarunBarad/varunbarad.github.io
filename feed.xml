@@ -1,4 +1,87 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://varunbarad.com/" rel="alternate" type="text/html" /><updated>2019-10-02T09:36:41+05:30</updated><id>https://varunbarad.com/feed.xml</id><title type="html">Varun Barad - Curious Developer</title><subtitle>My online home where I post about new things I learn or find interesting.</subtitle><author><name>Varun Barad</name></author><entry><title type="html">JavaScript 30 - CSS Analog Clock</title><link href="https://varunbarad.com/programming/web/javascript-30/2019/10/01/javascript-30-css-analog-clock.html" rel="alternate" type="text/html" title="JavaScript 30 - CSS Analog Clock" /><published>2019-10-01T12:00:00+05:30</published><updated>2019-10-01T12:00:00+05:30</updated><id>https://varunbarad.com/programming/web/javascript-30/2019/10/01/javascript-30-css-analog-clock</id><content type="html" xml:base="https://varunbarad.com/programming/web/javascript-30/2019/10/01/javascript-30-css-analog-clock.html">&lt;p&gt;Day 2 of JS30 challenge where I built an analog clock with CSS and animate its changes using JS and CSS.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://varunbarad.com/" rel="alternate" type="text/html" /><updated>2019-10-03T00:09:10+05:30</updated><id>https://varunbarad.com/feed.xml</id><title type="html">Varun Barad - Curious Developer</title><subtitle>My online home where I post about new things I learn or find interesting.</subtitle><author><name>Varun Barad</name></author><entry><title type="html">JavaScript 30 - CSS Variables</title><link href="https://varunbarad.com/programming/web/javascript-30/2019/10/02/javascript-30-css-variables.html" rel="alternate" type="text/html" title="JavaScript 30 - CSS Variables" /><published>2019-10-02T12:00:00+05:30</published><updated>2019-10-02T12:00:00+05:30</updated><id>https://varunbarad.com/programming/web/javascript-30/2019/10/02/javascript-30-css-variables</id><content type="html" xml:base="https://varunbarad.com/programming/web/javascript-30/2019/10/02/javascript-30-css-variables.html">&lt;p&gt;Day 3 of JS30 challenge where I built an analog clock with CSS and animate its changes using JS and CSS.&lt;/p&gt;
+
+&lt;!-- end excerpt --&gt;
+
+&lt;p&gt;On my day 3 of &lt;a href=&quot;https://javascript30.com&quot;&gt;JS30 challenge&lt;/a&gt; I got introduced primarily to CSS variables but also to many other things.&lt;/p&gt;
+
+&lt;p&gt;The key concepts I learned from today’s challenge were:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;CSS variables&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;dataset&lt;/code&gt; property on DOM elements&lt;/li&gt;
+  &lt;li&gt;Image blur&lt;/li&gt;
+  &lt;li&gt;Color input&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;css-variables&quot;&gt;CSS variables&lt;/h2&gt;
+
+&lt;p&gt;CSS variables work very similar to how we use variables in JS or any other programming language. They let us define their value at one place and then just use that same value anywhere we refer to that variable.&lt;/p&gt;
+
+&lt;p&gt;For example, we can define at one place that we want text on our website to be &lt;code class=&quot;highlighter-rouge&quot;&gt;white&lt;/code&gt; then we can define it like this&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;:root&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;py&quot;&gt;--text-color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;white&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Here we define this &lt;code class=&quot;highlighter-rouge&quot;&gt;text-color&lt;/code&gt; variable at the root element. Now any place that we need to use this value we need to do something like&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;.content&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;var&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;--text-color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;CSS variables can be used for more than just colors. In today’s project we used these variables for storing the border thickness and color of an image and also for storing the blur amount for that image.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; One fun idea I have with CSS variables is that I can define the color palette of my website at one place and then provide the user with a night-mode switch. I can change colors across the whole website by changing them at just one place.&lt;/p&gt;
+
+&lt;p&gt;To modify their value via JS a simple method call does the trick.&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dom&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setProperty&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'--text-color'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'red'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The above snippet will change the value associated with &lt;code class=&quot;highlighter-rouge&quot;&gt;--text-color&lt;/code&gt; at any point in the &lt;code class=&quot;highlighter-rouge&quot;&gt;dom-element&lt;/code&gt; and any of &lt;code class=&quot;highlighter-rouge&quot;&gt;dom-element&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;dataset-property-on-dom-elements&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;dataset&lt;/code&gt; property on DOM elements&lt;/h2&gt;
+
+&lt;p&gt;In HTML whenever we want to write a custom-property on an element we make use of what are called &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; attributes. A sample can be like&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;blur&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;range&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;blur&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;min=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;max=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;25&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;5&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-sizing=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;px&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-purpose=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;A slider input to select blur amount&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Here we have defined 2 data attributes, namely &lt;code class=&quot;highlighter-rouge&quot;&gt;data-sizing&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;data-purpose&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Now when we need to use these in JS we can simply do&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;inputElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dataset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sizing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Used to access the data-sizing attribute.&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;inputElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dataset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;purpose&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Used to access the data-purpose attribute.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;dataset&lt;/code&gt; is a very simple property on DOM elements which lists all the &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; attributes defined on that element.&lt;/p&gt;
+
+&lt;h2 id=&quot;image-blur&quot;&gt;Image blur&lt;/h2&gt;
+
+&lt;p&gt;Today I learnt a nifty simple trick to blur an image using only CSS.&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;img&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;blur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;5px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;We can just specify a &lt;code class=&quot;highlighter-rouge&quot;&gt;blur&lt;/code&gt; CSS filter and our work is done. There are lots of other functions available which can be used as &lt;code class=&quot;highlighter-rouge&quot;&gt;filter&lt;/code&gt;, do make sure to take a look at that list.&lt;/p&gt;
+
+&lt;h2 id=&quot;color-input&quot;&gt;Color input&lt;/h2&gt;
+
+&lt;p&gt;Standardisation of HTML and CSS has made it easy to create a simple and functional color-picker. The only thing that needs to be done is&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;base&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;color&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;base&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#43bc46&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Here we have just declared an input tag which then takes care of displaying a color picker and also shows the user with a tiny sample of the color they have picked.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;That’s all folks, that was it for today. If you have anything unclear in this article or want to discuss anything else, hit me up on twitter &lt;a href=&quot;https://twitter.com/varun_barad&quot;&gt;@varun_barad&lt;/a&gt;.&lt;/p&gt;</content><author><name>Varun Barad</name></author><summary type="html">Day 3 of JS30 challenge where I built an analog clock with CSS and animate its changes using JS and CSS.</summary></entry><entry><title type="html">JavaScript 30 - CSS Analog Clock</title><link href="https://varunbarad.com/programming/web/javascript-30/2019/10/01/javascript-30-css-analog-clock.html" rel="alternate" type="text/html" title="JavaScript 30 - CSS Analog Clock" /><published>2019-10-01T12:00:00+05:30</published><updated>2019-10-01T12:00:00+05:30</updated><id>https://varunbarad.com/programming/web/javascript-30/2019/10/01/javascript-30-css-analog-clock</id><content type="html" xml:base="https://varunbarad.com/programming/web/javascript-30/2019/10/01/javascript-30-css-analog-clock.html">&lt;p&gt;Day 2 of JS30 challenge where I built an analog clock with CSS and animate its changes using JS and CSS.&lt;/p&gt;
 
 &lt;!-- end excerpt --&gt;
 
@@ -702,102 +785,4 @@ Since the first item in that list is always the name of our program so we ignore
 
 &lt;h2 id=&quot;thats-all-folks&quot;&gt;That’s all folks&lt;/h2&gt;
 
-&lt;p&gt;This is my solution to the problem I faced of taking a backup of my projects which also included unfinished work of mine. If you have any other suggestions regarding these or any other topics under the sky, &lt;a href=&quot;https://varunbarad.com/contact&quot;&gt;contact me&lt;/a&gt; or tweet to me &lt;a href=&quot;https://twitter.com/varun_barad&quot;&gt;@varun_barad&lt;/a&gt;.&lt;/p&gt;</content><author><name>Varun Barad</name></author><summary type="html">I created a python script which creates a zip-file containing the git-bundle and all the patch-files for different stashed changes in your repository.</summary></entry><entry><title type="html">How Breathing Works</title><link href="https://varunbarad.com/medicine/2018/10/27/how-breathing-works.html" rel="alternate" type="text/html" title="How Breathing Works" /><published>2018-10-27T12:00:00+05:30</published><updated>2018-10-27T12:00:00+05:30</updated><id>https://varunbarad.com/medicine/2018/10/27/how-breathing-works</id><content type="html" xml:base="https://varunbarad.com/medicine/2018/10/27/how-breathing-works.html">&lt;p&gt;Ever wondered how our breathing is regulated? Let me take you on a ride down the wind-pipe.&lt;/p&gt;
-
-&lt;!-- end excerpt --&gt;
-
-&lt;p&gt;A while ago I read a prank online. It was&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Now you are breathing manually.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;It got me manually breathing then just as it got you now. This spurred me into thinking about the mechanics of how different parts of our respiratory system operate, how is the air actually inhaled and exhaled and what part/parts of our brain control it. Let me tell you what I learnt.&lt;/p&gt;
-
-&lt;h2 id=&quot;moving-with-the-air&quot;&gt;Moving with the air&lt;/h2&gt;
-
-&lt;p&gt;Let us first take a short trip inside our bodies to understand how the air we breathe travels inside us.&lt;/p&gt;
-
-&lt;h3 id=&quot;1-taking-a-breath&quot;&gt;1. Taking a breath&lt;/h3&gt;
-
-&lt;p&gt;When you take a breath, the air goes through your nose and/or mouth, down your throat and into the trachea (also known as windpipe).&lt;/p&gt;
-
-&lt;h3 id=&quot;2-into-the-lungs&quot;&gt;2. Into the lungs&lt;/h3&gt;
-
-&lt;p&gt;The end of trachea splits into an upside down Y-shape (something like this ⅄), thus forming the two bronchi (bronchus for singular). Air passes through left or right bronchus into respective lung.&lt;/p&gt;
-
-&lt;h3 id=&quot;3-climbing-the-branches-of-the-bronchial-tree&quot;&gt;3. Climbing the branches of the bronchial tree&lt;/h3&gt;
-
-&lt;p&gt;Inside the lungs, each bronchus branch off into a tree-like structure of bronchioles. The air flows through bronchioles, which keep getting smaller, until it reaches the end of branches.&lt;/p&gt;
-
-&lt;h3 id=&quot;4-filling-up-countless-tiny-balloons&quot;&gt;4. Filling up countless tiny balloons&lt;/h3&gt;
-
-&lt;p&gt;At the end of each bronchiole, there is a tiny balloon like tissue structure called alveolus (plural alveoli) which forms an air pocket where external air is collected.&lt;/p&gt;
-
-&lt;h3 id=&quot;5-gas-exchange&quot;&gt;5. Gas exchange&lt;/h3&gt;
-
-&lt;p&gt;When the air reaches the alveoli, a process similar to osmosis dissolves the oxygen from the air into capillaries while extracting carbon-dioxide from blood into the air inside alveoli at the same time.&lt;/p&gt;
-
-&lt;h3 id=&quot;6-the-journey-back-to-surface&quot;&gt;6. The journey back to surface&lt;/h3&gt;
-
-&lt;p&gt;The exhale phase starts at this moment and the air in the alveoli travel back to outside world following the same path it came in. That is&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Alveoli&lt;/li&gt;
-  &lt;li&gt;Bronchiole&lt;/li&gt;
-  &lt;li&gt;Bronchi&lt;/li&gt;
-  &lt;li&gt;Trachea&lt;/li&gt;
-  &lt;li&gt;Throat&lt;/li&gt;
-  &lt;li&gt;Nose/Mouth&lt;/li&gt;
-  &lt;li&gt;Sweet freedom of outside world&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;mechanics-of-all-these&quot;&gt;Mechanics of all these&lt;/h2&gt;
-
-&lt;p&gt;There are 2 main mechanical processes:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;How is air inhaled?&lt;/li&gt;
-  &lt;li&gt;Consequently, how is it exhaled afterwards?&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;1-inhaling-the-external-air&quot;&gt;1. Inhaling the external air&lt;/h3&gt;
-
-&lt;p&gt;When we want to inhale, the diaphragm (a large dome-shaped muscle located below the lungs) and the muscles between our lungs and rib-cage contract, thus creating a vacuum (more precisely they create a negative air-pressure). This forces the external air to enter our lungs through the path mentioned earlier.&lt;/p&gt;
-
-&lt;h3 id=&quot;2-exhaling-the-inside-air&quot;&gt;2. Exhaling the inside air&lt;/h3&gt;
-
-&lt;p&gt;Subsequently, when we want to exhale the air that we inhaled into the lungs, the same muscles (diaphragm and the muscles between lungs and rib-cage) relax. This creates a positive air-pressure inside lungs which forces the air inside them to go out.&lt;/p&gt;
-
-&lt;h2 id=&quot;controlling-our-breathing&quot;&gt;Controlling our breathing&lt;/h2&gt;
-
-&lt;p&gt;Finally returning to my original question of, “How is the actual breathing controlled? Who determines whether we breath manually or autonomously?”&lt;/p&gt;
-
-&lt;p&gt;There is a part of our brain aptly named “Respiratory center”. Respiratory center (RC) is responsible for generating and maintaining the rhythm of respiration. They receive control/sensor signals of neural, chemical and hormonal nature. After processing these signals, this center sends down the appropriate signal(s) to the muscles involved in breathing. These signals ensure that your breathing muscles contract and relax regularly, thus allowing the breathing to be automatic without us even being aware of it.&lt;/p&gt;
-
-&lt;p&gt;Although to a limited degree we can also affect our breathing rate. The cerebral-cortex sends one of the control signal to RC. This allows us to do things like holding our breath, breathing faster/slower than usual consciously.&lt;/p&gt;
-
-&lt;p&gt;Our emotions can also affect our breathing pattern. Like being scared or angry can increase our respiratory rate. It also depends upon how physically active we are at the moment or what are the conditions of air around us.&lt;/p&gt;
-
-&lt;p&gt;Two of the main sensor systems for respiratory regulations are:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Sensors in the brain and the 2 major blood vessels (the carotid artery and the aorta) detect levels of CO&lt;sub&gt;2&lt;/sub&gt; and O&lt;sub&gt;2&lt;/sub&gt; mixed in the blood and change our breathing as needed.&lt;/li&gt;
-  &lt;li&gt;Sensors in the airways (mouth, nose, trachea etc.) detect lung irritants. These sensors are generally responsible for triggering sneezes or coughs. After all sneezing and coughing are a form of sharp exhale of air from lungs.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;thats-all-folks&quot;&gt;That’s all folks&lt;/h2&gt;
-
-&lt;p&gt;These are my finding when I went down the Internet lanes to find the answer of “How is our breathing rate controlled?”. If you have any other suggestions regarding these or any other topics under the sky, &lt;a href=&quot;https://varunbarad.com/contact&quot;&gt;contact me&lt;/a&gt; or tweet to me &lt;a href=&quot;https://twitter.com/varun_barad&quot;&gt;@varun_barad&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;disclaimer&quot;&gt;Disclaimer&lt;/h2&gt;
-
-&lt;p&gt;I am not a doctor and I don’t pose as one on the internet. This post is just a compilation of what I found while learning about this topic.&lt;/p&gt;
-
-&lt;h3 id=&quot;sources&quot;&gt;Sources&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.verywellhealth.com/physiology-of-breathing-998219&quot;&gt;Verywell Health (https://www.verywellhealth.com/physiology-of-breathing-998219)&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.nhlbi.nih.gov/health-topics/how-lungs-work&quot;&gt;National Heart, Lung and Blood Institute, US (https://www.nhlbi.nih.gov/health-topics/how-lungs-work)&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Respiratory_center&quot;&gt;Wikipedia - Respiratory center (https://en.wikipedia.org/wiki/Respiratory_center)&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Varun Barad</name></author><summary type="html">Ever wondered how our breathing is regulated? Let me take you on a ride down the wind-pipe.</summary></entry></feed>
+&lt;p&gt;This is my solution to the problem I faced of taking a backup of my projects which also included unfinished work of mine. If you have any other suggestions regarding these or any other topics under the sky, &lt;a href=&quot;https://varunbarad.com/contact&quot;&gt;contact me&lt;/a&gt; or tweet to me &lt;a href=&quot;https://twitter.com/varun_barad&quot;&gt;@varun_barad&lt;/a&gt;.&lt;/p&gt;</content><author><name>Varun Barad</name></author><summary type="html">I created a python script which creates a zip-file containing the git-bundle and all the patch-files for different stashed changes in your repository.</summary></entry></feed>
