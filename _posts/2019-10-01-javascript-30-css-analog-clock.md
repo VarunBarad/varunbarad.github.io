@@ -79,13 +79,13 @@ So the main issue is that when reaching the 60 second mark it rotates counter-cl
 
 A very quick way to deal with this is to keep the degrees calculation so that they are always increasing. The result with that would be something like this:
 
-| Seconds   | Degrees   |
-|:---------:|:---------:|
-| 0         | 90        |
-| 15        | 180       |
-| 30        | 270       |
-| 45        | 360       |
-| 60 (or 0) | 450*      |
+| Seconds   | Degrees  |
+|:---------:|:--------:|
+| 0         | 90       |
+| 15        | 180      |
+| 30        | 270      |
+| 45        | 360      |
+| 60 (or 0) | 450      |
 
 ## Conclusion
 
