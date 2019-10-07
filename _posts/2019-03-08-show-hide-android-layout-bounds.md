@@ -1,15 +1,12 @@
 ---
 layout: post
 title:  "Show/Hide Layout Bounds in Android"
+summary: "A couple of scripts that help to toggle display of layout-bounds on connected Android device using ADB."
 date:   2019-03-08 12:00:00 +0530
 categories: 
   - "tools"
   - "android"
 ---
-
-A couple of scripts that help to toggle display of layout-bounds on connected Android device using ADB.
-
-<!-- end excerpt -->
 
 Sometimes while working in Android we need to display the layout-bounds on device. Recent Android versions do provide an action-tile to do so. But on previous versions, we had to go too deep into the Settings application. I wanted to be able to perform the switch from my computer.
 

@@ -1,14 +1,11 @@
 ---
 layout: post
 title:  "Testing Deep-Link URLs using ADB"
+summary: "Simple adb command to help you fire deep-link url in mobile from your console."
 date:   2019-05-02 12:00:00 +0530
 categories:
   - "android"
 ---
-
-Simple adb command to help you fire deep-link url in mobile from your console.
-
-<!-- end excerpt -->
 
 ADB is a treasure trove and I regularly keep finding some gem from it. Recently I was working on creating some new deep-link integrations for the company I work at. The below command fires an event similar to one that gets fired when we click on a link in the device itself.
 

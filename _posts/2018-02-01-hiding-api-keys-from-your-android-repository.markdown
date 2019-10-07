@@ -1,13 +1,11 @@
 ---
 layout: post
 title:  "Hiding API keys from your Android repository"
+summary: "Learn how to secure your API keys while keeping the source code for that Android app open-source."
 date:   2018-02-01 12:00:00 +0530
 categories: 
   - "android"
 ---
-Learn how to secure your API keys while keeping the source code for that Android app open-source.
-
-<!-- end excerpt -->
 
 Let’s say that you are building a nice app, one that connects to a third-party service. Almost any API worth implementing uses an API key as part of basic authentication and security. Checking this into source control can expose your key to the public if you ever open-source your project (or parts of it).
 

@@ -1,14 +1,11 @@
 ---
 layout: post
 title:  "Creating a single-file backup of your git repository"
+summary: "I created a python script which creates a zip-file containing the git-bundle and all the patch-files for different stashed changes in your repository."
 date:   2019-03-03 12:00:00 +0530
 categories: 
   - "tools"
 ---
-
-I created a python script which creates a zip-file containing the git-bundle and all the patch-files for different stashed changes in your repository.
-
-<!-- end excerpt -->
 
 Last week I needed to take a backup of my laptop's contents because I needed to give it for repair. When I started just plain copying my files to an external hard-drive I noticed that the git-files (the files used by git to store version-history for project) were taking too much time since they were very small in size but huge in numbers. So I decided to find a way using which I could create a single-file for each git enabled project and then just copy that single file over to the external hard-drive.
 

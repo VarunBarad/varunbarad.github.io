@@ -1,16 +1,13 @@
 ---
 layout: post
 title:  "JavaScript 30 - Array Cardio 1"
+summary: "Day 4 of JS30 challenge, today we worked with various methods on array and I learned one nifty trick of displaying them in console."
 date:   2019-10-03 12:00:00 +0530
 categories:
   - "programming"
   - "web"
   - "javascript-30"
 ---
-
-Day 4 of JS30 challenge, today we worked with various methods on array and I learned one nifty trick of displaying them in console.
-
-<!-- end excerpt -->
 
 Day 4 of [JS30 challenge][js30-website], today I worked with various methods on array (I knew most of them beforehand) but I learned two cool things today.
 

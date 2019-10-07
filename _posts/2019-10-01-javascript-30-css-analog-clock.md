@@ -1,16 +1,13 @@
 ---
 layout: post
 title:  "JavaScript 30 - CSS Analog Clock"
+summary: "Day 2 of JS30 challenge where I built an analog clock with CSS and animate its changes using JS and CSS."
 date:   2019-10-01 12:00:00 +0530
 categories:
   - "programming"
   - "web"
   - "javascript-30"
 ---
-
-Day 2 of JS30 challenge where I built an analog clock with CSS and animate its changes using JS and CSS. 
-
-<!-- end excerpt -->
 
 Today I am continuing my work on [JS30 challenge][js-30-website] and building a simple analog clock using CSS shapes and then animate it with CSS transforms timed using JS.
 

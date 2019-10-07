@@ -1,13 +1,11 @@
 ---
 layout: post
 title:  "How to Stop Worrying and Start Living"
+summary: "Here are some things I found noteworthy in the book \"How to Stop Worrying and Start Living\" by Dale Carnegie."
 date:   2017-01-01 12:00:00 +0530
 categories: 
   - "book-highlights"
 ---
-Here are some things I found noteworthy in the book "How to Stop Worrying and Start Living" by Dale Carnegie.
-
-<!-- end excerpt -->
 
 - Live in day tight compartments.
     - Shut off the future as tightly as the past.

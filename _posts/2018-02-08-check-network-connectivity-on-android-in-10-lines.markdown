@@ -1,13 +1,11 @@
 ---
 layout: post
 title:  "Check network connectivity on Android in 10 lines"
+summary: "Let's see how simple it is to show correct feedback to user on whether they are connected to the network or not in Android."
 date:   2018-02-08 12:00:00 +0530
 categories: 
   - "android"
 ---
-Let's see how simple it is to show correct feedback to user on whether they are connected to the network or not in Android.
-
-<!-- end excerpt -->
 
 Have you ever wanted to show different things to your user based on whether they are connected to the network or not? Well, Android provides a simple way to check for an active network connection.
 

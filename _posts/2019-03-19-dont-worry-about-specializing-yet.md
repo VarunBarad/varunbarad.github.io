@@ -1,15 +1,12 @@
 ---
 layout: post
 title:  "Don't worry about specializing yet!"
+summary: "What technologies should I be learning, so that they prove helpful in my career?"
 date:   2019-03-19 12:00:00 +0530
 categories: 
   - "programming"
   - "personal-growth"
 ---
-
-What technologies should I be learning, so that they prove helpful in my career?
-
-<!-- end excerpt -->
 
 In the past 4 years of my life, many people who are just starting out in programming world have asked me some version of this question:
 

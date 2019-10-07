@@ -1,14 +1,11 @@
 ---
 layout: post
 title:  "HTTP Network Requests on Android Pie"
+summary: "Android Pie only allows HTTPS traffic by default & blocks all HTTP requests. You can enable HTTP communication for your API endpoints once you have configured this little thing."
 date:   2019-04-07 12:00:00 +0530
 categories:
   - "android"
 ---
-
-Android Pie only allows HTTPS traffic by default & blocks all HTTP requests. You can enable HTTP communication for your API endpoints once you have configured this little thing.
-
-<!-- end excerpt -->
 
 Recently when I started work on a new app for my company I noticed that all of my requests were being rejected before even reaching the server. This was a problem I was facing only on the emulator and not on the Nexus 5 I had for physical testing. I searched on the Internet a bit and found out that Android Pie has disabled cleartext network traffic by default.
 

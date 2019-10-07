@@ -1,16 +1,13 @@
 ---
 layout: post
 title:  "JavaScript 30 - Building a Drum Kit"
+summary: "I started the JavaScript30 challenge from Wes Bos today and learnt how to build a simple drum-kit."
 date:   2019-09-30 12:00:00 +0530
 categories:
   - "programming"
   - "web"
   - "javascript-30"
 ---
-
-I started the JavaScript30 challenge from Wes Bos today and learnt how to build a simple drum-kit. 
-
-<!-- end excerpt -->
 
 [Wes Bos][wes-bos-website]{:target="_blank"} has created a [course][js-30-website]{:target="_blank"} to get you confident in your JS skills in 30 days. In it you work on a new project daily for 30 days and in each project you make something using vanilla JS without any frameworks or libraries.
 

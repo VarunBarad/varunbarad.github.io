@@ -1,16 +1,13 @@
 ---
 layout: post
 title:  "JavaScript 30 - CSS Variables"
+summary: "Day 3 of JS30 challenge where I built an analog clock with CSS and animate its changes using JS and CSS."
 date:   2019-10-02 12:00:00 +0530
 categories:
   - "programming"
   - "web"
   - "javascript-30"
 ---
-
-Day 3 of JS30 challenge where I built an analog clock with CSS and animate its changes using JS and CSS. 
-
-<!-- end excerpt -->
 
 On my day 3 of [JS30 challenge][js30-website] I got introduced primarily to CSS variables but also to many other things.
 

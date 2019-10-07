@@ -1,14 +1,11 @@
 ---
 layout: post
 title:  "How Breathing Works"
+summary: "Ever wondered how our breathing is regulated? Let me take you on a ride down the wind-pipe."
 date:   2018-10-27 12:00:00 +0530
 categories: 
   - "medicine"
 ---
-
-Ever wondered how our breathing is regulated? Let me take you on a ride down the wind-pipe.
-
-<!-- end excerpt -->
 
 A while ago I read a prank online. It was
 
