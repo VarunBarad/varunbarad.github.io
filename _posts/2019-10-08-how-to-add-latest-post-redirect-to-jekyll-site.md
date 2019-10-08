@@ -16,6 +16,7 @@ So what I ended up doing is generate a page on each build which would redirect u
 
 So the `<body>` tag of that page ended up looking like this:
 
+{% raw %}
 ```html
 <body>
 {%- assign latest_post = site.posts[0] -%}
@@ -27,6 +28,7 @@ So the `<body>` tag of that page ended up looking like this:
 
 </body>
 ```
+{% endraw %}
 
 Here I get the details of latest post by taking the first post in the list `site.posts`. AFAIK `site.posts` is sorted in descending order by publishing date, so this approach fetches me the last published post.
 
