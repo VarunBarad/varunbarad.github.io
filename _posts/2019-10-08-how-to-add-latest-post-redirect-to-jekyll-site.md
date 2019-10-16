@@ -8,7 +8,7 @@ categories:
   - "web"
 ---
 
-I wanted to have a URL which I can give to someone and it would always take them to the latest post published on my blog. I ended up using (https://varunbarad.com/blog/latest)[vb-blog-latest] as the URL.
+I wanted to have a URL which I can give to someone and it would always take them to the latest post published on my blog. I ended up using [https://varunbarad.com/blog/latest][vb-blog-latest] as the URL.
 
 Since my website is statically generated and hosted, it wasn't an option for me to specify a server-side `30x` redirect for that particular URL to my latest post.
 
