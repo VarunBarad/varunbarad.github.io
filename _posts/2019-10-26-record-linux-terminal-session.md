@@ -15,7 +15,7 @@ Linux has a handy utility called `script` which does just that. If it isn't pre-
 
 Using it is straight-forward too.
 
-```shell script
+```shell
 script <file_name_to_write_record_to>
 ```
 
