@@ -3,10 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/assets/css/style.css?v=9b7f29d86fd70a4d984e6c25661423ec41661bb2">
-  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=9b7f29d86fd70a4d984e6c25661423ec41661bb2">
+  <link rel="stylesheet" href="/assets/css/style.css?v=da6e9540a4b234db79fd12454055de5f7ef0dbca">
+  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=da6e9540a4b234db79fd12454055de5f7ef0dbca">
   <link rel="icon" type="image/png" href="/favicon.png"/>
-  <title>Varun Barad - Curious Developer</title>
+  <title>Switching RxJava schedulers between app code and corresponding tests - Varun Barad</title>
+
+  <!-- Twitter meta-data -->
+  <meta name="twitter:site" content="varun_barad" />
+  <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Switching RxJava schedulers between app code and corresponding tests" />
+  <meta name="twitter:description" content="A simple way to switch between using appropriate schedulers in app code and using trampoline schedulers for tests." />
+
+  <!-- Open-graph meta-data -->
+  <meta property="og:site_name" content="Varun Barad - Curious Developer" />
+  <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png" />
+  <meta property="og:type" content="object" />
+  <meta property="og:title" content="Switching RxJava schedulers between app code and corresponding tests" />
+  <meta property="og:url" content="https://varunbarad.com/programming/rx-java/2019/08/16/switching-rxjava-schedulers-between-app-code-and-corresponding-tests.html" />
+  <meta property="og:description" content="A simple way to switch between using appropriate schedulers in app code and using trampoline schedulers for tests." />
 </head>
 <body>
 <div>
@@ -28,11 +43,11 @@
   </div>
   <div class="content row">
     <div class="post-container">
-  <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
-    <div>
-      <div class="page-title text-uppercase text-center">Switching RxJava schedulers between app code and corresponding tests</div>
-      <div class="post-date text-center">August 16, 2019</div>
-      <div class="post-content"><p>When using RxJava we need to specify the schedulers which we want to use to 1) perform the given task and 2) return result of the operation chain.</p>
+      <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+        <div>
+          <div class="page-title text-uppercase text-center">Switching RxJava schedulers between app code and corresponding tests</div>
+          <div class="post-date text-center">August 16, 2019</div>
+          <div class="post-content"><p>When using RxJava we need to specify the schedulers which we want to use to 1) perform the given task and 2) return result of the operation chain.</p>
 
 <p>One of the interesting ways I found while working on a take-home challenge for a company was as below:</p>
 
@@ -101,22 +116,21 @@
 <p>If you have more such tricks up your sleeve or something in here isn’t clear to you or you just want to chat then hit me up on twitter <a href="https://twitter.com/varun_barad">@varun_barad</a>.</p>
 
 </div>
-    </div>
+        </div>
 
-    <div class="post-categories-container">
-      Categories:
-      <div>
-        
-        <a href="/category/programming" class="badge badge-warning">#programming</a>
-        
-        <a href="/category/rx-java" class="badge badge-warning">#rx-java</a>
-        
-        <a href="/blog" class="badge badge-warning">#All</a>
+        <div class="post-categories-container">
+          Categories:
+          <div>
+            
+            <a href="/category/programming" class="badge badge-warning">#programming</a>
+            
+            <a href="/category/rx-java" class="badge badge-warning">#rx-java</a>
+            
+            <a href="/blog" class="badge badge-warning">#All</a>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-
   </div>
   <div>
     <div class="footer">
@@ -144,21 +158,9 @@
   </div>
 </div>
 
-<script src="/assets/js/jquery.min.js?v=9b7f29d86fd70a4d984e6c25661423ec41661bb2"></script>
-<script src="/assets/js/bootstrap.min.js?v=9b7f29d86fd70a4d984e6c25661423ec41661bb2"></script>
+<script src="/assets/js/jquery.min.js?v=da6e9540a4b234db79fd12454055de5f7ef0dbca"></script>
+<script src="/assets/js/bootstrap.min.js?v=da6e9540a4b234db79fd12454055de5f7ef0dbca"></script>
 <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
-<script src="/assets/js/contact.js?v=9b7f29d86fd70a4d984e6c25661423ec41661bb2"></script>
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-127878946-1"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-127878946-1');
-</script>
-
-
+<script src="/assets/js/contact.js?v=da6e9540a4b234db79fd12454055de5f7ef0dbca"></script>
 </body>
 </html>
