@@ -1,5 +1,5 @@
 {
-  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema",
   "title": "Projects",
   "description": "All project's data",
   "type": "object",
@@ -9,13 +9,28 @@
       "items": {
         "type": "object",
         "properties": {
-          "title": "string",
-          "description": "string",
-          "date": "string",
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string"
+          },
           "clients": {
             "type": "array",
             "items": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string",
+                  "format": "uri-reference"
+                }
+              }
             }
           },
           "technologies": {
@@ -25,11 +40,26 @@
             }
           },
           "image": {
-            "type": "string",
-            "description": "name of the image without extension"
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "format": "uri-reference"
+              },
+              "description": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "path"
+            ]
           },
-          "sourceLink": "string",
-          "projectLink": "string"
+          "sourceLink": {
+            "type": "string"
+          },
+          "projectLink": {
+            "type": "string"
+          }
         },
         "required": [
           "title",

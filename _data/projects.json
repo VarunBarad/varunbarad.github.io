@@ -51,13 +51,13 @@
         "path": "udaan.png",
         "description": "Udaan"
       },
-      "sourceLink": [
+      "sourceLinks": [
         {
           "title": "GitHub",
           "url": "https://github.com/bvmites/udaan17-android-app/"
         }
       ],
-      "projectLink": [
+      "projectLinks": [
         {
           "title": "Play Store",
           "url": "https://play.google.com/store/apps/details?id=in.udaan17.android"
@@ -82,7 +82,7 @@
         "path": "pop-movies.png",
         "description": "Pop Movies"
       },
-      "sourceLink": [
+      "sourceLinks": [
         {
           "title": "GitHub",
           "url": "https://github.com/VarunBarad/PopularMovies"
@@ -108,7 +108,7 @@
         "path": "droid-bakery.png",
         "description": "Droid Bakery"
       },
-      "sourceLink": [
+      "sourceLinks": [
         {
           "title": "GitHub",
           "url": "https://github.com/VarunBarad/BakingApp"
@@ -164,7 +164,7 @@
         "path": "dptk.png",
         "description": "DP TradeKING"
       },
-      "sourceLink": [
+      "sourceLinks": [
         {
           "title": "Android App",
           "url": "https://github.com/VarunBarad/dptk-contacts-app"
@@ -193,7 +193,7 @@
         "path": "wallpaper.png",
         "description": "Wallpaper Changer"
       },
-      "sourceLink": [
+      "sourceLinks": [
         {
           "title": "GitHub",
           "url": "https://github.com/VarunBarad/wallpaper-changer"
@@ -219,7 +219,7 @@
         "path": "digital-joker.png",
         "description": "Digital Joker"
       },
-      "sourceLink": [
+      "sourceLinks": [
         {
           "title": "GitHub",
           "url": "https://github.com/VarunBarad/Digital-Joker/"
@@ -244,7 +244,7 @@
         "path": "udaan.png",
         "description": "Udaan-16 SMS"
       },
-      "sourceLink": [
+      "sourceLinks": [
         {
           "title": "GitHub",
           "url": "https://github.com/bvmites/udaan16-sms-web-app"
@@ -269,7 +269,7 @@
         "path": "veggkart.png",
         "description": "VegGKart"
       },
-      "sourceLink": [
+      "sourceLinks": [
         {
           "title": "GitHub",
           "url": "https://github.com/VarunBarad/veggkart"
