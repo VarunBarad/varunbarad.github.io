@@ -9,6 +9,9 @@
       "items": {
         "type": "object",
         "properties": {
+          "id": {
+            "type": "string"
+          },
           "title": {
             "type": "string"
           },
@@ -54,14 +57,48 @@
               "path"
             ]
           },
-          "sourceLink": {
-            "type": "string"
+          "sourceLinks": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string",
+                  "format": "uri-reference"
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "url"
+              ]
+            }
           },
-          "projectLink": {
-            "type": "string"
+          "projectLinks": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string",
+                  "format": "uri-reference"
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "url"
+              ]
+            }
           }
         },
+        "additionalProperties": false,
         "required": [
+          "id",
           "title",
           "description",
           "date",
