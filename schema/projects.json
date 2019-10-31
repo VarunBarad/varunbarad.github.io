@@ -18,9 +18,6 @@
           "description": {
             "type": "string"
           },
-          "date": {
-            "type": "string"
-          },
           "clients": {
             "type": "array",
             "items": {
@@ -101,7 +98,6 @@
           "id",
           "title",
           "description",
-          "date",
           "clients",
           "technologies"
         ]
