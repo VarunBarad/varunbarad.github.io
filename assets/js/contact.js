@@ -1,5 +1,5 @@
 var config = {
-  messageEndPoint: "https://script.google.com/macros/s/AKfycbyLtwo2jHs-sw8h21tzjLiWS_b1IKkl_2s0i3NGC-dYbegzFiER/exec"
+  messageEndPoint: "https://vb-personal-website-backend.herokuapp.com/contact"
 };
 
 function submitForm(event) {
@@ -16,8 +16,18 @@ function submitForm(event) {
 
 function saveMessageToFirebase(name, email, message) {
   fetch(
-      config.messageEndPoint + "?name=" + encodeURIComponent(name) + "&email=" + encodeURIComponent(email) + "&message=" + encodeURIComponent(message),
-      { method: "get" }
+      config.messageEndPoint,
+      {
+        method: "post",
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8'
+        },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          message: message
+        })
+      }
   ).then(function (response) {
     return response.json();
   }).then(function (jsonResponse) {
