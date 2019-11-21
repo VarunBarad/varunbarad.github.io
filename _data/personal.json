@@ -43,6 +43,11 @@
         "profileIcon": "fa-twitter"
       },
       {
+        "name": "DEV Community",
+        "profileUrl": "https://dev.to/varunbarad",
+        "profileIcon": "fa-dev"
+      },
+      {
         "name": "LinkedIn",
         "profileUrl": "https://linkedin.com/in/varunbarad",
         "profileIcon": "fa-linkedin"
