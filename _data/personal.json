@@ -43,11 +43,6 @@
         "profileIcon": "fa-twitter"
       },
       {
-        "name": "Medium",
-        "profileUrl": "https://medium.com/@VarunBarad",
-        "profileIcon": "fa-medium"
-      },
-      {
         "name": "LinkedIn",
         "profileUrl": "https://linkedin.com/in/varunbarad",
         "profileIcon": "fa-linkedin"
