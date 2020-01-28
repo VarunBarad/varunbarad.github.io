@@ -1,6 +1,36 @@
 {
   "projectDetail": [
     {
+      "id": "toReadManager",
+      "title": "To-Read Manager",
+      "description": "I have built this app to let me manage my to-read links at one place on my phone. I can share tweets, webpages or anything else and then later open it from the app.",
+      "clients": [
+        {
+          "title": "I needed it myself",
+          "url": "#"
+        }
+      ],
+      "technologies": [
+        "Android"
+      ],
+      "image": {
+        "path": "to-read-manager.png",
+        "description": "To-Read Manager"
+      },
+      "sourceLinks": [
+        {
+          "title": "GitHub",
+          "url": "https://github.com/VarunBarad/to-read-manager-android/"
+        }
+      ],
+      "projectLinks": [
+        {
+          "title": "Play Store",
+          "url": "https://play.google.com/store/apps/details?id=com.varunbarad.toreadmanager"
+        }
+      ]
+    },
+    {
       "id": "attendanceTracker",
       "title": "Attendance Tracker",
       "description": "I made this as my Capstone Project for Udacity's Android Nanodegree. This was my chance to assimilate everything I learned during the Nanodegree and make something useful with it.\nDuring college, we found it cumbersome to track our attendance in various classes. That was the origin for this app. I made it so that there is a streamlined way for students to keep track of their attendance.",
