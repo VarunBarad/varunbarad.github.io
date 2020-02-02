@@ -165,7 +165,7 @@ mark, .mark { padding: 0.2em; background-color: #fcf8e3; }
 
 .blockquote-footer::before { content: "\2014 \00A0"; }
 
-.img-fluid, .post-container .post-content img { max-width: 100%; height: auto; }
+.img-fluid { max-width: 100%; height: auto; }
 
 .img-thumbnail { padding: 0.25rem; background-color: #fff; border: 1px solid #dee2e6; border-radius: 0.25rem; max-width: 100%; height: auto; }
 
@@ -3003,6 +3003,7 @@ body { font-size: 16px; }
 .post-container { display: flex; justify-content: center; width: 100%; padding-bottom: 2rem; }
 .post-container .post-date { opacity: 0.7; }
 .post-container .post-content { margin-top: 2em; }
+.post-container .post-content img { display: block; margin: 0 auto; }
 .post-container .post-categories-container { display: flex; }
 .post-container .post-categories-container > div { margin-left: 8px; }
 

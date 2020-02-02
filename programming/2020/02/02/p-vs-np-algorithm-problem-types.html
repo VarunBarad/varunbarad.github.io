@@ -6,23 +6,23 @@
   <link rel="stylesheet" href="/assets/css/style.css?v=d47217038102b3c8814d1847aebadd85ce9519cc">
   <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=d47217038102b3c8814d1847aebadd85ce9519cc">
   <link rel="icon" type="image/png" href="/favicon.png"/>
-  <title>Record Linux terminal session - Varun Barad</title>
-  <meta name="description" content="How to record your linux terminal session to work on later." />
+  <title>P vs NP Algorithm Problem Types - Varun Barad</title>
+  <meta name="description" content="I finally wrapped my head around the differences between P vs NP vs NP-Complete problems" />
 
   <!-- Twitter meta-data -->
   <meta name="twitter:site" content="@varun_barad" />
   <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Record Linux terminal session" />
-  <meta name="twitter:description" content="How to record your linux terminal session to work on later." />
+  <meta name="twitter:title" content="P vs NP Algorithm Problem Types" />
+  <meta name="twitter:description" content="I finally wrapped my head around the differences between P vs NP vs NP-Complete problems" />
 
   <!-- Open-graph meta-data -->
   <meta property="og:site_name" content="Varun Barad - Curious Developer" />
   <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png" />
   <meta property="og:type" content="object" />
-  <meta property="og:title" content="Record Linux terminal session" />
-  <meta property="og:url" content="https://varunbarad.com/programming/2019/10/26/record-linux-terminal-session.html" />
-  <meta property="og:description" content="How to record your linux terminal session to work on later." />
+  <meta property="og:title" content="P vs NP Algorithm Problem Types" />
+  <meta property="og:url" content="https://varunbarad.com/programming/2020/02/02/p-vs-np-algorithm-problem-types.html" />
+  <meta property="og:description" content="I finally wrapped my head around the differences between P vs NP vs NP-Complete problems" />
 </head>
 <body>
 <div>
@@ -46,28 +46,36 @@
     <div class="post-container">
       <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
         <div>
-          <div class="page-title text-uppercase text-center">Record Linux terminal session</div>
-          <div class="post-date text-center">October 26, 2019</div>
-          <div class="post-content"><p>I was recently setting up my computer with Ubuntu on it and this time I was decided that I would document every step of the process so that I can get it done faster the next time. That thought and process worked easily for the programs whose installations were just a simple <code class="highlighter-rouge">sudo apt install ...</code> but when I was installing something new (like VS Code) there were many steps involved and it wasn’t an easy task to document them as I went on installing those things.</p>
+          <div class="page-title text-uppercase text-center">P vs NP Algorithm Problem Types</div>
+          <div class="post-date text-center">February 02, 2020</div>
+          <div class="post-content"><p><img src="https://varunbarad.com/assets/images/posts/p-np-venn-diagram.png" alt="Venn Diagram - Problem Types" /></p>
 
-<p>What I decided to then do was to just record my terminal sessions for each such long program and review those recordings later to write a script for everything that I needed to do.</p>
+<p>The above image represents something completely un-understandable to me during my college years. I couldn’t understand what the professor tried to explain during my algorithms class when the topic of P vs NP vs NP-Complete problems came.</p>
 
-<p>Linux has a handy utility called <code class="highlighter-rouge">script</code> which does just that. If it isn’t pre-installed then you can easily install it with <code class="highlighter-rouge">sudo apt install script</code> as it is generally available in the default PPA.</p>
+<p>Finally I understood it from <a href="https://www.youtube.com/watch?v=EHp4FPyajKQ">a video by “Up and Atom”</a>. The problems are grouped according to these 2 criteria:</p>
 
-<p>Using it is straight-forward too.</p>
+<ol>
+  <li>
+    <p>Can a solution to the problem be found in polynomial time?</p>
+  </li>
+  <li>
+    <p>Can a given solution for the problem be verified in polynomial time?</p>
+  </li>
+</ol>
 
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>script &lt;file_name_to_write_record_to&gt;
-</code></pre></div></div>
+<h2 id="np-problems">NP Problems</h2>
 
-<p>I also find these options to be of significance:</p>
+<p>These are the problems for which condition 2 holds true. If given a solution to such problem, the correctness of that solution can be verified in polynomial time. Condition 1 being true or false for such problems doesn’t affect whether they can fall under NP category or not.</p>
 
-<ul>
-  <li><code class="highlighter-rouge">-a, --append</code>: This appends the recording if the file is already existing.</li>
-  <li><code class="highlighter-rouge">-c, --command &lt;command_which_is_to_be_recorded&gt;</code>: If you want to record the interaction of a program with terminal then you can use this.</li>
-</ul>
+<h2 id="np-complete-problems">NP-Complete Problems</h2>
 
-<p>I found this command to be quite helpful in my recent endeavour of documenting the setup process and think it might others too. Want to discuss this or any other interesting thing, hit me up on Twitter <a href="https://twitter.com/varun_barad">@varun_barad</a></p>
+<p>These are the problems for which condition 2 holds true but condition 1 is false. A valid solution to the problem can’t be verified in polynomial time, but if given a solution to the problem the correctness of that solution can be verified in polynomial time.</p>
 
+<h2 id="p-problems">P Problems</h2>
+
+<p>For these problems, both conditions 1 &amp; 2 hold true. There exist methods by which a valid solution to any of these problem can be found under polynomial time. And also, any given solution for such problem can be verified in polynomial time.</p>
+
+<p>Want to discuss this or any other interesting thing, hit me up on Twitter <a href="https://twitter.com/varun_barad">@varun_barad</a>.</p>
 </div>
         </div>
 
