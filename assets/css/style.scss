@@ -21,6 +21,7 @@ body {
   background: transparent !important;
   max-width: unset !important;
   margin: 0 auto !important;
+
   a {
     margin: 0 8px;
     font-size: 1.2em;
@@ -37,6 +38,7 @@ body {
   display: flex;
   align-items: center;
   height: 100%;
+
   .title {
     text-transform: uppercase;
     font-size: 1.3em;
@@ -56,47 +58,57 @@ body {
   margin-left: 0;
   margin-right: 0;
   margin-bottom: 50px;
+
   .home {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin: 50px auto;
+
     .name {
       font-size: 2.8em;
     }
+
     .tag-line {
       font-size: 1.8em;
     }
+
     .about {
       font-size: 1.1em;
       padding: 10px;
     }
   }
+
   .portfolio {
     padding: 2em;
     width: 100%;
+
     .project {
       padding: 0.8em 2em;
-
     }
+
     .project-description {
       padding: 10px 0;
       font-size: 1.1em;
     }
+
     .project-details {
       display: flex;
       justify-content: space-evenly;
       font-size: 0.9em;
       margin: 4px;
     }
+
     .card {
       border: none;
       border-radius: 0;
       background-color: #353535;
+
       .card-img-top {
         border-radius: 0;
       }
+
       .card-title {
         text-align: center;
         font-size: 1.4em;
@@ -104,30 +116,36 @@ body {
         margin: 0.70em 0;
       }
     }
+
     .modal-dialog {
       .modal-content {
         background-color: #353535;
+
         .modal-header {
           font-size: 1.4em;
           font-weight: bold;
           border-bottom-color: transparent;
           text-align: center;
+
           .modal-title {
             width: 100%;
             font-size: 1.2em;
             padding-bottom: 10px;
             border-bottom: 1px solid;
           }
+
           span {
             color: white;
           }
         }
+
         .modal-footer {
           .categories {
             padding: 0;
             width: 100%;
             display: flex;
             justify-content: space-between;
+
             a {
               margin: 0 8px;
             }
@@ -135,6 +153,7 @@ body {
         }
       }
     }
+
     .modal-image {
       width: 360px;
     }
@@ -146,6 +165,7 @@ body {
   justify-content: space-evenly;
   flex-wrap: wrap;
   padding: 0 1.2em 1.2em 1.2em;
+
   a {
     margin: 8px 4px 0 0;
     font-size: 1em;
@@ -155,16 +175,20 @@ body {
 .posts {
   padding-top: 2em;
   width: 100%;
+
   .post-list {
     display: flex;
     flex-direction: column;
     align-items: center;
+
     .post {
       padding: 8px 16px 8px 16px;
       margin-bottom: 8px;
+
       p {
         margin: 0;
       }
+
       .post-description {
         text-align: justify;
       }
@@ -177,17 +201,24 @@ body {
   justify-content: center;
   width: 100%;
   padding-bottom: 2rem;
+
   .post-date {
     opacity: 0.7;
   }
+
   .post-content {
     margin-top: 2em;
-    img {
-      @extend .img-fluid;
-    }
   }
+
+  .post-content img {
+    //@extend .img-fluid;
+    display: block;
+    margin: 0 auto;
+  }
+
   .post-categories-container {
     display: flex;
+
     > div {
       margin-left: 8px;
     }
@@ -198,17 +229,21 @@ body {
   display: flex;
   justify-content: center;
   padding: 2em 0 0 1em;
+
   > div {
     background-color: #353535;
     padding: 24px;
   }
+
   form {
     display: flex;
     flex-direction: column;
   }
+
   .form-group {
     display: flex;
     justify-content: space-between;
+
     .form-control {
       border-radius: 0;
       border: none;
@@ -217,11 +252,13 @@ body {
       color: white;
       outline: none;
       -webkit-box-shadow: none;
+
       &:focus {
         border-bottom-width: 2px;
         box-shadow: none;
       }
     }
+
     textarea {
       resize: none;
     }
@@ -234,6 +271,7 @@ body {
     transition: all 0.2s cubic-bezier(0.000, 0.000, 0.580, 1.000);
     align-self: center;
     margin-top: 8px;
+
     &:hover, &:focus {
       background-color: #FFD000;
       color: #353535;
@@ -258,6 +296,7 @@ body {
   text-align: center;
   width: 100%;
   background: url(../images/nav-bg.gif) #353535;
+
   .social-links {
     font-size: 1.4em;
     padding: 0 8px;
@@ -283,6 +322,7 @@ body {
   #header {
     margin-top: 0 !important;
   }
+
   nav {
     display: block !important;
   }
@@ -292,22 +332,28 @@ body {
   #header {
     height: 80px;
     text-align: center;
+
     nav {
       padding: 0;
     }
   }
+
   .page-title {
     margin-top: 16px;
   }
+
   .header .title {
     padding: 0;
   }
+
   .content {
     margin-top: 80px;
   }
+
   .menu {
     text-align: center !important;
   }
+
   .contact-form {
     padding-left: 0;
     padding-right: 0;
