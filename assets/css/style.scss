@@ -210,10 +210,15 @@ body {
     margin-top: 2em;
   }
 
+  .post-content p {
+    text-align: justify;
+  }
+
   .post-content img {
     //@extend .img-fluid;
     display: block;
     margin: 0 auto;
+    width: 100%;
   }
 
   .post-categories-container {
