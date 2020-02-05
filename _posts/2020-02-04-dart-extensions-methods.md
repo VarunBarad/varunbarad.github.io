@@ -48,7 +48,7 @@ extension StringExtras on String {
         return int.parse(this);
     }
     // We can also define getters as extensions
-    int doubleLength => length * 2;
+    int get doubleLength => length * 2;
 }
 ```
 
@@ -82,8 +82,9 @@ void main() {
 
 1. Extension methods _don't_ work with the type `dynamic`. However they _do_ work with Dart's type inference.
 2. Since extension methods are resolved statically, they're as fast as calling a static function.
-3. If an extension member has a name conflict then you should refer [here](https://dart.dev/guides/language/extension-methods#api-conflicts) for your options.
-4. You can define extension methods on classes which take generic type parameters (for example `List<T>`). Refer [this section](https://dart.dev/guides/language/extension-methods#implementing-generic-extensions) for further details.
+3. Extension methods can't access private members of the class.
+4. If an extension member has a name conflict then you should refer [here](https://dart.dev/guides/language/extension-methods#api-conflicts) for your options.
+5. You can define extension methods on classes which take generic type parameters (for example `List<T>`). Refer [this section](https://dart.dev/guides/language/extension-methods#implementing-generic-extensions) for further details.
 
 ## Reference
 
