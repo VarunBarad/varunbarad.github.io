@@ -1,6 +1,36 @@
 {
   "projectDetail": [
     {
+      "id": "myPlaces",
+      "title": "My Places",
+      "description": "This is an application which helps me record locations which I want to save and keep track of.",
+      "clients": [
+        {
+          "title": "I needed it myself",
+          "url": "#"
+        }
+      ],
+      "technologies": [
+        "Android"
+      ],
+      "image": {
+        "path": "my-places.png",
+        "description": "My Places"
+      },
+      "sourceLinks": [
+        {
+          "title": "GitHub",
+          "url": "https://github.com/VarunBarad/my-places-android/"
+        }
+      ],
+      "projectLinks": [
+        {
+          "title": "Play Store",
+          "url": "https://play.google.com/store/apps/details?id=com.varunbarad.myplaces"
+        }
+      ]
+    },
+    {
       "id": "toReadManager",
       "title": "To-Read Manager",
       "description": "I have built this app to let me manage my to-read links at one place on my phone. I can share tweets, webpages or anything else and then later open it from the app.",
