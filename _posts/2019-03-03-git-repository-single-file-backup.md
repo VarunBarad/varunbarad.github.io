@@ -3,6 +3,8 @@ layout: post
 title:  "Creating a single-file backup of your git repository"
 summary: "I created a python script which creates a zip-file containing the git-bundle and all the patch-files for different stashed changes in your repository."
 date:   2019-03-03 12:00:00 +0530
+redirect_from:
+  - "/tools/2019/03/03/git-repository-single-file-backup.html"
 categories: 
   - "tools"
 ---

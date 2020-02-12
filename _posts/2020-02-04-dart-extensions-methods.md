@@ -3,6 +3,8 @@ layout: post
 title: "Dart Extension Methods"
 summary: "An overview of extension methods in Dart and how they can be useful"
 date: 2020-02-04 12:00:00 +0530
+redirect_from:
+  - "/flutter/dart/programming/2020/02/04/dart-extensions-methods.html"
 categories:
   - "flutter"
   - "dart"

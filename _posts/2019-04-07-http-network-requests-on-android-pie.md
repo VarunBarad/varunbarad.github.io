@@ -3,6 +3,8 @@ layout: post
 title:  "HTTP Network Requests on Android Pie"
 summary: "Android Pie only allows HTTPS traffic by default & blocks all HTTP requests. You can enable HTTP communication for your API endpoints once you have configured this little thing."
 date:   2019-04-07 12:00:00 +0530
+redirect_from:
+  - "/android/2019/04/07/http-network-requests-on-android-pie.html"
 categories:
   - "android"
 ---

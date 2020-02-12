@@ -3,6 +3,8 @@ layout: post
 title:  "How to Stop Worrying and Start Living"
 summary: "Here are some things I found noteworthy in the book \"How to Stop Worrying and Start Living\" by Dale Carnegie."
 date:   2017-01-01 12:00:00 +0530
+redirect_from:
+  - "/book-highlights/2017/01/01/how-to-stop-worrying-and-start-living.html"
 categories: 
   - "book-highlights"
 ---

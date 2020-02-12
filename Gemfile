@@ -22,6 +22,9 @@ gem "github-pages", group: :jekyll_plugins
 group :jekyll_plugins do
   # Generate RSS feed for blog
   gem "jekyll-feed"
+
+  # Setup page redirects for old urls
+  gem "jekyll-redirect-from"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

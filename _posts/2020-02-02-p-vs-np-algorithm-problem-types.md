@@ -3,6 +3,8 @@ layout: post
 title: "P vs NP Algorithm Problem Types"
 summary: "I finally wrapped my head around the differences between P vs NP vs NP-Complete problems"
 date: 2020-02-02 12:00:00 +0530
+redirect_from:
+  - "/programming/2020/02/02/p-vs-np-algorithm-problem-types.html"
 categories:
   - "programming"
 ---

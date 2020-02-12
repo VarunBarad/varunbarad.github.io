@@ -15,7 +15,8 @@ permalink: "/blog/"
   <div class="post-list">
     {% for post in site.posts %}
     <div class="col-sm-6 post">
-      <a href="{{post.url}}" class="post-title">{{post.title}}</a>
+      <!-- The next line uses Liquid tags to remove .html from the end of post-urls -->
+      <a href="{{ post.url | split: "" | reverse | join: "" | remove_first: "lmth." | split: "" | reverse | join: "" }}" class="post-title">{{post.title}}</a>
       <div class="post-description">{{post.summary}}</div>
     </div>
     {% endfor %}

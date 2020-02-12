@@ -3,6 +3,8 @@ layout: post
 title:  "How anesthetics work"
 summary: "A post on the different categories of anesthetics and their working mechanisms and differences."
 date:   2018-08-13 12:00:00 +0530
+redirect_from:
+  - "/medicine/201808/13/how-anesthetics-work.html"
 categories: 
   - "medicine"
 ---

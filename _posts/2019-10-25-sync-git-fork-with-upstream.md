@@ -3,6 +3,8 @@ layout: post
 title: "Sync git fork with upstream"
 summary: "This is a simple guide on how to sync your fork of a git/github project with upstream changes."
 date: 2019-10-25 12:00:00 +0530
+redirect_from:
+  - "/programming/2019/10/25/sync-git-fork-with-upstream.html"
 categories:
   - "programming"
 ---

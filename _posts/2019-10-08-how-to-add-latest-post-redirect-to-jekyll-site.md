@@ -3,6 +3,8 @@ layout: post
 title:  "How to add \"latest\" post redirect to Jekyll site"
 summary: "I wanted to add a URL to my site which will always redirect the visitor to the latest blog post I have published at that time."
 date:   2019-10-08 12:00:00 +0530
+redirect_from:
+  - "/programming/web/2019/10/08/how-to-add-latest-post-redirect-to-jekyll-site.html"
 categories:
   - "programming"
   - "web"

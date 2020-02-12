@@ -3,6 +3,8 @@ layout: post
 title: "Record Linux terminal session"
 summary: "How to record your linux terminal session to work on later."
 date: 2019-10-26 12:00:00 +0530
+redirect_from:
+  - "/programming/2019/10/26/record-linux-terminal-session.html"
 categories:
   - "programming"
 ---

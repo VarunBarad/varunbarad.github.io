@@ -3,6 +3,8 @@ layout: post
 title:  "JavaScript 30 - Building a Drum Kit"
 summary: "I started the JavaScript30 challenge from Wes Bos today and learnt how to build a simple drum-kit."
 date:   2019-09-30 12:00:00 +0530
+redirect_from:
+  - "/programming/web/javascript-30/2019/09/30/javascript-30-building-a-drum-kit.html"
 categories:
   - "programming"
   - "web"

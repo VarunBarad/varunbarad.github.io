@@ -26,11 +26,14 @@ author:
   twitter: https://twitter.com/varun_barad
   picture: /assests/images/profile.png
 
+permalink: /blog/:title
+
 # Build settings
 markdown: kramdown
 theme: jekyll-theme-midnight
 plugins:
   - jekyll-feed
+  - jekyll-redirect-from
 
 collections:
   category:

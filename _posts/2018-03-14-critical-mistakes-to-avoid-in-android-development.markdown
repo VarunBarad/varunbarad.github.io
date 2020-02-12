@@ -3,6 +3,8 @@ layout: post
 title:  "Critical mistakes to avoid in Android development"
 summary: "Charlie Munger has said that avoiding to be stupid is more beneficial when compared to trying to be intelligent. So, let's take a look at some mistakes that we can avoid while walking the path of Android development."
 date:   2018-03-14 12:00:00 +0530
+redirect_from:
+  - "/android/2018/03/14/critical-mistakes-to-avoid-in-android-development.html"
 categories: 
   - "android"
 ---
