@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/assets/css/style.css?v=f8867587a4ab1f425cf134542198fe00e0fd0904">
+  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=f8867587a4ab1f425cf134542198fe00e0fd0904">
+  <link rel="icon" type="image/png" href="/favicon.png"/>
+  <title>Switching RxJava schedulers between app code and corresponding tests - Varun Barad</title>
+  <meta name="description" content="A simple way to switch between using appropriate schedulers in app code and using trampoline schedulers for tests." />
+
+  <!-- Twitter meta-data -->
+  <meta name="twitter:site" content="@varun_barad" />
+  <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Switching RxJava schedulers between app code and corresponding tests" />
+  <meta name="twitter:description" content="A simple way to switch between using appropriate schedulers in app code and using trampoline schedulers for tests." />
+
+  <!-- Open-graph meta-data -->
+  <meta property="og:site_name" content="Varun Barad - Curious Developer" />
+  <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png" />
+  <meta property="og:type" content="object" />
+  <meta property="og:title" content="Switching RxJava schedulers between app code and corresponding tests" />
+  <meta property="og:url" content="https://varunbarad.com/blog/switching-rxjava-schedulers-between-app-code-and-corresponding-tests" />
+  <meta property="og:description" content="A simple way to switch between using appropriate schedulers in app code and using trampoline schedulers for tests." />
+</head>
+<body>
+<div>
+  <div id="header">
+    <div class="row header">
+  <div class="title col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+    <a href="/"><div class="title">Varun Barad</div></a>
+  </div>
+  <div class="col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8">
+    <nav class="menu text-right">
+  <a href="/portfolio">Portfolio</a>
+  <a href="/blog">Blog</a>
+  <a href="/contact">Contact</a>
+</nav>
+
+  </div>
+</div>
+
+  </div>
+  <div class="content row">
+    <div class="post-container">
+      <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+        <div>
+          <div class="page-title text-uppercase text-center">Switching RxJava schedulers between app code and corresponding tests</div>
+          <div class="post-date text-center">August 16, 2019</div>
+          <div class="post-content"><p>When using RxJava we need to specify the schedulers which we want to use to 1) perform the given task and 2) return result of the operation chain.</p>
+
+<p>One of the interesting ways I found while working on a take-home challenge for a company was as below:</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">object</span> <span class="nc">VarunSchedulers</span> <span class="p">{</span>
+    <span class="k">private</span> <span class="kd">var</span> <span class="py">schedulers</span><span class="p">:</span> <span class="n">RxSchedulers</span> <span class="p">=</span> <span class="n">RxSchedulers</span><span class="p">.</span><span class="n">Default</span>
+
+    <span class="k">fun</span> <span class="nf">enableTesting</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="n">schedulers</span> <span class="p">=</span> <span class="n">RxSchedulers</span><span class="p">.</span><span class="n">Test</span>
+    <span class="p">}</span>
+
+    <span class="k">fun</span> <span class="nf">disableTesting</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="n">schedulers</span> <span class="p">=</span> <span class="n">RxSchedulers</span><span class="p">.</span><span class="n">Default</span>
+    <span class="p">}</span>
+
+    <span class="k">fun</span> <span class="nf">io</span><span class="p">():</span> <span class="n">Scheduler</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">schedulers</span><span class="p">.</span><span class="n">io</span><span class="p">()</span>
+    <span class="k">fun</span> <span class="nf">computation</span><span class="p">():</span> <span class="n">Scheduler</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">schedulers</span><span class="p">.</span><span class="n">computation</span><span class="p">()</span>
+    <span class="k">fun</span> <span class="nf">main</span><span class="p">():</span> <span class="n">Scheduler</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">schedulers</span><span class="p">.</span><span class="n">main</span><span class="p">()</span>
+
+    <span class="k">private</span> <span class="k">sealed</span> <span class="kd">class</span> <span class="nc">RxSchedulers</span> <span class="p">{</span>
+        <span class="k">abstract</span> <span class="k">fun</span> <span class="nf">io</span><span class="p">():</span> <span class="n">Scheduler</span>
+        <span class="k">abstract</span> <span class="k">fun</span> <span class="nf">computation</span><span class="p">():</span> <span class="n">Scheduler</span>
+        <span class="k">abstract</span> <span class="k">fun</span> <span class="nf">main</span><span class="p">():</span> <span class="n">Scheduler</span>
+
+        <span class="kd">object</span> <span class="nc">Test</span> <span class="p">:</span> <span class="n">RxSchedulers</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">override</span> <span class="k">fun</span> <span class="nf">io</span><span class="p">():</span> <span class="n">Scheduler</span> <span class="p">=</span> <span class="n">Schedulers</span><span class="p">.</span><span class="n">trampoline</span><span class="p">()</span>
+            <span class="k">override</span> <span class="k">fun</span> <span class="nf">computation</span><span class="p">():</span> <span class="n">Scheduler</span> <span class="p">=</span> <span class="n">Schedulers</span><span class="p">.</span><span class="n">trampoline</span><span class="p">()</span>
+            <span class="k">override</span> <span class="k">fun</span> <span class="nf">main</span><span class="p">():</span> <span class="n">Scheduler</span> <span class="p">=</span> <span class="n">Schedulers</span><span class="p">.</span><span class="n">trampoline</span><span class="p">()</span>
+        <span class="p">}</span>
+
+        <span class="kd">object</span> <span class="nc">Default</span> <span class="p">:</span> <span class="n">RxSchedulers</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">override</span> <span class="k">fun</span> <span class="nf">io</span><span class="p">():</span> <span class="n">Scheduler</span> <span class="p">=</span> <span class="n">Schedulers</span><span class="p">.</span><span class="n">io</span><span class="p">()</span>
+            <span class="k">override</span> <span class="k">fun</span> <span class="nf">computation</span><span class="p">():</span> <span class="n">Scheduler</span> <span class="p">=</span> <span class="n">Schedulers</span><span class="p">.</span><span class="n">computation</span><span class="p">()</span>
+            <span class="k">override</span> <span class="k">fun</span> <span class="nf">main</span><span class="p">():</span> <span class="n">Scheduler</span> <span class="p">=</span> <span class="n">AndroidSchedulers</span><span class="p">.</span><span class="n">mainThread</span><span class="p">()</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Now let’s take the example of fetching a network query, we can simply do this</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pandaService</span><span class="p">.</span><span class="n">getCutestPanda</span><span class="p">()</span>
+    <span class="p">.</span><span class="n">subscribeOn</span><span class="p">(</span><span class="n">VarunSchedulers</span><span class="p">.</span><span class="n">io</span><span class="p">())</span>
+    <span class="p">.</span><span class="n">observeOn</span><span class="p">(</span><span class="n">VarunSchedulers</span><span class="p">.</span><span class="n">main</span><span class="p">())</span>
+    <span class="o">..</span><span class="p">.</span>
+</code></pre></div></div>
+
+<p>And when we write our unit-tests we can easily turn testing-mode on and off using the <code class="highlighter-rouge">@Before</code> and <code class="highlighter-rouge">@After</code> methods.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">SomeTestClass</span> <span class="p">{</span>
+    <span class="n">@Before</span>
+    <span class="k">fun</span> <span class="nf">setupTests</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">VarunSchedulers</span><span class="p">.</span><span class="n">enableTesting</span><span class="p">()</span>
+    <span class="p">}</span>
+    
+    <span class="n">@After</span>
+    <span class="k">fun</span> <span class="nf">tearDown</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">VarunSchedulers</span><span class="p">.</span><span class="n">disableTesting</span><span class="p">()</span>
+    <span class="p">}</span>
+    
+    <span class="c1">// Write your tests
+</span><span class="p">}</span>
+</code></pre></div></div>
+
+<p>Now whenever we are inside tests, then automatically the <code class="highlighter-rouge">trampoline</code> schedulers are assigned and respectively appropriate schedulers by default in case we are not in tests.</p>
+
+<p>If you have more such tricks up your sleeve or something in here isn’t clear to you or you just want to chat then hit me up on twitter <a href="https://twitter.com/varun_barad">@varun_barad</a>.</p>
+
+</div>
+        </div>
+
+        <div class="post-categories-container">
+          Categories:
+          <div>
+            
+            <a href="/category/programming" class="badge badge-warning">#programming</a>
+            
+            <a href="/category/rx-java" class="badge badge-warning">#rx-java</a>
+            
+            <a href="/blog" class="badge badge-warning">#All</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="footer">
+  <div>
+    
+    <a href="https://github.com/VarunBarad" target="_blank"><i class="fab fa-github social-links"></i></a>
+    
+    <a href="https://twitter.com/varun_barad" target="_blank"><i class="fab fa-twitter social-links"></i></a>
+    
+    <a href="https://dev.to/varunbarad" target="_blank"><i class="fab fa-dev social-links"></i></a>
+    
+    <a href="https://linkedin.com/in/varunbarad" target="_blank"><i class="fab fa-linkedin social-links"></i></a>
+    
+    <a href="https://stackoverflow.com/users/4717436/varunbarad" target="_blank"><i class="fab fa-stack-overflow social-links"></i></a>
+    
+    <a href="https://codepen.io/VarunBarad" target="_blank"><i class="fab fa-codepen social-links"></i></a>
+    
+  </div>
+  <div class="developer-attribution">
+    
+    Made by <a href="https://dixita0607.github.io" target="_blank">Dixita Ganatra</a>
+  </div>
+</div>
+
+  </div>
+</div>
+
+<script src="/assets/js/jquery.min.js?v=f8867587a4ab1f425cf134542198fe00e0fd0904"></script>
+<script src="/assets/js/bootstrap.min.js?v=f8867587a4ab1f425cf134542198fe00e0fd0904"></script>
+<script src="/assets/js/contact.js?v=f8867587a4ab1f425cf134542198fe00e0fd0904"></script>
+</body>
+</html>
