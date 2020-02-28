@@ -1,4 +1,107 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://varunbarad.com/" rel="alternate" type="text/html" /><updated>2020-02-27T22:13:10+05:30</updated><id>https://varunbarad.com/feed.xml</id><title type="html">Varun Barad - Curious Developer</title><subtitle>My online home where I post about new things I learn or find interesting.</subtitle><author><name>Varun Barad</name></author><entry><title type="html">Write Custom Android Lint Rule - Layout Files</title><link href="https://varunbarad.com/blog/write-custom-android-lint-rule-layout-files" rel="alternate" type="text/html" title="Write Custom Android Lint Rule - Layout Files" /><published>2020-02-27T12:00:00+05:30</published><updated>2020-02-27T12:00:00+05:30</updated><id>https://varunbarad.com/blog/write-custom-android-lint-rule-layout-files</id><content type="html" xml:base="https://varunbarad.com/blog/write-custom-android-lint-rule-layout-files">&lt;p&gt;&lt;img src=&quot;https://varunbarad.com/assets/images/posts/headers/write-custom-android-lint-rule-layout-files.jpg&quot; alt=&quot;Article Header - Write Custom Android Lint Rules&quot; /&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://varunbarad.com/" rel="alternate" type="text/html" /><updated>2020-02-28T12:29:26+05:30</updated><id>https://varunbarad.com/feed.xml</id><title type="html">Varun Barad - Curious Developer</title><subtitle>My online home where I post about new things I learn or find interesting.</subtitle><author><name>Varun Barad</name></author><entry><title type="html">Write Custom Android Lint Rule - Manifest File</title><link href="https://varunbarad.com/blog/write-custom-android-lint-rule-manifest-file" rel="alternate" type="text/html" title="Write Custom Android Lint Rule - Manifest File" /><published>2020-02-28T12:00:00+05:30</published><updated>2020-02-28T12:00:00+05:30</updated><id>https://varunbarad.com/blog/write-custom-android-lint-rule-manifest-file</id><content type="html" xml:base="https://varunbarad.com/blog/write-custom-android-lint-rule-manifest-file">&lt;p&gt;Welcome folks, last time we wrote a lint check for making sure that all of our &lt;code class=&quot;highlighter-rouge&quot;&gt;EditText&lt;/code&gt; have the &lt;code class=&quot;highlighter-rouge&quot;&gt;android:inputType&lt;/code&gt; attribute.&lt;/p&gt;
+
+&lt;p&gt;This time we will be writing a check which works on our &lt;code class=&quot;highlighter-rouge&quot;&gt;AndroidManifest.xml&lt;/code&gt; file. This check will ensure that our &lt;code class=&quot;highlighter-rouge&quot;&gt;application&lt;/code&gt; tag has a child &lt;code class=&quot;highlighter-rouge&quot;&gt;meta-data&lt;/code&gt; tag with attribute &lt;code class=&quot;highlighter-rouge&quot;&gt;android:name=&quot;android.webkit.WebView.MetricsOptOut&quot;&lt;/code&gt;. Read the background for that &lt;a href=&quot;https://developer.android.com/guide/webapps/managing-webview#metrics&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;If you haven’t yet then first go through &lt;a href=&quot;https://varunbarad.com/blog/write-custom-android-lint-rule-layout-files&quot;&gt;the last post&lt;/a&gt; otherwise you might not understand many things as we will be building upon what we have created in that post.&lt;/p&gt;
+
+&lt;h2 id=&quot;changes-to-add-to-last-project&quot;&gt;Changes to add to last project&lt;/h2&gt;
+
+&lt;p&gt;We will be building upon the &lt;code class=&quot;highlighter-rouge&quot;&gt;lint-checks&lt;/code&gt; module we created last time. We would need to make following changes:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Add a new issue and detector pertaining to this manifest check&lt;/li&gt;
+  &lt;li&gt;Register the new issue in &lt;code class=&quot;highlighter-rouge&quot;&gt;LintRegistry&lt;/code&gt; class&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;create-the-detector&quot;&gt;Create the detector&lt;/h2&gt;
+
+&lt;p&gt;Create a class named &lt;code class=&quot;highlighter-rouge&quot;&gt;WebViewMetricsMetaTagDetector&lt;/code&gt; which extends from &lt;code class=&quot;highlighter-rouge&quot;&gt;ManifestDetector&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-kotlin highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;WebViewMetricsMetaTagDetector&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ManifestDetector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now to define the Issue.&lt;/p&gt;
+
+&lt;div class=&quot;language-kotlin highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;companion&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;@JvmStatic&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;internal&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;py&quot;&gt;ISSUE_MISSING_WEBVIEW_METRICS_META_TAG&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Issue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;MissingWebViewMetricsMetaTag&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;briefDescription&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Specify whether you want to opt-out of metrics tracking via WebView.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;explanation&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;WebView can upload diagnostic data to Google. You can opt-out by specifying a `meta-data` tag under your `application` tag in manifest.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;category&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Category&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SECURITY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;priority&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;severity&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Severity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ERROR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;implementation&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Implementation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;WebViewMetricsMetaTagDetector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;Scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MANIFEST_SCOPE&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;addMoreInfo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://developer.android.com/guide/webapps/managing-webview#metrics&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The things that have changed here are:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;id&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;briefDescription&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;explanation&lt;/code&gt; for the issue.&lt;/li&gt;
+  &lt;li&gt;Scope inside the Implementation object passed against &lt;code class=&quot;highlighter-rouge&quot;&gt;implementation&lt;/code&gt; parameter. We changed from &lt;code class=&quot;highlighter-rouge&quot;&gt;Scope.ALL_RESOURCES_SCOPE&lt;/code&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;Scope.MANIFEST_SCOPE&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;We now override the 2 required methods:&lt;/p&gt;
+
+&lt;div class=&quot;language-kotlin highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fun&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getApplicableElements&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Collection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;?&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;listOf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;SdkConstants&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TAG_APPLICATION&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fun&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;visitElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;XmlContext&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;py&quot;&gt;containsWebViewMetricsOptOutTag&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;childNodes&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nodeName&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;meta-data&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;any&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;node&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;-&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;attributes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toPairedNameValueList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;attribute&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;-&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;attribute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;first&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;android:name&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;attribute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;second&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;android.webkit.WebView.MetricsOptOut&quot;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isNotEmpty&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;containsWebViewMetricsOptOutTag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;report&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;issue&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ISSUE_MISSING_WEBVIEW_METRICS_META_TAG&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;location&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getLocation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;message&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ISSUE_MISSING_WEBVIEW_METRICS_META_TAG&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getExplanation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TextFormat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TEXT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In the &lt;code class=&quot;highlighter-rouge&quot;&gt;visitElement&lt;/code&gt; method, we are traversing through all children of &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;application&amp;gt;&lt;/code&gt; and checking that a &lt;code class=&quot;highlighter-rouge&quot;&gt;meta-data&lt;/code&gt; tag with attribute &lt;code class=&quot;highlighter-rouge&quot;&gt;android:name=&quot;android.webkit.WebView.MetricsOptOut&quot;&lt;/code&gt; exists. If it does not exist then we raise our issue &lt;code class=&quot;highlighter-rouge&quot;&gt;ISSUE_MISSING_WEBVIEW_METRICS_META_TAG&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;register-the-new-issue&quot;&gt;Register the new issue&lt;/h2&gt;
+
+&lt;p&gt;The last thing we need to do now is to add the above created issue in our &lt;code class=&quot;highlighter-rouge&quot;&gt;LintRegistry&lt;/code&gt; class.&lt;/p&gt;
+
+&lt;div class=&quot;language-kotlin highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LintRegistry&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IssueRegistry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;py&quot;&gt;api&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Int&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CURRENT_API&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;py&quot;&gt;issues&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Issue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;listOf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;InputTypeDetector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ISSUE_MISSING_INPUT_TYPE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;WebViewMetricsMetaTagDetector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ISSUE_MISSING_WEBVIEW_METRICS_META_TAG&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// We added this line
+&lt;/span&gt;        &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;run-the-lint-checks&quot;&gt;Run the lint checks&lt;/h2&gt;
+
+&lt;p&gt;There we are done, now to run the lint checks using gradle&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;./gradlew lint
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Want to discuss this or any other interesting thing, hit me up on Twitter &lt;a href=&quot;https://twitter.com/varun_barad&quot;&gt;@varun_barad&lt;/a&gt;.&lt;/p&gt;</content><author><name>Varun Barad</name></author><summary type="html">Welcome folks, last time we wrote a lint check for making sure that all of our EditText have the android:inputType attribute.</summary></entry><entry><title type="html">Write Custom Android Lint Rule - Layout Files</title><link href="https://varunbarad.com/blog/write-custom-android-lint-rule-layout-files" rel="alternate" type="text/html" title="Write Custom Android Lint Rule - Layout Files" /><published>2020-02-27T12:00:00+05:30</published><updated>2020-02-27T12:00:00+05:30</updated><id>https://varunbarad.com/blog/write-custom-android-lint-rule-layout-files</id><content type="html" xml:base="https://varunbarad.com/blog/write-custom-android-lint-rule-layout-files">&lt;p&gt;&lt;img src=&quot;https://varunbarad.com/assets/images/posts/headers/write-custom-android-lint-rule-layout-files.jpg&quot; alt=&quot;Article Header - Write Custom Android Lint Rules&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Welcome devs, I recently faced an issue where if I didn’t specify any &lt;code class=&quot;highlighter-rouge&quot;&gt;android:inputType&lt;/code&gt; for &lt;code class=&quot;highlighter-rouge&quot;&gt;EditText&lt;/code&gt; then keyboard capitalisation did not correctly show. The deeper problem was that I always forgot to include that attribute. So I decided to use a lint check which would fail my build if any of my &lt;code class=&quot;highlighter-rouge&quot;&gt;EditText&lt;/code&gt; does not have the &lt;code class=&quot;highlighter-rouge&quot;&gt;android:inputType&lt;/code&gt; attribute.&lt;/p&gt;
 
@@ -561,90 +664,4 @@ This lint check is set to fail the build when it finds any of the above element 
 
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
 
-&lt;p&gt;If you want to discuss anything that was unclear in today’s article then hit me up on twitter &lt;a href=&quot;https://twitter.com/varun_barad&quot;&gt;@varun_barad&lt;/a&gt;.&lt;/p&gt;</content><author><name>Varun Barad</name></author><summary type="html">Today I am continuing my work on JS30 challenge and building a simple analog clock using CSS shapes and then animate it with CSS transforms timed using JS.</summary></entry><entry><title type="html">JavaScript 30 - Building a Drum Kit</title><link href="https://varunbarad.com/blog/javascript-30-building-a-drum-kit" rel="alternate" type="text/html" title="JavaScript 30 - Building a Drum Kit" /><published>2019-09-30T12:00:00+05:30</published><updated>2019-09-30T12:00:00+05:30</updated><id>https://varunbarad.com/blog/javascript-30-building-a-drum-kit</id><content type="html" xml:base="https://varunbarad.com/blog/javascript-30-building-a-drum-kit">&lt;p&gt;&lt;a href=&quot;https://wesbos.com&quot; target=&quot;_blank&quot;&gt;Wes Bos&lt;/a&gt; has created a &lt;a href=&quot;https://javascript30.com&quot; target=&quot;_blank&quot;&gt;course&lt;/a&gt; to get you confident in your JS skills in 30 days. In it you work on a new project daily for 30 days and in each project you make something using vanilla JS without any frameworks or libraries.&lt;/p&gt;
-
-&lt;p&gt;Today I started the challenge and first project was to make a drum-kit where different sounds are played based on the keyboard button you press. And the corresponding button gets highlighted on screen.&lt;/p&gt;
-
-&lt;p&gt;The key concepts I learned from today’s challenge were:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Setting event-listeners with JS&lt;/li&gt;
-  &lt;li&gt;Working with keyboard events and identifying key-codes&lt;/li&gt;
-  &lt;li&gt;Playing audio and restarting the audio when it is already playing&lt;/li&gt;
-  &lt;li&gt;How to sync JS code with CSS transitions&lt;/li&gt;
-  &lt;li&gt;What value &lt;code class=&quot;highlighter-rouge&quot;&gt;this&lt;/code&gt; takes inside the event listener function&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;setting-event-listeners-with-js&quot;&gt;Setting event-listeners with JS&lt;/h2&gt;
-
-&lt;p&gt;The syntax for this is very simple&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addEventListener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'&amp;lt;event-name&amp;gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;call&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;when&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;is&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fired&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;You can find a list of supported events &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/Events&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt; but beware, the complete list of events is too large and you might never need to use most of them.&lt;/p&gt;
-
-&lt;h2 id=&quot;working-with-keyboard-events-and-identifying-key-codes&quot;&gt;Working with keyboard events and identifying key-codes&lt;/h2&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;handleKeyDownEvent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;keyCode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addEventListener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'keydown'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;handleKeyDownEvent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Here we attach an event-listener for the &lt;code class=&quot;highlighter-rouge&quot;&gt;keydown&lt;/code&gt; event to the &lt;code class=&quot;highlighter-rouge&quot;&gt;window&lt;/code&gt; object since we want to capture the events across our whole web-page.
-Then we find out which key was pressed based on the &lt;code class=&quot;highlighter-rouge&quot;&gt;keyCode&lt;/code&gt; value passed via the fired event.&lt;/p&gt;
-
-&lt;p&gt;Wes has created a &lt;a href=&quot;https://keycode.info&quot; target=&quot;_blank&quot;&gt;nifty little website (https://keycode.info)&lt;/a&gt; which we can use to find the corresponding &lt;code class=&quot;highlighter-rouge&quot;&gt;keyCode&lt;/code&gt; for any key.&lt;/p&gt;
-
-&lt;h2 id=&quot;playing-audio-and-restarting-the-audio-when-it-is-already-playing&quot;&gt;Playing audio and restarting the audio when it is already playing&lt;/h2&gt;
-
-&lt;p&gt;In this project we have a set of buttons on the screen corresponding to different keys on the keyboard. And each button has a corresponding &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;audio&amp;gt;&lt;/code&gt; element on the page. The goal is to play the corresponding audio when a valid key is pressed on the keyboard.&lt;/p&gt;
-
-&lt;p&gt;So after detecting which key is pressed using the &lt;code class=&quot;highlighter-rouge&quot;&gt;keyCode&lt;/code&gt; attribute, we select the corresponding &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;audio&amp;gt;&lt;/code&gt; element using a pre-specified &lt;code class=&quot;highlighter-rouge&quot;&gt;data-key&lt;/code&gt; attribute in HTML and call the &lt;code class=&quot;highlighter-rouge&quot;&gt;audioElement.play();&lt;/code&gt; method on it.&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;audioElement&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;`audio[data-key=&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;keyCode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;]`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;audioElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;currentTime&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;audioElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;play&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;In the above code-block you might have observed that I set the &lt;code class=&quot;highlighter-rouge&quot;&gt;current-time&lt;/code&gt; of that element to &lt;code class=&quot;highlighter-rouge&quot;&gt;0&lt;/code&gt; before calling &lt;code class=&quot;highlighter-rouge&quot;&gt;play&lt;/code&gt; on it. This is done because when an &lt;code class=&quot;highlighter-rouge&quot;&gt;audio&lt;/code&gt; is still playing (that is it has not finished) and we call &lt;code class=&quot;highlighter-rouge&quot;&gt;.play()&lt;/code&gt; on it, this new call gets ignored. Therefore we reset the play-time for that particular audio element so that it correctly registers and plays 2 consecutive commands of the same key.&lt;/p&gt;
-
-&lt;h2 id=&quot;how-to-sync-js-code-with-css-transitions&quot;&gt;How to sync JS code with CSS transitions&lt;/h2&gt;
-
-&lt;p&gt;When a key is pressed, we highlight the corresponding button for a short duration on the screen while playing sound for it. To highlight the button, we just add a class &lt;code class=&quot;highlighter-rouge&quot;&gt;playing&lt;/code&gt; to it which scales it up and changes the border a bit. The second part of that is to remove the &lt;code class=&quot;highlighter-rouge&quot;&gt;playing&lt;/code&gt; class as soon as the transition is finished so as to return the button to normal state.&lt;/p&gt;
-
-&lt;p&gt;For this I initially thought of using &lt;code class=&quot;highlighter-rouge&quot;&gt;setTimeout&lt;/code&gt; with the same time-out as that mentioned in CSS as transition duration. Wes pointed out the flaw in it is that when we decide to update the transition duration we would need to make sure to update it in both the places (in CSS and in JS).&lt;/p&gt;
-
-&lt;p&gt;So a better way to synchronize CSS transitions with JS is again to use &lt;strong&gt;events&lt;/strong&gt;. Here we specifically use &lt;code class=&quot;highlighter-rouge&quot;&gt;transitionend&lt;/code&gt; event on the buttons like below.&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;removeButtonHighlight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;propertyName&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'transform'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;classList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;remove&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'playing'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelectorAll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'.keys'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;forEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;button&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;button&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addEventListener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'transitionend'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;removeButtonHighlight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;In above code, we select each button and then add the &lt;code class=&quot;highlighter-rouge&quot;&gt;transitionend&lt;/code&gt; event-listener for it so now it will call &lt;code class=&quot;highlighter-rouge&quot;&gt;removeButtonHighlight&lt;/code&gt; only and exactly when any transition on any of those buttons ends.&lt;/p&gt;
-
-&lt;p&gt;After that we simply remove the &lt;code class=&quot;highlighter-rouge&quot;&gt;playing&lt;/code&gt; class from that button so that it returns back to its original/normal state. You might have noticed that I have put a check of &lt;code class=&quot;highlighter-rouge&quot;&gt;event.propertyName === 'transform'&lt;/code&gt;. I would suggest you try and remove that check and &lt;code class=&quot;highlighter-rouge&quot;&gt;console.log&lt;/code&gt; the event to find out why I might have put that check in.&lt;/p&gt;
-
-&lt;h2 id=&quot;what-value-this-takes-inside-the-event-listener-function&quot;&gt;What value &lt;code class=&quot;highlighter-rouge&quot;&gt;this&lt;/code&gt; takes inside the event-listener function&lt;/h2&gt;
-
-&lt;p&gt;One of the toughest concept to learn and correctly understand in JS is &lt;code class=&quot;highlighter-rouge&quot;&gt;this&lt;/code&gt; or more specifically, what &lt;code class=&quot;highlighter-rouge&quot;&gt;this&lt;/code&gt; means at different points of execution in our code.&lt;/p&gt;
-
-&lt;p&gt;In the last code-block you have noticed that I simply did &lt;code class=&quot;highlighter-rouge&quot;&gt;this.classList.remove('playing')&lt;/code&gt; instead of trying to select that particular element using any other method.&lt;/p&gt;
-
-&lt;p&gt;It is so because in that particular case the value of &lt;code class=&quot;highlighter-rouge&quot;&gt;this&lt;/code&gt; is whatever object the function &lt;code class=&quot;highlighter-rouge&quot;&gt;removeButtonHighlight&lt;/code&gt; has been called.&lt;/p&gt;
-
-&lt;p&gt;So when we attach an event-listener on each of our button and on triggering of those events, they call &lt;code class=&quot;highlighter-rouge&quot;&gt;removeButtonHighlight&lt;/code&gt; with the context of that particular button. So there &lt;code class=&quot;highlighter-rouge&quot;&gt;this&lt;/code&gt; is referring directly to the button on which the event listener has been triggered.&lt;/p&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-
-&lt;p&gt;Hope I have been able to explain what I learned in today’s challenge. Hit me up on twitter &lt;a href=&quot;https://twitter.com/varun_barad&quot; target=&quot;_blank&quot;&gt;@varun_barad&lt;/a&gt; in case you haven’t understood something from this article or you have something new for me to learn.&lt;/p&gt;
-
-&lt;p&gt;In any case, don’t forget to check out the &lt;a href=&quot;https://javascript30.com&quot; target=&quot;_blank&quot;&gt;JavaScript30 challenge&lt;/a&gt; from Wes Bos. It is an awesome way to get some JS confidence.&lt;/p&gt;</content><author><name>Varun Barad</name></author><summary type="html">Wes Bos has created a course to get you confident in your JS skills in 30 days. In it you work on a new project daily for 30 days and in each project you make something using vanilla JS without any frameworks or libraries.</summary></entry></feed>
+&lt;p&gt;If you want to discuss anything that was unclear in today’s article then hit me up on twitter &lt;a href=&quot;https://twitter.com/varun_barad&quot;&gt;@varun_barad&lt;/a&gt;.&lt;/p&gt;</content><author><name>Varun Barad</name></author><summary type="html">Today I am continuing my work on JS30 challenge and building a simple analog clock using CSS shapes and then animate it with CSS transforms timed using JS.</summary></entry></feed>
