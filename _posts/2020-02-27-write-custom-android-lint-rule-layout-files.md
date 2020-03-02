@@ -136,6 +136,20 @@ class LintRegistry : IssueRegistry() {
 
 Any future issues that we declare/write are to be added to this `issues` property list.
 
+### Registering our Issue Registry
+
+We now need to declare this class within the manifest of our JAR. We do this in our build script. Add the following block under your `lint-checks` module's `build.gradle` file
+
+```groovy
+jar {
+    manifest {
+        // Format is
+        // attributes("Lint-Registry-v2": "<fully-qualified-class-name-of-your-issue-registry>")
+        attributes("Lint-Registry-v2": "com.varunbarad.androidlintchecks.LintRegistry")
+    }
+}
+```
+
 ## Integrating our custom lint check module into our project
 
 In your `app` module go and add a `lintChecks` dependency on your `lint-checks` module like this
@@ -157,3 +171,7 @@ That was all that was needed to write your custom lint check. Now whenever you r
 ```
 
 Want to discuss this or any other interesting thing, hit me up on Twitter [@varun_barad](https://twitter.com/varun_barad).
+
+### Edits
+
+1. __2020-03-02:__ Add the step of "Registering our Issue Registry"
