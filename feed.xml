@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://varunbarad.com/" rel="alternate" type="text/html" /><updated>2020-02-28T12:29:26+05:30</updated><id>https://varunbarad.com/feed.xml</id><title type="html">Varun Barad - Curious Developer</title><subtitle>My online home where I post about new things I learn or find interesting.</subtitle><author><name>Varun Barad</name></author><entry><title type="html">Write Custom Android Lint Rule - Manifest File</title><link href="https://varunbarad.com/blog/write-custom-android-lint-rule-manifest-file" rel="alternate" type="text/html" title="Write Custom Android Lint Rule - Manifest File" /><published>2020-02-28T12:00:00+05:30</published><updated>2020-02-28T12:00:00+05:30</updated><id>https://varunbarad.com/blog/write-custom-android-lint-rule-manifest-file</id><content type="html" xml:base="https://varunbarad.com/blog/write-custom-android-lint-rule-manifest-file">&lt;p&gt;Welcome folks, last time we wrote a lint check for making sure that all of our &lt;code class=&quot;highlighter-rouge&quot;&gt;EditText&lt;/code&gt; have the &lt;code class=&quot;highlighter-rouge&quot;&gt;android:inputType&lt;/code&gt; attribute.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://varunbarad.com/" rel="alternate" type="text/html" /><updated>2020-03-02T13:48:03+05:30</updated><id>https://varunbarad.com/feed.xml</id><title type="html">Varun Barad - Curious Developer</title><subtitle>My online home where I post about new things I learn or find interesting.</subtitle><author><name>Varun Barad</name></author><entry><title type="html">Write Custom Android Lint Rule - Manifest File</title><link href="https://varunbarad.com/blog/write-custom-android-lint-rule-manifest-file" rel="alternate" type="text/html" title="Write Custom Android Lint Rule - Manifest File" /><published>2020-02-28T12:00:00+05:30</published><updated>2020-02-28T12:00:00+05:30</updated><id>https://varunbarad.com/blog/write-custom-android-lint-rule-manifest-file</id><content type="html" xml:base="https://varunbarad.com/blog/write-custom-android-lint-rule-manifest-file">&lt;p&gt;Welcome folks, last time we wrote a lint check for making sure that all of our &lt;code class=&quot;highlighter-rouge&quot;&gt;EditText&lt;/code&gt; have the &lt;code class=&quot;highlighter-rouge&quot;&gt;android:inputType&lt;/code&gt; attribute.&lt;/p&gt;
 
 &lt;p&gt;This time we will be writing a check which works on our &lt;code class=&quot;highlighter-rouge&quot;&gt;AndroidManifest.xml&lt;/code&gt; file. This check will ensure that our &lt;code class=&quot;highlighter-rouge&quot;&gt;application&lt;/code&gt; tag has a child &lt;code class=&quot;highlighter-rouge&quot;&gt;meta-data&lt;/code&gt; tag with attribute &lt;code class=&quot;highlighter-rouge&quot;&gt;android:name=&quot;android.webkit.WebView.MetricsOptOut&quot;&lt;/code&gt;. Read the background for that &lt;a href=&quot;https://developer.android.com/guide/webapps/managing-webview#metrics&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
@@ -229,6 +229,19 @@ This lint check is set to fail the build when it finds any of the above element 
 
 &lt;p&gt;Any future issues that we declare/write are to be added to this &lt;code class=&quot;highlighter-rouge&quot;&gt;issues&lt;/code&gt; property list.&lt;/p&gt;
 
+&lt;h3 id=&quot;registering-our-issue-registry&quot;&gt;Registering our Issue Registry&lt;/h3&gt;
+
+&lt;p&gt;We now need to declare this class within the manifest of our JAR. We do this in our build script. Add the following block under your &lt;code class=&quot;highlighter-rouge&quot;&gt;lint-checks&lt;/code&gt; module’s &lt;code class=&quot;highlighter-rouge&quot;&gt;build.gradle&lt;/code&gt; file&lt;/p&gt;
+
+&lt;div class=&quot;language-groovy highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;jar&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;manifest&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// Format is&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// attributes(&quot;Lint-Registry-v2&quot;: &quot;&amp;lt;fully-qualified-class-name-of-your-issue-registry&amp;gt;&quot;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;attributes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Lint-Registry-v2&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;com.varunbarad.androidlintchecks.LintRegistry&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
 &lt;h2 id=&quot;integrating-our-custom-lint-check-module-into-our-project&quot;&gt;Integrating our custom lint check module into our project&lt;/h2&gt;
 
 &lt;p&gt;In your &lt;code class=&quot;highlighter-rouge&quot;&gt;app&lt;/code&gt; module go and add a &lt;code class=&quot;highlighter-rouge&quot;&gt;lintChecks&lt;/code&gt; dependency on your &lt;code class=&quot;highlighter-rouge&quot;&gt;lint-checks&lt;/code&gt; module like this&lt;/p&gt;
@@ -247,7 +260,13 @@ This lint check is set to fail the build when it finds any of the above element 
 ./gradlew lint
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Want to discuss this or any other interesting thing, hit me up on Twitter &lt;a href=&quot;https://twitter.com/varun_barad&quot;&gt;@varun_barad&lt;/a&gt;.&lt;/p&gt;</content><author><name>Varun Barad</name></author><summary type="html"></summary></entry><entry><title type="html">Dart Extension Methods</title><link href="https://varunbarad.com/blog/dart-extensions-methods" rel="alternate" type="text/html" title="Dart Extension Methods" /><published>2020-02-04T12:00:00+05:30</published><updated>2020-02-04T12:00:00+05:30</updated><id>https://varunbarad.com/blog/dart-extensions-methods</id><content type="html" xml:base="https://varunbarad.com/blog/dart-extensions-methods">&lt;p&gt;&lt;img src=&quot;https://varunbarad.com/assets/images/posts/headers/dart-extension-methods.png&quot; alt=&quot;Article Header - Dart Extension Methods&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Want to discuss this or any other interesting thing, hit me up on Twitter &lt;a href=&quot;https://twitter.com/varun_barad&quot;&gt;@varun_barad&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;edits&quot;&gt;Edits&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;2020-03-02:&lt;/strong&gt; Add the step of “Registering our Issue Registry”&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Varun Barad</name></author><summary type="html"></summary></entry><entry><title type="html">Dart Extension Methods</title><link href="https://varunbarad.com/blog/dart-extensions-methods" rel="alternate" type="text/html" title="Dart Extension Methods" /><published>2020-02-04T12:00:00+05:30</published><updated>2020-02-04T12:00:00+05:30</updated><id>https://varunbarad.com/blog/dart-extensions-methods</id><content type="html" xml:base="https://varunbarad.com/blog/dart-extensions-methods">&lt;p&gt;&lt;img src=&quot;https://varunbarad.com/assets/images/posts/headers/dart-extension-methods.png&quot; alt=&quot;Article Header - Dart Extension Methods&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Welcome devs, have you tried your hands at extensions methods? Dart recently announced support for extension methods (from Dart 2.7) and extension properties.&lt;/p&gt;
 
