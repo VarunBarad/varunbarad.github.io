@@ -63,6 +63,9 @@ defaults:
 kramdown:
   auto_ids: true
 
+include:
+  - "podcasts/"
+
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
