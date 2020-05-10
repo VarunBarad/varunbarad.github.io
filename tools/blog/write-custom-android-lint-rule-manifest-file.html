@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/assets/css/style.css?v=2ba5e00b06b350354d0ecbf462cb6f29fa4da068">
+  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=2ba5e00b06b350354d0ecbf462cb6f29fa4da068">
+  <link rel="icon" type="image/png" href="/favicon.png"/>
+  <title>Write Custom Android Lint Rule - Manifest File - Varun Barad</title>
+  <meta name="description" content="Writing our own custom android lint rules for verifying AndroidManifest file." />
+
+  <!-- RSS Feed meta-data -->
+  <link rel="alternate" type="application/atom+xml" title="RSS" href="https://varunbarad.com/feed.xml" />
+
+  <!-- Twitter meta-data -->
+  <meta name="twitter:site" content="@varun_barad" />
+  <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Write Custom Android Lint Rule - Manifest File" />
+  <meta name="twitter:description" content="Writing our own custom android lint rules for verifying AndroidManifest file." />
+
+  <!-- Open-graph meta-data -->
+  <meta property="og:site_name" content="Varun Barad - Curious Developer" />
+  <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png" />
+  <meta property="og:type" content="object" />
+  <meta property="og:title" content="Write Custom Android Lint Rule - Manifest File" />
+  <meta property="og:url" content="https://varunbarad.com/blog/write-custom-android-lint-rule-manifest-file" />
+  <meta property="og:description" content="Writing our own custom android lint rules for verifying AndroidManifest file." />
+</head>
+<body>
+<div>
+  <div id="header">
+    <div class="row header">
+  <div class="title col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+    <a href="/"><div class="title">Varun Barad</div></a>
+  </div>
+  <div class="col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8">
+    <nav class="menu text-right">
+  <a href="/portfolio">Portfolio</a>
+  <a href="/blog">Blog</a>
+  <a href="/contact">Contact</a>
+</nav>
+
+  </div>
+</div>
+
+  </div>
+  <div class="content row">
+    <div class="post-container">
+      <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+        <div>
+          <div class="page-title text-uppercase text-center">Write Custom Android Lint Rule - Manifest File</div>
+          <div class="post-date text-center">February 28, 2020</div>
+          <div class="post-content"><p>Welcome folks, last time we wrote a lint check for making sure that all of our <code class="highlighter-rouge">EditText</code> have the <code class="highlighter-rouge">android:inputType</code> attribute.</p>
+
+<p>This time we will be writing a check which works on our <code class="highlighter-rouge">AndroidManifest.xml</code> file. This check will ensure that our <code class="highlighter-rouge">application</code> tag has a child <code class="highlighter-rouge">meta-data</code> tag with attribute <code class="highlighter-rouge">android:name="android.webkit.WebView.MetricsOptOut"</code>. Read the background for that <a href="https://developer.android.com/guide/webapps/managing-webview#metrics">here</a>.</p>
+
+<p>If you haven’t yet then first go through <a href="https://varunbarad.com/blog/write-custom-android-lint-rule-layout-files">the last post</a> otherwise you might not understand many things as we will be building upon what we have created in that post.</p>
+
+<h2 id="changes-to-add-to-last-project">Changes to add to last project</h2>
+
+<p>We will be building upon the <code class="highlighter-rouge">lint-checks</code> module we created last time. We would need to make following changes:</p>
+
+<ul>
+  <li>Add a new issue and detector pertaining to this manifest check</li>
+  <li>Register the new issue in <code class="highlighter-rouge">LintRegistry</code> class</li>
+</ul>
+
+<h2 id="create-the-detector">Create the detector</h2>
+
+<p>Create a class named <code class="highlighter-rouge">WebViewMetricsMetaTagDetector</code> which extends from <code class="highlighter-rouge">ManifestDetector</code></p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">WebViewMetricsMetaTagDetector</span> <span class="p">:</span> <span class="n">ManifestDetector</span><span class="p">()</span> <span class="p">{</span>
+    <span class="o">..</span><span class="p">.</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Now to define the Issue.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">companion</span> <span class="k">object</span> <span class="p">{</span>
+    <span class="n">@JvmStatic</span>
+    <span class="k">internal</span> <span class="kd">val</span> <span class="py">ISSUE_MISSING_WEBVIEW_METRICS_META_TAG</span> <span class="p">=</span> <span class="n">Issue</span><span class="p">.</span><span class="n">create</span><span class="p">(</span>
+        <span class="n">id</span> <span class="p">=</span> <span class="s">"MissingWebViewMetricsMetaTag"</span><span class="p">,</span>
+        <span class="n">briefDescription</span> <span class="p">=</span> <span class="s">"Specify whether you want to opt-out of metrics tracking via WebView."</span><span class="p">,</span>
+        <span class="n">explanation</span> <span class="p">=</span> <span class="s">"WebView can upload diagnostic data to Google. You can opt-out by specifying a `meta-data` tag under your `application` tag in manifest."</span><span class="p">,</span>
+        <span class="n">category</span> <span class="p">=</span> <span class="n">Category</span><span class="p">.</span><span class="n">SECURITY</span><span class="p">,</span>
+        <span class="n">priority</span> <span class="p">=</span> <span class="m">8</span><span class="p">,</span>
+        <span class="n">severity</span> <span class="p">=</span> <span class="n">Severity</span><span class="p">.</span><span class="n">ERROR</span><span class="p">,</span>
+        <span class="n">implementation</span> <span class="p">=</span> <span class="n">Implementation</span><span class="p">(</span>
+            <span class="n">WebViewMetricsMetaTagDetector</span><span class="o">::</span><span class="k">class</span><span class="p">.</span><span class="n">java</span><span class="p">,</span>
+            <span class="n">Scope</span><span class="p">.</span><span class="n">MANIFEST_SCOPE</span>
+        <span class="p">)</span>
+    <span class="p">).</span><span class="n">addMoreInfo</span><span class="p">(</span><span class="s">"https://developer.android.com/guide/webapps/managing-webview#metrics"</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>The things that have changed here are:</p>
+
+<ol>
+  <li><code class="highlighter-rouge">id</code>, <code class="highlighter-rouge">briefDescription</code> and <code class="highlighter-rouge">explanation</code> for the issue.</li>
+  <li>Scope inside the Implementation object passed against <code class="highlighter-rouge">implementation</code> parameter. We changed from <code class="highlighter-rouge">Scope.ALL_RESOURCES_SCOPE</code> to <code class="highlighter-rouge">Scope.MANIFEST_SCOPE</code>.</li>
+</ol>
+
+<p>We now override the 2 required methods:</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">override</span> <span class="k">fun</span> <span class="nf">getApplicableElements</span><span class="p">():</span> <span class="n">Collection</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;?</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">listOf</span><span class="p">(</span>
+        <span class="n">SdkConstants</span><span class="p">.</span><span class="n">TAG_APPLICATION</span>
+    <span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">override</span> <span class="k">fun</span> <span class="nf">visitElement</span><span class="p">(</span><span class="n">context</span><span class="p">:</span> <span class="n">XmlContext</span><span class="p">,</span> <span class="n">element</span><span class="p">:</span> <span class="n">Element</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">val</span> <span class="py">containsWebViewMetricsOptOutTag</span> <span class="p">=</span> <span class="n">element</span><span class="p">.</span><span class="n">childNodes</span>
+        <span class="p">.</span><span class="n">toList</span><span class="p">()</span>
+        <span class="p">.</span><span class="n">filter</span> <span class="p">{</span> <span class="n">it</span><span class="p">.</span><span class="n">nodeName</span> <span class="p">==</span> <span class="s">"meta-data"</span> <span class="p">}</span>
+        <span class="p">.</span><span class="n">any</span> <span class="p">{</span> <span class="n">node</span> <span class="p">-&gt;</span>
+            <span class="n">node</span><span class="p">.</span><span class="n">attributes</span><span class="p">.</span><span class="n">toPairedNameValueList</span><span class="p">().</span><span class="n">filter</span> <span class="p">{</span> <span class="n">attribute</span> <span class="p">-&gt;</span>
+                <span class="n">attribute</span><span class="p">.</span><span class="n">first</span> <span class="p">==</span> <span class="s">"android:name"</span> <span class="p">&amp;&amp;</span> <span class="n">attribute</span><span class="p">.</span><span class="n">second</span> <span class="p">==</span> <span class="s">"android.webkit.WebView.MetricsOptOut"</span>
+            <span class="p">}.</span><span class="n">isNotEmpty</span><span class="p">()</span>
+        <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(!</span><span class="n">containsWebViewMetricsOptOutTag</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">context</span><span class="p">.</span><span class="n">report</span><span class="p">(</span>
+            <span class="n">issue</span> <span class="p">=</span> <span class="n">ISSUE_MISSING_WEBVIEW_METRICS_META_TAG</span><span class="p">,</span>
+            <span class="n">location</span> <span class="p">=</span> <span class="n">context</span><span class="p">.</span><span class="n">getLocation</span><span class="p">(</span><span class="n">element</span><span class="p">),</span>
+            <span class="n">message</span> <span class="p">=</span> <span class="n">ISSUE_MISSING_WEBVIEW_METRICS_META_TAG</span><span class="p">.</span><span class="n">getExplanation</span><span class="p">(</span><span class="n">TextFormat</span><span class="p">.</span><span class="n">TEXT</span><span class="p">)</span>
+        <span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>In the <code class="highlighter-rouge">visitElement</code> method, we are traversing through all children of <code class="highlighter-rouge">&lt;application&gt;</code> and checking that a <code class="highlighter-rouge">meta-data</code> tag with attribute <code class="highlighter-rouge">android:name="android.webkit.WebView.MetricsOptOut"</code> exists. If it does not exist then we raise our issue <code class="highlighter-rouge">ISSUE_MISSING_WEBVIEW_METRICS_META_TAG</code>.</p>
+
+<h2 id="register-the-new-issue">Register the new issue</h2>
+
+<p>The last thing we need to do now is to add the above created issue in our <code class="highlighter-rouge">LintRegistry</code> class.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">LintRegistry</span> <span class="p">:</span> <span class="n">IssueRegistry</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">override</span> <span class="kd">val</span> <span class="py">api</span><span class="p">:</span> <span class="n">Int</span>
+        <span class="k">get</span><span class="p">()</span> <span class="p">=</span> <span class="n">CURRENT_API</span>
+
+    <span class="k">override</span> <span class="kd">val</span> <span class="py">issues</span><span class="p">:</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Issue</span><span class="p">&gt;</span>
+        <span class="k">get</span><span class="p">()</span> <span class="p">=</span> <span class="n">listOf</span><span class="p">(</span>
+            <span class="n">InputTypeDetector</span><span class="p">.</span><span class="n">ISSUE_MISSING_INPUT_TYPE</span><span class="p">,</span>
+            <span class="n">WebViewMetricsMetaTagDetector</span><span class="p">.</span><span class="n">ISSUE_MISSING_WEBVIEW_METRICS_META_TAG</span> <span class="c1">// We added this line
+</span>        <span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="run-the-lint-checks">Run the lint checks</h2>
+
+<p>There we are done, now to run the lint checks using gradle</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./gradlew lint
+</code></pre></div></div>
+
+<p>Want to discuss this or any other interesting thing, hit me up on Twitter <a href="https://twitter.com/varun_barad">@varun_barad</a>.</p>
+</div>
+        </div>
+
+        <div class="post-categories-container">
+          Categories:
+          <div>
+            
+            <a href="/category/android" class="badge badge-warning">#android</a>
+            
+            <a href="/category/programming" class="badge badge-warning">#programming</a>
+            
+            <a href="/blog" class="badge badge-warning">#All</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="footer">
+  <div>
+    
+    <a href="https://github.com/VarunBarad" target="_blank"><i class="fab fa-github social-links"></i></a>
+    
+    <a href="https://twitter.com/varun_barad" target="_blank"><i class="fab fa-twitter social-links"></i></a>
+    
+    <a href="https://dev.to/varunbarad" target="_blank"><i class="fab fa-dev social-links"></i></a>
+    
+    <a href="https://linkedin.com/in/varunbarad" target="_blank"><i class="fab fa-linkedin social-links"></i></a>
+    
+    <a href="https://stackoverflow.com/users/4717436/varunbarad" target="_blank"><i class="fab fa-stack-overflow social-links"></i></a>
+    
+    <a href="https://codepen.io/VarunBarad" target="_blank"><i class="fab fa-codepen social-links"></i></a>
+    
+  </div>
+  <div class="developer-attribution">
+    
+    Made by <a href="https://dixita0607.github.io" target="_blank">Dixita Ganatra</a>
+  </div>
+</div>
+
+  </div>
+</div>
+
+<script src="/assets/js/jquery.min.js?v=2ba5e00b06b350354d0ecbf462cb6f29fa4da068"></script>
+<script src="/assets/js/bootstrap.min.js?v=2ba5e00b06b350354d0ecbf462cb6f29fa4da068"></script>
+<script src="/assets/js/contact.js?v=2ba5e00b06b350354d0ecbf462cb6f29fa4da068"></script>
+</body>
+</html>

@@ -1,0 +1,686 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://varunbarad.com/" rel="alternate" type="text/html" /><updated>2020-04-20T07:47:40+05:30</updated><id>https://varunbarad.com/feed.xml</id><title type="html">Varun Barad - Curious Developer</title><subtitle>My online home where I post about new things I learn or find interesting.</subtitle><author><name>Varun Barad</name></author><entry><title type="html">Write Custom Android Lint Rule - Manifest File</title><link href="https://varunbarad.com/blog/write-custom-android-lint-rule-manifest-file" rel="alternate" type="text/html" title="Write Custom Android Lint Rule - Manifest File" /><published>2020-02-28T12:00:00+05:30</published><updated>2020-02-28T12:00:00+05:30</updated><id>https://varunbarad.com/blog/write-custom-android-lint-rule-manifest-file</id><content type="html" xml:base="https://varunbarad.com/blog/write-custom-android-lint-rule-manifest-file">&lt;p&gt;Welcome folks, last time we wrote a lint check for making sure that all of our &lt;code class=&quot;highlighter-rouge&quot;&gt;EditText&lt;/code&gt; have the &lt;code class=&quot;highlighter-rouge&quot;&gt;android:inputType&lt;/code&gt; attribute.&lt;/p&gt;
+
+&lt;p&gt;This time we will be writing a check which works on our &lt;code class=&quot;highlighter-rouge&quot;&gt;AndroidManifest.xml&lt;/code&gt; file. This check will ensure that our &lt;code class=&quot;highlighter-rouge&quot;&gt;application&lt;/code&gt; tag has a child &lt;code class=&quot;highlighter-rouge&quot;&gt;meta-data&lt;/code&gt; tag with attribute &lt;code class=&quot;highlighter-rouge&quot;&gt;android:name=&quot;android.webkit.WebView.MetricsOptOut&quot;&lt;/code&gt;. Read the background for that &lt;a href=&quot;https://developer.android.com/guide/webapps/managing-webview#metrics&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;If you haven’t yet then first go through &lt;a href=&quot;https://varunbarad.com/blog/write-custom-android-lint-rule-layout-files&quot;&gt;the last post&lt;/a&gt; otherwise you might not understand many things as we will be building upon what we have created in that post.&lt;/p&gt;
+
+&lt;h2 id=&quot;changes-to-add-to-last-project&quot;&gt;Changes to add to last project&lt;/h2&gt;
+
+&lt;p&gt;We will be building upon the &lt;code class=&quot;highlighter-rouge&quot;&gt;lint-checks&lt;/code&gt; module we created last time. We would need to make following changes:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Add a new issue and detector pertaining to this manifest check&lt;/li&gt;
+  &lt;li&gt;Register the new issue in &lt;code class=&quot;highlighter-rouge&quot;&gt;LintRegistry&lt;/code&gt; class&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;create-the-detector&quot;&gt;Create the detector&lt;/h2&gt;
+
+&lt;p&gt;Create a class named &lt;code class=&quot;highlighter-rouge&quot;&gt;WebViewMetricsMetaTagDetector&lt;/code&gt; which extends from &lt;code class=&quot;highlighter-rouge&quot;&gt;ManifestDetector&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-kotlin highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;WebViewMetricsMetaTagDetector&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ManifestDetector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now to define the Issue.&lt;/p&gt;
+
+&lt;div class=&quot;language-kotlin highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;companion&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;@JvmStatic&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;internal&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;py&quot;&gt;ISSUE_MISSING_WEBVIEW_METRICS_META_TAG&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Issue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;MissingWebViewMetricsMetaTag&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;briefDescription&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Specify whether you want to opt-out of metrics tracking via WebView.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;explanation&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;WebView can upload diagnostic data to Google. You can opt-out by specifying a `meta-data` tag under your `application` tag in manifest.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;category&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Category&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SECURITY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;priority&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;severity&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Severity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ERROR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;implementation&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Implementation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;WebViewMetricsMetaTagDetector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;Scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MANIFEST_SCOPE&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;addMoreInfo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://developer.android.com/guide/webapps/managing-webview#metrics&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The things that have changed here are:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;id&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;briefDescription&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;explanation&lt;/code&gt; for the issue.&lt;/li&gt;
+  &lt;li&gt;Scope inside the Implementation object passed against &lt;code class=&quot;highlighter-rouge&quot;&gt;implementation&lt;/code&gt; parameter. We changed from &lt;code class=&quot;highlighter-rouge&quot;&gt;Scope.ALL_RESOURCES_SCOPE&lt;/code&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;Scope.MANIFEST_SCOPE&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;We now override the 2 required methods:&lt;/p&gt;
+
+&lt;div class=&quot;language-kotlin highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fun&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getApplicableElements&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Collection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;?&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;listOf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;SdkConstants&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TAG_APPLICATION&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fun&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;visitElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;XmlContext&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;py&quot;&gt;containsWebViewMetricsOptOutTag&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;childNodes&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nodeName&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;meta-data&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;any&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;node&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;-&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;attributes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toPairedNameValueList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;attribute&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;-&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;attribute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;first&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;android:name&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;attribute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;second&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;android.webkit.WebView.MetricsOptOut&quot;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isNotEmpty&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;containsWebViewMetricsOptOutTag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;report&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;issue&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ISSUE_MISSING_WEBVIEW_METRICS_META_TAG&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;location&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getLocation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;message&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ISSUE_MISSING_WEBVIEW_METRICS_META_TAG&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getExplanation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TextFormat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TEXT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In the &lt;code class=&quot;highlighter-rouge&quot;&gt;visitElement&lt;/code&gt; method, we are traversing through all children of &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;application&amp;gt;&lt;/code&gt; and checking that a &lt;code class=&quot;highlighter-rouge&quot;&gt;meta-data&lt;/code&gt; tag with attribute &lt;code class=&quot;highlighter-rouge&quot;&gt;android:name=&quot;android.webkit.WebView.MetricsOptOut&quot;&lt;/code&gt; exists. If it does not exist then we raise our issue &lt;code class=&quot;highlighter-rouge&quot;&gt;ISSUE_MISSING_WEBVIEW_METRICS_META_TAG&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;register-the-new-issue&quot;&gt;Register the new issue&lt;/h2&gt;
+
+&lt;p&gt;The last thing we need to do now is to add the above created issue in our &lt;code class=&quot;highlighter-rouge&quot;&gt;LintRegistry&lt;/code&gt; class.&lt;/p&gt;
+
+&lt;div class=&quot;language-kotlin highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LintRegistry&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IssueRegistry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;py&quot;&gt;api&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Int&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CURRENT_API&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;py&quot;&gt;issues&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Issue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;listOf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;InputTypeDetector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ISSUE_MISSING_INPUT_TYPE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;WebViewMetricsMetaTagDetector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ISSUE_MISSING_WEBVIEW_METRICS_META_TAG&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// We added this line
+&lt;/span&gt;        &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;run-the-lint-checks&quot;&gt;Run the lint checks&lt;/h2&gt;
+
+&lt;p&gt;There we are done, now to run the lint checks using gradle&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;./gradlew lint
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Want to discuss this or any other interesting thing, hit me up on Twitter &lt;a href=&quot;https://twitter.com/varun_barad&quot;&gt;@varun_barad&lt;/a&gt;.&lt;/p&gt;</content><author><name>Varun Barad</name></author><summary type="html">Welcome folks, last time we wrote a lint check for making sure that all of our EditText have the android:inputType attribute.</summary></entry><entry><title type="html">Write Custom Android Lint Rule - Layout Files</title><link href="https://varunbarad.com/blog/write-custom-android-lint-rule-layout-files" rel="alternate" type="text/html" title="Write Custom Android Lint Rule - Layout Files" /><published>2020-02-27T12:00:00+05:30</published><updated>2020-02-27T12:00:00+05:30</updated><id>https://varunbarad.com/blog/write-custom-android-lint-rule-layout-files</id><content type="html" xml:base="https://varunbarad.com/blog/write-custom-android-lint-rule-layout-files">&lt;p&gt;&lt;img src=&quot;https://varunbarad.com/assets/images/posts/headers/write-custom-android-lint-rule-layout-files.jpg&quot; alt=&quot;Article Header - Write Custom Android Lint Rules&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Welcome devs, I recently faced an issue where if I didn’t specify any &lt;code class=&quot;highlighter-rouge&quot;&gt;android:inputType&lt;/code&gt; for &lt;code class=&quot;highlighter-rouge&quot;&gt;EditText&lt;/code&gt; then keyboard capitalisation did not correctly show. The deeper problem was that I always forgot to include that attribute. So I decided to use a lint check which would fail my build if any of my &lt;code class=&quot;highlighter-rouge&quot;&gt;EditText&lt;/code&gt; does not have the &lt;code class=&quot;highlighter-rouge&quot;&gt;android:inputType&lt;/code&gt; attribute.&lt;/p&gt;
+
+&lt;p&gt;Since there was no such thing included in pre-provided checks I decided to write a custom lint rule. What follows is a guide on how to write a lint-check which goes checks all of our layout files and flags any &lt;code class=&quot;highlighter-rouge&quot;&gt;EditText&lt;/code&gt; without &lt;code class=&quot;highlighter-rouge&quot;&gt;android:inputType&lt;/code&gt; attribute.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-android-lint&quot;&gt;What is Android lint?&lt;/h2&gt;
+
+&lt;p&gt;Android lint is a tool which provides us static code-analysis (it does not need to run the application to identify potential problems). The Android SDK already provides us with some pre-made lint checks, but the best part is that it allows us to write our own custom lint checks.&lt;/p&gt;
+
+&lt;h2 id=&quot;writing-a-custom-lint-check&quot;&gt;Writing a custom lint check&lt;/h2&gt;
+
+&lt;p&gt;We will be writing a lint check which checks whether each &lt;code class=&quot;highlighter-rouge&quot;&gt;EditText&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;androidx.appcompat.widget.AppCompatEditText&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;android.support.v7.widget.AppCompatEditText&lt;/code&gt; has the &lt;code class=&quot;highlighter-rouge&quot;&gt;android:inputType&lt;/code&gt; attribute defined or not.
+This lint check is set to fail the build when it finds any of the above element not containing the &lt;code class=&quot;highlighter-rouge&quot;&gt;android:inputType&lt;/code&gt; attribute.&lt;/p&gt;
+
+&lt;h3 id=&quot;create-a-new-library-module&quot;&gt;Create a new Library Module&lt;/h3&gt;
+
+&lt;p&gt;In the project for which you want to write the lint check, add a new “Java or Kotlin Library” module.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;For Library name you can put anything but I have used &lt;code class=&quot;highlighter-rouge&quot;&gt;lint-checks&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;For Class name put &lt;code class=&quot;highlighter-rouge&quot;&gt;LintRegistry&lt;/code&gt; (we will get to the reasoning later)&lt;/li&gt;
+  &lt;li&gt;I have selected Kotlin as the language&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://varunbarad.com/assets/images/posts/write-custom-android-lint-rule-layout-files/create-new-module.png&quot; alt=&quot;Screenshot - Add new Java or Kotlin Library Module&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;add-dependencies-in-gradle&quot;&gt;Add dependencies in Gradle&lt;/h3&gt;
+
+&lt;p&gt;You only need 3 dependencies in your &lt;code class=&quot;highlighter-rouge&quot;&gt;lint-checks&lt;/code&gt; module’s &lt;code class=&quot;highlighter-rouge&quot;&gt;build.gradle&lt;/code&gt; and all of them need to be only &lt;code class=&quot;highlighter-rouge&quot;&gt;compileOnly&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-groovy highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;dependencies&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;compileOnly&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.61&quot;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;compileOnly&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;com.android.tools.lint:lint-api:26.6.0&quot;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;compileOnly&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;com.android.tools.lint:lint-checks:26.6.0&quot;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;create-the-detector&quot;&gt;Create the detector&lt;/h3&gt;
+
+&lt;p&gt;Now let’s write the class which will actually detect the issues. We create a new class named &lt;code class=&quot;highlighter-rouge&quot;&gt;InputTypeDetector&lt;/code&gt; which extends from &lt;code class=&quot;highlighter-rouge&quot;&gt;LayoutDetector&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-kotlin highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;InputTypeDetector&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LayoutDetector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;o&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now we specify the Issue that we want our detector to raise when we find and edit-text without input-type. We declare it as a property under companion object of this class (and mark it with &lt;code class=&quot;highlighter-rouge&quot;&gt;@JvmStatic&lt;/code&gt; so that it appears as static field when accessed from Java code).&lt;/p&gt;
+
+&lt;div class=&quot;language-kotlin highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;companion&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;@JvmStatic&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;internal&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;py&quot;&gt;ISSUE_MISSING_INPUT_TYPE&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Issue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;MissingInputType&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;briefDescription&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Specify inputType attribute to get proper keyboard shown by system.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;explanation&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;You should specify an inputType for each EditText so that you can get the proper keyboard to be shown by system.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;category&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Category&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;USABILITY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;priority&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;severity&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Severity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ERROR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;implementation&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Implementation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;InputTypeDetector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;Scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ALL_RESOURCES_SCOPE&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;addMoreInfo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://developer.android.com/training/keyboard-input/style&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The important things here are:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;id&lt;/code&gt; - The name which is shown in the lint report&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;severity&lt;/code&gt; - There are many types of severity, here we have specified &lt;code class=&quot;highlighter-rouge&quot;&gt;ERROR&lt;/code&gt; as we want the build to fail when we find this issue&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;implementation&lt;/code&gt; - The implementation defines which XML files to scan for this issue and which detector to use to detect this issue.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;After that we override the function &lt;code class=&quot;highlighter-rouge&quot;&gt;getApplicableElements&lt;/code&gt;, where we specify for which elements we want this detector to be run (so that our detector doesn’t get unnecessarily called for every element).&lt;/p&gt;
+
+&lt;div class=&quot;language-kotlin highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fun&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getApplicableElements&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Collection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;?&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;listOf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;SdkConstants&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;EDIT_TEXT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;&quot;androidx.appcompat.widget.AppCompatEditText&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;&quot;android.support.v7.widget.AppCompatEditText&quot;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Since we only want our detector to be called for &lt;code class=&quot;highlighter-rouge&quot;&gt;EditText&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;androidx.appcompat.widget.AppCompatEditText&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;android.support.v7.widget.AppCompatEditText&lt;/code&gt; we return a list of all of them.&lt;/p&gt;
+
+&lt;p&gt;The last thing remaining to be done in detector is to actually determine if any given element has the problem or not. For that we override the &lt;code class=&quot;highlighter-rouge&quot;&gt;visitElement&lt;/code&gt; method.&lt;/p&gt;
+
+&lt;div class=&quot;language-kotlin highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fun&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;visitElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;XmlContext&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hasAttribute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SdkConstants&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ATTR_INPUT_TYPE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Check if the element has the `android:inputType` attribute
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;report&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;issue&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ISSUE_MISSING_INPUT_TYPE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// The issue that we defined above
+&lt;/span&gt;            &lt;span class=&quot;n&quot;&gt;location&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getLocation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;message&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ISSUE_MISSING_INPUT_TYPE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getExplanation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TextFormat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TEXT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Here we are doing 2 things&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Checking if given element has the &lt;code class=&quot;highlighter-rouge&quot;&gt;android:inputType&lt;/code&gt; attribute or not&lt;/li&gt;
+  &lt;li&gt;Raise the issue if the &lt;code class=&quot;highlighter-rouge&quot;&gt;android:inputType&lt;/code&gt; attribute is not present&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; One thing you might have noticed is the &lt;code class=&quot;highlighter-rouge&quot;&gt;location&lt;/code&gt; parameter, that is used by the &lt;code class=&quot;highlighter-rouge&quot;&gt;lint&lt;/code&gt; tool to show exactly where any issue is reported.&lt;/p&gt;
+
+&lt;h3 id=&quot;registering-the-issue&quot;&gt;Registering the Issue&lt;/h3&gt;
+
+&lt;p&gt;Now we have declared the issue and corresponding detector, but we need to register them at a central location so that the lint tool knows that it has to execute these checks too. For that we go back to our &lt;code class=&quot;highlighter-rouge&quot;&gt;LintRegistry&lt;/code&gt; class that we declared earlier when creating the &lt;code class=&quot;highlighter-rouge&quot;&gt;lint-checks&lt;/code&gt; module.&lt;/p&gt;
+
+&lt;p&gt;We extend that class from &lt;code class=&quot;highlighter-rouge&quot;&gt;IssueRegistry&lt;/code&gt; class and override a couple of properties.&lt;/p&gt;
+
+&lt;div class=&quot;language-kotlin highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LintRegistry&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IssueRegistry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;py&quot;&gt;api&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Int&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CURRENT_API&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;py&quot;&gt;issues&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Issue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;listOf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;InputTypeDetector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ISSUE_MISSING_INPUT_TYPE&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Any future issues that we declare/write are to be added to this &lt;code class=&quot;highlighter-rouge&quot;&gt;issues&lt;/code&gt; property list.&lt;/p&gt;
+
+&lt;h3 id=&quot;registering-our-issue-registry&quot;&gt;Registering our Issue Registry&lt;/h3&gt;
+
+&lt;p&gt;We now need to declare this class within the manifest of our JAR. We do this in our build script. Add the following block under your &lt;code class=&quot;highlighter-rouge&quot;&gt;lint-checks&lt;/code&gt; module’s &lt;code class=&quot;highlighter-rouge&quot;&gt;build.gradle&lt;/code&gt; file&lt;/p&gt;
+
+&lt;div class=&quot;language-groovy highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;jar&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;manifest&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// Format is&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// attributes(&quot;Lint-Registry-v2&quot;: &quot;&amp;lt;fully-qualified-class-name-of-your-issue-registry&amp;gt;&quot;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;attributes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Lint-Registry-v2&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;com.varunbarad.androidlintchecks.LintRegistry&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;integrating-our-custom-lint-check-module-into-our-project&quot;&gt;Integrating our custom lint check module into our project&lt;/h2&gt;
+
+&lt;p&gt;In your &lt;code class=&quot;highlighter-rouge&quot;&gt;app&lt;/code&gt; module go and add a &lt;code class=&quot;highlighter-rouge&quot;&gt;lintChecks&lt;/code&gt; dependency on your &lt;code class=&quot;highlighter-rouge&quot;&gt;lint-checks&lt;/code&gt; module like this&lt;/p&gt;
+
+&lt;div class=&quot;language-groovy highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;dependencies&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;lintChecks&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;project&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;:lint-checks&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;run-the-lint-checks&quot;&gt;Run the lint checks&lt;/h2&gt;
+
+&lt;p&gt;That was all that was needed to write your custom lint check. Now whenever you run a lint check using gradle, it will also check whether your code passes our custom lint checks or not.&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Command to run lint check&lt;/span&gt;
+./gradlew lint
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Want to discuss this or any other interesting thing, hit me up on Twitter &lt;a href=&quot;https://twitter.com/varun_barad&quot;&gt;@varun_barad&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;edits&quot;&gt;Edits&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;2020-03-02:&lt;/strong&gt; Add the step of “Registering our Issue Registry”&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Varun Barad</name></author><summary type="html"></summary></entry><entry><title type="html">Dart Extension Methods</title><link href="https://varunbarad.com/blog/dart-extensions-methods" rel="alternate" type="text/html" title="Dart Extension Methods" /><published>2020-02-04T12:00:00+05:30</published><updated>2020-02-04T12:00:00+05:30</updated><id>https://varunbarad.com/blog/dart-extensions-methods</id><content type="html" xml:base="https://varunbarad.com/blog/dart-extensions-methods">&lt;p&gt;&lt;img src=&quot;https://varunbarad.com/assets/images/posts/headers/dart-extension-methods.png&quot; alt=&quot;Article Header - Dart Extension Methods&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Welcome devs, have you tried your hands at extensions methods? Dart recently announced support for extension methods (from Dart 2.7) and extension properties.&lt;/p&gt;
+
+&lt;p&gt;Extension methods are a way to add functionality to existing libraries. When you are using someone else’s library it’s often impractical/impossible to change the API. But you can &lt;em&gt;extend&lt;/em&gt; it using extension methods.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-are-extension-methods&quot;&gt;What are extension methods?&lt;/h2&gt;
+
+&lt;p&gt;Consider the following code that parses a string into an integer:&lt;/p&gt;
+
+&lt;div class=&quot;language-dart highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'42'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Won’t it look cleaner/better if this functionality was available on &lt;code class=&quot;highlighter-rouge&quot;&gt;String&lt;/code&gt; class like below?&lt;/p&gt;
+
+&lt;div class=&quot;language-dart highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;'42'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;parseInt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Since the language (where class &lt;code class=&quot;highlighter-rouge&quot;&gt;String&lt;/code&gt; comes from) doesn’t provide such a method we can’t parse a string to an int like that. Extension methods allow us to specify such custom functionalities not provided by the library (Dart language in this case). Let’s see how to do that in next section.&lt;/p&gt;
+
+&lt;h2 id=&quot;writing-a-basic-extension-method&quot;&gt;Writing a basic extension method&lt;/h2&gt;
+
+&lt;p&gt;So we want to have a method &lt;code class=&quot;highlighter-rouge&quot;&gt;parseInt&lt;/code&gt; &lt;strong&gt;on&lt;/strong&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;String&lt;/code&gt; class which would parse the given string to integer.&lt;/p&gt;
+
+&lt;div class=&quot;language-dart highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;'42'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;parseInt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;For that we will define an extension method on &lt;code class=&quot;highlighter-rouge&quot;&gt;String&lt;/code&gt; like this&lt;/p&gt;
+
+&lt;div class=&quot;language-dart highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// File: extension_methods.dart&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;extension&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;StringExtras&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;on&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;parseInt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// We can also define getters as extensions&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;get&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;doubleLength&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Here we have named this set of extension methods as &lt;code class=&quot;highlighter-rouge&quot;&gt;StringExtras&lt;/code&gt;, you can name them anything you like.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; As you might have noticed above, we can define multiple extension methods/getters under a single extension block.&lt;/p&gt;
+
+&lt;h2 id=&quot;using-the-extension-method&quot;&gt;Using the extension method&lt;/h2&gt;
+
+&lt;p&gt;Extension methods (once imported) can be used just like any member method on that class’s object. Our example would go like this&lt;/p&gt;
+
+&lt;div class=&quot;language-dart highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'extension_methods.dart'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'42'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;parseInt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Would print 50&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Similarly we can use the getters too&lt;/p&gt;
+
+&lt;div class=&quot;language-dart highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'extension_methods.dart'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'42'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;doubleLength&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Would print 4&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;important-notes&quot;&gt;Important Notes&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Extension methods &lt;em&gt;don’t&lt;/em&gt; work with the type &lt;code class=&quot;highlighter-rouge&quot;&gt;dynamic&lt;/code&gt;. However they &lt;em&gt;do&lt;/em&gt; work with Dart’s type inference.&lt;/li&gt;
+  &lt;li&gt;Since extension methods are resolved statically, they’re as fast as calling a static function.&lt;/li&gt;
+  &lt;li&gt;Extension methods can’t access private members of the class.&lt;/li&gt;
+  &lt;li&gt;If an extension member has a name conflict then you should refer &lt;a href=&quot;https://dart.dev/guides/language/extension-methods#api-conflicts&quot;&gt;here&lt;/a&gt; for your options.&lt;/li&gt;
+  &lt;li&gt;You can define extension methods on classes which take generic type parameters (for example &lt;code class=&quot;highlighter-rouge&quot;&gt;List&amp;lt;T&amp;gt;&lt;/code&gt;). Refer &lt;a href=&quot;https://dart.dev/guides/language/extension-methods#implementing-generic-extensions&quot;&gt;this section&lt;/a&gt; for further details.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://dart.dev/guides/language/extension-methods&quot;&gt;Official release documentation - https://dart.dev/guides/language/extension-methods&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Want to discuss this or any other interesting thing, hit me up on Twitter &lt;a href=&quot;https://twitter.com/varun_barad&quot;&gt;@varun_barad&lt;/a&gt;.&lt;/p&gt;</content><author><name>Varun Barad</name></author><summary type="html"></summary></entry><entry><title type="html">P vs NP Algorithm Problem Types</title><link href="https://varunbarad.com/blog/p-vs-np-algorithm-problem-types" rel="alternate" type="text/html" title="P vs NP Algorithm Problem Types" /><published>2020-02-02T12:00:00+05:30</published><updated>2020-02-02T12:00:00+05:30</updated><id>https://varunbarad.com/blog/p-vs-np-algorithm-problem-types</id><content type="html" xml:base="https://varunbarad.com/blog/p-vs-np-algorithm-problem-types">&lt;p&gt;&lt;img src=&quot;https://varunbarad.com/assets/images/posts/p-np-venn-diagram.png&quot; alt=&quot;Venn Diagram - Problem Types&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The above image represents something completely un-understandable to me during my college years. I couldn’t understand what the professor tried to explain during my algorithms class when the topic of P vs NP vs NP-Complete problems came.&lt;/p&gt;
+
+&lt;p&gt;Finally I understood it from &lt;a href=&quot;https://www.youtube.com/watch?v=EHp4FPyajKQ&quot;&gt;a video by “Up and Atom”&lt;/a&gt;. The problems are grouped according to these 2 criteria:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Can a solution to the problem be found in polynomial time?&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Can a given solution for the problem be verified in polynomial time?&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;np-problems&quot;&gt;NP Problems&lt;/h2&gt;
+
+&lt;p&gt;These are the problems for which condition 2 holds true. If given a solution to such problem, the correctness of that solution can be verified in polynomial time. Condition 1 being true or false for such problems doesn’t affect whether they can fall under NP category or not.&lt;/p&gt;
+
+&lt;h2 id=&quot;np-complete-problems&quot;&gt;NP-Complete Problems&lt;/h2&gt;
+
+&lt;p&gt;These are the problems for which condition 2 holds true but condition 1 is false. A valid solution to the problem can’t be verified in polynomial time, but if given a solution to the problem the correctness of that solution can be verified in polynomial time.&lt;/p&gt;
+
+&lt;h2 id=&quot;p-problems&quot;&gt;P Problems&lt;/h2&gt;
+
+&lt;p&gt;For these problems, both conditions 1 &amp;amp; 2 hold true. There exist methods by which a valid solution to any of these problem can be found under polynomial time. And also, any given solution for such problem can be verified in polynomial time.&lt;/p&gt;
+
+&lt;p&gt;Want to discuss this or any other interesting thing, hit me up on Twitter &lt;a href=&quot;https://twitter.com/varun_barad&quot;&gt;@varun_barad&lt;/a&gt;.&lt;/p&gt;</content><author><name>Varun Barad</name></author><summary type="html"></summary></entry><entry><title type="html">Record Linux terminal session</title><link href="https://varunbarad.com/blog/record-linux-terminal-session" rel="alternate" type="text/html" title="Record Linux terminal session" /><published>2019-10-26T12:00:00+05:30</published><updated>2019-10-26T12:00:00+05:30</updated><id>https://varunbarad.com/blog/record-linux-terminal-session</id><content type="html" xml:base="https://varunbarad.com/blog/record-linux-terminal-session">&lt;p&gt;I was recently setting up my computer with Ubuntu on it and this time I was decided that I would document every step of the process so that I can get it done faster the next time. That thought and process worked easily for the programs whose installations were just a simple &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo apt install ...&lt;/code&gt; but when I was installing something new (like VS Code) there were many steps involved and it wasn’t an easy task to document them as I went on installing those things.&lt;/p&gt;
+
+&lt;p&gt;What I decided to then do was to just record my terminal sessions for each such long program and review those recordings later to write a script for everything that I needed to do.&lt;/p&gt;
+
+&lt;p&gt;Linux has a handy utility called &lt;code class=&quot;highlighter-rouge&quot;&gt;script&lt;/code&gt; which does just that. If it isn’t pre-installed then you can easily install it with &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo apt install script&lt;/code&gt; as it is generally available in the default PPA.&lt;/p&gt;
+
+&lt;p&gt;Using it is straight-forward too.&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;script &amp;lt;file_name_to_write_record_to&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;I also find these options to be of significance:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-a, --append&lt;/code&gt;: This appends the recording if the file is already existing.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-c, --command &amp;lt;command_which_is_to_be_recorded&amp;gt;&lt;/code&gt;: If you want to record the interaction of a program with terminal then you can use this.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I found this command to be quite helpful in my recent endeavour of documenting the setup process and think it might others too. Want to discuss this or any other interesting thing, hit me up on Twitter &lt;a href=&quot;https://twitter.com/varun_barad&quot;&gt;@varun_barad&lt;/a&gt;&lt;/p&gt;</content><author><name>Varun Barad</name></author><summary type="html">I was recently setting up my computer with Ubuntu on it and this time I was decided that I would document every step of the process so that I can get it done faster the next time. That thought and process worked easily for the programs whose installations were just a simple sudo apt install ... but when I was installing something new (like VS Code) there were many steps involved and it wasn’t an easy task to document them as I went on installing those things.</summary></entry><entry><title type="html">Sync git fork with upstream</title><link href="https://varunbarad.com/blog/sync-git-fork-with-upstream" rel="alternate" type="text/html" title="Sync git fork with upstream" /><published>2019-10-25T12:00:00+05:30</published><updated>2019-10-25T12:00:00+05:30</updated><id>https://varunbarad.com/blog/sync-git-fork-with-upstream</id><content type="html" xml:base="https://varunbarad.com/blog/sync-git-fork-with-upstream">&lt;p&gt;It is a common situation when we fork a project on Github and after some time we want to update our fork with the changes that have been integrated into the source project from where we forked. This is a simple guide on how to do that.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Conditions:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;We have the &lt;code class=&quot;highlighter-rouge&quot;&gt;remote&lt;/code&gt; of source project added to our local git repo.&lt;/li&gt;
+  &lt;li&gt;The name of the source project remote is &lt;code class=&quot;highlighter-rouge&quot;&gt;upstream&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;We are syncing changes from &lt;code class=&quot;highlighter-rouge&quot;&gt;upstream/master&lt;/code&gt; to our local &lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt; branch.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Below are the steps I found on Github’s guide.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Commit/Stash all your local changes.&lt;/li&gt;
+  &lt;li&gt;Checkout your local &lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt; branch if not already there. &lt;code class=&quot;highlighter-rouge&quot;&gt;git checkout master&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Fetch (not pull) changes from &lt;code class=&quot;highlighter-rouge&quot;&gt;upstream&lt;/code&gt;. &lt;code class=&quot;highlighter-rouge&quot;&gt;git fetch upstream&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Merge changes from &lt;code class=&quot;highlighter-rouge&quot;&gt;upstream/master&lt;/code&gt; to local &lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;. &lt;code class=&quot;highlighter-rouge&quot;&gt;git merge upstream/master&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Resolve merge-conflicts, if any.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;And you are done. Your local &lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt; branch is now updated with changes from &lt;code class=&quot;highlighter-rouge&quot;&gt;upstream/master&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Source: &lt;a href=&quot;https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/syncing-a-fork&quot;&gt;Github guide&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Tip:&lt;/strong&gt; Syncing like this will only update your local &lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;. You will still need to push those synced changes to your Github repo if you want to update that too.&lt;/p&gt;
+
+&lt;p&gt;This was just a quick tip that I needed quite a lot recently and every time I had to go and search for that guide. So I wrote this to solidify the concepts in my mind. If you have any more such tips I would love to hear about them at this &lt;a href=&quot;https://twitter.com/varun_barad&quot;&gt;@varun_barad&lt;/a&gt;.&lt;/p&gt;</content><author><name>Varun Barad</name></author><summary type="html">It is a common situation when we fork a project on Github and after some time we want to update our fork with the changes that have been integrated into the source project from where we forked. This is a simple guide on how to do that.</summary></entry><entry><title type="html">How to add “latest” post redirect to Jekyll site</title><link href="https://varunbarad.com/blog/how-to-add-latest-post-redirect-to-jekyll-site" rel="alternate" type="text/html" title="How to add &quot;latest&quot; post redirect to Jekyll site" /><published>2019-10-08T12:00:00+05:30</published><updated>2019-10-08T12:00:00+05:30</updated><id>https://varunbarad.com/blog/how-to-add-latest-post-redirect-to-jekyll-site</id><content type="html" xml:base="https://varunbarad.com/blog/how-to-add-latest-post-redirect-to-jekyll-site">&lt;p&gt;I wanted to have a URL which I can give to someone and it would always take them to the latest post published on my blog. I ended up using &lt;a href=&quot;https://varunbarad.com/blog/latest&quot;&gt;https://varunbarad.com/blog/latest&lt;/a&gt; as the URL.&lt;/p&gt;
+
+&lt;p&gt;Since my website is statically generated and hosted, it wasn’t an option for me to specify a server-side &lt;code class=&quot;highlighter-rouge&quot;&gt;30x&lt;/code&gt; redirect for that particular URL to my latest post.&lt;/p&gt;
+
+&lt;p&gt;So what I ended up doing is generate a page on each build which would redirect user to the latest post using JS. To get the information about latest post, I made use of Jekyll’s Liquid templating &lt;em&gt;syntax&lt;/em&gt; (not sure what else to call it).&lt;/p&gt;
+
+&lt;p&gt;So the &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;body&amp;gt;&lt;/code&gt; tag of that page ended up looking like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+{%- assign latest_post = site.posts[0] -%}
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Redirecting you to {{ latest_post.title }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;location&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;href&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;{{ latest_post.url }}&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Here I get the details of latest post by taking the first post in the list &lt;code class=&quot;highlighter-rouge&quot;&gt;site.posts&lt;/code&gt;. AFAIK &lt;code class=&quot;highlighter-rouge&quot;&gt;site.posts&lt;/code&gt; is sorted in descending order by publishing date, so this approach fetches me the last published post.&lt;/p&gt;
+
+&lt;p&gt;Then it is a simple matter of setting the &lt;code class=&quot;highlighter-rouge&quot;&gt;window.location.href&lt;/code&gt; to the final url of the latest post.&lt;/p&gt;
+
+&lt;p&gt;The final task remaining was to make sure that this page was compiled and generated exactly at &lt;code class=&quot;highlighter-rouge&quot;&gt;https://varunbarad.com/blog/latest&lt;/code&gt;. For that I specified a &lt;code class=&quot;highlighter-rouge&quot;&gt;permalink: &quot;/blog/latest/&quot;&lt;/code&gt; in the front-matter for that page. That way Jekyll knows where to put the final generated HTML file for that page.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;That was all, a simple way to add a URL to your Jekyll site which will always take the visitor to your latest blog post. You can take a look at the full source code of my website over at &lt;a href=&quot;https://github.com/VarunBarad/varunbarad.github.io/tree/development&quot;&gt;GitHub&lt;/a&gt; or you can also find the full code of this “latest post redirect” page at &lt;a href=&quot;https://github.com/VarunBarad/varunbarad.github.io/blob/development/latest-post-redirect.html&quot;&gt;this link&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;If you want to talk with me about anything related to this feel free to reach out to me on twitter &lt;a href=&quot;https://twitter.com/varun_barad&quot;&gt;@varun_barad&lt;/a&gt;&lt;/p&gt;</content><author><name>Varun Barad</name></author><summary type="html">I wanted to have a URL which I can give to someone and it would always take them to the latest post published on my blog. I ended up using https://varunbarad.com/blog/latest as the URL.</summary></entry><entry><title type="html">JavaScript 30 - Array Cardio 1</title><link href="https://varunbarad.com/blog/javascript-30-array-cardio-1" rel="alternate" type="text/html" title="JavaScript 30 - Array Cardio 1" /><published>2019-10-03T12:00:00+05:30</published><updated>2019-10-03T12:00:00+05:30</updated><id>https://varunbarad.com/blog/javascript-30-array-cardio-1</id><content type="html" xml:base="https://varunbarad.com/blog/javascript-30-array-cardio-1">&lt;p&gt;Day 4 of &lt;a href=&quot;https://javascript30.com&quot;&gt;JS30 challenge&lt;/a&gt;, today I worked with various methods on array (I knew most of them beforehand) but I learned two cool things today.&lt;/p&gt;
+
+&lt;p&gt;The key concepts I learned from today’s challenge were:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Converting iterables to array in JS.&lt;/li&gt;
+  &lt;li&gt;Displaying array of objects nicely formatted in console.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;converting-iterables-to-array-in-js&quot;&gt;Converting iterables to array in JS&lt;/h2&gt;
+
+&lt;p&gt;As you might have observed that &lt;code class=&quot;highlighter-rouge&quot;&gt;document.querySelectorAll&lt;/code&gt; doesn’t return us an actual &lt;code class=&quot;highlighter-rouge&quot;&gt;Array&lt;/code&gt; but instead it returns us what is called as a &lt;code class=&quot;highlighter-rouge&quot;&gt;NodeList&lt;/code&gt;. Consequently &lt;code class=&quot;highlighter-rouge&quot;&gt;NodeList&lt;/code&gt; doesn’t have all the methods that an &lt;code class=&quot;highlighter-rouge&quot;&gt;Array&lt;/code&gt; does (like &lt;code class=&quot;highlighter-rouge&quot;&gt;map&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;filter&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;reduce&lt;/code&gt; etc).&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;NodeList&lt;/code&gt; is an example of what we call as “iterable” in JS. So whenever working with iterables we tend to prefer to convert them to an actual &lt;code class=&quot;highlighter-rouge&quot;&gt;Array&lt;/code&gt; so that we have more options to work with.&lt;/p&gt;
+
+&lt;p&gt;I already knew of one way to convert them:&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;anyIterable&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelectorAll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'a'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;convertedArray&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;from&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;anyIterable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Here we used the &lt;code class=&quot;highlighter-rouge&quot;&gt;Array.from&lt;/code&gt; method to convert the iterable to an &lt;code class=&quot;highlighter-rouge&quot;&gt;Array&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;The other way I learned today was:&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;anyIterable&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelectorAll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'a'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;convertedArray&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[...&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;anyIterable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Here we made use of a combination of 2 things:&lt;/p&gt;
+
+&lt;h4 id=&quot;1-es6-spread-operator-&quot;&gt;1. ES6 spread operator &lt;code class=&quot;highlighter-rouge&quot;&gt;...&lt;/code&gt;&lt;/h4&gt;
+&lt;p&gt;When we prepend an iterable with &lt;code class=&quot;highlighter-rouge&quot;&gt;...&lt;/code&gt; (called the ES6 spread operator) what it does is it extracts all values from that iterable and replaces the &lt;code class=&quot;highlighter-rouge&quot;&gt;...anyIterable&lt;/code&gt; part of the expression with those values.&lt;/p&gt;
+&lt;h4 id=&quot;2-array-literal-&quot;&gt;2. Array literal &lt;code class=&quot;highlighter-rouge&quot;&gt;[]&lt;/code&gt;&lt;/h4&gt;
+&lt;p&gt;Then when we enclose the “spreaded” values with &lt;code class=&quot;highlighter-rouge&quot;&gt;[&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;]&lt;/code&gt; it converts the whole thing into an array containing all the values from that iterable.&lt;/p&gt;
+
+&lt;p&gt;Both produce the same result. I don’t know if one performs better than the other under large data-sets. But even though the &lt;code class=&quot;highlighter-rouge&quot;&gt;[...anyIterable]&lt;/code&gt; way is more concise, to me the &lt;code class=&quot;highlighter-rouge&quot;&gt;Array.from(anyIterable)&lt;/code&gt; usage seems more readable.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;That’s all folks, that was it for today. If you have anything unclear in this article or want to discuss anything else, hit me up on twitter &lt;a href=&quot;https://twitter.com/varun_barad&quot;&gt;@varun_barad&lt;/a&gt;.&lt;/p&gt;</content><author><name>Varun Barad</name></author><summary type="html">Day 4 of JS30 challenge, today I worked with various methods on array (I knew most of them beforehand) but I learned two cool things today.</summary></entry><entry><title type="html">JavaScript 30 - CSS Variables</title><link href="https://varunbarad.com/blog/javascript-30-css-variables" rel="alternate" type="text/html" title="JavaScript 30 - CSS Variables" /><published>2019-10-02T12:00:00+05:30</published><updated>2019-10-02T12:00:00+05:30</updated><id>https://varunbarad.com/blog/javascript-30-css-variables</id><content type="html" xml:base="https://varunbarad.com/blog/javascript-30-css-variables">&lt;p&gt;On my day 3 of &lt;a href=&quot;https://javascript30.com&quot;&gt;JS30 challenge&lt;/a&gt; I got introduced primarily to CSS variables but also to many other things.&lt;/p&gt;
+
+&lt;p&gt;The key concepts I learned from today’s challenge were:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;CSS variables&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;dataset&lt;/code&gt; property on DOM elements&lt;/li&gt;
+  &lt;li&gt;Image blur&lt;/li&gt;
+  &lt;li&gt;Color input&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;css-variables&quot;&gt;CSS variables&lt;/h2&gt;
+
+&lt;p&gt;CSS variables work very similar to how we use variables in JS or any other programming language. They let us define their value at one place and then just use that same value anywhere we refer to that variable.&lt;/p&gt;
+
+&lt;p&gt;For example, we can define at one place that we want text on our website to be &lt;code class=&quot;highlighter-rouge&quot;&gt;white&lt;/code&gt; then we can define it like this&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;:root&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;py&quot;&gt;--text-color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;white&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Here we define this &lt;code class=&quot;highlighter-rouge&quot;&gt;text-color&lt;/code&gt; variable at the root element. Now any place that we need to use this value we need to do something like&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;.content&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;var&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;--text-color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;CSS variables can be used for more than just colors. In today’s project we used these variables for storing the border thickness and color of an image and also for storing the blur amount for that image.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; One fun idea I have with CSS variables is that I can define the color palette of my website at one place and then provide the user with a night-mode switch. I can change colors across the whole website by changing them at just one place.&lt;/p&gt;
+
+&lt;p&gt;To modify their value via JS a simple method call does the trick.&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dom&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setProperty&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'--text-color'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'red'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The above snippet will change the value associated with &lt;code class=&quot;highlighter-rouge&quot;&gt;--text-color&lt;/code&gt; at any point in the &lt;code class=&quot;highlighter-rouge&quot;&gt;dom-element&lt;/code&gt; and any of &lt;code class=&quot;highlighter-rouge&quot;&gt;dom-element&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;dataset-property-on-dom-elements&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;dataset&lt;/code&gt; property on DOM elements&lt;/h2&gt;
+
+&lt;p&gt;In HTML whenever we want to write a custom-property on an element we make use of what are called &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; attributes. A sample can be like&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;blur&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;range&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;blur&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;min=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;max=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;25&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;5&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-sizing=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;px&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-purpose=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;A slider input to select blur amount&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Here we have defined 2 data attributes, namely &lt;code class=&quot;highlighter-rouge&quot;&gt;data-sizing&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;data-purpose&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Now when we need to use these in JS we can simply do&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;inputElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dataset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sizing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Used to access the data-sizing attribute.&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;inputElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dataset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;purpose&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Used to access the data-purpose attribute.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;dataset&lt;/code&gt; is a very simple property on DOM elements which lists all the &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; attributes defined on that element.&lt;/p&gt;
+
+&lt;h2 id=&quot;image-blur&quot;&gt;Image blur&lt;/h2&gt;
+
+&lt;p&gt;Today I learnt a nifty simple trick to blur an image using only CSS.&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;img&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;blur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;5px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;We can just specify a &lt;code class=&quot;highlighter-rouge&quot;&gt;blur&lt;/code&gt; CSS filter and our work is done. There are lots of other functions available which can be used as &lt;code class=&quot;highlighter-rouge&quot;&gt;filter&lt;/code&gt;, do make sure to take a look at that list.&lt;/p&gt;
+
+&lt;h2 id=&quot;color-input&quot;&gt;Color input&lt;/h2&gt;
+
+&lt;p&gt;Standardisation of HTML and CSS has made it easy to create a simple and functional color-picker. The only thing that needs to be done is&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;base&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;color&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;base&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#43bc46&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Here we have just declared an input tag which then takes care of displaying a color picker and also shows the user with a tiny sample of the color they have picked.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;That’s all folks, that was it for today. If you have anything unclear in this article or want to discuss anything else, hit me up on twitter &lt;a href=&quot;https://twitter.com/varun_barad&quot;&gt;@varun_barad&lt;/a&gt;.&lt;/p&gt;</content><author><name>Varun Barad</name></author><summary type="html">On my day 3 of JS30 challenge I got introduced primarily to CSS variables but also to many other things.</summary></entry><entry><title type="html">JavaScript 30 - CSS Analog Clock</title><link href="https://varunbarad.com/blog/javascript-30-css-analog-clock" rel="alternate" type="text/html" title="JavaScript 30 - CSS Analog Clock" /><published>2019-10-01T12:00:00+05:30</published><updated>2019-10-01T12:00:00+05:30</updated><id>https://varunbarad.com/blog/javascript-30-css-analog-clock</id><content type="html" xml:base="https://varunbarad.com/blog/javascript-30-css-analog-clock">&lt;p&gt;Today I am continuing my work on &lt;a href=&quot;https://javascript30.com&quot;&gt;JS30 challenge&lt;/a&gt; and building a simple analog clock using CSS shapes and then animate it with CSS transforms timed using JS.&lt;/p&gt;
+
+&lt;p&gt;The key concepts I learned from today’s challenge were:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Changing rotation center of an object in CSS&lt;/li&gt;
+  &lt;li&gt;CSS Transition timing function&lt;/li&gt;
+  &lt;li&gt;A weird reverse-jump in animation whenever any clock hand crosses 12 o’clock mark.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;changing-rotation-center-of-an-object-in-css&quot;&gt;Changing rotation center of an object in CSS&lt;/h2&gt;
+
+&lt;p&gt;By default an object in CSS rotates around its center. But in our clock we need to rotate them around one of their corners. Therefore we need to change their CSS origins&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;.hand&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;transform-origin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;100%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The above snippet moves the origin point for all CSS transforms to the right end of that element.&lt;/p&gt;
+
+&lt;h2 id=&quot;css-transition-timing-function&quot;&gt;CSS Transition timing function&lt;/h2&gt;
+
+&lt;p&gt;You can provide a timing function for your CSS transitions so that they follow it for their rate of change during the duration of your transitions.&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;.hand&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;transition-timing-function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ease-in-out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;There are many built-in transition timing functions but I generally liked the &lt;code class=&quot;highlighter-rouge&quot;&gt;ease-in-out&lt;/code&gt; for how its acceleration and deceleration feel much like natural movements. You can check out the rest of them if you like.&lt;/p&gt;
+
+&lt;p&gt;My favorite ability in this was that we can provide our custom timing functions using what is known as a bezier curve specification. For example:&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;.hand&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;transition-timing-function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cubic-bezier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0.42&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0.58&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In the above code-sample I have written the &lt;code class=&quot;highlighter-rouge&quot;&gt;cubic-bezier&lt;/code&gt; format of the &lt;code class=&quot;highlighter-rouge&quot;&gt;ease-in-out&lt;/code&gt; timing function but you can customize the bezier curve to your heart’s content using those 2 anchor points.&lt;/p&gt;
+
+&lt;h1 id=&quot;a-weird-reverse-jump-in-animation-whenever-any-clock-hand-crosses-12-oclock-mark&quot;&gt;A weird reverse-jump in animation whenever any clock hand crosses 12 o’clock mark&lt;/h1&gt;
+
+&lt;p&gt;The hands of my clock were moving nicely from 12 to 12 but when they were just going to reach 12 they would do a weird jump and instead of moving 1 tick forward from right before 12 to 12, they would perform a full reverse circle and reach 12 from that side.&lt;/p&gt;
+
+&lt;p&gt;This problem was occurring because of how we calculated the angles of rotation. We used the below equation for counting number of seconds.&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;secondsDegrees&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;seconds&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;60&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;360&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;90&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// Here 90 degrees is the initial offset to make clock-hands start at 12&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;With this what would happen is as below:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Seconds&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Degrees&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;90&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;15&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;180&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;30&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;270&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;45&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;360&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;60 (or 0)&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;90&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;So the main issue is that when reaching the 60 second mark it rotates counter-clockwise because the final value of clock-hand handle (90) is less than its current value (360). So instead of the transition being a smooth forward transition, it jumps counter-clockwise and that’s where we see that queer problem.&lt;/p&gt;
+
+&lt;p&gt;A very quick way to deal with this is to keep the degrees calculation so that they are always increasing. The result with that would be something like this:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Seconds&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Degrees&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;90&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;15&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;180&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;30&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;270&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;45&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;360&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;60 (or 0)&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;450&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;If you want to discuss anything that was unclear in today’s article then hit me up on twitter &lt;a href=&quot;https://twitter.com/varun_barad&quot;&gt;@varun_barad&lt;/a&gt;.&lt;/p&gt;</content><author><name>Varun Barad</name></author><summary type="html">Today I am continuing my work on JS30 challenge and building a simple analog clock using CSS shapes and then animate it with CSS transforms timed using JS.</summary></entry></feed>
