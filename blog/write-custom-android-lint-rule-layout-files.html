@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/assets/css/style.css?v=0414a3599ee7e7dd8c0beffdc46d51a1c456a69d">
-  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=0414a3599ee7e7dd8c0beffdc46d51a1c456a69d">
-  <link rel="icon" type="image/png" href="/favicon.png"/>
+  <link rel="stylesheet" href="/assets/css/style.css?v=f42c84a091779c1dda8a669f9a01f3e14a0ff757">
+  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=f42c84a091779c1dda8a669f9a01f3e14a0ff757">
+  <link rel="icon" type="image/png" href="/favicon.png" />
   <title>Write Custom Android Lint Rule - Layout Files - Varun Barad</title>
   <meta name="description" content="Writing our own custom android lint rules for verifying layout files." />
 
@@ -45,13 +45,16 @@
 </div>
 
   </div>
-  <div class="content row">
-    <div class="post-container">
-      <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-        <div>
-          <div class="page-title text-uppercase text-center">Write Custom Android Lint Rule - Layout Files</div>
-          <div class="post-date text-center">February 27, 2020</div>
-          <div class="post-content"><p><img src="https://varunbarad.com/assets/images/posts/headers/write-custom-android-lint-rule-layout-files.jpg" alt="Article Header - Write Custom Android Lint Rules" /></p>
+  <article class="h-entry">
+    <div class="content row">
+      <div class="post-container">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+          <div>
+            <div class="page-title text-uppercase text-center p-name">Write Custom Android Lint Rule - Layout Files</div>
+            <div class="text-center">
+              By <a class="p-author h-card" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2020-02-27 12:00:00 +0530">February 27, 2020</time>
+            </div>
+            <div class="post-content e-content"><p><img src="https://varunbarad.com/assets/images/posts/headers/write-custom-android-lint-rule-layout-files.jpg" alt="Article Header - Write Custom Android Lint Rules" /></p>
 
 <p>Welcome devs, I recently faced an issue where if I didn’t specify any <code class="highlighter-rouge">android:inputType</code> for <code class="highlighter-rouge">EditText</code> then keyboard capitalisation did not correctly show. The deeper problem was that I always forgot to include that attribute. So I decided to use a lint check which would fail my build if any of my <code class="highlighter-rouge">EditText</code> does not have the <code class="highlighter-rouge">android:inputType</code> attribute.</p>
 
@@ -218,22 +221,23 @@ This lint check is set to fail the build when it finds any of the above element 
   <li><strong>2020-03-02:</strong> Add the step of “Registering our Issue Registry”</li>
 </ol>
 </div>
-        </div>
+          </div>
 
-        <div class="post-categories-container">
-          Categories:
-          <div>
-            
-            <a href="/category/android" class="badge badge-warning">#android</a>
-            
-            <a href="/category/programming" class="badge badge-warning">#programming</a>
-            
-            <a href="/blog" class="badge badge-warning">#All</a>
+          <div class="post-categories-container">
+            Categories:
+            <div>
+              
+              <a href="/category/android" class="badge badge-warning">#android</a>
+              
+              <a href="/category/programming" class="badge badge-warning">#programming</a>
+              
+              <a href="/blog" class="badge badge-warning">#All</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </article>
   <div>
     <div class="footer">
   <div>
@@ -256,8 +260,8 @@ This lint check is set to fail the build when it finds any of the above element 
   </div>
 </div>
 
-<script src="/assets/js/jquery.min.js?v=0414a3599ee7e7dd8c0beffdc46d51a1c456a69d"></script>
-<script src="/assets/js/bootstrap.min.js?v=0414a3599ee7e7dd8c0beffdc46d51a1c456a69d"></script>
-<script src="/assets/js/contact.js?v=0414a3599ee7e7dd8c0beffdc46d51a1c456a69d"></script>
+<script src="/assets/js/jquery.min.js?v=f42c84a091779c1dda8a669f9a01f3e14a0ff757"></script>
+<script src="/assets/js/bootstrap.min.js?v=f42c84a091779c1dda8a669f9a01f3e14a0ff757"></script>
+<script src="/assets/js/contact.js?v=f42c84a091779c1dda8a669f9a01f3e14a0ff757"></script>
 </body>
 </html>
