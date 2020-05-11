@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/fontawesome-all.css?v=' | append: site.github.build_revision | relative_url }}">
-  <link rel="icon" type="image/png" href="/favicon.png"/>
+  <link rel="icon" type="image/png" href="/favicon.png" />
   <title>{{ page.title }} - {{ site.author.name }}</title>
   <meta name="description" content="{{ page.summary }}" />
 
@@ -32,27 +32,31 @@
   <div id="header">
     {% include header.html %}
   </div>
-  <div class="content row">
-    <div class="post-container">
-      <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-        <div>
-          <div class="page-title text-uppercase text-center">{{ page.title }}</div>
-          <div class="post-date text-center">{{ page.date | date: '%B %d, %Y' }}</div>
-          <div class="post-content">{{ page.content }}</div>
-        </div>
-
-        <div class="post-categories-container">
-          Categories:
+  <article class="h-entry">
+    <div class="content row">
+      <div class="post-container">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
           <div>
-            {% for category in page.categories %}
-            <a href="/category/{{category}}" class="badge badge-warning">#{{ category }}</a>
-            {% endfor %}
-            <a href="/blog" class="badge badge-warning">#All</a>
+            <div class="page-title text-uppercase text-center p-name">{{ page.title }}</div>
+            <div class="text-center">
+              By <a class="p-author h-card" href="{{ site.data.personal.contact.website }}">Varun Barad</a> on <time class="post-date dt-published" datetime="{{ page.date }}">{{ page.date | date: '%B %d, %Y' }}</time>
+            </div>
+            <div class="post-content e-content">{{ page.content }}</div>
+          </div>
+
+          <div class="post-categories-container">
+            Categories:
+            <div>
+              {% for category in page.categories %}
+              <a href="/category/{{category}}" class="badge badge-warning">#{{ category }}</a>
+              {% endfor %}
+              <a href="/blog" class="badge badge-warning">#All</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </article>
   <div>
     {% include footer.html %}
   </div>
