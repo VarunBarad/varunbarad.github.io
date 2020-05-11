@@ -37,7 +37,7 @@
       <div class="post-container">
         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
           <div>
-            <div class="page-title text-uppercase text-center p-name">{{ page.title }}</div>
+            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="{{ site.url }}{{ page.url }}">{{ page.title }}</a></div>
             <div class="text-center">
               By <a class="p-author h-card" href="{{ site.data.personal.contact.website }}">Varun Barad</a> on <time class="post-date dt-published" datetime="{{ page.date }}">{{ page.date | date: '%B %d, %Y' }}</time>
             </div>
@@ -48,9 +48,9 @@
             Categories:
             <div>
               {% for category in page.categories %}
-              <a href="/category/{{category}}" class="badge badge-warning">#{{ category }}</a>
+              <a href="/category/{{category}}" class="badge badge-warning p-category">#{{ category }}</a>
               {% endfor %}
-              <a href="/blog" class="badge badge-warning">#All</a>
+              <a href="/blog" class="badge badge-warning">#all</a>
             </div>
           </div>
         </div>
