@@ -48,19 +48,9 @@
         "profileIcon": "fa-dev"
       },
       {
-        "name": "LinkedIn",
-        "profileUrl": "https://linkedin.com/in/varunbarad",
-        "profileIcon": "fa-linkedin"
-      },
-      {
         "name": "Stack Overflow",
         "profileUrl": "https://stackoverflow.com/users/4717436/varunbarad",
         "profileIcon": "fa-stack-overflow"
-      },
-      {
-        "name": "CodePen",
-        "profileUrl": "https://codepen.io/VarunBarad",
-        "profileIcon": "fa-codepen"
       }
     ]
   },
