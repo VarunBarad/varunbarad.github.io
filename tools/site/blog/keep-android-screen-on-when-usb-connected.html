@@ -6,8 +6,8 @@
   <link rel="stylesheet" href="/assets/css/style.css?v=a831aa83b779856c719402cc1208f0377a27fcf3">
   <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=a831aa83b779856c719402cc1208f0377a27fcf3">
   <link rel="icon" type="image/png" href="/favicon.png"/>
-  <title>Varun Barad - Curious Developer</title>
-  <meta name="description" content="My online home where I post about new things I learn or find interesting." />
+  <title>Keep Android screen on When USB is connected - Varun Barad</title>
+  <meta name="description" content="Use the command `adb shell svc power stayon usb`" />
 
   <!-- RSS Feed meta-data -->
   <link rel="alternate" type="application/atom+xml" title="RSS" href="https://varunbarad.com/feed.xml" />
@@ -16,16 +16,16 @@
   <meta name="twitter:site" content="@varun_barad" />
   <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Varun Barad - Curious Developer" />
-  <meta name="twitter:description" content="My online home where I post about new things I learn or find interesting." />
+  <meta name="twitter:title" content="Keep Android screen on When USB is connected" />
+  <meta name="twitter:description" content="Use the command `adb shell svc power stayon usb`" />
 
   <!-- Open-graph meta-data -->
   <meta property="og:site_name" content="Varun Barad - Curious Developer" />
   <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png" />
   <meta property="og:type" content="object" />
-  <meta property="og:title" content="Varun Barad - Curious Developer" />
-  <meta property="og:url" content="https://varunbarad.com/contact/" />
-  <meta property="og:description" content="My online home where I post about new things I learn or find interesting." />
+  <meta property="og:title" content="Keep Android screen on When USB is connected" />
+  <meta property="og:url" content="https://varunbarad.com/blog/keep-android-screen-on-when-usb-connected" />
+  <meta property="og:description" content="Use the command `adb shell svc power stayon usb`" />
 </head>
 <body>
 <div>
@@ -46,31 +46,35 @@
 
   </div>
   <div class="content row">
-    <div class="page-title col-12 text-center text-uppercase">Contact</div>
+    <div class="post-container">
+      <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+        <div>
+          <div class="page-title text-uppercase text-center">Keep Android screen on When USB is connected</div>
+          <div class="post-date text-center">May 11, 2020</div>
+          <div class="post-content"><p>To keep your Android phone screen from turning off when it is connected to your PC and you are using it to debug apps, enter the following command once in your terminal with the device connected.</p>
 
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>adb shell svc power stayon usb
+</code></pre></div></div>
 
+<p>This sets flag inside the device using adb that whenever this device is connected via USB to not turn its screen off automatically.</p>
 
-<div class="col-12 contact-form">
-  <div class="col-12 col-sm-12 col-md-6 col-lg-5 col-xl-5">
-    <form id="contactForm" onsubmit="return submitForm(event)">
-      <div class="form-group">
-        <input type="text" class="form-control" id="name" placeholder="Name" required>
-      </div>
-      <div class="form-group">
-        <input type="email" class="form-control" id="email" placeholder="Email" required>
-      </div>
-      <div class="form-group">
-        <textarea class="form-control" id="message" placeholder="Message" required></textarea>
-      </div>
-      <button type="submit" class="submit-button" id="submit">Submit</button>
-    </form>
-  </div>
+<p>Want to discuss this or any other interesting thing, hit me up on Twitter <a href="https://twitter.com/varun_barad">@varun_barad</a>.</p>
 </div>
+        </div>
 
-<div class="col-12 contact-details">
-  <a href="mailto:contact@varunbarad.com">contact@varunbarad.com</a>
-</div>
-
+        <div class="post-categories-container">
+          Categories:
+          <div>
+            
+            <a href="/category/android" class="badge badge-warning">#android</a>
+            
+            <a href="/category/programming" class="badge badge-warning">#programming</a>
+            
+            <a href="/blog" class="badge badge-warning">#All</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <div>
     <div class="footer">

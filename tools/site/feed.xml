@@ -1,4 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://varunbarad.com/" rel="alternate" type="text/html" /><updated>2020-05-10T15:02:15+05:30</updated><id>https://varunbarad.com/feed.xml</id><title type="html">Varun Barad - Curious Developer</title><subtitle>My online home where I post about new things I learn or find interesting.</subtitle><author><name>Varun Barad</name></author><entry><title type="html">Write Custom Android Lint Rule - Manifest File</title><link href="https://varunbarad.com/blog/write-custom-android-lint-rule-manifest-file" rel="alternate" type="text/html" title="Write Custom Android Lint Rule - Manifest File" /><published>2020-02-28T12:00:00+05:30</published><updated>2020-02-28T12:00:00+05:30</updated><id>https://varunbarad.com/blog/write-custom-android-lint-rule-manifest-file</id><content type="html" xml:base="https://varunbarad.com/blog/write-custom-android-lint-rule-manifest-file">&lt;p&gt;Welcome folks, last time we wrote a lint check for making sure that all of our &lt;code class=&quot;highlighter-rouge&quot;&gt;EditText&lt;/code&gt; have the &lt;code class=&quot;highlighter-rouge&quot;&gt;android:inputType&lt;/code&gt; attribute.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://varunbarad.com/" rel="alternate" type="text/html" /><updated>2020-05-11T12:53:21+05:30</updated><id>https://varunbarad.com/feed.xml</id><title type="html">Varun Barad - Curious Developer</title><subtitle>My online home where I post about new things I learn or find interesting.</subtitle><author><name>Varun Barad</name></author><entry><title type="html">Keep Android screen on When USB is connected</title><link href="https://varunbarad.com/blog/keep-android-screen-on-when-usb-connected" rel="alternate" type="text/html" title="Keep Android screen on When USB is connected" /><published>2020-05-11T12:00:00+05:30</published><updated>2020-05-11T12:00:00+05:30</updated><id>https://varunbarad.com/blog/keep-android-screen-on-when-usb-connected</id><content type="html" xml:base="https://varunbarad.com/blog/keep-android-screen-on-when-usb-connected">&lt;p&gt;To keep your Android phone screen from turning off when it is connected to your PC and you are using it to debug apps, enter the following command once in your terminal with the device connected.&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;adb shell svc power stayon usb
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This sets flag inside the device using adb that whenever this device is connected via USB to not turn its screen off automatically.&lt;/p&gt;
+
+&lt;p&gt;Want to discuss this or any other interesting thing, hit me up on Twitter &lt;a href=&quot;https://twitter.com/varun_barad&quot;&gt;@varun_barad&lt;/a&gt;.&lt;/p&gt;</content><author><name>Varun Barad</name></author><summary type="html">To keep your Android phone screen from turning off when it is connected to your PC and you are using it to debug apps, enter the following command once in your terminal with the device connected.</summary></entry><entry><title type="html">Write Custom Android Lint Rule - Manifest File</title><link href="https://varunbarad.com/blog/write-custom-android-lint-rule-manifest-file" rel="alternate" type="text/html" title="Write Custom Android Lint Rule - Manifest File" /><published>2020-02-28T12:00:00+05:30</published><updated>2020-02-28T12:00:00+05:30</updated><id>https://varunbarad.com/blog/write-custom-android-lint-rule-manifest-file</id><content type="html" xml:base="https://varunbarad.com/blog/write-custom-android-lint-rule-manifest-file">&lt;p&gt;Welcome folks, last time we wrote a lint check for making sure that all of our &lt;code class=&quot;highlighter-rouge&quot;&gt;EditText&lt;/code&gt; have the &lt;code class=&quot;highlighter-rouge&quot;&gt;android:inputType&lt;/code&gt; attribute.&lt;/p&gt;
 
 &lt;p&gt;This time we will be writing a check which works on our &lt;code class=&quot;highlighter-rouge&quot;&gt;AndroidManifest.xml&lt;/code&gt; file. This check will ensure that our &lt;code class=&quot;highlighter-rouge&quot;&gt;application&lt;/code&gt; tag has a child &lt;code class=&quot;highlighter-rouge&quot;&gt;meta-data&lt;/code&gt; tag with attribute &lt;code class=&quot;highlighter-rouge&quot;&gt;android:name=&quot;android.webkit.WebView.MetricsOptOut&quot;&lt;/code&gt;. Read the background for that &lt;a href=&quot;https://developer.android.com/guide/webapps/managing-webview#metrics&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
@@ -562,125 +569,4 @@ This lint check is set to fail the build when it finds any of the above element 
 
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
 
-&lt;p&gt;That’s all folks, that was it for today. If you have anything unclear in this article or want to discuss anything else, hit me up on twitter &lt;a href=&quot;https://twitter.com/varun_barad&quot;&gt;@varun_barad&lt;/a&gt;.&lt;/p&gt;</content><author><name>Varun Barad</name></author><summary type="html">On my day 3 of JS30 challenge I got introduced primarily to CSS variables but also to many other things.</summary></entry><entry><title type="html">JavaScript 30 - CSS Analog Clock</title><link href="https://varunbarad.com/blog/javascript-30-css-analog-clock" rel="alternate" type="text/html" title="JavaScript 30 - CSS Analog Clock" /><published>2019-10-01T12:00:00+05:30</published><updated>2019-10-01T12:00:00+05:30</updated><id>https://varunbarad.com/blog/javascript-30-css-analog-clock</id><content type="html" xml:base="https://varunbarad.com/blog/javascript-30-css-analog-clock">&lt;p&gt;Today I am continuing my work on &lt;a href=&quot;https://javascript30.com&quot;&gt;JS30 challenge&lt;/a&gt; and building a simple analog clock using CSS shapes and then animate it with CSS transforms timed using JS.&lt;/p&gt;
-
-&lt;p&gt;The key concepts I learned from today’s challenge were:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Changing rotation center of an object in CSS&lt;/li&gt;
-  &lt;li&gt;CSS Transition timing function&lt;/li&gt;
-  &lt;li&gt;A weird reverse-jump in animation whenever any clock hand crosses 12 o’clock mark.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;changing-rotation-center-of-an-object-in-css&quot;&gt;Changing rotation center of an object in CSS&lt;/h2&gt;
-
-&lt;p&gt;By default an object in CSS rotates around its center. But in our clock we need to rotate them around one of their corners. Therefore we need to change their CSS origins&lt;/p&gt;
-
-&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;.hand&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nl&quot;&gt;transform-origin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;100%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;The above snippet moves the origin point for all CSS transforms to the right end of that element.&lt;/p&gt;
-
-&lt;h2 id=&quot;css-transition-timing-function&quot;&gt;CSS Transition timing function&lt;/h2&gt;
-
-&lt;p&gt;You can provide a timing function for your CSS transitions so that they follow it for their rate of change during the duration of your transitions.&lt;/p&gt;
-
-&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;.hand&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nl&quot;&gt;transition-timing-function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ease-in-out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;There are many built-in transition timing functions but I generally liked the &lt;code class=&quot;highlighter-rouge&quot;&gt;ease-in-out&lt;/code&gt; for how its acceleration and deceleration feel much like natural movements. You can check out the rest of them if you like.&lt;/p&gt;
-
-&lt;p&gt;My favorite ability in this was that we can provide our custom timing functions using what is known as a bezier curve specification. For example:&lt;/p&gt;
-
-&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;.hand&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nl&quot;&gt;transition-timing-function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cubic-bezier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0.42&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0.58&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;In the above code-sample I have written the &lt;code class=&quot;highlighter-rouge&quot;&gt;cubic-bezier&lt;/code&gt; format of the &lt;code class=&quot;highlighter-rouge&quot;&gt;ease-in-out&lt;/code&gt; timing function but you can customize the bezier curve to your heart’s content using those 2 anchor points.&lt;/p&gt;
-
-&lt;h1 id=&quot;a-weird-reverse-jump-in-animation-whenever-any-clock-hand-crosses-12-oclock-mark&quot;&gt;A weird reverse-jump in animation whenever any clock hand crosses 12 o’clock mark&lt;/h1&gt;
-
-&lt;p&gt;The hands of my clock were moving nicely from 12 to 12 but when they were just going to reach 12 they would do a weird jump and instead of moving 1 tick forward from right before 12 to 12, they would perform a full reverse circle and reach 12 from that side.&lt;/p&gt;
-
-&lt;p&gt;This problem was occurring because of how we calculated the angles of rotation. We used the below equation for counting number of seconds.&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;secondsDegrees&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;seconds&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;60&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;360&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;90&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// Here 90 degrees is the initial offset to make clock-hands start at 12&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;With this what would happen is as below:&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Seconds&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Degrees&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;90&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;15&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;180&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;30&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;270&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;45&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;360&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;60 (or 0)&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;90&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;So the main issue is that when reaching the 60 second mark it rotates counter-clockwise because the final value of clock-hand handle (90) is less than its current value (360). So instead of the transition being a smooth forward transition, it jumps counter-clockwise and that’s where we see that queer problem.&lt;/p&gt;
-
-&lt;p&gt;A very quick way to deal with this is to keep the degrees calculation so that they are always increasing. The result with that would be something like this:&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Seconds&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Degrees&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;90&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;15&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;180&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;30&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;270&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;45&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;360&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;60 (or 0)&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;450&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-
-&lt;p&gt;If you want to discuss anything that was unclear in today’s article then hit me up on twitter &lt;a href=&quot;https://twitter.com/varun_barad&quot;&gt;@varun_barad&lt;/a&gt;.&lt;/p&gt;</content><author><name>Varun Barad</name></author><summary type="html">Today I am continuing my work on JS30 challenge and building a simple analog clock using CSS shapes and then animate it with CSS transforms timed using JS.</summary></entry></feed>
+&lt;p&gt;That’s all folks, that was it for today. If you have anything unclear in this article or want to discuss anything else, hit me up on twitter &lt;a href=&quot;https://twitter.com/varun_barad&quot;&gt;@varun_barad&lt;/a&gt;.&lt;/p&gt;</content><author><name>Varun Barad</name></author><summary type="html">On my day 3 of JS30 challenge I got introduced primarily to CSS variables but also to many other things.</summary></entry></feed>
