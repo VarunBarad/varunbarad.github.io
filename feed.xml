@@ -1,4 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://varunbarad.com/" rel="alternate" type="text/html" /><updated>2020-05-12T23:07:07+05:30</updated><id>https://varunbarad.com/feed.xml</id><title type="html">Varun Barad - Curious Developer</title><subtitle>My online home where I post about new things I learn or find interesting.</subtitle><author><name>Varun Barad</name></author><entry><title type="html">Keep Android screen on When USB is connected</title><link href="https://varunbarad.com/blog/keep-android-screen-on-when-usb-connected" rel="alternate" type="text/html" title="Keep Android screen on When USB is connected" /><published>2020-05-11T12:00:00+05:30</published><updated>2020-05-11T12:00:00+05:30</updated><id>https://varunbarad.com/blog/keep-android-screen-on-when-usb-connected</id><content type="html" xml:base="https://varunbarad.com/blog/keep-android-screen-on-when-usb-connected">&lt;p&gt;To keep your Android phone screen from turning off when it is connected to your PC and you are using it to debug apps, enter the following command once in your terminal with the device connected.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://varunbarad.com/" rel="alternate" type="text/html" /><updated>2020-05-16T23:30:36+05:30</updated><id>https://varunbarad.com/feed.xml</id><title type="html">Varun Barad - Curious Developer</title><subtitle>My online home where I post about new things I learn or find interesting.</subtitle><author><name>Varun Barad</name></author><entry><title type="html">Immigration Dead Man’s Switch</title><link href="https://varunbarad.com/blog/immigration-dead-mans-switch" rel="alternate" type="text/html" title="Immigration Dead Man's Switch" /><published>2020-05-16T12:00:00+05:30</published><updated>2020-05-16T12:00:00+05:30</updated><id>https://varunbarad.com/blog/immigration-dead-mans-switch</id><content type="html" xml:base="https://varunbarad.com/blog/immigration-dead-mans-switch">&lt;p&gt;&lt;strong&gt;Necessary disclaimer:&lt;/strong&gt; I am not a lawyer so please don’t take my statements here on face value, do your own due diligence before pulling off any stunts.&lt;/p&gt;
+
+&lt;p&gt;When passing through customs check, the customs agents have the right to ask for your fingerprint or any other biometrics but they don’t have the right to ask you to enter your password/pin-code.&lt;/p&gt;
+
+&lt;p&gt;So there is an option in both iPhone and Android, check for iPhone but in Android it is called &lt;code class=&quot;highlighter-rouge&quot;&gt;Lockdown Mode&lt;/code&gt;. This makes it so that your phone can only be opened with the designated pin-code or password.&lt;/p&gt;
+
+&lt;p&gt;What I suggest with devices having finger-print or facial unlock, use the biometric lock for daily use and keep a looong passcode.&lt;/p&gt;
+
+&lt;p&gt;One way to memorize a long number is to not use a custom number but to pick one of the constants from Physics/Chemistry/Mathematics. That way even if you forget the exact digits, you can just look up its value online. The security lies in no-one knowing what constant you have used. They don’t even know that you are using a constant. Go for atleast 10-digit pin.&lt;/p&gt;
+
+&lt;p&gt;Then comes the risk of immigration agents detaining you and when you are travelling alone you don’t even have the option to contact your lawyer because the agents might cut your access to your devices too.&lt;/p&gt;
+
+&lt;p&gt;So for this you set something that’s called a “dead man’s switch”. The concept comes from war, here someone rigs up a switch not in the way that when they press it the bomb blasts. But in the way that if they release it, the bomb blasts. So even if someone kills them there is a much higher chance of the bomb going off.&lt;/p&gt;
+
+&lt;p&gt;What you have to do is, right before you enter the immigration check. Message someone you trust that you are about to pass through customs. Give them all the details as to the airport where you are, the flight by which you came, etc. Ask them to contact your lawyer if they don’t hear back from you within a specified time (a couple of hours probably). Then when you are cleared of immigration just let them know that you are out of the hairy-zone.&lt;/p&gt;
+
+&lt;p&gt;I got the idea of this from one of &lt;a href=&quot;https://youtu.be/f-mHLBD64HM?t=195&quot;&gt;CGP Grey’s video&lt;/a&gt; over on YouTube.&lt;/p&gt;
+
+&lt;p&gt;Want to discuss this or any other interesting thing, hit me up on Twitter &lt;a href=&quot;https://twitter.com/varun_barad&quot;&gt;@varun_barad&lt;/a&gt;.&lt;/p&gt;</content><author><name>Varun Barad</name></author><summary type="html">Necessary disclaimer: I am not a lawyer so please don’t take my statements here on face value, do your own due diligence before pulling off any stunts.</summary></entry><entry><title type="html">Keep Android screen on When USB is connected</title><link href="https://varunbarad.com/blog/keep-android-screen-on-when-usb-connected" rel="alternate" type="text/html" title="Keep Android screen on When USB is connected" /><published>2020-05-11T12:00:00+05:30</published><updated>2020-05-11T12:00:00+05:30</updated><id>https://varunbarad.com/blog/keep-android-screen-on-when-usb-connected</id><content type="html" xml:base="https://varunbarad.com/blog/keep-android-screen-on-when-usb-connected">&lt;p&gt;To keep your Android phone screen from turning off when it is connected to your PC and you are using it to debug apps, enter the following command once in your terminal with the device connected.&lt;/p&gt;
 
 &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;adb shell svc power stayon usb
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -490,83 +508,4 @@ This lint check is set to fail the build when it finds any of the above element 
 
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
 
-&lt;p&gt;That’s all folks, that was it for today. If you have anything unclear in this article or want to discuss anything else, hit me up on twitter &lt;a href=&quot;https://twitter.com/varun_barad&quot;&gt;@varun_barad&lt;/a&gt;.&lt;/p&gt;</content><author><name>Varun Barad</name></author><summary type="html">Day 4 of JS30 challenge, today I worked with various methods on array (I knew most of them beforehand) but I learned two cool things today.</summary></entry><entry><title type="html">JavaScript 30 - CSS Variables</title><link href="https://varunbarad.com/blog/javascript-30-css-variables" rel="alternate" type="text/html" title="JavaScript 30 - CSS Variables" /><published>2019-10-02T12:00:00+05:30</published><updated>2019-10-02T12:00:00+05:30</updated><id>https://varunbarad.com/blog/javascript-30-css-variables</id><content type="html" xml:base="https://varunbarad.com/blog/javascript-30-css-variables">&lt;p&gt;On my day 3 of &lt;a href=&quot;https://javascript30.com&quot;&gt;JS30 challenge&lt;/a&gt; I got introduced primarily to CSS variables but also to many other things.&lt;/p&gt;
-
-&lt;p&gt;The key concepts I learned from today’s challenge were:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;CSS variables&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;dataset&lt;/code&gt; property on DOM elements&lt;/li&gt;
-  &lt;li&gt;Image blur&lt;/li&gt;
-  &lt;li&gt;Color input&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;css-variables&quot;&gt;CSS variables&lt;/h2&gt;
-
-&lt;p&gt;CSS variables work very similar to how we use variables in JS or any other programming language. They let us define their value at one place and then just use that same value anywhere we refer to that variable.&lt;/p&gt;
-
-&lt;p&gt;For example, we can define at one place that we want text on our website to be &lt;code class=&quot;highlighter-rouge&quot;&gt;white&lt;/code&gt; then we can define it like this&lt;/p&gt;
-
-&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;:root&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;py&quot;&gt;--text-color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;white&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Here we define this &lt;code class=&quot;highlighter-rouge&quot;&gt;text-color&lt;/code&gt; variable at the root element. Now any place that we need to use this value we need to do something like&lt;/p&gt;
-
-&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;.content&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nl&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;var&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;--text-color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;CSS variables can be used for more than just colors. In today’s project we used these variables for storing the border thickness and color of an image and also for storing the blur amount for that image.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; One fun idea I have with CSS variables is that I can define the color palette of my website at one place and then provide the user with a night-mode switch. I can change colors across the whole website by changing them at just one place.&lt;/p&gt;
-
-&lt;p&gt;To modify their value via JS a simple method call does the trick.&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dom&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setProperty&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'--text-color'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'red'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;The above snippet will change the value associated with &lt;code class=&quot;highlighter-rouge&quot;&gt;--text-color&lt;/code&gt; at any point in the &lt;code class=&quot;highlighter-rouge&quot;&gt;dom-element&lt;/code&gt; and any of &lt;code class=&quot;highlighter-rouge&quot;&gt;dom-element&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;dataset-property-on-dom-elements&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;dataset&lt;/code&gt; property on DOM elements&lt;/h2&gt;
-
-&lt;p&gt;In HTML whenever we want to write a custom-property on an element we make use of what are called &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; attributes. A sample can be like&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;blur&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;range&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;blur&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;min=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;max=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;25&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;5&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-sizing=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;px&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-purpose=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;A slider input to select blur amount&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Here we have defined 2 data attributes, namely &lt;code class=&quot;highlighter-rouge&quot;&gt;data-sizing&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;data-purpose&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Now when we need to use these in JS we can simply do&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;inputElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dataset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sizing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Used to access the data-sizing attribute.&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;inputElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dataset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;purpose&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Used to access the data-purpose attribute.&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;dataset&lt;/code&gt; is a very simple property on DOM elements which lists all the &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; attributes defined on that element.&lt;/p&gt;
-
-&lt;h2 id=&quot;image-blur&quot;&gt;Image blur&lt;/h2&gt;
-
-&lt;p&gt;Today I learnt a nifty simple trick to blur an image using only CSS.&lt;/p&gt;
-
-&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;img&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nl&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;blur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;5px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;We can just specify a &lt;code class=&quot;highlighter-rouge&quot;&gt;blur&lt;/code&gt; CSS filter and our work is done. There are lots of other functions available which can be used as &lt;code class=&quot;highlighter-rouge&quot;&gt;filter&lt;/code&gt;, do make sure to take a look at that list.&lt;/p&gt;
-
-&lt;h2 id=&quot;color-input&quot;&gt;Color input&lt;/h2&gt;
-
-&lt;p&gt;Standardisation of HTML and CSS has made it easy to create a simple and functional color-picker. The only thing that needs to be done is&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;base&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;color&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;base&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#43bc46&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Here we have just declared an input tag which then takes care of displaying a color picker and also shows the user with a tiny sample of the color they have picked.&lt;/p&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-
-&lt;p&gt;That’s all folks, that was it for today. If you have anything unclear in this article or want to discuss anything else, hit me up on twitter &lt;a href=&quot;https://twitter.com/varun_barad&quot;&gt;@varun_barad&lt;/a&gt;.&lt;/p&gt;</content><author><name>Varun Barad</name></author><summary type="html">On my day 3 of JS30 challenge I got introduced primarily to CSS variables but also to many other things.</summary></entry></feed>
+&lt;p&gt;That’s all folks, that was it for today. If you have anything unclear in this article or want to discuss anything else, hit me up on twitter &lt;a href=&quot;https://twitter.com/varun_barad&quot;&gt;@varun_barad&lt;/a&gt;.&lt;/p&gt;</content><author><name>Varun Barad</name></author><summary type="html">Day 4 of JS30 challenge, today I worked with various methods on array (I knew most of them beforehand) but I learned two cool things today.</summary></entry></feed>
