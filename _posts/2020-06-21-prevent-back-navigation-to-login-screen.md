@@ -48,4 +48,4 @@ You can look at this [StackOverflow answer](https://stackoverflow.com/a/29565717
 
 Anyways, this was more as a documentation of my learning than a tutorial so do ask if there was still anything unclear in my explanation.
 
-Feel free to reach out to me to discuss this or anything else. You can find me on Twitter [@varun_barad](https://twitter.com/varun_barad) or [email me](mailto:varun@varunbarad.com)
+Feel free to reach out to me to discuss this or anything else. You can find me on Twitter [@varun_barad](https://twitter.com/varun_barad) or [email me](mailto:contact@varunbarad.com)
