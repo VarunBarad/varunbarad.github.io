@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Prevent back navigation to login screen"
-summary: ""
+summary: "The guide to correct way of preventing back navigation to login screens once user is logged-in"
 date: 2020-06-21 12:00:00 +0530
 categories:
   - "android"
