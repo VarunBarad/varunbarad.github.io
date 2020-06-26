@@ -59,6 +59,9 @@ defaults:
     values:
       layout: "technology"
 
+feed:
+  posts_limit: 1000
+
 # Kramdown settings
 kramdown:
   auto_ids: true
