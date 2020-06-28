@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/assets/css/style.css?v=d36aafc04bf97950eb5508131b25390747586c09">
-  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=d36aafc04bf97950eb5508131b25390747586c09">
+  <link rel="stylesheet" href="/assets/css/style.css?v=88548b7359028876d93769250251c975cdf455a7">
+  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=88548b7359028876d93769250251c975cdf455a7">
   <link rel="icon" type="image/png" href="/favicon.png" />
   <title>How to add "latest" post redirect to Jekyll site - Varun Barad</title>
   <meta name="description" content="I wanted to add a URL to my site which will always redirect the visitor to the latest blog post I have published at that time." />
@@ -56,28 +56,28 @@
             </div>
             <div class="post-content e-content"><p>I wanted to have a URL which I can give to someone and it would always take them to the latest post published on my blog. I ended up using <a href="https://varunbarad.com/blog/latest">https://varunbarad.com/blog/latest</a> as the URL.</p>
 
-<p>Since my website is statically generated and hosted, it wasn’t an option for me to specify a server-side <code class="highlighter-rouge">30x</code> redirect for that particular URL to my latest post.</p>
+<p>Since my website is statically generated and hosted, it wasn’t an option for me to specify a server-side <code class="language-plaintext highlighter-rouge">30x</code> redirect for that particular URL to my latest post.</p>
 
 <p>So what I ended up doing is generate a page on each build which would redirect user to the latest post using JS. To get the information about latest post, I made use of Jekyll’s Liquid templating <em>syntax</em> (not sure what else to call it).</p>
 
-<p>So the <code class="highlighter-rouge">&lt;body&gt;</code> tag of that page ended up looking like this:</p>
+<p>So the <code class="language-plaintext highlighter-rouge">&lt;body&gt;</code> tag of that page ended up looking like this:</p>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;body&gt;</span>
 {%- assign latest_post = site.posts[0] -%}
 <span class="nt">&lt;p&gt;</span>Redirecting you to {{ latest_post.title }}<span class="nt">&lt;/p&gt;</span>
 
 <span class="nt">&lt;script&gt;</span>
-    <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="s2">"{{ latest_post.url }}"</span><span class="p">;</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">{{ latest_post.url }}</span><span class="dl">"</span><span class="p">;</span>
 <span class="nt">&lt;/script&gt;</span>
 
 <span class="nt">&lt;/body&gt;</span>
 </code></pre></div></div>
 
-<p>Here I get the details of latest post by taking the first post in the list <code class="highlighter-rouge">site.posts</code>. AFAIK <code class="highlighter-rouge">site.posts</code> is sorted in descending order by publishing date, so this approach fetches me the last published post.</p>
+<p>Here I get the details of latest post by taking the first post in the list <code class="language-plaintext highlighter-rouge">site.posts</code>. AFAIK <code class="language-plaintext highlighter-rouge">site.posts</code> is sorted in descending order by publishing date, so this approach fetches me the last published post.</p>
 
-<p>Then it is a simple matter of setting the <code class="highlighter-rouge">window.location.href</code> to the final url of the latest post.</p>
+<p>Then it is a simple matter of setting the <code class="language-plaintext highlighter-rouge">window.location.href</code> to the final url of the latest post.</p>
 
-<p>The final task remaining was to make sure that this page was compiled and generated exactly at <code class="highlighter-rouge">https://varunbarad.com/blog/latest</code>. For that I specified a <code class="highlighter-rouge">permalink: "/blog/latest/"</code> in the front-matter for that page. That way Jekyll knows where to put the final generated HTML file for that page.</p>
+<p>The final task remaining was to make sure that this page was compiled and generated exactly at <code class="language-plaintext highlighter-rouge">https://varunbarad.com/blog/latest</code>. For that I specified a <code class="language-plaintext highlighter-rouge">permalink: "/blog/latest/"</code> in the front-matter for that page. That way Jekyll knows where to put the final generated HTML file for that page.</p>
 
 <h2 id="conclusion">Conclusion</h2>
 
@@ -125,8 +125,8 @@
   </div>
 </div>
 
-<script src="/assets/js/jquery.min.js?v=d36aafc04bf97950eb5508131b25390747586c09"></script>
-<script src="/assets/js/bootstrap.min.js?v=d36aafc04bf97950eb5508131b25390747586c09"></script>
-<script src="/assets/js/contact.js?v=d36aafc04bf97950eb5508131b25390747586c09"></script>
+<script src="/assets/js/jquery.min.js?v=88548b7359028876d93769250251c975cdf455a7"></script>
+<script src="/assets/js/bootstrap.min.js?v=88548b7359028876d93769250251c975cdf455a7"></script>
+<script src="/assets/js/contact.js?v=88548b7359028876d93769250251c975cdf455a7"></script>
 </body>
 </html>

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/assets/css/style.css?v=d36aafc04bf97950eb5508131b25390747586c09">
-  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=d36aafc04bf97950eb5508131b25390747586c09">
+  <link rel="stylesheet" href="/assets/css/style.css?v=88548b7359028876d93769250251c975cdf455a7">
+  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=88548b7359028876d93769250251c975cdf455a7">
   <link rel="icon" type="image/png" href="/favicon.png" />
   <title>Show/Hide Layout Bounds in Android - Varun Barad</title>
   <meta name="description" content="A couple of scripts that help to toggle display of layout-bounds on connected Android device using ADB." />
@@ -64,27 +64,27 @@ adb shell setprop debug.layout <span class="nb">true
 </span>adb shell service call activity 1599295570
 </code></pre></div></div>
 
-<p>So I made 2 files named <code class="highlighter-rouge">show-lb.sh</code> and <code class="highlighter-rouge">hide-lb.sh</code>, which respectively show and hide the layout-bounds on our testing device.</p>
+<p>So I made 2 files named <code class="language-plaintext highlighter-rouge">show-lb.sh</code> and <code class="language-plaintext highlighter-rouge">hide-lb.sh</code>, which respectively show and hide the layout-bounds on our testing device.</p>
 
 <p>The files are as below:</p>
 
-<p><code class="highlighter-rouge">show-lb.sh</code></p>
+<p><code class="language-plaintext highlighter-rouge">show-lb.sh</code></p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>adb shell setprop debug.layout <span class="nb">true</span> <span class="o">&gt;</span> /dev/null 2&gt;&amp;1
 adb shell service call activity 1599295570 <span class="o">&gt;</span> /dev/null 2&gt;&amp;1
 </code></pre></div></div>
 
-<p><code class="highlighter-rouge">hide-lb.sh</code></p>
+<p><code class="language-plaintext highlighter-rouge">hide-lb.sh</code></p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>adb sehll setprop debug.layout <span class="nb">false</span> <span class="o">&gt;</span> /dev/null 2&gt;&amp;1
 adb shell service call activity 1599295570 <span class="o">&gt;</span> /dev/null 2&gt;&amp;1
 </code></pre></div></div>
 
-<p>That <code class="highlighter-rouge">&gt; /dev/null 2&gt;&amp;1</code> part at the end of each line is just so that the output of that particular command does not get displayed in our terminal as we don’t need it.</p>
+<p>That <code class="language-plaintext highlighter-rouge">&gt; /dev/null 2&gt;&amp;1</code> part at the end of each line is just so that the output of that particular command does not get displayed in our terminal as we don’t need it.</p>
 
-<p><code class="highlighter-rouge">Note for Windows users:</code> You friends need to omit the <code class="highlighter-rouge">&gt; /dev/null 2&gt;&amp;1</code> and save these files as <code class="highlighter-rouge">show-lb.bat</code> and <code class="highlighter-rouge">hide-lb.bat</code></p>
+<p><code class="language-plaintext highlighter-rouge">Note for Windows users:</code> You friends need to omit the <code class="language-plaintext highlighter-rouge">&gt; /dev/null 2&gt;&amp;1</code> and save these files as <code class="language-plaintext highlighter-rouge">show-lb.bat</code> and <code class="language-plaintext highlighter-rouge">hide-lb.bat</code></p>
 
-<p>You can save these files (make sure to give them <code class="highlighter-rouge">executable</code> permission if you are on a unix-based machine) and then add their location to system’s <code class="highlighter-rouge">PATH</code> variable. That way you can execute these from anywhere.</p>
+<p>You can save these files (make sure to give them <code class="language-plaintext highlighter-rouge">executable</code> permission if you are on a unix-based machine) and then add their location to system’s <code class="language-plaintext highlighter-rouge">PATH</code> variable. That way you can execute these from anywhere.</p>
 
 <p>I do think that I would indeed make a version of this in the future where it check the current state and automatically toggle it.</p>
 
@@ -132,8 +132,8 @@ adb shell service call activity 1599295570 <span class="o">&gt;</span> /dev/null
   </div>
 </div>
 
-<script src="/assets/js/jquery.min.js?v=d36aafc04bf97950eb5508131b25390747586c09"></script>
-<script src="/assets/js/bootstrap.min.js?v=d36aafc04bf97950eb5508131b25390747586c09"></script>
-<script src="/assets/js/contact.js?v=d36aafc04bf97950eb5508131b25390747586c09"></script>
+<script src="/assets/js/jquery.min.js?v=88548b7359028876d93769250251c975cdf455a7"></script>
+<script src="/assets/js/bootstrap.min.js?v=88548b7359028876d93769250251c975cdf455a7"></script>
+<script src="/assets/js/contact.js?v=88548b7359028876d93769250251c975cdf455a7"></script>
 </body>
 </html>

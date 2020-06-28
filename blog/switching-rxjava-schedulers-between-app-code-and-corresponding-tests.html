@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/assets/css/style.css?v=d36aafc04bf97950eb5508131b25390747586c09">
-  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=d36aafc04bf97950eb5508131b25390747586c09">
+  <link rel="stylesheet" href="/assets/css/style.css?v=88548b7359028876d93769250251c975cdf455a7">
+  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=88548b7359028876d93769250251c975cdf455a7">
   <link rel="icon" type="image/png" href="/favicon.png" />
   <title>Switching RxJava schedulers between app code and corresponding tests - Varun Barad</title>
   <meta name="description" content="A simple way to switch between using appropriate schedulers in app code and using trampoline schedulers for tests." />
@@ -59,35 +59,35 @@
 <p>One of the interesting ways I found while working on a take-home challenge for a company was as below:</p>
 
 <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">object</span> <span class="nc">VarunSchedulers</span> <span class="p">{</span>
-    <span class="k">private</span> <span class="kd">var</span> <span class="py">schedulers</span><span class="p">:</span> <span class="n">RxSchedulers</span> <span class="p">=</span> <span class="n">RxSchedulers</span><span class="p">.</span><span class="n">Default</span>
+    <span class="k">private</span> <span class="kd">var</span> <span class="py">schedulers</span><span class="p">:</span> <span class="nc">RxSchedulers</span> <span class="p">=</span> <span class="nc">RxSchedulers</span><span class="p">.</span><span class="nc">Default</span>
 
     <span class="k">fun</span> <span class="nf">enableTesting</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">this</span><span class="p">.</span><span class="n">schedulers</span> <span class="p">=</span> <span class="n">RxSchedulers</span><span class="p">.</span><span class="n">Test</span>
+        <span class="k">this</span><span class="p">.</span><span class="n">schedulers</span> <span class="p">=</span> <span class="nc">RxSchedulers</span><span class="p">.</span><span class="nc">Test</span>
     <span class="p">}</span>
 
     <span class="k">fun</span> <span class="nf">disableTesting</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">this</span><span class="p">.</span><span class="n">schedulers</span> <span class="p">=</span> <span class="n">RxSchedulers</span><span class="p">.</span><span class="n">Default</span>
+        <span class="k">this</span><span class="p">.</span><span class="n">schedulers</span> <span class="p">=</span> <span class="nc">RxSchedulers</span><span class="p">.</span><span class="nc">Default</span>
     <span class="p">}</span>
 
-    <span class="k">fun</span> <span class="nf">io</span><span class="p">():</span> <span class="n">Scheduler</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">schedulers</span><span class="p">.</span><span class="n">io</span><span class="p">()</span>
-    <span class="k">fun</span> <span class="nf">computation</span><span class="p">():</span> <span class="n">Scheduler</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">schedulers</span><span class="p">.</span><span class="n">computation</span><span class="p">()</span>
-    <span class="k">fun</span> <span class="nf">main</span><span class="p">():</span> <span class="n">Scheduler</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">schedulers</span><span class="p">.</span><span class="n">main</span><span class="p">()</span>
+    <span class="k">fun</span> <span class="nf">io</span><span class="p">():</span> <span class="nc">Scheduler</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">schedulers</span><span class="p">.</span><span class="nf">io</span><span class="p">()</span>
+    <span class="k">fun</span> <span class="nf">computation</span><span class="p">():</span> <span class="nc">Scheduler</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">schedulers</span><span class="p">.</span><span class="nf">computation</span><span class="p">()</span>
+    <span class="k">fun</span> <span class="nf">main</span><span class="p">():</span> <span class="nc">Scheduler</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">schedulers</span><span class="p">.</span><span class="nf">main</span><span class="p">()</span>
 
     <span class="k">private</span> <span class="k">sealed</span> <span class="kd">class</span> <span class="nc">RxSchedulers</span> <span class="p">{</span>
-        <span class="k">abstract</span> <span class="k">fun</span> <span class="nf">io</span><span class="p">():</span> <span class="n">Scheduler</span>
-        <span class="k">abstract</span> <span class="k">fun</span> <span class="nf">computation</span><span class="p">():</span> <span class="n">Scheduler</span>
-        <span class="k">abstract</span> <span class="k">fun</span> <span class="nf">main</span><span class="p">():</span> <span class="n">Scheduler</span>
+        <span class="k">abstract</span> <span class="k">fun</span> <span class="nf">io</span><span class="p">():</span> <span class="nc">Scheduler</span>
+        <span class="k">abstract</span> <span class="k">fun</span> <span class="nf">computation</span><span class="p">():</span> <span class="nc">Scheduler</span>
+        <span class="k">abstract</span> <span class="k">fun</span> <span class="nf">main</span><span class="p">():</span> <span class="nc">Scheduler</span>
 
-        <span class="kd">object</span> <span class="nc">Test</span> <span class="p">:</span> <span class="n">RxSchedulers</span><span class="p">()</span> <span class="p">{</span>
-            <span class="k">override</span> <span class="k">fun</span> <span class="nf">io</span><span class="p">():</span> <span class="n">Scheduler</span> <span class="p">=</span> <span class="n">Schedulers</span><span class="p">.</span><span class="n">trampoline</span><span class="p">()</span>
-            <span class="k">override</span> <span class="k">fun</span> <span class="nf">computation</span><span class="p">():</span> <span class="n">Scheduler</span> <span class="p">=</span> <span class="n">Schedulers</span><span class="p">.</span><span class="n">trampoline</span><span class="p">()</span>
-            <span class="k">override</span> <span class="k">fun</span> <span class="nf">main</span><span class="p">():</span> <span class="n">Scheduler</span> <span class="p">=</span> <span class="n">Schedulers</span><span class="p">.</span><span class="n">trampoline</span><span class="p">()</span>
+        <span class="kd">object</span> <span class="nc">Test</span> <span class="p">:</span> <span class="nc">RxSchedulers</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">override</span> <span class="k">fun</span> <span class="nf">io</span><span class="p">():</span> <span class="nc">Scheduler</span> <span class="p">=</span> <span class="nc">Schedulers</span><span class="p">.</span><span class="nf">trampoline</span><span class="p">()</span>
+            <span class="k">override</span> <span class="k">fun</span> <span class="nf">computation</span><span class="p">():</span> <span class="nc">Scheduler</span> <span class="p">=</span> <span class="nc">Schedulers</span><span class="p">.</span><span class="nf">trampoline</span><span class="p">()</span>
+            <span class="k">override</span> <span class="k">fun</span> <span class="nf">main</span><span class="p">():</span> <span class="nc">Scheduler</span> <span class="p">=</span> <span class="nc">Schedulers</span><span class="p">.</span><span class="nf">trampoline</span><span class="p">()</span>
         <span class="p">}</span>
 
-        <span class="kd">object</span> <span class="nc">Default</span> <span class="p">:</span> <span class="n">RxSchedulers</span><span class="p">()</span> <span class="p">{</span>
-            <span class="k">override</span> <span class="k">fun</span> <span class="nf">io</span><span class="p">():</span> <span class="n">Scheduler</span> <span class="p">=</span> <span class="n">Schedulers</span><span class="p">.</span><span class="n">io</span><span class="p">()</span>
-            <span class="k">override</span> <span class="k">fun</span> <span class="nf">computation</span><span class="p">():</span> <span class="n">Scheduler</span> <span class="p">=</span> <span class="n">Schedulers</span><span class="p">.</span><span class="n">computation</span><span class="p">()</span>
-            <span class="k">override</span> <span class="k">fun</span> <span class="nf">main</span><span class="p">():</span> <span class="n">Scheduler</span> <span class="p">=</span> <span class="n">AndroidSchedulers</span><span class="p">.</span><span class="n">mainThread</span><span class="p">()</span>
+        <span class="kd">object</span> <span class="nc">Default</span> <span class="p">:</span> <span class="nc">RxSchedulers</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">override</span> <span class="k">fun</span> <span class="nf">io</span><span class="p">():</span> <span class="nc">Scheduler</span> <span class="p">=</span> <span class="nc">Schedulers</span><span class="p">.</span><span class="nf">io</span><span class="p">()</span>
+            <span class="k">override</span> <span class="k">fun</span> <span class="nf">computation</span><span class="p">():</span> <span class="nc">Scheduler</span> <span class="p">=</span> <span class="nc">Schedulers</span><span class="p">.</span><span class="nf">computation</span><span class="p">()</span>
+            <span class="k">override</span> <span class="k">fun</span> <span class="nf">main</span><span class="p">():</span> <span class="nc">Scheduler</span> <span class="p">=</span> <span class="nc">AndroidSchedulers</span><span class="p">.</span><span class="nf">mainThread</span><span class="p">()</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -95,30 +95,30 @@
 
 <p>Now let’s take the example of fetching a network query, we can simply do this</p>
 
-<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pandaService</span><span class="p">.</span><span class="n">getCutestPanda</span><span class="p">()</span>
-    <span class="p">.</span><span class="n">subscribeOn</span><span class="p">(</span><span class="n">VarunSchedulers</span><span class="p">.</span><span class="n">io</span><span class="p">())</span>
-    <span class="p">.</span><span class="n">observeOn</span><span class="p">(</span><span class="n">VarunSchedulers</span><span class="p">.</span><span class="n">main</span><span class="p">())</span>
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pandaService</span><span class="p">.</span><span class="nf">getCutestPanda</span><span class="p">()</span>
+    <span class="p">.</span><span class="nf">subscribeOn</span><span class="p">(</span><span class="nc">VarunSchedulers</span><span class="p">.</span><span class="nf">io</span><span class="p">())</span>
+    <span class="p">.</span><span class="nf">observeOn</span><span class="p">(</span><span class="nc">VarunSchedulers</span><span class="p">.</span><span class="nf">main</span><span class="p">())</span>
     <span class="o">..</span><span class="p">.</span>
 </code></pre></div></div>
 
-<p>And when we write our unit-tests we can easily turn testing-mode on and off using the <code class="highlighter-rouge">@Before</code> and <code class="highlighter-rouge">@After</code> methods.</p>
+<p>And when we write our unit-tests we can easily turn testing-mode on and off using the <code class="language-plaintext highlighter-rouge">@Before</code> and <code class="language-plaintext highlighter-rouge">@After</code> methods.</p>
 
 <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">SomeTestClass</span> <span class="p">{</span>
-    <span class="n">@Before</span>
+    <span class="nd">@Before</span>
     <span class="k">fun</span> <span class="nf">setupTests</span><span class="p">()</span> <span class="p">{</span>
-        <span class="n">VarunSchedulers</span><span class="p">.</span><span class="n">enableTesting</span><span class="p">()</span>
+        <span class="nc">VarunSchedulers</span><span class="p">.</span><span class="nf">enableTesting</span><span class="p">()</span>
     <span class="p">}</span>
     
-    <span class="n">@After</span>
+    <span class="nd">@After</span>
     <span class="k">fun</span> <span class="nf">tearDown</span><span class="p">()</span> <span class="p">{</span>
-        <span class="n">VarunSchedulers</span><span class="p">.</span><span class="n">disableTesting</span><span class="p">()</span>
+        <span class="nc">VarunSchedulers</span><span class="p">.</span><span class="nf">disableTesting</span><span class="p">()</span>
     <span class="p">}</span>
     
-    <span class="c1">// Write your tests
-</span><span class="p">}</span>
+    <span class="c1">// Write your tests</span>
+<span class="p">}</span>
 </code></pre></div></div>
 
-<p>Now whenever we are inside tests, then automatically the <code class="highlighter-rouge">trampoline</code> schedulers are assigned and respectively appropriate schedulers by default in case we are not in tests.</p>
+<p>Now whenever we are inside tests, then automatically the <code class="language-plaintext highlighter-rouge">trampoline</code> schedulers are assigned and respectively appropriate schedulers by default in case we are not in tests.</p>
 
 <p>If you have more such tricks up your sleeve or something in here isn’t clear to you or you just want to chat then hit me up on twitter <a href="https://twitter.com/varun_barad">@varun_barad</a>.</p>
 
@@ -162,8 +162,8 @@
   </div>
 </div>
 
-<script src="/assets/js/jquery.min.js?v=d36aafc04bf97950eb5508131b25390747586c09"></script>
-<script src="/assets/js/bootstrap.min.js?v=d36aafc04bf97950eb5508131b25390747586c09"></script>
-<script src="/assets/js/contact.js?v=d36aafc04bf97950eb5508131b25390747586c09"></script>
+<script src="/assets/js/jquery.min.js?v=88548b7359028876d93769250251c975cdf455a7"></script>
+<script src="/assets/js/bootstrap.min.js?v=88548b7359028876d93769250251c975cdf455a7"></script>
+<script src="/assets/js/contact.js?v=88548b7359028876d93769250251c975cdf455a7"></script>
 </body>
 </html>

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/assets/css/style.css?v=d36aafc04bf97950eb5508131b25390747586c09">
-  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=d36aafc04bf97950eb5508131b25390747586c09">
+  <link rel="stylesheet" href="/assets/css/style.css?v=88548b7359028876d93769250251c975cdf455a7">
+  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=88548b7359028876d93769250251c975cdf455a7">
   <link rel="icon" type="image/png" href="/favicon.png" />
   <title>HTTP Network Requests on Android Pie - Varun Barad</title>
   <meta name="description" content="Android Pie only allows HTTPS traffic by default & blocks all HTTP requests. You can enable HTTP communication for your API endpoints once you have configured this little thing." />
@@ -60,7 +60,7 @@
 
 <h2 id="enabling-cleartext-traffic-for-all-domains-discouraged-due-to-being-less-secure">Enabling cleartext traffic for all domains (discouraged due to being less secure)</h2>
 
-<p>Add this attribute to the <code class="highlighter-rouge">&lt;application&gt;</code> tag in your <code class="highlighter-rouge">AndroidManifest.xml</code></p>
+<p>Add this attribute to the <code class="language-plaintext highlighter-rouge">&lt;application&gt;</code> tag in your <code class="language-plaintext highlighter-rouge">AndroidManifest.xml</code></p>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>android:usesCleartextTraffic="true"
 </code></pre></div></div>
@@ -71,7 +71,7 @@
 
 <h2 id="enabling-http-requests-for-specific-domains-go-for-this-one-if-you-can">Enabling HTTP requests for specific domains (go for this one if you can)</h2>
 
-<p>You first need to create a file named <code class="highlighter-rouge">network_security_config.xml</code> file inside your <code class="highlighter-rouge">res/xml</code> directory. The file contents should be as below</p>
+<p>You first need to create a file named <code class="language-plaintext highlighter-rouge">network_security_config.xml</code> file inside your <code class="language-plaintext highlighter-rouge">res/xml</code> directory. The file contents should be as below</p>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
 <span class="nt">&lt;network-security-config&gt;</span>
@@ -81,9 +81,9 @@
 <span class="nt">&lt;/network-security-config&gt;</span>
 </code></pre></div></div>
 
-<p>You need to replace <code class="highlighter-rouge">example-domain.com</code> with the domain for which you want to enable http traffic. If you want to enable http for more than one domains then add relevant <code class="highlighter-rouge">&lt;domain&gt;</code> tags for each.</p>
+<p>You need to replace <code class="language-plaintext highlighter-rouge">example-domain.com</code> with the domain for which you want to enable http traffic. If you want to enable http for more than one domains then add relevant <code class="language-plaintext highlighter-rouge">&lt;domain&gt;</code> tags for each.</p>
 
-<p>Then you need to specify this file in your <code class="highlighter-rouge">AndroidManifest.xml</code> as below:</p>
+<p>Then you need to specify this file in your <code class="language-plaintext highlighter-rouge">AndroidManifest.xml</code> as below:</p>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
 <span class="nt">&lt;application</span>
@@ -134,8 +134,8 @@
   </div>
 </div>
 
-<script src="/assets/js/jquery.min.js?v=d36aafc04bf97950eb5508131b25390747586c09"></script>
-<script src="/assets/js/bootstrap.min.js?v=d36aafc04bf97950eb5508131b25390747586c09"></script>
-<script src="/assets/js/contact.js?v=d36aafc04bf97950eb5508131b25390747586c09"></script>
+<script src="/assets/js/jquery.min.js?v=88548b7359028876d93769250251c975cdf455a7"></script>
+<script src="/assets/js/bootstrap.min.js?v=88548b7359028876d93769250251c975cdf455a7"></script>
+<script src="/assets/js/contact.js?v=88548b7359028876d93769250251c975cdf455a7"></script>
 </body>
 </html>

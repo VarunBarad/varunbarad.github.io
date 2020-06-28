@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/assets/css/style.css?v=d36aafc04bf97950eb5508131b25390747586c09">
-  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=d36aafc04bf97950eb5508131b25390747586c09">
+  <link rel="stylesheet" href="/assets/css/style.css?v=88548b7359028876d93769250251c975cdf455a7">
+  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=88548b7359028876d93769250251c975cdf455a7">
   <link rel="icon" type="image/png" href="/favicon.png" />
   <title>Check network connectivity on Android in 10 lines - Varun Barad</title>
   <meta name="description" content="Let's see how simple it is to show correct feedback to user on whether they are connected to the network or not in Android." />
@@ -65,13 +65,13 @@
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">// Java code sample</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">ConnectivityHelper</span> <span class="o">{</span>
-  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">isConnectedToNetwork</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">ConnectivityManager</span> <span class="n">connectivityManager</span> <span class="o">=</span>
-        <span class="o">(</span><span class="n">ConnectivityManager</span><span class="o">)</span> <span class="n">context</span><span class="o">.</span><span class="na">getSystemService</span><span class="o">(</span><span class="n">Context</span><span class="o">.</span><span class="na">CONNECTIVITY_SERVICE</span><span class="o">);</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">isConnectedToNetwork</span><span class="o">(</span><span class="nc">Context</span> <span class="n">context</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">ConnectivityManager</span> <span class="n">connectivityManager</span> <span class="o">=</span>
+        <span class="o">(</span><span class="nc">ConnectivityManager</span><span class="o">)</span> <span class="n">context</span><span class="o">.</span><span class="na">getSystemService</span><span class="o">(</span><span class="nc">Context</span><span class="o">.</span><span class="na">CONNECTIVITY_SERVICE</span><span class="o">);</span>
     
     <span class="kt">boolean</span> <span class="n">isConnected</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
     <span class="k">if</span> <span class="o">(</span><span class="n">connectivityManager</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-      <span class="n">NetworkInfo</span> <span class="n">activeNetwork</span> <span class="o">=</span> <span class="n">connectivityManager</span><span class="o">.</span><span class="na">getActiveNetworkInfo</span><span class="o">();</span>
+      <span class="nc">NetworkInfo</span> <span class="n">activeNetwork</span> <span class="o">=</span> <span class="n">connectivityManager</span><span class="o">.</span><span class="na">getActiveNetworkInfo</span><span class="o">();</span>
       <span class="n">isConnected</span> <span class="o">=</span> <span class="o">(</span><span class="n">activeNetwork</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="o">(</span><span class="n">activeNetwork</span><span class="o">.</span><span class="na">isConnectedOrConnecting</span><span class="o">());</span>
     <span class="o">}</span>
     
@@ -79,17 +79,17 @@
   <span class="o">}</span>
 <span class="o">}</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="c1">// Kotlin code sample
-</span>
-<span class="c1">// The next line should be the first statement in the file
-</span><span class="n">@file</span><span class="p">:</span><span class="n">JvmName</span><span class="p">(</span><span class="s">"ConnectivityHelper"</span><span class="p">)</span> <span class="c1">// This line is only needed if you don't want caller statement in Java to change
-</span>
-<span class="k">fun</span> <span class="nf">Context</span><span class="p">.</span><span class="n">isConnectedToNetwork</span><span class="p">():</span> <span class="n">Boolean</span> <span class="p">{</span>
-  <span class="kd">val</span> <span class="py">connectivityManager</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">getSystemService</span><span class="p">(</span><span class="n">Context</span><span class="p">.</span><span class="n">CONNECTIVITY_SERVICE</span><span class="p">)</span> <span class="k">as</span> <span class="n">ConnectivityManager</span><span class="p">?</span>
-  <span class="k">return</span> <span class="n">connectivityManager</span><span class="o">?.</span><span class="n">activeNetworkInfo</span><span class="o">?.</span><span class="n">isConnectedOrConnecting</span><span class="p">()</span> <span class="o">?:</span> <span class="k">false</span>
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="c1">// Kotlin code sample</span>
+
+<span class="c1">// The next line should be the first statement in the file</span>
+<span class="err">@</span><span class="n">file</span><span class="p">:</span><span class="nc">JvmName</span><span class="p">(</span><span class="s">"ConnectivityHelper"</span><span class="p">)</span> <span class="c1">// This line is only needed if you don't want caller statement in Java to change</span>
+
+<span class="k">fun</span> <span class="nc">Context</span><span class="p">.</span><span class="nf">isConnectedToNetwork</span><span class="p">():</span> <span class="nc">Boolean</span> <span class="p">{</span>
+  <span class="kd">val</span> <span class="py">connectivityManager</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="nf">getSystemService</span><span class="p">(</span><span class="nc">Context</span><span class="p">.</span><span class="nc">CONNECTIVITY_SERVICE</span><span class="p">)</span> <span class="k">as</span> <span class="nc">ConnectivityManager</span><span class="p">?</span>
+  <span class="k">return</span> <span class="n">connectivityManager</span><span class="o">?.</span><span class="n">activeNetworkInfo</span><span class="o">?.</span><span class="nf">isConnectedOrConnecting</span><span class="p">()</span> <span class="o">?:</span> <span class="k">false</span>
 <span class="p">}</span></code></pre></figure>
 
-<p>You also need to have the <code class="highlighter-rouge">ACCESS_NETWORK_STATE</code> permission added in your manifest like below.</p>
+<p>You also need to have the <code class="language-plaintext highlighter-rouge">ACCESS_NETWORK_STATE</code> permission added in your manifest like below.</p>
 
 <figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;manifest</span> <span class="err">...</span><span class="nt">&gt;</span>
   
@@ -104,18 +104,18 @@
 <p>Now anywhere that you need to check the connection, you only need to</p>
 
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">// Java code sample</span>
-<span class="k">if</span> <span class="o">(</span><span class="n">ConnectivityHelper</span><span class="o">.</span><span class="na">isConnectedToNetwork</span><span class="o">(</span><span class="n">context</span><span class="o">))</span> <span class="o">{</span>
+<span class="k">if</span> <span class="o">(</span><span class="nc">ConnectivityHelper</span><span class="o">.</span><span class="na">isConnectedToNetwork</span><span class="o">(</span><span class="n">context</span><span class="o">))</span> <span class="o">{</span>
   <span class="c1">// Show the connected screen</span>
 <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
   <span class="c1">// Show disconnected screen</span>
 <span class="o">}</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="c1">// Kotlin code sample
-</span><span class="k">if</span> <span class="p">(</span><span class="n">context</span><span class="p">.</span><span class="n">isConnectedToInternet</span><span class="p">())</span> <span class="p">{</span>
-  <span class="c1">// Show the connected screen
-</span><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-  <span class="c1">// Show disconnected screen
-</span><span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="c1">// Kotlin code sample</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">context</span><span class="p">.</span><span class="nf">isConnectedToInternet</span><span class="p">())</span> <span class="p">{</span>
+  <span class="c1">// Show the connected screen</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="c1">// Show disconnected screen</span>
+<span class="p">}</span></code></pre></figure>
 
 <h2 id="further-reading">Further reading</h2>
 
@@ -161,8 +161,8 @@
   </div>
 </div>
 
-<script src="/assets/js/jquery.min.js?v=d36aafc04bf97950eb5508131b25390747586c09"></script>
-<script src="/assets/js/bootstrap.min.js?v=d36aafc04bf97950eb5508131b25390747586c09"></script>
-<script src="/assets/js/contact.js?v=d36aafc04bf97950eb5508131b25390747586c09"></script>
+<script src="/assets/js/jquery.min.js?v=88548b7359028876d93769250251c975cdf455a7"></script>
+<script src="/assets/js/bootstrap.min.js?v=88548b7359028876d93769250251c975cdf455a7"></script>
+<script src="/assets/js/contact.js?v=88548b7359028876d93769250251c975cdf455a7"></script>
 </body>
 </html>

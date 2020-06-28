@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/assets/css/style.css?v=d36aafc04bf97950eb5508131b25390747586c09">
-  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=d36aafc04bf97950eb5508131b25390747586c09">
+  <link rel="stylesheet" href="/assets/css/style.css?v=88548b7359028876d93769250251c975cdf455a7">
+  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=88548b7359028876d93769250251c975cdf455a7">
   <link rel="icon" type="image/png" href="/favicon.png" />
   <title>Simplifying User-Experience for rating your Android app - Varun Barad</title>
   <meta name="description" content="Make it easy for your users to rate your Android app." />
@@ -98,32 +98,32 @@
 <p>Now comes the part where we launch the Store listing for our app when user clicks on whatever we displayed above. Continuing the above example, I have the below code in my Activity in which the above button is displayed.</p>
 
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">// Java</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">rateApp</span><span class="o">(</span><span class="n">View</span> <span class="n">rateMeButton</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">String</span> <span class="n">packageName</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">getPackageName</span><span class="o">();</span>
-    <span class="n">String</span> <span class="n">playStoreAppUri</span> <span class="o">=</span> <span class="s">"market://details?id="</span> <span class="o">+</span> <span class="n">packageName</span><span class="o">;</span>
-    <span class="n">String</span> <span class="n">playStoreSiteUri</span> <span class="o">=</span> <span class="s">"https://play.google.com/store/apps/details?id="</span> <span class="o">+</span> <span class="n">packageName</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">rateApp</span><span class="o">(</span><span class="nc">View</span> <span class="n">rateMeButton</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">String</span> <span class="n">packageName</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">getPackageName</span><span class="o">();</span>
+    <span class="nc">String</span> <span class="n">playStoreAppUri</span> <span class="o">=</span> <span class="s">"market://details?id="</span> <span class="o">+</span> <span class="n">packageName</span><span class="o">;</span>
+    <span class="nc">String</span> <span class="n">playStoreSiteUri</span> <span class="o">=</span> <span class="s">"https://play.google.com/store/apps/details?id="</span> <span class="o">+</span> <span class="n">packageName</span><span class="o">;</span>
     
     <span class="k">try</span> <span class="o">{</span>
-        <span class="n">Intent</span> <span class="n">playStoreAppIntent</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">(</span><span class="n">Intent</span><span class="o">.</span><span class="na">ACTION_VIEW</span><span class="o">,</span> <span class="n">Uri</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="n">playStoreAppUri</span><span class="o">));</span>
+        <span class="nc">Intent</span> <span class="n">playStoreAppIntent</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Intent</span><span class="o">(</span><span class="nc">Intent</span><span class="o">.</span><span class="na">ACTION_VIEW</span><span class="o">,</span> <span class="nc">Uri</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="n">playStoreAppUri</span><span class="o">));</span>
         <span class="n">startActivity</span><span class="o">(</span><span class="n">playStoreAppIntent</span><span class="o">);</span>
-    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ActivityNotFoundException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">Intent</span> <span class="n">playStoreBrowserIntent</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">(</span><span class="n">Intent</span><span class="o">.</span><span class="na">ACTION_VIEW</span><span class="o">,</span> <span class="n">Uri</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="n">playStoreSiteUri</span><span class="o">));</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">ActivityNotFoundException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Intent</span> <span class="n">playStoreBrowserIntent</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Intent</span><span class="o">(</span><span class="nc">Intent</span><span class="o">.</span><span class="na">ACTION_VIEW</span><span class="o">,</span> <span class="nc">Uri</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="n">playStoreSiteUri</span><span class="o">));</span>
         <span class="n">startActivity</span><span class="o">(</span><span class="n">playStoreBrowserIntent</span><span class="o">);</span>
     <span class="o">}</span>
 <span class="o">}</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="c1">// Kotlin
-</span><span class="k">public</span> <span class="k">fun</span> <span class="nf">rateApp</span><span class="p">(</span><span class="n">rateMeButton</span><span class="p">:</span> <span class="n">View</span><span class="p">):</span> <span class="n">Unit</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="c1">// Kotlin</span>
+<span class="k">public</span> <span class="k">fun</span> <span class="nf">rateApp</span><span class="p">(</span><span class="n">rateMeButton</span><span class="p">:</span> <span class="nc">View</span><span class="p">):</span> <span class="nc">Unit</span> <span class="p">{</span>
     <span class="kd">val</span> <span class="py">packageName</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">packageName</span>
     <span class="kd">val</span> <span class="py">playStoreAppUri</span> <span class="p">=</span> <span class="s">"market://details?id=$packageName"</span>
     <span class="kd">val</span> <span class="py">playStoreSiteUri</span> <span class="p">=</span> <span class="s">"https://play.google.com/store/apps/details?id=$packageName"</span>
     
     <span class="k">try</span> <span class="p">{</span>
-        <span class="kd">val</span> <span class="py">playStoreAppIntent</span> <span class="p">=</span> <span class="n">Intent</span><span class="p">(</span><span class="n">Intent</span><span class="p">.</span><span class="n">ACTION_VIEW</span><span class="p">,</span> <span class="n">Uri</span><span class="p">.</span><span class="n">parse</span><span class="p">(</span><span class="n">playStoreAppUri</span><span class="p">))</span>
-        <span class="n">startActivity</span><span class="p">(</span><span class="n">playStoreAppIntent</span><span class="p">)</span>
-    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">e</span><span class="p">:</span> <span class="n">ActivityNotFoundException</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kd">val</span> <span class="py">playStoreBrowserIntent</span> <span class="p">=</span> <span class="n">Intent</span><span class="p">(</span><span class="n">Intent</span><span class="p">.</span><span class="n">ACTION_VIEW</span><span class="p">,</span> <span class="n">Uri</span><span class="p">.</span><span class="n">parse</span><span class="p">(</span><span class="n">playStoreSiteUri</span><span class="p">))</span>
-        <span class="n">startActivity</span><span class="p">(</span><span class="n">playStoreBrowserIntent</span><span class="p">)</span>
+        <span class="kd">val</span> <span class="py">playStoreAppIntent</span> <span class="p">=</span> <span class="nc">Intent</span><span class="p">(</span><span class="nc">Intent</span><span class="p">.</span><span class="nc">ACTION_VIEW</span><span class="p">,</span> <span class="nc">Uri</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">playStoreAppUri</span><span class="p">))</span>
+        <span class="nf">startActivity</span><span class="p">(</span><span class="n">playStoreAppIntent</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">e</span><span class="p">:</span> <span class="nc">ActivityNotFoundException</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">val</span> <span class="py">playStoreBrowserIntent</span> <span class="p">=</span> <span class="nc">Intent</span><span class="p">(</span><span class="nc">Intent</span><span class="p">.</span><span class="nc">ACTION_VIEW</span><span class="p">,</span> <span class="nc">Uri</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">playStoreSiteUri</span><span class="p">))</span>
+        <span class="nf">startActivity</span><span class="p">(</span><span class="n">playStoreBrowserIntent</span><span class="p">)</span>
     <span class="p">}</span>
 <span class="p">}</span></code></pre></figure>
 
@@ -131,15 +131,15 @@
 
 <p>If you have ever paid attention to the URL of the store-listing of any app on the Play Store then you would have noticed that the app’s package name is used as it’s unique identifier on the store. The structure is like this:</p>
 
-<p><code class="highlighter-rouge">https://play.google.com/store/apps/details?id=&lt;package-name-of-your-app&gt;</code></p>
+<p><code class="language-plaintext highlighter-rouge">https://play.google.com/store/apps/details?id=&lt;package-name-of-your-app&gt;</code></p>
 
 <p>And a similar structure is followed by the URI for Play Store app:</p>
 
-<p><code class="highlighter-rouge">market://details?id=&lt;package-name-of-your-app&gt;</code></p>
+<p><code class="language-plaintext highlighter-rouge">market://details?id=&lt;package-name-of-your-app&gt;</code></p>
 
-<p>So, we first try launching the Play Store app on the device, using the URI for the app (the <code class="highlighter-rouge">market://...</code> one). If the Play Store app is present on the device then it is launched and the page containing listing of our app is opened.</p>
+<p>So, we first try launching the Play Store app on the device, using the URI for the app (the <code class="language-plaintext highlighter-rouge">market://...</code> one). If the Play Store app is present on the device then it is launched and the page containing listing of our app is opened.</p>
 
-<p>If due to some conditions the Play Store app is not present (this can be the case with some custom ROMs), then <code class="highlighter-rouge">startActivity</code> will throw the <code class="highlighter-rouge">ActivityNotFoundException</code> exception and we then fall-back to opening our app’s listing on the web version of the Play Store using the browser.</p>
+<p>If due to some conditions the Play Store app is not present (this can be the case with some custom ROMs), then <code class="language-plaintext highlighter-rouge">startActivity</code> will throw the <code class="language-plaintext highlighter-rouge">ActivityNotFoundException</code> exception and we then fall-back to opening our app’s listing on the web version of the Play Store using the browser.</p>
 
 <h3 id="thats-all-folks">That’s all folks</h3>
 
@@ -183,8 +183,8 @@
   </div>
 </div>
 
-<script src="/assets/js/jquery.min.js?v=d36aafc04bf97950eb5508131b25390747586c09"></script>
-<script src="/assets/js/bootstrap.min.js?v=d36aafc04bf97950eb5508131b25390747586c09"></script>
-<script src="/assets/js/contact.js?v=d36aafc04bf97950eb5508131b25390747586c09"></script>
+<script src="/assets/js/jquery.min.js?v=88548b7359028876d93769250251c975cdf455a7"></script>
+<script src="/assets/js/bootstrap.min.js?v=88548b7359028876d93769250251c975cdf455a7"></script>
+<script src="/assets/js/contact.js?v=88548b7359028876d93769250251c975cdf455a7"></script>
 </body>
 </html>

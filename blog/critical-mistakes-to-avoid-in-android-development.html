@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/assets/css/style.css?v=d36aafc04bf97950eb5508131b25390747586c09">
-  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=d36aafc04bf97950eb5508131b25390747586c09">
+  <link rel="stylesheet" href="/assets/css/style.css?v=88548b7359028876d93769250251c975cdf455a7">
+  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=88548b7359028876d93769250251c975cdf455a7">
   <link rel="icon" type="image/png" href="/favicon.png" />
   <title>Critical mistakes to avoid in Android development - Varun Barad</title>
   <meta name="description" content="Charlie Munger has said that avoiding to be stupid is more beneficial when compared to trying to be intelligent. So, let's take a look at some mistakes that we can avoid while walking the path of Android development." />
@@ -73,12 +73,12 @@
 <ul>
   <li><strong>Need context to access:</strong> If you wish to display that string to UI, you will inevitably need/have some kind of context there too. Just use that same context to fetch the string</li>
   <li><strong>But I only need it in this one place:</strong> There is no telling when tomorrow you might need to have that same string in some other file. It is better to invest an extra minute to provide insurance against future problems</li>
-  <li><strong>Complex string with run-time data:</strong> Friends, Android has you covered. There are parameterized strings supported by the platform with a syntax similar to the one used in Java’s <code class="highlighter-rouge">String.format()</code>. More than that, plural-strings (using different strings based on the quantity of something) are also supported. Check out <a href="https://stackoverflow.com/questions/2397613/are-parameters-in-strings-xml-possible" title="Parameterized Strings">this StackOverflow post</a> for parameterized strings and the <a href="https://developer.android.com/guide/topics/resources/string-resource.html" title="Plural Strings">official documentation</a> for plural-strings.</li>
+  <li><strong>Complex string with run-time data:</strong> Friends, Android has you covered. There are parameterized strings supported by the platform with a syntax similar to the one used in Java’s <code class="language-plaintext highlighter-rouge">String.format()</code>. More than that, plural-strings (using different strings based on the quantity of something) are also supported. Check out <a href="https://stackoverflow.com/questions/2397613/are-parameters-in-strings-xml-possible" title="Parameterized Strings">this StackOverflow post</a> for parameterized strings and the <a href="https://developer.android.com/guide/topics/resources/string-resource.html" title="Plural Strings">official documentation</a> for plural-strings.</li>
 </ul>
 
 <h2 id="not-using-data-binding">Not using data-binding</h2>
 
-<p>Who likes to write cumbersome <code class="highlighter-rouge">findViewById</code> calls and then maintain the reference to those views in their current namespace? Also, in that case we need to keep our view-id’s so that we are sure of which view-id we are using in <code class="highlighter-rouge">findViewById</code> . This is because autocomplete in Android Studio will suggest every id (from all layouts), but only those present in the current layout tree will be available to <code class="highlighter-rouge">findViewById</code> . Non-existent ones will return <code class="highlighter-rouge">null</code> (probably causing a <code class="highlighter-rouge">NullPointerException</code>).</p>
+<p>Who likes to write cumbersome <code class="language-plaintext highlighter-rouge">findViewById</code> calls and then maintain the reference to those views in their current namespace? Also, in that case we need to keep our view-id’s so that we are sure of which view-id we are using in <code class="language-plaintext highlighter-rouge">findViewById</code> . This is because autocomplete in Android Studio will suggest every id (from all layouts), but only those present in the current layout tree will be available to <code class="language-plaintext highlighter-rouge">findViewById</code> . Non-existent ones will return <code class="language-plaintext highlighter-rouge">null</code> (probably causing a <code class="language-plaintext highlighter-rouge">NullPointerException</code>).</p>
 
 <p>Google has made it extremely easy to integrate data-binding into any app (new/existing) and eliminate all those pesky boilerplate view-reference stuff.</p>
 
@@ -86,9 +86,9 @@
 
 <ul>
   <li>References to only present views available (trying to refer to an absent component will show an error while editing the file in AS. It will also throw a compile-time error instead of biting you at runtime.).</li>
-  <li>A bit faster due to it needing to traverse the whole layout-tree only once as opposed to every-time when <code class="highlighter-rouge">findViewById</code> is called.</li>
+  <li>A bit faster due to it needing to traverse the whole layout-tree only once as opposed to every-time when <code class="language-plaintext highlighter-rouge">findViewById</code> is called.</li>
   <li>Your working namespace (class/function) remains clean, and you don’t have to keep a reference to all the views.</li>
-  <li>You can use as few of the features in data-binding as just using it to eliminate <code class="highlighter-rouge">findViewById</code> calls to much more advanced features (like in this post, George Mount of Google tries to write a single adapter for all the recycler-views in an app).</li>
+  <li>You can use as few of the features in data-binding as just using it to eliminate <code class="language-plaintext highlighter-rouge">findViewById</code> calls to much more advanced features (like in this post, George Mount of Google tries to write a single adapter for all the recycler-views in an app).</li>
 </ul>
 
 <h2 id="not-hiding-api-keys">Not hiding API keys</h2>
@@ -161,8 +161,8 @@
   </div>
 </div>
 
-<script src="/assets/js/jquery.min.js?v=d36aafc04bf97950eb5508131b25390747586c09"></script>
-<script src="/assets/js/bootstrap.min.js?v=d36aafc04bf97950eb5508131b25390747586c09"></script>
-<script src="/assets/js/contact.js?v=d36aafc04bf97950eb5508131b25390747586c09"></script>
+<script src="/assets/js/jquery.min.js?v=88548b7359028876d93769250251c975cdf455a7"></script>
+<script src="/assets/js/bootstrap.min.js?v=88548b7359028876d93769250251c975cdf455a7"></script>
+<script src="/assets/js/contact.js?v=88548b7359028876d93769250251c975cdf455a7"></script>
 </body>
 </html>

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/assets/css/style.css?v=d36aafc04bf97950eb5508131b25390747586c09">
-  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=d36aafc04bf97950eb5508131b25390747586c09">
+  <link rel="stylesheet" href="/assets/css/style.css?v=88548b7359028876d93769250251c975cdf455a7">
+  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=88548b7359028876d93769250251c975cdf455a7">
   <link rel="icon" type="image/png" href="/favicon.png" />
   <title>JavaScript 30 - Array Cardio 1 - Varun Barad</title>
   <meta name="description" content="Day 4 of JS30 challenge, today we worked with various methods on array and I learned one nifty trick of displaying them in console." />
@@ -65,32 +65,32 @@
 
 <h2 id="converting-iterables-to-array-in-js">Converting iterables to array in JS</h2>
 
-<p>As you might have observed that <code class="highlighter-rouge">document.querySelectorAll</code> doesn’t return us an actual <code class="highlighter-rouge">Array</code> but instead it returns us what is called as a <code class="highlighter-rouge">NodeList</code>. Consequently <code class="highlighter-rouge">NodeList</code> doesn’t have all the methods that an <code class="highlighter-rouge">Array</code> does (like <code class="highlighter-rouge">map</code>, <code class="highlighter-rouge">filter</code>, <code class="highlighter-rouge">reduce</code> etc).</p>
+<p>As you might have observed that <code class="language-plaintext highlighter-rouge">document.querySelectorAll</code> doesn’t return us an actual <code class="language-plaintext highlighter-rouge">Array</code> but instead it returns us what is called as a <code class="language-plaintext highlighter-rouge">NodeList</code>. Consequently <code class="language-plaintext highlighter-rouge">NodeList</code> doesn’t have all the methods that an <code class="language-plaintext highlighter-rouge">Array</code> does (like <code class="language-plaintext highlighter-rouge">map</code>, <code class="language-plaintext highlighter-rouge">filter</code>, <code class="language-plaintext highlighter-rouge">reduce</code> etc).</p>
 
-<p><code class="highlighter-rouge">NodeList</code> is an example of what we call as “iterable” in JS. So whenever working with iterables we tend to prefer to convert them to an actual <code class="highlighter-rouge">Array</code> so that we have more options to work with.</p>
+<p><code class="language-plaintext highlighter-rouge">NodeList</code> is an example of what we call as “iterable” in JS. So whenever working with iterables we tend to prefer to convert them to an actual <code class="language-plaintext highlighter-rouge">Array</code> so that we have more options to work with.</p>
 
 <p>I already knew of one way to convert them:</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">anyIterable</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">'a'</span><span class="p">);</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">anyIterable</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">);</span>
 <span class="kd">const</span> <span class="nx">convertedArray</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="nx">anyIterable</span><span class="p">);</span>
 </code></pre></div></div>
 
-<p>Here we used the <code class="highlighter-rouge">Array.from</code> method to convert the iterable to an <code class="highlighter-rouge">Array</code>.</p>
+<p>Here we used the <code class="language-plaintext highlighter-rouge">Array.from</code> method to convert the iterable to an <code class="language-plaintext highlighter-rouge">Array</code>.</p>
 
 <p>The other way I learned today was:</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">anyIterable</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">'a'</span><span class="p">);</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">anyIterable</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">);</span>
 <span class="kd">const</span> <span class="nx">convertedArray</span> <span class="o">=</span> <span class="p">[...</span><span class="nx">anyIterable</span><span class="p">];</span>
 </code></pre></div></div>
 
 <p>Here we made use of a combination of 2 things:</p>
 
-<h4 id="1-es6-spread-operator-">1. ES6 spread operator <code class="highlighter-rouge">...</code></h4>
-<p>When we prepend an iterable with <code class="highlighter-rouge">...</code> (called the ES6 spread operator) what it does is it extracts all values from that iterable and replaces the <code class="highlighter-rouge">...anyIterable</code> part of the expression with those values.</p>
-<h4 id="2-array-literal-">2. Array literal <code class="highlighter-rouge">[]</code></h4>
-<p>Then when we enclose the “spreaded” values with <code class="highlighter-rouge">[</code> and <code class="highlighter-rouge">]</code> it converts the whole thing into an array containing all the values from that iterable.</p>
+<h4 id="1-es6-spread-operator-">1. ES6 spread operator <code class="language-plaintext highlighter-rouge">...</code></h4>
+<p>When we prepend an iterable with <code class="language-plaintext highlighter-rouge">...</code> (called the ES6 spread operator) what it does is it extracts all values from that iterable and replaces the <code class="language-plaintext highlighter-rouge">...anyIterable</code> part of the expression with those values.</p>
+<h4 id="2-array-literal-">2. Array literal <code class="language-plaintext highlighter-rouge">[]</code></h4>
+<p>Then when we enclose the “spreaded” values with <code class="language-plaintext highlighter-rouge">[</code> and <code class="language-plaintext highlighter-rouge">]</code> it converts the whole thing into an array containing all the values from that iterable.</p>
 
-<p>Both produce the same result. I don’t know if one performs better than the other under large data-sets. But even though the <code class="highlighter-rouge">[...anyIterable]</code> way is more concise, to me the <code class="highlighter-rouge">Array.from(anyIterable)</code> usage seems more readable.</p>
+<p>Both produce the same result. I don’t know if one performs better than the other under large data-sets. But even though the <code class="language-plaintext highlighter-rouge">[...anyIterable]</code> way is more concise, to me the <code class="language-plaintext highlighter-rouge">Array.from(anyIterable)</code> usage seems more readable.</p>
 
 <h2 id="conclusion">Conclusion</h2>
 
@@ -138,8 +138,8 @@
   </div>
 </div>
 
-<script src="/assets/js/jquery.min.js?v=d36aafc04bf97950eb5508131b25390747586c09"></script>
-<script src="/assets/js/bootstrap.min.js?v=d36aafc04bf97950eb5508131b25390747586c09"></script>
-<script src="/assets/js/contact.js?v=d36aafc04bf97950eb5508131b25390747586c09"></script>
+<script src="/assets/js/jquery.min.js?v=88548b7359028876d93769250251c975cdf455a7"></script>
+<script src="/assets/js/bootstrap.min.js?v=88548b7359028876d93769250251c975cdf455a7"></script>
+<script src="/assets/js/contact.js?v=88548b7359028876d93769250251c975cdf455a7"></script>
 </body>
 </html>

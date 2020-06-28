@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/assets/css/style.css?v=d36aafc04bf97950eb5508131b25390747586c09">
-  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=d36aafc04bf97950eb5508131b25390747586c09">
+  <link rel="stylesheet" href="/assets/css/style.css?v=88548b7359028876d93769250251c975cdf455a7">
+  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=88548b7359028876d93769250251c975cdf455a7">
   <link rel="icon" type="image/png" href="/favicon.png" />
   <title>JavaScript 30 - CSS Variables - Varun Barad</title>
   <meta name="description" content="Day 3 of JS30 challenge where I built an analog clock with CSS and animate its changes using JS and CSS." />
@@ -60,7 +60,7 @@
 
 <ul>
   <li>CSS variables</li>
-  <li><code class="highlighter-rouge">dataset</code> property on DOM elements</li>
+  <li><code class="language-plaintext highlighter-rouge">dataset</code> property on DOM elements</li>
   <li>Image blur</li>
   <li>Color input</li>
 </ul>
@@ -69,14 +69,14 @@
 
 <p>CSS variables work very similar to how we use variables in JS or any other programming language. They let us define their value at one place and then just use that same value anywhere we refer to that variable.</p>
 
-<p>For example, we can define at one place that we want text on our website to be <code class="highlighter-rouge">white</code> then we can define it like this</p>
+<p>For example, we can define at one place that we want text on our website to be <code class="language-plaintext highlighter-rouge">white</code> then we can define it like this</p>
 
 <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">:root</span> <span class="p">{</span>
     <span class="py">--text-color</span><span class="p">:</span> <span class="no">white</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>Here we define this <code class="highlighter-rouge">text-color</code> variable at the root element. Now any place that we need to use this value we need to do something like</p>
+<p>Here we define this <code class="language-plaintext highlighter-rouge">text-color</code> variable at the root element. Now any place that we need to use this value we need to do something like</p>
 
 <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.content</span> <span class="p">{</span>
     <span class="nl">color</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--text-color</span><span class="p">);</span>
@@ -89,19 +89,19 @@
 
 <p>To modify their value via JS a simple method call does the trick.</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">dom</span><span class="o">-</span><span class="nx">element</span><span class="o">&gt;</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">setProperty</span><span class="p">(</span><span class="s1">'--text-color'</span><span class="p">,</span> <span class="s1">'red'</span><span class="p">);</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">dom</span><span class="o">-</span><span class="nx">element</span><span class="o">&gt;</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">setProperty</span><span class="p">(</span><span class="dl">'</span><span class="s1">--text-color</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">red</span><span class="dl">'</span><span class="p">);</span>
 </code></pre></div></div>
 
-<p>The above snippet will change the value associated with <code class="highlighter-rouge">--text-color</code> at any point in the <code class="highlighter-rouge">dom-element</code> and any of <code class="highlighter-rouge">dom-element</code>.</p>
+<p>The above snippet will change the value associated with <code class="language-plaintext highlighter-rouge">--text-color</code> at any point in the <code class="language-plaintext highlighter-rouge">dom-element</code> and any of <code class="language-plaintext highlighter-rouge">dom-element</code>.</p>
 
-<h2 id="dataset-property-on-dom-elements"><code class="highlighter-rouge">dataset</code> property on DOM elements</h2>
+<h2 id="dataset-property-on-dom-elements"><code class="language-plaintext highlighter-rouge">dataset</code> property on DOM elements</h2>
 
-<p>In HTML whenever we want to write a custom-property on an element we make use of what are called <code class="highlighter-rouge">data</code> attributes. A sample can be like</p>
+<p>In HTML whenever we want to write a custom-property on an element we make use of what are called <code class="language-plaintext highlighter-rouge">data</code> attributes. A sample can be like</p>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"blur"</span> <span class="na">type=</span><span class="s">"range"</span> <span class="na">name=</span><span class="s">"blur"</span> <span class="na">min=</span><span class="s">"0"</span> <span class="na">max=</span><span class="s">"25"</span> <span class="na">value=</span><span class="s">"5"</span> <span class="na">data-sizing=</span><span class="s">"px"</span> <span class="na">data-purpose=</span><span class="s">"A slider input to select blur amount"</span><span class="nt">&gt;</span>
 </code></pre></div></div>
 
-<p>Here we have defined 2 data attributes, namely <code class="highlighter-rouge">data-sizing</code> and <code class="highlighter-rouge">data-purpose</code>.</p>
+<p>Here we have defined 2 data attributes, namely <code class="language-plaintext highlighter-rouge">data-sizing</code> and <code class="language-plaintext highlighter-rouge">data-purpose</code>.</p>
 
 <p>Now when we need to use these in JS we can simply do</p>
 
@@ -109,7 +109,7 @@
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">inputElement</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">purpose</span><span class="p">);</span> <span class="c1">// Used to access the data-purpose attribute.</span>
 </code></pre></div></div>
 
-<p><code class="highlighter-rouge">dataset</code> is a very simple property on DOM elements which lists all the <code class="highlighter-rouge">data</code> attributes defined on that element.</p>
+<p><code class="language-plaintext highlighter-rouge">dataset</code> is a very simple property on DOM elements which lists all the <code class="language-plaintext highlighter-rouge">data</code> attributes defined on that element.</p>
 
 <h2 id="image-blur">Image blur</h2>
 
@@ -120,7 +120,7 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>We can just specify a <code class="highlighter-rouge">blur</code> CSS filter and our work is done. There are lots of other functions available which can be used as <code class="highlighter-rouge">filter</code>, do make sure to take a look at that list.</p>
+<p>We can just specify a <code class="language-plaintext highlighter-rouge">blur</code> CSS filter and our work is done. There are lots of other functions available which can be used as <code class="language-plaintext highlighter-rouge">filter</code>, do make sure to take a look at that list.</p>
 
 <h2 id="color-input">Color input</h2>
 
@@ -177,8 +177,8 @@
   </div>
 </div>
 
-<script src="/assets/js/jquery.min.js?v=d36aafc04bf97950eb5508131b25390747586c09"></script>
-<script src="/assets/js/bootstrap.min.js?v=d36aafc04bf97950eb5508131b25390747586c09"></script>
-<script src="/assets/js/contact.js?v=d36aafc04bf97950eb5508131b25390747586c09"></script>
+<script src="/assets/js/jquery.min.js?v=88548b7359028876d93769250251c975cdf455a7"></script>
+<script src="/assets/js/bootstrap.min.js?v=88548b7359028876d93769250251c975cdf455a7"></script>
+<script src="/assets/js/contact.js?v=88548b7359028876d93769250251c975cdf455a7"></script>
 </body>
 </html>

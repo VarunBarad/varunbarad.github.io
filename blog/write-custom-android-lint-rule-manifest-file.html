@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/assets/css/style.css?v=d36aafc04bf97950eb5508131b25390747586c09">
-  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=d36aafc04bf97950eb5508131b25390747586c09">
+  <link rel="stylesheet" href="/assets/css/style.css?v=88548b7359028876d93769250251c975cdf455a7">
+  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=88548b7359028876d93769250251c975cdf455a7">
   <link rel="icon" type="image/png" href="/favicon.png" />
   <title>Write Custom Android Lint Rule - Manifest File - Varun Barad</title>
   <meta name="description" content="Writing our own custom android lint rules for verifying AndroidManifest file." />
@@ -54,26 +54,26 @@
             <div class="text-center">
               By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2020-02-28 12:00:00 +0530">February 28, 2020</time>
             </div>
-            <div class="post-content e-content"><p>Welcome folks, last time we wrote a lint check for making sure that all of our <code class="highlighter-rouge">EditText</code> have the <code class="highlighter-rouge">android:inputType</code> attribute.</p>
+            <div class="post-content e-content"><p>Welcome folks, last time we wrote a lint check for making sure that all of our <code class="language-plaintext highlighter-rouge">EditText</code> have the <code class="language-plaintext highlighter-rouge">android:inputType</code> attribute.</p>
 
-<p>This time we will be writing a check which works on our <code class="highlighter-rouge">AndroidManifest.xml</code> file. This check will ensure that our <code class="highlighter-rouge">application</code> tag has a child <code class="highlighter-rouge">meta-data</code> tag with attribute <code class="highlighter-rouge">android:name="android.webkit.WebView.MetricsOptOut"</code>. Read the background for that <a href="https://developer.android.com/guide/webapps/managing-webview#metrics">here</a>.</p>
+<p>This time we will be writing a check which works on our <code class="language-plaintext highlighter-rouge">AndroidManifest.xml</code> file. This check will ensure that our <code class="language-plaintext highlighter-rouge">application</code> tag has a child <code class="language-plaintext highlighter-rouge">meta-data</code> tag with attribute <code class="language-plaintext highlighter-rouge">android:name="android.webkit.WebView.MetricsOptOut"</code>. Read the background for that <a href="https://developer.android.com/guide/webapps/managing-webview#metrics">here</a>.</p>
 
 <p>If you haven’t yet then first go through <a href="https://varunbarad.com/blog/write-custom-android-lint-rule-layout-files">the last post</a> otherwise you might not understand many things as we will be building upon what we have created in that post.</p>
 
 <h2 id="changes-to-add-to-last-project">Changes to add to last project</h2>
 
-<p>We will be building upon the <code class="highlighter-rouge">lint-checks</code> module we created last time. We would need to make following changes:</p>
+<p>We will be building upon the <code class="language-plaintext highlighter-rouge">lint-checks</code> module we created last time. We would need to make following changes:</p>
 
 <ul>
   <li>Add a new issue and detector pertaining to this manifest check</li>
-  <li>Register the new issue in <code class="highlighter-rouge">LintRegistry</code> class</li>
+  <li>Register the new issue in <code class="language-plaintext highlighter-rouge">LintRegistry</code> class</li>
 </ul>
 
 <h2 id="create-the-detector">Create the detector</h2>
 
-<p>Create a class named <code class="highlighter-rouge">WebViewMetricsMetaTagDetector</code> which extends from <code class="highlighter-rouge">ManifestDetector</code></p>
+<p>Create a class named <code class="language-plaintext highlighter-rouge">WebViewMetricsMetaTagDetector</code> which extends from <code class="language-plaintext highlighter-rouge">ManifestDetector</code></p>
 
-<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">WebViewMetricsMetaTagDetector</span> <span class="p">:</span> <span class="n">ManifestDetector</span><span class="p">()</span> <span class="p">{</span>
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">WebViewMetricsMetaTagDetector</span> <span class="p">:</span> <span class="nc">ManifestDetector</span><span class="p">()</span> <span class="p">{</span>
     <span class="o">..</span><span class="p">.</span>
 <span class="p">}</span>
 </code></pre></div></div>
@@ -81,72 +81,72 @@
 <p>Now to define the Issue.</p>
 
 <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">companion</span> <span class="k">object</span> <span class="p">{</span>
-    <span class="n">@JvmStatic</span>
-    <span class="k">internal</span> <span class="kd">val</span> <span class="py">ISSUE_MISSING_WEBVIEW_METRICS_META_TAG</span> <span class="p">=</span> <span class="n">Issue</span><span class="p">.</span><span class="n">create</span><span class="p">(</span>
+    <span class="nd">@JvmStatic</span>
+    <span class="k">internal</span> <span class="kd">val</span> <span class="py">ISSUE_MISSING_WEBVIEW_METRICS_META_TAG</span> <span class="p">=</span> <span class="nc">Issue</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span>
         <span class="n">id</span> <span class="p">=</span> <span class="s">"MissingWebViewMetricsMetaTag"</span><span class="p">,</span>
         <span class="n">briefDescription</span> <span class="p">=</span> <span class="s">"Specify whether you want to opt-out of metrics tracking via WebView."</span><span class="p">,</span>
         <span class="n">explanation</span> <span class="p">=</span> <span class="s">"WebView can upload diagnostic data to Google. You can opt-out by specifying a `meta-data` tag under your `application` tag in manifest."</span><span class="p">,</span>
-        <span class="n">category</span> <span class="p">=</span> <span class="n">Category</span><span class="p">.</span><span class="n">SECURITY</span><span class="p">,</span>
-        <span class="n">priority</span> <span class="p">=</span> <span class="m">8</span><span class="p">,</span>
-        <span class="n">severity</span> <span class="p">=</span> <span class="n">Severity</span><span class="p">.</span><span class="n">ERROR</span><span class="p">,</span>
-        <span class="n">implementation</span> <span class="p">=</span> <span class="n">Implementation</span><span class="p">(</span>
-            <span class="n">WebViewMetricsMetaTagDetector</span><span class="o">::</span><span class="k">class</span><span class="p">.</span><span class="n">java</span><span class="p">,</span>
-            <span class="n">Scope</span><span class="p">.</span><span class="n">MANIFEST_SCOPE</span>
+        <span class="n">category</span> <span class="p">=</span> <span class="nc">Category</span><span class="p">.</span><span class="nc">SECURITY</span><span class="p">,</span>
+        <span class="n">priority</span> <span class="p">=</span> <span class="mi">8</span><span class="p">,</span>
+        <span class="n">severity</span> <span class="p">=</span> <span class="nc">Severity</span><span class="p">.</span><span class="nc">ERROR</span><span class="p">,</span>
+        <span class="n">implementation</span> <span class="p">=</span> <span class="nc">Implementation</span><span class="p">(</span>
+            <span class="nc">WebViewMetricsMetaTagDetector</span><span class="o">::</span><span class="k">class</span><span class="p">.</span><span class="n">java</span><span class="p">,</span>
+            <span class="nc">Scope</span><span class="p">.</span><span class="nc">MANIFEST_SCOPE</span>
         <span class="p">)</span>
-    <span class="p">).</span><span class="n">addMoreInfo</span><span class="p">(</span><span class="s">"https://developer.android.com/guide/webapps/managing-webview#metrics"</span><span class="p">)</span>
+    <span class="p">).</span><span class="nf">addMoreInfo</span><span class="p">(</span><span class="s">"https://developer.android.com/guide/webapps/managing-webview#metrics"</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
 <p>The things that have changed here are:</p>
 
 <ol>
-  <li><code class="highlighter-rouge">id</code>, <code class="highlighter-rouge">briefDescription</code> and <code class="highlighter-rouge">explanation</code> for the issue.</li>
-  <li>Scope inside the Implementation object passed against <code class="highlighter-rouge">implementation</code> parameter. We changed from <code class="highlighter-rouge">Scope.ALL_RESOURCES_SCOPE</code> to <code class="highlighter-rouge">Scope.MANIFEST_SCOPE</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">id</code>, <code class="language-plaintext highlighter-rouge">briefDescription</code> and <code class="language-plaintext highlighter-rouge">explanation</code> for the issue.</li>
+  <li>Scope inside the Implementation object passed against <code class="language-plaintext highlighter-rouge">implementation</code> parameter. We changed from <code class="language-plaintext highlighter-rouge">Scope.ALL_RESOURCES_SCOPE</code> to <code class="language-plaintext highlighter-rouge">Scope.MANIFEST_SCOPE</code>.</li>
 </ol>
 
 <p>We now override the 2 required methods:</p>
 
-<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">override</span> <span class="k">fun</span> <span class="nf">getApplicableElements</span><span class="p">():</span> <span class="n">Collection</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;?</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="n">listOf</span><span class="p">(</span>
-        <span class="n">SdkConstants</span><span class="p">.</span><span class="n">TAG_APPLICATION</span>
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">override</span> <span class="k">fun</span> <span class="nf">getApplicableElements</span><span class="p">():</span> <span class="nc">Collection</span><span class="p">&lt;</span><span class="nc">String</span><span class="p">&gt;?</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nf">listOf</span><span class="p">(</span>
+        <span class="nc">SdkConstants</span><span class="p">.</span><span class="nc">TAG_APPLICATION</span>
     <span class="p">)</span>
 <span class="p">}</span>
 
-<span class="k">override</span> <span class="k">fun</span> <span class="nf">visitElement</span><span class="p">(</span><span class="n">context</span><span class="p">:</span> <span class="n">XmlContext</span><span class="p">,</span> <span class="n">element</span><span class="p">:</span> <span class="n">Element</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">override</span> <span class="k">fun</span> <span class="nf">visitElement</span><span class="p">(</span><span class="n">context</span><span class="p">:</span> <span class="nc">XmlContext</span><span class="p">,</span> <span class="n">element</span><span class="p">:</span> <span class="nc">Element</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">val</span> <span class="py">containsWebViewMetricsOptOutTag</span> <span class="p">=</span> <span class="n">element</span><span class="p">.</span><span class="n">childNodes</span>
-        <span class="p">.</span><span class="n">toList</span><span class="p">()</span>
-        <span class="p">.</span><span class="n">filter</span> <span class="p">{</span> <span class="n">it</span><span class="p">.</span><span class="n">nodeName</span> <span class="p">==</span> <span class="s">"meta-data"</span> <span class="p">}</span>
-        <span class="p">.</span><span class="n">any</span> <span class="p">{</span> <span class="n">node</span> <span class="p">-&gt;</span>
-            <span class="n">node</span><span class="p">.</span><span class="n">attributes</span><span class="p">.</span><span class="n">toPairedNameValueList</span><span class="p">().</span><span class="n">filter</span> <span class="p">{</span> <span class="n">attribute</span> <span class="p">-&gt;</span>
+        <span class="p">.</span><span class="nf">toList</span><span class="p">()</span>
+        <span class="p">.</span><span class="nf">filter</span> <span class="p">{</span> <span class="n">it</span><span class="p">.</span><span class="n">nodeName</span> <span class="p">==</span> <span class="s">"meta-data"</span> <span class="p">}</span>
+        <span class="p">.</span><span class="nf">any</span> <span class="p">{</span> <span class="n">node</span> <span class="p">-&gt;</span>
+            <span class="n">node</span><span class="p">.</span><span class="n">attributes</span><span class="p">.</span><span class="nf">toPairedNameValueList</span><span class="p">().</span><span class="nf">filter</span> <span class="p">{</span> <span class="n">attribute</span> <span class="p">-&gt;</span>
                 <span class="n">attribute</span><span class="p">.</span><span class="n">first</span> <span class="p">==</span> <span class="s">"android:name"</span> <span class="p">&amp;&amp;</span> <span class="n">attribute</span><span class="p">.</span><span class="n">second</span> <span class="p">==</span> <span class="s">"android.webkit.WebView.MetricsOptOut"</span>
-            <span class="p">}.</span><span class="n">isNotEmpty</span><span class="p">()</span>
+            <span class="p">}.</span><span class="nf">isNotEmpty</span><span class="p">()</span>
         <span class="p">}</span>
 
     <span class="k">if</span> <span class="p">(!</span><span class="n">containsWebViewMetricsOptOutTag</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">context</span><span class="p">.</span><span class="n">report</span><span class="p">(</span>
-            <span class="n">issue</span> <span class="p">=</span> <span class="n">ISSUE_MISSING_WEBVIEW_METRICS_META_TAG</span><span class="p">,</span>
-            <span class="n">location</span> <span class="p">=</span> <span class="n">context</span><span class="p">.</span><span class="n">getLocation</span><span class="p">(</span><span class="n">element</span><span class="p">),</span>
-            <span class="n">message</span> <span class="p">=</span> <span class="n">ISSUE_MISSING_WEBVIEW_METRICS_META_TAG</span><span class="p">.</span><span class="n">getExplanation</span><span class="p">(</span><span class="n">TextFormat</span><span class="p">.</span><span class="n">TEXT</span><span class="p">)</span>
+        <span class="n">context</span><span class="p">.</span><span class="nf">report</span><span class="p">(</span>
+            <span class="n">issue</span> <span class="p">=</span> <span class="nc">ISSUE_MISSING_WEBVIEW_METRICS_META_TAG</span><span class="p">,</span>
+            <span class="n">location</span> <span class="p">=</span> <span class="n">context</span><span class="p">.</span><span class="nf">getLocation</span><span class="p">(</span><span class="n">element</span><span class="p">),</span>
+            <span class="n">message</span> <span class="p">=</span> <span class="nc">ISSUE_MISSING_WEBVIEW_METRICS_META_TAG</span><span class="p">.</span><span class="nf">getExplanation</span><span class="p">(</span><span class="nc">TextFormat</span><span class="p">.</span><span class="nc">TEXT</span><span class="p">)</span>
         <span class="p">)</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>In the <code class="highlighter-rouge">visitElement</code> method, we are traversing through all children of <code class="highlighter-rouge">&lt;application&gt;</code> and checking that a <code class="highlighter-rouge">meta-data</code> tag with attribute <code class="highlighter-rouge">android:name="android.webkit.WebView.MetricsOptOut"</code> exists. If it does not exist then we raise our issue <code class="highlighter-rouge">ISSUE_MISSING_WEBVIEW_METRICS_META_TAG</code>.</p>
+<p>In the <code class="language-plaintext highlighter-rouge">visitElement</code> method, we are traversing through all children of <code class="language-plaintext highlighter-rouge">&lt;application&gt;</code> and checking that a <code class="language-plaintext highlighter-rouge">meta-data</code> tag with attribute <code class="language-plaintext highlighter-rouge">android:name="android.webkit.WebView.MetricsOptOut"</code> exists. If it does not exist then we raise our issue <code class="language-plaintext highlighter-rouge">ISSUE_MISSING_WEBVIEW_METRICS_META_TAG</code>.</p>
 
 <h2 id="register-the-new-issue">Register the new issue</h2>
 
-<p>The last thing we need to do now is to add the above created issue in our <code class="highlighter-rouge">LintRegistry</code> class.</p>
+<p>The last thing we need to do now is to add the above created issue in our <code class="language-plaintext highlighter-rouge">LintRegistry</code> class.</p>
 
-<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">LintRegistry</span> <span class="p">:</span> <span class="n">IssueRegistry</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">override</span> <span class="kd">val</span> <span class="py">api</span><span class="p">:</span> <span class="n">Int</span>
-        <span class="k">get</span><span class="p">()</span> <span class="p">=</span> <span class="n">CURRENT_API</span>
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">LintRegistry</span> <span class="p">:</span> <span class="nc">IssueRegistry</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">override</span> <span class="kd">val</span> <span class="py">api</span><span class="p">:</span> <span class="nc">Int</span>
+        <span class="k">get</span><span class="p">()</span> <span class="p">=</span> <span class="nc">CURRENT_API</span>
 
-    <span class="k">override</span> <span class="kd">val</span> <span class="py">issues</span><span class="p">:</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Issue</span><span class="p">&gt;</span>
-        <span class="k">get</span><span class="p">()</span> <span class="p">=</span> <span class="n">listOf</span><span class="p">(</span>
-            <span class="n">InputTypeDetector</span><span class="p">.</span><span class="n">ISSUE_MISSING_INPUT_TYPE</span><span class="p">,</span>
-            <span class="n">WebViewMetricsMetaTagDetector</span><span class="p">.</span><span class="n">ISSUE_MISSING_WEBVIEW_METRICS_META_TAG</span> <span class="c1">// We added this line
-</span>        <span class="p">)</span>
+    <span class="k">override</span> <span class="kd">val</span> <span class="py">issues</span><span class="p">:</span> <span class="nc">List</span><span class="p">&lt;</span><span class="nc">Issue</span><span class="p">&gt;</span>
+        <span class="k">get</span><span class="p">()</span> <span class="p">=</span> <span class="nf">listOf</span><span class="p">(</span>
+            <span class="nc">InputTypeDetector</span><span class="p">.</span><span class="nc">ISSUE_MISSING_INPUT_TYPE</span><span class="p">,</span>
+            <span class="nc">WebViewMetricsMetaTagDetector</span><span class="p">.</span><span class="nc">ISSUE_MISSING_WEBVIEW_METRICS_META_TAG</span> <span class="c1">// We added this line</span>
+        <span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
@@ -198,8 +198,8 @@
   </div>
 </div>
 
-<script src="/assets/js/jquery.min.js?v=d36aafc04bf97950eb5508131b25390747586c09"></script>
-<script src="/assets/js/bootstrap.min.js?v=d36aafc04bf97950eb5508131b25390747586c09"></script>
-<script src="/assets/js/contact.js?v=d36aafc04bf97950eb5508131b25390747586c09"></script>
+<script src="/assets/js/jquery.min.js?v=88548b7359028876d93769250251c975cdf455a7"></script>
+<script src="/assets/js/bootstrap.min.js?v=88548b7359028876d93769250251c975cdf455a7"></script>
+<script src="/assets/js/contact.js?v=88548b7359028876d93769250251c975cdf455a7"></script>
 </body>
 </html>

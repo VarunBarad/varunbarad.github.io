@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/assets/css/style.css?v=d36aafc04bf97950eb5508131b25390747586c09">
-  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=d36aafc04bf97950eb5508131b25390747586c09">
+  <link rel="stylesheet" href="/assets/css/style.css?v=88548b7359028876d93769250251c975cdf455a7">
+  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=88548b7359028876d93769250251c975cdf455a7">
   <link rel="icon" type="image/png" href="/favicon.png" />
   <title>Hiding API keys from your Android repository - Varun Barad</title>
   <meta name="description" content="Learn how to secure your API keys while keeping the source code for that Android app open-source." />
@@ -59,39 +59,39 @@
 <p>The Gradle build system allows us a clean way to avoid this.</p>
 
 <ol>
-  <li>Add the key to your <code class="highlighter-rouge">gradle.properties</code> file in your home directory under <code class="highlighter-rouge">.gradle</code> directory.</li>
-  <li>Import the key as a <code class="highlighter-rouge">buildConfigField</code> / <code class="highlighter-rouge">resValue</code> in your module-level <code class="highlighter-rouge">build.gradle</code> file.</li>
+  <li>Add the key to your <code class="language-plaintext highlighter-rouge">gradle.properties</code> file in your home directory under <code class="language-plaintext highlighter-rouge">.gradle</code> directory.</li>
+  <li>Import the key as a <code class="language-plaintext highlighter-rouge">buildConfigField</code> / <code class="language-plaintext highlighter-rouge">resValue</code> in your module-level <code class="language-plaintext highlighter-rouge">build.gradle</code> file.</li>
   <li>Use the key in your Java or XML files as needed.</li>
 </ol>
 
 <h2 id="1-defining-key-in-buildgradle">1. Defining key in build.gradle</h2>
 
-<p>Find the <code class="highlighter-rouge">.gradle</code> folder in your home directory. Usually it can be found at:</p>
+<p>Find the <code class="language-plaintext highlighter-rouge">.gradle</code> folder in your home directory. Usually it can be found at:</p>
 
 <ul>
-  <li><strong>Windows:</strong> <code class="highlighter-rouge">C:\Users\&lt;Your Username&gt;\.gradle</code></li>
-  <li><strong>Mac:</strong> <code class="highlighter-rouge">/Users/&lt;Your Username&gt;/.gradle</code></li>
-  <li><strong>Linux:</strong> <code class="highlighter-rouge">/home/&lt;Your Username&gt;/.gradle</code></li>
+  <li><strong>Windows:</strong> <code class="language-plaintext highlighter-rouge">C:\Users\&lt;Your Username&gt;\.gradle</code></li>
+  <li><strong>Mac:</strong> <code class="language-plaintext highlighter-rouge">/Users/&lt;Your Username&gt;/.gradle</code></li>
+  <li><strong>Linux:</strong> <code class="language-plaintext highlighter-rouge">/home/&lt;Your Username&gt;/.gradle</code></li>
 </ul>
 
-<p>Inside it there would be a file named <code class="highlighter-rouge">gradle.properties</code> (just create it if there isn’t any).</p>
+<p>Inside it there would be a file named <code class="language-plaintext highlighter-rouge">gradle.properties</code> (just create it if there isn’t any).</p>
 
-<p>After that, add your key to the file as a property. If your key was <code class="highlighter-rouge">my-awesome-api-key</code>, the file after adding the key might look something like:</p>
+<p>After that, add your key to the file as a property. If your key was <code class="language-plaintext highlighter-rouge">my-awesome-api-key</code>, the file after adding the key might look something like:</p>
 
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">MyAwesomeApp_ApiKey</span><span class="o">=</span><span class="s">"my-awesome-api-key"</span></code></pre></figure>
 
-<p>I prefer to use this format <code class="highlighter-rouge">&lt;Project Name&gt;_&lt;Key Property Name&gt;</code> so that I don’t mix up keys for different projects by mistake.</p>
+<p>I prefer to use this format <code class="language-plaintext highlighter-rouge">&lt;Project Name&gt;_&lt;Key Property Name&gt;</code> so that I don’t mix up keys for different projects by mistake.</p>
 
 <h2 id="2-importing-the-key-in-your-project">2. Importing the key in your project</h2>
 
 <ul>
-  <li>Open your module-level <code class="highlighter-rouge">build.gradle</code> file (usually the one where you define dependencies for your app).</li>
+  <li>Open your module-level <code class="language-plaintext highlighter-rouge">build.gradle</code> file (usually the one where you define dependencies for your app).</li>
   <li>Add your property in each of your build types.</li>
-  <li>If you want to access the key from Java, then add it as a <code class="highlighter-rouge">buildConfigField</code>.</li>
-  <li>If you want to access the key in your XML files (layouts and other resources), then add it as a <code class="highlighter-rouge">resValue</code>.</li>
+  <li>If you want to access the key from Java, then add it as a <code class="language-plaintext highlighter-rouge">buildConfigField</code>.</li>
+  <li>If you want to access the key in your XML files (layouts and other resources), then add it as a <code class="language-plaintext highlighter-rouge">resValue</code>.</li>
 </ul>
 
-<p>After doing so, your <code class="highlighter-rouge">build.gradle</code> might look like this:</p>
+<p>After doing so, your <code class="language-plaintext highlighter-rouge">build.gradle</code> might look like this:</p>
 
 <figure class="highlight"><pre><code class="language-gradle" data-lang="gradle"><span class="n">buildTypes</span> <span class="o">{</span>
   <span class="n">debug</span> <span class="o">{</span>
@@ -116,12 +116,12 @@
 
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">// Java</span>
 <span class="o">...</span>
-<span class="n">String</span> <span class="n">apiKey</span> <span class="o">=</span> <span class="n">BuildConfig</span><span class="o">.</span><span class="na">ApiKey</span><span class="o">;</span>
+<span class="nc">String</span> <span class="n">apiKey</span> <span class="o">=</span> <span class="nc">BuildConfig</span><span class="o">.</span><span class="na">ApiKey</span><span class="o">;</span>
 <span class="o">...</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="c1">// Kotlin
-</span><span class="o">..</span><span class="p">.</span>
-<span class="kd">val</span> <span class="py">apiKey</span><span class="p">:</span> <span class="n">String</span> <span class="p">=</span> <span class="n">BuildConfig</span><span class="p">.</span><span class="n">ApiKey</span><span class="p">;</span>
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="c1">// Kotlin</span>
+<span class="o">..</span><span class="p">.</span>
+<span class="kd">val</span> <span class="py">apiKey</span><span class="p">:</span> <span class="nc">String</span> <span class="p">=</span> <span class="nc">BuildConfig</span><span class="p">.</span><span class="nc">ApiKey</span><span class="p">;</span>
 <span class="o">..</span><span class="p">.</span></code></pre></figure>
 
 <h3 id="accessing-in-xml">Accessing in XML</h3>
@@ -184,8 +184,8 @@
   </div>
 </div>
 
-<script src="/assets/js/jquery.min.js?v=d36aafc04bf97950eb5508131b25390747586c09"></script>
-<script src="/assets/js/bootstrap.min.js?v=d36aafc04bf97950eb5508131b25390747586c09"></script>
-<script src="/assets/js/contact.js?v=d36aafc04bf97950eb5508131b25390747586c09"></script>
+<script src="/assets/js/jquery.min.js?v=88548b7359028876d93769250251c975cdf455a7"></script>
+<script src="/assets/js/bootstrap.min.js?v=88548b7359028876d93769250251c975cdf455a7"></script>
+<script src="/assets/js/contact.js?v=88548b7359028876d93769250251c975cdf455a7"></script>
 </body>
 </html>
