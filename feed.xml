@@ -1,4 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://varunbarad.com/" rel="alternate" type="text/html" /><updated>2020-06-28T18:58:49+05:30</updated><id>https://varunbarad.com/feed.xml</id><title type="html">Varun Barad - Curious Developer</title><subtitle>My online home where I post about new things I learn or find interesting.</subtitle><author><name>Varun Barad</name></author><entry><title type="html">Interesting Stuff - Week 1</title><link href="https://varunbarad.com/blog/interesting-stuff-week-1" rel="alternate" type="text/html" title="Interesting Stuff - Week 1" /><published>2020-06-28T12:00:00+05:30</published><updated>2020-06-28T12:00:00+05:30</updated><id>https://varunbarad.com/blog/interesting-stuff-week-1</id><content type="html" xml:base="https://varunbarad.com/blog/interesting-stuff-week-1">&lt;p&gt;Hi fellows, I am starting a new experiment, where I would be listing some articles, podcasts, videos or basically anything I found interesting that week into a post. Here goes the first edition of that.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://varunbarad.com/" rel="alternate" type="text/html" /><updated>2020-07-05T16:51:07+05:30</updated><id>https://varunbarad.com/feed.xml</id><title type="html">Varun Barad - Curious Developer</title><subtitle>My online home where I post about new things I learn or find interesting.</subtitle><author><name>Varun Barad</name></author><entry><title type="html">Interesting Stuff - Week 2</title><link href="https://varunbarad.com/blog/interesting-stuff-week-2" rel="alternate" type="text/html" title="Interesting Stuff - Week 2" /><published>2020-07-05T12:00:00+05:30</published><updated>2020-07-05T12:00:00+05:30</updated><id>https://varunbarad.com/blog/interesting-stuff-week-2</id><content type="html" xml:base="https://varunbarad.com/blog/interesting-stuff-week-2">&lt;p&gt;Hi folks, this is the second edition of my new experiment where I list articles, podcasts, videos or basically anything I found interesting during last week.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=OpoLkMcQh24&quot;&gt;The Baboon That Controlled a Railway for 9 Years&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;
+    &lt;table&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td&gt;[Autofocusing reading glasses of the future&lt;/td&gt;
+          &lt;td&gt;Nitish Padmanaban](https://www.youtube.com/watch?v=9Y9ppMqXwkQ)&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://karpathy.github.io/2020/06/11/biohacking-lite/&quot;&gt;Biohacking Lite&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://thomask.sdf.org/blog/2019/11/09/take-care-editing-bash-scripts.html&quot;&gt;Pitfalls in editing a bash script&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;If you find something interesting and think I should check it out send it over to &lt;a href=&quot;mailto:interesting@varunbarad.com&quot;&gt;interesting@varunbarad.com&lt;/a&gt;&lt;/p&gt;</content><author><name>Varun Barad</name></author><summary type="html">Hi folks, this is the second edition of my new experiment where I list articles, podcasts, videos or basically anything I found interesting during last week.</summary></entry><entry><title type="html">Interesting Stuff - Week 1</title><link href="https://varunbarad.com/blog/interesting-stuff-week-1" rel="alternate" type="text/html" title="Interesting Stuff - Week 1" /><published>2020-06-28T12:00:00+05:30</published><updated>2020-06-28T12:00:00+05:30</updated><id>https://varunbarad.com/blog/interesting-stuff-week-1</id><content type="html" xml:base="https://varunbarad.com/blog/interesting-stuff-week-1">&lt;p&gt;Hi fellows, I am starting a new experiment, where I would be listing some articles, podcasts, videos or basically anything I found interesting that week into a post. Here goes the first edition of that.&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;&lt;a href=&quot;https://fs.blog/2015/09/two-types-of-knowledge&quot;&gt;Max Planck / Chauffeur Knowledge Test&lt;/a&gt;&lt;/li&gt;
@@ -457,22 +475,4 @@ This lint check is set to fail the build when it finds any of the above element 
 
 &lt;p&gt;For these problems, both conditions 1 &amp;amp; 2 hold true. There exist methods by which a valid solution to any of these problem can be found under polynomial time. And also, any given solution for such problem can be verified in polynomial time.&lt;/p&gt;
 
-&lt;p&gt;Want to discuss this or any other interesting thing, hit me up on Twitter &lt;a href=&quot;https://twitter.com/varun_barad&quot;&gt;@varun_barad&lt;/a&gt;.&lt;/p&gt;</content><author><name>Varun Barad</name></author><summary type="html"></summary></entry><entry><title type="html">Record Linux terminal session</title><link href="https://varunbarad.com/blog/record-linux-terminal-session" rel="alternate" type="text/html" title="Record Linux terminal session" /><published>2019-10-26T12:00:00+05:30</published><updated>2019-10-26T12:00:00+05:30</updated><id>https://varunbarad.com/blog/record-linux-terminal-session</id><content type="html" xml:base="https://varunbarad.com/blog/record-linux-terminal-session">&lt;p&gt;I was recently setting up my computer with Ubuntu on it and this time I was decided that I would document every step of the process so that I can get it done faster the next time. That thought and process worked easily for the programs whose installations were just a simple &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo apt install ...&lt;/code&gt; but when I was installing something new (like VS Code) there were many steps involved and it wasn’t an easy task to document them as I went on installing those things.&lt;/p&gt;
-
-&lt;p&gt;What I decided to then do was to just record my terminal sessions for each such long program and review those recordings later to write a script for everything that I needed to do.&lt;/p&gt;
-
-&lt;p&gt;Linux has a handy utility called &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;script&lt;/code&gt; which does just that. If it isn’t pre-installed then you can easily install it with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo apt install script&lt;/code&gt; as it is generally available in the default PPA.&lt;/p&gt;
-
-&lt;p&gt;Using it is straight-forward too.&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;script &amp;lt;file_name_to_write_record_to&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;I also find these options to be of significance:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-a, --append&lt;/code&gt;: This appends the recording if the file is already existing.&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-c, --command &amp;lt;command_which_is_to_be_recorded&amp;gt;&lt;/code&gt;: If you want to record the interaction of a program with terminal then you can use this.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;I found this command to be quite helpful in my recent endeavour of documenting the setup process and think it might others too. Want to discuss this or any other interesting thing, hit me up on Twitter &lt;a href=&quot;https://twitter.com/varun_barad&quot;&gt;@varun_barad&lt;/a&gt;&lt;/p&gt;</content><author><name>Varun Barad</name></author><summary type="html">I was recently setting up my computer with Ubuntu on it and this time I was decided that I would document every step of the process so that I can get it done faster the next time. That thought and process worked easily for the programs whose installations were just a simple sudo apt install ... but when I was installing something new (like VS Code) there were many steps involved and it wasn’t an easy task to document them as I went on installing those things.</summary></entry></feed>
+&lt;p&gt;Want to discuss this or any other interesting thing, hit me up on Twitter &lt;a href=&quot;https://twitter.com/varun_barad&quot;&gt;@varun_barad&lt;/a&gt;.&lt;/p&gt;</content><author><name>Varun Barad</name></author><summary type="html"></summary></entry></feed>
