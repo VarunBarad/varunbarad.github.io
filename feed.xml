@@ -1,17 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://varunbarad.com/" rel="alternate" type="text/html" /><updated>2020-07-05T16:51:07+05:30</updated><id>https://varunbarad.com/feed.xml</id><title type="html">Varun Barad - Curious Developer</title><subtitle>My online home where I post about new things I learn or find interesting.</subtitle><author><name>Varun Barad</name></author><entry><title type="html">Interesting Stuff - Week 2</title><link href="https://varunbarad.com/blog/interesting-stuff-week-2" rel="alternate" type="text/html" title="Interesting Stuff - Week 2" /><published>2020-07-05T12:00:00+05:30</published><updated>2020-07-05T12:00:00+05:30</updated><id>https://varunbarad.com/blog/interesting-stuff-week-2</id><content type="html" xml:base="https://varunbarad.com/blog/interesting-stuff-week-2">&lt;p&gt;Hi folks, this is the second edition of my new experiment where I list articles, podcasts, videos or basically anything I found interesting during last week.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://varunbarad.com/" rel="alternate" type="text/html" /><updated>2020-07-06T09:30:16+05:30</updated><id>https://varunbarad.com/feed.xml</id><title type="html">Varun Barad - Curious Developer</title><subtitle>My online home where I post about new things I learn or find interesting.</subtitle><author><name>Varun Barad</name></author><entry><title type="html">Interesting Stuff - Week 2</title><link href="https://varunbarad.com/blog/interesting-stuff-week-2" rel="alternate" type="text/html" title="Interesting Stuff - Week 2" /><published>2020-07-05T12:00:00+05:30</published><updated>2020-07-05T12:00:00+05:30</updated><id>https://varunbarad.com/blog/interesting-stuff-week-2</id><content type="html" xml:base="https://varunbarad.com/blog/interesting-stuff-week-2">&lt;p&gt;Hi folks, this is the second edition of my new experiment where I list articles, podcasts, videos or basically anything I found interesting during last week.&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=OpoLkMcQh24&quot;&gt;The Baboon That Controlled a Railway for 9 Years&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;
-    &lt;table&gt;
-      &lt;tbody&gt;
-        &lt;tr&gt;
-          &lt;td&gt;[Autofocusing reading glasses of the future&lt;/td&gt;
-          &lt;td&gt;Nitish Padmanaban](https://www.youtube.com/watch?v=9Y9ppMqXwkQ)&lt;/td&gt;
-        &lt;/tr&gt;
-      &lt;/tbody&gt;
-    &lt;/table&gt;
-  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=9Y9ppMqXwkQ&quot;&gt;Autofocusing reading glasses of the future - Nitish Padmanaban&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://karpathy.github.io/2020/06/11/biohacking-lite/&quot;&gt;Biohacking Lite&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://thomask.sdf.org/blog/2019/11/09/take-care-editing-bash-scripts.html&quot;&gt;Pitfalls in editing a bash script&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
