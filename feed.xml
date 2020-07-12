@@ -1,4 +1,30 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://varunbarad.com/" rel="alternate" type="text/html" /><updated>2020-07-06T09:30:16+05:30</updated><id>https://varunbarad.com/feed.xml</id><title type="html">Varun Barad - Curious Developer</title><subtitle>My online home where I post about new things I learn or find interesting.</subtitle><author><name>Varun Barad</name></author><entry><title type="html">Interesting Stuff - Week 2</title><link href="https://varunbarad.com/blog/interesting-stuff-week-2" rel="alternate" type="text/html" title="Interesting Stuff - Week 2" /><published>2020-07-05T12:00:00+05:30</published><updated>2020-07-05T12:00:00+05:30</updated><id>https://varunbarad.com/blog/interesting-stuff-week-2</id><content type="html" xml:base="https://varunbarad.com/blog/interesting-stuff-week-2">&lt;p&gt;Hi folks, this is the second edition of my new experiment where I list articles, podcasts, videos or basically anything I found interesting during last week.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://varunbarad.com/" rel="alternate" type="text/html" /><updated>2020-07-12T16:27:22+05:30</updated><id>https://varunbarad.com/feed.xml</id><title type="html">Varun Barad - Curious Developer</title><subtitle>My online home where I post about new things I learn or find interesting.</subtitle><author><name>Varun Barad</name></author><entry><title type="html">Interesting Stuff - Week 3</title><link href="https://varunbarad.com/blog/interesting-stuff-week-3" rel="alternate" type="text/html" title="Interesting Stuff - Week 3" /><published>2020-07-12T12:00:00+05:30</published><updated>2020-07-12T12:00:00+05:30</updated><id>https://varunbarad.com/blog/interesting-stuff-week-3</id><content type="html" xml:base="https://varunbarad.com/blog/interesting-stuff-week-3">&lt;p&gt;Hi folks, these are the interesting things I found during this week.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-kind-of-long-game-that-can-be-played&quot;&gt;&lt;a href=&quot;https://www.bloomberg.com/news/features/2020-07-01/did-china-steal-canada-s-edge-in-5g-from-nortel&quot;&gt;The kind of long game that can be played&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;I am not saying that what is written in this article is morally right, heck it can even be incorrect. But all of us can definitely learn some lessons on the scale of long-term game which can be played.&lt;/p&gt;
+
+&lt;h2 id=&quot;charlie-munger-and-the-pursuit-of-worldly-wisdom&quot;&gt;&lt;a href=&quot;https://fs.blog/2015/09/munger-worldly-wisdom/&quot;&gt;Charlie Munger and the Pursuit of Worldly Wisdom&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;I was made aware this week that not everyone is familiar with Charlie Munger. So to correct that, here is a short article on why he is not only one of the best investors in the world, but also one of the best thinkers too.&lt;/p&gt;
+
+&lt;h2 id=&quot;indian-financial-system-code&quot;&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Indian_Financial_System_Code&quot;&gt;Indian Financial System Code&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;During some recent work, I had to deal with users inputting IFS code for their account. I wanted to find out if there is any specified pattern for these codes, and that is how I ended up on this simple Wikipedia page for the same.&lt;/p&gt;
+
+&lt;p&gt;PS: I learned that it is to be spoken as “IFS code” and not as “IFSC code”.&lt;/p&gt;
+
+&lt;h2 id=&quot;quantum-computer-programming&quot;&gt;&lt;a href=&quot;https://www.sckaiser.com/&quot;&gt;Quantum Computer Programming&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;During one of Twitch raids I came across Twitch office hours session of Dr. Sarah Kaiser. She is an experimental quantum physicist and also works on open-source programs for quantum computers.&lt;/p&gt;
+
+&lt;p&gt;You can find her website at &lt;a href=&quot;https://www.sckaiser.com&quot;&gt;https://www.sckaiser.com&lt;/a&gt; or join her live on Twitch &lt;a href=&quot;https://www.twitch.tv/crazy4pi314&quot;&gt;@crazy4pi314&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;how-are-highways-designed&quot;&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=9XIjqdk69O4&quot;&gt;How are highways designed&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;This is an awesome video which shows what all factors are taken into consideration when highways (or more generally any roads) are being designed, what constraints dictate the radius of curve or the angle of a slope.&lt;/p&gt;
+
+&lt;p&gt;If you find something interesting and think I should check it out send it over to &lt;a href=&quot;mailto:interesting@varunbarad.com&quot;&gt;interesting@varunbarad.com&lt;/a&gt;&lt;/p&gt;</content><author><name>Varun Barad</name></author><summary type="html">Hi folks, these are the interesting things I found during this week.</summary></entry><entry><title type="html">Interesting Stuff - Week 2</title><link href="https://varunbarad.com/blog/interesting-stuff-week-2" rel="alternate" type="text/html" title="Interesting Stuff - Week 2" /><published>2020-07-05T12:00:00+05:30</published><updated>2020-07-05T12:00:00+05:30</updated><id>https://varunbarad.com/blog/interesting-stuff-week-2</id><content type="html" xml:base="https://varunbarad.com/blog/interesting-stuff-week-2">&lt;p&gt;Hi folks, this is the second edition of my new experiment where I list articles, podcasts, videos or basically anything I found interesting during last week.&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=OpoLkMcQh24&quot;&gt;The Baboon That Controlled a Railway for 9 Years&lt;/a&gt;&lt;/li&gt;
@@ -438,32 +464,5 @@ This lint check is set to fail the build when it finds any of the above element 
 &lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://dart.dev/guides/language/extension-methods&quot;&gt;Official release documentation - https://dart.dev/guides/language/extension-methods&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Want to discuss this or any other interesting thing, hit me up on Twitter &lt;a href=&quot;https://twitter.com/varun_barad&quot;&gt;@varun_barad&lt;/a&gt;.&lt;/p&gt;</content><author><name>Varun Barad</name></author><summary type="html"></summary></entry><entry><title type="html">P vs NP Algorithm Problem Types</title><link href="https://varunbarad.com/blog/p-vs-np-algorithm-problem-types" rel="alternate" type="text/html" title="P vs NP Algorithm Problem Types" /><published>2020-02-02T12:00:00+05:30</published><updated>2020-02-02T12:00:00+05:30</updated><id>https://varunbarad.com/blog/p-vs-np-algorithm-problem-types</id><content type="html" xml:base="https://varunbarad.com/blog/p-vs-np-algorithm-problem-types">&lt;p&gt;&lt;img src=&quot;https://varunbarad.com/assets/images/posts/p-np-venn-diagram.png&quot; alt=&quot;Venn Diagram - Problem Types&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;The above image represents something completely un-understandable to me during my college years. I couldn’t understand what the professor tried to explain during my algorithms class when the topic of P vs NP vs NP-Complete problems came.&lt;/p&gt;
-
-&lt;p&gt;Finally I understood it from &lt;a href=&quot;https://www.youtube.com/watch?v=EHp4FPyajKQ&quot;&gt;a video by “Up and Atom”&lt;/a&gt;. The problems are grouped according to these 2 criteria:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;Can a solution to the problem be found in polynomial time?&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Can a given solution for the problem be verified in polynomial time?&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;np-problems&quot;&gt;NP Problems&lt;/h2&gt;
-
-&lt;p&gt;These are the problems for which condition 2 holds true. If given a solution to such problem, the correctness of that solution can be verified in polynomial time. Condition 1 being true or false for such problems doesn’t affect whether they can fall under NP category or not.&lt;/p&gt;
-
-&lt;h2 id=&quot;np-complete-problems&quot;&gt;NP-Complete Problems&lt;/h2&gt;
-
-&lt;p&gt;These are the problems for which condition 2 holds true but condition 1 is false. A valid solution to the problem can’t be verified in polynomial time, but if given a solution to the problem the correctness of that solution can be verified in polynomial time.&lt;/p&gt;
-
-&lt;h2 id=&quot;p-problems&quot;&gt;P Problems&lt;/h2&gt;
-
-&lt;p&gt;For these problems, both conditions 1 &amp;amp; 2 hold true. There exist methods by which a valid solution to any of these problem can be found under polynomial time. And also, any given solution for such problem can be verified in polynomial time.&lt;/p&gt;
 
 &lt;p&gt;Want to discuss this or any other interesting thing, hit me up on Twitter &lt;a href=&quot;https://twitter.com/varun_barad&quot;&gt;@varun_barad&lt;/a&gt;.&lt;/p&gt;</content><author><name>Varun Barad</name></author><summary type="html"></summary></entry></feed>
