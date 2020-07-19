@@ -1,4 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://varunbarad.com/" rel="alternate" type="text/html" /><updated>2020-07-12T16:27:22+05:30</updated><id>https://varunbarad.com/feed.xml</id><title type="html">Varun Barad - Curious Developer</title><subtitle>My online home where I post about new things I learn or find interesting.</subtitle><author><name>Varun Barad</name></author><entry><title type="html">Interesting Stuff - Week 3</title><link href="https://varunbarad.com/blog/interesting-stuff-week-3" rel="alternate" type="text/html" title="Interesting Stuff - Week 3" /><published>2020-07-12T12:00:00+05:30</published><updated>2020-07-12T12:00:00+05:30</updated><id>https://varunbarad.com/blog/interesting-stuff-week-3</id><content type="html" xml:base="https://varunbarad.com/blog/interesting-stuff-week-3">&lt;p&gt;Hi folks, these are the interesting things I found during this week.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://varunbarad.com/" rel="alternate" type="text/html" /><updated>2020-07-19T16:31:33+05:30</updated><id>https://varunbarad.com/feed.xml</id><title type="html">Varun Barad - Curious Developer</title><subtitle>My online home where I post about new things I learn or find interesting.</subtitle><author><name>Varun Barad</name></author><entry><title type="html">Interesting Stuff - Week 4</title><link href="https://varunbarad.com/blog/interesting-stuff-week-4" rel="alternate" type="text/html" title="Interesting Stuff - Week 4" /><published>2020-07-19T12:00:00+05:30</published><updated>2020-07-19T12:00:00+05:30</updated><id>https://varunbarad.com/blog/interesting-stuff-week-4</id><content type="html" xml:base="https://varunbarad.com/blog/interesting-stuff-week-4">&lt;p&gt;Hi folks, these are the interesting things I found during this week.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-astounding-physics-of-n95-masks&quot;&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=eAdanPfQdCA&quot;&gt;The Astounding Physics of N95 Masks&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;Before seeing this video I used to think that N95 masks worked by having the gaps between their fibers be so thin that particulate matter could not cross it. But it is so not the case. Even if you don’t read/see any of the remaining things, still make time to watch this 6 min video. N95 masks are way cooler than I used to think previously.&lt;/p&gt;
+
+&lt;h2 id=&quot;window-swap&quot;&gt;&lt;a href=&quot;https://window-swap.com/&quot;&gt;Window Swap&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;Feel cooped up in your own home and bored of seeing the same scene outside your window? Try the above website which lets users submit pictures (or ultra-short videos) of scenes from their windows from around the world. It had a calming effect on me. If you can, do submit the scene from your window too (someone might find that captivating).&lt;/p&gt;
+
+&lt;h2 id=&quot;the-worlds-largest-indoor-waterpark&quot;&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=0Sz55gmNUaI&quot;&gt;The World’s Largest Indoor Waterpark&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;Check out the above video if you want to see how the biggest uninterrupted (no support pillars for the roof) indoor space looks like. It is just a cherry on the top that it happens to be a waterpark, of all things. Fun fact: It is so big to have indoor hot-air balloon rides.&lt;/p&gt;
+
+&lt;h2 id=&quot;private-pilot-ground-school&quot;&gt;&lt;a href=&quot;https://ocw.mit.edu/courses/aeronautics-and-astronautics/16-687-private-pilot-ground-school-january-iap-2019/&quot;&gt;Private Pilot Ground School&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;If it is your dream too to someday learn to fly planes then this course offered by MIT might be a good way to cover the ground-school part of flight training. They even called some guest experts for extra sessions. My favorite was the one by Lieutenant Colonel Randy Gordon where he explains F-22 flight controls and his experiences in flying fighter jets (https://www.youtube.com/watch?v=Evhrk5tY-Yo).&lt;/p&gt;
+
+&lt;p&gt;If you find something interesting and think I should check it out send it over to &lt;a href=&quot;mailto:interesting@varunbarad.com&quot;&gt;interesting@varunbarad.com&lt;/a&gt;&lt;/p&gt;</content><author><name>Varun Barad</name></author><summary type="html">Hi folks, these are the interesting things I found during this week.</summary></entry><entry><title type="html">Interesting Stuff - Week 3</title><link href="https://varunbarad.com/blog/interesting-stuff-week-3" rel="alternate" type="text/html" title="Interesting Stuff - Week 3" /><published>2020-07-12T12:00:00+05:30</published><updated>2020-07-12T12:00:00+05:30</updated><id>https://varunbarad.com/blog/interesting-stuff-week-3</id><content type="html" xml:base="https://varunbarad.com/blog/interesting-stuff-week-3">&lt;p&gt;Hi folks, these are the interesting things I found during this week.&lt;/p&gt;
 
 &lt;h2 id=&quot;the-kind-of-long-game-that-can-be-played&quot;&gt;&lt;a href=&quot;https://www.bloomberg.com/news/features/2020-07-01/did-china-steal-canada-s-edge-in-5g-from-nortel&quot;&gt;The kind of long game that can be played&lt;/a&gt;&lt;/h2&gt;
 
@@ -388,81 +406,4 @@ This lint check is set to fail the build when it finds any of the above element 
 
 &lt;ol&gt;
   &lt;li&gt;&lt;strong&gt;2020-03-02:&lt;/strong&gt; Add the step of “Registering our Issue Registry”&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>Varun Barad</name></author><summary type="html"></summary></entry><entry><title type="html">Dart Extension Methods</title><link href="https://varunbarad.com/blog/dart-extensions-methods" rel="alternate" type="text/html" title="Dart Extension Methods" /><published>2020-02-04T12:00:00+05:30</published><updated>2020-02-04T12:00:00+05:30</updated><id>https://varunbarad.com/blog/dart-extensions-methods</id><content type="html" xml:base="https://varunbarad.com/blog/dart-extensions-methods">&lt;p&gt;&lt;img src=&quot;https://varunbarad.com/assets/images/posts/headers/dart-extension-methods.png&quot; alt=&quot;Article Header - Dart Extension Methods&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Welcome devs, have you tried your hands at extensions methods? Dart recently announced support for extension methods (from Dart 2.7) and extension properties.&lt;/p&gt;
-
-&lt;p&gt;Extension methods are a way to add functionality to existing libraries. When you are using someone else’s library it’s often impractical/impossible to change the API. But you can &lt;em&gt;extend&lt;/em&gt; it using extension methods.&lt;/p&gt;
-
-&lt;h2 id=&quot;what-are-extension-methods&quot;&gt;What are extension methods?&lt;/h2&gt;
-
-&lt;p&gt;Consider the following code that parses a string into an integer:&lt;/p&gt;
-
-&lt;div class=&quot;language-dart highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'42'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Won’t it look cleaner/better if this functionality was available on &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;String&lt;/code&gt; class like below?&lt;/p&gt;
-
-&lt;div class=&quot;language-dart highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;'42'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;parseInt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Since the language (where class &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;String&lt;/code&gt; comes from) doesn’t provide such a method we can’t parse a string to an int like that. Extension methods allow us to specify such custom functionalities not provided by the library (Dart language in this case). Let’s see how to do that in next section.&lt;/p&gt;
-
-&lt;h2 id=&quot;writing-a-basic-extension-method&quot;&gt;Writing a basic extension method&lt;/h2&gt;
-
-&lt;p&gt;So we want to have a method &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;parseInt&lt;/code&gt; &lt;strong&gt;on&lt;/strong&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;String&lt;/code&gt; class which would parse the given string to integer.&lt;/p&gt;
-
-&lt;div class=&quot;language-dart highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;'42'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;parseInt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;For that we will define an extension method on &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;String&lt;/code&gt; like this&lt;/p&gt;
-
-&lt;div class=&quot;language-dart highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// File: extension_methods.dart&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;extension&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;StringExtras&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;on&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;parseInt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// We can also define getters as extensions&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;get&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;doubleLength&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Here we have named this set of extension methods as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;StringExtras&lt;/code&gt;, you can name them anything you like.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; As you might have noticed above, we can define multiple extension methods/getters under a single extension block.&lt;/p&gt;
-
-&lt;h2 id=&quot;using-the-extension-method&quot;&gt;Using the extension method&lt;/h2&gt;
-
-&lt;p&gt;Extension methods (once imported) can be used just like any member method on that class’s object. Our example would go like this&lt;/p&gt;
-
-&lt;div class=&quot;language-dart highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'extension_methods.dart'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'42'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;parseInt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Would print 50&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Similarly we can use the getters too&lt;/p&gt;
-
-&lt;div class=&quot;language-dart highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'extension_methods.dart'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'42'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;doubleLength&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Would print 4&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;important-notes&quot;&gt;Important Notes&lt;/h2&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Extension methods &lt;em&gt;don’t&lt;/em&gt; work with the type &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dynamic&lt;/code&gt;. However they &lt;em&gt;do&lt;/em&gt; work with Dart’s type inference.&lt;/li&gt;
-  &lt;li&gt;Since extension methods are resolved statically, they’re as fast as calling a static function.&lt;/li&gt;
-  &lt;li&gt;Extension methods can’t access private members of the class.&lt;/li&gt;
-  &lt;li&gt;If an extension member has a name conflict then you should refer &lt;a href=&quot;https://dart.dev/guides/language/extension-methods#api-conflicts&quot;&gt;here&lt;/a&gt; for your options.&lt;/li&gt;
-  &lt;li&gt;You can define extension methods on classes which take generic type parameters (for example &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;List&amp;lt;T&amp;gt;&lt;/code&gt;). Refer &lt;a href=&quot;https://dart.dev/guides/language/extension-methods#implementing-generic-extensions&quot;&gt;this section&lt;/a&gt; for further details.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://dart.dev/guides/language/extension-methods&quot;&gt;Official release documentation - https://dart.dev/guides/language/extension-methods&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Want to discuss this or any other interesting thing, hit me up on Twitter &lt;a href=&quot;https://twitter.com/varun_barad&quot;&gt;@varun_barad&lt;/a&gt;.&lt;/p&gt;</content><author><name>Varun Barad</name></author><summary type="html"></summary></entry></feed>
+&lt;/ol&gt;</content><author><name>Varun Barad</name></author><summary type="html"></summary></entry></feed>
