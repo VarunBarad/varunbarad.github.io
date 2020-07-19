@@ -23,6 +23,6 @@ Check out the above video if you want to see how the biggest uninterrupted (no s
 
 ## [Private Pilot Ground School](https://ocw.mit.edu/courses/aeronautics-and-astronautics/16-687-private-pilot-ground-school-january-iap-2019/)
 
-If it is your dream too to someday learn to fly planes then this course offered by MIT might be a good way to cover the ground-school part of flight training. They even called some guest experts for extra sessions. My favorite was the one by Lieutenant Colonel Randy Gordon where he explains F-22 flight controls and his experiences in flying fighter jets (https://www.youtube.com/watch?v=Evhrk5tY-Yo).
+If it is your dream too to someday learn to fly planes then this course offered by MIT might be a good way to cover the ground-school part of flight training. They even called some guest experts for extra sessions. My favorite was the one by Lieutenant Colonel Randy Gordon where he explains F-22 flight controls and his experiences in flying fighter jets ([https://www.youtube.com/watch?v=Evhrk5tY-Yo](https://www.youtube.com/watch?v=Evhrk5tY-Yo)).
 
 If you find something interesting and think I should check it out send it over to [interesting@varunbarad.com](mailto:interesting@varunbarad.com)
