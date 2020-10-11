@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/assets/css/style.css?v=73a495be18f19a73ce986d18e591a9a3a15c1a20">
+  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=73a495be18f19a73ce986d18e591a9a3a15c1a20">
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <title>Check if your request body is compressed - Varun Barad</title>
+  <meta name="description" content="Make sure to know what is the default request body compression setting in your http library is" />
+
+  <!-- RSS Feed meta-data -->
+  <link rel="alternate" type="application/atom+xml" title="RSS" href="https://varunbarad.com/feed.xml" />
+
+  <!-- Twitter meta-data -->
+  <meta name="twitter:site" content="@varun_barad" />
+  <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Check if your request body is compressed" />
+  <meta name="twitter:description" content="Make sure to know what is the default request body compression setting in your http library is" />
+
+  <!-- Open-graph meta-data -->
+  <meta property="og:site_name" content="Varun Barad - Curious Developer" />
+  <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png" />
+  <meta property="og:type" content="object" />
+  <meta property="og:title" content="Check if your request body is compressed" />
+  <meta property="og:url" content="https://varunbarad.com/blog/check-if-your-request-body-is-compressed" />
+  <meta property="og:description" content="Make sure to know what is the default request body compression setting in your http library is" />
+</head>
+<body>
+<div>
+  <div id="header">
+    <div class="row header">
+  <div class="title col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+    <a href="/"><div class="title">Varun Barad</div></a>
+  </div>
+  <div class="col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8">
+    <nav class="menu text-right">
+  <a href="/portfolio">Portfolio</a>
+  <a href="/blog">Blog</a>
+  <a href="/contact">Contact</a>
+</nav>
+
+  </div>
+</div>
+
+  </div>
+  <article class="h-entry">
+    <div class="content row">
+      <div class="post-container">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+          <div>
+            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/check-if-your-request-body-is-compressed">Check if your request body is compressed</a></div>
+            <div class="text-center">
+              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2020-10-11 00:00:00 +0530">October 11, 2020</time>
+            </div>
+            <div class="post-content e-content"><h2 id="entering-the-maze">Entering the maze</h2>
+
+<p>Recently in one of the projects I was trying to make a POST request to an external API. This was my first time using Jersey http client and so when the server responded with an error saying <code class="language-plaintext highlighter-rouge">could not find required parameter "code"</code> I thought there must be something wrong going on with how I was making the request.</p>
+
+<p>I spent 2 hours on this and even roped in 2 of my senior colleagues into figuring out how to send a simple POST request with a form-encoded request body. We tried all methods listed in the docs. The same way would work with some other API but not with the one we wanted to integrate with.</p>
+
+<h2 id="convolutions-by-miscommunication">Convolutions by miscommunication</h2>
+
+<p>The most confusing part was that the errors it threw didn’t make much sense, since even the errors didn’t align with what we expected them to be. We needed to pass 4 parameters and here’s what some of the errors we found out were:</p>
+
+<ul>
+  <li>Included all 4 parameters. Error: <code class="language-plaintext highlighter-rouge">could not find required parameter "code"</code></li>
+  <li>Supplied only the <code class="language-plaintext highlighter-rouge">code</code> parameter. Error: <code class="language-plaintext highlighter-rouge">illegal arguments</code></li>
+  <li>Started adding all the 4 parameters one-by-one. Error: <code class="language-plaintext highlighter-rouge">illegal arguments</code></li>
+  <li>As soon as we reached all 4 parameters. Error: <code class="language-plaintext highlighter-rouge">could not find required parameter "code"</code></li>
+  <li>Removed one of the parameters at random. Error: <code class="language-plaintext highlighter-rouge">could not find required parameters "code"</code></li>
+  <li>Included all 4 parameters but changed the <strong>value</strong> of <code class="language-plaintext highlighter-rouge">code</code>. Error: <code class="language-plaintext highlighter-rouge">illegal arguments</code></li>
+</ul>
+
+<h2 id="the-ray-of-hope">The ray of hope</h2>
+
+<p>This was so bizarre that all 3 of us were confused with the behavior. Then one of the colleagues added a logger to the jersey client and figured out that the request body was getting compressed with gzip. It is a standard practice to compress API responses with gzip but this was the first time I encountered a <strong>request</strong> body getting compressed.</p>
+
+<p>We configured jersey to disable gzip compression for requests and finally the API could understand what we were trying to speak to it. Phew.</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>When an API says it can’t read what you are sending it and you are confident that you are sending it the data as it requested then first thing you should check is whether your request body is getting compressed or not and whether the API supports taking in gzipped requests.</p>
+
+<p>Found this confusing maze interesting and have something of yours to share (or even if you just wanna talk) then you have my standing invitation to get in touch with me over <a href="https://twitter.com/varun_barad">@varun_barad</a> on Twitter.</p>
+</div>
+          </div>
+
+          <div class="post-categories-container">
+            Categories:
+            <div>
+              
+              <a href="/category/programming" class="badge badge-warning p-category">#programming</a>
+              
+              <a href="/blog" class="badge badge-warning">#all</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+  <div>
+    <div class="footer">
+  <div>
+    
+    <a href="https://github.com/VarunBarad" rel="me" target="_blank"><i class="fab fa-github social-links"></i></a>
+    
+    <a href="https://twitter.com/varun_barad" rel="me" target="_blank"><i class="fab fa-twitter social-links"></i></a>
+    
+    <a href="https://dev.to/varunbarad" rel="me" target="_blank"><i class="fab fa-dev social-links"></i></a>
+    
+    <a href="https://stackoverflow.com/users/4717436/varunbarad" rel="me" target="_blank"><i class="fab fa-stack-overflow social-links"></i></a>
+    
+  </div>
+  <div class="developer-attribution">
+    
+    Made by <a href="https://dixita0607.github.io" target="_blank">Dixita Ganatra</a>
+  </div>
+</div>
+
+  </div>
+</div>
+
+<script src="/assets/js/jquery.min.js?v=73a495be18f19a73ce986d18e591a9a3a15c1a20"></script>
+<script src="/assets/js/bootstrap.min.js?v=73a495be18f19a73ce986d18e591a9a3a15c1a20"></script>
+<script src="/assets/js/contact.js?v=73a495be18f19a73ce986d18e591a9a3a15c1a20"></script>
+</body>
+</html>

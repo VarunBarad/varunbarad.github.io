@@ -1,4 +1,33 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://varunbarad.com/" rel="alternate" type="text/html" /><updated>2020-08-21T20:14:13+05:30</updated><id>https://varunbarad.com/feed.xml</id><title type="html">Varun Barad - Curious Developer</title><subtitle>My online home where I post about new things I learn or find interesting.</subtitle><author><name>Varun Barad</name></author><entry><title type="html">Techniques to Improve Focus</title><link href="https://varunbarad.com/blog/techniques-to-improve-focus" rel="alternate" type="text/html" title="Techniques to Improve Focus" /><published>2020-08-21T00:00:00+05:30</published><updated>2020-08-21T00:00:00+05:30</updated><id>https://varunbarad.com/blog/techniques-to-improve-focus</id><content type="html" xml:base="https://varunbarad.com/blog/techniques-to-improve-focus">&lt;p&gt;Recently I realized that my attention span and ability to focus have drastically reduced over the past 2 years. I initially waved it off as just my brain not being interested in those particular tasks but it became worrisome when I observed similarly high distractability for even stuff that I enjoy(ed). That and the loss of ability (to focus) being an impediment in me achieving my best finally got me to take this seriously. Luckily I also happened to stumble on an &lt;a href=&quot;https://www.buzzsprout.com/1121972/4005569-improving-concentration-influential-books-and-figuring-out-what-to-focus-on-deep-questions&quot;&gt;episode of Dr Cal Newport’s podcast “Deep Questions”&lt;/a&gt; where he tackles a similar question from someone else.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://varunbarad.com/" rel="alternate" type="text/html" /><updated>2020-10-12T00:30:38+05:30</updated><id>https://varunbarad.com/feed.xml</id><title type="html">Varun Barad - Curious Developer</title><subtitle>My online home where I post about new things I learn or find interesting.</subtitle><author><name>Varun Barad</name></author><entry><title type="html">Check if your request body is compressed</title><link href="https://varunbarad.com/blog/check-if-your-request-body-is-compressed" rel="alternate" type="text/html" title="Check if your request body is compressed" /><published>2020-10-11T00:00:00+05:30</published><updated>2020-10-11T00:00:00+05:30</updated><id>https://varunbarad.com/blog/check-if-your-request-body-is-compressed</id><content type="html" xml:base="https://varunbarad.com/blog/check-if-your-request-body-is-compressed">&lt;h2 id=&quot;entering-the-maze&quot;&gt;Entering the maze&lt;/h2&gt;
+
+&lt;p&gt;Recently in one of the projects I was trying to make a POST request to an external API. This was my first time using Jersey http client and so when the server responded with an error saying &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;could not find required parameter &quot;code&quot;&lt;/code&gt; I thought there must be something wrong going on with how I was making the request.&lt;/p&gt;
+
+&lt;p&gt;I spent 2 hours on this and even roped in 2 of my senior colleagues into figuring out how to send a simple POST request with a form-encoded request body. We tried all methods listed in the docs. The same way would work with some other API but not with the one we wanted to integrate with.&lt;/p&gt;
+
+&lt;h2 id=&quot;convolutions-by-miscommunication&quot;&gt;Convolutions by miscommunication&lt;/h2&gt;
+
+&lt;p&gt;The most confusing part was that the errors it threw didn’t make much sense, since even the errors didn’t align with what we expected them to be. We needed to pass 4 parameters and here’s what some of the errors we found out were:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Included all 4 parameters. Error: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;could not find required parameter &quot;code&quot;&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Supplied only the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;code&lt;/code&gt; parameter. Error: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;illegal arguments&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Started adding all the 4 parameters one-by-one. Error: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;illegal arguments&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;As soon as we reached all 4 parameters. Error: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;could not find required parameter &quot;code&quot;&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Removed one of the parameters at random. Error: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;could not find required parameters &quot;code&quot;&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Included all 4 parameters but changed the &lt;strong&gt;value&lt;/strong&gt; of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;code&lt;/code&gt;. Error: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;illegal arguments&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;the-ray-of-hope&quot;&gt;The ray of hope&lt;/h2&gt;
+
+&lt;p&gt;This was so bizarre that all 3 of us were confused with the behavior. Then one of the colleagues added a logger to the jersey client and figured out that the request body was getting compressed with gzip. It is a standard practice to compress API responses with gzip but this was the first time I encountered a &lt;strong&gt;request&lt;/strong&gt; body getting compressed.&lt;/p&gt;
+
+&lt;p&gt;We configured jersey to disable gzip compression for requests and finally the API could understand what we were trying to speak to it. Phew.&lt;/p&gt;
+
+&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+
+&lt;p&gt;When an API says it can’t read what you are sending it and you are confident that you are sending it the data as it requested then first thing you should check is whether your request body is getting compressed or not and whether the API supports taking in gzipped requests.&lt;/p&gt;
+
+&lt;p&gt;Found this confusing maze interesting and have something of yours to share (or even if you just wanna talk) then you have my standing invitation to get in touch with me over &lt;a href=&quot;https://twitter.com/varun_barad&quot;&gt;@varun_barad&lt;/a&gt; on Twitter.&lt;/p&gt;</content><author><name>Varun Barad</name></author><summary type="html">Entering the maze</summary></entry><entry><title type="html">Techniques to Improve Focus</title><link href="https://varunbarad.com/blog/techniques-to-improve-focus" rel="alternate" type="text/html" title="Techniques to Improve Focus" /><published>2020-08-21T00:00:00+05:30</published><updated>2020-08-21T00:00:00+05:30</updated><id>https://varunbarad.com/blog/techniques-to-improve-focus</id><content type="html" xml:base="https://varunbarad.com/blog/techniques-to-improve-focus">&lt;p&gt;Recently I realized that my attention span and ability to focus have drastically reduced over the past 2 years. I initially waved it off as just my brain not being interested in those particular tasks but it became worrisome when I observed similarly high distractability for even stuff that I enjoy(ed). That and the loss of ability (to focus) being an impediment in me achieving my best finally got me to take this seriously. Luckily I also happened to stumble on an &lt;a href=&quot;https://www.buzzsprout.com/1121972/4005569-improving-concentration-influential-books-and-figuring-out-what-to-focus-on-deep-questions&quot;&gt;episode of Dr Cal Newport’s podcast “Deep Questions”&lt;/a&gt; where he tackles a similar question from someone else.&lt;/p&gt;
 
 &lt;p&gt;Dr Newport mentions that it is a good idea to train your concentration like an athlete would prepare for their sport. Athletes train themselves in 2 ways to keep in shape. There is the general fitness training which keeps their baseline in good form, and then they train specifically for the sport that they compete in. Similarly we also need to train our focus in 2 ways.&lt;/p&gt;
 
@@ -150,107 +179,4 @@
 
 &lt;p&gt;This sets flag inside the device using adb that whenever this device is connected via USB to not turn its screen off automatically.&lt;/p&gt;
 
-&lt;p&gt;Want to discuss this or any other interesting thing, hit me up on Twitter &lt;a href=&quot;https://twitter.com/varun_barad&quot;&gt;@varun_barad&lt;/a&gt;.&lt;/p&gt;</content><author><name>Varun Barad</name></author><summary type="html">To keep your Android phone screen from turning off when it is connected to your PC and you are using it to debug apps, enter the following command once in your terminal with the device connected.</summary></entry><entry><title type="html">Write Custom Android Lint Rule - Manifest File</title><link href="https://varunbarad.com/blog/write-custom-android-lint-rule-manifest-file" rel="alternate" type="text/html" title="Write Custom Android Lint Rule - Manifest File" /><published>2020-02-28T12:00:00+05:30</published><updated>2020-02-28T12:00:00+05:30</updated><id>https://varunbarad.com/blog/write-custom-android-lint-rule-manifest-file</id><content type="html" xml:base="https://varunbarad.com/blog/write-custom-android-lint-rule-manifest-file">&lt;p&gt;Welcome folks, last time we wrote a lint check for making sure that all of our &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;EditText&lt;/code&gt; have the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;android:inputType&lt;/code&gt; attribute.&lt;/p&gt;
-
-&lt;p&gt;This time we will be writing a check which works on our &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;AndroidManifest.xml&lt;/code&gt; file. This check will ensure that our &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;application&lt;/code&gt; tag has a child &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;meta-data&lt;/code&gt; tag with attribute &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;android:name=&quot;android.webkit.WebView.MetricsOptOut&quot;&lt;/code&gt;. Read the background for that &lt;a href=&quot;https://developer.android.com/guide/webapps/managing-webview#metrics&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;If you haven’t yet then first go through &lt;a href=&quot;https://varunbarad.com/blog/write-custom-android-lint-rule-layout-files&quot;&gt;the last post&lt;/a&gt; otherwise you might not understand many things as we will be building upon what we have created in that post.&lt;/p&gt;
-
-&lt;h2 id=&quot;changes-to-add-to-last-project&quot;&gt;Changes to add to last project&lt;/h2&gt;
-
-&lt;p&gt;We will be building upon the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lint-checks&lt;/code&gt; module we created last time. We would need to make following changes:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Add a new issue and detector pertaining to this manifest check&lt;/li&gt;
-  &lt;li&gt;Register the new issue in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;LintRegistry&lt;/code&gt; class&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;create-the-detector&quot;&gt;Create the detector&lt;/h2&gt;
-
-&lt;p&gt;Create a class named &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;WebViewMetricsMetaTagDetector&lt;/code&gt; which extends from &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ManifestDetector&lt;/code&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-kotlin highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;WebViewMetricsMetaTagDetector&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ManifestDetector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Now to define the Issue.&lt;/p&gt;
-
-&lt;div class=&quot;language-kotlin highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;companion&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nd&quot;&gt;@JvmStatic&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;internal&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;py&quot;&gt;ISSUE_MISSING_WEBVIEW_METRICS_META_TAG&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Issue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;MissingWebViewMetricsMetaTag&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;briefDescription&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Specify whether you want to opt-out of metrics tracking via WebView.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;explanation&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;WebView can upload diagnostic data to Google. You can opt-out by specifying a `meta-data` tag under your `application` tag in manifest.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;category&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Category&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;SECURITY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;priority&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;severity&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Severity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;ERROR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;implementation&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Implementation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-            &lt;span class=&quot;nc&quot;&gt;WebViewMetricsMetaTagDetector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;nc&quot;&gt;Scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;MANIFEST_SCOPE&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;addMoreInfo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://developer.android.com/guide/webapps/managing-webview#metrics&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;The things that have changed here are:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;id&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;briefDescription&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;explanation&lt;/code&gt; for the issue.&lt;/li&gt;
-  &lt;li&gt;Scope inside the Implementation object passed against &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;implementation&lt;/code&gt; parameter. We changed from &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Scope.ALL_RESOURCES_SCOPE&lt;/code&gt; to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Scope.MANIFEST_SCOPE&lt;/code&gt;.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;We now override the 2 required methods:&lt;/p&gt;
-
-&lt;div class=&quot;language-kotlin highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fun&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getApplicableElements&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Collection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;?&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;listOf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-        &lt;span class=&quot;nc&quot;&gt;SdkConstants&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;TAG_APPLICATION&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fun&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;visitElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;XmlContext&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;py&quot;&gt;containsWebViewMetricsOptOutTag&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;childNodes&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;toList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;filter&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nodeName&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;meta-data&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;any&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;node&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;-&amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;attributes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;toPairedNameValueList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;filter&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;attribute&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;-&amp;gt;&lt;/span&gt;
-                &lt;span class=&quot;n&quot;&gt;attribute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;first&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;android:name&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;attribute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;second&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;android.webkit.WebView.MetricsOptOut&quot;&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;}.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;isNotEmpty&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;containsWebViewMetricsOptOutTag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;report&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;issue&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ISSUE_MISSING_WEBVIEW_METRICS_META_TAG&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;location&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;getLocation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;message&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ISSUE_MISSING_WEBVIEW_METRICS_META_TAG&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;getExplanation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;TextFormat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;TEXT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;In the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;visitElement&lt;/code&gt; method, we are traversing through all children of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;application&amp;gt;&lt;/code&gt; and checking that a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;meta-data&lt;/code&gt; tag with attribute &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;android:name=&quot;android.webkit.WebView.MetricsOptOut&quot;&lt;/code&gt; exists. If it does not exist then we raise our issue &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ISSUE_MISSING_WEBVIEW_METRICS_META_TAG&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;register-the-new-issue&quot;&gt;Register the new issue&lt;/h2&gt;
-
-&lt;p&gt;The last thing we need to do now is to add the above created issue in our &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;LintRegistry&lt;/code&gt; class.&lt;/p&gt;
-
-&lt;div class=&quot;language-kotlin highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LintRegistry&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;IssueRegistry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;py&quot;&gt;api&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Int&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;CURRENT_API&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;py&quot;&gt;issues&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Issue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;listOf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-            &lt;span class=&quot;nc&quot;&gt;InputTypeDetector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;ISSUE_MISSING_INPUT_TYPE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;nc&quot;&gt;WebViewMetricsMetaTagDetector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;ISSUE_MISSING_WEBVIEW_METRICS_META_TAG&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// We added this line&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;run-the-lint-checks&quot;&gt;Run the lint checks&lt;/h2&gt;
-
-&lt;p&gt;There we are done, now to run the lint checks using gradle&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;./gradlew lint
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Want to discuss this or any other interesting thing, hit me up on Twitter &lt;a href=&quot;https://twitter.com/varun_barad&quot;&gt;@varun_barad&lt;/a&gt;.&lt;/p&gt;</content><author><name>Varun Barad</name></author><summary type="html">Welcome folks, last time we wrote a lint check for making sure that all of our EditText have the android:inputType attribute.</summary></entry></feed>
+&lt;p&gt;Want to discuss this or any other interesting thing, hit me up on Twitter &lt;a href=&quot;https://twitter.com/varun_barad&quot;&gt;@varun_barad&lt;/a&gt;.&lt;/p&gt;</content><author><name>Varun Barad</name></author><summary type="html">To keep your Android phone screen from turning off when it is connected to your PC and you are using it to debug apps, enter the following command once in your terminal with the device connected.</summary></entry></feed>
