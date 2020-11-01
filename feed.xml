@@ -1,4 +1,26 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://varunbarad.com/" rel="alternate" type="text/html" /><updated>2020-10-22T21:53:51+05:30</updated><id>https://varunbarad.com/feed.xml</id><title type="html">Varun Barad - Curious Developer</title><subtitle>My online home where I post about new things I learn or find interesting.</subtitle><author><name>Varun Barad</name></author><entry><title type="html">Check if your request body is compressed</title><link href="https://varunbarad.com/blog/check-if-your-request-body-is-compressed" rel="alternate" type="text/html" title="Check if your request body is compressed" /><published>2020-10-11T00:00:00+05:30</published><updated>2020-10-11T00:00:00+05:30</updated><id>https://varunbarad.com/blog/check-if-your-request-body-is-compressed</id><content type="html" xml:base="https://varunbarad.com/blog/check-if-your-request-body-is-compressed">&lt;h2 id=&quot;entering-the-maze&quot;&gt;Entering the maze&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://varunbarad.com/" rel="alternate" type="text/html" /><updated>2020-11-01T11:51:42+05:30</updated><id>https://varunbarad.com/feed.xml</id><title type="html">Varun Barad - Curious Developer</title><subtitle>My online home where I post about new things I learn or find interesting.</subtitle><author><name>Varun Barad</name></author><entry><title type="html">2020 End of Year Reading Challenge</title><link href="https://varunbarad.com/blog/2020-end-of-year-reading-challenge" rel="alternate" type="text/html" title="2020 End of Year Reading Challenge" /><published>2020-10-31T00:00:00+05:30</published><updated>2020-10-31T00:00:00+05:30</updated><id>https://varunbarad.com/blog/2020-end-of-year-reading-challenge</id><content type="html" xml:base="https://varunbarad.com/blog/2020-end-of-year-reading-challenge">&lt;p&gt;This will be a really short post. I went to a nearby book store this week and bought &lt;em&gt;a few&lt;/em&gt; of books.&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt=&quot;Photo of the books I bought&quot; src=&quot;../assets/images/posts/2020-eoy-reading-challenge/books-all.jpeg&quot; style=&quot;width: 50%; height: auto;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;A Caribbean Mystery - Agatha Christie&lt;/li&gt;
+  &lt;li&gt;Smarter Faster Better - Charles Duhigg&lt;/li&gt;
+  &lt;li&gt;The Adventures of Sherlock Holmes - Arthur Conan Doyle&lt;/li&gt;
+  &lt;li&gt;The Return of Sherlock Holmes - Arthur Conan Doyle&lt;/li&gt;
+  &lt;li&gt;His Last Bow - Arthur Conan Doyle&lt;/li&gt;
+  &lt;li&gt;Around the World in 80 Days - Jules Verne&lt;/li&gt;
+  &lt;li&gt;Twenty Thousand Leagues Under the Sea - Jules Verne&lt;/li&gt;
+  &lt;li&gt;Journey to the Centre of the Earth - Jules Verne&lt;/li&gt;
+  &lt;li&gt;Treasure Island - Robert Louis Stevenson&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;the-challenge&quot;&gt;The Challenge&lt;/h2&gt;
+
+&lt;p&gt;The challenge I have taken is to read all of these books before the end of this year. This is a stretch goal for me (even considering that I have read the Sherlock stories already) taking into account that I probably haven’t read 8 books during this whole year till now.&lt;/p&gt;
+
+&lt;p&gt;I am excited to see how far I can take this. Will post updates in the coming weeks here, wish me luck ✌️.&lt;/p&gt;
+
+&lt;p&gt;Want to wish me luck for this challenge or have anything else to discuss, then please get in touch via &lt;a href=&quot;mailto:contact@varunbarad.com&quot;&gt;email&lt;/a&gt; or over at Twitter on &lt;a href=&quot;https://twitter.com/varun_barad&quot;&gt;@varun_barad&lt;/a&gt;.&lt;/p&gt;</content><author><name>Varun Barad</name></author><summary type="html">This will be a really short post. I went to a nearby book store this week and bought a few of books.</summary></entry><entry><title type="html">Check if your request body is compressed</title><link href="https://varunbarad.com/blog/check-if-your-request-body-is-compressed" rel="alternate" type="text/html" title="Check if your request body is compressed" /><published>2020-10-11T00:00:00+05:30</published><updated>2020-10-11T00:00:00+05:30</updated><id>https://varunbarad.com/blog/check-if-your-request-body-is-compressed</id><content type="html" xml:base="https://varunbarad.com/blog/check-if-your-request-body-is-compressed">&lt;h2 id=&quot;entering-the-maze&quot;&gt;Entering the maze&lt;/h2&gt;
 
 &lt;p&gt;Recently in one of the projects I was trying to make a POST request to an external API. This was my first time using Jersey http client and so when the server responded with an error saying &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;could not find required parameter &quot;code&quot;&lt;/code&gt; I thought there must be something wrong going on with how I was making the request.&lt;/p&gt;
 
@@ -172,11 +194,4 @@
 
 &lt;p&gt;I got the idea of this from one of &lt;a href=&quot;https://youtu.be/f-mHLBD64HM?t=195&quot;&gt;CGP Grey’s video&lt;/a&gt; over on YouTube.&lt;/p&gt;
 
-&lt;p&gt;Want to discuss this or any other interesting thing, hit me up on Twitter &lt;a href=&quot;https://twitter.com/varun_barad&quot;&gt;@varun_barad&lt;/a&gt;.&lt;/p&gt;</content><author><name>Varun Barad</name></author><summary type="html">Necessary disclaimer: I am not a lawyer so please don’t take my statements here on face value, do your own due diligence before pulling off any stunts.</summary></entry><entry><title type="html">Keep Android screen on When USB is connected</title><link href="https://varunbarad.com/blog/keep-android-screen-on-when-usb-connected" rel="alternate" type="text/html" title="Keep Android screen on When USB is connected" /><published>2020-05-11T12:00:00+05:30</published><updated>2020-05-11T12:00:00+05:30</updated><id>https://varunbarad.com/blog/keep-android-screen-on-when-usb-connected</id><content type="html" xml:base="https://varunbarad.com/blog/keep-android-screen-on-when-usb-connected">&lt;p&gt;To keep your Android phone screen from turning off when it is connected to your PC and you are using it to debug apps, enter the following command once in your terminal with the device connected.&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;adb shell svc power stayon usb
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;This sets flag inside the device using adb that whenever this device is connected via USB to not turn its screen off automatically.&lt;/p&gt;
-
-&lt;p&gt;Want to discuss this or any other interesting thing, hit me up on Twitter &lt;a href=&quot;https://twitter.com/varun_barad&quot;&gt;@varun_barad&lt;/a&gt;.&lt;/p&gt;</content><author><name>Varun Barad</name></author><summary type="html">To keep your Android phone screen from turning off when it is connected to your PC and you are using it to debug apps, enter the following command once in your terminal with the device connected.</summary></entry></feed>
+&lt;p&gt;Want to discuss this or any other interesting thing, hit me up on Twitter &lt;a href=&quot;https://twitter.com/varun_barad&quot;&gt;@varun_barad&lt;/a&gt;.&lt;/p&gt;</content><author><name>Varun Barad</name></author><summary type="html">Necessary disclaimer: I am not a lawyer so please don’t take my statements here on face value, do your own due diligence before pulling off any stunts.</summary></entry></feed>
