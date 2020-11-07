@@ -6,8 +6,8 @@
   <link rel="stylesheet" href="/assets/css/style.css?v=2525eb774d43a1beaed8615e02ccd0df6cb4edf2">
   <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=2525eb774d43a1beaed8615e02ccd0df6cb4edf2">
   <link rel="icon" type="image/png" href="/favicon.png" />
-  <title>Record Linux terminal session - Varun Barad</title>
-  <meta name="description" content="How to record your linux terminal session to work on later." />
+  <title>Postel's Law - Varun Barad</title>
+  <meta name="description" content="A good yardstick to increase developer sanity" />
 
   <!-- RSS Feed meta-data -->
   <link rel="alternate" type="application/atom+xml" title="RSS" href="https://varunbarad.com/feed.xml" />
@@ -16,16 +16,16 @@
   <meta name="twitter:site" content="@varun_barad" />
   <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Record Linux terminal session" />
-  <meta name="twitter:description" content="How to record your linux terminal session to work on later." />
+  <meta name="twitter:title" content="Postel's Law" />
+  <meta name="twitter:description" content="A good yardstick to increase developer sanity" />
 
   <!-- Open-graph meta-data -->
   <meta property="og:site_name" content="Varun Barad - Curious Developer" />
   <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png" />
   <meta property="og:type" content="object" />
-  <meta property="og:title" content="Record Linux terminal session" />
-  <meta property="og:url" content="https://varunbarad.com/blog/record-linux-terminal-session" />
-  <meta property="og:description" content="How to record your linux terminal session to work on later." />
+  <meta property="og:title" content="Postel's Law" />
+  <meta property="og:url" content="https://varunbarad.com/blog/postels-law" />
+  <meta property="og:description" content="A good yardstick to increase developer sanity" />
 </head>
 <body>
 <div>
@@ -50,30 +50,33 @@
       <div class="post-container">
         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
           <div>
-            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/record-linux-terminal-session">Record Linux terminal session</a></div>
+            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/postels-law">Postel's Law</a></div>
             <div class="text-center">
-              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2019-10-26 12:00:00 +0530">October 26, 2019</time>
+              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2020-11-07 00:00:00 +0530">November 07, 2020</time>
             </div>
-            <div class="post-content e-content"><p>I was recently setting up my computer with Ubuntu on it and this time I was decided that I would document every step of the process so that I can get it done faster the next time. That thought and process worked easily for the programs whose installations were just a simple <code class="language-plaintext highlighter-rouge">sudo apt install ...</code> but when I was installing something new (like VS Code) there were many steps involved and it wasn’t an easy task to document them as I went on installing those things.</p>
+            <div class="post-content e-content"><p>This week I learned about a software principle that aims to make developer’s lives easier. It even seems benevolent in the way that it does not necessarily help the person who tries to follow it, it rather helps the person who has to integrate with the aforementioned person’s code.</p>
 
-<p>What I decided to then do was to just record my terminal sessions for each such long program and review those recordings later to write a script for everything that I needed to do.</p>
+<p>The Postel’s Law (more actually a guideline) was formulated by Jon Postel (an early pioneer of the Internet). It is also known as Robustness Principle.</p>
 
-<p>Linux has a handy utility called <code class="language-plaintext highlighter-rouge">script</code> which does just that. If it isn’t pre-installed then you can easily install it with <code class="language-plaintext highlighter-rouge">sudo apt install script</code> as it is generally available in the default PPA.</p>
+<blockquote>
+  <p>Be liberal in what you accept, and conservative in what you send.</p>
 
-<p>Using it is straight-forward too.</p>
+  <p>Jon Postel</p>
+</blockquote>
 
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>script &lt;file_name_to_write_record_to&gt;
-</code></pre></div></div>
+<p>When I thought a bit about the statement and its implications, it struck me that following this principle makes the developer’s (who tries to follow this) life harder as they have to write extra code that handles all the different kinds of things that they choose to accept as input, and then have to streamline that data into tighter output. But this simplifies other peoples’ work who build on top of this work.</p>
 
-<p>I also find these options to be of significance:</p>
+<p>Then the next connection I made from that was that as more and more people try to follow this principle they decrease the entropy of the overall system. Side-note: Entropy in physics roughly is the measure of disorder in a system.</p>
 
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">-a, --append</code>: This appends the recording if the file is already existing.</li>
-  <li><code class="language-plaintext highlighter-rouge">-c, --command &lt;command_which_is_to_be_recorded&gt;</code>: If you want to record the interaction of a program with terminal then you can use this.</li>
-</ul>
+<h3 id="credits-and-references">Credits and references</h3>
 
-<p>I found this command to be quite helpful in my recent endeavour of documenting the setup process and think it might others too. Want to discuss this or any other interesting thing, hit me up on Twitter <a href="https://twitter.com/varun_barad">@varun_barad</a></p>
+<ol>
+  <li><a href="https://twitter.com/gonsalves_r">Rahul Gonsalves</a> mentioned this law when trying to explain how to design user-friendly input fields.</li>
+  <li><a href="https://devopedia.org/postel-s-law">Explanation of Postel’s Law on Devopedia</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Robustness_principle">Robustness principle on Wikipedia</a></li>
+</ol>
 
+<p>This was an insightful learning for me, do you have any other connections that you might have made off of this. Please let me know (I really want to hear them) via <a href="mailto:contact@varunbarad.com">email</a> or Twitter (<a href="https://twitter.com/varun_barad">@varun_barad</a>).</p>
 </div>
           </div>
 
