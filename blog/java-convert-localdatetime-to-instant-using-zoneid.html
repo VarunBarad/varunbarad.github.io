@@ -6,8 +6,8 @@
   <link rel="stylesheet" href="/assets/css/style.css?v=f1a84cc1c3877a5e6aca1febc71aafc69044ac16">
   <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=f1a84cc1c3877a5e6aca1febc71aafc69044ac16">
   <link rel="icon" type="image/png" href="/favicon.png" />
-  <title>P vs NP Algorithm Problem Types - Varun Barad</title>
-  <meta name="description" content="I finally wrapped my head around the differences between P vs NP vs NP-Complete problems" />
+  <title>Java convert LocalDateTime to Instant using ZoneId - Varun Barad</title>
+  <meta name="description" content="How to convert from LocalDateTime to Instant using ZoneId without ZoneOffset in Java 8 Time APIs" />
 
   <!-- RSS Feed meta-data -->
   <link rel="alternate" type="application/atom+xml" title="RSS" href="https://varunbarad.com/feed.xml" />
@@ -16,16 +16,16 @@
   <meta name="twitter:site" content="@varun_barad" />
   <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="P vs NP Algorithm Problem Types" />
-  <meta name="twitter:description" content="I finally wrapped my head around the differences between P vs NP vs NP-Complete problems" />
+  <meta name="twitter:title" content="Java convert LocalDateTime to Instant using ZoneId" />
+  <meta name="twitter:description" content="How to convert from LocalDateTime to Instant using ZoneId without ZoneOffset in Java 8 Time APIs" />
 
   <!-- Open-graph meta-data -->
   <meta property="og:site_name" content="Varun Barad - Curious Developer" />
   <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png" />
   <meta property="og:type" content="object" />
-  <meta property="og:title" content="P vs NP Algorithm Problem Types" />
-  <meta property="og:url" content="https://varunbarad.com/blog/p-vs-np-algorithm-problem-types" />
-  <meta property="og:description" content="I finally wrapped my head around the differences between P vs NP vs NP-Complete problems" />
+  <meta property="og:title" content="Java convert LocalDateTime to Instant using ZoneId" />
+  <meta property="og:url" content="https://varunbarad.com/blog/java-convert-localdatetime-to-instant-using-zoneid" />
+  <meta property="og:description" content="How to convert from LocalDateTime to Instant using ZoneId without ZoneOffset in Java 8 Time APIs" />
 </head>
 <body>
 <div>
@@ -50,38 +50,18 @@
       <div class="post-container">
         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
           <div>
-            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/p-vs-np-algorithm-problem-types">P vs NP Algorithm Problem Types</a></div>
+            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/java-convert-localdatetime-to-instant-using-zoneid">Java convert LocalDateTime to Instant using ZoneId</a></div>
             <div class="text-center">
-              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2020-02-02 12:00:00 +0530">February 02, 2020</time>
+              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2020-12-14 00:00:00 +0530">December 14, 2020</time>
             </div>
-            <div class="post-content e-content"><p><img src="https://varunbarad.com/assets/images/posts/p-np-venn-diagram.png" alt="Venn Diagram - Problem Types" /></p>
+            <div class="post-content e-content"><p>Last week I was working on something which required me to convert <code class="language-plaintext highlighter-rouge">LocalDateTime</code> to <code class="language-plaintext highlighter-rouge">Instant</code>. The direct conversion APIs that are available needed an instance of <code class="language-plaintext highlighter-rouge">ZoneOffset</code> to perform the conversion. Catch was that I had <code class="language-plaintext highlighter-rouge">ZoneId</code> and not <code class="language-plaintext highlighter-rouge">ZoneOffset</code> there was a tiny round-about way to do so.</p>
 
-<p>The above image represents something completely un-understandable to me during my college years. I couldn’t understand what the professor tried to explain during my algorithms class when the topic of P vs NP vs NP-Complete problems came.</p>
+<ul>
+  <li>Convert <code class="language-plaintext highlighter-rouge">LocalDateTime</code> to <code class="language-plaintext highlighter-rouge">ZonedDateTime</code> using <code class="language-plaintext highlighter-rouge">ZoneId</code> : <code class="language-plaintext highlighter-rouge">ZonedDateTime.of(localDateTime, zoneId)</code></li>
+  <li>Convert <code class="language-plaintext highlighter-rouge">ZonedDateTime</code> to <code class="language-plaintext highlighter-rouge">Instant</code> : <code class="language-plaintext highlighter-rouge">zonedDateTime.toInstant()</code></li>
+</ul>
 
-<p>Finally I understood it from <a href="https://www.youtube.com/watch?v=EHp4FPyajKQ">a video by “Up and Atom”</a>. The problems are grouped according to these 2 criteria:</p>
-
-<ol>
-  <li>
-    <p>Can a solution to the problem be found in polynomial time?</p>
-  </li>
-  <li>
-    <p>Can a given solution for the problem be verified in polynomial time?</p>
-  </li>
-</ol>
-
-<h2 id="np-problems">NP Problems</h2>
-
-<p>These are the problems for which condition 2 holds true. If given a solution to such problem, the correctness of that solution can be verified in polynomial time. Condition 1 being true or false for such problems doesn’t affect whether they can fall under NP category or not.</p>
-
-<h2 id="np-complete-problems">NP-Complete Problems</h2>
-
-<p>These are the problems for which condition 2 holds true but condition 1 is false. A valid solution to the problem can’t be verified in polynomial time, but if given a solution to the problem the correctness of that solution can be verified in polynomial time.</p>
-
-<h2 id="p-problems">P Problems</h2>
-
-<p>For these problems, both conditions 1 &amp; 2 hold true. There exist methods by which a valid solution to any of these problem can be found under polynomial time. And also, any given solution for such problem can be verified in polynomial time.</p>
-
-<p>Want to discuss this or any other interesting thing, hit me up on Twitter <a href="https://twitter.com/varun_barad">@varun_barad</a>.</p>
+<p>I don’t know why there isn’t a native API to convert from <code class="language-plaintext highlighter-rouge">LocalDateTime</code> to <code class="language-plaintext highlighter-rouge">Instant</code> directly using a <code class="language-plaintext highlighter-rouge">ZoneId</code>. If you do then I would like to know either via <a href="mailto:contact@varunbarad.com">email</a> or Twitter (<a href="https://twitter.com/varun_barad">@varun_barad</a>).</p>
 </div>
           </div>
 
