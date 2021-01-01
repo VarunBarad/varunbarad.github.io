@@ -66,6 +66,9 @@ feed:
 kramdown:
   auto_ids: true
 
+exclude:
+  - ".idea"
+
 include:
   - "podcasts/"
 
