@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/assets/css/style.css?v=a55beab922ffb9048579d2dc4d277004491f27db">
-  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=a55beab922ffb9048579d2dc4d277004491f27db">
+  <link rel="stylesheet" href="/assets/css/style.css?v=b9fc35e5ee23de366a012e2d62e9586a6dc4c960">
+  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=b9fc35e5ee23de366a012e2d62e9586a6dc4c960">
   <link rel="icon" type="image/png" href="/favicon.png" />
   <title>Cheatsheet - Git - Varun Barad</title>
   <meta name="description" content="A cheat-sheet for git CLI" />
@@ -73,6 +73,16 @@
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git log <span class="nt">--follow</span> <span class="nt">-p</span> <span class="nt">--</span> &lt;file&gt;
 </code></pre></div></div>
 
+<h2 id="automatically-rearrange-fixup-commits-to-their-appropriate-positions-when-rebasing">Automatically rearrange fixup commits to their appropriate positions when rebasing</h2>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git rebase <span class="nt">--interactive</span> &lt;commit-hash&gt; <span class="nt">--autosquash</span>
+</code></pre></div></div>
+
+<h2 id="find-which-files-have-had-the-most-commits">Find which files have had the most commits</h2>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git log <span class="nt">--all</span> <span class="nt">-M</span> <span class="nt">-C</span> <span class="nt">--name-only</span> <span class="nt">--format</span><span class="o">=</span><span class="s1">'format:'</span> <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span> | <span class="nb">sort</span> | <span class="nb">grep</span> <span class="nt">-v</span> <span class="s1">'^$'</span> | <span class="nb">uniq</span> <span class="nt">-c</span> | <span class="nb">sort</span> <span class="nt">-n</span> | <span class="nb">awk</span> <span class="s1">'BEGIN {print "count\tfile"} {print $1 "\t" $2}'</span> | <span class="nb">tail</span> <span class="nt">-10</span>
+</code></pre></div></div>
+
 <p>Have a great day people 👋</p>
 </div>
           </div>
@@ -112,7 +122,7 @@
   </div>
 </div>
 
-<script src="/assets/js/jquery.min.js?v=a55beab922ffb9048579d2dc4d277004491f27db"></script>
-<script src="/assets/js/bootstrap.min.js?v=a55beab922ffb9048579d2dc4d277004491f27db"></script>
+<script src="/assets/js/jquery.min.js?v=b9fc35e5ee23de366a012e2d62e9586a6dc4c960"></script>
+<script src="/assets/js/bootstrap.min.js?v=b9fc35e5ee23de366a012e2d62e9586a6dc4c960"></script>
 </body>
 </html>
