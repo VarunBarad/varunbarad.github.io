@@ -29,4 +29,16 @@ History of commits with file-diff tracked across renames
 git log --follow -p -- <file>
 ```
 
+## Automatically rearrange fixup commits to their appropriate positions when rebasing
+
+```shell
+git rebase --interactive <commit-hash> --autosquash
+```
+
+## Find which files have had the most commits
+
+```shell
+git log --all -M -C --name-only --format='format:' "$@" | sort | grep -v '^$' | uniq -c | sort -n | awk 'BEGIN {print "count\tfile"} {print $1 "\t" $2}' | tail -10
+```
+
 Have a great day people 👋
