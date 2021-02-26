@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/assets/css/style.css?v=b9fc35e5ee23de366a012e2d62e9586a6dc4c960">
-  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=b9fc35e5ee23de366a012e2d62e9586a6dc4c960">
+  <link rel="stylesheet" href="/assets/css/style.css?v=5ef1437ce8a3c4521ead66a64d0b0a3d29a718f0">
+  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=5ef1437ce8a3c4521ead66a64d0b0a3d29a718f0">
   <link rel="icon" type="image/png" href="/favicon.png" />
   <title>Creating a single-file backup of your git repository - Varun Barad</title>
   <meta name="description" content="I created a python script which creates a zip-file containing the git-bundle and all the patch-files for different stashed changes in your repository." />
@@ -244,7 +244,7 @@ Since the first item in that list is always the name of our program so we ignore
     <span class="n">git_bundle_file_name</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">parent_directory</span><span class="p">,</span> <span class="p">(</span><span class="n">directory_name</span> <span class="o">+</span> <span class="s">'.bundle'</span><span class="p">))</span>
     <span class="n">git_handle</span><span class="p">.</span><span class="n">bundle</span><span class="p">(</span><span class="s">'create'</span><span class="p">,</span> <span class="n">git_bundle_file_name</span><span class="p">,</span> <span class="s">'--all'</span><span class="p">)</span>
     
-    <span class="n">pattern_for_untracked_files_flag</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="nb">compile</span><span class="p">(</span><span class="s">r'^\?+$'</span><span class="p">)</span>
+    <span class="n">pattern_for_untracked_files_flag</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="nb">compile</span><span class="p">(</span><span class="sa">r</span><span class="s">'^\?+$'</span><span class="p">)</span>
     <span class="n">non_staged_files_raw_output</span> <span class="o">=</span> <span class="n">git_handle</span><span class="p">.</span><span class="n">status</span><span class="p">(</span><span class="s">'--porcelain'</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">non_staged_files_raw_output</span><span class="p">.</span><span class="n">strip</span><span class="p">())</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">non_staged_files</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span>
@@ -347,7 +347,7 @@ Since the first item in that list is always the name of our program so we ignore
   </div>
 </div>
 
-<script src="/assets/js/jquery.min.js?v=b9fc35e5ee23de366a012e2d62e9586a6dc4c960"></script>
-<script src="/assets/js/bootstrap.min.js?v=b9fc35e5ee23de366a012e2d62e9586a6dc4c960"></script>
+<script src="/assets/js/jquery.min.js?v=5ef1437ce8a3c4521ead66a64d0b0a3d29a718f0"></script>
+<script src="/assets/js/bootstrap.min.js?v=5ef1437ce8a3c4521ead66a64d0b0a3d29a718f0"></script>
 </body>
 </html>
