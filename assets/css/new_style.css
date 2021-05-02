@@ -1,0 +1,53 @@
+:root {
+    --color-primary: #252525;
+    --color-primary-light: #353535;
+    --color-accent: #ffcc00;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-primary: #252525;
+        --color-primary-light: #353535;
+        --color-accent: #ffcc00;
+    }
+}
+
+* {
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    font-size: 16px;
+    margin: 0;
+    background: var(--color-primary);
+}
+
+header {
+    font-size: 2rem;
+    margin: 0;
+    padding: 12px 16px 12px 16px;
+    background: var(--color-primary-light);
+    color: var(--color-accent);
+}
+
+header * {
+    color: var(--color-accent);
+}
+
+header a {
+    text-decoration: none;
+}
+
+header nav a {
+    padding: 0 4px;
+}
+
+.title {
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.right {
+    float: right;
+}
