@@ -6,8 +6,8 @@
   <link rel="stylesheet" href="/assets/css/style.css?v=cbab6a7d65b418f171743b663c0e7f2ff580c9e9">
   <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=cbab6a7d65b418f171743b663c0e7f2ff580c9e9">
   <link rel="icon" type="image/png" href="/favicon.png" />
-  <title>2020 End of Year Reading Challenge - Varun Barad</title>
-  <meta name="description" content="I went to a nearby bookstore this week and now taking on a reading challenge" />
+  <title>📝 JavaScript can "throw" the table - Varun Barad</title>
+  <meta name="description" content="TIL: JavaScript can throw anything" />
 
   <!-- RSS Feed meta-data -->
   <link rel="alternate" type="application/atom+xml" title="Varun Barad - Curious Developer" href="https://varunbarad.com/feed.xml" />
@@ -16,16 +16,16 @@
   <meta name="twitter:site" content="@varun_barad" />
   <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2020 End of Year Reading Challenge" />
-  <meta name="twitter:description" content="I went to a nearby bookstore this week and now taking on a reading challenge" />
+  <meta name="twitter:title" content="📝 JavaScript can "throw" the table" />
+  <meta name="twitter:description" content="TIL: JavaScript can throw anything" />
 
   <!-- Open-graph meta-data -->
   <meta property="og:site_name" content="Varun Barad - Curious Developer" />
   <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png" />
   <meta property="og:type" content="object" />
-  <meta property="og:title" content="2020 End of Year Reading Challenge" />
-  <meta property="og:url" content="https://varunbarad.com/blog/2020-end-of-year-reading-challenge" />
-  <meta property="og:description" content="I went to a nearby bookstore this week and now taking on a reading challenge" />
+  <meta property="og:title" content="📝 JavaScript can "throw" the table" />
+  <meta property="og:url" content="https://varunbarad.com/blog/til-javascript-can-throw-the-table" />
+  <meta property="og:description" content="TIL: JavaScript can throw anything" />
 </head>
 <body>
 <div>
@@ -50,33 +50,21 @@
       <div class="post-container">
         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
           <div>
-            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/2020-end-of-year-reading-challenge">2020 End of Year Reading Challenge</a></div>
+            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/til-javascript-can-throw-the-table">📝 JavaScript can "throw" the table</a></div>
             <div class="text-center">
-              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2020-10-31 00:00:00 +0530">October 31, 2020</time>
+              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2021-05-04 12:00:00 +0530">May 04, 2021</time>
             </div>
-            <div class="post-content e-content"><p>This will be a really short post. I went to a nearby book store this week and bought <em>a few</em> of books.</p>
+            <div class="post-content e-content"><p>Since JavaScript does not have the concept of a throwable type. Therefore you can throw anything in JavaScript.</p>
 
-<p><img alt="Photo of the books I bought" src="../assets/images/posts/2020-eoy-reading-challenge/books-all.jpeg" style="width: 50%; height: auto;" /></p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span> <span class="p">{</span>
+  <span class="k">throw</span> <span class="dl">"</span><span class="s2">the table</span><span class="dl">"</span><span class="p">;</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">stable table</span><span class="dl">"</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-<ul>
-  <li>A Caribbean Mystery - Agatha Christie</li>
-  <li>Smarter Faster Better - Charles Duhigg</li>
-  <li>The Adventures of Sherlock Holmes - Arthur Conan Doyle</li>
-  <li>The Return of Sherlock Holmes - Arthur Conan Doyle</li>
-  <li>His Last Bow - Arthur Conan Doyle</li>
-  <li>Around the World in 80 Days - Jules Verne</li>
-  <li>Twenty Thousand Leagues Under the Sea - Jules Verne</li>
-  <li>Journey to the Centre of the Earth - Jules Verne</li>
-  <li>Treasure Island - Robert Louis Stevenson</li>
-</ul>
-
-<h2 id="the-challenge">The Challenge</h2>
-
-<p>The challenge I have taken is to read all of these books before the end of this year. This is a stretch goal for me (even considering that I have read the Sherlock stories already) taking into account that I probably haven’t read 8 books during this whole year till now.</p>
-
-<p>I am excited to see how far I can take this. Will post updates in the coming weeks here, wish me luck ✌️.</p>
-
-<p>Want to wish me luck for this challenge or have anything else to discuss, then please get in touch via <a href="mailto:contact@varunbarad.com">email</a> or over at Twitter on <a href="https://twitter.com/varun_barad">@varun_barad</a>.</p>
+<p>The above code would produce <code class="language-plaintext highlighter-rouge">the table</code> in console logs and not <code class="language-plaintext highlighter-rouge">stable table</code>.</p>
 </div>
           </div>
 
@@ -84,7 +72,7 @@
             Categories:
             <div>
               
-              <a href="/category/miscellaneous" class="badge badge-warning p-category">#miscellaneous</a>
+              <a href="/category/til" class="badge badge-warning p-category">#til</a>
               
               <a href="/blog" class="badge badge-warning">#all</a>
             </div>
