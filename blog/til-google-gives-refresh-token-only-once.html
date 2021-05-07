@@ -6,8 +6,8 @@
   <link rel="stylesheet" href="/assets/css/style.css?v=6e28b65f7edfb0c2f6b8181330bc8152a9cb6883">
   <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=6e28b65f7edfb0c2f6b8181330bc8152a9cb6883">
   <link rel="icon" type="image/png" href="/favicon.png" />
-  <title>📝 JavaScript can "throw" the table - Varun Barad</title>
-  <meta name="description" content="TIL: JavaScript can throw anything" />
+  <title>📝 Google gives refresh token only once - Varun Barad</title>
+  <meta name="description" content="TIL: Google doesn't return refresh token on subsequent authentication after the first one." />
 
   <!-- RSS Feed meta-data -->
   <link rel="alternate" type="application/atom+xml" title="Varun Barad - Curious Developer" href="https://varunbarad.com/feed.xml" />
@@ -16,16 +16,16 @@
   <meta name="twitter:site" content="@varun_barad" />
   <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="📝 JavaScript can "throw" the table" />
-  <meta name="twitter:description" content="TIL: JavaScript can throw anything" />
+  <meta name="twitter:title" content="📝 Google gives refresh token only once" />
+  <meta name="twitter:description" content="TIL: Google doesn't return refresh token on subsequent authentication after the first one." />
 
   <!-- Open-graph meta-data -->
   <meta property="og:site_name" content="Varun Barad - Curious Developer" />
   <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png" />
   <meta property="og:type" content="object" />
-  <meta property="og:title" content="📝 JavaScript can "throw" the table" />
-  <meta property="og:url" content="https://varunbarad.com/blog/til-javascript-can-throw-the-table" />
-  <meta property="og:description" content="TIL: JavaScript can throw anything" />
+  <meta property="og:title" content="📝 Google gives refresh token only once" />
+  <meta property="og:url" content="https://varunbarad.com/blog/til-google-gives-refresh-token-only-once" />
+  <meta property="og:description" content="TIL: Google doesn't return refresh token on subsequent authentication after the first one." />
 </head>
 <body>
 <div>
@@ -50,21 +50,17 @@
       <div class="post-container">
         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
           <div>
-            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/til-javascript-can-throw-the-table">📝 JavaScript can "throw" the table</a></div>
+            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/til-google-gives-refresh-token-only-once">📝 Google gives refresh token only once</a></div>
             <div class="text-center">
-              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2021-05-04 12:00:00 +0530">May 04, 2021</time>
+              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2021-05-06 00:00:00 +0530">May 06, 2021</time>
             </div>
-            <div class="post-content e-content"><p>Since JavaScript does not have the concept of a throwable type. Therefore you can throw anything in JavaScript.</p>
+            <div class="post-content e-content"><p>According to Google’s <a href="https://developers.google.com/identity/protocols/oauth2/web-server">docs on OAuth</a>, the server application gets <code class="language-plaintext highlighter-rouge">refresh_token</code> from Google (on exchanging the auth code) only if the original redirection request to Google contains the param <code class="language-plaintext highlighter-rouge">access_type</code> with value <code class="language-plaintext highlighter-rouge">offline</code> (<a href="https://developers.google.com/identity/protocols/oauth2/web-server#creatingclient">documentation link</a>).</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span> <span class="p">{</span>
-  <span class="k">throw</span> <span class="dl">"</span><span class="s2">the table</span><span class="dl">"</span><span class="p">;</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">stable table</span><span class="dl">"</span><span class="p">)</span>
-<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div></div>
+<p>But this is only for the first time a user authenticates with your app. If for some reason your flow takes the user through the authentication flow again without having changed anything (user’s Google account, permissions required, etc. Haven’t tested with changed permissions yet but definitely happens when permissions also remain the same) then when you exchange auth code for tokens from Google, the Google servers don’t return the <code class="language-plaintext highlighter-rouge">refresh_token</code> this second time.</p>
 
-<p>The above code would produce <code class="language-plaintext highlighter-rouge">the table</code> in console logs and not <code class="language-plaintext highlighter-rouge">stable table</code>.</p>
+<p>This is based on anecdotal observation, and I couldn’t find any such mention in their documentation. An <a href="https://stackoverflow.com/questions/10827920/not-receiving-google-oauth-refresh-token/10857806#10857806">answer on Stack Overflow</a> confirmed for me that it wasn’t something misconfigured on my end 😅.</p>
+
+<p>A “solution” for this could be to always specify the param <code class="language-plaintext highlighter-rouge">prompt</code> with a value of <code class="language-plaintext highlighter-rouge">consent</code> in the original redirect request where we send user to Google’s flow.</p>
 </div>
           </div>
 
