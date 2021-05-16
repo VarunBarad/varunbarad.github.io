@@ -10,7 +10,8 @@ permalink: "/blog/"
     <div class="col-sm-6 post">
       <!-- The next line uses Liquid tags to remove .html from the end of post-urls -->
       <a href="{{ post.url | split: "" | reverse | join: "" | remove_first: "lmth." | split: "" | reverse | join: "" }}" class="post-title">{{post.title}}</a>
-      <div class="post-description">{{post.summary}}</div>
+      <br>
+      <time class="post-date dt-published" datetime="{{ post.date }}">{{ post.date | date: '%B %Y' }}</time> | <span class="post-description">{{post.summary}}</span>
     </div>
     {% endfor %}
   </div>
