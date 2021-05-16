@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/assets/css/style.css?v=34d7c02da5cd96119a213e7ebcef5640c82f397c">
-  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=34d7c02da5cd96119a213e7ebcef5640c82f397c">
+  <link rel="stylesheet" href="/assets/css/style.css?v=97b59110adc0e3806fa20d3867bbcc7453d604aa">
+  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=97b59110adc0e3806fa20d3867bbcc7453d604aa">
   <link rel="icon" type="image/png" href="/favicon.png" />
   <title>Cheatsheet - Git - Varun Barad</title>
   <meta name="description" content="A cheat-sheet for git CLI" />
@@ -83,6 +83,11 @@
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git log <span class="nt">--all</span> <span class="nt">-M</span> <span class="nt">-C</span> <span class="nt">--name-only</span> <span class="nt">--format</span><span class="o">=</span><span class="s1">'format:'</span> <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span> | <span class="nb">sort</span> | <span class="nb">grep</span> <span class="nt">-v</span> <span class="s1">'^$'</span> | <span class="nb">uniq</span> <span class="nt">-c</span> | <span class="nb">sort</span> <span class="nt">-n</span> | <span class="nb">awk</span> <span class="s1">'BEGIN {print "count\tfile"} {print $1 "\t" $2}'</span> | <span class="nb">tail</span> <span class="nt">-10</span>
 </code></pre></div></div>
 
+<h2 id="create-an-empty-commit">Create an empty commit</h2>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git commit <span class="nt">--allow-empty</span> <span class="nt">-m</span> <span class="s2">"Commit message goes here"</span>
+</code></pre></div></div>
+
 <p>Have a great day people 👋</p>
 </div>
           </div>
@@ -122,7 +127,7 @@
   </div>
 </div>
 
-<script src="/assets/js/jquery.min.js?v=34d7c02da5cd96119a213e7ebcef5640c82f397c"></script>
-<script src="/assets/js/bootstrap.min.js?v=34d7c02da5cd96119a213e7ebcef5640c82f397c"></script>
+<script src="/assets/js/jquery.min.js?v=97b59110adc0e3806fa20d3867bbcc7453d604aa"></script>
+<script src="/assets/js/bootstrap.min.js?v=97b59110adc0e3806fa20d3867bbcc7453d604aa"></script>
 </body>
 </html>
