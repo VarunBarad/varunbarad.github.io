@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/assets/css/style.css?v=4734d422f253b35f398a4c0f3f048a32a79d9a8d">
+  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=4734d422f253b35f398a4c0f3f048a32a79d9a8d">
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <title>📝 CSS support for browser dark-mode preference - Varun Barad</title>
+  <meta name="description" content="TIL: How to support dark-mode preference of browser via CSS" />
+
+  <!-- RSS Feed meta-data -->
+  <link rel="alternate" type="application/atom+xml" title="Varun Barad - Curious Developer" href="https://varunbarad.com/feed.xml" />
+
+  <!-- Twitter meta-data -->
+  <meta name="twitter:site" content="@varun_barad" />
+  <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="📝 CSS support for browser dark-mode preference" />
+  <meta name="twitter:description" content="TIL: How to support dark-mode preference of browser via CSS" />
+
+  <!-- Open-graph meta-data -->
+  <meta property="og:site_name" content="Varun Barad - Curious Developer" />
+  <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png" />
+  <meta property="og:type" content="object" />
+  <meta property="og:title" content="📝 CSS support for browser dark-mode preference" />
+  <meta property="og:url" content="https://varunbarad.com/blog/til-css-support-browser-dark-mode-preference" />
+  <meta property="og:description" content="TIL: How to support dark-mode preference of browser via CSS" />
+</head>
+<body>
+<div>
+  <div id="header">
+    <div class="row header">
+  <div class="title col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+    <a href="/"><div class="title">Varun Barad</div></a>
+  </div>
+  <div class="col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8">
+    <nav class="menu text-right">
+  <a href="/portfolio">Portfolio</a>
+  <a href="/blog">Blog</a>
+  <a href="/contact">Contact</a>
+</nav>
+
+  </div>
+</div>
+
+  </div>
+  <article class="h-entry">
+    <div class="content row">
+      <div class="post-container">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+          <div>
+            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/til-css-support-browser-dark-mode-preference">📝 CSS support for browser dark-mode preference</a></div>
+            <div class="text-center">
+              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2021-05-04 00:00:00 +0530">May 04, 2021</time>
+            </div>
+            <div class="post-content e-content"><p>There is a simple CSS media query with which we can specify styles only for dark mode or light mode.</p>
+
+<p>For specifying CSS when dark mode preference is selected.</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@media</span> <span class="p">(</span><span class="n">prefers-color-scheme</span><span class="p">:</span> <span class="n">dark</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nt">body</span> <span class="p">{</span>
+        <span class="nl">background</span><span class="p">:</span> <span class="no">black</span><span class="p">;</span>
+        <span class="nl">color</span><span class="p">:</span> <span class="no">white</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>For specifying CSS when light mode preference is selected or no active preference has been expressed.</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@media</span> <span class="p">(</span><span class="n">prefers-color-scheme</span><span class="p">:</span> <span class="n">light</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nt">body</span> <span class="p">{</span>
+        <span class="nl">background</span><span class="p">:</span> <span class="no">white</span><span class="p">;</span>
+        <span class="nl">color</span><span class="p">:</span> <span class="no">black</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Original posting: <a href="https://twitter.com/varun_barad/status/1190613832575725571">https://twitter.com/varun_barad/status/1190613832575725571</a></p>
+</div>
+          </div>
+
+          <div class="post-categories-container">
+            Categories:
+            <div>
+              
+              <a href="/category/til" class="badge badge-warning p-category">#til</a>
+              
+              <a href="/blog" class="badge badge-warning">#all</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+  <div>
+    <div class="footer">
+  <div>
+    
+    <a href="https://github.com/VarunBarad" rel="me" target="_blank"><i class="fab fa-github social-links"></i></a>
+    
+    <a href="https://twitter.com/varun_barad" rel="me" target="_blank"><i class="fab fa-twitter social-links"></i></a>
+    
+    <a href="https://dev.to/varunbarad" rel="me" target="_blank"><i class="fab fa-dev social-links"></i></a>
+    
+    <a href="https://stackoverflow.com/users/4717436/varunbarad" rel="me" target="_blank"><i class="fab fa-stack-overflow social-links"></i></a>
+    
+  </div>
+  <div class="developer-attribution">
+    
+    Made by <a href="https://dixita0607.github.io" target="_blank">Dixita Ganatra</a>
+  </div>
+</div>
+
+  </div>
+</div>
+
+<script src="/assets/js/jquery.min.js?v=4734d422f253b35f398a4c0f3f048a32a79d9a8d"></script>
+<script src="/assets/js/bootstrap.min.js?v=4734d422f253b35f398a4c0f3f048a32a79d9a8d"></script>
+</body>
+</html>

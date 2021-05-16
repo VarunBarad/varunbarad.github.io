@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/assets/css/style.css?v=4734d422f253b35f398a4c0f3f048a32a79d9a8d">
+  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=4734d422f253b35f398a4c0f3f048a32a79d9a8d">
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <title>Cheatsheet - Git - Varun Barad</title>
+  <meta name="description" content="A cheat-sheet for git CLI" />
+
+  <!-- RSS Feed meta-data -->
+  <link rel="alternate" type="application/atom+xml" title="Varun Barad - Curious Developer" href="https://varunbarad.com/feed.xml" />
+
+  <!-- Twitter meta-data -->
+  <meta name="twitter:site" content="@varun_barad" />
+  <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Cheatsheet - Git" />
+  <meta name="twitter:description" content="A cheat-sheet for git CLI" />
+
+  <!-- Open-graph meta-data -->
+  <meta property="og:site_name" content="Varun Barad - Curious Developer" />
+  <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png" />
+  <meta property="og:type" content="object" />
+  <meta property="og:title" content="Cheatsheet - Git" />
+  <meta property="og:url" content="https://varunbarad.com/blog/cheatsheet-git" />
+  <meta property="og:description" content="A cheat-sheet for git CLI" />
+</head>
+<body>
+<div>
+  <div id="header">
+    <div class="row header">
+  <div class="title col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+    <a href="/"><div class="title">Varun Barad</div></a>
+  </div>
+  <div class="col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8">
+    <nav class="menu text-right">
+  <a href="/portfolio">Portfolio</a>
+  <a href="/blog">Blog</a>
+  <a href="/contact">Contact</a>
+</nav>
+
+  </div>
+</div>
+
+  </div>
+  <article class="h-entry">
+    <div class="content row">
+      <div class="post-container">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+          <div>
+            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/cheatsheet-git">Cheatsheet - Git</a></div>
+            <div class="text-center">
+              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2020-12-07 00:00:00 +0530">December 07, 2020</time>
+            </div>
+            <div class="post-content e-content"><p>This is first in my collection of cheat-sheets. This is here as a blog post until I figure out how to have a separate section just for cheat-sheets and not make them show up in posts, and then find time to implement it. Till then here it is and here it will be updated as and when need arises 🙃</p>
+
+<h2 id="change-history-of-a-file">Change history of a file</h2>
+
+<p>History of commits where this file was changed. This only gives the commits where it was changed (not the file-diff for those commits)</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git log <span class="nt">--</span> &lt;file&gt;
+</code></pre></div></div>
+
+<p>History of commits with file-diff</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git log <span class="nt">-p</span> <span class="nt">--</span> &lt;file&gt;
+</code></pre></div></div>
+
+<p>History of commits with file-diff tracked across renames</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git log <span class="nt">--follow</span> <span class="nt">-p</span> <span class="nt">--</span> &lt;file&gt;
+</code></pre></div></div>
+
+<h2 id="automatically-rearrange-fixup-commits-to-their-appropriate-positions-when-rebasing">Automatically rearrange fixup commits to their appropriate positions when rebasing</h2>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git rebase <span class="nt">--interactive</span> &lt;commit-hash&gt; <span class="nt">--autosquash</span>
+</code></pre></div></div>
+
+<h2 id="find-which-files-have-had-the-most-commits">Find which files have had the most commits</h2>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git log <span class="nt">--all</span> <span class="nt">-M</span> <span class="nt">-C</span> <span class="nt">--name-only</span> <span class="nt">--format</span><span class="o">=</span><span class="s1">'format:'</span> <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span> | <span class="nb">sort</span> | <span class="nb">grep</span> <span class="nt">-v</span> <span class="s1">'^$'</span> | <span class="nb">uniq</span> <span class="nt">-c</span> | <span class="nb">sort</span> <span class="nt">-n</span> | <span class="nb">awk</span> <span class="s1">'BEGIN {print "count\tfile"} {print $1 "\t" $2}'</span> | <span class="nb">tail</span> <span class="nt">-10</span>
+</code></pre></div></div>
+
+<p>Have a great day people 👋</p>
+</div>
+          </div>
+
+          <div class="post-categories-container">
+            Categories:
+            <div>
+              
+              <a href="/category/cheat-sheet" class="badge badge-warning p-category">#cheat-sheet</a>
+              
+              <a href="/blog" class="badge badge-warning">#all</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+  <div>
+    <div class="footer">
+  <div>
+    
+    <a href="https://github.com/VarunBarad" rel="me" target="_blank"><i class="fab fa-github social-links"></i></a>
+    
+    <a href="https://twitter.com/varun_barad" rel="me" target="_blank"><i class="fab fa-twitter social-links"></i></a>
+    
+    <a href="https://dev.to/varunbarad" rel="me" target="_blank"><i class="fab fa-dev social-links"></i></a>
+    
+    <a href="https://stackoverflow.com/users/4717436/varunbarad" rel="me" target="_blank"><i class="fab fa-stack-overflow social-links"></i></a>
+    
+  </div>
+  <div class="developer-attribution">
+    
+    Made by <a href="https://dixita0607.github.io" target="_blank">Dixita Ganatra</a>
+  </div>
+</div>
+
+  </div>
+</div>
+
+<script src="/assets/js/jquery.min.js?v=4734d422f253b35f398a4c0f3f048a32a79d9a8d"></script>
+<script src="/assets/js/bootstrap.min.js?v=4734d422f253b35f398a4c0f3f048a32a79d9a8d"></script>
+</body>
+</html>
