@@ -41,4 +41,10 @@ git rebase --interactive <commit-hash> --autosquash
 git log --all -M -C --name-only --format='format:' "$@" | sort | grep -v '^$' | uniq -c | sort -n | awk 'BEGIN {print "count\tfile"} {print $1 "\t" $2}' | tail -10
 ```
 
+## Create an empty commit
+
+```shell
+git commit --allow-empty -m "Commit message goes here"
+```
+
 Have a great day people 👋
