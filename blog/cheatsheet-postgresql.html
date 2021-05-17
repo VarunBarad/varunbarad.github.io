@@ -6,8 +6,8 @@
   <link rel="stylesheet" href="/assets/css/style.css?v=9bcc06f4c0a4b554692a272927338d1489d40398">
   <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=9bcc06f4c0a4b554692a272927338d1489d40398">
   <link rel="icon" type="image/png" href="/favicon.png" />
-  <title>Challenge Update: Around the World in 80 Days - Varun Barad</title>
-  <meta name="description" content="Update on my 2020 year-end reading challenge" />
+  <title>Cheatsheet - PostgreSQL - Varun Barad</title>
+  <meta name="description" content="A cheat-sheet for PostgreSQL database" />
 
   <!-- RSS Feed meta-data -->
   <link rel="alternate" type="application/atom+xml" title="Varun Barad - Curious Developer" href="https://varunbarad.com/feed.xml" />
@@ -16,16 +16,16 @@
   <meta name="twitter:site" content="@varun_barad" />
   <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Challenge Update: Around the World in 80 Days" />
-  <meta name="twitter:description" content="Update on my 2020 year-end reading challenge" />
+  <meta name="twitter:title" content="Cheatsheet - PostgreSQL" />
+  <meta name="twitter:description" content="A cheat-sheet for PostgreSQL database" />
 
   <!-- Open-graph meta-data -->
   <meta property="og:site_name" content="Varun Barad - Curious Developer" />
   <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png" />
   <meta property="og:type" content="object" />
-  <meta property="og:title" content="Challenge Update: Around the World in 80 Days" />
-  <meta property="og:url" content="https://varunbarad.com/blog/challenge-update-around-the-world-in-80-days" />
-  <meta property="og:description" content="Update on my 2020 year-end reading challenge" />
+  <meta property="og:title" content="Cheatsheet - PostgreSQL" />
+  <meta property="og:url" content="https://varunbarad.com/blog/cheatsheet-postgresql" />
+  <meta property="og:description" content="A cheat-sheet for PostgreSQL database" />
 </head>
 <body>
 <div>
@@ -50,24 +50,25 @@
       <div class="post-container">
         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
           <div>
-            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/challenge-update-around-the-world-in-80-days">Challenge Update: Around the World in 80 Days</a></div>
+            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/cheatsheet-postgresql">Cheatsheet - PostgreSQL</a></div>
             <div class="text-center">
-              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2020-11-17 00:00:00 +0530">November 17, 2020</time>
+              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2021-05-17 00:00:00 +0530">May 17, 2021</time>
             </div>
-            <div class="post-content e-content"><p>So I finished my first book for the challenge last night. Around the World in 80 Days was definitely a fun read as the story progressed. I couldn’t enjoy it properly from the start because I was constantly comparing it both to the movie and to other suspense adventure stories (but there was no suspense in a way here as I knew that they do end up completing the journey in time).</p>
+            <div class="post-content e-content"><h2 id="dump-database-to-a-script-sql-file">Dump database to a script (.sql) file</h2>
 
-<p>One thing I have taken from this 2 weeks’ experience is that I am cutting my book numbers for the challenge by half. Otherwise it would just be unnecessarily stressful to juggle this challenge along with all other responsibilities.</p>
+<p>Extract/Dump the database contents to a script (.sql) file</p>
 
-<p>So now I only intend to finish these 4 books before the year ends:</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pg_dump <span class="nt">-f</span> ~/path/to/file.sql <span class="nv">$YOUR_DATABASE_URL</span>
+</code></pre></div></div>
 
-<ul>
-  <li>Around the World in 80 Days (Already completed)</li>
-  <li>Smarter Faster Better (Somewhere between 15-20% progress in this one)</li>
-  <li>The Adventures of Sherlock Holmes</li>
-  <li>A Caribbean Mystery</li>
-</ul>
+<h2 id="run-a-script-sql-from-file-on-a-database">Run a script (.sql) from file on a database</h2>
 
-<p>Will keep you folks posted on how things progress from here. Bye for now 👋</p>
+<p>Run SQL commands from a file on a database</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>psql <span class="nv">$YOUR_DATABASE_URL</span> <span class="nt">-f</span> ~/path/to/file.sql
+</code></pre></div></div>
+
+<p>Have a great day people 👋</p>
 </div>
           </div>
 
@@ -75,7 +76,7 @@
             Categories:
             <div>
               
-              <a href="/category/miscellaneous" class="badge badge-warning p-category">#miscellaneous</a>
+              <a href="/category/cheat-sheet" class="badge badge-warning p-category">#cheat-sheet</a>
               
               <a href="/blog" class="badge badge-warning">#all</a>
             </div>
