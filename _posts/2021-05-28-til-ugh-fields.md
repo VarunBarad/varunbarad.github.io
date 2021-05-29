@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "📝 Ugh fields"
-summary: "TIL: What are "ugh fields" and why everyone should atleast know about them."
+summary: "TIL: What are \"ugh fields\" and why everyone should atleast know about them."
 date: 2021-05-28 00:00:00 +0530
 categories:
   - "til"
