@@ -23,4 +23,10 @@ Run SQL commands from a file on a database
 psql $YOUR_DATABASE_URL -f ~/path/to/file.sql
 ```
 
+## Check whether there is any row in the table matching your condition
+
+```sql
+select exists(select * from your_table where your_condition);
+```
+
 Have a great day people 👋
