@@ -9,6 +9,11 @@
   <title>{{ page.title }} - {{ site.author.name }}</title>
   <meta name="description" content="{{ page.summary }}" />
 
+  <!-- Canonical URL -->
+  {% if page.canonical_url %}
+  <link rel="canonical" href="{{ page.canonical_url }}" />
+  {% endif %}
+
   <!-- RSS Feed meta-data -->
   <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ site.url }}/feed.xml" />
 
