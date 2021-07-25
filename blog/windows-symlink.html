@@ -6,8 +6,8 @@
   <link rel="stylesheet" href="/assets/css/style.css?v=ba35a71c100f91cd684b89541d176ba40fce794d">
   <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=ba35a71c100f91cd684b89541d176ba40fce794d">
   <link rel="icon" type="image/png" href="/favicon.png" />
-  <title>Cheatsheet - PostgreSQL - Varun Barad</title>
-  <meta name="description" content="A cheat-sheet for PostgreSQL database" />
+  <title>Windows Symlink - Varun Barad</title>
+  <meta name="description" content="How to create a Linux-like symlink on Windows" />
 
   <!-- Canonical URL -->
   
@@ -19,16 +19,16 @@
   <meta name="twitter:site" content="@varun_barad" />
   <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Cheatsheet - PostgreSQL" />
-  <meta name="twitter:description" content="A cheat-sheet for PostgreSQL database" />
+  <meta name="twitter:title" content="Windows Symlink" />
+  <meta name="twitter:description" content="How to create a Linux-like symlink on Windows" />
 
   <!-- Open-graph meta-data -->
   <meta property="og:site_name" content="Varun Barad - Curious Developer" />
   <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png" />
   <meta property="og:type" content="object" />
-  <meta property="og:title" content="Cheatsheet - PostgreSQL" />
-  <meta property="og:url" content="https://varunbarad.com/blog/cheatsheet-postgresql" />
-  <meta property="og:description" content="A cheat-sheet for PostgreSQL database" />
+  <meta property="og:title" content="Windows Symlink" />
+  <meta property="og:url" content="https://varunbarad.com/blog/windows-symlink" />
+  <meta property="og:description" content="How to create a Linux-like symlink on Windows" />
 </head>
 <body>
 <div>
@@ -53,27 +53,15 @@
       <div class="post-container">
         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
           <div>
-            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/cheatsheet-postgresql">Cheatsheet - PostgreSQL</a></div>
+            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/windows-symlink">Windows Symlink</a></div>
             <div class="text-center">
-              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2021-05-17 00:00:00 +0530">May 17, 2021</time>
+              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2021-07-24 00:00:00 +0530">July 24, 2021</time>
             </div>
-            <div class="post-content e-content"><h2 id="dump-database-to-a-script-sql-file">Dump database to a script (.sql) file</h2>
+            <div class="post-content e-content"><p><strong>Context:</strong> Any file appearing to be stored in <code class="language-plaintext highlighter-rouge">SourceDirectory</code> are actually stored in <code class="language-plaintext highlighter-rouge">DestinationDirectory</code>.</p>
 
-<p>Extract/Dump the database contents to a script (.sql) file</p>
+<p>To create a link from <code class="language-plaintext highlighter-rouge">SourceDirectory</code> to <code class="language-plaintext highlighter-rouge">DestinationDirectory</code></p>
 
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pg_dump <span class="nt">-f</span> ~/path/to/file.sql <span class="nv">$YOUR_DATABASE_URL</span>
-</code></pre></div></div>
-
-<h2 id="run-a-script-sql-from-file-on-a-database">Run a script (.sql) from file on a database</h2>
-
-<p>Run SQL commands from a file on a database</p>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>psql <span class="nv">$YOUR_DATABASE_URL</span> <span class="nt">-f</span> ~/path/to/file.sql
-</code></pre></div></div>
-
-<h2 id="check-whether-there-is-any-row-in-the-table-matching-your-condition">Check whether there is any row in the table matching your condition</h2>
-
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">select</span> <span class="k">exists</span><span class="p">(</span><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">your_table</span> <span class="k">where</span> <span class="n">your_condition</span><span class="p">);</span>
+<div class="language-batch highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mklink</span> /3 <span class="s2">"&lt;full-path-to-SourceDirectory&gt;"</span> <span class="s2">"&lt;full-path-to-DestinationDirectory&gt;"</span>
 </code></pre></div></div>
 
 <p>Have a great day people 👋</p>
@@ -84,7 +72,7 @@
             Categories:
             <div>
               
-              <a href="/category/cheat-sheet" class="badge badge-warning p-category">#cheat-sheet</a>
+              <a href="/category/tools" class="badge badge-warning p-category">#tools</a>
               
               <a href="/blog" class="badge badge-warning">#all</a>
             </div>
