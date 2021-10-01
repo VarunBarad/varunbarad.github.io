@@ -35,7 +35,7 @@ adb shell service call activity 1599295570 > /dev/null 2>&1
 `hide-lb.sh`
 
 ```bash
-adb sehll setprop debug.layout false > /dev/null 2>&1
+adb shell setprop debug.layout false > /dev/null 2>&1
 adb shell service call activity 1599295570 > /dev/null 2>&1
 ```
 
