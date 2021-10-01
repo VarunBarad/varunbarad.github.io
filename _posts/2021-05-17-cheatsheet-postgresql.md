@@ -26,7 +26,15 @@ psql $YOUR_DATABASE_URL -f ~/path/to/file.sql
 ## Check whether there is any row in the table matching your condition
 
 ```sql
-select exists(select * from your_table where your_condition);
+select exists(select 1 from your_table where your_condition);
+```
+
+## Use single-quote inside a string
+
+Put two single-quotes (') wherever you want to use a single-quote inside the string
+
+```sql
+select * from people where full_name = 'Travis O''Connor'
 ```
 
 Have a great day people 👋
