@@ -6,8 +6,8 @@
   <link rel="stylesheet" href="/assets/css/style.css?v=3799707a0f010b9414dd17b7de323ba0922b9cee">
   <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=3799707a0f010b9414dd17b7de323ba0922b9cee">
   <link rel="icon" type="image/png" href="/favicon.png" />
-  <title>Interesting Stuff - Week 1 - Varun Barad</title>
-  <meta name="description" content="My weekly newsletter of things I found interesting" />
+  <title>Cheatsheet - YouTube-DL - Varun Barad</title>
+  <meta name="description" content="A cheat-sheet for YouTube-DL CLI" />
 
   <!-- Canonical URL -->
   
@@ -19,16 +19,16 @@
   <meta name="twitter:site" content="@varun_barad" />
   <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Interesting Stuff - Week 1" />
-  <meta name="twitter:description" content="My weekly newsletter of things I found interesting" />
+  <meta name="twitter:title" content="Cheatsheet - YouTube-DL" />
+  <meta name="twitter:description" content="A cheat-sheet for YouTube-DL CLI" />
 
   <!-- Open-graph meta-data -->
   <meta property="og:site_name" content="Varun Barad - Curious Developer" />
   <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png" />
   <meta property="og:type" content="object" />
-  <meta property="og:title" content="Interesting Stuff - Week 1" />
-  <meta property="og:url" content="https://varunbarad.com/blog/interesting-stuff-week-1" />
-  <meta property="og:description" content="My weekly newsletter of things I found interesting" />
+  <meta property="og:title" content="Cheatsheet - YouTube-DL" />
+  <meta property="og:url" content="https://varunbarad.com/blog/cheatsheet-youtube-dl" />
+  <meta property="og:description" content="A cheat-sheet for YouTube-DL CLI" />
 </head>
 <body>
 <div>
@@ -53,24 +53,31 @@
       <div class="post-container">
         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
           <div>
-            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/interesting-stuff-week-1">Interesting Stuff - Week 1</a></div>
+            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/cheatsheet-youtube-dl">Cheatsheet - YouTube-DL</a></div>
             <div class="text-center">
-              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2020-06-28 12:00:00 +0530">June 28, 2020</time>
+              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2021-10-07 00:00:00 +0530">October 07, 2021</time>
             </div>
-            <div class="post-content e-content"><p>Hi fellows, I am starting a new experiment, where I would be listing some articles, podcasts, videos or basically anything I found interesting that week into a post. Here goes the first edition of that.</p>
+            <div class="post-content e-content"><h2 id="use-a-separate-file-to-record-already-downloaded-urls">Use a separate file to record already downloaded URLs</h2>
 
-<ol>
-  <li><a href="https://fs.blog/2015/09/two-types-of-knowledge">Max Planck / Chauffeur Knowledge Test</a></li>
-  <li><a href="https://sklum.github.io/2020/06/14/sleep-hygiene-for-software-engineers.html">Sleep Hygiene for Software Engineers</a></li>
-  <li><a href="https://www.nytimes.com/interactive/2020/06/09/magazine/remote-work-covid.html">Awesome Graphics</a>
-    <ul>
-      <li><a href="https://static01.nyt.com/images/2020/06/14/magazine/14mag-remote/14mag-remote-superJumbo.jpg">Direct Image Link 1</a></li>
-      <li><a href="https://static01.nyt.com/images/2020/06/14/magazine/14mag-remote-02/14mag-remote-02-superJumbo.jpg">Direct Image Link 2</a></li>
-    </ul>
-  </li>
-</ol>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>youtube-dl <span class="nt">--download-archive</span> archive.txt <span class="s2">"https://www.youtube.com/watch?v=toVfvRhWbj8"</span> 
+</code></pre></div></div>
 
-<p>If you find something interesting and think I should check it out send it over to <a href="mailto:interesting@varunbarad.com">interesting@varunbarad.com</a></p>
+<h2 id="read-urls-from-a-file-one-url-per-line">Read URLs from a file (one URL per line)</h2>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>youtube-dl <span class="nt">-a</span> links.txt
+</code></pre></div></div>
+
+<h2 id="extract-audio-from-a-video-and-convert-it-to-mp3">Extract audio from a video (and convert it to mp3)</h2>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>youtube-dl <span class="nt">--format</span> <span class="s1">'bestaudio/best'</span> <span class="nt">--audio-format</span> <span class="s1">'mp3'</span> <span class="s2">"https://www.youtube.com/watch?v=jVfDUvjvUSM"</span>
+</code></pre></div></div>
+
+<h2 id="download-a-video-and-convert-it-to-mp4">Download a video and convert it to mp4</h2>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>youtube-dl <span class="nt">--format</span> <span class="s1">'bestvideo+bestaudio/best'</span> <span class="nt">--recode-video</span> <span class="s1">'mp4'</span> <span class="s2">"https://www.youtube.com/watch?v=Jv8KRwF1zQs"</span>
+</code></pre></div></div>
+
+<p>Have fun and be responsible 🤺</p>
 </div>
           </div>
 
@@ -78,7 +85,7 @@
             Categories:
             <div>
               
-              <a href="/category/interesting" class="badge badge-warning p-category">#interesting</a>
+              <a href="/category/cheat-sheet" class="badge badge-warning p-category">#cheat-sheet</a>
               
               <a href="/blog" class="badge badge-warning">#all</a>
             </div>
