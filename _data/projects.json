@@ -10,9 +10,6 @@
           "url": "#"
         }
       ],
-      "technologies": [
-        "Android"
-      ],
       "image": {
         "path": "my-places.png",
         "description": "My Places"
@@ -39,9 +36,6 @@
           "title": "I needed it myself",
           "url": "#"
         }
-      ],
-      "technologies": [
-        "Android"
       ],
       "image": {
         "path": "to-read-manager.png",
@@ -70,11 +64,6 @@
           "url": "#"
         }
       ],
-      "technologies": [
-        "Android",
-        "AdMob",
-        "Firebase Analytics"
-      ],
       "image": {
         "path": "attendance-tracker.png",
         "description": "Attendance Tracker"
@@ -101,9 +90,6 @@
           "title": "BVM College",
           "url": "#"
         }
-      ],
-      "technologies": [
-        "Android"
       ],
       "image": {
         "path": "udaan.png",
@@ -132,9 +118,6 @@
           "url": "#"
         }
       ],
-      "technologies": [
-        "Android"
-      ],
       "image": {
         "path": "pop-movies.png",
         "description": "Pop Movies"
@@ -156,10 +139,6 @@
           "url": "#"
         }
       ],
-      "technologies": [
-        "Android",
-        "ExoPlayer"
-      ],
       "image": {
         "path": "droid-bakery.png",
         "description": "Droid Bakery"
@@ -180,9 +159,6 @@
           "title": "Crawded Technologies Pvt. Ltd.",
           "url": "http://www.crawded.com/"
         }
-      ],
-      "technologies": [
-        "Android"
       ],
       "image": {
         "path": "crawded.png",
@@ -209,11 +185,6 @@
           "url": "http://dptradeking.com/"
         }
       ],
-      "technologies": [
-        "Android",
-        "Kotlin",
-        "Firebase"
-      ],
       "image": {
         "path": "dptk.png",
         "description": "DP TradeKING"
@@ -239,9 +210,6 @@
           "url": "#"
         }
       ],
-      "technologies": [
-        "Kotlin"
-      ],
       "image": {
         "path": "wallpaper.png",
         "description": "Wallpaper Changer"
@@ -262,10 +230,6 @@
           "title": "Udacity Nanodegree",
           "url": "#"
         }
-      ],
-      "technologies": [
-        "Android",
-        "Gradle"
       ],
       "image": {
         "path": "digital-joker.png",
@@ -288,9 +252,6 @@
           "url": "#"
         }
       ],
-      "technologies": [
-        "JavaScript"
-      ],
       "image": {
         "path": "udaan.png",
         "description": "Udaan-16 SMS"
@@ -312,9 +273,6 @@
           "url": "https://github.com/coder09"
         }
       ],
-      "technologies": [
-        "Android"
-      ],
       "image": {
         "path": "veggkart.png",
         "description": "VegGKart"
@@ -325,40 +283,6 @@
           "url": "https://github.com/VarunBarad/veggkart"
         }
       ]
-    }
-  ],
-  "technologies": [
-    {
-      "name": "AdMob",
-      "tag": "admob"
-    },
-    {
-      "name": "Android",
-      "tag": "android"
-    },
-    {
-      "name": "ExoPlayer",
-      "tag": "exo-player"
-    },
-    {
-      "name": "Firebase",
-      "tag": "firebase"
-    },
-    {
-      "name": "Firebase Analytics",
-      "tag": "firebase-analytics"
-    },
-    {
-      "name": "Gradle",
-      "tag": "gradle"
-    },
-    {
-      "name": "JavaScript",
-      "tag": "javascript"
-    },
-    {
-      "name": "Kotlin",
-      "tag": "kotlin"
     }
   ]
 }

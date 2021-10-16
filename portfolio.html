@@ -6,14 +6,6 @@ permalink: "/portfolio/"
 <div class="col-12 text-center text-uppercase page-title">Portfolio</div>
 
 <div class="portfolio text-center">
-  <div class="categories col-sm-10 offset-lg-1 offset-md-1 offset-sm-1">
-    {% for technology in site.data.projects.technologies %}
-    <a href="{{site.url}}/technology/{{technology.tag}}"
-       class="badge badge-warning">#{{technology.name}}</a>
-    {% endfor %}
-    <a href="{{site.url}}/portfolio"
-       class="badge badge-warning">#all</a>
-  </div>
   <div class="row">
     {% for project in site.data.projects.projectDetail %}
     <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3 project">
