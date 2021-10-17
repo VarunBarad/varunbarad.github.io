@@ -10,7 +10,7 @@ categories:
 ## Use a separate file to record already downloaded URLs
 
 ```shell
-youtube-dl --download-archive archive.txt "https://www.youtube.com/watch?v=toVfvRhWbj8" 
+youtube-dl --download-archive archive.txt "https://www.youtube.com/watch?v=toVfvRhWbj8"
 ```
 
 ## Read URLs from a file (one URL per line)
