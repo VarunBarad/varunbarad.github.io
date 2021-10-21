@@ -26,7 +26,7 @@ psql $YOUR_DATABASE_URL -f ~/path/to/file.sql
 ## Check whether there is any row in the table matching your condition
 
 ```sql
-select exists(select 1 from your_table where your_condition);
+select exists(select 1 from your_table where your_condition)
 ```
 
 ## Use single-quote inside a string
@@ -35,6 +35,14 @@ Put two single-quotes (') wherever you want to use a single-quote inside the str
 
 ```sql
 select * from people where full_name = 'Travis O''Connor'
+```
+
+## Convert timestamptz to a timestamp in a particular timezone
+
+Assuming `created_at` is a column in table `people` with type `timstamptz` and we want to see what those timestamps are in IST (Asia/Kolkata or Asia/Calcutta)
+
+```sql
+select created_at at time zone 'Asia/Kolkata' as shifted from people
 ```
 
 Have a great day people 👋
