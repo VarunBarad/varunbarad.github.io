@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://varunbarad.com/" rel="alternate" type="text/html" /><updated>2021-10-21T08:32:19+05:30</updated><id>https://varunbarad.com/feed.xml</id><title type="html">Varun Barad - Curious Developer</title><subtitle>My online home where I post about new things I learn or find interesting.</subtitle><author><name>Varun Barad</name></author><entry><title type="html">Cheatsheet - ImageMagick</title><link href="https://varunbarad.com/blog/cheatsheet-imagemagick" rel="alternate" type="text/html" title="Cheatsheet - ImageMagick" /><published>2021-10-17T00:00:00+05:30</published><updated>2021-10-17T00:00:00+05:30</updated><id>https://varunbarad.com/blog/cheatsheet-imagemagick</id><content type="html" xml:base="https://varunbarad.com/blog/cheatsheet-imagemagick">&lt;h2 id=&quot;resize-images-to-specific-target-size-while-padding-remaining-space-with-transparency&quot;&gt;Resize images to specific target size while padding remaining space with transparency&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://varunbarad.com/" rel="alternate" type="text/html" /><updated>2021-10-23T10:43:44+05:30</updated><id>https://varunbarad.com/feed.xml</id><title type="html">Varun Barad - Curious Developer</title><subtitle>My online home where I post about new things I learn or find interesting.</subtitle><author><name>Varun Barad</name></author><entry><title type="html">Cheatsheet - ImageMagick</title><link href="https://varunbarad.com/blog/cheatsheet-imagemagick" rel="alternate" type="text/html" title="Cheatsheet - ImageMagick" /><published>2021-10-17T00:00:00+05:30</published><updated>2021-10-17T00:00:00+05:30</updated><id>https://varunbarad.com/blog/cheatsheet-imagemagick</id><content type="html" xml:base="https://varunbarad.com/blog/cheatsheet-imagemagick">&lt;h2 id=&quot;resize-images-to-specific-target-size-while-padding-remaining-space-with-transparency&quot;&gt;Resize images to specific target size while padding remaining space with transparency&lt;/h2&gt;
 
 &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;convert &lt;span class=&quot;nt&quot;&gt;-auto-orient&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-background&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;#00000000&quot;&lt;/span&gt; original.jpg &lt;span class=&quot;nt&quot;&gt;-resize&lt;/span&gt; 720x576 &lt;span class=&quot;nt&quot;&gt;-gravity&lt;/span&gt; center &lt;span class=&quot;nt&quot;&gt;-extent&lt;/span&gt; 720x576 resized.png
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -43,6 +43,21 @@
 &lt;h2 id=&quot;read-urls-from-a-file-one-url-per-line&quot;&gt;Read URLs from a file (one URL per line)&lt;/h2&gt;
 
 &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;youtube-dl &lt;span class=&quot;nt&quot;&gt;-a&lt;/span&gt; links.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;write-description-to-a-file&quot;&gt;Write description to a file&lt;/h2&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;youtube-dl &lt;span class=&quot;nt&quot;&gt;--write-description&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;https://www.youtube.com/watch?v=xxX81WmXjPg&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;embed-subtitles&quot;&gt;Embed subtitles&lt;/h2&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;youtube-dl &lt;span class=&quot;nt&quot;&gt;--all-subs&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--embed-subs&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;https://www.youtube.com/watch?v=xxX81WmXjPg&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;write-thumbnail&quot;&gt;Write thumbnail&lt;/h2&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;youtube-dl &lt;span class=&quot;nt&quot;&gt;--write-thumbnail&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;https://www.youtube.com/watch?v=xxX81WmXjPg&quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;extract-audio-from-a-video-and-convert-it-to-mp3&quot;&gt;Extract audio from a video (and convert it to mp3)&lt;/h2&gt;

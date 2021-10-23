@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/assets/css/style.css?v=d11c8ca93b880803d6c235c878cb48350d5ed7f6">
-  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=d11c8ca93b880803d6c235c878cb48350d5ed7f6">
+  <link rel="stylesheet" href="/assets/css/style.css?v=398afb9e8184b6a5e84508a8667a38bd987e3c03">
+  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=398afb9e8184b6a5e84508a8667a38bd987e3c03">
   <link rel="icon" type="image/png" href="/favicon.png" />
   <title>Cheatsheet - YouTube-DL - Varun Barad</title>
   <meta name="description" content="A cheat-sheet for YouTube-DL CLI" />
@@ -67,6 +67,21 @@
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>youtube-dl <span class="nt">-a</span> links.txt
 </code></pre></div></div>
 
+<h2 id="write-description-to-a-file">Write description to a file</h2>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>youtube-dl <span class="nt">--write-description</span> <span class="s2">"https://www.youtube.com/watch?v=xxX81WmXjPg"</span>
+</code></pre></div></div>
+
+<h2 id="embed-subtitles">Embed subtitles</h2>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>youtube-dl <span class="nt">--all-subs</span> <span class="nt">--embed-subs</span> <span class="s2">"https://www.youtube.com/watch?v=xxX81WmXjPg"</span>
+</code></pre></div></div>
+
+<h2 id="write-thumbnail">Write thumbnail</h2>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>youtube-dl <span class="nt">--write-thumbnail</span> <span class="s2">"https://www.youtube.com/watch?v=xxX81WmXjPg"</span>
+</code></pre></div></div>
+
 <h2 id="extract-audio-from-a-video-and-convert-it-to-mp3">Extract audio from a video (and convert it to mp3)</h2>
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>youtube-dl <span class="nt">--format</span> <span class="s1">'bestaudio/best'</span> <span class="nt">--audio-format</span> <span class="s1">'mp3'</span> <span class="s2">"https://www.youtube.com/watch?v=jVfDUvjvUSM"</span>
@@ -116,7 +131,7 @@
   </div>
 </div>
 
-<script src="/assets/js/jquery.min.js?v=d11c8ca93b880803d6c235c878cb48350d5ed7f6"></script>
-<script src="/assets/js/bootstrap.min.js?v=d11c8ca93b880803d6c235c878cb48350d5ed7f6"></script>
+<script src="/assets/js/jquery.min.js?v=398afb9e8184b6a5e84508a8667a38bd987e3c03"></script>
+<script src="/assets/js/bootstrap.min.js?v=398afb9e8184b6a5e84508a8667a38bd987e3c03"></script>
 </body>
 </html>
