@@ -19,6 +19,24 @@ youtube-dl --download-archive archive.txt "https://www.youtube.com/watch?v=toVfv
 youtube-dl -a links.txt
 ```
 
+## Write description to a file
+
+```shell
+youtube-dl --write-description "https://www.youtube.com/watch?v=xxX81WmXjPg"
+```
+
+## Embed subtitles
+
+```shell
+youtube-dl --all-subs --embed-subs "https://www.youtube.com/watch?v=xxX81WmXjPg"
+```
+
+## Write thumbnail
+
+```shell
+youtube-dl --write-thumbnail "https://www.youtube.com/watch?v=xxX81WmXjPg"
+```
+
 ## Extract audio from a video (and convert it to mp3)
 
 ```shell
