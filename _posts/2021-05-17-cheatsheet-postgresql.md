@@ -45,4 +45,37 @@ Assuming `created_at` is a column in table `people` with type `timstamptz` and w
 select created_at at time zone 'Asia/Kolkata' as shifted from people
 ```
 
+## Auto-populate values for created_at and updated_at columns
+
+We first need to create a function which would update the value of `updated_at` column every time data in a row changes
+
+```sql
+create or replace function update_modified_timestamp() returns trigger
+language plpgsql as
+$$
+BEGIN
+    new.updated_at := current_timestamp;
+    return new;
+END;
+$$;
+```
+
+Then we need to provide default values to columns when defining table schema
+
+```sql
+create table people (
+    id integer primary key,
+    created_at timestamptz not null default now(),
+    updated_at timestamptz not null default now(),
+    name text not null
+);
+```
+
+At last we need to add a trigger to each table where we want to auto-update the value of `updated_at`
+
+```sql
+create trigger update_timestamp before update on people
+for each row execute procedure update_modified_timestamp();
+```
+
 Have a great day people 👋
