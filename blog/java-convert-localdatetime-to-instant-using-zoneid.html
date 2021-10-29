@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/assets/css/style.css?v=ec7ab0793a4699aef1c721d76a2b45a46dd089e9">
-  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=ec7ab0793a4699aef1c721d76a2b45a46dd089e9">
+  <link rel="stylesheet" href="/assets/css/style.css?v=1697c3c03890cfb7bf95f53bd0f077ef5307627a">
+  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=1697c3c03890cfb7bf95f53bd0f077ef5307627a">
   <link rel="icon" type="image/png" href="/favicon.png" />
   <title>Java convert LocalDateTime to Instant using ZoneId - Varun Barad</title>
   <meta name="description" content="How to convert from LocalDateTime to Instant using ZoneId without ZoneOffset in Java 8 Time APIs" />
@@ -60,7 +60,7 @@
             <div class="post-content e-content"><p>Last week I was working on something which required me to convert <code class="language-plaintext highlighter-rouge">LocalDateTime</code> to <code class="language-plaintext highlighter-rouge">Instant</code>. The direct conversion APIs that are available needed an instance of <code class="language-plaintext highlighter-rouge">ZoneOffset</code> to perform the conversion. Catch was that I had <code class="language-plaintext highlighter-rouge">ZoneId</code> and not <code class="language-plaintext highlighter-rouge">ZoneOffset</code> there was a tiny round-about way to do so.</p>
 
 <ul>
-  <li>Convert <code class="language-plaintext highlighter-rouge">LocalDateTime</code> to <code class="language-plaintext highlighter-rouge">ZonedDateTime</code> using <code class="language-plaintext highlighter-rouge">ZoneId</code> : <code class="language-plaintext highlighter-rouge">ZonedDateTime.of(localDateTime, zoneId)</code></li>
+  <li>Convert <code class="language-plaintext highlighter-rouge">LocalDateTime</code> to <code class="language-plaintext highlighter-rouge">ZonedDateTime</code> using <code class="language-plaintext highlighter-rouge">ZoneId</code> : <code class="language-plaintext highlighter-rouge">localDateTime.atZone(zoneId)</code></li>
   <li>Convert <code class="language-plaintext highlighter-rouge">ZonedDateTime</code> to <code class="language-plaintext highlighter-rouge">Instant</code> : <code class="language-plaintext highlighter-rouge">zonedDateTime.toInstant()</code></li>
 </ul>
 
@@ -103,7 +103,7 @@
   </div>
 </div>
 
-<script src="/assets/js/jquery.min.js?v=ec7ab0793a4699aef1c721d76a2b45a46dd089e9"></script>
-<script src="/assets/js/bootstrap.min.js?v=ec7ab0793a4699aef1c721d76a2b45a46dd089e9"></script>
+<script src="/assets/js/jquery.min.js?v=1697c3c03890cfb7bf95f53bd0f077ef5307627a"></script>
+<script src="/assets/js/bootstrap.min.js?v=1697c3c03890cfb7bf95f53bd0f077ef5307627a"></script>
 </body>
 </html>
