@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/assets/css/style.css?v=83bcbce272784de027329c3ecb571515cfc19de3">
-  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=83bcbce272784de027329c3ecb571515cfc19de3">
+  <link rel="stylesheet" href="/assets/css/style.css?v=ca0692f41ef2584f18c953fc24c120606d3105eb">
+  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=ca0692f41ef2584f18c953fc24c120606d3105eb">
   <link rel="icon" type="image/png" href="/favicon.png" />
   <title>Cheatsheet - PostgreSQL - Varun Barad</title>
   <meta name="description" content="A cheat-sheet for PostgreSQL database" />
@@ -90,6 +90,15 @@
 <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">select</span> <span class="n">created_at</span> <span class="k">at</span> <span class="nb">time</span> <span class="k">zone</span> <span class="s1">'Asia/Kolkata'</span> <span class="k">as</span> <span class="n">shifted</span> <span class="k">from</span> <span class="n">people</span>
 </code></pre></div></div>
 
+<h2 id="format-timestampdate">Format timestamp/date</h2>
+
+<p>Assuming <code class="language-plaintext highlighter-rouge">birthdate</code> is a column in table <code class="language-plaintext highlighter-rouge">people</code> with type <code class="language-plaintext highlighter-rouge">date</code> and we want to display those values in <code class="language-plaintext highlighter-rouge">10 Oct 2021</code> format</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">select</span> <span class="n">to_char</span><span class="p">(</span><span class="n">birthdate</span><span class="p">,</span> <span class="s1">'DD Mon YYYY'</span><span class="p">)</span> <span class="k">from</span> <span class="n">people</span>
+</code></pre></div></div>
+
+<p>Refer to <a href="https://www.postgresql.org/docs/current/functions-formatting.html">official docs</a> for more and/or latest details</p>
+
 <h2 id="auto-populate-values-for-created_at-and-updated_at-columns">Auto-populate values for created_at and updated_at columns</h2>
 
 <p>We first need to create a function which would update the value of <code class="language-plaintext highlighter-rouge">updated_at</code> column every time data in a row changes</p>
@@ -159,7 +168,7 @@
   </div>
 </div>
 
-<script src="/assets/js/jquery.min.js?v=83bcbce272784de027329c3ecb571515cfc19de3"></script>
-<script src="/assets/js/bootstrap.min.js?v=83bcbce272784de027329c3ecb571515cfc19de3"></script>
+<script src="/assets/js/jquery.min.js?v=ca0692f41ef2584f18c953fc24c120606d3105eb"></script>
+<script src="/assets/js/bootstrap.min.js?v=ca0692f41ef2584f18c953fc24c120606d3105eb"></script>
 </body>
 </html>
