@@ -45,6 +45,16 @@ Assuming `created_at` is a column in table `people` with type `timstamptz` and w
 select created_at at time zone 'Asia/Kolkata' as shifted from people
 ```
 
+## Format timestamp/date
+
+Assuming `birthdate` is a column in table `people` with type `date` and we want to display those values in `10 Oct 2021` format
+
+```sql
+select to_char(birthdate, 'DD Mon YYYY') from people
+```
+
+Refer to [official docs](https://www.postgresql.org/docs/current/functions-formatting.html) for more and/or latest details
+
 ## Auto-populate values for created_at and updated_at columns
 
 We first need to create a function which would update the value of `updated_at` column every time data in a row changes
