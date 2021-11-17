@@ -5,9 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/assets/css/style.css?v=572ede91ac6a28aef2090c37a68e8c7d695b51e2">
   <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=572ede91ac6a28aef2090c37a68e8c7d695b51e2">
-  <link rel="icon" type="image/png" href="/favicon.png"/>
-  <title>Varun Barad - Curious Developer</title>
-  <meta name="description" content="My online home where I post about new things I learn or find interesting." />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <title>📝 List files updated in a git commit - Varun Barad</title>
+  <meta name="description" content="TIL: How to see a list of files updated in a git commit" />
+
+  <!-- Canonical URL -->
+  
 
   <!-- RSS Feed meta-data -->
   <link rel="alternate" type="application/atom+xml" title="Varun Barad - Curious Developer" href="https://varunbarad.com/feed.xml" />
@@ -16,16 +19,16 @@
   <meta name="twitter:site" content="@varun_barad" />
   <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Varun Barad - Curious Developer" />
-  <meta name="twitter:description" content="My online home where I post about new things I learn or find interesting." />
+  <meta name="twitter:title" content="📝 List files updated in a git commit" />
+  <meta name="twitter:description" content="TIL: How to see a list of files updated in a git commit" />
 
   <!-- Open-graph meta-data -->
   <meta property="og:site_name" content="Varun Barad - Curious Developer" />
   <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png" />
   <meta property="og:type" content="object" />
-  <meta property="og:title" content="Varun Barad - Curious Developer" />
-  <meta property="og:url" content="https://varunbarad.com/contact/" />
-  <meta property="og:description" content="My online home where I post about new things I learn or find interesting." />
+  <meta property="og:title" content="📝 List files updated in a git commit" />
+  <meta property="og:url" content="https://varunbarad.com/blog/til-list-files-in-a-git-commit" />
+  <meta property="og:description" content="TIL: How to see a list of files updated in a git commit" />
 </head>
 <body>
 <div>
@@ -45,29 +48,35 @@
 </div>
 
   </div>
-  <div class="content row">
-    <div class="page-title col-12 text-center text-uppercase">Contact</div>
+  <article class="h-entry">
+    <div class="content row">
+      <div class="post-container">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+          <div>
+            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/til-list-files-in-a-git-commit">📝 List files updated in a git commit</a></div>
+            <div class="text-center">
+              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2021-11-17 00:00:00 +0530">November 17, 2021</time>
+            </div>
+            <div class="post-content e-content"><p>I wanted to see the list of files committed in my last commit</p>
 
-
-
-<div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 offset-md-3 offset-lg-4 offset-xl-4 text-justify">
-  <p>
-    This is a standing invitation: if we have common interests, I want to talk to you.
-  </p>
-  <p>
-    My email address is <a href="mailto:contact@varunbarad.com">contact@varunbarad.com</a>.
-  </p>
-  <ul>
-    <li>I love discussing stuff via email. Email works best for me and I prefer that over any social networks. I promise I'll read 100% of your emails and most probably reply to all of them.</li>
-    <li>I love reading suggestions. If you see something on the internet worth discussing, send it over. Good content is priceless and I don't mind increasing my <a href="https://fs.blog/2013/06/the-antilibrary/" target="_blank">library of unread ideas</a>.</li>
-    <li>I love making friends. If you are interested in talking, then let's have a chat sometime.</li>
-  </ul>
-  <blockquote>
-    Note: This page was inspired by (and mostly copied from) <a href="https://dellacorte.me/invitation" target="_blank">Andrea Della Corte's Standing Invitation</a>.
-  </blockquote>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git show <span class="nt">--pretty</span><span class="o">=</span><span class="s2">""</span> <span class="nt">--name-only</span> &lt;sha1-commit-hash&gt;
+</code></pre></div></div>
 </div>
+          </div>
 
-  </div>
+          <div class="post-categories-container">
+            Categories:
+            <div>
+              
+              <a href="/category/til" class="badge badge-warning p-category">#til</a>
+              
+              <a href="/blog" class="badge badge-warning">#all</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
   <div>
     <div class="footer">
   <div>
