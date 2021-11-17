@@ -47,4 +47,10 @@ git log --all -M -C --name-only --format='format:' "$@" | sort | grep -v '^$' | 
 git commit --allow-empty -m "Commit message goes here"
 ```
 
+## List files in a commit
+
+```shell
+git show --pretty="" --name-only <sha1-commit-hash>
+```
+
 Have a great day people 👋
