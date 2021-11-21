@@ -1,6 +1,33 @@
 {
   "projectDetail": [
     {
+      "id": "improvementRoll",
+      "title": "Improvement Roll",
+      "description": "I built this website to learn about PWA basics and also so that it could suggest me useful things to do instead of infinite scrolling the social media.",
+      "clients": [
+        {
+          "title": "I needed it myself",
+          "url": "#"
+        }
+      ],
+      "image": {
+        "path": "improvement-roll.png",
+        "description": "Improvement Roll"
+      },
+      "sourceLinks": [
+        {
+          "title": "GitHub",
+          "url": "https://github.com/VarunBarad/improvement-roll/"
+        }
+      ],
+      "projectLinks": [
+        {
+          "title": "Website",
+          "url": "https://improvement-roll.varunbarad.com"
+        }
+      ]
+    },
+    {
       "id": "myPlaces",
       "title": "My Places",
       "description": "This is an application which helps me record locations which I want to save and keep track of.",
