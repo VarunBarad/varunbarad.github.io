@@ -9,7 +9,7 @@ categories:
 
 This is first in my collection of cheat-sheets. This is here as a blog post until I figure out how to have a separate section just for cheat-sheets and not make them show up in posts, and then find time to implement it. Till then here it is and here it will be updated as and when need arises 🙃
 
-## Change history of a file
+## Show change-history of a file
 
 History of commits where this file was changed. This only gives the commits where it was changed (not the file-diff for those commits)
 
