@@ -6,8 +6,8 @@
   <link rel="stylesheet" href="/assets/css/style.css?v=6d8ea04ed0910a9fbe6f6af122357f720cb4efd6">
   <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=6d8ea04ed0910a9fbe6f6af122357f720cb4efd6">
   <link rel="icon" type="image/png" href="/favicon.png" />
-  <title>📝 Google gives refresh token only once - Varun Barad</title>
-  <meta name="description" content="TIL: Google doesn't return refresh token on subsequent authentication after the first one." />
+  <title>📝 How to make non-capturing groups in RegEx - Varun Barad</title>
+  <meta name="description" content="TIL: What are non-capturing groups and how we can use them" />
 
   <!-- Canonical URL -->
   
@@ -19,16 +19,16 @@
   <meta name="twitter:site" content="@varun_barad" />
   <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="📝 Google gives refresh token only once" />
-  <meta name="twitter:description" content="TIL: Google doesn't return refresh token on subsequent authentication after the first one." />
+  <meta name="twitter:title" content="📝 How to make non-capturing groups in RegEx" />
+  <meta name="twitter:description" content="TIL: What are non-capturing groups and how we can use them" />
 
   <!-- Open-graph meta-data -->
   <meta property="og:site_name" content="Varun Barad - Curious Developer" />
   <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png" />
   <meta property="og:type" content="object" />
-  <meta property="og:title" content="📝 Google gives refresh token only once" />
-  <meta property="og:url" content="https://varunbarad.com/blog/til-google-gives-refresh-token-only-once" />
-  <meta property="og:description" content="TIL: Google doesn't return refresh token on subsequent authentication after the first one." />
+  <meta property="og:title" content="📝 How to make non-capturing groups in RegEx" />
+  <meta property="og:url" content="https://varunbarad.com/blog/til-regex-non-capturing-groups" />
+  <meta property="og:description" content="TIL: What are non-capturing groups and how we can use them" />
 </head>
 <body>
 <div>
@@ -53,17 +53,37 @@
       <div class="post-container">
         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
           <div>
-            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/til-google-gives-refresh-token-only-once">📝 Google gives refresh token only once</a></div>
+            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/til-regex-non-capturing-groups">📝 How to make non-capturing groups in RegEx</a></div>
             <div class="text-center">
-              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2021-05-06 00:00:00 +0530">May 06, 2021</time>
+              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2022-08-30 07:44:04 +0530">August 30, 2022</time>
             </div>
-            <div class="post-content e-content"><p>According to Google’s <a href="https://developers.google.com/identity/protocols/oauth2/web-server">docs on OAuth</a>, the server application gets <code class="language-plaintext highlighter-rouge">refresh_token</code> from Google (on exchanging the auth code) only if the original redirection request to Google contains the param <code class="language-plaintext highlighter-rouge">access_type</code> with value <code class="language-plaintext highlighter-rouge">offline</code> (<a href="https://developers.google.com/identity/protocols/oauth2/web-server#creatingclient">documentation link</a>).</p>
+            <div class="post-content e-content"><p><strong>TLDR:</strong> This is how you surround a regular (capturing) group in regex <code class="language-plaintext highlighter-rouge">()</code>. And this is how you surround a non-capturing group in regex <code class="language-plaintext highlighter-rouge">(?:)</code>.</p>
 
-<p>But this is only for the first time a user authenticates with your app. If for some reason your flow takes the user through the authentication flow again without having changed anything (user’s Google account, permissions required, etc. Haven’t tested with changed permissions yet but definitely happens when permissions also remain the same) then when you exchange auth code for tokens from Google, the Google servers don’t return the <code class="language-plaintext highlighter-rouge">refresh_token</code> this second time.</p>
+<p>I had to write a regex to extract an ID from a URL. The URL could come in either of the below form</p>
 
-<p>This is based on anecdotal observation, and I couldn’t find any such mention in their documentation. An <a href="https://stackoverflow.com/questions/10827920/not-receiving-google-oauth-refresh-token/10857806#10857806">answer on Stack Overflow</a> confirmed for me that it wasn’t something misconfigured on my end 😅.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://www.randomwebsite.com/file_64fe4cd
+or
+https://randomwebsite.com/file_64fe4cd
+</code></pre></div></div>
 
-<p>A “solution” for this could be to always specify the param <code class="language-plaintext highlighter-rouge">prompt</code> with a value of <code class="language-plaintext highlighter-rouge">consent</code> in the original redirect request where we send user to Google’s flow.</p>
+<p>And I had to extract out only the <code class="language-plaintext highlighter-rouge">file_64fe4cd</code> part from it.</p>
+
+<p>I started with this regex:</p>
+
+<pre><code class="language-regexp">^https://(www\.)?randomwebsite.com/(file_\w+)$
+</code></pre>
+
+<p>The problem this was giving me was it was providing two captured groups. One for the <code class="language-plaintext highlighter-rouge">(www\.)?</code> and the other one for <code class="language-plaintext highlighter-rouge">(file_\w+)</code> (the one I wanted).</p>
+
+<p>I wanted to treat the first group as a group (for whether it could be present) but not have it captured. That’s how I got to know about non-capturing groups in regex. This is how you write a non-capturing group:</p>
+
+<pre><code class="language-regexp">(?:&lt;rest-of-your-group-match-here&gt;)
+</code></pre>
+
+<p>So our regex now becomes</p>
+
+<pre><code class="language-regexp">^https://(?:www\.)?randomwebsite.com/(file_\w+)$
+</code></pre>
 </div>
           </div>
 

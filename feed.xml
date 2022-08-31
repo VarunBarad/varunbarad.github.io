@@ -1,4 +1,30 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://varunbarad.com/" rel="alternate" type="text/html" /><updated>2022-08-16T00:56:35+05:30</updated><id>https://varunbarad.com/feed.xml</id><title type="html">Varun Barad - Curious Developer</title><subtitle>My online home where I post about new things I learn or find interesting.</subtitle><author><name>Varun Barad</name></author><entry><title type="html">Useful fonts</title><link href="https://varunbarad.com/blog/useful-fonts" rel="alternate" type="text/html" title="Useful fonts" /><published>2022-08-12T00:00:00+05:30</published><updated>2022-08-12T00:00:00+05:30</updated><id>https://varunbarad.com/blog/useful-fonts</id><content type="html" xml:base="https://varunbarad.com/blog/useful-fonts">&lt;p&gt;This is a list of interesting/useful fonts which can be used:&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://varunbarad.com/" rel="alternate" type="text/html" /><updated>2022-08-31T14:21:55+05:30</updated><id>https://varunbarad.com/feed.xml</id><title type="html">Varun Barad - Curious Developer</title><subtitle>My online home where I post about new things I learn or find interesting.</subtitle><author><name>Varun Barad</name></author><entry><title type="html">📝 How to make non-capturing groups in RegEx</title><link href="https://varunbarad.com/blog/til-regex-non-capturing-groups" rel="alternate" type="text/html" title="📝 How to make non-capturing groups in RegEx" /><published>2022-08-30T07:44:04+05:30</published><updated>2022-08-30T07:44:04+05:30</updated><id>https://varunbarad.com/blog/til-regex-non-capturing-groups</id><content type="html" xml:base="https://varunbarad.com/blog/til-regex-non-capturing-groups">&lt;p&gt;&lt;strong&gt;TLDR:&lt;/strong&gt; This is how you surround a regular (capturing) group in regex &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;()&lt;/code&gt;. And this is how you surround a non-capturing group in regex &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(?:)&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;I had to write a regex to extract an ID from a URL. The URL could come in either of the below form&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;https://www.randomwebsite.com/file_64fe4cd
+or
+https://randomwebsite.com/file_64fe4cd
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;And I had to extract out only the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;file_64fe4cd&lt;/code&gt; part from it.&lt;/p&gt;
+
+&lt;p&gt;I started with this regex:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-regexp&quot;&gt;^https://(www\.)?randomwebsite.com/(file_\w+)$
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The problem this was giving me was it was providing two captured groups. One for the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(www\.)?&lt;/code&gt; and the other one for &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(file_\w+)&lt;/code&gt; (the one I wanted).&lt;/p&gt;
+
+&lt;p&gt;I wanted to treat the first group as a group (for whether it could be present) but not have it captured. That’s how I got to know about non-capturing groups in regex. This is how you write a non-capturing group:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-regexp&quot;&gt;(?:&amp;lt;rest-of-your-group-match-here&amp;gt;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;So our regex now becomes&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-regexp&quot;&gt;^https://(?:www\.)?randomwebsite.com/(file_\w+)$
+&lt;/code&gt;&lt;/pre&gt;</content><author><name>Varun Barad</name></author><category term="til" /><summary type="html">TLDR: This is how you surround a regular (capturing) group in regex (). And this is how you surround a non-capturing group in regex (?:).</summary></entry><entry><title type="html">Useful fonts</title><link href="https://varunbarad.com/blog/useful-fonts" rel="alternate" type="text/html" title="Useful fonts" /><published>2022-08-12T00:00:00+05:30</published><updated>2022-08-12T00:00:00+05:30</updated><id>https://varunbarad.com/blog/useful-fonts</id><content type="html" xml:base="https://varunbarad.com/blog/useful-fonts">&lt;p&gt;This is a list of interesting/useful fonts which can be used:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://fonts.google.com/specimen/Saira?sort=popularity&amp;amp;preview.text=Workout%20Log&amp;amp;preview.text_type=custom&quot;&gt;Saira&lt;/a&gt;&lt;/li&gt;
@@ -395,7 +421,7 @@ We cannot castle in this case because the square where king would end up is thre
 
 &lt;p&gt;I don’t know why there isn’t a native API to convert from &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;LocalDateTime&lt;/code&gt; to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Instant&lt;/code&gt; directly using a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ZoneId&lt;/code&gt;. If you do then I would like to know either via &lt;a href=&quot;mailto:contact@varunbarad.com&quot;&gt;email&lt;/a&gt; or Twitter (&lt;a href=&quot;https://twitter.com/varun_barad&quot;&gt;@varun_barad&lt;/a&gt;).&lt;/p&gt;</content><author><name>Varun Barad</name></author><category term="programming" /><summary type="html">Last week I was working on something which required me to convert LocalDateTime to Instant. The direct conversion APIs that are available needed an instance of ZoneOffset to perform the conversion. Catch was that I had ZoneId and not ZoneOffset there was a tiny round-about way to do so.</summary></entry><entry><title type="html">Cheatsheet - Git</title><link href="https://varunbarad.com/blog/cheatsheet-git" rel="alternate" type="text/html" title="Cheatsheet - Git" /><published>2020-12-07T00:00:00+05:30</published><updated>2020-12-07T00:00:00+05:30</updated><id>https://varunbarad.com/blog/cheatsheet-git</id><content type="html" xml:base="https://varunbarad.com/blog/cheatsheet-git">&lt;p&gt;This is first in my collection of cheat-sheets. This is here as a blog post until I figure out how to have a separate section just for cheat-sheets and not make them show up in posts, and then find time to implement it. Till then here it is and here it will be updated as and when need arises 🙃&lt;/p&gt;
 
-&lt;h2 id=&quot;change-history-of-a-file&quot;&gt;Change history of a file&lt;/h2&gt;
+&lt;h2 id=&quot;show-change-history-of-a-file&quot;&gt;Show change-history of a file&lt;/h2&gt;
 
 &lt;p&gt;History of commits where this file was changed. This only gives the commits where it was changed (not the file-diff for those commits)&lt;/p&gt;
 
