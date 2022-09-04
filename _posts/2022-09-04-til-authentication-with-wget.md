@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "📝 How to supply auth parameters while downloading with wget"
+title: "📝 Authentication with wget"
 summary: "TIL: How to provide username and password for simple authentication when downloading files using wget"
 date: 2022-09-04 07:43:54 +0530
 categories:
