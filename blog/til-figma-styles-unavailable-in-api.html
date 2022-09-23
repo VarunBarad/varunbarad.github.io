@@ -6,8 +6,8 @@
   <link rel="stylesheet" href="/assets/css/style.css?v=15fe5be1919e05d89b30a8b138b479961de4f595">
   <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=15fe5be1919e05d89b30a8b138b479961de4f595">
   <link rel="icon" type="image/png" href="/favicon.png" />
-  <title>Testing Deep-Link URLs using ADB - Varun Barad</title>
-  <meta name="description" content="Simple adb command to help you fire deep-link url in mobile from your console." />
+  <title>📝 Figma styles not present in the API response - Varun Barad</title>
+  <meta name="description" content="TIL: Why Figma returns empty styles in API and how to fix it" />
 
   <!-- Canonical URL -->
   
@@ -19,16 +19,16 @@
   <meta name="twitter:site" content="@varun_barad" />
   <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Testing Deep-Link URLs using ADB" />
-  <meta name="twitter:description" content="Simple adb command to help you fire deep-link url in mobile from your console." />
+  <meta name="twitter:title" content="📝 Figma styles not present in the API response" />
+  <meta name="twitter:description" content="TIL: Why Figma returns empty styles in API and how to fix it" />
 
   <!-- Open-graph meta-data -->
   <meta property="og:site_name" content="Varun Barad - Curious Developer" />
   <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png" />
   <meta property="og:type" content="object" />
-  <meta property="og:title" content="Testing Deep-Link URLs using ADB" />
-  <meta property="og:url" content="https://varunbarad.com/blog/testing-deep-link-urls-using-adb" />
-  <meta property="og:description" content="Simple adb command to help you fire deep-link url in mobile from your console." />
+  <meta property="og:title" content="📝 Figma styles not present in the API response" />
+  <meta property="og:url" content="https://varunbarad.com/blog/til-figma-styles-unavailable-in-api" />
+  <meta property="og:description" content="TIL: Why Figma returns empty styles in API and how to fix it" />
 </head>
 <body>
 <div>
@@ -53,22 +53,23 @@
       <div class="post-container">
         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
           <div>
-            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/testing-deep-link-urls-using-adb">Testing Deep-Link URLs using ADB</a></div>
+            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/til-figma-styles-unavailable-in-api">📝 Figma styles not present in the API response</a></div>
             <div class="text-center">
-              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2019-05-02 12:00:00 +0530">May 02, 2019</time>
+              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2022-09-23 13:01:54 +0530">September 23, 2022</time>
             </div>
-            <div class="post-content e-content"><p>ADB is a treasure trove and I regularly keep finding some gem from it. Recently I was working on creating some new deep-link integrations for the company I work at. The below command fires an event similar to one that gets fired when we click on a link in the device itself.</p>
+            <div class="post-content e-content"><p>So there can be the case that your Figma file is showing that there are styles defined and present in the file, but when querying it via the API endpoint to get file-styles (<code class="language-plaintext highlighter-rouge">/v1/files/&lt;file-id&gt;/styles</code>) it might return empty styles array.</p>
 
-<p>The pattern for command to trigger the deep-link is as below:</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>adb shell am start <span class="nt">-a</span> android.intent.action.VIEW <span class="nt">-d</span> <span class="s2">"your-link-goes-inside-these-quotes"</span>
-</code></pre></div></div>
+<p>Simple fix is to go into the Figma file and Publish those styles (you can do it from the drop-down at the top by clicking file’s name).</p>
 
-<p>Example</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>adb shell am start <span class="nt">-a</span> android.intent.action.VIEW <span class="nt">-d</span> <span class="s2">"https://varunbarad.com/blog"</span>
-</code></pre></div></div>
+<p>Now if you query that endpoint, you will find the published styles available there.</p>
 
-<p>This was just a quick ADB tip that I have learnt and wanted to share with you. If you have any more such tips or tricks, I would love to hear about them on <a href="https://twitter.com/varun_barad/status/1123999186574303234">twitter thread for this article</a>. Feel free to contact me for anything else that you would like to talk about <a href="https://twitter.com/varun_barad">@varun_barad</a>.</p>
+<h3 id="additional-text-just-to-help-search-engines">Additional text just to help search-engines</h3>
 
+<ul>
+  <li>figma api styles empty</li>
+  <li>figma api not returning styles</li>
+  <li>no styles present in figma api</li>
+</ul>
 </div>
           </div>
 
@@ -76,7 +77,7 @@
             Categories:
             <div>
               
-              <a href="/category/android" class="badge badge-warning p-category">#android</a>
+              <a href="/category/til" class="badge badge-warning p-category">#til</a>
               
               <a href="/blog" class="badge badge-warning">#all</a>
             </div>
