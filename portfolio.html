@@ -7,6 +7,39 @@ permalink: "/portfolio/"
 
 <div class="portfolio text-center">
   <div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3 project">
+      <a href="#" data-toggle="modal" data-target="#trustInvitation">
+        <div class="card">
+          <img src="/assets/images/projects/trust-invitation.png" alt="Trust Invitation" class="card-img-top">
+          <div class="card-title">Trust Invitation</div>
+        </div>
+      </a>
+    </div>
+    <div class="modal fade" id="trustInvitation" tabindex="-1" role="dialog" aria-labelledby="projectModal"
+         aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Trust Invitation</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="text-center">
+              <img src="/assets/images/projects/trust-invitation.png" alt="Trust Invitation"
+                   class="modal-image img-fluid">
+            </div>
+            <div class="project-description">I built this website to have good conversation sparkers easily accessible at all times.</div>
+            <div class="project-details">
+              <div>Project: <a href="https://trust.varunbarad.com" target="_blank">Website</a></div>
+              <div>Source: <a href="https://github.com/VarunBarad/trust-invitation" target="_blank">GitHub</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     {% for project in site.data.projects.projectDetail %}
     <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3 project">
       <a href="#" data-toggle="modal" data-target="#{{project.id}}">

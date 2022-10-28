@@ -1,33 +1,6 @@
 {
   "projectDetail": [
     {
-      "id": "trustInvitation",
-      "title": "Trust Invitation",
-      "description": "I built this website to have good conversation sparkers easily accessible at all times.",
-      "clients": [
-        {
-          "title": "I needed it myself",
-          "url": "#"
-        }
-      ],
-      "image": {
-        "path": "trust-invitation.png",
-        "description": "Trust Invitation"
-      },
-      "sourceLinks": [
-        {
-          "title": "GitHub",
-          "url": "https://github.com/VarunBarad/trust-invitation"
-        }
-      ],
-      "projectLinks": [
-        {
-          "title": "Website",
-          "url": "https://trust.varunbarad.com"
-        }
-      ]
-    },
-    {
       "id": "improvementRoll",
       "title": "Improvement Roll",
       "description": "I built this website to learn about PWA basics and also so that it could suggest me useful things to do instead of infinite scrolling the social media.",
