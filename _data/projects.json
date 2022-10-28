@@ -1,42 +1,9 @@
 {
   "projectDetail": [
     {
-      "id": "improvementRoll",
-      "title": "Improvement Roll",
-      "description": "I built this website to learn about PWA basics and also so that it could suggest me useful things to do instead of infinite scrolling the social media.",
-      "clients": [
-        {
-          "title": "I needed it myself",
-          "url": "#"
-        }
-      ],
-      "image": {
-        "path": "improvement-roll.png",
-        "description": "Improvement Roll"
-      },
-      "sourceLinks": [
-        {
-          "title": "GitHub",
-          "url": "https://github.com/VarunBarad/improvement-roll/"
-        }
-      ],
-      "projectLinks": [
-        {
-          "title": "Website",
-          "url": "https://improvement-roll.varunbarad.com"
-        }
-      ]
-    },
-    {
       "id": "myPlaces",
       "title": "My Places",
       "description": "This is an application which helps me record locations which I want to save and keep track of.",
-      "clients": [
-        {
-          "title": "I needed it myself",
-          "url": "#"
-        }
-      ],
       "image": {
         "path": "my-places.png",
         "description": "My Places"
@@ -58,12 +25,6 @@
       "id": "toReadManager",
       "title": "To-Read Manager",
       "description": "I have built this app to let me manage my to-read links at one place on my phone. I can share tweets, webpages or anything else and then later open it from the app.",
-      "clients": [
-        {
-          "title": "I needed it myself",
-          "url": "#"
-        }
-      ],
       "image": {
         "path": "to-read-manager.png",
         "description": "To-Read Manager"
@@ -85,12 +46,6 @@
       "id": "attendanceTracker",
       "title": "Attendance Tracker",
       "description": "I made this as my Capstone Project for Udacity's Android Nanodegree. This was my chance to assimilate everything I learned during the Nanodegree and make something useful with it.\nDuring college, we found it cumbersome to track our attendance in various classes. That was the origin for this app. I made it so that there is a streamlined way for students to keep track of their attendance.",
-      "clients": [
-        {
-          "title": "Any college student",
-          "url": "#"
-        }
-      ],
       "image": {
         "path": "attendance-tracker.png",
         "description": "Attendance Tracker"
@@ -229,14 +184,8 @@
     },
     {
       "id": "wallpaperChanger",
-      "title": "WALLPAPER CHANGER",
-      "description": "I was bored of seeing the same wallpaper and Gnome, the DE I was using, didn't have any inbuilt feature to cycle between wallpapers. So I decided to use this opportunity to try and dip my hands in Kotlin.",
-      "clients": [
-        {
-          "title": "Myself",
-          "url": "#"
-        }
-      ],
+      "title": "Wallpaper Changer",
+      "description": "I was bored of seeing the same wallpaper and Gnome (the DE I was using) didn't have any inbuilt feature to cycle between wallpapers. So I decided to use this opportunity to try and dip my hands in Kotlin.",
       "image": {
         "path": "wallpaper.png",
         "description": "Wallpaper Changer"
@@ -287,27 +236,6 @@
         {
           "title": "GitHub",
           "url": "https://github.com/bvmites/udaan16-sms-web-app"
-        }
-      ]
-    },
-    {
-      "id": "veggKart",
-      "title": "VegGKart",
-      "description": "A friend of mine was approached for making an Android application for an already existing grocery shopping site. He built an HTTP API and called me in to develop the Android app which uses that API.",
-      "clients": [
-        {
-          "title": "Anish Meena",
-          "url": "https://github.com/coder09"
-        }
-      ],
-      "image": {
-        "path": "veggkart.png",
-        "description": "VegGKart"
-      },
-      "sourceLinks": [
-        {
-          "title": "GitHub",
-          "url": "https://github.com/VarunBarad/veggkart"
         }
       ]
     }
