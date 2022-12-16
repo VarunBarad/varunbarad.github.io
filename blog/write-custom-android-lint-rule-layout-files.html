@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/assets/css/style.css?v=c94515500bed06bb077d4ac18d5b68bfe17f15c0">
-  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=c94515500bed06bb077d4ac18d5b68bfe17f15c0">
+  <link rel="stylesheet" href="/assets/css/style.css?v=ebaf0e2af156de802b1ae5273243fa43fb68fb08">
+  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=ebaf0e2af156de802b1ae5273243fa43fb68fb08">
   <link rel="icon" type="image/png" href="/favicon.png" />
   <title>Write Custom Android Lint Rule - Layout Files - Varun Barad</title>
   <meta name="description" content="Writing our own custom android lint rules for verifying layout files." />
@@ -13,21 +13,21 @@
   
 
   <!-- RSS Feed meta-data -->
-  <link rel="alternate" type="application/atom+xml" title="Varun Barad - Curious Developer" href="https://varunbarad.com/feed.xml" />
+  <link rel="alternate" type="application/atom+xml" title="Varun Barad - Curious Developer" href="http://localhost:4000/feed.xml" />
 
   <!-- Twitter meta-data -->
   <meta name="twitter:site" content="@varun_barad" />
-  <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png" />
+  <meta name="twitter:image:src" content="http://localhost:4000/assets/images/logo-hd.png" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Write Custom Android Lint Rule - Layout Files" />
   <meta name="twitter:description" content="Writing our own custom android lint rules for verifying layout files." />
 
   <!-- Open-graph meta-data -->
   <meta property="og:site_name" content="Varun Barad - Curious Developer" />
-  <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png" />
+  <meta property="og:image" content="http://localhost:4000/assets/images/logo-hd.png" />
   <meta property="og:type" content="object" />
   <meta property="og:title" content="Write Custom Android Lint Rule - Layout Files" />
-  <meta property="og:url" content="https://varunbarad.com/blog/write-custom-android-lint-rule-layout-files" />
+  <meta property="og:url" content="http://localhost:4000/blog/write-custom-android-lint-rule-layout-files" />
   <meta property="og:description" content="Writing our own custom android lint rules for verifying layout files." />
 </head>
 <body>
@@ -40,6 +40,7 @@
   <div class="col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8">
     <nav class="menu text-right">
   <a href="/portfolio">Portfolio</a>
+  <a href="/projects">Projects</a>
   <a href="/blog">Blog</a>
   <a href="/books">Books</a>
   <a href="/ideas">Ideas</a>
@@ -55,11 +56,11 @@
       <div class="post-container">
         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
           <div>
-            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/write-custom-android-lint-rule-layout-files">Write Custom Android Lint Rule - Layout Files</a></div>
+            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="http://localhost:4000/blog/write-custom-android-lint-rule-layout-files">Write Custom Android Lint Rule - Layout Files</a></div>
             <div class="text-center">
               By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2020-02-27 12:00:00 +0530">February 27, 2020</time>
             </div>
-            <div class="post-content e-content"><p><img src="https://varunbarad.com/assets/images/posts/headers/write-custom-android-lint-rule-layout-files.jpg" alt="Article Header - Write Custom Android Lint Rules" /></p>
+            <div class="post-content e-content"><p><img src="http://localhost:4000/assets/images/posts/headers/write-custom-android-lint-rule-layout-files.jpg" alt="Article Header - Write Custom Android Lint Rules" /></p>
 
 <p>Welcome devs, I recently faced an issue where if I didn’t specify any <code class="language-plaintext highlighter-rouge">android:inputType</code> for <code class="language-plaintext highlighter-rouge">EditText</code> then keyboard capitalisation did not correctly show. The deeper problem was that I always forgot to include that attribute. So I decided to use a lint check which would fail my build if any of my <code class="language-plaintext highlighter-rouge">EditText</code> does not have the <code class="language-plaintext highlighter-rouge">android:inputType</code> attribute.</p>
 
@@ -84,7 +85,7 @@ This lint check is set to fail the build when it finds any of the above element 
   <li>I have selected Kotlin as the language</li>
 </ul>
 
-<p><img src="https://varunbarad.com/assets/images/posts/write-custom-android-lint-rule-layout-files/create-new-module.png" alt="Screenshot - Add new Java or Kotlin Library Module" /></p>
+<p><img src="http://localhost:4000/assets/images/posts/write-custom-android-lint-rule-layout-files/create-new-module.png" alt="Screenshot - Add new Java or Kotlin Library Module" /></p>
 
 <h3 id="add-dependencies-in-gradle">Add dependencies in Gradle</h3>
 
@@ -265,7 +266,7 @@ This lint check is set to fail the build when it finds any of the above element 
   </div>
 </div>
 
-<script src="/assets/js/jquery.min.js?v=c94515500bed06bb077d4ac18d5b68bfe17f15c0"></script>
-<script src="/assets/js/bootstrap.min.js?v=c94515500bed06bb077d4ac18d5b68bfe17f15c0"></script>
+<script src="/assets/js/jquery.min.js?v=ebaf0e2af156de802b1ae5273243fa43fb68fb08"></script>
+<script src="/assets/js/bootstrap.min.js?v=ebaf0e2af156de802b1ae5273243fa43fb68fb08"></script>
 </body>
 </html>

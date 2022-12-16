@@ -1,127 +1,113 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/assets/css/style.css?v=ebaf0e2af156de802b1ae5273243fa43fb68fb08">
-  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=ebaf0e2af156de802b1ae5273243fa43fb68fb08">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="icon" type="image/png" href="/favicon.png"/>
-  <title>Varun Barad - Curious Developer</title>
-  <meta name="description" content="My online home where I post about new things I learn or find interesting." />
-
+  <title>Projects - Varun Barad</title>
+  <meta name="description" content="My online home where I post about new things I learn or find interesting."/>
+  
   <!-- RSS Feed meta-data -->
-  <link rel="alternate" type="application/atom+xml" title="Varun Barad - Curious Developer" href="http://localhost:4000/feed.xml" />
-
+  <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Varun Barad - Curious Developer" />
+  
   <!-- Twitter meta-data -->
-  <meta name="twitter:site" content="@varun_barad" />
-  <meta name="twitter:image:src" content="http://localhost:4000/assets/images/logo-hd.png" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Varun Barad - Curious Developer" />
-  <meta name="twitter:description" content="My online home where I post about new things I learn or find interesting." />
-
-  <!-- Open-graph meta-data -->
-  <meta property="og:site_name" content="Varun Barad - Curious Developer" />
-  <meta property="og:image" content="http://localhost:4000/assets/images/logo-hd.png" />
-  <meta property="og:type" content="object" />
-  <meta property="og:title" content="Varun Barad - Curious Developer" />
-  <meta property="og:url" content="http://localhost:4000/portfolio/" />
-  <meta property="og:description" content="My online home where I post about new things I learn or find interesting." />
+  <meta name="twitter:site" content="@varun_barad"/>
+  <meta name="twitter:image:src" content="http://localhost:4000/assets/images/logo-hd.png"/>
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:title" content="Varun Barad - Curious Developer"/>
+  <meta name="twitter:description" content="My online home where I post about new things I learn or find interesting."/>
+  
+  <!-- Open-Graph meta-data -->
+  <meta property="og:site_name" content="Varun Barad - Curious Developer"/>
+  <meta property="og:image" content="http://localhost:4000/assets/images/logo-hd.png"/>
+  <meta property="og:type" content="object"/>
+  <meta property="og:title" content="Varun Barad - Curious Developer"/>
+  <meta property="og:url" content="http://localhost:4000/projects/"/>
+  <meta property="og:description" content="My online home where I post about new things I learn or find interesting."/>
+  
+  <!-- Styles kept here for now -->
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+  </style>
 </head>
 <body>
-<div>
-  <div id="header">
-    <div class="row header">
-  <div class="title col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
-    <a href="/"><div class="title">Varun Barad</div></a>
+<header>
+  <nav>
+    <span>Varun Barad</span>
+    <br>
+    <ul>
+      <li><a href="/portfolio/">Portfolio</a></li>
+      <li><a href="/projects/">Projects</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/books/">Books</a></li>
+      <li><a href="/ideas/">Ideas</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+  </nav>
+  <hr>
+</header>
+<main>
+  <h1>Projects</h1>
+  
+  <div>
+    <p>
+      Some description for this page can go here.
+    </p>
   </div>
-  <div class="col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8">
-    <nav class="menu text-right">
-  <a href="/portfolio">Portfolio</a>
-  <a href="/projects">Projects</a>
-  <a href="/blog">Blog</a>
-  <a href="/books">Books</a>
-  <a href="/ideas">Ideas</a>
-  <a href="/contact">Contact</a>
-</nav>
+  
+  <div class="project-wrapper">
+    <div class="project">
+      <h2 class="project-title">Trust Invitation</h2>
+      
+      <div class="project-description">
+        <p>
+          A website built so that I can have good conversation sparkers easily accessible at all times.
+        </p>
+        <ul>
+          <li><a href="https://trust.varunbarad.com" target="_blank">Website</a></li>
+          <li><a href="https://github.com/VarunBarad/trust-invitation" target="_blank">Source code</a></li>
+        </ul>
+      </div>
+    </div>
+  
+    <div class="project">
+      <h2 class="project-title">Improvement Roll</h2>
+      
+      <div class="project-description">
+        <p>
+          I built this website to learn about PWA basics and also so that it could suggest me useful things to do
+          instead of infinitely scrolling the social media.
+        </p>
+        <ul>
+          <li><a href="https://improvement-roll.varunbarad.com" target="_blank">Website</a></li>
+          <li><a href="https://github.com/VarunBarad/improvement-roll" target="_blank">Source code</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <div class="project">
+    <h2 class="project-title">My Places</h2>
+    
+    <div class="project-description">
+      <p>
+        An application which helps me record locations which I want to save and keep track of.
+      </p>
+      <ul>
+        <li><a href="https://play.google.com/store/apps/details?id=com.varunbarad.myplaces" target="_blank">App on Play Store</a></li>
+        <li><a href="https://github.com/VarunBarad/my-places-android/" target="_blank">Source code</a></li>
+      </ul>
+    </div>
+  </div>
+</main>
 
-  </div>
-</div>
 
-  </div>
-  <div class="content row">
-    <div class="col-12 text-center text-uppercase page-title">Portfolio</div>
+
+
 
 <div class="portfolio text-center">
   <div class="row">
-    <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3 project">
-      <a href="#" data-toggle="modal" data-target="#trustInvitation">
-        <div class="card">
-          <img src="/assets/images/projects/trust-invitation.png" alt="Trust Invitation" class="card-img-top">
-          <div class="card-title">Trust Invitation</div>
-        </div>
-      </a>
-    </div>
-    <div class="modal fade" id="trustInvitation" tabindex="-1" role="dialog" aria-labelledby="projectModal"
-         aria-hidden="true">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Trust Invitation</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <div class="text-center">
-              <img src="/assets/images/projects/trust-invitation.png" alt="Trust Invitation"
-                   class="modal-image img-fluid">
-            </div>
-            <div class="project-description">I built this website to have good conversation sparkers easily accessible at all times.</div>
-            <div class="project-details">
-              <div>Project: <a href="https://trust.varunbarad.com" target="_blank">Website</a></div>
-              <div>Source: <a href="https://github.com/VarunBarad/trust-invitation" target="_blank">GitHub</a></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3 project">
-      <a href="#" data-toggle="modal" data-target="#improvementRoll">
-        <div class="card">
-          <img src="/assets/images/projects/improvement-roll.png" alt="Improvement Roll" class="card-img-top">
-          <div class="card-title">Improvement Roll</div>
-        </div>
-      </a>
-    </div>
-    <div class="modal fade" id="improvementRoll" tabindex="-1" role="dialog" aria-labelledby="projectModal"
-         aria-hidden="true">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Improvement Roll</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <div class="text-center">
-              <img src="/assets/images/projects/improvement-roll.png" alt="Improvement Roll"
-                   class="modal-image img-fluid">
-            </div>
-            <div class="project-description">
-              I built this website to learn about PWA basics and also so that it could suggest me useful things to do
-              instead of infinite scrolling the social media.
-            </div>
-            <div class="project-details">
-              <div>Project: <a href="https://improvement-roll.varunbarad.com" target="_blank">Website</a></div>
-              <div>Source: <a href="https://github.com/VarunBarad/improvement-roll" target="_blank">GitHub</a></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
     
     <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3 project">
       <a href="#" data-toggle="modal" data-target="#toReadManager">
@@ -144,7 +130,8 @@
           </div>
           <div class="modal-body">
             <div class="text-center">
-              <img src="/assets/images/projects/to-read-manager.png" alt="To-Read Manager"
+              <img src="/assets/images/projects/to-read-manager.png"
+                   alt="To-Read Manager"
                    class="modal-image img-fluid">
             </div>
             <div class="project-description">I have built this app to let me manage my to-read links at one place on my phone. I can share tweets, webpages or anything else and then later open it from the app.</div>
@@ -191,7 +178,8 @@
           </div>
           <div class="modal-body">
             <div class="text-center">
-              <img src="/assets/images/projects/attendance-tracker.png" alt="Attendance Tracker"
+              <img src="/assets/images/projects/attendance-tracker.png"
+                   alt="Attendance Tracker"
                    class="modal-image img-fluid">
             </div>
             <div class="project-description">I made this as my Capstone Project for Udacity's Android Nanodegree. This was my chance to assimilate everything I learned during the Nanodegree and make something useful with it.
@@ -239,7 +227,8 @@ During college, we found it cumbersome to track our attendance in various classe
           </div>
           <div class="modal-body">
             <div class="text-center">
-              <img src="/assets/images/projects/udaan.png" alt="Udaan"
+              <img src="/assets/images/projects/udaan.png"
+                   alt="Udaan"
                    class="modal-image img-fluid">
             </div>
             <div class="project-description">Udaan is the annual tech-fest of BVM Engineering College. The Development Team of Udaan has seen to all the IT related needs of the festival, including but no limited to making a companion website along with native apps for both Android & Windows platforms. We have been doing it every year since 2015.</div>
@@ -292,7 +281,8 @@ During college, we found it cumbersome to track our attendance in various classe
           </div>
           <div class="modal-body">
             <div class="text-center">
-              <img src="/assets/images/projects/pop-movies.png" alt="Pop Movies"
+              <img src="/assets/images/projects/pop-movies.png"
+                   alt="Pop Movies"
                    class="modal-image img-fluid">
             </div>
             <div class="project-description">I made this project as part of my coursework for Udacity's Android Nanodegree. This taught me the use of REST APIs, loading images from network and local data persistence in an Android application.</div>
@@ -339,7 +329,8 @@ During college, we found it cumbersome to track our attendance in various classe
           </div>
           <div class="modal-body">
             <div class="text-center">
-              <img src="/assets/images/projects/droid-bakery.png" alt="Droid Bakery"
+              <img src="/assets/images/projects/droid-bakery.png"
+                   alt="Droid Bakery"
                    class="modal-image img-fluid">
             </div>
             <div class="project-description">I made this project as part of my coursework for Udacity's Android Nanodegree. This taught me how to play videos on Android from network using a famous library named ExoPlayer.</div>
@@ -386,7 +377,8 @@ During college, we found it cumbersome to track our attendance in various classe
           </div>
           <div class="modal-body">
             <div class="text-center">
-              <img src="/assets/images/projects/crawded.png" alt="Crawded"
+              <img src="/assets/images/projects/crawded.png"
+                   alt="Crawded"
                    class="modal-image img-fluid">
             </div>
             <div class="project-description">Worked a paid internship at Crawded which was an education startup focused on building a platform where students can interact with other students and teachers but the interaction remains related only to knowledge sharing.
@@ -436,7 +428,8 @@ A vast number of features in the original SchoolWeb application were made by me 
           </div>
           <div class="modal-body">
             <div class="text-center">
-              <img src="/assets/images/projects/dptk.png" alt="DP TradeKING"
+              <img src="/assets/images/projects/dptk.png"
+                   alt="DP TradeKING"
                    class="modal-image img-fluid">
             </div>
             <div class="project-description">DP Trade-King is a stock-broking and wealth management firm based at Anand. They required an application which helped them to provide up-to-date contact information of each of their offices and employees both to their employees and their customers.
@@ -486,7 +479,8 @@ So I made a desktop application using Kotlin which would parse data provided by 
           </div>
           <div class="modal-body">
             <div class="text-center">
-              <img src="/assets/images/projects/wallpaper.png" alt="Wallpaper Changer"
+              <img src="/assets/images/projects/wallpaper.png"
+                   alt="Wallpaper Changer"
                    class="modal-image img-fluid">
             </div>
             <div class="project-description">I was bored of seeing the same wallpaper and Gnome (the DE I was using) didn't have any inbuilt feature to cycle between wallpapers. So I decided to use this opportunity to try and dip my hands in Kotlin.</div>
@@ -527,7 +521,8 @@ So I made a desktop application using Kotlin which would parse data provided by 
           </div>
           <div class="modal-body">
             <div class="text-center">
-              <img src="/assets/images/projects/digital-joker.png" alt="Digital Joker"
+              <img src="/assets/images/projects/digital-joker.png"
+                   alt="Digital Joker"
                    class="modal-image img-fluid">
             </div>
             <div class="project-description">I made this project as part of my coursework for Udacity's Android Nanodegree. This taught me to use Gradle to create separate free and paid versions of an app, and including different features based on whether the app is free or paid. It also taught me how to separate an app into different modules for better code reuse.</div>
@@ -574,7 +569,8 @@ So I made a desktop application using Kotlin which would parse data provided by 
           </div>
           <div class="modal-body">
             <div class="text-center">
-              <img src="/assets/images/projects/udaan.png" alt="Udaan-16 SMS"
+              <img src="/assets/images/projects/udaan.png"
+                   alt="Udaan-16 SMS"
                    class="modal-image img-fluid">
             </div>
             <div class="project-description">This was a web-app made by Team Udaan for Udaan-16. Event managers could use this to send SMS to all their participants, who had qualified for next round, about the time and location of next round. I was the one who wired the UI created by my team-mates with the API using JavaScript.</div>
@@ -600,7 +596,7 @@ So I made a desktop application using Kotlin which would parse data provided by 
       </div>
     </div>
     
-
+    
     <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3 project">
       <a href="#" data-toggle="modal" data-target="#veggKart">
         <div class="card">
@@ -609,7 +605,8 @@ So I made a desktop application using Kotlin which would parse data provided by 
         </div>
       </a>
     </div>
-    <div class="modal fade" id="veggKart" tabindex="-1" role="dialog" aria-labelledby="projectModal" aria-hidden="true">
+    <div class="modal fade" id="veggKart" tabindex="-1" role="dialog" aria-labelledby="projectModal"
+         aria-hidden="true">
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -620,15 +617,19 @@ So I made a desktop application using Kotlin which would parse data provided by 
           </div>
           <div class="modal-body">
             <div class="text-center">
-              <img src="/assets/images/projects/veggkart.png" alt="VegGKart" class="modal-image img-fluid">
+              <img src="/assets/images/projects/veggkart.png" alt="VegGKart"
+                   class="modal-image img-fluid">
             </div>
             <div class="project-description">
-              A friend of mine was approached for making an Android application for an already existing grocery
-              shopping site. He built an HTTP API and called me in to develop the Android app which uses that API.
+              A friend of mine was approached for making an Android application for an already existing
+              grocery
+              shopping site. He built an HTTP API and called me in to develop the Android app which uses
+              that API.
             </div>
             <div class="project-details">
               <div>Clients: <a href="https://github.com/coder09" target="_blank">Anish Meena</a></div>
-              <div>Source: <a href="https://github.com/VarunBarad/veggkart" target="_blank">GitHub</a></div>
+              <div>Source: <a href="https://github.com/VarunBarad/veggkart" target="_blank">GitHub</a>
+              </div>
             </div>
           </div>
         </div>
@@ -636,31 +637,5 @@ So I made a desktop application using Kotlin which would parse data provided by 
     </div>
   </div>
 </div>
-
-  </div>
-  <div>
-    <div class="footer">
-  <div>
-    
-    <a href="https://github.com/VarunBarad" rel="me" target="_blank"><i class="fab fa-github social-links"></i></a>
-    
-    <a href="https://twitter.com/varun_barad" rel="me" target="_blank"><i class="fab fa-twitter social-links"></i></a>
-    
-    <a href="https://dev.to/varunbarad" rel="me" target="_blank"><i class="fab fa-dev social-links"></i></a>
-    
-    <a href="https://stackoverflow.com/users/4717436/varunbarad" rel="me" target="_blank"><i class="fab fa-stack-overflow social-links"></i></a>
-    
-  </div>
-  <div class="developer-attribution">
-    
-    Made by <a href="https://dixita0607.github.io" target="_blank">Dixita Ganatra</a>
-  </div>
-</div>
-
-  </div>
-</div>
-
-<script src="/assets/js/jquery.min.js?v=ebaf0e2af156de802b1ae5273243fa43fb68fb08"></script>
-<script src="/assets/js/bootstrap.min.js?v=ebaf0e2af156de802b1ae5273243fa43fb68fb08"></script>
 </body>
 </html>
