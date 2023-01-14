@@ -1,146 +1,260 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/assets/css/style.css?v=ef1574d89f0298b7474277d57fbd909c196dbd07">
-  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=ef1574d89f0298b7474277d57fbd909c196dbd07">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="icon" type="image/png" href="/favicon.png"/>
-  <title>Varun Barad - Curious Developer</title>
-  <meta name="description" content="My online home where I post about new things I learn or find interesting." />
-
+  <title>Books - Varun Barad</title>
+  <meta name="description" content="My online home where I post about new things I learn or find interesting."/>
+  
   <!-- RSS Feed meta-data -->
-  <link rel="alternate" type="application/atom+xml" title="Varun Barad - Curious Developer" href="https://varunbarad.com/feed.xml" />
-
+  <link type="application/atom+xml" rel="alternate" href="https://varunbarad.com/feed.xml" title="Varun Barad - Curious Developer" />
+  
   <!-- Twitter meta-data -->
-  <meta name="twitter:site" content="@varun_barad" />
-  <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Varun Barad - Curious Developer" />
-  <meta name="twitter:description" content="My online home where I post about new things I learn or find interesting." />
-
-  <!-- Open-graph meta-data -->
-  <meta property="og:site_name" content="Varun Barad - Curious Developer" />
-  <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png" />
-  <meta property="og:type" content="object" />
-  <meta property="og:title" content="Varun Barad - Curious Developer" />
-  <meta property="og:url" content="https://varunbarad.com/books/" />
-  <meta property="og:description" content="My online home where I post about new things I learn or find interesting." />
+  <meta name="twitter:site" content="@varun_barad"/>
+  <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png"/>
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:title" content="Varun Barad - Curious Developer"/>
+  <meta name="twitter:description" content="My online home where I post about new things I learn or find interesting."/>
+  
+  <!-- Open-Graph meta-data -->
+  <meta property="og:site_name" content="Varun Barad - Curious Developer"/>
+  <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png"/>
+  <meta property="og:type" content="object"/>
+  <meta property="og:title" content="Varun Barad - Curious Developer"/>
+  <meta property="og:url" content="https://varunbarad.com/books/"/>
+  <meta property="og:description" content="My online home where I post about new things I learn or find interesting."/>
+  
+  <!-- Styles kept here for now -->
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      background: #313131;
+    }
+    header {
+      background: #661111;
+      color: #dfdfdf;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+    header a {
+      color: #dfdfdf;
+    }
+    header a:visited {
+      color: #dfdfdf;
+    }
+    header a:hover {
+      text-decoration: underline;
+    }
+    #title {
+      width: 100%;
+      padding: 1em;
+      font-size: 2rem;
+      text-align: center;
+    }
+    #title > a {
+      text-decoration: none;
+    }
+    #title > a:hover {
+      text-decoration: underline;
+    }
+    nav {
+      display: block;
+      padding: 0;
+    }
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      align-items: stretch;
+      align-content: flex-start;
+      gap: 8px;
+    }
+    nav ul li a {
+      padding: 1em;
+      display: block;
+      font-size: 1.2rem;
+      text-decoration: none;
+    }
+    nav ul li a:hover {
+    }
+    main {
+      padding: 1em;
+      background: #121212;
+      color: #dfdfdf;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+    main h2 {
+      font-size: 1.6rem;
+    }
+    main p {
+      text-align: justify;
+      font-size: 1.1rem;
+    }
+    main li {
+      font-size: 1.1rem;
+    }
+    main code {
+      font-family: monospace;
+      background: #464646;
+      border-radius: 2px;
+      padding-left: 4px;
+      padding-right: 4px;
+    }
+    main a {
+      color: #dfdfdf;
+      font-size: 1.1rem;
+    }
+    main a:visited {
+      color: #dfdfdf;
+    }
+    h1 {
+      font-size: 2.5rem;
+    }
+    footer {
+      border-top: #dfdfdf 1px solid;
+      background: #121212;
+      color: #dfdfdf;
+      text-align: center;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0.5em;
+    }
+  </style>
 </head>
 <body>
-<div>
-  <div id="header">
-    <div class="row header">
-  <div class="title col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
-    <a href="/"><div class="title">Varun Barad</div></a>
+<header>
+  <div id="title">
+    <a href="/">Varun Barad</a>
   </div>
-  <div class="col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8">
-    <nav class="menu text-right">
-      <a href="/projects">Projects</a>
-      <a href="/blog">Blog</a>
-      <a href="/books">Books</a>
-      <a href="/ideas">Ideas</a>
-      <a href="/contact">Contact</a>
-    </nav>
-  </div>
-</div>
-
-  </div>
-  <div class="content row">
-    <div class="page-title text-center text-uppercase col-12">Books</div>
-
-<div class="col-sm-6 col-lg-4 offset-sm-3 offset-lg-4">
-    <h3>Currently reading</h3>
+  <nav>
     <ul>
-        <li>Snow Crash - Neal Stephenson</li>
-        <li>Modi @ 20: Dreams Meet Delivery - Multiple Authors</li>
+      <li><a href="/projects/">Projects</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/books/">Books</a></li>
+      <li><a href="/ideas/">Ideas</a></li>
+      <li><a href="/contact/">Contact</a></li>
     </ul>
+  </nav>
+</header>
+<main>
+  <h1>Books</h1>
   
-    <h3>2023</h3>
-    <ul>
-        <li>A Deadly Education - Naomi Novik (Started: 2023-01-03 | Finished: 2023-01-13)</li>
-    </ul>
-
-    <h3>2022</h3>
-    <ul>
-        <li>Daughter of the Deep - Rick Riordan (Started: 2022-12-16 | Finished: 2022-12-21)</li>
-        <li>Project Hail Mary - Andy Weir (Started: 2022-10-04 | Finished: 2022-12-15)</li>
-        <li>The Adventures of Tintin And The Picaros - Hergé (Started: 2022-10-31 | Finished: 2022-10-31)</li>
-        <li>The Adventures of Tintin - Flight 714 To Sydney - Hergé (Started: 2022-10-28 | Finished: 2022-10-30)</li>
-        <li>The Adventures of Tintin - The Castafiore Emerald - Hergé (Started: 2022-10-26 | Finished: 2022-10-27)</li>
-        <li>The Adventures of Tintin - Tintin in Tibet - Hergé (Started: 2022-10-23 | Finished: 2022-10-24)</li>
-        <li>The Adventures of Tintin - The Red Sea Sharks - Hergé (Started: 2022-10-21 | Finished: 2022-10-22)</li>
-        <li>The Adventures of Tintin - The Calculus Affair - Hergé (Started: 2022-10-19 | Finished: 2022-10-20)</li>
-        <li>And Then There Were None - Agatha Christie (Started: 2022-09-25 | Finished: 2022-10-19)</li>
-        <li>The Adventures of Tintin - Land of Black Gold - Hergé (Started: 2022-10-12 | Finished: 2022-10-13)</li>
-        <li>The Adventures of Tintin - Prisoners of The Sun - Hergé (Started: 2022-10-10 | Finished: 2022-10-11)</li>
-        <li>The Adventures of Tintin - The Seven Crystal Balls - Hergé (Started: 2022-10-08 | Finished: 2022-10-09)</li>
-        <li>The Adventures of Tintin - Red Rackham's Treasure - Hergé (Started: 2022-10-06 | Finished: 2022-10-07)</li>
-        <li>The Adventures of Tintin - The Secret of The Unicorn - Hergé (Started: 2022-10-05 | Finished: 2022-10-06)</li>
-        <li>What If - Randall Munroe (Started: 2022-09-12 | Finished: 2022-10-03)</li>
-        <li>The Phoenix Project - Gene Kim, Kevin Behr, George Spafford (Started: 2022-09-12 | Finished: 2022-09-25)</li>
-        <li>How To - Randall Munroe(Finished: 2022-09-17)</li>
-        <li>The Man In The Brown Suit - Agatha Christie (Started: 2022-09-02 | Finished: 2022-09-09)</li>
-        <li>The Adventures of Tintin - The Shooting Star - Hergé (Started: 2022-09-01 | Finished: 2022-09-02)</li>
-        <li>The Adventures of Tintin - The Crab with The Golden Claws - Hergé (Started: 2022-08-30 | Finished: 2022-09-01)</li>
-        <li>The Adventures of Tintin - King Ottokar's Sceptre - Hergé (Started: 2022-08-29 | Finished: 2022-08-29)</li>
-        <li>Getting Things Done - David Allen</li>
-        <li>The Adventures of Tintin - The Black Island - Hergé</li>
-        <li>The Adventures of Tintin - The Broken Ear - Hergé</li>
-        <li>Poirot Investigates - Agatha Christie</li>
-        <li>His Last Bow - Arthur Conan Doyle</li>
-        <li>Mother of Learning - Damagoj Kurmaic</li>
-        <li>Journey to the Center of the Earth - Jules Verne</li>
-        <li>Seven Languages in Seven Weeks - Bruce A. Tate</li>
-        <li>This Is Going To Hurt - Adam Kay</li>
-        <li>The Unicorn Project - Gene Kim</li>
-        <li>Exhalation - Ted Chiang</li>
-        <li>Adulthood is a Myth - Sarah Andersen</li>
-        <li>Artemis - Andy Weir</li>
-        <li>India's Railway Man (A Biography of E. Sreedharan) - Rajendra B. Aklekar</li>
-        <li>Operation Haygreeva - Prabhakar Aloka</li>
-    </ul>
-
-    <h3>2021</h3>
-    <ul>
-        <li>How to Live on 24 Hours a Day - Arnold Bennett</li>
-        <li>The Adventures of Tintin - Explorers on the Moon - Hergé</li>
-        <li>The Adventures of Tintin - Destination Moon - Hergé</li>
-        <li>The Adventures of Tintin - Tintin in the Land of the Soviets - Hergé</li>
-        <li>The Adventures of Tintin - Tintin in America - Hergé</li>
-        <li>The Adventures of Tintin - Cigars of the Pharaoh - Hergé</li>
-        <li>The Adventures of Tintin - The Blue Lotus - Hergé</li>
-    </ul>
-
-    <h3>Before I started tracking</h3>
-    <ul>
-    </ul>
-</div>
-
+  <div class="periods-wrapper">
+    <div class="period">
+      <h2 class="period-title">Currently reading</h2>
+      
+      <div class="book-list">
+        <ul>
+          <li>Snow Crash<br>Neal Stephenson</li>
+          <li>Modi @ 20: Dreams Meet Delivery<br>Multiple Authors</li>
+          <li>The Last Graduate<br>Naomi Novik (Started: 2023-01-13)</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="period">
+      <hr>
+      
+      <h2 class="period-title">2023</h2>
+      
+      <div class="book-list">
+        <ul>
+          <li>A Deadly Education<br>Naomi Novik (Started: 2023-01-03 | Finished: 2023-01-13)</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="period">
+      <hr>
+      
+      <h2 class="period-title">2022</h2>
+      
+      <div class="book-list">
+        <ul>
+          <li>Daughter of the Deep<br>Rick Riordan (Started: 2022-12-16 | Finished: 2022-12-21)</li>
+          <li>Project Hail Mary<br>Andy Weir (Started: 2022-10-04 | Finished: 2022-12-15)</li>
+          <li>The Adventures of Tintin And The Picaros<br>Hergé (Started: 2022-10-31 | Finished: 2022-10-31)</li>
+          <li>The Adventures of Tintin - Flight 714 To Sydney<br>Hergé (Started: 2022-10-28 | Finished: 2022-10-30)</li>
+          <li>The Adventures of Tintin - The Castafiore Emerald<br>Hergé (Started: 2022-10-26 | Finished: 2022-10-27)</li>
+          <li>The Adventures of Tintin - Tintin in Tibet<br>Hergé (Started: 2022-10-23 | Finished: 2022-10-24)</li>
+          <li>The Adventures of Tintin - The Red Sea Sharks<br>Hergé (Started: 2022-10-21 | Finished: 2022-10-22)</li>
+          <li>The Adventures of Tintin - The Calculus Affair<br>Hergé (Started: 2022-10-19 | Finished: 2022-10-20)</li>
+          <li>And Then There Were None<br>Agatha Christie (Started: 2022-09-25 | Finished: 2022-10-19)</li>
+          <li>The Adventures of Tintin - Land of Black Gold<br>Hergé (Started: 2022-10-12 | Finished: 2022-10-13)</li>
+          <li>The Adventures of Tintin - Prisoners of The Sun<br>Hergé (Started: 2022-10-10 | Finished: 2022-10-11)</li>
+          <li>The Adventures of Tintin - The Seven Crystal Balls<br>Hergé (Started: 2022-10-08 | Finished: 2022-10-09)</li>
+          <li>The Adventures of Tintin - Red Rackham's Treasure<br>Hergé (Started: 2022-10-06 | Finished: 2022-10-07)</li>
+          <li>The Adventures of Tintin - The Secret of The Unicorn<br>Hergé (Started: 2022-10-05 | Finished: 2022-10-06)</li>
+          <li>What If<br>Randall Munroe (Started: 2022-09-12 | Finished: 2022-10-03)</li>
+          <li>The Phoenix Project<br>Gene Kim, Kevin Behr, George Spafford (Started: 2022-09-12 | Finished: 2022-09-25)</li>
+          <li>How To<br>Randall Munroe(Finished: 2022-09-17)</li>
+          <li>The Man In The Brown Suit<br>Agatha Christie (Started: 2022-09-02 | Finished: 2022-09-09)</li>
+          <li>The Adventures of Tintin - The Shooting Star<br>Hergé (Started: 2022-09-01 | Finished: 2022-09-02)</li>
+          <li>The Adventures of Tintin - The Crab with The Golden Claws<br>Hergé (Started: 2022-08-30 | Finished: 2022-09-01)</li>
+          <li>The Adventures of Tintin - King Ottokar's Sceptre<br>Hergé (Started: 2022-08-29 | Finished: 2022-08-29)</li>
+          <li>Getting Things Done<br>David Allen</li>
+          <li>The Adventures of Tintin - The Black Island<br>Hergé</li>
+          <li>The Adventures of Tintin - The Broken Ear<br>Hergé</li>
+          <li>Poirot Investigates<br>Agatha Christie</li>
+          <li>His Last Bow<br>Arthur Conan Doyle</li>
+          <li>Mother of Learning<br>Damagoj Kurmaic</li>
+          <li>Journey to the Center of the Earth<br>Jules Verne</li>
+          <li>Seven Languages in Seven Weeks<br>Bruce A. Tate</li>
+          <li>This Is Going To Hurt<br>Adam Kay</li>
+          <li>The Unicorn Project<br>Gene Kim</li>
+          <li>Exhalation<br>Ted Chiang</li>
+          <li>Adulthood is a Myth<br>Sarah Andersen</li>
+          <li>Artemis<br>Andy Weir</li>
+          <li>India's Railway Man (A Biography of E. Sreedharan)<br>Rajendra B. Aklekar</li>
+          <li>Operation Haygreeva<br>Prabhakar Aloka</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="period">
+      <hr>
+      
+      <h2 class="period-title">2021</h2>
+      
+      <div class="book-list">
+        <ul>
+          <li>How to Live on 24 Hours a Day<br>Arnold Bennett</li>
+          <li>The Adventures of Tintin - Explorers on the Moon<br>Hergé</li>
+          <li>The Adventures of Tintin - Destination Moon<br>Hergé</li>
+          <li>The Adventures of Tintin - Tintin in the Land of the Soviets<br>Hergé</li>
+          <li>The Adventures of Tintin - Tintin in America<br>Hergé</li>
+          <li>The Adventures of Tintin - Cigars of the Pharaoh<br>Hergé</li>
+          <li>The Adventures of Tintin - The Blue Lotus<br>Hergé</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="idea">
+      <hr>
+      
+      <h2 class="period-title">Before I started tracking</h2>
+      
+      <div class="book-list">
+        <ul></ul>
+      </div>
+    </div>
   </div>
-  <div>
-    <div class="footer">
-  <div>
-    
-    <a href="https://github.com/VarunBarad" rel="me" target="_blank"><i class="fab fa-github social-links"></i></a>
-    
-    <a href="https://twitter.com/varun_barad" rel="me" target="_blank"><i class="fab fa-twitter social-links"></i></a>
-    
-    <a href="https://dev.to/varunbarad" rel="me" target="_blank"><i class="fab fa-dev social-links"></i></a>
-    
-    <a href="https://stackoverflow.com/users/4717436/varunbarad" rel="me" target="_blank"><i class="fab fa-stack-overflow social-links"></i></a>
-    
-  </div>
-  <div class="developer-attribution">
-    
-    Made by <a href="https://dixita0607.github.io" target="_blank">Dixita Ganatra</a>
-  </div>
-</div>
+</main>
+<footer>
+  <p>
+    © 2023 🚀 Varun Barad
+  </p>
+</footer>
 
-  </div>
-</div>
-
-<script src="/assets/js/jquery.min.js?v=ef1574d89f0298b7474277d57fbd909c196dbd07"></script>
-<script src="/assets/js/bootstrap.min.js?v=ef1574d89f0298b7474277d57fbd909c196dbd07"></script>
 </body>
 </html>
