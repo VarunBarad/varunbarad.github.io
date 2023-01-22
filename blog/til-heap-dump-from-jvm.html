@@ -6,8 +6,8 @@
   <link rel="stylesheet" href="/assets/css/style.css?v=f3b17a8e01709e6a0530fe19617613a38271c1ee">
   <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=f3b17a8e01709e6a0530fe19617613a38271c1ee">
   <link rel="icon" type="image/png" href="/favicon.png" />
-  <title>Challenge Update: Around the World in 80 Days - Varun Barad</title>
-  <meta name="description" content="Update on my 2020 year-end reading challenge" />
+  <title>📝 Taking a heap-dump from a running JVM process - Varun Barad</title>
+  <meta name="description" content="TIL: How to take heap-dump from a running JVM process" />
 
   <!-- Canonical URL -->
   
@@ -19,16 +19,16 @@
   <meta name="twitter:site" content="@varun_barad" />
   <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Challenge Update: Around the World in 80 Days" />
-  <meta name="twitter:description" content="Update on my 2020 year-end reading challenge" />
+  <meta name="twitter:title" content="📝 Taking a heap-dump from a running JVM process" />
+  <meta name="twitter:description" content="TIL: How to take heap-dump from a running JVM process" />
 
   <!-- Open-graph meta-data -->
   <meta property="og:site_name" content="Varun Barad - Curious Developer" />
   <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png" />
   <meta property="og:type" content="object" />
-  <meta property="og:title" content="Challenge Update: Around the World in 80 Days" />
-  <meta property="og:url" content="https://varunbarad.com/blog/challenge-update-around-the-world-in-80-days" />
-  <meta property="og:description" content="Update on my 2020 year-end reading challenge" />
+  <meta property="og:title" content="📝 Taking a heap-dump from a running JVM process" />
+  <meta property="og:url" content="https://varunbarad.com/blog/til-heap-dump-from-jvm" />
+  <meta property="og:description" content="TIL: How to take heap-dump from a running JVM process" />
 </head>
 <body>
 <div>
@@ -54,24 +54,16 @@
       <div class="post-container">
         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
           <div>
-            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/challenge-update-around-the-world-in-80-days">Challenge Update: Around the World in 80 Days</a></div>
+            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/til-heap-dump-from-jvm">📝 Taking a heap-dump from a running JVM process</a></div>
             <div class="text-center">
-              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2020-11-17 00:00:00 +0530">November 17, 2020</time>
+              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2023-01-19 13:00:00 +0530">January 19, 2023</time>
             </div>
-            <div class="post-content e-content"><p>So I finished my first book for the challenge last night. Around the World in 80 Days was definitely a fun read as the story progressed. I couldn’t enjoy it properly from the start because I was constantly comparing it both to the movie and to other suspense adventure stories (but there was no suspense in a way here as I knew that they do end up completing the journey in time).</p>
+            <div class="post-content e-content"><p>I was trying to find the root-cause of a memory leak and amongst many different rabbit holes, I learnt how to take the heap-dump from an application running on JVM.</p>
 
-<p>One thing I have taken from this 2 weeks’ experience is that I am cutting my book numbers for the challenge by half. Otherwise it would just be unnecessarily stressful to juggle this challenge along with all other responsibilities.</p>
+<p>The tool used is called <code class="language-plaintext highlighter-rouge">jmap</code> and the exact command to dump the output to a file called <code class="language-plaintext highlighter-rouge">heap-dump.bin</code> is:</p>
 
-<p>So now I only intend to finish these 4 books before the year ends:</p>
-
-<ul>
-  <li>Around the World in 80 Days (Already completed)</li>
-  <li>Smarter Faster Better (Somewhere between 15-20% progress in this one)</li>
-  <li>The Adventures of Sherlock Holmes</li>
-  <li>A Caribbean Mystery</li>
-</ul>
-
-<p>Will keep you folks posted on how things progress from here. Bye for now 👋</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jmap <span class="nt">-dump</span>:all,format<span class="o">=</span>b,file<span class="o">=</span>heap-dump.bin &lt;process-id-of-the-jvm-process&gt;
+</code></pre></div></div>
 </div>
           </div>
 
@@ -79,7 +71,7 @@
             Categories:
             <div>
               
-              <a href="/category/miscellaneous" class="badge badge-warning p-category">#miscellaneous</a>
+              <a href="/category/til" class="badge badge-warning p-category">#til</a>
               
               <a href="/blog" class="badge badge-warning">#all</a>
             </div>
