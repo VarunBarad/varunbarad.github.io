@@ -32,4 +32,10 @@ convert input.png -fuzz 90% -fill "#628FDB" -opaque "#000000" star_blue.png
 - `opaque`: Color to replace
 - `fill`: Color to replace with
 
+## Reverse the RGB colors in an image
+
+```shell
+convert input.png -channel RGB -negate output.png
+```
+
 Automation is exciting 🤖
