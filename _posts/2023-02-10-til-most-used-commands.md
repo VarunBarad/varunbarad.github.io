@@ -10,5 +10,5 @@ categories:
 Use this command to view the top-5 most used commands on your Mac terminal
 
 ```shell
-history | awk 'BEGIN {FS="[ \t]+|\\|"} {print $5}' | sort | uniq -c | sort -nr | head --lines 5
+history | awk 'BEGIN {FS="[ \t]+|\\|"} {print $5}' | sort | uniq --count | sort --reverse --sort=numeric | head --lines 5
 ```
