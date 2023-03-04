@@ -6,8 +6,8 @@
   <link rel="stylesheet" href="/assets/css/style.css?v=70098c745d57409f5a5b743c835663e59375d761">
   <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=70098c745d57409f5a5b743c835663e59375d761">
   <link rel="icon" type="image/png" href="/favicon.png" />
-  <title>📝 wget with custom filename - Varun Barad</title>
-  <meta name="description" content="TIL: How to download a file with wget to a custom filename" />
+  <title>Contacts Calendar - Varun Barad</title>
+  <meta name="description" content="A website which lets you export a calendar of important dates from your Google Contacts" />
 
   <!-- Canonical URL -->
   
@@ -19,16 +19,16 @@
   <meta name="twitter:site" content="@varun_barad" />
   <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="📝 wget with custom filename" />
-  <meta name="twitter:description" content="TIL: How to download a file with wget to a custom filename" />
+  <meta name="twitter:title" content="Contacts Calendar" />
+  <meta name="twitter:description" content="A website which lets you export a calendar of important dates from your Google Contacts" />
 
   <!-- Open-graph meta-data -->
   <meta property="og:site_name" content="Varun Barad - Curious Developer" />
   <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png" />
   <meta property="og:type" content="object" />
-  <meta property="og:title" content="📝 wget with custom filename" />
-  <meta property="og:url" content="https://varunbarad.com/blog/til-wget-custom-filename" />
-  <meta property="og:description" content="TIL: How to download a file with wget to a custom filename" />
+  <meta property="og:title" content="Contacts Calendar" />
+  <meta property="og:url" content="https://varunbarad.com/blog/contacts-calendar" />
+  <meta property="og:description" content="A website which lets you export a calendar of important dates from your Google Contacts" />
 </head>
 <body>
 <div>
@@ -54,12 +54,21 @@
       <div class="post-container">
         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
           <div>
-            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/til-wget-custom-filename">📝 wget with custom filename</a></div>
+            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/contacts-calendar">Contacts Calendar</a></div>
             <div class="text-center">
-              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2023-02-08 14:59:48 +0530">February 08, 2023</time>
+              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2023-03-04 17:18:03 +0530">March 04, 2023</time>
             </div>
-            <div class="post-content e-content"><div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget <span class="nt">--output-document</span> <span class="s2">"&lt;filename-goes-here&gt;"</span> <span class="nt">--continue</span> <span class="s2">"&lt;file-url-goes-here&gt;"</span>
-</code></pre></div></div>
+            <div class="post-content e-content"><p>I store birthdays of my contacts right in my contacts application on phone. They get synced to Google Contacts.</p>
+
+<p>The drawback to that is I didn’t get notified of any upcoming birthdays. Google does show this in your calendar, but I don’t use my Google calendar as my day-to-day calendar.</p>
+
+<p>So I decided to build a service of my own which would let me export these into separate calendar feeds. You can go to <a href="https://contacts-calendar.varunbarad.com">Contacts Calendar</a> to try it out for yourself.</p>
+
+<p>Keeping user’s privacy in mind, this project does not store authentication token for your Google account, nor does it store your contacts data. It even gives you the calendar feed file and does not directly host it on the web.  That also allowed me to side-step thinking about maintaining user accounts and data.</p>
+
+<p>I used this also as an opportunity to learn the basics of Spring Boot framework using Kotlin.</p>
+
+<p>Check it out and let me know what you like and what you would like to change about it. At the very least, have fun.</p>
 </div>
           </div>
 
@@ -67,7 +76,9 @@
             Categories:
             <div>
               
-              <a href="/category/til" class="badge badge-warning p-category">#til</a>
+              <a href="/category/web" class="badge badge-warning p-category">#web</a>
+              
+              <a href="/category/programming" class="badge badge-warning p-category">#programming</a>
               
               <a href="/blog" class="badge badge-warning">#all</a>
             </div>
