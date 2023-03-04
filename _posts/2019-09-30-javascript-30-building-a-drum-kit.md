@@ -11,7 +11,7 @@ categories:
   - "javascript-30"
 ---
 
-[Wes Bos][wes-bos-website]{:target="_blank"} has created a [course][js-30-website]{:target="_blank"} to get you confident in your JS skills in 30 days. In it you work on a new project daily for 30 days and in each project you make something using vanilla JS without any frameworks or libraries.
+[Wes Bos][wes-bos-website] has created a [course][js-30-website] to get you confident in your JS skills in 30 days. In it you work on a new project daily for 30 days and in each project you make something using vanilla JS without any frameworks or libraries.
 
 Today I started the challenge and first project was to make a drum-kit where different sounds are played based on the keyboard button you press. And the corresponding button gets highlighted on screen.
 
@@ -31,7 +31,7 @@ The syntax for this is very simple
 <target-element>.addEventListener('<event-name>', <function-to-call-when-event-is-fired>);
 ```
 
-You can find a list of supported events [here][js-dom-events-list]{:target="_blank"} but beware, the complete list of events is too large and you might never need to use most of them.
+You can find a list of supported events [here][js-dom-events-list] but beware, the complete list of events is too large and you might never need to use most of them.
 
 ## Working with keyboard events and identifying key-codes
 
@@ -46,7 +46,7 @@ window.addEventListener('keydown', handleKeyDownEvent);
 Here we attach an event-listener for the `keydown` event to the `window` object since we want to capture the events across our whole web-page.
 Then we find out which key was pressed based on the `keyCode` value passed via the fired event.
 
-Wes has created a [nifty little website (https://keycode.info)][keycode-info-website]{:target="_blank"} which we can use to find the corresponding `keyCode` for any key.
+Wes has created a [nifty little website (https://keycode.info)][keycode-info-website] which we can use to find the corresponding `keyCode` for any key.
 
 ## Playing audio and restarting the audio when it is already playing
 
@@ -97,9 +97,9 @@ So when we attach an event-listener on each of our button and on triggering of t
 
 ## Conclusion
 
-Hope I have been able to explain what I learned in today's challenge. Hit me up on twitter [@varun_barad][varun-twitter]{:target="_blank"} in case you haven't understood something from this article or you have something new for me to learn.
+Hope I have been able to explain what I learned in today's challenge. Hit me up on twitter [@varun_barad][varun-twitter] in case you haven't understood something from this article or you have something new for me to learn.
 
-In any case, don't forget to check out the [JavaScript30 challenge][js-30-website]{:target="_blank"} from Wes Bos. It is an awesome way to get some JS confidence.
+In any case, don't forget to check out the [JavaScript30 challenge][js-30-website] from Wes Bos. It is an awesome way to get some JS confidence.
 
 [wes-bos-website]: https://wesbos.com
 [js-30-website]: https://javascript30.com
