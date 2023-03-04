@@ -27,99 +27,100 @@
   
   <!-- Styles kept here for now -->
   <style>
-    * {
-      box-sizing: border-box;
-    }
-    body {
-      font-family: sans-serif;
-      margin: 0;
-      background: #313131;
-    }
-    header {
-      background: #661111;
-      color: #dfdfdf;
-      max-width: 1080px;
-      margin: 0 auto;
-    }
-    header a {
-      color: #dfdfdf;
-    }
-    header a:visited {
-      color: #dfdfdf;
-    }
-    header a:hover {
-      text-decoration: underline;
-    }
-    #title {
-      width: 100%;
-      padding: 1em;
-      font-size: 2rem;
-      text-align: center;
-    }
-    #title > a {
-      text-decoration: none;
-    }
-    #title > a:hover {
-      text-decoration: underline;
-    }
-    nav {
-      display: block;
-      padding: 0;
-    }
-    nav ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: flex-start;
-      align-items: stretch;
-      align-content: flex-start;
-      gap: 8px;
-    }
-    nav ul li a {
-      padding: 1em;
-      display: block;
-      font-size: 1.2rem;
-      text-decoration: none;
-    }
-    nav ul li a:hover {
-    }
-    main {
-      padding: 1em;
-      background: #121212;
-      color: #dfdfdf;
-      max-width: 1080px;
-      margin: 0 auto;
-    }
-    main h2 {
-      font-size: 1.6rem;
-    }
-    main p {
-      text-align: justify;
-      font-size: 1.1rem;
-    }
-    main a {
-      color: #dfdfdf;
-      font-size: 1.1rem;
-    }
-    main a:visited {
-      color: #dfdfdf;
-    }
-    h1 {
-      font-size: 2.5rem;
-    }
-    footer {
-      border-top: #dfdfdf 1px solid;
-      background: #121212;
-      color: #dfdfdf;
-      text-align: center;
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 0.5em;
-    }
-  </style>
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: sans-serif;
+    margin: 0;
+    background: #313131;
+  }
+  header {
+    background: #661111;
+    color: #dfdfdf;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  header a {
+    color: #dfdfdf;
+  }
+  header a:visited {
+    color: #dfdfdf;
+  }
+  header a:hover {
+    text-decoration: underline;
+  }
+  #title {
+    width: 100%;
+    padding: 1em;
+    font-size: 2rem;
+    text-align: center;
+  }
+  #title > a {
+    text-decoration: none;
+  }
+  #title > a:hover {
+    text-decoration: underline;
+  }
+  nav {
+    display: block;
+    padding: 0;
+  }
+  nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    gap: 8px;
+  }
+  nav ul li a {
+    padding: 1em;
+    display: block;
+    font-size: 1.2rem;
+    text-decoration: none;
+  }
+  nav ul li a:hover {
+  }
+  main {
+    padding: 1em;
+    background: #121212;
+    color: #dfdfdf;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  main h2 {
+    font-size: 1.6rem;
+  }
+  main p {
+    text-align: justify;
+    font-size: 1.1rem;
+  }
+  main a {
+    color: #dfdfdf;
+    font-size: 1.1rem;
+  }
+  main a:visited {
+    color: #dfdfdf;
+  }
+  h1 {
+    font-size: 2.5rem;
+  }
+  footer {
+    border-top: #dfdfdf 1px solid;
+    background: #121212;
+    color: #dfdfdf;
+    text-align: center;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0.5em;
+  }
+</style>
+
 </head>
 <body>
 <header>
@@ -136,6 +137,7 @@
     </ul>
   </nav>
 </header>
+
 <main>
   <h1>Projects</h1>
   
@@ -153,6 +155,23 @@
     <div class="project">
       <hr>
       
+      <h2 class="project-title">Contacts Calendar</h2>
+      
+      <div class="project-description">
+        <p>
+          A website which lets you export a calendar of important dates from your Google Contacts. I built this as a
+          side-project to learn the basics of using Spring Boot framework.
+        </p>
+        <ul>
+          <li><a href="https://contacts-calendar.varunbarad.com">Website</a></li>
+          <li><a href="https://github.com/VarunBarad/contacts-calendar">Source code</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="project">
+      <hr>
+      
       <h2 class="project-title">Trust Invitation</h2>
       
       <div class="project-description">
@@ -160,8 +179,8 @@
           A website built so that I can have good conversation sparkers easily accessible at all times.
         </p>
         <ul>
-          <li><a href="https://trust.varunbarad.com" target="_blank">Website</a></li>
-          <li><a href="https://github.com/VarunBarad/trust-invitation" target="_blank">Source code</a></li>
+          <li><a href="https://trust.varunbarad.com">Website</a></li>
+          <li><a href="https://github.com/VarunBarad/trust-invitation">Source code</a></li>
         </ul>
       </div>
     </div>
@@ -177,8 +196,8 @@
           instead of infinitely scrolling the social media.
         </p>
         <ul>
-          <li><a href="https://improvement-roll.varunbarad.com" target="_blank">Website</a></li>
-          <li><a href="https://github.com/VarunBarad/improvement-roll" target="_blank">Source code</a></li>
+          <li><a href="https://improvement-roll.varunbarad.com">Website</a></li>
+          <li><a href="https://github.com/VarunBarad/improvement-roll">Source code</a></li>
         </ul>
       </div>
     </div>
@@ -193,9 +212,9 @@
           An application which helps me record locations which I want to save and keep track of.
         </p>
         <ul>
-          <li><a href="https://play.google.com/store/apps/details?id=com.varunbarad.myplaces" target="_blank">App on Play
+          <li><a href="https://play.google.com/store/apps/details?id=com.varunbarad.myplaces">App on Play
             Store</a></li>
-          <li><a href="https://github.com/VarunBarad/my-places-android/" target="_blank">Source code</a></li>
+          <li><a href="https://github.com/VarunBarad/my-places-android/">Source code</a></li>
         </ul>
       </div>
     </div>
@@ -211,9 +230,9 @@
           or anything else to the app and then later open it from there.
         </p>
         <ul>
-          <li><a href="https://play.google.com/store/apps/details?id=com.varunbarad.toreadmanager" target="_blank">App on
+          <li><a href="https://play.google.com/store/apps/details?id=com.varunbarad.toreadmanager">App on
             Play Store</a></li>
-          <li><a href="https://github.com/VarunBarad/to-read-manager-android/" target="_blank">Source code</a></li>
+          <li><a href="https://github.com/VarunBarad/to-read-manager-android/">Source code</a></li>
         </ul>
       </div>
     </div>
@@ -231,9 +250,9 @@
           streamlined way for students to keep track of their attendance.
         </p>
         <ul>
-          <li><a href="https://play.google.com/store/apps/details?id=com.varunbarad.attendancetracker" target="_blank">App
+          <li><a href="https://play.google.com/store/apps/details?id=com.varunbarad.attendancetracker">App
             on Play Store</a></li>
-          <li><a href="https://github.com/VarunBarad/Attendance-Tracker/" target="_blank">Source code</a></li>
+          <li><a href="https://github.com/VarunBarad/Attendance-Tracker/">Source code</a></li>
         </ul>
       </div>
     </div>
@@ -250,7 +269,7 @@
           both Android & Windows platforms. We have been doing it every year since 2015.
         </p>
         <ul>
-          <li><a href="https://github.com/bvmites/udaan17-android-app/" target="_blank">Source code</a></li>
+          <li><a href="https://github.com/bvmites/udaan17-android-app/">Source code</a></li>
         </ul>
       </div>
     </div>
@@ -267,7 +286,7 @@
           wired the UI created by my team-mates with the API using JavaScript.
         </p>
         <ul>
-          <li><a href="https://github.com/bvmites/udaan16-sms-web-app/" target="_blank">Source code</a></li>
+          <li><a href="https://github.com/bvmites/udaan16-sms-web-app/">Source code</a></li>
         </ul>
       </div>
     </div>
@@ -283,7 +302,7 @@
           APIs, loading images from network and local data persistence in an Android application.
         </p>
         <ul>
-          <li><a href="https://github.com/VarunBarad/PopularMovies/" target="_blank">Source code</a></li>
+          <li><a href="https://github.com/VarunBarad/PopularMovies/">Source code</a></li>
         </ul>
       </div>
     </div>
@@ -299,7 +318,7 @@
           on Android from network using a famous library named ExoPlayer.
         </p>
         <ul>
-          <li><a href="https://github.com/VarunBarad/BakingApp/" target="_blank">Source code</a></li>
+          <li><a href="https://github.com/VarunBarad/BakingApp/">Source code</a></li>
         </ul>
       </div>
     </div>
@@ -338,9 +357,9 @@
           Sadly this project never reached finishing point and was thus never published.
         </p>
         <ul>
-          <li><a href="https://github.com/VarunBarad/dptk-contacts-app/" target="_blank">Source code (Android App)</a>
+          <li><a href="https://github.com/VarunBarad/dptk-contacts-app/">Source code (Android App)</a>
           </li>
-          <li><a href="https://github.com/VarunBarad/dptk-contacts-uploader/" target="_blank">Source code (Desktop
+          <li><a href="https://github.com/VarunBarad/dptk-contacts-uploader/">Source code (Desktop
             Uploader)</a></li>
         </ul>
       </div>
@@ -361,7 +380,7 @@
           other than just to get more experience with Rust and to have fun.
         </p>
         <ul>
-          <li><a href="https://github.com/VarunBarad/wallpaper-changer/" target="_blank">Source code</a></li>
+          <li><a href="https://github.com/VarunBarad/wallpaper-changer/">Source code</a></li>
         </ul>
       </div>
     </div>
@@ -378,7 +397,7 @@
           free or paid. It also taught me how to separate an app into different modules for better code reuse.
         </p>
         <ul>
-          <li><a href="https://github.com/VarunBarad/Digital-Joker/" target="_blank">Source code</a></li>
+          <li><a href="https://github.com/VarunBarad/Digital-Joker/">Source code</a></li>
         </ul>
       </div>
     </div>
@@ -394,14 +413,14 @@
           He built an HTTP API and called me in to develop the Android app which uses that API.
         </p>
         <ul>
-          <li><a href="https://github.com/VarunBarad/veggkart/" target="_blank">Source code</a></li>
+          <li><a href="https://github.com/VarunBarad/veggkart/">Source code</a></li>
         </ul>
       </div>
     </div>
   </div>
   
   <p>
-    You can find all my open-source projects on <a href="https://github.com/VarunBarad" rel="me" target="_blank">my GitHub account</a>.
+    You can find all my open-source projects on <a href="https://github.com/VarunBarad" rel="me">my GitHub account</a>.
   </p>
 </main>
 <footer>
