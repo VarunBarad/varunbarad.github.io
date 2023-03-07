@@ -1,25 +1,77 @@
 ---
-layout: default
-title: About
 permalink: "/"
 ---
-
-{% assign about = site.data.personal.about %}
-
-<div class="row text-center home">
-  <div class="row">
-    <img src="./assets/images/profile.png" alt="Profile picture - Varun Barad" class="center-block">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" type="image/png" href="/favicon.png"/>
+  <title>Ideas - Varun Barad</title>
+  <meta name="description" content="{{site.description}}"/>
+  
+  <!-- RSS Feed meta-data -->
+  {% feed_meta %}
+  
+  <!-- Twitter meta-data -->
+  <meta name="twitter:site" content="@{{site.twitter_username}}"/>
+  <meta name="twitter:image:src" content="{{site.url}}/assets/images/logo-hd.png"/>
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:title" content="{{site.title}}"/>
+  <meta name="twitter:description" content="{{site.description}}"/>
+  
+  <!-- Open-Graph meta-data -->
+  <meta property="og:site_name" content="{{site.title}}"/>
+  <meta property="og:image" content="{{site.url}}/assets/images/logo-hd.png"/>
+  <meta property="og:type" content="object"/>
+  <meta property="og:title" content="{{site.title}}"/>
+  <meta property="og:url" content="{{site.url}}{{page.url}}"/>
+  <meta property="og:description" content="{{site.description}}"/>
+  
+  <!-- Styles kept here for now -->
+  {% include new_styles.html %}
+</head>
+<body>
+{% include new_header.html %}
+<main>
+  <div class="container-full-width">
+    <img src="/assets/images/profile.png" alt="Profile picture of Varun">
   </div>
-  <div class="row">
-    <div class="name">Hi, I'm {{about.name}}</div>
+  <div>
+    <p>
+      I am a backend developer working currently at <a href="https://obvious.in">Obvious</a> on <a
+        href="https://getpause.com">Pause</a>. I enjoy building quality software and learning new things.
+    </p>
+    <p>
+      I am interested in online-privacy, owning our content/data, sci-fi stories and many other things. So feel free to
+      <a href="/contact">contact me</a> to discuss that or anything else.
+    </p>
   </div>
-  <div class="row"><br></div>
-  <div class="row about">
-    <div class="col-md-3 col-xs-1"></div>
-    <div class="col-md-6 col-xs-10">
-      <p>I am an Android developer working currently at <a href="https://obvious.in">Obvious</a>. I enjoy building quality software and learning new things.</p>
-      <p>I am interested in online-privacy, owning our content/data, sci-fi stories and many other things. So feel free to <a href="/contact">contact me</a> to discuss that or anything else.</p>
-    </div>
-    <div class="col-md-3 col-xs-1"></div>
-  </div>
-</div>
+  
+  <hr>
+  
+  <h2>Recent articles ({{ site.posts | size }} posts)</h2>
+  
+  <ul>
+    {% for post in site.posts limit:3 %}
+    <li>{{ post.title }}</li>
+    {% endfor %}
+  </ul>
+  
+  <p><a href="/blog/">View all articles</a></p>
+  
+  <hr>
+  
+  <h2>Recent projects ({{ site.data.projects | size }} projects)</h2>
+  
+  <ul>
+    {% for project in site.data.projects limit:3 %}
+    <li>{{project.name}}</li>
+    {% endfor %}
+  </ul>
+  
+  <p><a href="/projects/">View all projects</a></p>
+</main>
+{% include new_footer.html %}
+</body>
+</html>
