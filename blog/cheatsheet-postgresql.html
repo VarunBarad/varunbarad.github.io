@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/assets/css/style.css?v=bf7faf11b2f2574a6c88cf5bdf61fcab8cc73a9f">
-  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=bf7faf11b2f2574a6c88cf5bdf61fcab8cc73a9f">
+  <link rel="stylesheet" href="/assets/css/style.css?v=f8fca262ebcbf44c1ef4e206112786e1372150ab">
+  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=f8fca262ebcbf44c1ef4e206112786e1372150ab">
   <link rel="icon" type="image/png" href="/favicon.png" />
   <title>Cheatsheet - PostgreSQL - Varun Barad</title>
   <meta name="description" content="A cheat-sheet for PostgreSQL database" />
@@ -130,6 +130,49 @@
 <span class="k">for</span> <span class="k">each</span> <span class="k">row</span> <span class="k">execute</span> <span class="k">procedure</span> <span class="n">update_modified_timestamp</span><span class="p">();</span>
 </code></pre></div></div>
 
+<h2 id="generate-list-of-months-between-two-dates">Generate list of months between two dates</h2>
+
+<p>This will give us a list of dates for the first day of every month that falls between <code class="language-plaintext highlighter-rouge">earlier_date</code> and <code class="language-plaintext highlighter-rouge">later_date</code>. Taking the example of <code class="language-plaintext highlighter-rouge">earlier_date = '2022-11-16'</code> and <code class="language-plaintext highlighter-rouge">later_date = '2023-02-14'</code>, it will return November 2022, December 2022, January 2023 and February 2023.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">select</span> <span class="n">generate_series</span><span class="p">(</span>
+    <span class="k">cast</span><span class="p">(</span><span class="n">date_trunc</span><span class="p">(</span><span class="s1">'month'</span><span class="p">,</span> <span class="n">earlier_date</span><span class="p">)</span> <span class="k">as</span> <span class="nb">date</span><span class="p">),</span>
+    <span class="k">cast</span><span class="p">(</span><span class="n">date_trunc</span><span class="p">(</span><span class="s1">'month'</span><span class="p">,</span> <span class="n">later_date</span><span class="p">)</span> <span class="k">as</span> <span class="nb">date</span><span class="p">),</span>
+    <span class="n">interval</span> <span class="s1">'1 month'</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="count-rows-that-satisfy-a-condition">Count rows that satisfy a condition</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">payments</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">customer_id</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">payment_id</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">payment_amount</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">payment_date</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>If we want to count the number of payments where <code class="language-plaintext highlighter-rouge">payment_amount</code> is greater than 100 then we use a <code class="language-plaintext highlighter-rouge">filter</code> on the <code class="language-plaintext highlighter-rouge">count</code> aggregate:</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">select</span> <span class="n">customer_id</span><span class="p">,</span>
+    <span class="k">count</span><span class="p">(</span><span class="n">payment_id</span><span class="p">)</span> <span class="n">filter</span> <span class="p">(</span><span class="k">where</span> <span class="n">payment_amount</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">)</span>
+<span class="k">from</span> <span class="n">payments</span>
+<span class="k">group</span> <span class="k">by</span> <span class="n">customer_id</span><span class="p">;</span>
+</code></pre></div></div>
+
 <p>Have a great day people 👋</p>
 </div>
           </div>
@@ -169,7 +212,7 @@
   </div>
 </div>
 
-<script src="/assets/js/jquery.min.js?v=bf7faf11b2f2574a6c88cf5bdf61fcab8cc73a9f"></script>
-<script src="/assets/js/bootstrap.min.js?v=bf7faf11b2f2574a6c88cf5bdf61fcab8cc73a9f"></script>
+<script src="/assets/js/jquery.min.js?v=f8fca262ebcbf44c1ef4e206112786e1372150ab"></script>
+<script src="/assets/js/bootstrap.min.js?v=f8fca262ebcbf44c1ef4e206112786e1372150ab"></script>
 </body>
 </html>

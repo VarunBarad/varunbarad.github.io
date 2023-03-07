@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://varunbarad.com/" rel="alternate" type="text/html" /><updated>2023-03-05T23:26:23+05:30</updated><id>https://varunbarad.com/feed.xml</id><title type="html">Varun Barad - Curious Developer</title><subtitle>My online home where I post about new things I learn or find interesting.</subtitle><author><name>Varun Barad</name></author><entry><title type="html">Contacts Calendar</title><link href="https://varunbarad.com/blog/contacts-calendar" rel="alternate" type="text/html" title="Contacts Calendar" /><published>2023-03-04T17:18:03+05:30</published><updated>2023-03-04T17:18:03+05:30</updated><id>https://varunbarad.com/blog/contacts-calendar</id><content type="html" xml:base="https://varunbarad.com/blog/contacts-calendar">&lt;p&gt;I store birthdays of my contacts right in my contacts application on phone. They get synced to Google Contacts.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://varunbarad.com/" rel="alternate" type="text/html" /><updated>2023-03-07T20:06:45+05:30</updated><id>https://varunbarad.com/feed.xml</id><title type="html">Varun Barad - Curious Developer</title><subtitle>My online home where I post about new things I learn or find interesting.</subtitle><author><name>Varun Barad</name></author><entry><title type="html">Contacts Calendar</title><link href="https://varunbarad.com/blog/contacts-calendar" rel="alternate" type="text/html" title="Contacts Calendar" /><published>2023-03-04T17:18:03+05:30</published><updated>2023-03-04T17:18:03+05:30</updated><id>https://varunbarad.com/blog/contacts-calendar</id><content type="html" xml:base="https://varunbarad.com/blog/contacts-calendar">&lt;p&gt;I store birthdays of my contacts right in my contacts application on phone. They get synced to Google Contacts.&lt;/p&gt;
 
 &lt;p&gt;The drawback to that is I didn’t get notified of any upcoming birthdays. Google does show this in your calendar, but I don’t use my Google calendar as my day-to-day calendar.&lt;/p&gt;
 
@@ -359,6 +359,49 @@ We cannot castle in this case because the square where king would end up is thre
 
 &lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;create&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;trigger&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;update_timestamp&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;before&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;update&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;on&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;people&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;row&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;execute&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;procedure&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;update_modified_timestamp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;generate-list-of-months-between-two-dates&quot;&gt;Generate list of months between two dates&lt;/h2&gt;
+
+&lt;p&gt;This will give us a list of dates for the first day of every month that falls between &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;earlier_date&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;later_date&lt;/code&gt;. Taking the example of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;earlier_date = '2022-11-16'&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;later_date = '2023-02-14'&lt;/code&gt;, it will return November 2022, December 2022, January 2023 and February 2023.&lt;/p&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;select&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;generate_series&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;cast&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;date_trunc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'month'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;earlier_date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;cast&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;date_trunc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'month'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;later_date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;interval&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'1 month'&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;count-rows-that-satisfy-a-condition&quot;&gt;Count rows that satisfy a condition&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;payments&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;customer_id&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;payment_id&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;payment_amount&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;payment_date&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;If we want to count the number of payments where &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;payment_amount&lt;/code&gt; is greater than 100 then we use a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;filter&lt;/code&gt; on the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;count&lt;/code&gt; aggregate:&lt;/p&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;select&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;customer_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;payment_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;payment_amount&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;payments&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;group&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;by&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;customer_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Have a great day people 👋&lt;/p&gt;</content><author><name>Varun Barad</name></author><category term="cheat-sheet" /><summary type="html">Dump database to a script (.sql) file</summary></entry><entry><title type="html">Tips when building a PC</title><link href="https://varunbarad.com/blog/tips-when-building-a-pc" rel="alternate" type="text/html" title="Tips when building a PC" /><published>2021-05-15T00:00:00+05:30</published><updated>2021-05-15T00:00:00+05:30</updated><id>https://varunbarad.com/blog/tips-when-building-a-pc</id><content type="html" xml:base="https://varunbarad.com/blog/tips-when-building-a-pc">&lt;p&gt;One of my friend emailed me today saying that he wants to build a RISC-V PC and was asking for any tips/advice on the basic dos and don’ts and suggested that I &lt;em&gt;can&lt;/em&gt; make it into a blog-post. So following the &lt;a href=&quot;https://www.hanselman.com/blog/do-they-deserve-the-gift-of-your-keystrokes&quot;&gt;conserving the keystrokes rule&lt;/a&gt; from &lt;a href=&quot;https://www.hanselman.com/&quot;&gt;Scott Hanselman&lt;/a&gt; here is the blog post that generated out of it.&lt;/p&gt;
