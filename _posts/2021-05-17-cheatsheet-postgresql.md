@@ -88,4 +88,34 @@ create trigger update_timestamp before update on people
 for each row execute procedure update_modified_timestamp();
 ```
 
+## Generate list of months between two dates
+
+This will give us a list of dates for the first day of every month that falls between `earlier_date` and `later_date`. Taking the example of `earlier_date = '2022-11-16'` and `later_date = '2023-02-14'`, it will return November 2022, December 2022, January 2023 and February 2023.
+
+```sql
+select generate_series(
+    cast(date_trunc('month', earlier_date) as date),
+    cast(date_trunc('month', later_date) as date),
+    interval '1 month'
+);
+```
+
+## Count rows that satisfy a condition
+
+|    payments    |
+|:--------------:|
+|  customer_id   |
+|   payment_id   |
+| payment_amount |
+|  payment_date  |
+
+If we want to count the number of payments where `payment_amount` is greater than 100 then we use a `filter` on the `count` aggregate:
+
+```sql
+select customer_id,
+    count(payment_id) filter (where payment_amount > 100)
+from payments
+group by customer_id;
+```
+
 Have a great day people 👋
