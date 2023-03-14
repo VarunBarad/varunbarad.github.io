@@ -6,8 +6,8 @@
   <link rel="stylesheet" href="/assets/css/style.css?v=aa5d9a7c53baaf055bd03e5520b0886d612b17fb">
   <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=aa5d9a7c53baaf055bd03e5520b0886d612b17fb">
   <link rel="icon" type="image/png" href="/favicon.png" />
-  <title>📝 List files updated in a git commit - Varun Barad</title>
-  <meta name="description" content="TIL: How to see a list of files updated in a git commit" />
+  <title>📝 Navigate to a path in Mac Finder - Varun Barad</title>
+  <meta name="description" content="TIL: How to navigate to a given system path without clicking through folders" />
 
   <!-- Canonical URL -->
   
@@ -19,16 +19,16 @@
   <meta name="twitter:site" content="@varun_barad" />
   <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="📝 List files updated in a git commit" />
-  <meta name="twitter:description" content="TIL: How to see a list of files updated in a git commit" />
+  <meta name="twitter:title" content="📝 Navigate to a path in Mac Finder" />
+  <meta name="twitter:description" content="TIL: How to navigate to a given system path without clicking through folders" />
 
   <!-- Open-graph meta-data -->
   <meta property="og:site_name" content="Varun Barad - Curious Developer" />
   <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png" />
   <meta property="og:type" content="object" />
-  <meta property="og:title" content="📝 List files updated in a git commit" />
-  <meta property="og:url" content="https://varunbarad.com/blog/til-list-files-in-a-git-commit" />
-  <meta property="og:description" content="TIL: How to see a list of files updated in a git commit" />
+  <meta property="og:title" content="📝 Navigate to a path in Mac Finder" />
+  <meta property="og:url" content="https://varunbarad.com/blog/til-navigate-path-mac-finder" />
+  <meta property="og:description" content="TIL: How to navigate to a given system path without clicking through folders" />
 </head>
 <body>
 <div>
@@ -54,14 +54,15 @@
       <div class="post-container">
         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
           <div>
-            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/til-list-files-in-a-git-commit">📝 List files updated in a git commit</a></div>
+            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/til-navigate-path-mac-finder">📝 Navigate to a path in Mac Finder</a></div>
             <div class="text-center">
-              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2021-11-17 00:00:00 +0530">November 17, 2021</time>
+              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2023-03-14 18:32:10 +0530">March 14, 2023</time>
             </div>
-            <div class="post-content e-content"><p>I wanted to see the list of files committed in my last commit</p>
+            <div class="post-content e-content"><p>For many years I had a slight frustration with Mac’s default file explorer utility Finder that it was not exposing any convenient way to go to a given path without making me click through those folders individually.</p>
 
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git show <span class="nt">--pretty</span><span class="o">=</span><span class="s2">""</span> <span class="nt">--name-only</span> &lt;sha1-commit-hash&gt;
-</code></pre></div></div>
+<p>Today I learnt that the way to do it is to press <code class="language-plaintext highlighter-rouge">Cmd + Shift + G</code> when Finder is in focus. It opens a dialogue box where you can give the full path, and it will open that directly.</p>
+
+<p><img alt="Screenshot of the opened dialog box" src="../assets/images/posts/til-navigate-path-mac-finder/screenshot.png" style="width: 80%; height: auto;" /></p>
 </div>
           </div>
 
