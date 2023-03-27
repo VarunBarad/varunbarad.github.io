@@ -6,8 +6,8 @@
   <link rel="stylesheet" href="/assets/css/style.css?v=152cb45cca147d2c411cfab7c61faba2a19fcc0b">
   <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=152cb45cca147d2c411cfab7c61faba2a19fcc0b">
   <link rel="icon" type="image/png" href="/favicon.png" />
-  <title>📝 Most used commands - Varun Barad</title>
-  <meta name="description" content="TIL: How to view your most used terminal commands on a Mac" />
+  <title>📝 Find the first entry in each group - Varun Barad</title>
+  <meta name="description" content="TIL: How to get the first entry from each group given a sort order" />
 
   <!-- Canonical URL -->
   
@@ -19,16 +19,16 @@
   <meta name="twitter:site" content="@varun_barad" />
   <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="📝 Most used commands" />
-  <meta name="twitter:description" content="TIL: How to view your most used terminal commands on a Mac" />
+  <meta name="twitter:title" content="📝 Find the first entry in each group" />
+  <meta name="twitter:description" content="TIL: How to get the first entry from each group given a sort order" />
 
   <!-- Open-graph meta-data -->
   <meta property="og:site_name" content="Varun Barad - Curious Developer" />
   <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png" />
   <meta property="og:type" content="object" />
-  <meta property="og:title" content="📝 Most used commands" />
-  <meta property="og:url" content="https://varunbarad.com/blog/til-most-used-commands" />
-  <meta property="og:description" content="TIL: How to view your most used terminal commands on a Mac" />
+  <meta property="og:title" content="📝 Find the first entry in each group" />
+  <meta property="og:url" content="https://varunbarad.com/blog/til-postgres-first-in-each-group" />
+  <meta property="og:description" content="TIL: How to get the first entry from each group given a sort order" />
 </head>
 <body>
 <div>
@@ -54,14 +54,40 @@
       <div class="post-container">
         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
           <div>
-            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/til-most-used-commands">📝 Most used commands</a></div>
+            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/til-postgres-first-in-each-group">📝 Find the first entry in each group</a></div>
             <div class="text-center">
-              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2023-02-10 11:04:06 +0530">February 10, 2023</time>
+              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2023-03-27 17:39:15 +0530">March 27, 2023</time>
             </div>
-            <div class="post-content e-content"><p>Use this command to view the top-5 most used commands on your Mac terminal</p>
+            <div class="post-content e-content"><table>
+  <thead>
+    <tr>
+      <th style="text-align: center">payments</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">customer_id</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">payment_id</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">payment_amount</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">payment_date</td>
+    </tr>
+  </tbody>
+</table>
 
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">history</span> | <span class="nb">awk</span> <span class="s1">'BEGIN {FS="[ \t]+|\\|"} {print $5}'</span> | <span class="nb">sort</span> | <span class="nb">uniq</span> <span class="nt">--count</span> | <span class="nb">sort</span> <span class="nt">--reverse</span> <span class="nt">--sort</span><span class="o">=</span>numeric | <span class="nb">head</span> <span class="nt">--lines</span> 5
+<p>If we want to see the highest amount of payment for each customer_id then we need to do:</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">select</span> <span class="k">distinct</span> <span class="n">customer_id</span><span class="p">,</span>
+    <span class="n">first_value</span><span class="p">(</span><span class="n">payment_amount</span><span class="p">)</span> <span class="n">over</span> <span class="p">(</span><span class="n">partition</span> <span class="k">by</span> <span class="n">customer_id</span> <span class="k">order</span> <span class="k">by</span> <span class="n">payment_amount</span> <span class="k">desc</span><span class="p">)</span> <span class="k">as</span> <span class="n">highest_payment_amount</span>
+<span class="k">from</span> <span class="n">payments</span>
 </code></pre></div></div>
+
+<p>Note that you don’t need to specify a <code class="language-plaintext highlighter-rouge">group by</code> clause for the overall query in this case.</p>
 </div>
           </div>
 

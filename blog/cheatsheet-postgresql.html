@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/assets/css/style.css?v=b9bc151bb049fea3dab90c166c988898064c9b5d">
-  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=b9bc151bb049fea3dab90c166c988898064c9b5d">
+  <link rel="stylesheet" href="/assets/css/style.css?v=152cb45cca147d2c411cfab7c61faba2a19fcc0b">
+  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=152cb45cca147d2c411cfab7c61faba2a19fcc0b">
   <link rel="icon" type="image/png" href="/favicon.png" />
   <title>Cheatsheet - PostgreSQL - Varun Barad</title>
   <meta name="description" content="A cheat-sheet for PostgreSQL database" />
@@ -173,6 +173,39 @@
 <span class="k">group</span> <span class="k">by</span> <span class="n">customer_id</span><span class="p">;</span>
 </code></pre></div></div>
 
+<h2 id="get-first-entry-in-each-group">Get first entry in each group</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">payments</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">customer_id</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">payment_id</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">payment_amount</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">payment_date</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>If we want to see the highest amount of payment for each customer_id then we need to do:</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">select</span> <span class="k">distinct</span> <span class="n">customer_id</span><span class="p">,</span>
+    <span class="n">first_value</span><span class="p">(</span><span class="n">payment_amount</span><span class="p">)</span> <span class="n">over</span> <span class="p">(</span><span class="n">partition</span> <span class="k">by</span> <span class="n">customer_id</span> <span class="k">order</span> <span class="k">by</span> <span class="n">payment_amount</span> <span class="k">desc</span><span class="p">)</span> <span class="k">as</span> <span class="n">highest_payment_amount</span>
+<span class="k">from</span> <span class="n">payments</span>
+</code></pre></div></div>
+
+<p>Note that you don’t need to specify a <code class="language-plaintext highlighter-rouge">group by</code> clause for the overall query in this case.</p>
+
 <p>Have a great day people 👋</p>
 </div>
           </div>
@@ -212,7 +245,7 @@
   </div>
 </div>
 
-<script src="/assets/js/jquery.min.js?v=b9bc151bb049fea3dab90c166c988898064c9b5d"></script>
-<script src="/assets/js/bootstrap.min.js?v=b9bc151bb049fea3dab90c166c988898064c9b5d"></script>
+<script src="/assets/js/jquery.min.js?v=152cb45cca147d2c411cfab7c61faba2a19fcc0b"></script>
+<script src="/assets/js/bootstrap.min.js?v=152cb45cca147d2c411cfab7c61faba2a19fcc0b"></script>
 </body>
 </html>

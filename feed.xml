@@ -1,4 +1,33 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://varunbarad.com/" rel="alternate" type="text/html" /><updated>2023-03-23T09:54:47+05:30</updated><id>https://varunbarad.com/feed.xml</id><title type="html">Varun Barad - Curious Developer</title><subtitle>My online home where I post about new things I learn or find interesting.</subtitle><author><name>Varun Barad</name></author><entry><title type="html">📝 Navigate to a path in Mac Finder</title><link href="https://varunbarad.com/blog/til-navigate-path-mac-finder" rel="alternate" type="text/html" title="📝 Navigate to a path in Mac Finder" /><published>2023-03-14T18:32:10+05:30</published><updated>2023-03-14T18:32:10+05:30</updated><id>https://varunbarad.com/blog/til-navigate-path-mac-finder</id><content type="html" xml:base="https://varunbarad.com/blog/til-navigate-path-mac-finder">&lt;p&gt;For many years I had a slight frustration with Mac’s default file explorer utility Finder that it was not exposing any convenient way to go to a given path without making me click through those folders individually.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://varunbarad.com/" rel="alternate" type="text/html" /><updated>2023-03-28T00:22:47+05:30</updated><id>https://varunbarad.com/feed.xml</id><title type="html">Varun Barad - Curious Developer</title><subtitle>My online home where I post about new things I learn or find interesting.</subtitle><author><name>Varun Barad</name></author><entry><title type="html">📝 Find the first entry in each group</title><link href="https://varunbarad.com/blog/til-postgres-first-in-each-group" rel="alternate" type="text/html" title="📝 Find the first entry in each group" /><published>2023-03-27T17:39:15+05:30</published><updated>2023-03-27T17:39:15+05:30</updated><id>https://varunbarad.com/blog/til-postgres-first-in-each-group</id><content type="html" xml:base="https://varunbarad.com/blog/til-postgres-first-in-each-group">&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;payments&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;customer_id&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;payment_id&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;payment_amount&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;payment_date&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;If we want to see the highest amount of payment for each customer_id then we need to do:&lt;/p&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;select&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;distinct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;customer_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;first_value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;payment_amount&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;over&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;partition&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;by&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;customer_id&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;order&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;by&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;payment_amount&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;desc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;highest_payment_amount&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;payments&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Note that you don’t need to specify a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;group by&lt;/code&gt; clause for the overall query in this case.&lt;/p&gt;</content><author><name>Varun Barad</name></author><category term="til" /><summary type="html">payments customer_id payment_id payment_amount payment_date</summary></entry><entry><title type="html">📝 Navigate to a path in Mac Finder</title><link href="https://varunbarad.com/blog/til-navigate-path-mac-finder" rel="alternate" type="text/html" title="📝 Navigate to a path in Mac Finder" /><published>2023-03-14T18:32:10+05:30</published><updated>2023-03-14T18:32:10+05:30</updated><id>https://varunbarad.com/blog/til-navigate-path-mac-finder</id><content type="html" xml:base="https://varunbarad.com/blog/til-navigate-path-mac-finder">&lt;p&gt;For many years I had a slight frustration with Mac’s default file explorer utility Finder that it was not exposing any convenient way to go to a given path without making me click through those folders individually.&lt;/p&gt;
 
 &lt;p&gt;Today I learnt that the way to do it is to press &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Cmd + Shift + G&lt;/code&gt; when Finder is in focus. It opens a dialogue box where you can give the full path, and it will open that directly.&lt;/p&gt;
 
@@ -407,6 +436,39 @@ We cannot castle in this case because the square where king would end up is thre
 &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;payments&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;group&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;by&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;customer_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;get-first-entry-in-each-group&quot;&gt;Get first entry in each group&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;payments&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;customer_id&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;payment_id&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;payment_amount&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;payment_date&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;If we want to see the highest amount of payment for each customer_id then we need to do:&lt;/p&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;select&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;distinct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;customer_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;first_value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;payment_amount&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;over&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;partition&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;by&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;customer_id&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;order&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;by&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;payment_amount&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;desc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;highest_payment_amount&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;payments&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Note that you don’t need to specify a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;group by&lt;/code&gt; clause for the overall query in this case.&lt;/p&gt;
 
 &lt;p&gt;Have a great day people 👋&lt;/p&gt;</content><author><name>Varun Barad</name></author><category term="cheat-sheet" /><summary type="html">Dump database to a script (.sql) file</summary></entry><entry><title type="html">Tips when building a PC</title><link href="https://varunbarad.com/blog/tips-when-building-a-pc" rel="alternate" type="text/html" title="Tips when building a PC" /><published>2021-05-15T00:00:00+05:30</published><updated>2021-05-15T00:00:00+05:30</updated><id>https://varunbarad.com/blog/tips-when-building-a-pc</id><content type="html" xml:base="https://varunbarad.com/blog/tips-when-building-a-pc">&lt;p&gt;One of my friend emailed me today saying that he wants to build a RISC-V PC and was asking for any tips/advice on the basic dos and don’ts and suggested that I &lt;em&gt;can&lt;/em&gt; make it into a blog-post. So following the &lt;a href=&quot;https://www.hanselman.com/blog/do-they-deserve-the-gift-of-your-keystrokes&quot;&gt;conserving the keystrokes rule&lt;/a&gt; from &lt;a href=&quot;https://www.hanselman.com/&quot;&gt;Scott Hanselman&lt;/a&gt; here is the blog post that generated out of it.&lt;/p&gt;
 
