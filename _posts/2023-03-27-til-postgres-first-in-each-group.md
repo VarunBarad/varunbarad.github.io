@@ -14,11 +14,11 @@ categories:
 | payment_amount |
 |  payment_date  |
 
-If we want to see the highest amount of payment for each customer_id then we need to do:
+If we want to see the payment_id of the highest amount of payment for each customer_id then we need to do:
 
 ```sql
 select distinct customer_id,
-    first_value(payment_amount) over (partition by customer_id order by payment_amount desc) as highest_payment_amount
+    first_value(payment_id) over (partition by customer_id order by payment_amount desc) as highest_payment_id
 from payments
 ```
 
