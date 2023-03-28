@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/assets/css/style.css?v=152cb45cca147d2c411cfab7c61faba2a19fcc0b">
-  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=152cb45cca147d2c411cfab7c61faba2a19fcc0b">
+  <link rel="stylesheet" href="/assets/css/style.css?v=b957a3a8a500a9c62b33c42f9f1b5d83f4f79d28">
+  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=b957a3a8a500a9c62b33c42f9f1b5d83f4f79d28">
   <link rel="icon" type="image/png" href="/favicon.png" />
   <title>📝 Find the first entry in each group - Varun Barad</title>
   <meta name="description" content="TIL: How to get the first entry from each group given a sort order" />
@@ -80,10 +80,10 @@
   </tbody>
 </table>
 
-<p>If we want to see the highest amount of payment for each customer_id then we need to do:</p>
+<p>If we want to see the payment_id of the highest amount of payment for each customer_id then we need to do:</p>
 
 <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">select</span> <span class="k">distinct</span> <span class="n">customer_id</span><span class="p">,</span>
-    <span class="n">first_value</span><span class="p">(</span><span class="n">payment_amount</span><span class="p">)</span> <span class="n">over</span> <span class="p">(</span><span class="n">partition</span> <span class="k">by</span> <span class="n">customer_id</span> <span class="k">order</span> <span class="k">by</span> <span class="n">payment_amount</span> <span class="k">desc</span><span class="p">)</span> <span class="k">as</span> <span class="n">highest_payment_amount</span>
+    <span class="n">first_value</span><span class="p">(</span><span class="n">payment_id</span><span class="p">)</span> <span class="n">over</span> <span class="p">(</span><span class="n">partition</span> <span class="k">by</span> <span class="n">customer_id</span> <span class="k">order</span> <span class="k">by</span> <span class="n">payment_amount</span> <span class="k">desc</span><span class="p">)</span> <span class="k">as</span> <span class="n">highest_payment_id</span>
 <span class="k">from</span> <span class="n">payments</span>
 </code></pre></div></div>
 
@@ -126,7 +126,7 @@
   </div>
 </div>
 
-<script src="/assets/js/jquery.min.js?v=152cb45cca147d2c411cfab7c61faba2a19fcc0b"></script>
-<script src="/assets/js/bootstrap.min.js?v=152cb45cca147d2c411cfab7c61faba2a19fcc0b"></script>
+<script src="/assets/js/jquery.min.js?v=b957a3a8a500a9c62b33c42f9f1b5d83f4f79d28"></script>
+<script src="/assets/js/bootstrap.min.js?v=b957a3a8a500a9c62b33c42f9f1b5d83f4f79d28"></script>
 </body>
 </html>
