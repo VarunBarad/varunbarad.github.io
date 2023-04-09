@@ -2,7 +2,7 @@
 layout: post
 title: "📝 Counting days between 2 dates in PostgreSQL"
 summary: "TIL: You can use the extract function to find difference in days between 2 dates"
-date: 2023-03-28 07:52:44 +0530
+date: 2023-04-09 07:52:44 +0530
 categories:
   - "til"
 ---
