@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/assets/css/style.css?v=306f5004bed143aab04f76ebd3556f5fc6f32ef5">
-  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=306f5004bed143aab04f76ebd3556f5fc6f32ef5">
+  <link rel="stylesheet" href="/assets/css/style.css?v=43fe0c923f710b89d684beced128c2722d150d8b">
+  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=43fe0c923f710b89d684beced128c2722d150d8b">
   <link rel="icon" type="image/png" href="/favicon.png" />
   <title>Cheatsheet - PostgreSQL - Varun Barad</title>
   <meta name="description" content="A cheat-sheet for PostgreSQL database" />
@@ -206,6 +206,38 @@
 
 <p>Note that you don’t need to specify a <code class="language-plaintext highlighter-rouge">group by</code> clause for the overall query in this case.</p>
 
+<h2 id="map-an-array-of-ids-to-matching-data-from-another-table">Map an array of ids to matching data from another table</h2>
+
+<p>If we have two tables, <code class="language-plaintext highlighter-rouge">people</code> and <code class="language-plaintext highlighter-rouge">groups</code>, where <code class="language-plaintext highlighter-rouge">people</code> has a column <code class="language-plaintext highlighter-rouge">group_ids</code> which is an array of ids from <code class="language-plaintext highlighter-rouge">groups</code>, we can map the array of ids to the matching name from <code class="language-plaintext highlighter-rouge">groups</code> using the following query:</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err"></span><span class="k">select</span>
+    <span class="n">p</span><span class="p">.</span><span class="n">email</span> <span class="k">as</span> <span class="n">email</span><span class="p">,</span>
+    <span class="n">coalesce</span><span class="p">(</span><span class="n">groups</span><span class="p">.</span><span class="k">names</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span> <span class="k">as</span> <span class="n">group_names</span>
+
+<span class="k">from</span> <span class="n">people</span> <span class="k">as</span> <span class="n">p</span>
+    <span class="k">inner</span> <span class="k">join</span> <span class="p">(</span>
+        <span class="k">select</span> <span class="n">string_agg</span><span class="p">(</span><span class="k">g</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="s1">', '</span><span class="p">)</span> <span class="k">as</span> <span class="k">names</span><span class="p">,</span> <span class="n">person</span><span class="p">.</span><span class="n">id</span> <span class="k">as</span> <span class="n">person_id</span>
+
+        <span class="k">from</span> <span class="n">entity_groups</span> <span class="k">as</span> <span class="k">g</span>
+            <span class="k">inner</span> <span class="k">join</span> <span class="p">(</span>
+                <span class="k">select</span> <span class="n">id</span><span class="p">,</span> <span class="k">unnest</span><span class="p">(</span><span class="n">group_ids</span><span class="p">)</span> <span class="k">as</span> <span class="n">group_id</span>
+                <span class="k">from</span> <span class="n">people</span>
+            <span class="p">)</span> <span class="k">as</span> <span class="n">person</span> <span class="k">on</span> <span class="n">person</span><span class="p">.</span><span class="n">group_id</span> <span class="o">=</span> <span class="k">g</span><span class="p">.</span><span class="n">id</span>
+
+        <span class="k">group</span> <span class="k">by</span> <span class="n">person</span><span class="p">.</span><span class="n">id</span>
+    <span class="p">)</span> <span class="k">as</span> <span class="n">groups</span> <span class="k">on</span> <span class="n">groups</span><span class="p">.</span><span class="n">person_id</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">id</span>
+
+<span class="k">order</span> <span class="k">by</span> <span class="n">email</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>It is a three-step process, listed inside to out (i.e. the innermost query is executed first):</p>
+
+<ol>
+  <li>Convert the <code class="language-plaintext highlighter-rouge">group_ids</code> array from <code class="language-plaintext highlighter-rouge">people</code> into a table of <code class="language-plaintext highlighter-rouge">person_id</code> and <code class="language-plaintext highlighter-rouge">group_id</code> using <code class="language-plaintext highlighter-rouge">unnest</code></li>
+  <li>Join the <code class="language-plaintext highlighter-rouge">group_id</code> with the <code class="language-plaintext highlighter-rouge">id</code> of <code class="language-plaintext highlighter-rouge">groups</code> to get the <code class="language-plaintext highlighter-rouge">name</code> of the group</li>
+  <li>Aggregate the <code class="language-plaintext highlighter-rouge">name</code> of the groups into a comma-separated string using <code class="language-plaintext highlighter-rouge">string_agg</code></li>
+</ol>
+
 <p>Have a great day people 👋</p>
 </div>
           </div>
@@ -245,7 +277,7 @@
   </div>
 </div>
 
-<script src="/assets/js/jquery.min.js?v=306f5004bed143aab04f76ebd3556f5fc6f32ef5"></script>
-<script src="/assets/js/bootstrap.min.js?v=306f5004bed143aab04f76ebd3556f5fc6f32ef5"></script>
+<script src="/assets/js/jquery.min.js?v=43fe0c923f710b89d684beced128c2722d150d8b"></script>
+<script src="/assets/js/bootstrap.min.js?v=43fe0c923f710b89d684beced128c2722d150d8b"></script>
 </body>
 </html>
