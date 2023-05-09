@@ -142,7 +142,7 @@ Note that you don't need to specify a `group by` clause for the overall query in
 If we have two tables, `people` and `groups`, where `people` has a column `group_ids` which is an array of ids from `groups`, we can map the array of ids to the matching name from `groups` using the following query:
 
 ```sql
-select
+select
     p.email as email,
     coalesce(groups.names, '') as group_names
 
