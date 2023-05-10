@@ -1,5 +1,21 @@
 [
   {
+    "name": "Pause",
+    "description": [
+      "A leave-management SaaS tool which I am building (of-course with a team) as my day-job at Obvious. I have worked as the backend-engineer of the project since its inception in August 2020."
+    ],
+    "links": [
+      {
+        "text": "Pause Website",
+        "destination": "https://getpause.com"
+      },
+      {
+        "text": "Obvious Website",
+        "destination": "https://obvious.in"
+      }
+    ]
+  },
+  {
     "name": "Contacts Calendar",
     "description": ["A website which lets you export a calendar of important dates from your Google Contacts. I built this as a side-project to learn the basics of using Spring Boot framework."],
     "links": [
