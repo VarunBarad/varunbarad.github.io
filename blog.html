@@ -1,18 +1,67 @@
 ---
-layout: default
 permalink: "/blog/"
 ---
-
-<div class="page-title text-center text-uppercase col-12">Blog</div>
-<div class="posts">
-  <div class="post-list">
-    {% for post in site.posts %}
-    <div class="col-sm-6 post">
-      <!-- The next line uses Liquid tags to remove .html from the end of post-urls -->
-      <a href="{{ post.url | split: "" | reverse | join: "" | remove_first: "lmth." | split: "" | reverse | join: "" }}" class="post-title">{{post.title}}</a>
-      <br>
-      <time class="post-date dt-published" datetime="{{ post.date }}">{{ post.date | date: '%B %Y' }}</time> | <span class="post-description">{{post.summary}}</span>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" type="image/png" href="/favicon.png"/>
+  <title>Blog - Varun Barad</title>
+  <meta name="description" content="{{site.description}}"/>
+  
+  <!-- RSS Feed meta-data -->
+  {% feed_meta %}
+  
+  <!-- Twitter meta-data -->
+  <meta name="twitter:site" content="@{{site.twitter_username}}"/>
+  <meta name="twitter:image:src" content="{{site.url}}/assets/images/logo-hd.png"/>
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:title" content="{{site.title}}"/>
+  <meta name="twitter:description" content="{{site.description}}"/>
+  
+  <!-- Open-Graph meta-data -->
+  <meta property="og:site_name" content="{{site.title}}"/>
+  <meta property="og:image" content="{{site.url}}/assets/images/logo-hd.png"/>
+  <meta property="og:type" content="object"/>
+  <meta property="og:title" content="{{site.title}}"/>
+  <meta property="og:url" content="{{site.url}}{{page.url}}"/>
+  <meta property="og:description" content="{{site.description}}"/>
+  
+  <!-- Styles kept here for now -->
+  {% include new_styles.html %}
+</head>
+<body>
+{% include new_header.html %}
+<main>
+  <h1>Blog</h1>
+  
+  {% assign postsByYear = site.posts | group_by_exp:"post", "post.date | date: '%Y'" %}
+  <div class="periods-wrapper">
+    {% for year in postsByYear %}
+    <div class="period">
+      <h2 class="period-title">{{ year.name }}</h2>
+      
+      <div class="post-list">
+        {% for post in year.items %}
+        
+        {% comment %}
+          {% raw %}
+            Remove .html from the end of post urls
+          {% endraw %}
+        {% endcomment %}
+        {% assign postUrl = post.url | split: "" | reverse | join: "" | remove_first: "lmth." | split: "" | reverse | join: "" %}
+        <p class="post-item">
+          <a href="{{ postUrl }}" class="post-title">{{ post.title }}</a>
+          <br>
+          <span class="post-description">{{ post.summary }}</span>
+        </p>
+        {% endfor %}
+      </div>
     </div>
     {% endfor %}
   </div>
-</div>
+</main>
+{% include new_footer.html %}
+</body>
+</html>
