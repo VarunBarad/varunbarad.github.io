@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/assets/css/style.css?v=5726832b193cf1d4b758d8f18ada0ce0b51b1280">
+  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=5726832b193cf1d4b758d8f18ada0ce0b51b1280">
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <title>Group posts by year in Jekyll using Liquid - Varun Barad</title>
+  <meta name="description" content="You can use the `group_by_exp` filter in Liquid to group posts by year" />
+
+  <!-- Canonical URL -->
+  
+
+  <!-- RSS Feed meta-data -->
+  <link rel="alternate" type="application/atom+xml" title="Varun Barad - Curious Developer" href="https://varunbarad.com/feed.xml" />
+
+  <!-- Twitter meta-data -->
+  <meta name="twitter:site" content="@varun_barad" />
+  <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Group posts by year in Jekyll using Liquid" />
+  <meta name="twitter:description" content="You can use the `group_by_exp` filter in Liquid to group posts by year" />
+
+  <!-- Open-graph meta-data -->
+  <meta property="og:site_name" content="Varun Barad - Curious Developer" />
+  <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png" />
+  <meta property="og:type" content="object" />
+  <meta property="og:title" content="Group posts by year in Jekyll using Liquid" />
+  <meta property="og:url" content="https://varunbarad.com/blog/group-posts-by-year-jekyll" />
+  <meta property="og:description" content="You can use the `group_by_exp` filter in Liquid to group posts by year" />
+</head>
+<body>
+<div>
+  <div id="header">
+    <div class="row header">
+  <div class="title col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+    <a href="/"><div class="title">Varun Barad</div></a>
+  </div>
+  <div class="col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8">
+    <nav class="menu text-right">
+      <a href="/blog">Blog</a>
+      <a href="/projects">Projects</a>
+      <a href="/books">Books</a>
+      <a href="/ideas">Ideas</a>
+      <a href="/contact">Contact</a>
+    </nav>
+  </div>
+</div>
+
+  </div>
+  <article class="h-entry">
+    <div class="content row">
+      <div class="post-container">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+          <div>
+            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/group-posts-by-year-jekyll">Group posts by year in Jekyll using Liquid</a></div>
+            <div class="text-center">
+              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2023-05-10 07:55:00 +0530">May 10, 2023</time>
+            </div>
+            <div class="post-content e-content"><p>On the <a href="/blog">list-all-posts page</a> on this blog I wanted to group posts by year and show the year as a section-heading.</p>
+
+<p>I found a <a href="https://stackoverflow.com/a/61346228/4717436">StackOverflow answer</a> that suggested using the <code class="language-plaintext highlighter-rouge">group_by_exp</code> filter in Liquid. I used it as follows:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% assign postsByYear = site.posts | group_by_exp:"post", "post.date | date: '%Y'" %}
+{% for year in postsByYear %}
+<span class="nt">&lt;h2&gt;</span>{{ year.name }}<span class="nt">&lt;/h2&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"post-list"</span><span class="nt">&gt;</span>
+  {% for post in year.items %}
+  <span class="nt">&lt;p&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"{{ post.url }}"</span> <span class="na">class=</span><span class="s">"post-title"</span><span class="nt">&gt;</span>{{ post.title }}<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;br&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"post-description"</span><span class="nt">&gt;</span>{{ post.summary }}<span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;/p&gt;</span>
+  {% endfor %}
+<span class="nt">&lt;/div&gt;</span>
+{% endfor %}
+</code></pre></div></div>
+
+<p>If you want to further do sub-sections by month then you can use something like this:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% assign postsByYear = site.posts | group_by_exp:"post", "post.date | date: '%Y'" %}
+{% for year in postsByYear %}
+<span class="nt">&lt;h2&gt;</span>{{ year.name }}<span class="nt">&lt;/h2&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"month-list"</span><span class="nt">&gt;</span>
+  {% assign postsByMonth = year.items | group_by_exp:"post", "post.date | date: '%B'" %}
+  {% for month in postsByMonth %}
+  <span class="nt">&lt;h3&gt;</span>{{ month.name }}<span class="nt">&lt;/h3&gt;</span>
+
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"post-list"</span><span class="nt">&gt;</span>
+    {% for post in month.items %}
+    <span class="nt">&lt;p&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"{{ post.url }}"</span> <span class="na">class=</span><span class="s">"post-title"</span><span class="nt">&gt;</span>{{ post.title }}<span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;br&gt;</span>
+      <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"post-description"</span><span class="nt">&gt;</span>{{ post.summary }}<span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;/p&gt;</span>
+    {% endfor %}
+  <span class="nt">&lt;/div&gt;</span>
+  {% endfor %}
+<span class="nt">&lt;/div&gt;</span>
+{% endfor %}
+</code></pre></div></div>
+
+</div>
+          </div>
+
+          <div class="post-categories-container">
+            Categories:
+            <div>
+              
+              <a href="/category/programming" class="badge badge-warning p-category">#programming</a>
+              
+              <a href="/blog" class="badge badge-warning">#all</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+  <div>
+    <div class="footer">
+  <div>
+    
+    <a href="https://github.com/VarunBarad" rel="me"><i class="fab fa-github social-links"></i></a>
+    
+    <a href="https://twitter.com/varun_barad" rel="me"><i class="fab fa-twitter social-links"></i></a>
+    
+    <a href="https://dev.to/varunbarad" rel="me"><i class="fab fa-dev social-links"></i></a>
+    
+    <a href="https://stackoverflow.com/users/4717436/varunbarad" rel="me"><i class="fab fa-stack-overflow social-links"></i></a>
+    
+  </div>
+  <div class="developer-attribution">
+    
+    Made by <a href="https://dixita0607.github.io">Dixita Ganatra</a>
+  </div>
+</div>
+
+  </div>
+</div>
+
+<script src="/assets/js/jquery.min.js?v=5726832b193cf1d4b758d8f18ada0ce0b51b1280"></script>
+<script src="/assets/js/bootstrap.min.js?v=5726832b193cf1d4b758d8f18ada0ce0b51b1280"></script>
+</body>
+</html>
