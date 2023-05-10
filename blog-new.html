@@ -44,6 +44,12 @@ permalink: "/blog-new/"
       
       <div class="post-list">
         {% for post in year.items %}
+        
+        {% comment %}
+          {% raw %}
+            Remove .html from the end of post urls
+          {% endraw %}
+        {% endcomment %}
         {% assign postUrl = post.url | split: "" | reverse | join: "" | remove_first: "lmth." | split: "" | reverse | join: "" %}
         <p>
           <a href="{{ postUrl }}" class="post-title">{{ post.title }}</a>
