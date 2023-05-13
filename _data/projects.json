@@ -100,6 +100,18 @@
     ]
   },
   {
+    "name": "Clue Tracking Donut Clone",
+    "description": [
+      "I created a clone of Clue's cycle-tracking donut chart to learn/practice making performant custom-views in Android."
+    ],
+    "links": [
+      {
+        "text": "Source code",
+        "destination": "https://github.com/VarunBarad/clue-tracking-donut-clone"
+      }
+    ]
+  },
+  {
     "name": "Attendance Tracker",
     "description": [
       "I made this as my Capstone Project for Udacity's Android Nanodegree. This was my chance to assimilate everything  I learned during the Nanodegree and make something useful with it. During college, we found it cumbersome to  track our attendance in various classes. That was the origin for this app. I made it so that there is a  streamlined way for students to keep track of their attendance."
