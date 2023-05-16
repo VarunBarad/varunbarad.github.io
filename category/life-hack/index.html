@@ -1,131 +1,285 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/assets/css/style.css?v=f9eb7310e53ee573957c580d3b30b63d9df75a99">
-  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=f9eb7310e53ee573957c580d3b30b63d9df75a99">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="icon" type="image/png" href="/favicon.png"/>
-  <title>Varun Barad - Curious Developer</title>
-  <meta name="description" content="My online home where I post about new things I learn or find interesting." />
-
+  <title>Blog (#life-hack) - Varun Barad</title>
+  <meta name="description" content="My online home where I post about new things I learn or find interesting."/>
+  
   <!-- RSS Feed meta-data -->
-  <link rel="alternate" type="application/atom+xml" title="Varun Barad - Curious Developer" href="https://varunbarad.com/feed.xml" />
-
+  <link type="application/atom+xml" rel="alternate" href="https://varunbarad.com/feed.xml" title="Varun Barad - Curious Developer" />
+  
   <!-- Twitter meta-data -->
-  <meta name="twitter:site" content="@varun_barad" />
-  <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Varun Barad - Curious Developer" />
-  <meta name="twitter:description" content="My online home where I post about new things I learn or find interesting." />
+  <meta name="twitter:site" content="@varun_barad"/>
+  <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png"/>
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:title" content="Varun Barad - Curious Developer"/>
+  <meta name="twitter:description" content="My online home where I post about new things I learn or find interesting."/>
+  
+  <!-- Open-Graph meta-data -->
+  <meta property="og:site_name" content="Varun Barad - Curious Developer"/>
+  <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png"/>
+  <meta property="og:type" content="object"/>
+  <meta property="og:title" content="Varun Barad - Curious Developer"/>
+  <meta property="og:url" content="https://varunbarad.com/category/life-hack/"/>
+  <meta property="og:description" content="My online home where I post about new things I learn or find interesting."/>
+  
+  <!-- Styles kept here for now -->
+  <style>
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: sans-serif;
+    margin: 0;
+    background: #313131;
+  }
+  
+  header {
+    background: #661111;
+    color: #dfdfdf;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  
+  header a {
+    color: #dfdfdf;
+  }
+  
+  header a:visited {
+    color: #dfdfdf;
+  }
+  
+  header a:hover {
+    text-decoration: underline;
+  }
+  
+  #title {
+    width: 100%;
+    padding: 1em;
+    font-size: 2rem;
+    text-align: center;
+  }
+  
+  #title > a {
+    text-decoration: none;
+  }
+  
+  #title > a:hover {
+    text-decoration: underline;
+  }
+  
+  nav {
+    display: block;
+    padding: 0;
+  }
+  
+  nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    gap: 8px;
+  }
+  
+  nav ul li a {
+    padding: 1em;
+    display: block;
+    font-size: 1.2rem;
+    text-decoration: none;
+  }
+  
+  nav ul li a:hover {
+  }
+  
+  main {
+    padding: 1em;
+    background: #121212;
+    color: #dfdfdf;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  
+  main h2 {
+    font-size: 1.6rem;
+  }
+  
+  main p {
+    text-align: justify;
+    font-size: 1.1rem;
+  }
+  
+  main a {
+    color: #dfdfdf;
+    font-size: 1.1rem;
+  }
+  
+  main a:visited {
+    color: #dfdfdf;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  footer {
+    border-top: #dfdfdf 1px solid;
+    background: #121212;
+    color: #dfdfdf;
+    text-align: center;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0.5em;
+  }
+  
+  .container-full-width {
+    display: flex;
+    width: 100%;
+    justify-content: center
+  }
+  
+  .link-non-decorated {
+    text-decoration: none;
+  }
+  
+  .period-title {
+    color: #dd1111;
+  }
+  
+  .post-item {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  
+  .post-title {
+    text-decoration: none;
+  }
+  
+  .post-description {
+    color: #999999;
+  }
+  
+  .badge-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 8px;
+  }
+  
+  .badge {
+    background: #dfdfdf;
+    color: #121212;
+    padding: 0.2em 0.5em 0.1em 0.5em;
+    border-radius: 0.5em;
+    font-size: 0.8rem;
+    text-decoration: none;
+  }
+  
+  .badge:visited {
+    color: #121212;
+  }
+</style>
 
-  <!-- Open-graph meta-data -->
-  <meta property="og:site_name" content="Varun Barad - Curious Developer" />
-  <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png" />
-  <meta property="og:type" content="object" />
-  <meta property="og:title" content="Varun Barad - Curious Developer" />
-  <meta property="og:url" content="https://varunbarad.com/category/life-hack/" />
-  <meta property="og:description" content="My online home where I post about new things I learn or find interesting." />
 </head>
 <body>
-<div>
-  <div id="header">
-    <div class="row header">
-  <div class="title col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
-    <a href="/"><div class="title">Varun Barad</div></a>
+<header>
+  <div id="title">
+    <a href="/">Varun Barad</a>
   </div>
-  <div class="col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8">
-    <nav class="menu text-right">
-      <a href="/blog">Blog</a>
-      <a href="/projects">Projects</a>
-      <a href="/books">Books</a>
-      <a href="/ideas">Ideas</a>
-      <a href="/contact">Contact</a>
-    </nav>
+  <nav>
+    <ul>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/projects/">Projects</a></li>
+      <li><a href="/books/">Books</a></li>
+      <li><a href="/ideas/">Ideas</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+  </nav>
+  <div>
+    <p style="margin: 0; padding: 8px; text-align: center; color: #ffffff44;">This website is going under a redesign slowly</p>
   </div>
-</div>
+</header>
 
-  </div>
-  <div class="content row">
-    <div class="page-title text-uppercase col-12 text-center">life-hack</div>
-<div class="categories col-12">
+<main>
+  <h1>Blog (#life-hack)</h1>
   
-  <a href="/category/book-highlights" class="badge badge-warning">#book-highlights</a>
-  
-  <a href="/category/android" class="badge badge-warning">#android</a>
-  
-  <a href="/category/medicine" class="badge badge-warning">#medicine</a>
-  
-  <a href="/category/tools" class="badge badge-warning">#tools</a>
-  
-  <a href="/category/programming" class="badge badge-warning">#programming</a>
-  
-  <a href="/category/personal-growth" class="badge badge-warning">#personal-growth</a>
-  
-  <a href="/category/rx-java" class="badge badge-warning">#rx-java</a>
-  
-  <a href="/category/web" class="badge badge-warning">#web</a>
-  
-  <a href="/category/javascript-30" class="badge badge-warning">#javascript-30</a>
-  
-  <a href="/category/flutter" class="badge badge-warning">#flutter</a>
-  
-  <a href="/category/dart" class="badge badge-warning">#dart</a>
-  
-  <a href="/category/life-hack" class="badge badge-warning">#life-hack</a>
-  
-  <a href="/category/privacy" class="badge badge-warning">#privacy</a>
-  
-  <a href="/category/miscellaneous" class="badge badge-warning">#miscellaneous</a>
-  
-  <a href="/category/interesting" class="badge badge-warning">#interesting</a>
-  
-  <a href="/category/fitness" class="badge badge-warning">#fitness</a>
-  
-  <a href="/category/cheat-sheet" class="badge badge-warning">#cheat-sheet</a>
-  
-  <a href="/category/til" class="badge badge-warning">#til</a>
-  
-  <a href="/category/javascript" class="badge badge-warning">#javascript</a>
-  
-  <a href="/blog" class="badge badge-warning">#all</a>
-</div>
-
-<div class="posts">
-  <div class="post-list">
+  <div class="badge-list">
     
-    <div class="col-sm-8 post">
-      <a href="/blog/immigration-dead-mans-switch" class="post-title">Immigration Dead Man's Switch</a>
-      <div class="post-description">How to protect your data and yourself while passing through customs/immigration check</div>
+    <a href="/category/book-highlights" class="badge">#book-highlights</a>
+    
+    <a href="/category/android" class="badge">#android</a>
+    
+    <a href="/category/medicine" class="badge">#medicine</a>
+    
+    <a href="/category/tools" class="badge">#tools</a>
+    
+    <a href="/category/programming" class="badge">#programming</a>
+    
+    <a href="/category/personal-growth" class="badge">#personal-growth</a>
+    
+    <a href="/category/rx-java" class="badge">#rx-java</a>
+    
+    <a href="/category/web" class="badge">#web</a>
+    
+    <a href="/category/javascript-30" class="badge">#javascript-30</a>
+    
+    <a href="/category/flutter" class="badge">#flutter</a>
+    
+    <a href="/category/dart" class="badge">#dart</a>
+    
+    <a href="/category/life-hack" class="badge">#life-hack</a>
+    
+    <a href="/category/privacy" class="badge">#privacy</a>
+    
+    <a href="/category/miscellaneous" class="badge">#miscellaneous</a>
+    
+    <a href="/category/interesting" class="badge">#interesting</a>
+    
+    <a href="/category/fitness" class="badge">#fitness</a>
+    
+    <a href="/category/cheat-sheet" class="badge">#cheat-sheet</a>
+    
+    <a href="/category/til" class="badge">#til</a>
+    
+    <a href="/category/javascript" class="badge">#javascript</a>
+    
+    <a href="/blog" class="badge">#all</a>
+  </div>
+  
+  
+  <div class="periods-wrapper">
+    
+    <div class="period">
+      <h2 class="period-title">2020</h2>
+      
+      <div class="post-list">
+        
+        
+        
+        
+        <p class="post-item">
+          <a href="/blog/immigration-dead-mans-switch" class="post-title">Immigration Dead Man's Switch</a>
+          <br>
+          <span class="post-description">How to protect your data and yourself while passing through customs/immigration check</span>
+        </p>
+        
+      </div>
     </div>
     
   </div>
-</div>
+</main>
+<footer>
+  <p>
+    © 2023 🚀 Varun Barad
+  </p>
+</footer>
 
-  </div>
-  <div>
-    <div class="footer">
-  <div>
-    
-    <a href="https://github.com/VarunBarad" rel="me"><i class="fab fa-github social-links"></i></a>
-    
-    <a href="https://twitter.com/varun_barad" rel="me"><i class="fab fa-twitter social-links"></i></a>
-    
-    <a href="https://dev.to/varunbarad" rel="me"><i class="fab fa-dev social-links"></i></a>
-    
-    <a href="https://stackoverflow.com/users/4717436/varunbarad" rel="me"><i class="fab fa-stack-overflow social-links"></i></a>
-    
-  </div>
-  <div class="developer-attribution">
-    
-    Made by <a href="https://dixita0607.github.io">Dixita Ganatra</a>
-  </div>
-</div>
-
-  </div>
-</div>
-
-<script src="/assets/js/jquery.min.js?v=f9eb7310e53ee573957c580d3b30b63d9df75a99"></script>
-<script src="/assets/js/bootstrap.min.js?v=f9eb7310e53ee573957c580d3b30b63d9df75a99"></script>
 </body>
 </html>
