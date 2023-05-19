@@ -20,3 +20,8 @@ Credits: [Bytefreaks.net](https://bytefreaks.net/gnulinux/bash/ffmpeg-extract-au
 ffmpeg -i video.mp4 -i subtitle.srt -c:s mov_text -c:v copy -c:a copy merged.mp4
 ```
 Credits: [StackExchange](https://superuser.com/a/520555)
+
+## Convert .mkv to .mp4
+```shell
+ffmpeg -i input.mkv -c:v copy -c:a copy output.mp4
+```
