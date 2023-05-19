@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/assets/css/style.css?v=dcf340184863625d23d33d2422243fd4d78b7dd8">
-  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=dcf340184863625d23d33d2422243fd4d78b7dd8">
+  <link rel="stylesheet" href="/assets/css/style.css?v=40f4a7cfd98e951c70a45e765c63c3e07394dc98">
+  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=40f4a7cfd98e951c70a45e765c63c3e07394dc98">
   <link rel="icon" type="image/png" href="/favicon.png" />
   <title>Cheatsheet - ffmpeg - Varun Barad</title>
   <meta name="description" content="A cheat-sheet for ffmpeg" />
@@ -70,6 +70,10 @@ ffmpeg <span class="nt">-i</span> <span class="s2">"</span><span class="k">${</s
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ffmpeg <span class="nt">-i</span> video.mp4 <span class="nt">-i</span> subtitle.srt <span class="nt">-c</span>:s mov_text <span class="nt">-c</span>:v copy <span class="nt">-c</span>:a copy merged.mp4
 </code></pre></div></div>
 <p>Credits: <a href="https://superuser.com/a/520555">StackExchange</a></p>
+
+<h2 id="convert-mkv-to-mp4">Convert .mkv to .mp4</h2>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ffmpeg <span class="nt">-i</span> input.mkv <span class="nt">-c</span>:v copy <span class="nt">-c</span>:a copy output.mp4
+</code></pre></div></div>
 </div>
           </div>
 
@@ -108,7 +112,7 @@ ffmpeg <span class="nt">-i</span> <span class="s2">"</span><span class="k">${</s
   </div>
 </div>
 
-<script src="/assets/js/jquery.min.js?v=dcf340184863625d23d33d2422243fd4d78b7dd8"></script>
-<script src="/assets/js/bootstrap.min.js?v=dcf340184863625d23d33d2422243fd4d78b7dd8"></script>
+<script src="/assets/js/jquery.min.js?v=40f4a7cfd98e951c70a45e765c63c3e07394dc98"></script>
+<script src="/assets/js/bootstrap.min.js?v=40f4a7cfd98e951c70a45e765c63c3e07394dc98"></script>
 </body>
 </html>
