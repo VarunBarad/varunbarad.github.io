@@ -1,4 +1,54 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://varunbarad.com/" rel="alternate" type="text/html" /><updated>2023-05-19T22:04:42+05:30</updated><id>https://varunbarad.com/feed.xml</id><title type="html">Varun Barad - Curious Developer</title><subtitle>My online home where I post about new things I learn or find interesting.</subtitle><author><name>Varun Barad</name></author><entry><title type="html">Group posts by year in Jekyll using Liquid</title><link href="https://varunbarad.com/blog/group-posts-by-year-jekyll" rel="alternate" type="text/html" title="Group posts by year in Jekyll using Liquid" /><published>2023-05-10T07:55:00+05:30</published><updated>2023-05-10T07:55:00+05:30</updated><id>https://varunbarad.com/blog/group-posts-by-year-jekyll</id><content type="html" xml:base="https://varunbarad.com/blog/group-posts-by-year-jekyll">&lt;p&gt;On the &lt;a href=&quot;/blog&quot;&gt;list-all-posts page&lt;/a&gt; on this blog I wanted to group posts by year and show the year as a section-heading.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://varunbarad.com/" rel="alternate" type="text/html" /><updated>2023-05-23T00:36:50+05:30</updated><id>https://varunbarad.com/feed.xml</id><title type="html">Varun Barad - Curious Developer</title><subtitle>My online home where I post about new things I learn or find interesting.</subtitle><author><name>Varun Barad</name></author><entry><title type="html">⚖️ Wracker Dev Log #001</title><link href="https://varunbarad.com/blog/wracker-log-001" rel="alternate" type="text/html" title="⚖️ Wracker Dev Log #001" /><published>2023-05-22T23:55:00+05:30</published><updated>2023-05-22T23:55:00+05:30</updated><id>https://varunbarad.com/blog/wracker-log-001</id><content type="html" xml:base="https://varunbarad.com/blog/wracker-log-001">&lt;p&gt;I have been meaning to build my skills in some areas for quite some time, Python, traditional backend frameworks and a bit of full-stack development being a few of them. I decided on building a simple weight-tracking website to learn these things. It had been tossing about in my head for a lot of time, and finally I decided to sit down and start coding it today.&lt;/p&gt;
+
+&lt;h2 id=&quot;day-1-challenge-1&quot;&gt;Day 1 Challenge 1&lt;/h2&gt;
+
+&lt;p&gt;The first thing to do was to create a directory to store all the code in. Here was the first roadblock I hit, what should the project be named. After contemplating and thinking a lot on it (read 3 minutes max) I decided to go with “Wracker” as it could be seen as a short for “Weight Tracker” and also it is a pun on the word “Wrecker” which I just found hilarious.&lt;/p&gt;
+
+&lt;h2 id=&quot;day-1-challenge-virtual&quot;&gt;Day 1 Challenge Virtual&lt;/h2&gt;
+
+&lt;p&gt;Up next was me wanting to install the dependencies for the project without them muddying up my system-wide python packages. I knew of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;virtualenv&lt;/code&gt; and have banged my head enough in the past that it only took me 3 tries before I had it nailed down.&lt;/p&gt;
+
+&lt;h2 id=&quot;day-1-challenging-structure&quot;&gt;Day 1 Challenging Structure&lt;/h2&gt;
+
+&lt;p&gt;Since I wanted to use Django framework for this project and I haven’t ever used it before, I went to their official getting started guide and was left with a file structure looking something like this after initialising my project.&lt;/p&gt;
+
+&lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;- Projects
+  |- wracker
+     |- .gitignore
+     |- wracker
+        |- manage.py
+        |- wracker
+           |- __init.py__
+           |- asgi.py
+           |- settings.py
+           |- urls.py
+           |- wsgi.py
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Here I tried running the commands from getting started guide inside a pre-made directory for my project. I could not understand why it needs to create 2 separate subdirectories named the same as the project. This is something I tried understanding multiple times during the day, and we’ll back come to it later.&lt;/p&gt;
+
+&lt;h2 id=&quot;challenge-post-the-sqlite&quot;&gt;Challenge Post the SQLite&lt;/h2&gt;
+
+&lt;p&gt;Django by default uses an SQLite database for storing data, but I wanted to use Postgres. I had already setup a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;docker-compose.yaml&lt;/code&gt; file to provision me a postgres database running inside a docker container. While initially the configuration part in Django for Postgres was a bit confusing, I was able to get it working after a bit of fitting in multiple pieces together. I also learned how to use environment variables in Python while dealing with this.&lt;/p&gt;
+
+&lt;h2 id=&quot;challenge-of-looking-good&quot;&gt;Challenge of Looking Good&lt;/h2&gt;
+
+&lt;p&gt;I also wanted a code-formatter for Python and had heard about this one called &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;black&lt;/code&gt;. Went to the official website, learnt how to use it and then integrate it locally with wracker.&lt;/p&gt;
+
+&lt;h2 id=&quot;challenge-of-the-day&quot;&gt;Challenge of the Day&lt;/h2&gt;
+
+&lt;p&gt;After looking at all this I would give “Challenge of the Day” award only to the project structure. While none of the official documentation clearly call it out that you need to pass in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.&lt;/code&gt; as the directory to your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;django-admin startproject&lt;/code&gt; I did find &lt;a href=&quot;https://automationpanda.com/2018/02/06/starting-a-django-project-in-an-existing-directory/&quot;&gt;an article online&lt;/a&gt; that clarified it.&lt;/p&gt;
+
+&lt;h2 id=&quot;things-i-learnedsolidified-today&quot;&gt;Things I learned/solidified today&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;virtualenv&lt;/code&gt; to keep dependencies separate in Python&lt;/li&gt;
+  &lt;li&gt;How to export your dependencies as a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;requirements.txt&lt;/code&gt; file&lt;/li&gt;
+  &lt;li&gt;Usage of environment variables in Python&lt;/li&gt;
+  &lt;li&gt;How to create a Django project with reasonable directory structure&lt;/li&gt;
+  &lt;li&gt;Formatting python code using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;black&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Integrating PostgreSQL with Django instead of the default SQLite database&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Varun Barad</name></author><category term="wracker" /><category term="programming" /><summary type="html">I have been meaning to build my skills in some areas for quite some time, Python, traditional backend frameworks and a bit of full-stack development being a few of them. I decided on building a simple weight-tracking website to learn these things. It had been tossing about in my head for a lot of time, and finally I decided to sit down and start coding it today.</summary></entry><entry><title type="html">Group posts by year in Jekyll using Liquid</title><link href="https://varunbarad.com/blog/group-posts-by-year-jekyll" rel="alternate" type="text/html" title="Group posts by year in Jekyll using Liquid" /><published>2023-05-10T07:55:00+05:30</published><updated>2023-05-10T07:55:00+05:30</updated><id>https://varunbarad.com/blog/group-posts-by-year-jekyll</id><content type="html" xml:base="https://varunbarad.com/blog/group-posts-by-year-jekyll">&lt;p&gt;On the &lt;a href=&quot;/blog&quot;&gt;list-all-posts page&lt;/a&gt; on this blog I wanted to group posts by year and show the year as a section-heading.&lt;/p&gt;
 
 &lt;p&gt;I found a &lt;a href=&quot;https://stackoverflow.com/a/61346228/4717436&quot;&gt;StackOverflow answer&lt;/a&gt; that suggested using the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;group_by_exp&lt;/code&gt; filter in Liquid. I used it as follows:&lt;/p&gt;
 
