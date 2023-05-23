@@ -1,24 +1,75 @@
 ---
-layout: default
 ---
-
-<style type="text/css" media="screen">
-  .container {
-    margin: 10px auto;
-    max-width: 600px;
-    text-align: center;
-  }
-  h1 {
-    margin: 30px 0;
-    font-size: 4em;
-    line-height: 1;
-    letter-spacing: -1px;
-  }
-</style>
-
-<div class="container">
-  <h1>404</h1>
-
-  <p><strong>Page not found 🙁</strong></p>
-  <p>The requested page could not be found.</p>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" type="image/png" href="/favicon.png"/>
+  <title>Where did I put it? - Varun Barad</title>
+  <meta name="description" content="{{site.description}}"/>
+  
+  <!-- RSS Feed meta-data -->
+  {% feed_meta %}
+  
+  <!-- Twitter meta-data -->
+  <meta name="twitter:site" content="@{{site.twitter_username}}"/>
+  <meta name="twitter:image:src" content="{{site.url}}/assets/images/logo-hd.png"/>
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:title" content="{{site.title}}"/>
+  <meta name="twitter:description" content="{{site.description}}"/>
+  
+  <!-- Open-Graph meta-data -->
+  <meta property="og:site_name" content="{{site.title}}"/>
+  <meta property="og:image" content="{{site.url}}/assets/images/logo-hd.png"/>
+  <meta property="og:type" content="object"/>
+  <meta property="og:title" content="{{site.title}}"/>
+  <meta property="og:url" content="{{site.url}}{{page.url}}"/>
+  <meta property="og:description" content="{{site.description}}"/>
+  
+  <!-- Styles kept here for now -->
+  {% include new_styles.html %}
+</head>
+<body>
+{% include new_header.html %}
+<main>
+  <div>
+    <h2 class="page-title">404</h2>
+  </div>
+  <div class="container-full-width">
+    <img src="/assets/images/looking.gif" alt="Real life picture of me trying to find the thing">
+  </div>
+  <div>
+    <p>
+      Oopsie, it looks like I couldn't find what you were looking for. Maybe meanwhile you can read up on one of my
+      projects or check out one of the recent articles.
+    </p>
+  </div>
+  
+  <hr>
+  
+  <h2>Recent articles ({{ site.posts | size }} posts)</h2>
+  
+  <ul>
+    {% for post in site.posts limit:3 %}
+    <li>{{ post.title }}</li>
+    {% endfor %}
+  </ul>
+  
+  <p><a href="/blog/">View all articles</a></p>
+  
+  <hr>
+  
+  <h2>Recent projects ({{ site.data.projects | size }} projects)</h2>
+  
+  <ul>
+    {% for project in site.data.projects limit:3 %}
+    <li>{{project.name}}</li>
+    {% endfor %}
+  </ul>
+  
+  <p><a href="/projects/">View all projects</a></p>
+</main>
+{% include new_footer.html %}
+</body>
+</html>
