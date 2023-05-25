@@ -6,6 +6,7 @@ date: 2023-03-04 17:18:03 +0530
 categories:
   - "web"
   - "programming"
+  - "project"
 ---
 
 I store birthdays of my contacts right in my contacts application on phone. They get synced to Google Contacts.
