@@ -1,5 +1,26 @@
 [
   {
+    "name": "⌨️ Typractice",
+    "description": [
+      "While there are a lot of websites available around to practice your typing, I wanted to build my own which is free of any ads or tracking.",
+      "It's a simple website which gives you a random paragraph to type. The timer keeps going until you enter the whole paragraph correctly. At the end you are presented your typing speed in terms of words-per-minute."
+    ],
+    "links": [
+      {
+        "text": "Website",
+        "destination": "https://typractice.varunbarad.com"
+      },
+      {
+        "text": "Source code",
+        "destination": "https://github.com/VarunBarad/typractice"
+      },
+      {
+        "text": "Release blog post",
+        "destination": "/blog/project-typractice"
+      }
+    ]
+  },
+  {
     "name": "Pause",
     "description": [
       "A leave-management SaaS tool which I am building (of-course with a team) as my day-job at Obvious. I have worked as the backend-engineer of the project since its inception in August 2020."
