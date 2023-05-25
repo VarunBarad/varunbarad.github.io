@@ -1,26 +1,68 @@
 ---
-layout: default
 permalink: "/impossible/"
 ---
 
-<div class="page-title text-center text-uppercase col-12">Impossible List</div>
-<div class="col-sm-6 col-lg-4 offset-sm-3 offset-lg-4 text-justify">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" type="image/png" href="/favicon.png"/>
+  <title>Impossible List - Varun Barad</title>
+  <meta name="description" content="{{site.description}}"/>
+  
+  <!-- RSS Feed meta-data -->
+  {% feed_meta %}
+  
+  <!-- Twitter meta-data -->
+  <meta name="twitter:site" content="@{{site.twitter_username}}"/>
+  <meta name="twitter:image:src" content="{{site.url}}/assets/images/logo-hd.png"/>
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:title" content="{{site.title}}"/>
+  <meta name="twitter:description" content="{{site.description}}"/>
+  
+  <!-- Open-Graph meta-data -->
+  <meta property="og:site_name" content="{{site.title}}"/>
+  <meta property="og:image" content="{{site.url}}/assets/images/logo-hd.png"/>
+  <meta property="og:type" content="object"/>
+  <meta property="og:title" content="{{site.title}}"/>
+  <meta property="og:url" content="{{site.url}}{{page.url}}"/>
+  <meta property="og:description" content="{{site.description}}"/>
+  
+  <!-- Styles kept here for now -->
+  {% include new_styles.html %}
+</head>
+<body>
+{% include new_header.html %}
+<main>
+  <h1>Impossible List</h1>
+  
+  <div>
     <p>
-        I found out about the idea of an impossible list first from <a
-            href="https://collegeinfogeek.com/about/meet-the-author/my-impossible-list/">Thomas Frank</a>. An impossible
-        list is basically a challenge to yourself. It is a list of all things that I at one point of time thought I
-        couldn't do simply because they were impossible (atleast for me). The challenge is to keep working towards these
-        impossible things and chip away at them one bite at a time.
+      I found out about the idea of an impossible list first from
+      <a href="https://collegeinfogeek.com/about/meet-the-author/my-impossible-list/">Thomas Frank</a>. An impossible
+      list is basically a challenge to yourself. It is a list of all things that I at one point of time thought I
+      couldn't do simply because they were impossible (atleast for me). The challenge is to keep working towards these
+      impossible things and chip away at them one bite at a time.
     </p>
-</div>
-<div class="col-sm-6 col-lg-4 offset-sm-3 offset-lg-4">
+  </div>
+  
+  <div class="item-wrapper">
+    <hr>
+    
     <ul>
-        <li>Perform 100 push-ups in a single set</li>
-        <li>Do a workout 100 days in a row</li>
-        <li>Write 500 words 100 days in a row</li>
-        <li>Do a skydive</li>
-        <li>Do a bungee jump</li>
-        <li>Ride on a Zero-G Flight</li>
-        <li>Jump around on a trampoline</li>
+      <li>Perform 100 push-ups in a single set</li>
+      <li>Do a workout 100 days in a row</li>
+      <li>Write 500 words 100 days in a row</li>
+      <li>Do a skydive</li>
+      <li>Do a bungee jump</li>
+      <li>Ride on a Zero-G Flight</li>
+      <li>
+        <del>Jump around on a trampoline</del> (Enjoyed my first trampoline session on 2023-05-17)
+      </li>
     </ul>
-</div>
+  </div>
+</main>
+{% include new_footer.html %}
+</body>
+</html>
