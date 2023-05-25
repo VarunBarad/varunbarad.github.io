@@ -1,96 +1,252 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/assets/css/style.css?v=b9149ac3f30ee8b66d01006fc9f5fcdae1e72001">
-  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=b9149ac3f30ee8b66d01006fc9f5fcdae1e72001">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="icon" type="image/png" href="/favicon.png"/>
-  <title>Varun Barad - Curious Developer</title>
-  <meta name="description" content="My online home where I post about new things I learn or find interesting." />
-
+  <title>Impossible List - Varun Barad</title>
+  <meta name="description" content="My online home where I post about new things I learn or find interesting."/>
+  
   <!-- RSS Feed meta-data -->
-  <link rel="alternate" type="application/atom+xml" title="Varun Barad - Curious Developer" href="https://varunbarad.com/feed.xml" />
-
+  <link type="application/atom+xml" rel="alternate" href="https://varunbarad.com/feed.xml" title="Varun Barad - Curious Developer" />
+  
   <!-- Twitter meta-data -->
-  <meta name="twitter:site" content="@varun_barad" />
-  <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Varun Barad - Curious Developer" />
-  <meta name="twitter:description" content="My online home where I post about new things I learn or find interesting." />
+  <meta name="twitter:site" content="@varun_barad"/>
+  <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png"/>
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:title" content="Varun Barad - Curious Developer"/>
+  <meta name="twitter:description" content="My online home where I post about new things I learn or find interesting."/>
+  
+  <!-- Open-Graph meta-data -->
+  <meta property="og:site_name" content="Varun Barad - Curious Developer"/>
+  <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png"/>
+  <meta property="og:type" content="object"/>
+  <meta property="og:title" content="Varun Barad - Curious Developer"/>
+  <meta property="og:url" content="https://varunbarad.com/impossible/"/>
+  <meta property="og:description" content="My online home where I post about new things I learn or find interesting."/>
+  
+  <!-- Styles kept here for now -->
+  <style>
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: sans-serif;
+    margin: 0;
+    background: #313131;
+  }
+  
+  header {
+    background: #661111;
+    color: #dfdfdf;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  
+  header a {
+    color: #dfdfdf;
+  }
+  
+  header a:visited {
+    color: #dfdfdf;
+  }
+  
+  header a:hover {
+    text-decoration: underline;
+  }
+  
+  #title {
+    width: 100%;
+    padding: 1em;
+    font-size: 2rem;
+    text-align: center;
+  }
+  
+  #title > a {
+    text-decoration: none;
+  }
+  
+  #title > a:hover {
+    text-decoration: underline;
+  }
+  
+  nav {
+    display: block;
+    padding: 0;
+  }
+  
+  nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    gap: 8px;
+  }
+  
+  nav ul li a {
+    padding: 1em;
+    display: block;
+    font-size: 1.2rem;
+    text-decoration: none;
+  }
+  
+  nav ul li a:hover {
+  }
+  
+  main {
+    padding: 1em;
+    background: #121212;
+    color: #dfdfdf;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  
+  main h2 {
+    font-size: 1.6rem;
+  }
+  
+  main p {
+    text-align: justify;
+    font-size: 1.1rem;
+  }
+  
+  main a {
+    color: #dfdfdf;
+    font-size: 1.1rem;
+  }
+  
+  main a:visited {
+    color: #dfdfdf;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  footer {
+    border-top: #dfdfdf 1px solid;
+    background: #121212;
+    color: #dfdfdf;
+    text-align: center;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0.5em;
+  }
+  
+  .container-full-width {
+    display: flex;
+    width: 100%;
+    justify-content: center
+  }
+  
+  .page-title {
+    text-align: center;
+    font-size: 3rem;
+  }
+  
+  .link-non-decorated {
+    text-decoration: none;
+  }
+  
+  .period-title {
+    color: #dd1111;
+  }
+  
+  .post-item {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  
+  .post-title {
+    text-decoration: none;
+  }
+  
+  .post-description {
+    color: #999999;
+  }
+  
+  .badge-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 8px;
+  }
+  
+  .badge {
+    background: #dfdfdf;
+    color: #050505;
+    padding: 0.2em 0.5em 0.1em 0.5em;
+    border-radius: 0.2em;
+    font-size: 1rem;
+    text-decoration: none;
+  }
+  
+  .badge:visited {
+    color: #050505;
+  }
+</style>
 
-  <!-- Open-graph meta-data -->
-  <meta property="og:site_name" content="Varun Barad - Curious Developer" />
-  <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png" />
-  <meta property="og:type" content="object" />
-  <meta property="og:title" content="Varun Barad - Curious Developer" />
-  <meta property="og:url" content="https://varunbarad.com/impossible/" />
-  <meta property="og:description" content="My online home where I post about new things I learn or find interesting." />
 </head>
 <body>
-<div>
-  <div id="header">
-    <div class="row header">
-  <div class="title col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
-    <a href="/"><div class="title">Varun Barad</div></a>
+<header>
+  <div id="title">
+    <a href="/">Varun Barad</a>
   </div>
-  <div class="col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8">
-    <nav class="menu text-right">
-      <a href="/blog">Blog</a>
-      <a href="/projects">Projects</a>
-      <a href="/books">Books</a>
-      <a href="/ideas">Ideas</a>
-      <a href="/contact">Contact</a>
-      <a href="/resume/">My Resume</a>
-    </nav>
-  </div>
-</div>
-
-  </div>
-  <div class="content row">
-    <div class="page-title text-center text-uppercase col-12">Impossible List</div>
-<div class="col-sm-6 col-lg-4 offset-sm-3 offset-lg-4 text-justify">
-    <p>
-        I found out about the idea of an impossible list first from <a
-            href="https://collegeinfogeek.com/about/meet-the-author/my-impossible-list/">Thomas Frank</a>. An impossible
-        list is basically a challenge to yourself. It is a list of all things that I at one point of time thought I
-        couldn't do simply because they were impossible (atleast for me). The challenge is to keep working towards these
-        impossible things at chip away at them one bite at a time.
-    </p>
-</div>
-<div class="col-sm-6 col-lg-4 offset-sm-3 offset-lg-4">
+  <nav>
     <ul>
-        <li>Perform 100 push-ups in a single set</li>
-        <li>Summit a mountain</li>
-        <li>Summit a snow-capped mountain</li>
-        <li>Make a completely home-grown meal</li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/projects/">Projects</a></li>
+      <li><a href="/books/">Books</a></li>
+      <li><a href="/ideas/">Ideas</a></li>
+      <li><a href="/contact/">Contact</a></li>
+      <li><a href="/resume/">My Resume</a></li>
     </ul>
-</div>
-
-  </div>
+  </nav>
   <div>
-    <div class="footer">
+    <p style="margin: 0; padding: 8px; text-align: center; color: #ffffff44;">This website is going under a redesign slowly</p>
+  </div>
+</header>
+
+<main>
+  <h1>Impossible List</h1>
+  
   <div>
-    
-    <a href="https://github.com/VarunBarad" rel="me"><i class="fab fa-github social-links"></i></a>
-    
-    <a href="https://twitter.com/varun_barad" rel="me"><i class="fab fa-twitter social-links"></i></a>
-    
-    <a href="https://dev.to/varunbarad" rel="me"><i class="fab fa-dev social-links"></i></a>
-    
-    <a href="https://stackoverflow.com/users/4717436/varunbarad" rel="me"><i class="fab fa-stack-overflow social-links"></i></a>
-    
+    <p>
+      I found out about the idea of an impossible list first from
+      <a href="https://collegeinfogeek.com/about/meet-the-author/my-impossible-list/">Thomas Frank</a>. An impossible
+      list is basically a challenge to yourself. It is a list of all things that I at one point of time thought I
+      couldn't do simply because they were impossible (atleast for me). The challenge is to keep working towards these
+      impossible things and chip away at them one bite at a time.
+    </p>
   </div>
-  <div class="developer-attribution">
+  
+  <div class="item-wrapper">
+    <hr>
     
-    Made by <a href="https://dixita0607.github.io">Dixita Ganatra</a>
+    <ul>
+      <li>Perform 100 push-ups in a single set</li>
+      <li>Do a workout 100 days in a row</li>
+      <li>Write 500 words 100 days in a row</li>
+      <li>Do a skydive</li>
+      <li>Do a bungee jump</li>
+      <li>Ride on a Zero-G Flight</li>
+      <li>
+        <del>Jump around on a trampoline</del> (Enjoyed my first trampoline session on 2023-05-17)
+      </li>
+    </ul>
   </div>
-</div>
+</main>
+<footer>
+  <p>
+    © 2023 🚀 Varun Barad
+  </p>
+</footer>
 
-  </div>
-</div>
-
-<script src="/assets/js/jquery.min.js?v=b9149ac3f30ee8b66d01006fc9f5fcdae1e72001"></script>
-<script src="/assets/js/bootstrap.min.js?v=b9149ac3f30ee8b66d01006fc9f5fcdae1e72001"></script>
 </body>
 </html>
