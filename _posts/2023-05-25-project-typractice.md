@@ -18,4 +18,5 @@ This is also the first time I tried writing it with the help of ChatGPT. Gave it
 The website also stores in-browser (all locally on your machine) how you performed on different paragraphs. I plan to add a stats page in the future which could show you how your performance changed over time, both overall and also for specific paragraphs.
 
 Check it out and let me know what you like and what you would like to change about it. You can also send me screenshots of your best scores.
+
 ![my score](../assets/images/posts/project-typractice/screenshot.png)
