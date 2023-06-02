@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: new_post
 title: "⌨️ Typractice"
 summary: "A simple website to practice your typing"
 date: 2023-05-25 12:21:38 +0530

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="/favicon.png"/>
+  <title>{{ page.title }} - Varun Barad</title>
+  <meta name="description" content="{{ page.summary }}"/>
+  
+  <!-- RSS Feed meta-data -->
+  {% feed_meta %}
+
+  <!-- Canonical URL -->
+  {% if page.canonical_url %}
+  <link rel="canonical" href="{{ page.canonical_url }}" />
+  {% endif %}
+
+  <!-- Twitter meta-data -->
+  <meta name="twitter:site" content="@{{site.twitter_username}}" />
+  <meta name="twitter:image:src" content="{{site.url}}/assets/images/logo-hd.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="{{page.title}}" />
+  <meta name="twitter:description" content="{{page.summary}}" />
+
+  <!-- Open-graph meta-data -->
+  <meta property="og:site_name" content="{{site.title}}" />
+  <meta property="og:image" content="{{site.url}}/assets/images/logo-hd.png" />
+  <meta property="og:type" content="object" />
+  <meta property="og:title" content="{{page.title}}" />
+  <meta property="og:url" content="{{site.url}}{{page.url}}" />
+  <meta property="og:description" content="{{page.summary}}" />
+  
+  <!-- Styles kept here for now -->
+  {% include new_styles.html %}
+</head>
+<body>
+{% include header.html %}
+<main>
+  <!-- Post header -->
+  <h1 id="post-header">{{page.title}}</h1>
+  <time class="post-date" datetime="{{ page.date }}">{{ page.date | date: '%B %d, %Y' }}</time>
+  
+  <!-- Post content -->
+  <div id="post-content">{{ page.content }}</div>
+  
+  <!-- Post categories -->
+  <div id="post-categories" class="badge-list">
+    {% for category in page.categories %}
+    <a href="/category/{{category}}" class="badge">#{{category}}</a>
+    {% endfor %}
+    <a href="/blog" class="badge">#all</a>
+  </div>
+</main>
+<div>
+  <article class="h-entry">
+    <div class="content row">
+      <div class="post-container">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+          <div>
+            <div class="post-content e-content">{{ page.content }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+</div>
+{% include footer.html %}
+
+<!--<script src="{{ '/assets/js/jquery.min.js?v=' | append: site.github.build_revision | relative_url }}"></script>-->
+<!--<script src="{{ '/assets/js/bootstrap.min.js?v=' | append: site.github.build_revision | relative_url }}"></script>-->
+</body>
+</html>
