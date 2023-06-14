@@ -1,4 +1,31 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://varunbarad.com/" rel="alternate" type="text/html" /><updated>2023-06-02T22:03:38+05:30</updated><id>https://varunbarad.com/feed.xml</id><title type="html">Varun Barad - Curious Developer</title><subtitle>My online home where I post about new things I learn or find interesting.</subtitle><author><name>Varun Barad</name></author><entry><title type="html">📝 Custom 404 in Express</title><link href="https://varunbarad.com/blog/til-handle-404-node-express" rel="alternate" type="text/html" title="📝 Custom 404 in Express" /><published>2023-06-02T17:52:02+05:30</published><updated>2023-06-02T17:52:02+05:30</updated><id>https://varunbarad.com/blog/til-handle-404-node-express</id><content type="html" xml:base="https://varunbarad.com/blog/til-handle-404-node-express">&lt;p&gt;You need to define a middleware to handle it and that middleware needs to be defined after all the other routes and middlewares have been specified already.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://varunbarad.com/" rel="alternate" type="text/html" /><updated>2023-06-15T00:21:11+05:30</updated><id>https://varunbarad.com/feed.xml</id><title type="html">Varun Barad - Curious Developer</title><subtitle>My online home where I post about new things I learn or find interesting.</subtitle><author><name>Varun Barad</name></author><entry><title type="html">⚖️ Wracker Dev Log #002</title><link href="https://varunbarad.com/blog/wracker-log-002" rel="alternate" type="text/html" title="⚖️ Wracker Dev Log #002" /><published>2023-06-12T19:35:00+05:30</published><updated>2023-06-12T19:35:00+05:30</updated><id>https://varunbarad.com/blog/wracker-log-002</id><content type="html" xml:base="https://varunbarad.com/blog/wracker-log-002">&lt;p&gt;Welcome to the second log of my journey to build a weight-tracking website. Today I worked on the form for adding a new weight entry and also on the table for displaying all the entries.&lt;/p&gt;
+
+&lt;h2 id=&quot;day-2-challenge-1&quot;&gt;Day 2 Challenge 1&lt;/h2&gt;
+
+&lt;p&gt;First goal for today was to get a static HTML page served from my Django server as the homepage for the website. I couldn’t figure out how to deal with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;django-static&lt;/code&gt; and so ended up rendering a template (with no data passed) from an endpoint. For now I just shoved all my CSS and JS for this page in the HTML file itself. I’ll figure out how to deal with static files later.&lt;/p&gt;
+
+&lt;h2 id=&quot;day-2-challenge-2&quot;&gt;Day 2 Challenge 2&lt;/h2&gt;
+
+&lt;p&gt;Next up on the task was to create a form which takes in the recording date (defaults to current date but user can change it) and allows user to enter their weight for that day. Then take that data and store it locally in-browser. I chose to go the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;local-storage&lt;/code&gt; path for this. The most cumbersome part for me was to get the form to look how I wanted it to. Other than form-styling, actually capturing and storing the data was quite straight-forward.&lt;/p&gt;
+
+&lt;h2 id=&quot;day-2-challenge-3&quot;&gt;Day 2 Challenge 3&lt;/h2&gt;
+
+&lt;p&gt;The final task for me was to display the captured data in a table. Again, getting and processing the data to display was not the difficult part. The quirkiest section was when I wanted to turn the corners of my table round. Turns out, each cell individually gets their border and thus to only give the table rounded corners I had to select individual corner cells and then give them rounded corner for only the corner which was going to become a corner of the table.&lt;/p&gt;
+
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+
+&lt;p&gt;The website with no data added.
+&lt;img src=&quot;../assets/images/posts/wracker/002-wracker-without-data.png&quot; alt=&quot;screenshot with no data added&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The website with a few weight entries.
+&lt;img src=&quot;../assets/images/posts/wracker/002-wracker-with-data.png&quot; alt=&quot;screenshot with a few weight entries&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;things-i-learnedsolidified-today&quot;&gt;Things I learned/solidified today&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;How to style corners of a HTML &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;table&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;How to serve a HTML page from under Django&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Varun Barad</name></author><category term="wracker" /><category term="programming" /><category term="python" /><category term="javascript" /><summary type="html">Welcome to the second log of my journey to build a weight-tracking website. Today I worked on the form for adding a new weight entry and also on the table for displaying all the entries.</summary></entry><entry><title type="html">📝 Custom 404 in Express</title><link href="https://varunbarad.com/blog/til-handle-404-node-express" rel="alternate" type="text/html" title="📝 Custom 404 in Express" /><published>2023-06-02T17:52:02+05:30</published><updated>2023-06-02T17:52:02+05:30</updated><id>https://varunbarad.com/blog/til-handle-404-node-express</id><content type="html" xml:base="https://varunbarad.com/blog/til-handle-404-node-express">&lt;p&gt;You need to define a middleware to handle it and that middleware needs to be defined after all the other routes and middlewares have been specified already.&lt;/p&gt;
 
 &lt;p&gt;The logic is that this middleware will only be executed if the request cannot match with any other middleware/route.&lt;/p&gt;
 
