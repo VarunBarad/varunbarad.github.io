@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/assets/css/style.css?v=eb7f6d164d1d92f6dbc9d9ddc432b50d4dc007e8">
-  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=eb7f6d164d1d92f6dbc9d9ddc432b50d4dc007e8">
+  <link rel="stylesheet" href="/assets/css/style.css?v=b14fab84371cf5fbd28e613d2018bbe0829dac84">
+  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=b14fab84371cf5fbd28e613d2018bbe0829dac84">
   <link rel="icon" type="image/png" href="/favicon.png" />
   <title>Cheatsheet - ffmpeg - Varun Barad</title>
   <meta name="description" content="A cheat-sheet for ffmpeg" />
@@ -82,6 +82,14 @@ ffmpeg <span class="nt">-i</span> <span class="s2">"</span><span class="k">${</s
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Assuming the file is named input.mkv</span>
 ffprobe <span class="nt">-hide_banner</span> <span class="nt">-loglevel</span> quiet <span class="nt">-select_streams</span> s <span class="nt">-show_entries</span> <span class="nv">stream</span><span class="o">=</span>codec_name,codec_type:stream_tags<span class="o">=</span>language <span class="nt">-print_format</span> json input.mkv | jq <span class="s2">".streams | to_entries | map({codec_name: .value.codec_name, language:(.value.tags.language // </span><span class="se">\"</span><span class="s2">sub</span><span class="se">\"</span><span class="s2">), index:.key})[] | select(.codec_name == </span><span class="se">\"</span><span class="s2">subrip</span><span class="se">\"</span><span class="s2">) | </span><span class="se">\"\(</span><span class="s2">.language)</span><span class="se">\(</span><span class="s2">.index)</span><span class="se">\"</span><span class="s2">"</span> <span class="nt">--raw-output</span> | xargs <span class="nt">-L1</span> <span class="nt">-I</span> % <span class="nt">-t</span> zsh <span class="nt">-c</span> <span class="s1">'ffmpeg -hide_banner -loglevel quiet -i input.mkv -map 0:s:$(echo % | sed "s/[^0-9]//g") %.srt'</span>
 </code></pre></div></div>
+
+<h2 id="embed-thumbnail-into-an-mp4-video-file">Embed thumbnail into an mp4 video file</h2>
+
+<p>Here we want to apply thumbnail from <code class="language-plaintext highlighter-rouge">image.png</code> to <code class="language-plaintext highlighter-rouge">input.mp4</code> and save the result to <code class="language-plaintext highlighter-rouge">output.mp4</code>.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ffmpeg <span class="nt">-i</span> input.mp4 <span class="nt">-i</span> image.png <span class="nt">-map</span> 1 <span class="nt">-map</span> 0 <span class="nt">-c</span> copy <span class="nt">-disposition</span>:0 attached_pic output.mp4
+<span class="c"># Note: attached_pic here is a keyword to the disposition option</span>
+</code></pre></div></div>
 </div>
           </div>
 
@@ -119,7 +127,7 @@ ffprobe <span class="nt">-hide_banner</span> <span class="nt">-loglevel</span> q
   </div>
 </div>
 
-<script src="/assets/js/jquery.min.js?v=eb7f6d164d1d92f6dbc9d9ddc432b50d4dc007e8"></script>
-<script src="/assets/js/bootstrap.min.js?v=eb7f6d164d1d92f6dbc9d9ddc432b50d4dc007e8"></script>
+<script src="/assets/js/jquery.min.js?v=b14fab84371cf5fbd28e613d2018bbe0829dac84"></script>
+<script src="/assets/js/bootstrap.min.js?v=b14fab84371cf5fbd28e613d2018bbe0829dac84"></script>
 </body>
 </html>
