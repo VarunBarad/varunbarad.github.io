@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/assets/css/style.css?v=b14fab84371cf5fbd28e613d2018bbe0829dac84">
-  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=b14fab84371cf5fbd28e613d2018bbe0829dac84">
+  <link rel="stylesheet" href="/assets/css/style.css?v=3641aeb2768585c4df3e14d0b6941e14cf9da46c">
+  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=3641aeb2768585c4df3e14d0b6941e14cf9da46c">
   <link rel="icon" type="image/png" href="/favicon.png" />
   <title>Cheatsheet - ffmpeg - Varun Barad</title>
   <meta name="description" content="A cheat-sheet for ffmpeg" />
@@ -63,11 +63,13 @@
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">FILE</span><span class="o">=</span><span class="s2">"the-file-you-want-to-process.webm"</span>
 ffmpeg <span class="nt">-i</span> <span class="s2">"</span><span class="k">${</span><span class="nv">FILE</span><span class="k">}</span><span class="s2">"</span> <span class="nt">-vn</span> <span class="nt">-ab</span> 128k <span class="nt">-ar</span> 44100 <span class="nt">-y</span> <span class="s2">"</span><span class="k">${</span><span class="nv">FILE</span><span class="p">%.webm</span><span class="k">}</span><span class="s2">.mp3"</span>
 </code></pre></div></div>
+
 <p>Credits: <a href="https://bytefreaks.net/gnulinux/bash/ffmpeg-extract-audio-from-webm-to-mp3">Bytefreaks.net</a></p>
 
 <h2 id="merge-subtitle-srt-files-with-video-files">Merge subtitle (srt) files with video files</h2>
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ffmpeg <span class="nt">-i</span> video.mp4 <span class="nt">-i</span> subtitle.srt <span class="nt">-c</span>:s mov_text <span class="nt">-c</span>:v copy <span class="nt">-c</span>:a copy merged.mp4
 </code></pre></div></div>
+
 <p>Credits: <a href="https://superuser.com/a/520555">StackExchange</a></p>
 
 <h2 id="convert-mkv-to-mp4">Convert .mkv to .mp4</h2>
@@ -90,6 +92,8 @@ ffprobe <span class="nt">-hide_banner</span> <span class="nt">-loglevel</span> q
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ffmpeg <span class="nt">-i</span> input.mp4 <span class="nt">-i</span> image.png <span class="nt">-map</span> 1 <span class="nt">-map</span> 0 <span class="nt">-c</span> copy <span class="nt">-disposition</span>:0 attached_pic output.mp4
 <span class="c"># Note: attached_pic here is a keyword to the disposition option</span>
 </code></pre></div></div>
+
+<p>Credits: <a href="https://stackoverflow.com/a/54719926/4717436">StackOverflow</a></p>
 </div>
           </div>
 
@@ -127,7 +131,7 @@ ffprobe <span class="nt">-hide_banner</span> <span class="nt">-loglevel</span> q
   </div>
 </div>
 
-<script src="/assets/js/jquery.min.js?v=b14fab84371cf5fbd28e613d2018bbe0829dac84"></script>
-<script src="/assets/js/bootstrap.min.js?v=b14fab84371cf5fbd28e613d2018bbe0829dac84"></script>
+<script src="/assets/js/jquery.min.js?v=3641aeb2768585c4df3e14d0b6941e14cf9da46c"></script>
+<script src="/assets/js/bootstrap.min.js?v=3641aeb2768585c4df3e14d0b6941e14cf9da46c"></script>
 </body>
 </html>
