@@ -35,3 +35,12 @@ This uses `ffprobe` and `jq` to extract the subtitle streams from the input file
 # Assuming the file is named input.mkv
 ffprobe -hide_banner -loglevel quiet -select_streams s -show_entries stream=codec_name,codec_type:stream_tags=language -print_format json input.mkv | jq ".streams | to_entries | map({codec_name: .value.codec_name, language:(.value.tags.language // \"sub\"), index:.key})[] | select(.codec_name == \"subrip\") | \"\(.language)\(.index)\"" --raw-output | xargs -L1 -I % -t zsh -c 'ffmpeg -hide_banner -loglevel quiet -i input.mkv -map 0:s:$(echo % | sed "s/[^0-9]//g") %.srt'
 ```
+
+## Embed thumbnail into an mp4 video file
+
+Here we want to apply thumbnail from `image.png` to `input.mp4` and save the result to `output.mp4`.
+
+```shell
+ffmpeg -i input.mp4 -i image.png -map 1 -map 0 -c copy -disposition:0 attached_pic output.mp4
+# Note: attached_pic here is a keyword to the disposition option
+```
