@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/assets/css/style.css?v=f1907ac5c799dfa989ae46503b0a6ac81f6e8945">
+  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=f1907ac5c799dfa989ae46503b0a6ac81f6e8945">
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <title>HTTP Network Requests on Android Pie - Varun Barad</title>
+  <meta name="description" content="Android Pie only allows HTTPS traffic by default & blocks all HTTP requests. You can enable HTTP communication for your API endpoints once you have configured this little thing." />
+
+  <!-- Canonical URL -->
+  
+
+  <!-- RSS Feed meta-data -->
+  <link rel="alternate" type="application/atom+xml" title="Varun Barad - Curious Developer" href="https://varunbarad.com/feed.xml" />
+
+  <!-- Twitter meta-data -->
+  <meta name="twitter:site" content="@varun_barad" />
+  <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="HTTP Network Requests on Android Pie" />
+  <meta name="twitter:description" content="Android Pie only allows HTTPS traffic by default & blocks all HTTP requests. You can enable HTTP communication for your API endpoints once you have configured this little thing." />
+
+  <!-- Open-graph meta-data -->
+  <meta property="og:site_name" content="Varun Barad - Curious Developer" />
+  <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png" />
+  <meta property="og:type" content="object" />
+  <meta property="og:title" content="HTTP Network Requests on Android Pie" />
+  <meta property="og:url" content="https://varunbarad.com/blog/http-network-requests-on-android-pie" />
+  <meta property="og:description" content="Android Pie only allows HTTPS traffic by default & blocks all HTTP requests. You can enable HTTP communication for your API endpoints once you have configured this little thing." />
+</head>
+<body>
+<div>
+  <div id="header">
+    <div class="row header">
+      <div class="title col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+        <a href="/"><div class="title">Varun Barad</div></a>
+      </div>
+      <div class="col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8">
+        <nav class="menu text-right">
+          <a href="/blog">Blog</a>
+          <a href="/projects">Projects</a>
+          <a href="/books">Books</a>
+          <a href="/ideas">Ideas</a>
+          <a href="/contact">Contact</a>
+          <a href="/resume/">My Resume</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <article class="h-entry">
+    <div class="content row">
+      <div class="post-container">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+          <div>
+            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/http-network-requests-on-android-pie">HTTP Network Requests on Android Pie</a></div>
+            <div class="text-center">
+              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2019-04-07 12:00:00 +0530">April 07, 2019</time>
+            </div>
+            <div class="post-content e-content"><p>Recently when I started work on a new app for my company I noticed that all of my requests were being rejected before even reaching the server. This was a problem I was facing only on the emulator and not on the Nexus 5 I had for physical testing. I searched on the Internet a bit and found out that Android Pie has disabled cleartext network traffic by default.</p>
+
+<p>I found 2 solutions for this. You can either enable cleartext traffic from your app for specific domains or you can set it for all the domains.</p>
+
+<h2 id="enabling-cleartext-traffic-for-all-domains-discouraged-due-to-being-less-secure">Enabling cleartext traffic for all domains (discouraged due to being less secure)</h2>
+
+<p>Add this attribute to the <code class="language-plaintext highlighter-rouge">&lt;application&gt;</code> tag in your <code class="language-plaintext highlighter-rouge">AndroidManifest.xml</code></p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>android:usesCleartextTraffic="true"
+</code></pre></div></div>
+
+<p>This will enable app-wide cleartext traffic for any and all domains to which your app makes a request.</p>
+
+<p>This is discouraged as you don’t specifically allow only the domains that require cleartext.</p>
+
+<h2 id="enabling-http-requests-for-specific-domains-go-for-this-one-if-you-can">Enabling HTTP requests for specific domains (go for this one if you can)</h2>
+
+<p>You first need to create a file named <code class="language-plaintext highlighter-rouge">network_security_config.xml</code> file inside your <code class="language-plaintext highlighter-rouge">res/xml</code> directory. The file contents should be as below</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;network-security-config&gt;</span>
+    <span class="nt">&lt;domain-config</span> <span class="na">cleartextTrafficPermitted=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;domain</span> <span class="na">includeSubdomains=</span><span class="s">"true"</span><span class="nt">&gt;</span>example-domain.com<span class="nt">&lt;/domain&gt;</span>
+    <span class="nt">&lt;/domain-config&gt;</span>
+<span class="nt">&lt;/network-security-config&gt;</span>
+</code></pre></div></div>
+
+<p>You need to replace <code class="language-plaintext highlighter-rouge">example-domain.com</code> with the domain for which you want to enable http traffic. If you want to enable http for more than one domains then add relevant <code class="language-plaintext highlighter-rouge">&lt;domain&gt;</code> tags for each.</p>
+
+<p>Then you need to specify this file in your <code class="language-plaintext highlighter-rouge">AndroidManifest.xml</code> as below:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+<span class="nt">&lt;application</span>
+    <span class="err">...</span>
+    <span class="na">android:networkSecurityConfig=</span><span class="s">"@xml/network_security_config"</span><span class="nt">&gt;</span>
+...
+</code></pre></div></div>
+
+<h2 id="thats-all-folks">That’s all folks</h2>
+
+<p>I faced this issue at work and now I am writing about it so others (and also me) can benefit from it in future. If you have more such ideas/examples or any other suggestions  under the sky, <a href="https://varunbarad.com/contact">contact me</a> or tweet to me <a href="https://twitter.com/varun_barad">@varun_barad</a>.</p>
+
+</div>
+          </div>
+
+          <div class="post-categories-container">
+            Categories:
+            <div>
+              
+              <a href="/category/android" class="badge badge-warning p-category">#android</a>
+              
+              <a href="/blog" class="badge badge-warning">#all</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+  <div>
+    <div class="footer">
+      <div>
+        
+        <a href="https://github.com/VarunBarad" rel="me"><i class="fab fa-github social-links"></i></a>
+        
+        <a href="https://twitter.com/varun_barad" rel="me"><i class="fab fa-twitter social-links"></i></a>
+        
+        <a href="https://dev.to/varunbarad" rel="me"><i class="fab fa-dev social-links"></i></a>
+        
+        <a href="https://stackoverflow.com/users/4717436/varunbarad" rel="me"><i class="fab fa-stack-overflow social-links"></i></a>
+        
+      </div>
+      <div class="developer-attribution">
+        
+        Made by <a href="https://dixita0607.github.io">Dixita Ganatra</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/assets/js/jquery.min.js?v=f1907ac5c799dfa989ae46503b0a6ac81f6e8945"></script>
+<script src="/assets/js/bootstrap.min.js?v=f1907ac5c799dfa989ae46503b0a6ac81f6e8945"></script>
+</body>
+</html>

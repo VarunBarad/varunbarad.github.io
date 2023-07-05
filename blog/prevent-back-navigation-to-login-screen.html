@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/assets/css/style.css?v=f1907ac5c799dfa989ae46503b0a6ac81f6e8945">
+  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=f1907ac5c799dfa989ae46503b0a6ac81f6e8945">
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <title>Prevent back navigation to login screen - Varun Barad</title>
+  <meta name="description" content="The guide to correct way of preventing back navigation to login screens once user is logged-in" />
+
+  <!-- Canonical URL -->
+  
+
+  <!-- RSS Feed meta-data -->
+  <link rel="alternate" type="application/atom+xml" title="Varun Barad - Curious Developer" href="https://varunbarad.com/feed.xml" />
+
+  <!-- Twitter meta-data -->
+  <meta name="twitter:site" content="@varun_barad" />
+  <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Prevent back navigation to login screen" />
+  <meta name="twitter:description" content="The guide to correct way of preventing back navigation to login screens once user is logged-in" />
+
+  <!-- Open-graph meta-data -->
+  <meta property="og:site_name" content="Varun Barad - Curious Developer" />
+  <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png" />
+  <meta property="og:type" content="object" />
+  <meta property="og:title" content="Prevent back navigation to login screen" />
+  <meta property="og:url" content="https://varunbarad.com/blog/prevent-back-navigation-to-login-screen" />
+  <meta property="og:description" content="The guide to correct way of preventing back navigation to login screens once user is logged-in" />
+</head>
+<body>
+<div>
+  <div id="header">
+    <div class="row header">
+      <div class="title col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+        <a href="/"><div class="title">Varun Barad</div></a>
+      </div>
+      <div class="col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8">
+        <nav class="menu text-right">
+          <a href="/blog">Blog</a>
+          <a href="/projects">Projects</a>
+          <a href="/books">Books</a>
+          <a href="/ideas">Ideas</a>
+          <a href="/contact">Contact</a>
+          <a href="/resume/">My Resume</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <article class="h-entry">
+    <div class="content row">
+      <div class="post-container">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+          <div>
+            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/prevent-back-navigation-to-login-screen">Prevent back navigation to login screen</a></div>
+            <div class="text-center">
+              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2020-06-21 12:00:00 +0530">June 21, 2020</time>
+            </div>
+            <div class="post-content e-content"><p>There is a typical use-case in apps where once the user has logged in, you won’t want them to return to login screens when they press back. Instead what you want is to close the app itself.</p>
+
+<p>I have encountered such a situation many times but learnt this week that the path I was following was way suboptimal and had its flaws. I also got introduced to a much cleaner approach of achieving that.</p>
+
+<h2 id="setup">Setup</h2>
+
+<p>Let us say that our app has 2 activities <code class="language-plaintext highlighter-rouge">LoginActivity</code> and <code class="language-plaintext highlighter-rouge">DashboardActivity</code>. We don’t want anyone to reach <code class="language-plaintext highlighter-rouge">DashboardActivity</code> until they haven’t logged in. And we also want that when user presses back from <code class="language-plaintext highlighter-rouge">DashboardActivity</code> they exit the app instead of going back to the <code class="language-plaintext highlighter-rouge">LoginActivity</code> (normal behavior of pressing back on an activity is to open the previous activity which opened current activity).</p>
+
+<h2 id="what-i-used-to-do">What I used to do</h2>
+
+<p>Till now I used to setup <code class="language-plaintext highlighter-rouge">LoginActivity</code> such that it won’t be saved to the back-stack. I used to  set the <code class="language-plaintext highlighter-rouge">android:noHistory</code> flag for <code class="language-plaintext highlighter-rouge">LoginActivity</code> to <code class="language-plaintext highlighter-rouge">true</code> in <code class="language-plaintext highlighter-rouge">AndroidManifest.xml</code>.</p>
+
+<p>Atleast I thought that this was just preventing the activity from being placed on back-stack. But what it actually does is tells the system to not maintain any kind of history for instances of this activity class.</p>
+
+<p>I never realized the problem with this because it worked okay with single-screen login flows (so far I had built only those). The place where this breaks is when you have multiple screens for login implemented via fragments.</p>
+
+<p>What I started to notice in multi-screen login flow is that once user passes the first screen and then leaves the app (via pressing home-button, thus not actually going back) and come back to it they are brought back to the first fragment in the flow instead of taking them back to the fragment/screen where they left the app.</p>
+
+<p>The problem here was the android system was completely forgetting everything about the activity as soon as the user left. All it remembered was that this is the activity that user left on and thus when they come back, they have to be shown this activity again.</p>
+
+<h2 id="what-is-the-solution-for-this">What is the solution for this</h2>
+
+<p>One of my colleague (<a href="https://twitter.com/sanchita_ag">Sanchita</a>) showed me a much better way to do this. This method does not set any flags on any activity thus they keep their natural behavior of resuming user to the fragment that they left on.</p>
+
+<p>What you want to do is, once the user is logged-in, you provide a couple of flags to the intent that launches the <code class="language-plaintext highlighter-rouge">DashboardActivity</code>. Those flags tell it to clear the current task and launch our <code class="language-plaintext highlighter-rouge">DashboardActivity</code> on a new task. This new task won’t have the <code class="language-plaintext highlighter-rouge">LoginActivity</code> in its back-stack so when user presses back on <code class="language-plaintext highlighter-rouge">DashboardActivity</code> the app would exit instead of taking them back to <code class="language-plaintext highlighter-rouge">LoginActivity</code>.</p>
+
+<p>This is how the launching code for <code class="language-plaintext highlighter-rouge">DashboardActivity</code> should look like:</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">fun</span> <span class="nf">startDashboardActivity</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">val</span> <span class="py">intent</span> <span class="p">=</span> <span class="nc">Intent</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="nc">DashboardActivity</span><span class="o">::</span><span class="k">class</span><span class="p">.</span><span class="n">java</span><span class="p">)</span>
+  <span class="n">intent</span><span class="p">.</span><span class="n">flags</span> <span class="p">=</span> <span class="nc">Intent</span><span class="p">.</span><span class="nc">FLAG_ACTIVITY_CLEAR_TASK</span> <span class="n">or</span> <span class="nc">Intent</span><span class="p">.</span><span class="nc">FLAG_ACTIVITY_NEW_TASK</span>
+  <span class="n">context</span><span class="p">.</span><span class="nf">startActivity</span><span class="p">(</span><span class="n">intent</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>You can look at this <a href="https://stackoverflow.com/a/29565717/4717436">StackOverflow answer</a> which explains those flags in much more detail.</p>
+
+<p>Anyways, this was more as a documentation of my learning than a tutorial so do ask if there was still anything unclear in my explanation.</p>
+
+<p>Feel free to reach out to me to discuss this or anything else. You can find me on Twitter <a href="https://twitter.com/varun_barad">@varun_barad</a> or <a href="mailto:contact@varunbarad.com">email me</a></p>
+</div>
+          </div>
+
+          <div class="post-categories-container">
+            Categories:
+            <div>
+              
+              <a href="/category/android" class="badge badge-warning p-category">#android</a>
+              
+              <a href="/category/programming" class="badge badge-warning p-category">#programming</a>
+              
+              <a href="/blog" class="badge badge-warning">#all</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+  <div>
+    <div class="footer">
+      <div>
+        
+        <a href="https://github.com/VarunBarad" rel="me"><i class="fab fa-github social-links"></i></a>
+        
+        <a href="https://twitter.com/varun_barad" rel="me"><i class="fab fa-twitter social-links"></i></a>
+        
+        <a href="https://dev.to/varunbarad" rel="me"><i class="fab fa-dev social-links"></i></a>
+        
+        <a href="https://stackoverflow.com/users/4717436/varunbarad" rel="me"><i class="fab fa-stack-overflow social-links"></i></a>
+        
+      </div>
+      <div class="developer-attribution">
+        
+        Made by <a href="https://dixita0607.github.io">Dixita Ganatra</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/assets/js/jquery.min.js?v=f1907ac5c799dfa989ae46503b0a6ac81f6e8945"></script>
+<script src="/assets/js/bootstrap.min.js?v=f1907ac5c799dfa989ae46503b0a6ac81f6e8945"></script>
+</body>
+</html>
