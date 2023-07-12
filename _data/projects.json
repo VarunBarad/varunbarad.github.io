@@ -37,6 +37,22 @@
     ]
   },
   {
+    "name": "DIY Git",
+    "description": [
+      "A tiny version of git made in Python which I built to learn the internals of git. I followed the awesome tutorial by Nikita to build this."
+    ],
+    "links": [
+      {
+        "text": "Source code",
+        "destination": "https://github.com/VarunBarad/ugit"
+      },
+      {
+        "text": "Tutorial by Nikita",
+        "destination": "https://www.leshenko.net/p/ugit/"
+      }
+    ]
+  },
+  {
     "name": "Contacts Calendar",
     "description": [
       "A website which lets you export a calendar of important dates from your Google Contacts. I built this as a side-project to learn the basics of using Spring Boot framework."
