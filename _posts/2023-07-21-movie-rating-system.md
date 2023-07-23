@@ -42,7 +42,7 @@ Over the years I have watched a lot of movies but never found a good way to dete
 
 ## 4.5 (🎖️)
 
-- This move was so good that I want to buy a copy of it.
+- This movie was so good that I want to buy a copy of it.
 - I would sit my friends down and watch this movie again with them.
 
 ## 5 (🎬)
