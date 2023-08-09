@@ -6,8 +6,8 @@
   <link rel="stylesheet" href="/assets/css/style.css?v=0c9a1660a6852d0f3ecf83f1ad96d1a5049aa2f8">
   <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=0c9a1660a6852d0f3ecf83f1ad96d1a5049aa2f8">
   <link rel="icon" type="image/png" href="/favicon.png" />
-  <title>📝 India's national aquatic animal - Varun Barad</title>
-  <meta name="description" content="TIL: India has a species of dolphin as its national aquatic animal." />
+  <title>📝 Recursively remove .DS_Store files - Varun Barad</title>
+  <meta name="description" content="TIL: Shell command to recursively remove .DS_Store files" />
 
   <!-- Canonical URL -->
   
@@ -19,16 +19,16 @@
   <meta name="twitter:site" content="@varun_barad" />
   <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="📝 India's national aquatic animal" />
-  <meta name="twitter:description" content="TIL: India has a species of dolphin as its national aquatic animal." />
+  <meta name="twitter:title" content="📝 Recursively remove .DS_Store files" />
+  <meta name="twitter:description" content="TIL: Shell command to recursively remove .DS_Store files" />
 
   <!-- Open-graph meta-data -->
   <meta property="og:site_name" content="Varun Barad - Curious Developer" />
   <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png" />
   <meta property="og:type" content="object" />
-  <meta property="og:title" content="📝 India's national aquatic animal" />
-  <meta property="og:url" content="https://varunbarad.com/blog/til-indias-national-aquatic-animal" />
-  <meta property="og:description" content="TIL: India has a species of dolphin as its national aquatic animal." />
+  <meta property="og:title" content="📝 Recursively remove .DS_Store files" />
+  <meta property="og:url" content="https://varunbarad.com/blog/remove-ds-store-files" />
+  <meta property="og:description" content="TIL: Shell command to recursively remove .DS_Store files" />
 </head>
 <body>
 <div>
@@ -54,17 +54,17 @@
       <div class="post-container">
         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
           <div>
-            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/til-indias-national-aquatic-animal">📝 India's national aquatic animal</a></div>
+            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/remove-ds-store-files">📝 Recursively remove .DS_Store files</a></div>
             <div class="text-center">
-              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2022-07-12 00:00:00 +0530">July 12, 2022</time>
+              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2023-08-09 14:49:36 +0530">August 09, 2023</time>
             </div>
-            <div class="post-content e-content"><p>Today (well actually this past Sunday) I learned that nations also have something known as their “National Aquatic Animal” (NAA).</p>
+            <div class="post-content e-content"><div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find <span class="nb">.</span> <span class="nt">-name</span> <span class="s2">".DS_Store"</span> <span class="nt">-type</span> f <span class="nt">-delete</span>
+</code></pre></div></div>
 
-<p>I was visiting the <a href="https://sciencecity.gujarat.gov.in/ticketing/ticket/aquatic-gallery-41">aquatic gallery</a> (a recent addition) of <a href="https://sciencecity.gujarat.gov.in/home">Science City</a> near me and found out that besides just plain old dolphins that we hear/see about there is also something called River Dolphins and that India’s National Aquatic Animal is actually a <strong>River Dolphin</strong>.</p>
+<p>If you just want to list out those files then skip the <code class="language-plaintext highlighter-rouge">-delete</code> flag.</p>
 
-<p>Later looking up on Wikipedia I found that it is specifically the <a href="https://en.wikipedia.org/wiki/Ganges_river_dolphin">Ganges (Platanista gangetica)</a> variant that is India’s NAA.</p>
-
-<p>PS: If you are in Gujarat, India then you should definitely take out a day and visit the Science City in Ahmedabad (<a href="https://goo.gl/maps/kHXJnbhLNF2D8z557">Google Maps link</a>).</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find <span class="nb">.</span> <span class="nt">-name</span> <span class="s2">".DS_Store"</span> <span class="nt">-type</span> f
+</code></pre></div></div>
 </div>
           </div>
 
