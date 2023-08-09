@@ -2,7 +2,7 @@
 layout: post
 title: "📝 Avoid .DS_Store files on removable media"
 summary: "TIL: Settings change on Mac to avoid having .DS_Store files being created on USB and Network shares"
-date: 2023-08-10 14:59:08 +0530
+date: 2023-08-09 19:24:24 +0530
 categories:
   - "til"
 ---
