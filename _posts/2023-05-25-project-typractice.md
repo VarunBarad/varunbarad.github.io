@@ -21,3 +21,9 @@ The website also stores in-browser (all locally on your machine) how you perform
 Check it out and let me know what you like and what you would like to change about it. You can also send me screenshots of your best scores.
 
 ![my score](../assets/images/posts/project-typractice/screenshot.png)
+
+## Articles on this project
+
+1. Public release (this article)
+2. [Adding stats chart](./typractice-stats-chart)
+3. [Adding summary stats table](./typractice-paragraph-summaries)

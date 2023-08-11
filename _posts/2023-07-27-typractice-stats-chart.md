@@ -20,3 +20,9 @@ Each entry in the line-chart represents the speed (in words-per-minute) and the 
 Would love to see how your speed has changed over time. Send me screenshots of your charts.
 
 ![screenshot of the stats page](../assets/images/posts/project-typractice/stats-chart.png)
+
+## Articles on this project
+
+1. [Public release](./project-typractice)
+2. Adding stats chart (this article)
+3. [Adding summary stats table](./typractice-paragraph-summaries)
