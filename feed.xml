@@ -1,4 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://varunbarad.com/" rel="alternate" type="text/html" /><updated>2023-08-09T19:25:06+05:30</updated><id>https://varunbarad.com/feed.xml</id><title type="html">Varun Barad - Curious Developer</title><subtitle>My online home where I post about new things I learn or find interesting.</subtitle><author><name>Varun Barad</name></author><entry><title type="html">📝 Avoid .DS_Store files on removable media</title><link href="https://varunbarad.com/blog/avoid-ds-store" rel="alternate" type="text/html" title="📝 Avoid .DS_Store files on removable media" /><published>2023-08-09T19:24:24+05:30</published><updated>2023-08-09T19:24:24+05:30</updated><id>https://varunbarad.com/blog/avoid-ds-store</id><content type="html" xml:base="https://varunbarad.com/blog/avoid-ds-store">&lt;p&gt;Disable creation of metadata files (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.DS_Store&lt;/code&gt; and AppleDouble files) on Network Volumes&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://varunbarad.com/" rel="alternate" type="text/html" /><updated>2023-08-11T22:16:44+05:30</updated><id>https://varunbarad.com/feed.xml</id><title type="html">Varun Barad - Curious Developer</title><subtitle>My online home where I post about new things I learn or find interesting.</subtitle><author><name>Varun Barad</name></author><entry><title type="html">⌨️ Paragraph performance summaries</title><link href="https://varunbarad.com/blog/typractice-paragraph-summaries" rel="alternate" type="text/html" title="⌨️ Paragraph performance summaries" /><published>2023-08-11T21:33:50+05:30</published><updated>2023-08-11T21:33:50+05:30</updated><id>https://varunbarad.com/blog/typractice-paragraph-summaries</id><content type="html" xml:base="https://varunbarad.com/blog/typractice-paragraph-summaries">&lt;p&gt;Apart from the graph I added last time I also wanted people to have a table where they can see their performance. Initially I was going to present the top 10 performance according to words-per-minute show up in the table. Something like a leaderboard.&lt;/p&gt;
+
+&lt;p&gt;But as I was writing the code, GitHub Copilot autofilled for me the code of a table which shows a summary of user’s performance on each paragraph. I liked the idea and went with it. Wrote a bit of CSS to make the table have rounded corners and other such touch-ups.&lt;/p&gt;
+
+&lt;p&gt;For each different paragraph that you have typed in, you can now see the following data-points:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Paragraph number&lt;/li&gt;
+  &lt;li&gt;Number of attempts you have made&lt;/li&gt;
+  &lt;li&gt;Your best, worst and average time in minutes&lt;/li&gt;
+  &lt;li&gt;Your best, worst and average speed in words-per-minute&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The website looks usably nice on a laptop and desktop, it has all the functionalities that I wanted it to have. Now I declare this project as finished. I won’t make any new changes to it unless to fix a bug. This declaration is primarily for me to stop myself from spending any more time thinking about this 😅.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../assets/images/posts/project-typractice/stats-table.png&quot; alt=&quot;screenshot of the summary stats table&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;articles-on-this-project&quot;&gt;Articles on this project&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;./project-typractice&quot;&gt;Public release&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;./typractice-stats-chart&quot;&gt;Adding stats chart&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Adding summary stats table (this article)&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Varun Barad</name></author><category term="typractice" /><category term="web" /><category term="programming" /><summary type="html">Apart from the graph I added last time I also wanted people to have a table where they can see their performance. Initially I was going to present the top 10 performance according to words-per-minute show up in the table. Something like a leaderboard.</summary></entry><entry><title type="html">📝 Avoid .DS_Store files on removable media</title><link href="https://varunbarad.com/blog/avoid-ds-store" rel="alternate" type="text/html" title="📝 Avoid .DS_Store files on removable media" /><published>2023-08-09T19:24:24+05:30</published><updated>2023-08-09T19:24:24+05:30</updated><id>https://varunbarad.com/blog/avoid-ds-store</id><content type="html" xml:base="https://varunbarad.com/blog/avoid-ds-store">&lt;p&gt;Disable creation of metadata files (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.DS_Store&lt;/code&gt; and AppleDouble files) on Network Volumes&lt;/p&gt;
 
 &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;defaults write com.apple.desktopservices DSDontWriteNetworkStores &lt;span class=&quot;nt&quot;&gt;-bool&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -22,7 +45,15 @@
 
 &lt;p&gt;Would love to see how your speed has changed over time. Send me screenshots of your charts.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../assets/images/posts/project-typractice/stats-chart.png&quot; alt=&quot;screenshot of the stats page&quot; /&gt;&lt;/p&gt;</content><author><name>Varun Barad</name></author><category term="typractice" /><category term="web" /><category term="programming" /><summary type="html">While I was accruing the typing speed data each time I practiced on Typractice, the user was not able to see it. They had no way of knowing how they have progressed (or regressed) over time.</summary></entry><entry><title type="html">🎬 Movie rating system</title><link href="https://varunbarad.com/blog/movie-rating-system" rel="alternate" type="text/html" title="🎬 Movie rating system" /><published>2023-07-22T11:31:20+05:30</published><updated>2023-07-22T11:31:20+05:30</updated><id>https://varunbarad.com/blog/movie-rating-system</id><content type="html" xml:base="https://varunbarad.com/blog/movie-rating-system">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;../assets/images/posts/project-typractice/stats-chart.png&quot; alt=&quot;screenshot of the stats page&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;articles-on-this-project&quot;&gt;Articles on this project&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;./project-typractice&quot;&gt;Public release&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Adding stats chart (this article)&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;./typractice-paragraph-summaries&quot;&gt;Adding summary stats table&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Varun Barad</name></author><category term="typractice" /><category term="web" /><category term="programming" /><summary type="html">While I was accruing the typing speed data each time I practiced on Typractice, the user was not able to see it. They had no way of knowing how they have progressed (or regressed) over time.</summary></entry><entry><title type="html">🎬 Movie rating system</title><link href="https://varunbarad.com/blog/movie-rating-system" rel="alternate" type="text/html" title="🎬 Movie rating system" /><published>2023-07-22T11:31:20+05:30</published><updated>2023-07-22T11:31:20+05:30</updated><id>https://varunbarad.com/blog/movie-rating-system</id><content type="html" xml:base="https://varunbarad.com/blog/movie-rating-system">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
 &lt;p&gt;Over the years I have watched a lot of movies but never found a good way to determine which of them I liked how much. That was until I came across this &lt;a href=&quot;https://kau.sh/blog/movie-rating-system/&quot;&gt;simple guide&lt;/a&gt; from &lt;a href=&quot;https://kau.sh&quot;&gt;Kaushik Gopal&lt;/a&gt;. The rating works on a scale of 0-5 and here’s how it goes:&lt;/p&gt;
 
@@ -128,7 +159,15 @@
 
 &lt;p&gt;Check it out and let me know what you like and what you would like to change about it. You can also send me screenshots of your best scores.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../assets/images/posts/project-typractice/screenshot.png&quot; alt=&quot;my score&quot; /&gt;&lt;/p&gt;</content><author><name>Varun Barad</name></author><category term="typractice" /><category term="web" /><category term="programming" /><category term="project" /><summary type="html">Recently someone I know wanted to improve their typing speed and accuracy. While there are a lot of websites available around to practice your typing, I took this as a chance to build my own which is free of any ads or tracking. Following my tradition of not-the-best puns, I present to the world: Typractice.</summary></entry><entry><title type="html">📝 Using emoji as a favicon</title><link href="https://varunbarad.com/blog/emoji-as-favicon" rel="alternate" type="text/html" title="📝 Using emoji as a favicon" /><published>2023-05-23T17:32:32+05:30</published><updated>2023-05-23T17:32:32+05:30</updated><id>https://varunbarad.com/blog/emoji-as-favicon</id><content type="html" xml:base="https://varunbarad.com/blog/emoji-as-favicon">&lt;p&gt;You can use an emoji as a favicon with this simple snippet:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;../assets/images/posts/project-typractice/screenshot.png&quot; alt=&quot;my score&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;articles-on-this-project&quot;&gt;Articles on this project&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Public release (this article)&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;./typractice-stats-chart&quot;&gt;Adding stats chart&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;./typractice-paragraph-summaries&quot;&gt;Adding summary stats table&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Varun Barad</name></author><category term="typractice" /><category term="web" /><category term="programming" /><category term="project" /><summary type="html">Recently someone I know wanted to improve their typing speed and accuracy. While there are a lot of websites available around to practice your typing, I took this as a chance to build my own which is free of any ads or tracking. Following my tradition of not-the-best puns, I present to the world: Typractice.</summary></entry><entry><title type="html">📝 Using emoji as a favicon</title><link href="https://varunbarad.com/blog/emoji-as-favicon" rel="alternate" type="text/html" title="📝 Using emoji as a favicon" /><published>2023-05-23T17:32:32+05:30</published><updated>2023-05-23T17:32:32+05:30</updated><id>https://varunbarad.com/blog/emoji-as-favicon</id><content type="html" xml:base="https://varunbarad.com/blog/emoji-as-favicon">&lt;p&gt;You can use an emoji as a favicon with this simple snippet:&lt;/p&gt;
 
 &lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;icon&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;data:image/svg+xml,&amp;lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&amp;gt;&amp;lt;text y=%22.9em%22 font-size=%2290%22&amp;gt;🎯&amp;lt;/text&amp;gt;&amp;lt;/svg&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;

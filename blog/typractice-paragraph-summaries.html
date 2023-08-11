@@ -6,8 +6,8 @@
   <link rel="stylesheet" href="/assets/css/style.css?v=56ecdb13f982433651df99e91a076fba1c9345e6">
   <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=56ecdb13f982433651df99e91a076fba1c9345e6">
   <link rel="icon" type="image/png" href="/favicon.png" />
-  <title>Office Pranks - Varun Barad</title>
-  <meta name="description" content="A list of simple and safe pranks you can pull on your colleagues." />
+  <title>⌨️ Paragraph performance summaries - Varun Barad</title>
+  <meta name="description" content="I added a chart to show your progress over time" />
 
   <!-- Canonical URL -->
   
@@ -19,16 +19,16 @@
   <meta name="twitter:site" content="@varun_barad" />
   <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Office Pranks" />
-  <meta name="twitter:description" content="A list of simple and safe pranks you can pull on your colleagues." />
+  <meta name="twitter:title" content="⌨️ Paragraph performance summaries" />
+  <meta name="twitter:description" content="I added a chart to show your progress over time" />
 
   <!-- Open-graph meta-data -->
   <meta property="og:site_name" content="Varun Barad - Curious Developer" />
   <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png" />
   <meta property="og:type" content="object" />
-  <meta property="og:title" content="Office Pranks" />
-  <meta property="og:url" content="https://varunbarad.com/blog/office-pranks" />
-  <meta property="og:description" content="A list of simple and safe pranks you can pull on your colleagues." />
+  <meta property="og:title" content="⌨️ Paragraph performance summaries" />
+  <meta property="og:url" content="https://varunbarad.com/blog/typractice-paragraph-summaries" />
+  <meta property="og:description" content="I added a chart to show your progress over time" />
 </head>
 <body>
 <div>
@@ -54,23 +54,34 @@
       <div class="post-container">
         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
           <div>
-            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/office-pranks">Office Pranks</a></div>
+            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/typractice-paragraph-summaries">⌨️ Paragraph performance summaries</a></div>
             <div class="text-center">
-              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2022-09-17 06:40:13 +0530">September 17, 2022</time>
+              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2023-08-11 21:33:50 +0530">August 11, 2023</time>
             </div>
-            <div class="post-content e-content"><p>These are a bunch of simple and harmless (especially HR safe) pranks you can pull on your colleagues:</p>
+            <div class="post-content e-content"><p>Apart from the graph I added last time I also wanted people to have a table where they can see their performance. Initially I was going to present the top 10 performance according to words-per-minute show up in the table. Something like a leaderboard.</p>
 
-<h3 id="wear-a-different-name-tag-every-day">Wear a different name tag every day</h3>
+<p>But as I was writing the code, GitHub Copilot autofilled for me the code of a table which shows a summary of user’s performance on each paragraph. I liked the idea and went with it. Wrote a bit of CSS to make the table have rounded corners and other such touch-ups.</p>
 
-<p>Come to office with a different name tag stuck to your shirt every day. There are bound to be a few people who might trip up as to what your identity actually is and how to address you.</p>
+<p>For each different paragraph that you have typed in, you can now see the following data-points:</p>
 
-<h3 id="fake-moustaches">Fake moustaches</h3>
+<ol>
+  <li>Paragraph number</li>
+  <li>Number of attempts you have made</li>
+  <li>Your best, worst and average time in minutes</li>
+  <li>Your best, worst and average speed in words-per-minute</li>
+</ol>
 
-<p>Just show up with a fake moustache one day. Don’t mention it unless someone asks about it. Some people will do a solid double-take the first time you start speaking in a meeting.</p>
+<p>The website looks usably nice on a laptop and desktop, it has all the functionalities that I wanted it to have. Now I declare this project as finished. I won’t make any new changes to it unless to fix a bug. This declaration is primarily for me to stop myself from spending any more time thinking about this 😅.</p>
 
-<h3 id="wear-multiple-name-tags">Wear multiple name tags</h3>
+<p><img src="../assets/images/posts/project-typractice/stats-table.png" alt="screenshot of the summary stats table" /></p>
 
-<p>In this one you wear multiple different name tags at the same time. And when someone asks you who you are, you just ask them to pick who they want you to be. And each name/character comes with their own different background story and what they do now and stuff like that.</p>
+<h2 id="articles-on-this-project">Articles on this project</h2>
+
+<ol>
+  <li><a href="./project-typractice">Public release</a></li>
+  <li><a href="./typractice-stats-chart">Adding stats chart</a></li>
+  <li>Adding summary stats table (this article)</li>
+</ol>
 </div>
           </div>
 
@@ -78,7 +89,11 @@
             Categories:
             <div>
               
-              <a href="/category/miscellaneous" class="badge badge-warning p-category">#miscellaneous</a>
+              <a href="/category/typractice" class="badge badge-warning p-category">#typractice</a>
+              
+              <a href="/category/web" class="badge badge-warning p-category">#web</a>
+              
+              <a href="/category/programming" class="badge badge-warning p-category">#programming</a>
               
               <a href="/blog" class="badge badge-warning">#all</a>
             </div>
