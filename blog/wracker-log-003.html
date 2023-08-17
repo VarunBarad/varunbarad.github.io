@@ -6,8 +6,8 @@
   <link rel="stylesheet" href="/assets/css/style.css?v=fb604bd3700e7b4e46e58727522db4d1e5723334">
   <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=fb604bd3700e7b4e46e58727522db4d1e5723334">
   <link rel="icon" type="image/png" href="/favicon.png" />
-  <title>⚖️ Wracker Dev Log #002 - Varun Barad</title>
-  <meta name="description" content="My experience making a usable form and working with HTML <code>&lt;table&gt;</code> for the first time" />
+  <title>⚖️ Wracker Dev Log #003 - Varun Barad</title>
+  <meta name="description" content="Adding a graph and moving away from django" />
 
   <!-- Canonical URL -->
   
@@ -19,16 +19,16 @@
   <meta name="twitter:site" content="@varun_barad" />
   <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="⚖️ Wracker Dev Log #002" />
-  <meta name="twitter:description" content="My experience making a usable form and working with HTML <code>&lt;table&gt;</code> for the first time" />
+  <meta name="twitter:title" content="⚖️ Wracker Dev Log #003" />
+  <meta name="twitter:description" content="Adding a graph and moving away from django" />
 
   <!-- Open-graph meta-data -->
   <meta property="og:site_name" content="Varun Barad - Curious Developer" />
   <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png" />
   <meta property="og:type" content="object" />
-  <meta property="og:title" content="⚖️ Wracker Dev Log #002" />
-  <meta property="og:url" content="https://varunbarad.com/blog/wracker-log-002" />
-  <meta property="og:description" content="My experience making a usable form and working with HTML <code>&lt;table&gt;</code> for the first time" />
+  <meta property="og:title" content="⚖️ Wracker Dev Log #003" />
+  <meta property="og:url" content="https://varunbarad.com/blog/wracker-log-003" />
+  <meta property="og:description" content="Adding a graph and moving away from django" />
 </head>
 <body>
 <div>
@@ -54,37 +54,36 @@
       <div class="post-container">
         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
           <div>
-            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/wracker-log-002">⚖️ Wracker Dev Log #002</a></div>
+            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/wracker-log-003">⚖️ Wracker Dev Log #003</a></div>
             <div class="text-center">
-              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2023-06-12 19:35:00 +0530">June 12, 2023</time>
+              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2023-08-17 06:58:27 +0530">August 17, 2023</time>
             </div>
-            <div class="post-content e-content"><p>Welcome to the second log of my journey to build a weight-tracking website. Today I worked on the form for adding a new weight entry and also on the table for displaying all the entries.</p>
+            <div class="post-content e-content"><p>This is the third log entry for my weight-tracking project and the work covered today happened over multiple days. I added a graph of the weight entries and moved away from django to flask.</p>
 
-<h2 id="day-2-challenge-1">Day 2 Challenge 1</h2>
+<h2 id="period-3-task-1-p3t1---adding-a-graph">Period 3 Task 1 (P3T1) - Adding a graph</h2>
 
-<p>First goal for today was to get a static HTML page served from my Django server as the homepage for the website. I couldn’t figure out how to deal with <code class="language-plaintext highlighter-rouge">django-static</code> and so ended up rendering a template (with no data passed) from an endpoint. For now I just shoved all my CSS and JS for this page in the HTML file itself. I’ll figure out how to deal with static files later.</p>
-
-<h2 id="day-2-challenge-2">Day 2 Challenge 2</h2>
-
-<p>Next up on the task was to create a form which takes in the recording date (defaults to current date but user can change it) and allows user to enter their weight for that day. Then take that data and store it locally in-browser. I chose to go the <code class="language-plaintext highlighter-rouge">local-storage</code> path for this. The most cumbersome part for me was to get the form to look how I wanted it to. Other than form-styling, actually capturing and storing the data was quite straight-forward.</p>
-
-<h2 id="day-2-challenge-3">Day 2 Challenge 3</h2>
-
-<p>The final task for me was to display the captured data in a table. Again, getting and processing the data to display was not the difficult part. The quirkiest section was when I wanted to turn the corners of my table round. Turns out, each cell individually gets their border and thus to only give the table rounded corners I had to select individual corner cells and then give them rounded corner for only the corner which was going to become a corner of the table.</p>
-
-<h2 id="results">Results</h2>
+<p>Seeing the progress of my weight-change journey at-a-glance was a must for me and so a graph was required because it makes seeing the trend over time much simpler. I had already <a href="./typractice-stats-chart">added a chart recently to another project</a> and went with the same <a href="https://chartjs.org">library</a> and usage pattern. A simple chart of weight-entries against the date of measurement was all I needed. Screenshots of the results follow:</p>
 
 <p>The website with no data added.
-<img src="../assets/images/posts/wracker/002-wracker-without-data.png" alt="screenshot with no data added" /></p>
+<img src="../assets/images/posts/wracker/003-wracker-without-data.png" alt="screenshot with no data added" /></p>
 
 <p>The website with a few weight entries.
-<img src="../assets/images/posts/wracker/002-wracker-with-data.png" alt="screenshot with a few weight entries" /></p>
+<img src="../assets/images/posts/wracker/003-wracker-with-data.png" alt="screenshot with a few weight entries" /></p>
+
+<h2 id="p3t2---moving-from-django-to-flask">P3T2 - Moving from django to flask</h2>
+
+<p>My initial reasoning to go with django was because I wanted to learn a Python backend framework, but with how much different types of code-bases I was seeing when looking for “the” code structure for a django project I was getting confused. So rather than burn my efficiency trying to grok just django, I decided to move to a simpler backend framework <a href="https://flask.palletsprojects.com/">flask</a>.</p>
+
+<p>I started by installing flask and then serving the same HTML file as a rendered template from flask. Once that was done, I removed all the django-related code from the codebase. That was followed by learning how static files are served in flask and then moving my styles and Javascript to separate static files. Final step was to move the Javascript file for the charting library in-house. I downloaded the minified version of the library with a simple <code class="language-plaintext highlighter-rouge">wget</code> and then moved it to the static folder and pointed my HTML file to it.</p>
+
+<p>So far I would say that it is much easier to understand how things are happening in Flask than how they were happening in django. I am sure that django is a much more powerful framework but for my use-case, I think flask is more than enough.</p>
 
 <h2 id="things-i-learnedsolidified-today">Things I learned/solidified today</h2>
 
 <ul>
-  <li>How to style corners of a HTML <code class="language-plaintext highlighter-rouge">table</code></li>
-  <li>How to serve a HTML page from under Django</li>
+  <li>Serve static files in flask</li>
+  <li>Serve an HTML file as a template in flask</li>
+  <li>How to remove dependencies from a Python project</li>
 </ul>
 </div>
           </div>
