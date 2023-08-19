@@ -168,4 +168,20 @@ It is a three-step process, listed inside to out (i.e. the innermost query is ex
 2. Join the `group_id` with the `id` of `groups` to get the `name` of the group
 3. Aggregate the `name` of the groups into a comma-separated string using `string_agg`
 
+## Make a column unique after creating it
+
+If we have a table `people` with a column `email` and we want to make it unique after we have already added it to table:
+
+```sql
+alter table people add unique (email);
+```
+
+## Make a colum non-nullable after creating it
+
+If we have a table `people` with a column `email` and we want to make it non-nullable after we have already added it to table:
+
+```sql
+alter table people alter column email set not null;
+```
+
 Have a great day people 👋
