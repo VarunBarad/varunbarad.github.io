@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/assets/css/style.css?v=fb604bd3700e7b4e46e58727522db4d1e5723334">
-  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=fb604bd3700e7b4e46e58727522db4d1e5723334">
+  <link rel="stylesheet" href="/assets/css/style.css?v=b2b5b8a3575fd913a5a3d2d350003740e4ee7750">
+  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=b2b5b8a3575fd913a5a3d2d350003740e4ee7750">
   <link rel="icon" type="image/png" href="/favicon.png" />
   <title>Cheatsheet - PostgreSQL - Varun Barad</title>
   <meta name="description" content="A cheat-sheet for PostgreSQL database" />
@@ -238,6 +238,20 @@
   <li>Aggregate the <code class="language-plaintext highlighter-rouge">name</code> of the groups into a comma-separated string using <code class="language-plaintext highlighter-rouge">string_agg</code></li>
 </ol>
 
+<h2 id="make-a-column-unique-after-creating-it">Make a column unique after creating it</h2>
+
+<p>If we have a table <code class="language-plaintext highlighter-rouge">people</code> with a column <code class="language-plaintext highlighter-rouge">email</code> and we want to make it unique after we have already added it to table:</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">alter</span> <span class="k">table</span> <span class="n">people</span> <span class="k">add</span> <span class="k">unique</span> <span class="p">(</span><span class="n">email</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="make-a-colum-non-nullable-after-creating-it">Make a colum non-nullable after creating it</h2>
+
+<p>If we have a table <code class="language-plaintext highlighter-rouge">people</code> with a column <code class="language-plaintext highlighter-rouge">email</code> and we want to make it non-nullable after we have already added it to table:</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">alter</span> <span class="k">table</span> <span class="n">people</span> <span class="k">alter</span> <span class="k">column</span> <span class="n">email</span> <span class="k">set</span> <span class="k">not</span> <span class="k">null</span><span class="p">;</span>
+</code></pre></div></div>
+
 <p>Have a great day people 👋</p>
 </div>
           </div>
@@ -276,7 +290,7 @@
   </div>
 </div>
 
-<script src="/assets/js/jquery.min.js?v=fb604bd3700e7b4e46e58727522db4d1e5723334"></script>
-<script src="/assets/js/bootstrap.min.js?v=fb604bd3700e7b4e46e58727522db4d1e5723334"></script>
+<script src="/assets/js/jquery.min.js?v=b2b5b8a3575fd913a5a3d2d350003740e4ee7750"></script>
+<script src="/assets/js/bootstrap.min.js?v=b2b5b8a3575fd913a5a3d2d350003740e4ee7750"></script>
 </body>
 </html>
