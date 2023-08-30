@@ -16,6 +16,6 @@ To-Read Manager at no point collects or processes any PII for any of its user.
 
 ## Consent
 
-By using our website, you hereby consent to our Privacy Policy and agree to its Terms and Conditions.
+By using our application, you hereby consent to our Privacy Policy and agree to its Terms and Conditions.
 
 If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us via [https://varunbarad.com/contact/](https://varunbarad.com/contact/).
