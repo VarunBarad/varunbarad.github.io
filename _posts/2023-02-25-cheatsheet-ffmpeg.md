@@ -48,3 +48,11 @@ ffmpeg -i input.mp4 -i image.png -map 1 -map 0 -c copy -disposition:0 attached_p
 ```
 
 Credits: [StackOverflow](https://stackoverflow.com/a/54719926/4717436)
+
+## Remove chapters from a video file
+
+Here we want to remove embedded chapter markings from `input.mp4` and save the result to `output.mp4`.
+
+```shell
+ffmpeg -i input.mp4 -map_chapters -1 -c copy output.mp4
+```
