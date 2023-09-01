@@ -1,33 +1,10 @@
 {
   "about": {
     "name": "Varun Barad",
-    "tagLine": "Android Developer & Lifelong Learner",
     "photo": {
       "path": "./assets/images/profile.png",
       "description": "Profile picture - Varun Barad"
-    },
-    "aboutText": "Hi, I am Varun - a developer who enjoys learning new skills. I'm currently an Android Developer for Deliverr, Canada. As the capstone project for my Android Nanodegree I developed an app for students to help them keep track of their attendance.\nI'd love to combine my passion for learning with my software development skills to continue to develop tools which simplify people's lives.",
-    "resume": {
-      "path": "https://drive.google.com/open?id=1coq24eMHnKwS-CMCC1KSGwRF0chcs_h3",
-      "description": "Download my resume"
-    },
-    "certificates": [
-      {
-        "title": "Android Developer Nanodegree - Udacity",
-        "description": "",
-        "url": "https://confirm.udacity.com/PGPG9AU9"
-      },
-      {
-        "title": "Responsive Web Design - freeCodeCamp",
-        "description": "",
-        "url": "https://www.freecodecamp.org/certification/varunbarad/responsive-web-design"
-      },
-      {
-        "title": "JavaScript Algorithms and Data Structures - freeCodeCamp",
-        "description": "",
-        "url": "https://www.freecodecamp.org/certification/varunbarad/javascript-algorithms-and-data-structures"
-      }
-    ]
+    }
   },
   "contact": {
     "website": "https://varunbarad.com",
