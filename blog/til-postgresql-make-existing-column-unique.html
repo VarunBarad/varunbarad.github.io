@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/assets/css/style.css?v=9e2f03c79fa169eaef06633805785901c32502a2">
-  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=9e2f03c79fa169eaef06633805785901c32502a2">
+  <link rel="stylesheet" href="/assets/css/style.css?v=66562b5c7383d51a8112274b81a42d943ebd0ab9">
+  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=66562b5c7383d51a8112274b81a42d943ebd0ab9">
   <link rel="icon" type="image/png" href="/favicon.png" />
-  <title>📝 PostgreSQL: Mark a column non-nullable after creating it - Varun Barad</title>
-  <meta name="description" content="TIL: How to add a not null constraint to an existing column in a PostgreSQL table" />
+  <title>📝 PostgreSQL: Make a column unique after creating it - Varun Barad</title>
+  <meta name="description" content="TIL: How to add unique constraint to an existing column in a PostgreSQL table" />
 
   <!-- Canonical URL -->
   
@@ -19,16 +19,16 @@
   <meta name="twitter:site" content="@varun_barad" />
   <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="📝 PostgreSQL: Mark a column non-nullable after creating it" />
-  <meta name="twitter:description" content="TIL: How to add a not null constraint to an existing column in a PostgreSQL table" />
+  <meta name="twitter:title" content="📝 PostgreSQL: Make a column unique after creating it" />
+  <meta name="twitter:description" content="TIL: How to add unique constraint to an existing column in a PostgreSQL table" />
 
   <!-- Open-graph meta-data -->
   <meta property="og:site_name" content="Varun Barad - Curious Developer" />
   <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png" />
   <meta property="og:type" content="object" />
-  <meta property="og:title" content="📝 PostgreSQL: Mark a column non-nullable after creating it" />
-  <meta property="og:url" content="https://varunbarad.com/blog/postgresql-make-existing-column-non-nullable" />
-  <meta property="og:description" content="TIL: How to add a not null constraint to an existing column in a PostgreSQL table" />
+  <meta property="og:title" content="📝 PostgreSQL: Make a column unique after creating it" />
+  <meta property="og:url" content="https://varunbarad.com/blog/til-postgresql-make-existing-column-unique" />
+  <meta property="og:description" content="TIL: How to add unique constraint to an existing column in a PostgreSQL table" />
 </head>
 <body>
 <div>
@@ -54,13 +54,13 @@
       <div class="post-container">
         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
           <div>
-            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/postgresql-make-existing-column-non-nullable">📝 PostgreSQL: Mark a column non-nullable after creating it</a></div>
+            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/til-postgresql-make-existing-column-unique">📝 PostgreSQL: Make a column unique after creating it</a></div>
             <div class="text-center">
-              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2023-08-20 14:23:22 +0530">August 20, 2023</time>
+              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2023-08-19 14:23:22 +0530">August 19, 2023</time>
             </div>
-            <div class="post-content e-content"><p>If we have a table <code class="language-plaintext highlighter-rouge">people</code> with a column <code class="language-plaintext highlighter-rouge">email</code> and we want to make it non-nullable after we have already added it to table:</p>
+            <div class="post-content e-content"><p>If we have a table <code class="language-plaintext highlighter-rouge">people</code> with a column <code class="language-plaintext highlighter-rouge">email</code> and we want to make it unique after we have already added it to table:</p>
 
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">alter</span> <span class="k">table</span> <span class="n">people</span> <span class="k">alter</span> <span class="k">column</span> <span class="n">email</span> <span class="k">set</span> <span class="k">not</span> <span class="k">null</span><span class="p">;</span>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">alter</span> <span class="k">table</span> <span class="n">people</span> <span class="k">add</span> <span class="k">unique</span> <span class="p">(</span><span class="n">email</span><span class="p">);</span>
 </code></pre></div></div>
 </div>
           </div>
@@ -99,7 +99,7 @@
   </div>
 </div>
 
-<script src="/assets/js/jquery.min.js?v=9e2f03c79fa169eaef06633805785901c32502a2"></script>
-<script src="/assets/js/bootstrap.min.js?v=9e2f03c79fa169eaef06633805785901c32502a2"></script>
+<script src="/assets/js/jquery.min.js?v=66562b5c7383d51a8112274b81a42d943ebd0ab9"></script>
+<script src="/assets/js/bootstrap.min.js?v=66562b5c7383d51a8112274b81a42d943ebd0ab9"></script>
 </body>
 </html>
