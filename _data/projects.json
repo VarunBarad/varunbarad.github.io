@@ -111,10 +111,6 @@
     ],
     "links": [
       {
-        "text": "App on Play Store",
-        "destination": "https://play.google.com/store/apps/details?id=com.varunbarad.myplaces"
-      },
-      {
         "text": "Source code",
         "destination": "https://github.com/VarunBarad/my-places-android"
       }
