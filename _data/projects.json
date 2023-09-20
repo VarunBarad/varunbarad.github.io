@@ -90,6 +90,18 @@
     ]
   },
   {
+    "name": "🧑‍🎨 Voronoi Painter",
+    "description": [
+      "A Rust program I made to convert a painting or image into a similar-looking Voronoi diagram. Even with Rust I had to use multithreading to make it run in any reasonable span of time."
+    ],
+    "links": [
+      {
+        "text": "Source code",
+        "destination": "https://github.com/VarunBarad/voronoi-painter"
+      }
+    ]
+  },
+  {
     "name": "Trust Invitation",
     "description": [
       "A website built so that I can have good conversation sparkers easily accessible at all times."
