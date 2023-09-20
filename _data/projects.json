@@ -90,6 +90,19 @@
     ]
   },
   {
+    "name": "⬢ Tiling Patterns Generator",
+    "description": [
+      "A program I made to generate wallpapers with tiling patterns on them.",
+      "So far it supports hexagons, squares and a random voronoi pattern. I might add more in the future."
+    ],
+    "links": [
+      {
+        "text": "Source code",
+        "destination": "https://github.com/VarunBarad/tiling-patterns"
+      }
+    ]
+  },
+  {
     "name": "🧑‍🎨 Voronoi Painter",
     "description": [
       "A Rust program I made to convert a painting or image into a similar-looking Voronoi diagram. Even with Rust I had to use multithreading to make it run in any reasonable span of time."
