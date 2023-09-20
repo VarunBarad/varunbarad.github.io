@@ -73,6 +73,23 @@
     ]
   },
   {
+    "name": "🎨 Generative Art",
+    "description": [
+      "A website I made during my phase of learning about generative art. It's a collection of various generative art pieces I made using JavaScript.",
+      "The favorite thing I learned while making this was how to have evenly distributed random points in a plane using Poisson Disc Sampling algorithm."
+    ],
+    "links": [
+      {
+        "text": "Website",
+        "destination": "https://art.varunbarad.com/"
+      },
+      {
+        "text": "Source code",
+        "destination": "https://github.com/VarunBarad/generative-art"
+      }
+    ]
+  },
+  {
     "name": "Trust Invitation",
     "description": [
       "A website built so that I can have good conversation sparkers easily accessible at all times."
