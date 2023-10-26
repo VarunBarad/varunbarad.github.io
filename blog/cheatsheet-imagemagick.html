@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/assets/css/style.css?v=41c1e6273b7f44c72a9ca5e4ba69b7aa40491ffb">
-  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=41c1e6273b7f44c72a9ca5e4ba69b7aa40491ffb">
+  <link rel="stylesheet" href="/assets/css/style.css?v=867fa2945d68345d87ffe42838b5c6ce60a279bf">
+  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=867fa2945d68345d87ffe42838b5c6ce60a279bf">
   <link rel="icon" type="image/png" href="/favicon.png" />
   <title>Cheatsheet - ImageMagick - Varun Barad</title>
   <meta name="description" content="A cheat-sheet for ImageMagick" />
@@ -87,6 +87,11 @@
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>convert input.png <span class="nt">-channel</span> RGB <span class="nt">-negate</span> output.png
 </code></pre></div></div>
 
+<h2 id="resize-image-and-then-crop-center-to-fit-target-size">Resize image and then crop center to fit target size</h2>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>convert original.jpg <span class="nt">-resize</span> 720x576^ <span class="nt">-gravity</span> center <span class="nt">-crop</span> 720x576+0+0 +repage resized.png
+</code></pre></div></div>
+
 <p>Automation is exciting 🤖</p>
 </div>
           </div>
@@ -125,7 +130,7 @@
   </div>
 </div>
 
-<script src="/assets/js/jquery.min.js?v=41c1e6273b7f44c72a9ca5e4ba69b7aa40491ffb"></script>
-<script src="/assets/js/bootstrap.min.js?v=41c1e6273b7f44c72a9ca5e4ba69b7aa40491ffb"></script>
+<script src="/assets/js/jquery.min.js?v=867fa2945d68345d87ffe42838b5c6ce60a279bf"></script>
+<script src="/assets/js/bootstrap.min.js?v=867fa2945d68345d87ffe42838b5c6ce60a279bf"></script>
 </body>
 </html>
