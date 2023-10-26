@@ -38,4 +38,10 @@ convert input.png -fuzz 90% -fill "#628FDB" -opaque "#000000" star_blue.png
 convert input.png -channel RGB -negate output.png
 ```
 
+## Resize image and then crop center to fit target size
+
+```shell
+convert original.jpg -resize 720x576^ -gravity center -crop 720x576+0+0 +repage resized.png
+```
+
 Automation is exciting 🤖
