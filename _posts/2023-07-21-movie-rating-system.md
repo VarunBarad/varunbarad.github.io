@@ -12,7 +12,7 @@ categories:
 
 Over the years I have watched a lot of movies but never found a good way to determine which of them I liked how much. That was until I came across this [simple guide](https://kau.sh/blog/movie-rating-system/) from [Kaushik Gopal](https://kau.sh). The rating works on a scale of 0-5 and here's how it goes:
 
-## 0.5 (🤢)
+## 0 (🤢)
 
 - This movie doesn't exist to me. It's so bad that I will not even mention its existence to other people.
 
@@ -40,13 +40,15 @@ Over the years I have watched a lot of movies but never found a good way to dete
 - This would go in my list of recommended movies for the year.
 - Heck, I’d like to watch this movie again sometime.
 
-## 4.5 (🎖️)
+## 5 (🎖️)
 
 - This movie was so good that I want to buy a copy of it.
+- This movie is a work of art and/or essential watching for our age.
 - I would sit my friends down and watch this movie again with them.
-
-## 5 (🎬)
-
-- This movie is a work of art and essential watching for our age.
-- I want to see the director’s cut so I can enjoy it more.
 - Every one should watch this movie at least once in their lifetime.
+
+### Edits
+
+- 2024-01-17:
+  - Removed 4.5 rating
+  - Changed 0.5 rating to 0
