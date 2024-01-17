@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://varunbarad.com/" rel="alternate" type="text/html" /><updated>2023-12-14T15:51:43+05:30</updated><id>https://varunbarad.com/feed.xml</id><title type="html">Varun Barad - Curious Developer</title><subtitle>My online home where I post about new things I learn or find interesting.</subtitle><author><name>Varun Barad</name></author><entry><title type="html">🐳 Starting docker on demand</title><link href="https://varunbarad.com/blog/starting-docker-on-demand" rel="alternate" type="text/html" title="🐳 Starting docker on demand" /><published>2023-09-11T13:17:31+05:30</published><updated>2023-09-11T13:17:31+05:30</updated><id>https://varunbarad.com/blog/starting-docker-on-demand</id><content type="html" xml:base="https://varunbarad.com/blog/starting-docker-on-demand">&lt;p&gt;Inspired by &lt;a href=&quot;https://alexwlchan.net/2023/docker-on-demand/&quot;&gt;this article&lt;/a&gt; from &lt;a href=&quot;https://alexwlchan.net&quot;&gt;Alex&lt;/a&gt; I also set out to remove always running Docker daemon from the background while ensuring it is available whenever I need it on running &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;docker&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;docker-compose&lt;/code&gt; commands.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://varunbarad.com/" rel="alternate" type="text/html" /><updated>2024-01-17T10:35:49+05:30</updated><id>https://varunbarad.com/feed.xml</id><title type="html">Varun Barad - Curious Developer</title><subtitle>My online home where I post about new things I learn or find interesting.</subtitle><author><name>Varun Barad</name></author><entry><title type="html">🐳 Starting docker on demand</title><link href="https://varunbarad.com/blog/starting-docker-on-demand" rel="alternate" type="text/html" title="🐳 Starting docker on demand" /><published>2023-09-11T13:17:31+05:30</published><updated>2023-09-11T13:17:31+05:30</updated><id>https://varunbarad.com/blog/starting-docker-on-demand</id><content type="html" xml:base="https://varunbarad.com/blog/starting-docker-on-demand">&lt;p&gt;Inspired by &lt;a href=&quot;https://alexwlchan.net/2023/docker-on-demand/&quot;&gt;this article&lt;/a&gt; from &lt;a href=&quot;https://alexwlchan.net&quot;&gt;Alex&lt;/a&gt; I also set out to remove always running Docker daemon from the background while ensuring it is available whenever I need it on running &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;docker&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;docker-compose&lt;/code&gt; commands.&lt;/p&gt;
 
 &lt;p&gt;I created 2 scripts and put them on my path before the actual &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;docker&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;docker-compose&lt;/code&gt; binaries. For an explanation of the scripts I suggest you read Alex’s article linked above.&lt;/p&gt;
 
@@ -153,7 +153,7 @@ fi&lt;/span&gt;
 
 &lt;p&gt;Over the years I have watched a lot of movies but never found a good way to determine which of them I liked how much. That was until I came across this &lt;a href=&quot;https://kau.sh/blog/movie-rating-system/&quot;&gt;simple guide&lt;/a&gt; from &lt;a href=&quot;https://kau.sh&quot;&gt;Kaushik Gopal&lt;/a&gt;. The rating works on a scale of 0-5 and here’s how it goes:&lt;/p&gt;
 
-&lt;h2 id=&quot;05-&quot;&gt;0.5 (🤢)&lt;/h2&gt;
+&lt;h2 id=&quot;0-&quot;&gt;0 (🤢)&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;This movie doesn’t exist to me. It’s so bad that I will not even mention its existence to other people.&lt;/li&gt;
@@ -191,19 +191,24 @@ fi&lt;/span&gt;
   &lt;li&gt;Heck, I’d like to watch this movie again sometime.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;45-️&quot;&gt;4.5 (🎖️)&lt;/h2&gt;
+&lt;h2 id=&quot;5-️&quot;&gt;5 (🎖️)&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;This movie was so good that I want to buy a copy of it.&lt;/li&gt;
+  &lt;li&gt;This movie is a work of art and/or essential watching for our age.&lt;/li&gt;
   &lt;li&gt;I would sit my friends down and watch this movie again with them.&lt;/li&gt;
+  &lt;li&gt;Every one should watch this movie at least once in their lifetime.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;5-&quot;&gt;5 (🎬)&lt;/h2&gt;
+&lt;h3 id=&quot;edits&quot;&gt;Edits&lt;/h3&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;This movie is a work of art and essential watching for our age.&lt;/li&gt;
-  &lt;li&gt;I want to see the director’s cut so I can enjoy it more.&lt;/li&gt;
-  &lt;li&gt;Every one should watch this movie at least once in their lifetime.&lt;/li&gt;
+  &lt;li&gt;2024-01-17:
+    &lt;ul&gt;
+      &lt;li&gt;Removed 4.5 rating&lt;/li&gt;
+      &lt;li&gt;Changed 0.5 rating to 0&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;</content><author><name>Varun Barad</name></author><category term="miscellaneous" /><category term="life-hack" /><summary type="html">Introduction</summary></entry><entry><title type="html">⚖️ Wracker Dev Log #002</title><link href="https://varunbarad.com/blog/wracker-log-002" rel="alternate" type="text/html" title="⚖️ Wracker Dev Log #002" /><published>2023-06-12T19:35:00+05:30</published><updated>2023-06-12T19:35:00+05:30</updated><id>https://varunbarad.com/blog/wracker-log-002</id><content type="html" xml:base="https://varunbarad.com/blog/wracker-log-002">&lt;p&gt;Welcome to the second log of my journey to build a weight-tracking website. Today I worked on the form for adding a new weight entry and also on the table for displaying all the entries.&lt;/p&gt;
 
 &lt;h2 id=&quot;day-2-challenge-1&quot;&gt;Day 2 Challenge 1&lt;/h2&gt;
