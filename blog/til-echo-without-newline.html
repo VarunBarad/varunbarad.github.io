@@ -6,8 +6,8 @@
   <link rel="stylesheet" href="/assets/css/style.css?v=49fcb5e17eefc152862aea795ed41fb00fd6d979">
   <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=49fcb5e17eefc152862aea795ed41fb00fd6d979">
   <link rel="icon" type="image/png" href="/favicon.png" />
-  <title>Record Linux terminal session - Varun Barad</title>
-  <meta name="description" content="How to record your linux terminal session to work on later." />
+  <title>📝 Outputting text with echo without a newline - Varun Barad</title>
+  <meta name="description" content="TIL: How to output text with echo without a newline at the end of it" />
 
   <!-- Canonical URL -->
   
@@ -19,16 +19,16 @@
   <meta name="twitter:site" content="@varun_barad" />
   <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Record Linux terminal session" />
-  <meta name="twitter:description" content="How to record your linux terminal session to work on later." />
+  <meta name="twitter:title" content="📝 Outputting text with echo without a newline" />
+  <meta name="twitter:description" content="TIL: How to output text with echo without a newline at the end of it" />
 
   <!-- Open-graph meta-data -->
   <meta property="og:site_name" content="Varun Barad - Curious Developer" />
   <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png" />
   <meta property="og:type" content="object" />
-  <meta property="og:title" content="Record Linux terminal session" />
-  <meta property="og:url" content="https://varunbarad.com/blog/record-linux-terminal-session" />
-  <meta property="og:description" content="How to record your linux terminal session to work on later." />
+  <meta property="og:title" content="📝 Outputting text with echo without a newline" />
+  <meta property="og:url" content="https://varunbarad.com/blog/til-echo-without-newline" />
+  <meta property="og:description" content="TIL: How to output text with echo without a newline at the end of it" />
 </head>
 <body>
 <div>
@@ -54,30 +54,14 @@
       <div class="post-container">
         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
           <div>
-            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/record-linux-terminal-session">Record Linux terminal session</a></div>
+            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/til-echo-without-newline">📝 Outputting text with echo without a newline</a></div>
             <div class="text-center">
-              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2019-10-26 12:00:00 +0530">October 26, 2019</time>
+              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2024-04-06 15:14:19 +0530">April 06, 2024</time>
             </div>
-            <div class="post-content e-content"><p>I was recently setting up my computer with Ubuntu on it and this time I was decided that I would document every step of the process so that I can get it done faster the next time. That thought and process worked easily for the programs whose installations were just a simple <code class="language-plaintext highlighter-rouge">sudo apt install ...</code> but when I was installing something new (like VS Code) there were many steps involved and it wasn’t an easy task to document them as I went on installing those things.</p>
+            <div class="post-content e-content"><p>Recently I wanted to output a string containing the day’s date and time. So I used the <code class="language-plaintext highlighter-rouge">echo</code> command combined with the <code class="language-plaintext highlighter-rouge">date</code> command. But I didn’t want the newline at the end of the output. So I asked ChatGPT and here’s the command I got:</p>
 
-<p>What I decided to then do was to just record my terminal sessions for each such long program and review those recordings later to write a script for everything that I needed to do.</p>
-
-<p>Linux has a handy utility called <code class="language-plaintext highlighter-rouge">script</code> which does just that. If it isn’t pre-installed then you can easily install it with <code class="language-plaintext highlighter-rouge">sudo apt install script</code> as it is generally available in the default PPA.</p>
-
-<p>Using it is straight-forward too.</p>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>script &lt;file_name_to_write_record_to&gt;
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="nt">-n</span> <span class="s2">"Hello Varun"</span>
 </code></pre></div></div>
-
-<p>I also find these options to be of significance:</p>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">-a, --append</code>: This appends the recording if the file is already existing.</li>
-  <li><code class="language-plaintext highlighter-rouge">-c, --command &lt;command_which_is_to_be_recorded&gt;</code>: If you want to record the interaction of a program with terminal then you can use this.</li>
-</ul>
-
-<p>I found this command to be quite helpful in my recent endeavour of documenting the setup process and think it might others too. Want to discuss this or any other interesting thing, hit me up on Twitter <a href="https://twitter.com/varun_barad">@varun_barad</a></p>
-
 </div>
           </div>
 
@@ -85,7 +69,7 @@
             Categories:
             <div>
               
-              <a href="/category/programming" class="badge badge-warning p-category">#programming</a>
+              <a href="/category/til" class="badge badge-warning p-category">#til</a>
               
               <a href="/blog" class="badge badge-warning">#all</a>
             </div>
