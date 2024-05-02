@@ -14,6 +14,10 @@ Sometimes you get PDF files which have password on them. You know the password r
 qpdf --decrypt --password="<your-password-goes-here>" "<input-file-name>" --replace-input
 ```
 
-> Note: This will replace your existing input file, so please make a copy of the file before running this command.
+Note: This will replace your existing input file, so please make a copy of the file before running this command. If you want to store the output in a different file then use below command:
+
+```shell
+qpdf --decrypt --password="<your-password-goes-here>" "<input-file-name>" "<output-file-name>"
+```
 
 References: [Carlos Delgado](https://ourcodeworld.com/articles/read/937/how-to-remove-the-password-of-a-pdf-using-the-qpdf-cli)
