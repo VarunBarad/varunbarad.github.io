@@ -53,4 +53,13 @@ git commit --allow-empty -m "Commit message goes here"
 git show --pretty="" --name-only <sha1-commit-hash>
 ```
 
+## Reset a branch head to a specific commit
+
+```shell
+git checkout <branch-name>
+git reset --hard <commit-hash>
+```
+
+Reference: [stackoverflow](https://stackoverflow.com/a/7310222/4717436)
+
 Have a great day people 👋
