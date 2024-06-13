@@ -62,4 +62,13 @@ git reset --hard <commit-hash>
 
 Reference: [stackoverflow](https://stackoverflow.com/a/7310222/4717436)
 
+## Make git forget a tracked file
+
+Let's suppose we want to remove `file.log` from git tracking but keep it in the file system.
+
+1. Add `file.log` to `.gitignore`
+2. Commit `.gitignore` changes
+3. Execute the command `git rm --cached file.log`
+4. Commit the removal of `file.log` from git.
+
 Have a great day people 👋
