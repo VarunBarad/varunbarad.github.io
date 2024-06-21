@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/assets/css/style.css?v=d531160fc6f965cfeaec028fe9d896af819c3dda">
+  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=d531160fc6f965cfeaec028fe9d896af819c3dda">
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <title>📝 Comparing two BigDecimal instances - Varun Barad</title>
+  <meta name="description" content="TIL: Turns out that 7.5.toBigDecimal() and 7.50.toBigDecimal() are not equal" />
+
+  <!-- Canonical URL -->
+  
+
+  <!-- RSS Feed meta-data -->
+  <link rel="alternate" type="application/atom+xml" title="Varun Barad - Curious Developer" href="https://varunbarad.com/feed.xml" />
+
+  <!-- Twitter meta-data -->
+  <meta name="twitter:site" content="@varun_barad" />
+  <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="📝 Comparing two BigDecimal instances" />
+  <meta name="twitter:description" content="TIL: Turns out that 7.5.toBigDecimal() and 7.50.toBigDecimal() are not equal" />
+
+  <!-- Open-graph meta-data -->
+  <meta property="og:site_name" content="Varun Barad - Curious Developer" />
+  <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png" />
+  <meta property="og:type" content="object" />
+  <meta property="og:title" content="📝 Comparing two BigDecimal instances" />
+  <meta property="og:url" content="https://varunbarad.com/blog/comparing-two-BigDecimal-instances" />
+  <meta property="og:description" content="TIL: Turns out that 7.5.toBigDecimal() and 7.50.toBigDecimal() are not equal" />
+</head>
+<body>
+<div>
+  <div id="header">
+    <div class="row header">
+      <div class="title col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+        <a href="/"><div class="title">Varun Barad</div></a>
+      </div>
+      <div class="col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8">
+        <nav class="menu text-right">
+          <a href="/blog">Blog</a>
+          <a href="/projects">Projects</a>
+          <a href="/books">Books</a>
+          <a href="/ideas">Ideas</a>
+          <a href="/contact">Contact</a>
+          <a href="/resume/">My Resume</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <article class="h-entry">
+    <div class="content row">
+      <div class="post-container">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+          <div>
+            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/comparing-two-BigDecimal-instances">📝 Comparing two BigDecimal instances</a></div>
+            <div class="text-center">
+              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2021-07-29 00:00:00 +0530">July 29, 2021</time>
+            </div>
+            <div class="post-content e-content"><p>If you have two instances of BigDecimal as following</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">val</span> <span class="py">a</span> <span class="p">=</span> <span class="mf">7.5</span><span class="p">.</span><span class="nf">toBigDecimal</span><span class="p">()</span>
+<span class="kd">val</span> <span class="py">b</span> <span class="p">=</span> <span class="mf">7.50</span><span class="p">.</span><span class="nf">toBigDecimal</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>It seems that they are equal in value and should return true when doing <code class="language-plaintext highlighter-rouge">a == b</code> but they don’t. The reason is that <code class="language-plaintext highlighter-rouge">b</code> is more precise than <code class="language-plaintext highlighter-rouge">a</code> and therefore not equal in value.</p>
+
+<p>So to compare the magnitude of two <code class="language-plaintext highlighter-rouge">BigDecimal</code>s (while ignoring their precision) we need to use <code class="language-plaintext highlighter-rouge">a.compareTo(b)</code>. When both the numbers are same in magnitude <code class="language-plaintext highlighter-rouge">compareTo</code> returns <code class="language-plaintext highlighter-rouge">0</code>.</p>
+
+<p>So in Kotlin we can create an extension function like this</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">fun</span> <span class="nc">BigDecimal</span><span class="p">.</span><span class="nf">isEqualInMagnitude</span><span class="p">(</span><span class="n">num</span><span class="p">:</span> <span class="nc">BigDecimal</span><span class="p">):</span> <span class="nc">Boolean</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nf">compareTo</span><span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="p">==</span> <span class="mi">0</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>And then when we need to compare two numbers we can simply do</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">val</span> <span class="py">a</span> <span class="p">=</span> <span class="mf">7.5</span><span class="p">.</span><span class="nf">toBigDecimal</span><span class="p">()</span>
+<span class="kd">val</span> <span class="py">b</span> <span class="p">=</span> <span class="mf">7.50</span><span class="p">.</span><span class="nf">toBigDecimal</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="nf">isEqualInMagnitude</span><span class="p">(</span><span class="n">b</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nf">println</span><span class="p">(</span><span class="s">"Equal in magnitude"</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nf">println</span><span class="p">(</span><span class="s">"Magnitudes of both numbers don't match"</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+</div>
+          </div>
+
+          <div class="post-categories-container">
+            Categories:
+            <div>
+              
+              <a href="/category/til" class="badge badge-warning p-category">#til</a>
+              
+              <a href="/blog" class="badge badge-warning">#all</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+  <div>
+    <div class="footer">
+      <div>
+        
+        <a href="https://github.com/VarunBarad" rel="me"><i class="fab fa-github social-links"></i></a>
+        
+        <a href="https://twitter.com/varun_barad" rel="me"><i class="fab fa-twitter social-links"></i></a>
+        
+        <a href="https://dev.to/varunbarad" rel="me"><i class="fab fa-dev social-links"></i></a>
+        
+        <a href="https://stackoverflow.com/users/4717436/varunbarad" rel="me"><i class="fab fa-stack-overflow social-links"></i></a>
+        
+      </div>
+      <div class="developer-attribution">
+        
+        Made by <a href="https://dixita0607.github.io">Dixita Ganatra</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/assets/js/jquery.min.js?v=d531160fc6f965cfeaec028fe9d896af819c3dda"></script>
+<script src="/assets/js/bootstrap.min.js?v=d531160fc6f965cfeaec028fe9d896af819c3dda"></script>
+</body>
+</html>

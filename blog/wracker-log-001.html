@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/assets/css/style.css?v=d531160fc6f965cfeaec028fe9d896af819c3dda">
+  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=d531160fc6f965cfeaec028fe9d896af819c3dda">
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <title>⚖️ Wracker Dev Log #001 - Varun Barad</title>
+  <meta name="description" content="How I headbutted with Django setup the whole day for it to finally click around midnight" />
+
+  <!-- Canonical URL -->
+  
+
+  <!-- RSS Feed meta-data -->
+  <link rel="alternate" type="application/atom+xml" title="Varun Barad - Curious Developer" href="https://varunbarad.com/feed.xml" />
+
+  <!-- Twitter meta-data -->
+  <meta name="twitter:site" content="@varun_barad" />
+  <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="⚖️ Wracker Dev Log #001" />
+  <meta name="twitter:description" content="How I headbutted with Django setup the whole day for it to finally click around midnight" />
+
+  <!-- Open-graph meta-data -->
+  <meta property="og:site_name" content="Varun Barad - Curious Developer" />
+  <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png" />
+  <meta property="og:type" content="object" />
+  <meta property="og:title" content="⚖️ Wracker Dev Log #001" />
+  <meta property="og:url" content="https://varunbarad.com/blog/wracker-log-001" />
+  <meta property="og:description" content="How I headbutted with Django setup the whole day for it to finally click around midnight" />
+</head>
+<body>
+<div>
+  <div id="header">
+    <div class="row header">
+      <div class="title col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+        <a href="/"><div class="title">Varun Barad</div></a>
+      </div>
+      <div class="col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8">
+        <nav class="menu text-right">
+          <a href="/blog">Blog</a>
+          <a href="/projects">Projects</a>
+          <a href="/books">Books</a>
+          <a href="/ideas">Ideas</a>
+          <a href="/contact">Contact</a>
+          <a href="/resume/">My Resume</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <article class="h-entry">
+    <div class="content row">
+      <div class="post-container">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+          <div>
+            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/wracker-log-001">⚖️ Wracker Dev Log #001</a></div>
+            <div class="text-center">
+              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2023-05-22 23:55:00 +0530">May 22, 2023</time>
+            </div>
+            <div class="post-content e-content"><p>I have been meaning to build my skills in some areas for quite some time, Python, traditional backend frameworks and a bit of full-stack development being a few of them. I decided on building a simple weight-tracking website to learn these things. It had been tossing about in my head for a lot of time, and finally I decided to sit down and start coding it today.</p>
+
+<h2 id="day-1-challenge-1">Day 1 Challenge 1</h2>
+
+<p>The first thing to do was to create a directory to store all the code in. Here was the first roadblock I hit, what should the project be named. After contemplating and thinking a lot on it (read 3 minutes max) I decided to go with “Wracker” as it could be seen as a short for “Weight Tracker” and also it is a pun on the word “Wrecker” which I just found hilarious.</p>
+
+<h2 id="day-1-challenge-virtual">Day 1 Challenge Virtual</h2>
+
+<p>Up next was me wanting to install the dependencies for the project without them muddying up my system-wide python packages. I knew of <code class="language-plaintext highlighter-rouge">virtualenv</code> and have banged my head enough in the past that it only took me 3 tries before I had it nailed down.</p>
+
+<h2 id="day-1-challenging-structure">Day 1 Challenging Structure</h2>
+
+<p>Since I wanted to use Django framework for this project and I haven’t ever used it before, I went to their official getting started guide and was left with a file structure looking something like this after initialising my project.</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- Projects
+  |- wracker
+     |- .gitignore
+     |- wracker
+        |- manage.py
+        |- wracker
+           |- __init.py__
+           |- asgi.py
+           |- settings.py
+           |- urls.py
+           |- wsgi.py
+</code></pre></div></div>
+
+<p>Here I tried running the commands from getting started guide inside a pre-made directory for my project. I could not understand why it needs to create 2 separate subdirectories named the same as the project. This is something I tried understanding multiple times during the day, and we’ll back come to it later.</p>
+
+<h2 id="challenge-post-the-sqlite">Challenge Post the SQLite</h2>
+
+<p>Django by default uses an SQLite database for storing data, but I wanted to use Postgres. I had already setup a <code class="language-plaintext highlighter-rouge">docker-compose.yaml</code> file to provision me a postgres database running inside a docker container. While initially the configuration part in Django for Postgres was a bit confusing, I was able to get it working after a bit of fitting in multiple pieces together. I also learned how to use environment variables in Python while dealing with this.</p>
+
+<h2 id="challenge-of-looking-good">Challenge of Looking Good</h2>
+
+<p>I also wanted a code-formatter for Python and had heard about this one called <code class="language-plaintext highlighter-rouge">black</code>. Went to the official website, learnt how to use it and then integrate it locally with wracker.</p>
+
+<h2 id="challenge-of-the-day">Challenge of the Day</h2>
+
+<p>After looking at all this I would give “Challenge of the Day” award only to the project structure. While none of the official documentation clearly call it out that you need to pass in <code class="language-plaintext highlighter-rouge">.</code> as the directory to your <code class="language-plaintext highlighter-rouge">django-admin startproject</code> I did find <a href="https://automationpanda.com/2018/02/06/starting-a-django-project-in-an-existing-directory/">an article online</a> that clarified it.</p>
+
+<h2 id="things-i-learnedsolidified-today">Things I learned/solidified today</h2>
+
+<ul>
+  <li>Using <code class="language-plaintext highlighter-rouge">virtualenv</code> to keep dependencies separate in Python</li>
+  <li>How to export your dependencies as a <code class="language-plaintext highlighter-rouge">requirements.txt</code> file</li>
+  <li>Usage of environment variables in Python</li>
+  <li>How to create a Django project with reasonable directory structure</li>
+  <li>Formatting python code using <code class="language-plaintext highlighter-rouge">black</code></li>
+  <li>Integrating PostgreSQL with Django instead of the default SQLite database</li>
+</ul>
+</div>
+          </div>
+
+          <div class="post-categories-container">
+            Categories:
+            <div>
+              
+              <a href="/category/wracker" class="badge badge-warning p-category">#wracker</a>
+              
+              <a href="/category/programming" class="badge badge-warning p-category">#programming</a>
+              
+              <a href="/category/python" class="badge badge-warning p-category">#python</a>
+              
+              <a href="/blog" class="badge badge-warning">#all</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+  <div>
+    <div class="footer">
+      <div>
+        
+        <a href="https://github.com/VarunBarad" rel="me"><i class="fab fa-github social-links"></i></a>
+        
+        <a href="https://twitter.com/varun_barad" rel="me"><i class="fab fa-twitter social-links"></i></a>
+        
+        <a href="https://dev.to/varunbarad" rel="me"><i class="fab fa-dev social-links"></i></a>
+        
+        <a href="https://stackoverflow.com/users/4717436/varunbarad" rel="me"><i class="fab fa-stack-overflow social-links"></i></a>
+        
+      </div>
+      <div class="developer-attribution">
+        
+        Made by <a href="https://dixita0607.github.io">Dixita Ganatra</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/assets/js/jquery.min.js?v=d531160fc6f965cfeaec028fe9d896af819c3dda"></script>
+<script src="/assets/js/bootstrap.min.js?v=d531160fc6f965cfeaec028fe9d896af819c3dda"></script>
+</body>
+</html>
