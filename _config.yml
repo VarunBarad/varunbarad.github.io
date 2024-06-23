@@ -15,15 +15,13 @@
 # in the templates via {{ site.myvariable }}.
 title: Varun Barad - Curious Developer
 email: contact@varunbarad.com
-description: >- # this means to ignore newlines until "baseurl:"
-  My online home where I post about new things I learn or find interesting.
+description: My online home where I post about new things I learn or find interesting.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://varunbarad.com" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: varun_barad
 github_username:  VarunBarad
 author:
   name: Varun Barad
-  twitter: https://twitter.com/varun_barad
   picture: /assests/images/profile.png
 
 permalink: /blog/:title
