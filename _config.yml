@@ -68,6 +68,8 @@ kramdown:
 
 exclude:
   - ".idea"
+  - "Gemfile"
+  - "Gemfile.lock"
 
 include:
   - "podcasts/"
