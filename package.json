@@ -1,0 +1,16 @@
+{
+  "name": "varunbarad.com",
+  "version": "4.0.0",
+  "description": "My online home where I post about new things I learn or find interesting.",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/VarunBarad/varunbarad.github.io.git"
+  },
+  "author": "Varun Barad",
+  "license": "MIT",
+  "homepage": "https://varunbarad.com",
+  "dependencies": {
+    "@11ty/eleventy": "2.0.1"
+  }
+}

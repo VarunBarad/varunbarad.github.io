@@ -68,6 +68,10 @@ exclude:
   - ".idea"
   - "Gemfile"
   - "Gemfile.lock"
+  - ".nvmrc"
+  - "package.json"
+  - "package-lock.json"
+  - "node_modules"
 
 include:
   - "podcasts/"
