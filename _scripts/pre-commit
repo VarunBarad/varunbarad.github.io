@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+diff favicon.png _eleventy/favicon.png
+
 diff _includes/footer.html _eleventy/_includes/_footer.html
 diff _includes/header.html _eleventy/_includes/_header.html
 diff _includes/new_styles.html _eleventy/_includes/_new_styles.html

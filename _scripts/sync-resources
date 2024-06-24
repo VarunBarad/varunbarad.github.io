@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+cp favicon.png _eleventy/favicon.png
+
 mkdir -p _eleventy/_includes
 cp _includes/footer.html _eleventy/_includes/_footer.html
 cp _includes/header.html _eleventy/_includes/_header.html
