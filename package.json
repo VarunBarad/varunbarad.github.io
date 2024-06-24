@@ -4,7 +4,8 @@
   "description": "My online home where I post about new things I learn or find interesting.",
   "scripts": {
     "build": "eleventy",
-    "serve": "eleventy --serve"
+    "serve": "eleventy --serve",
+    "setup-hooks": "cp _scripts/pre-commit .git/hooks/pre-commit"
   },
   "repository": {
     "type": "git",

@@ -72,6 +72,7 @@ exclude:
   - "package.json"
   - "package-lock.json"
   - "node_modules"
+  - "_scripts"
 
 include:
   - "podcasts/"
