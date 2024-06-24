@@ -5,7 +5,8 @@
   "scripts": {
     "build": "eleventy",
     "serve": "eleventy --serve",
-    "setup-hooks": "cp _scripts/pre-commit .git/hooks/pre-commit"
+    "setup-hooks": "cp _scripts/pre-commit .git/hooks/pre-commit",
+    "sync-resources": "_scripts/sync-resources"
   },
   "repository": {
     "type": "git",
