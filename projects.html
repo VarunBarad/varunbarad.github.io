@@ -1,81 +1,44 @@
 ---
+layout: page
+title: Projects
 permalink: "/projects/"
 redirect_from:
 - "/portfolio.html"
 - "/portfolio/index.html"
 ---
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="icon" type="image/png" href="/favicon.png"/>
-  <title>Projects - Varun Barad</title>
-  <meta name="description" content="{{site.description}}"/>
-  
-  <!-- RSS Feed meta-data -->
-  {% feed_meta %}
-  
-  <!-- Twitter meta-data -->
-  <meta name="twitter:site" content="@{{site.twitter_username}}"/>
-  <meta name="twitter:image:src" content="{{site.url}}/assets/images/logo-hd.png"/>
-  <meta name="twitter:card" content="summary"/>
-  <meta name="twitter:title" content="{{site.title}}"/>
-  <meta name="twitter:description" content="{{site.description}}"/>
-  
-  <!-- Open-Graph meta-data -->
-  <meta property="og:site_name" content="{{site.title}}"/>
-  <meta property="og:image" content="{{site.url}}/assets/images/logo-hd.png"/>
-  <meta property="og:type" content="object"/>
-  <meta property="og:title" content="{{site.title}}"/>
-  <meta property="og:url" content="{{site.url}}{{page.url}}"/>
-  <meta property="og:description" content="{{site.description}}"/>
-  
-  <!-- Styles kept here for now -->
-  {% include new_styles.html %}
-</head>
-<body>
-{% include header.html %}
-<main>
-  <h1>Projects</h1>
-  
-  <div>
-    <p>
-      I like to use free time to create fun stuff or useful things, mainly for myself, but I share them too. They might
-      not even have any practical purpose.
-    </p>
-    <p>
-      This page lists some of my projects, so you can get an idea of what I've been up to:
-    </p>
-  </div>
-  
-  <div class="project-wrapper">
-    {% for project in site.data.projects %}
-    <div class="project">
-      <hr>
-      
-      <h2 class="project-title">{{project.name}}</h2>
-      
-      <div class="project-description">
-        {% for paragraph in project.description %}
-        <p>{{paragraph}}</p>
-        {% endfor %}
-        {% if project.links %}
-        <ul>
-          {% for link in project.links %}
-          <li><a href="{{link.destination}}">{{link.text}}</a></li>
-          {% endfor %}
-        </ul>
-        {% endif %}
-      </div>
-    </div>
-    {% endfor %}
-  </div>
-  
+<div>
   <p>
-    You can find all my open-source projects on <a href="https://github.com/VarunBarad" rel="me">my GitHub account</a>.
+    I like to use free time to create fun stuff or useful things, mainly for myself, but I share them too. They might
+    not even have any practical purpose.
   </p>
-</main>
-{% include footer.html %}
-</body>
-</html>
+  <p>
+    This page lists some of my projects, so you can get an idea of what I've been up to:
+  </p>
+</div>
+
+<div class="project-wrapper">
+  {% for project in site.data.projects %}
+  <div class="project">
+    <hr>
+    
+    <h2 class="project-title">{{project.name}}</h2>
+    
+    <div class="project-description">
+      {% for paragraph in project.description %}
+      <p>{{paragraph}}</p>
+      {% endfor %}
+      {% if project.links %}
+      <ul>
+        {% for link in project.links %}
+        <li><a href="{{link.destination}}">{{link.text}}</a></li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+<p>
+  You can find all my open-source projects on <a href="https://github.com/VarunBarad" rel="me">my GitHub account</a>.
+</p>
