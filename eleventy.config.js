@@ -1,7 +1,5 @@
 module.exports = function(eleventyConfig) {
-  eleventyConfig.addPassthroughCopy({
-    "_eleventy/favicon.png": "favicon.png",
-  });
+  eleventyConfig.addPassthroughCopy("_eleventy/favicon.png");
   eleventyConfig.addPassthroughCopy("_eleventy/podcasts");
   
   return {
