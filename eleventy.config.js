@@ -4,6 +4,7 @@ module.exports = function(eleventyConfig) {
   
   return {
     dir: {
+      layouts: "_layouts",
       includes: "_includes",
       input: "_eleventy",
       output: "_eleventy/_site",
