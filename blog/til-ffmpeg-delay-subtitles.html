@@ -6,8 +6,8 @@
   <link rel="stylesheet" href="/assets/css/style.css?v=a189b97a90e3973093ca62bb42f9af4c02e84f04">
   <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=a189b97a90e3973093ca62bb42f9af4c02e84f04">
   <link rel="icon" type="image/png" href="/favicon.png" />
-  <title>📝 Recursively remove .DS_Store files - Varun Barad</title>
-  <meta name="description" content="TIL: Shell command to recursively remove .DS_Store files" />
+  <title>📝 Delay subtitles using ffmpeg - Varun Barad</title>
+  <meta name="description" content="TIL: How to delay all subtitles in a file by a fixed amount using ffmpeg" />
 
   <!-- Canonical URL -->
   
@@ -19,16 +19,16 @@
   <meta name="twitter:site" content="@varun_barad" />
   <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="📝 Recursively remove .DS_Store files" />
-  <meta name="twitter:description" content="TIL: Shell command to recursively remove .DS_Store files" />
+  <meta name="twitter:title" content="📝 Delay subtitles using ffmpeg" />
+  <meta name="twitter:description" content="TIL: How to delay all subtitles in a file by a fixed amount using ffmpeg" />
 
   <!-- Open-graph meta-data -->
   <meta property="og:site_name" content="Varun Barad - Curious Developer" />
   <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png" />
   <meta property="og:type" content="object" />
-  <meta property="og:title" content="📝 Recursively remove .DS_Store files" />
-  <meta property="og:url" content="https://varunbarad.com/blog/remove-ds-store-files" />
-  <meta property="og:description" content="TIL: Shell command to recursively remove .DS_Store files" />
+  <meta property="og:title" content="📝 Delay subtitles using ffmpeg" />
+  <meta property="og:url" content="https://varunbarad.com/blog/til-ffmpeg-delay-subtitles" />
+  <meta property="og:description" content="TIL: How to delay all subtitles in a file by a fixed amount using ffmpeg" />
 </head>
 <body>
 <div>
@@ -54,17 +54,22 @@
       <div class="post-container">
         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
           <div>
-            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/remove-ds-store-files">📝 Recursively remove .DS_Store files</a></div>
+            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/til-ffmpeg-delay-subtitles">📝 Delay subtitles using ffmpeg</a></div>
             <div class="text-center">
-              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2023-08-09 14:49:36 +0530">August 09, 2023</time>
+              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2024-06-28 11:11:33 +0530">June 28, 2024</time>
             </div>
-            <div class="post-content e-content"><div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find <span class="nb">.</span> <span class="nt">-name</span> <span class="s2">".DS_Store"</span> <span class="nt">-type</span> f <span class="nt">-delete</span>
+            <div class="post-content e-content"><p>Sometimes you get subtitles which are not in sync with the video. You can use <code class="language-plaintext highlighter-rouge">ffmpeg</code> to add a fixed delay to all subtitles. Here is how you can do it:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ffmpeg <span class="nt">-itsoffset</span> &lt;amount-to-delay-in-seconds&gt; <span class="nt">-i</span> input.srt <span class="nt">-c</span> copy output.srt
 </code></pre></div></div>
 
-<p>If you just want to list out those files then skip the <code class="language-plaintext highlighter-rouge">-delete</code> flag.</p>
+<p>This will create a new file <code class="language-plaintext highlighter-rouge">output.srt</code> with all subtitles delayed by the specified amount. You can use this command to delay subtitles by any amount of seconds. Negative and decimal values are also supported. For example:</p>
 
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find <span class="nb">.</span> <span class="nt">-name</span> <span class="s2">".DS_Store"</span> <span class="nt">-type</span> f
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># This would delay the subtitles by 2.5 seconds</span>
+ffmpeg <span class="nt">-itsoffset</span> 2.5 <span class="nt">-i</span> input.srt <span class="nt">-c</span> copy output.srt
 </code></pre></div></div>
+
+<p>Credits: <a href="https://stackoverflow.com/a/57821897/4717436">StackOverflow</a></p>
 </div>
           </div>
 
