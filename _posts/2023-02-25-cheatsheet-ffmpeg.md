@@ -56,3 +56,16 @@ Here we want to remove embedded chapter markings from `input.mp4` and save the r
 ```shell
 ffmpeg -i input.mp4 -map_chapters -1 -c copy output.mp4
 ```
+
+## Delay subtitles
+
+```shell
+ffmpeg -itsoffset <amount-to-delay-in-seconds> -i input.srt -c copy output.srt
+```
+
+This will create a new file `output.srt` with all subtitles delayed by the specified amount. You can use this command to delay subtitles by any amount of seconds. Negative and decimal values are also supported. For example:
+
+```shell
+# This would delay the subtitles by 2.5 seconds
+ffmpeg -itsoffset 2.5 -i input.srt -c copy output.srt
+```
