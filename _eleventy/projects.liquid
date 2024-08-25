@@ -1,0 +1,44 @@
+---
+layout: page.liquid
+title: Projects
+permalink: "/projects.html"
+redirect_from: [
+  "/projects/index.html",
+  "/portfolio/index.html",
+  "/portfolio.html",
+]
+---
+<p>
+  I like to use free time to create fun stuff or useful things, mainly for myself, but I share them too. They might
+  not even have any practical purpose.
+</p>
+<p>
+  This page lists some of my projects, so you can get an idea of what I've been up to:
+</p>
+
+<div class="project-wrapper">
+  {% for project in projects %}
+  <div class="project">
+    <hr>
+    
+    <h2 class="project-title">{{project.name}}</h2>
+    
+    <div class="project-description">
+      {% for paragraph in project.description %}
+      <p>{{paragraph}}</p>
+      {% endfor %}
+      {% if project.links %}
+      <ul>
+        {% for link in project.links %}
+        <li><a href="{{link.destination}}">{{link.text}}</a></li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+<p>
+  You can find all my open-source projects on <a href="https://github.com/VarunBarad" rel="me">my GitHub account</a>.
+</p>
