@@ -1,0 +1,26 @@
+---
+layout: page.liquid
+title: Blog
+permalink: "/blog.html"
+redirect_from: [
+  "/blog/index.html",
+]
+---
+{% assign postsByYear = collections.post | reverse | group_by_exp:"post", "post.date | date: '%Y'" %}
+<div class="periods-wrapper">
+  {% for year in postsByYear %}
+  <div class="period">
+    <h2 class="period-title">{{ year.name }}</h2>
+
+    <div class="post-list">
+      {% for post in year.items %}
+      <p class="post-item">
+        <a href="{{ post.url }}" class="post-title">{{ post.data.title }}</a>
+        <br>
+        <span class="post-description">{{ post.data.summary }}</span>
+      </p>
+      {% endfor %}
+    </div>
+  </div>
+  {% endfor %}
+</div>
