@@ -1,6 +1,6 @@
 ---
 tags: post
-layout: page
+layout: post
 title: "500 Million, But Not a Single One More"
 summary: "My first attempt at recording a voice-over of an awesome article"
 date: 2021-07-18T00:00:00+0530

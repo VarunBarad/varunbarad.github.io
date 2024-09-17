@@ -1,6 +1,6 @@
 ---
 tags: post
-layout: page
+layout: post
 title:  "APGAR score"
 summary: "A quick method used to check whether a newborn needs immediate medical care."
 date:   2018-10-19T12:00:00+0530

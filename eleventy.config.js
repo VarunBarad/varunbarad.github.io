@@ -1,5 +1,6 @@
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("_eleventy/favicon.png");
+  eleventyConfig.addPassthroughCopy("_eleventy/assets");
   eleventyConfig.addPassthroughCopy("_eleventy/podcasts");
   
   eleventyConfig.addCollection('categories', function(collectionApi) {

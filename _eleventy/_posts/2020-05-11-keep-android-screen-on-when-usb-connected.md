@@ -1,6 +1,6 @@
 ---
 tags: post
-layout: page
+layout: post
 title: "Keep Android screen on When USB is connected"
 summary: "Use the command `adb shell svc power stayon usb`"
 date: 2020-05-11T12:00:00+0530

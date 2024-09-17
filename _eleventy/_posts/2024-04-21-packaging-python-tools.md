@@ -1,6 +1,6 @@
 ---
 tags: post
-layout: page
+layout: post
 title: "🐍 Packaging my first Python tool"
 summary: "My experience of packaging my first Python tool"
 date: 2024-04-21T07:57:19+0530

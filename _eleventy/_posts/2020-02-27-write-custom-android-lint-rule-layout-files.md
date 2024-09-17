@@ -1,6 +1,6 @@
 ---
 tags: post
-layout: page
+layout: post
 title: "Write Custom Android Lint Rule - Layout Files"
 summary: "Writing our own custom android lint rules for verifying layout files."
 date: 2020-02-27T12:00:00+0530
