@@ -1,5 +1,6 @@
 ---
-tags: post
+tags:
+  - post
 layout: post
 title: "Write Custom Android Lint Rule - Layout Files"
 summary: "Writing our own custom android lint rules for verifying layout files."

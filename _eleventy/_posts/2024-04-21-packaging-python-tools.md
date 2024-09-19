@@ -1,5 +1,6 @@
 ---
-tags: post
+tags:
+  - post
 layout: post
 title: "🐍 Packaging my first Python tool"
 summary: "My experience of packaging my first Python tool"

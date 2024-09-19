@@ -1,5 +1,6 @@
 ---
-tags: post
+tags:
+  - post
 layout: post
 title: "Keep Android screen on When USB is connected"
 summary: "Use the command `adb shell svc power stayon usb`"
