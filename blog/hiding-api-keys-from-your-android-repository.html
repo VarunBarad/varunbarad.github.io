@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/assets/css/style.css?v=94fdefd3096e9ea2864ac71a0648a80ef7fb3151">
-  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=94fdefd3096e9ea2864ac71a0648a80ef7fb3151">
+  <link rel="stylesheet" href="/assets/css/style.css?v=50f314d7ea5293a27960edcec88f11c558617bc2">
+  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=50f314d7ea5293a27960edcec88f11c558617bc2">
   <link rel="icon" type="image/png" href="/favicon.png" />
   <title>Hiding API keys from your Android repository - Varun Barad</title>
   <meta name="description" content="Learn how to secure your API keys while keeping the source code for that Android app open-source." />
@@ -82,7 +82,8 @@
 
 <p>After that, add your key to the file as a property. If your key was <code class="language-plaintext highlighter-rouge">my-awesome-api-key</code>, the file after adding the key might look something like:</p>
 
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">MyAwesomeApp_ApiKey</span><span class="o">=</span><span class="s">"my-awesome-api-key"</span></code></pre></figure>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">MyAwesomeApp_ApiKey</span><span class="o">=</span><span class="s">"my-awesome-api-key"</span>
+</code></pre></div></div>
 
 <p>I prefer to use this format <code class="language-plaintext highlighter-rouge">&lt;Project Name&gt;_&lt;Key Property Name&gt;</code> so that I don’t mix up keys for different projects by mistake.</p>
 
@@ -97,7 +98,7 @@
 
 <p>After doing so, your <code class="language-plaintext highlighter-rouge">build.gradle</code> might look like this:</p>
 
-<figure class="highlight"><pre><code class="language-gradle" data-lang="gradle"><span class="n">buildTypes</span> <span class="o">{</span>
+<div class="language-gradle highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">buildTypes</span> <span class="o">{</span>
   <span class="n">debug</span> <span class="o">{</span>
     <span class="n">buildConfigField</span> <span class="s1">'String'</span><span class="o">,</span> <span class="s2">"ApiKey"</span><span class="o">,</span> <span class="n">MyAwesomeApp_ApiKey</span>
     <span class="n">resValue</span> <span class="s1">'string'</span><span class="o">,</span> <span class="s2">"api_key"</span><span class="o">,</span> <span class="n">MyAwesomeApp_ApiKey</span>
@@ -108,7 +109,8 @@
     <span class="n">buildConfigField</span> <span class="s1">'String'</span><span class="o">,</span> <span class="s2">"ApiKey"</span><span class="o">,</span> <span class="n">MyAwesomeApp_ApiKey</span>
     <span class="n">resValue</span> <span class="s1">'string'</span><span class="o">,</span> <span class="s2">"api_key"</span><span class="o">,</span> <span class="n">MyAwesomeApp_ApiKey</span>
   <span class="o">}</span>
-<span class="o">}</span></code></pre></figure>
+<span class="o">}</span>
+</code></pre></div></div>
 
 <h2 id="3-using-the-key-in-your-apps-code">3. Using the key in your app’s code</h2>
 
@@ -118,27 +120,30 @@
 
 <p>It is available as a standard String in your Java/Kotlin (if you use Kotlin, you good sir just became a friend of mine) code. To access it:</p>
 
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">// Java</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Java</span>
 <span class="o">...</span>
 <span class="nc">String</span> <span class="n">apiKey</span> <span class="o">=</span> <span class="nc">BuildConfig</span><span class="o">.</span><span class="na">ApiKey</span><span class="o">;</span>
-<span class="o">...</span></code></pre></figure>
+<span class="o">...</span>
+</code></pre></div></div>
 
-<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="c1">// Kotlin</span>
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Kotlin</span>
 <span class="o">..</span><span class="p">.</span>
 <span class="kd">val</span> <span class="py">apiKey</span><span class="p">:</span> <span class="nc">String</span> <span class="p">=</span> <span class="nc">BuildConfig</span><span class="p">.</span><span class="nc">ApiKey</span><span class="p">;</span>
-<span class="o">..</span><span class="p">.</span></code></pre></figure>
+<span class="o">..</span><span class="p">.</span>
+</code></pre></div></div>
 
 <h3 id="accessing-in-xml">Accessing in XML</h3>
 
 <p>If you want to use it in XML files (like AdMob keys are needed sometimes in XML), you can access them just like any other string resource (used in the last line):</p>
 
-<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;com.google.android.gms.ads.AdView</span>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;com.google.android.gms.ads.AdView</span>
   <span class="na">xmlns:ads=</span><span class="s">"http://schemas.android.com/apk/res-auto"</span>
   <span class="na">android:id=</span><span class="s">"@+id/adView_banner"</span>
   <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
   <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
   <span class="na">ads:adSize=</span><span class="s">"BANNER"</span>
-  <span class="na">ads:adUnitId=</span><span class="s">"@string/api_key"</span><span class="nt">/&gt;</span></code></pre></figure>
+  <span class="na">ads:adUnitId=</span><span class="s">"@string/api_key"</span><span class="nt">/&gt;</span>
+</code></pre></div></div>
 
 <h2 id="done">Done</h2>
 
@@ -187,7 +192,7 @@
   </div>
 </div>
 
-<script src="/assets/js/jquery.min.js?v=94fdefd3096e9ea2864ac71a0648a80ef7fb3151"></script>
-<script src="/assets/js/bootstrap.min.js?v=94fdefd3096e9ea2864ac71a0648a80ef7fb3151"></script>
+<script src="/assets/js/jquery.min.js?v=50f314d7ea5293a27960edcec88f11c558617bc2"></script>
+<script src="/assets/js/bootstrap.min.js?v=50f314d7ea5293a27960edcec88f11c558617bc2"></script>
 </body>
 </html>

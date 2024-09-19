@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/assets/css/style.css?v=94fdefd3096e9ea2864ac71a0648a80ef7fb3151">
-  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=94fdefd3096e9ea2864ac71a0648a80ef7fb3151">
+  <link rel="stylesheet" href="/assets/css/style.css?v=50f314d7ea5293a27960edcec88f11c558617bc2">
+  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=50f314d7ea5293a27960edcec88f11c558617bc2">
   <link rel="icon" type="image/png" href="/favicon.png" />
   <title>Simplifying User-Experience for rating your Android app - Varun Barad</title>
   <meta name="description" content="Make it easy for your users to rate your Android app." />
@@ -82,12 +82,13 @@
 
 <p>There are many options to display an option to user for rating your app. I will be using a simple button for this purpose.</p>
 
-<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;Button</span>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;Button</span>
     <span class="na">android:id=</span><span class="s">"@+id/button_rateMe"</span>
     <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
     <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
     <span class="na">android:text=</span><span class="s">"Rate Me!"</span>
-    <span class="na">android:onClick=</span><span class="s">"rateApp"</span> <span class="nt">/&gt;</span></code></pre></figure>
+    <span class="na">android:onClick=</span><span class="s">"rateApp"</span> <span class="nt">/&gt;</span>
+</code></pre></div></div>
 
 <p>You have many other options like:</p>
 
@@ -101,7 +102,7 @@
 
 <p>Now comes the part where we launch the Store listing for our app when user clicks on whatever we displayed above. Continuing the above example, I have the below code in my Activity in which the above button is displayed.</p>
 
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">// Java</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Java</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">rateApp</span><span class="o">(</span><span class="nc">View</span> <span class="n">rateMeButton</span><span class="o">)</span> <span class="o">{</span>
     <span class="nc">String</span> <span class="n">packageName</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">getPackageName</span><span class="o">();</span>
     <span class="nc">String</span> <span class="n">playStoreAppUri</span> <span class="o">=</span> <span class="s">"market://details?id="</span> <span class="o">+</span> <span class="n">packageName</span><span class="o">;</span>
@@ -114,9 +115,10 @@
         <span class="nc">Intent</span> <span class="n">playStoreBrowserIntent</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Intent</span><span class="o">(</span><span class="nc">Intent</span><span class="o">.</span><span class="na">ACTION_VIEW</span><span class="o">,</span> <span class="nc">Uri</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="n">playStoreSiteUri</span><span class="o">));</span>
         <span class="n">startActivity</span><span class="o">(</span><span class="n">playStoreBrowserIntent</span><span class="o">);</span>
     <span class="o">}</span>
-<span class="o">}</span></code></pre></figure>
+<span class="o">}</span>
+</code></pre></div></div>
 
-<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="c1">// Kotlin</span>
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Kotlin</span>
 <span class="k">public</span> <span class="k">fun</span> <span class="nf">rateApp</span><span class="p">(</span><span class="n">rateMeButton</span><span class="p">:</span> <span class="nc">View</span><span class="p">):</span> <span class="nc">Unit</span> <span class="p">{</span>
     <span class="kd">val</span> <span class="py">packageName</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">packageName</span>
     <span class="kd">val</span> <span class="py">playStoreAppUri</span> <span class="p">=</span> <span class="s">"market://details?id=$packageName"</span>
@@ -129,7 +131,8 @@
         <span class="kd">val</span> <span class="py">playStoreBrowserIntent</span> <span class="p">=</span> <span class="nc">Intent</span><span class="p">(</span><span class="nc">Intent</span><span class="p">.</span><span class="nc">ACTION_VIEW</span><span class="p">,</span> <span class="nc">Uri</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">playStoreSiteUri</span><span class="p">))</span>
         <span class="nf">startActivity</span><span class="p">(</span><span class="n">playStoreBrowserIntent</span><span class="p">)</span>
     <span class="p">}</span>
-<span class="p">}</span></code></pre></figure>
+<span class="p">}</span>
+</code></pre></div></div>
 
 <p>Let me explain what the above code does.</p>
 
@@ -186,7 +189,7 @@
   </div>
 </div>
 
-<script src="/assets/js/jquery.min.js?v=94fdefd3096e9ea2864ac71a0648a80ef7fb3151"></script>
-<script src="/assets/js/bootstrap.min.js?v=94fdefd3096e9ea2864ac71a0648a80ef7fb3151"></script>
+<script src="/assets/js/jquery.min.js?v=50f314d7ea5293a27960edcec88f11c558617bc2"></script>
+<script src="/assets/js/bootstrap.min.js?v=50f314d7ea5293a27960edcec88f11c558617bc2"></script>
 </body>
 </html>
