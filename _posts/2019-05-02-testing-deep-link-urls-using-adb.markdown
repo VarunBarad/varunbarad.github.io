@@ -2,7 +2,7 @@
 layout: post
 title:  "Testing Deep-Link URLs using ADB"
 summary: "Simple adb command to help you fire deep-link url in mobile from your console."
-date:   2019-05-02 12:00:00 +0530
+date: 2019-05-02 12:00:00 +0530
 redirect_from:
   - "/android/2019/05/02/testing-deep-link-urls-using-adb.html"
 categories:

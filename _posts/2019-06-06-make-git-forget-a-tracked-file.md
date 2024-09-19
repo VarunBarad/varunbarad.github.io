@@ -2,7 +2,7 @@
 layout: post
 title:  "Make git forget a tracked file"
 summary: "What to do when you are tracking a file with git but then want to remove it from VCS while keeping it in your file system."
-date:   2019-06-06 12:00:00 +0530
+date: 2019-06-06 12:00:00 +0530
 redirect_from:
   - "/programming/2019/06/06/make-git-forget-a-tracked-file.html"
 categories:

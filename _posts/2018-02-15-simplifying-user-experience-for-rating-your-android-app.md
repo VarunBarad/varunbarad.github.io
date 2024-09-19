@@ -2,7 +2,7 @@
 layout: post
 title:  "Simplifying User-Experience for rating your Android app"
 summary: "Make it easy for your users to rate your Android app."
-date:   2018-02-15 12:00:00 +0530
+date: 2018-02-15 12:00:00 +0530
 redirect_from:
   - "/android/2018/02/15/simplifying-user-experience-for-rating-your-android-app.html"
 categories: 

@@ -2,7 +2,7 @@
 layout: post
 title:  "Hiding API keys from your Android repository"
 summary: "Learn how to secure your API keys while keeping the source code for that Android app open-source."
-date:   2018-02-01 12:00:00 +0530
+date: 2018-02-01 12:00:00 +0530
 redirect_from:
   - "/android/2018/02/01/hiding-api-keys-from-your-android-repository.html"
 categories: 

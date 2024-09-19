@@ -2,7 +2,7 @@
 layout: post
 title:  "Don't worry about specializing yet!"
 summary: "What technologies should I be learning, so that they prove helpful in my career?"
-date:   2019-03-19 12:00:00 +0530
+date: 2019-03-19 12:00:00 +0530
 redirect_from:
   - "/programming/personal-growth/2019/03/19/dont-worry-about-specializing-yet.html"
 categories: 
