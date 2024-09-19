@@ -29,9 +29,9 @@ Inside it there would be a file named `gradle.properties` (just create it if the
 
 After that, add your key to the file as a property. If your key was `my-awesome-api-key`, the file after adding the key might look something like:
 
-{% highlight java %}
+```java
 MyAwesomeApp_ApiKey="my-awesome-api-key"
-{% endhighlight %}
+```
 
 I prefer to use this format `<Project Name>_<Key Property Name>` so that I donâ€™t mix up keys for different projects by mistake.
 
@@ -44,7 +44,7 @@ I prefer to use this format `<Project Name>_<Key Property Name>` so that I donâ€
 
 After doing so, your `build.gradle` might look like this:
 
-{% highlight gradle %}
+```gradle
 buildTypes {
   debug {
     buildConfigField 'String', "ApiKey", MyAwesomeApp_ApiKey
@@ -57,7 +57,7 @@ buildTypes {
     resValue 'string', "api_key", MyAwesomeApp_ApiKey
   }
 }
-{% endhighlight %}
+```
 
 ## 3. Using the key in your app's code
 
@@ -67,25 +67,25 @@ Now you can access the key from your code as described below.
 
 It is available as a standard String in your Java/Kotlin (if you use Kotlin, you good sir just became a friend of mine) code. To access it:
 
-{% highlight java %}
+```java
 // Java
 ...
 String apiKey = BuildConfig.ApiKey;
 ...
-{% endhighlight %}
+```
 
-{% highlight kotlin %}
+```kotlin
 // Kotlin
 ...
 val apiKey: String = BuildConfig.ApiKey;
 ...
-{% endhighlight %}
+```
 
 ### Accessing in XML
 
 If you want to use it in XML files (like AdMob keys are needed sometimes in XML), you can access them just like any other string resource (used in the last line):
 
-{% highlight xml %}
+```xml
 <com.google.android.gms.ads.AdView
   xmlns:ads="http://schemas.android.com/apk/res-auto"
   android:id="@+id/adView_banner"
@@ -93,7 +93,7 @@ If you want to use it in XML files (like AdMob keys are needed sometimes in XML)
   android:layout_height="wrap_content"
   ads:adSize="BANNER"
   ads:adUnitId="@string/api_key"/>
-{% endhighlight %}
+```
 
 ## Done
 

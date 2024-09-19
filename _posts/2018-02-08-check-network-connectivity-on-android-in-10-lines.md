@@ -17,7 +17,7 @@ The way Android provides to check for network connectivity is just 10 lines of c
 
 As you can see in the code-block below, it is quite easy to wrap the connectivity check logic in a function.
 
-{% highlight java %}
+```java
 // Java code sample
 
 public class ConnectivityHelper {
@@ -34,9 +34,9 @@ public class ConnectivityHelper {
     return isConnected;
   }
 }
-{% endhighlight %}
+```
 
-{% highlight kotlin %}
+```kotlin
 // Kotlin code sample
 
 // The next line should be the first statement in the file
@@ -46,11 +46,11 @@ fun Context.isConnectedToNetwork(): Boolean {
   val connectivityManager = this.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager?
   return connectivityManager?.activeNetworkInfo?.isConnectedOrConnecting() ?: false
 }
-{% endhighlight %}
+```
 
 You also need to have the `ACCESS_NETWORK_STATE` permission added in your manifest like below.
 
-{% highlight xml %}
+```xml
 <manifest ...>
   
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -58,28 +58,28 @@ You also need to have the `ACCESS_NETWORK_STATE` permission added in your manife
     ...
   </application>
 </manifest>
-{% endhighlight %}
+```
 
 ### Done
 
 Now anywhere that you need to check the connection, you only need to
 
-{% highlight java %}
+```java
 // Java code sample
 if (ConnectivityHelper.isConnectedToNetwork(context)) {
   // Show the connected screen
 } else {
   // Show disconnected screen
 }
-{% endhighlight %}
-{% highlight kotlin %}
+```
+```kotlin
 // Kotlin code sample
 if (context.isConnectedToInternet()) {
   // Show the connected screen
 } else {
   // Show disconnected screen
 }
-{% endhighlight %}
+```
 
 ## Further reading
 

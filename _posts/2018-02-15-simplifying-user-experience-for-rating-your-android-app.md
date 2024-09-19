@@ -29,14 +29,14 @@ Providing such an option requires mainly 2 steps from the developer:
 
 There are many options to display an option to user for rating your app. I will be using a simple button for this purpose.
 
-{% highlight xml %}
+```xml
 <Button
     android:id="@+id/button_rateMe"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="Rate Me!"
     android:onClick="rateApp" />
-{% endhighlight %}
+```
 
 You have many other options like:
 
@@ -48,7 +48,7 @@ You have many other options like:
 
 Now comes the part where we launch the Store listing for our app when user clicks on whatever we displayed above. Continuing the above example, I have the below code in my Activity in which the above button is displayed.
 
-{% highlight java %}
+```java
 // Java
 public void rateApp(View rateMeButton) {
     String packageName = this.getPackageName();
@@ -63,9 +63,9 @@ public void rateApp(View rateMeButton) {
         startActivity(playStoreBrowserIntent);
     }
 }
-{% endhighlight %}
+```
 
-{% highlight kotlin %}
+```kotlin
 // Kotlin
 public fun rateApp(rateMeButton: View): Unit {
     val packageName = this.packageName
@@ -80,7 +80,7 @@ public fun rateApp(rateMeButton: View): Unit {
         startActivity(playStoreBrowserIntent)
     }
 }
-{% endhighlight %}
+```
 
 Let me explain what the above code does.
 
