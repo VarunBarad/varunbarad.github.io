@@ -18,7 +18,7 @@ Credits: [Bytefreaks.net](https://bytefreaks.net/gnulinux/bash/ffmpeg-extract-au
 
 ## Merge subtitle (srt) files with video files
 ```shell
-ffmpeg -i video.mp4 -i subtitle.srt -c:s mov_text -c:v copy -c:a copy merged.mp4
+ffmpeg -i video.mp4 -i subtitle.srt -c copy -c:s mov_text -metadata:s:s:0 language=eng -metadata:s:s:0 title="English" merged.mp4
 ```
 
 Credits: [StackExchange](https://superuser.com/a/520555)
