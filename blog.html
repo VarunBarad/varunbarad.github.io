@@ -7,7 +7,7 @@ permalink: "/blog/"
 <div class="periods-wrapper">
   {% for year in postsByYear %}
   <div class="period">
-    <h2 class="period-title">{{ year.name }}</h2>
+    <h2 class="period-title">{{ year.name }} ({{ year.items | size }})</h2>
     
     <div class="post-list">
       {% for post in year.items %}
