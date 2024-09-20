@@ -12,8 +12,10 @@ permalink: '/blog/{{ page.fileSlug }}'
     <title>{{ title }} - Varun Barad</title>
     <meta name="description" content="{{ summary }}"/>
 
-    <!-- Canonical URL -->
-    <!-- ToDo: Add canonical URL if any -->
+    {% if canonical_url %}
+        <!-- Canonical URL -->
+        <link rel="canonical" href="{{ canonical_url }}">
+    {% endif %}
 
     <!-- RSS Feed meta-data -->
     <!-- ToDo: Add rss feed meta tag -->
