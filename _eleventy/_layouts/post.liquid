@@ -10,8 +10,7 @@ permalink: '/blog/{{ page.fileSlug }}'
     <link rel="stylesheet" href="/assets/css/fontawesome-all.css">
     <link rel="icon" type="image/png" href="/favicon.png"/>
     <title>{{ title }} - Varun Barad</title>
-    <!-- ToDo: Add post summary as description -->
-    <meta name="description" content="{{ site.description }}"/>
+    <meta name="description" content="{{ summary }}"/>
 
     <!-- Canonical URL -->
     <!-- ToDo: Add canonical URL if any -->
@@ -23,18 +22,16 @@ permalink: '/blog/{{ page.fileSlug }}'
     <meta name="twitter:site" content="@{{ site.twitter_username }}"/>
     <meta name="twitter:image:src" content="{{ site.url }}/assets/images/logo-hd.png"/>
     <meta name="twitter:card" content="summary"/>
-    <!-- ToDo: Add appropriate title and description -->
     <meta name="twitter:title" content="{{ title }}"/>
-    <meta name="twitter:description" content="{{ site.description }}"/>
+    <meta name="twitter:description" content="{{ summary }}"/>
 
     <!-- Open-Graph meta-data -->
     <meta property="og:site_name" content="{{ site.title }}"/>
     <meta property="og:image" content="{{ site.url }}/assets/images/logo-hd.png"/>
     <meta property="og:type" content="object"/>
-    <!-- ToDo: Add appropriate title, description and url -->
     <meta property="og:title" content="{{ title }}"/>
     <meta property="og:url" content="{{ site.url }}{{ page.url }}"/>
-    <meta property="og:description" content="{{ site.description }}"/>
+    <meta property="og:description" content="{{ summary }}"/>
 </head>
 <body>
 <div>
