@@ -63,6 +63,9 @@ feed:
 kramdown:
   auto_ids: true
 
+redirect_from:
+  json: false
+
 exclude:
   - ".idea"
   - "Gemfile"
