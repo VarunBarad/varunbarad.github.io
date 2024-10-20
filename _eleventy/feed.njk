@@ -1,0 +1,48 @@
+---json
+{
+  "permalink": "/feed.xml",
+  "eleventyExcludeFromCollections": true,
+  "metadata": {
+    "title": "Varun Barad - Curious Developer",
+    "subtitle": "My online home where I post about new things I learn or find interesting.",
+    "feedUrl": "/feed.xml",
+    "url": "https://varunbarad.com/",
+    "author": {
+      "name": "Varun Barad"
+    }
+  }
+}
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="html">{{ metadata.title }}</title>
+  <subtitle>{{ metadata.subtitle }}</subtitle>
+  <link href="{{ metadata.feedUrl | absoluteUrl(metadata.url) }}" rel="self" type="application/atom+xml"/>
+  <link href="{{ metadata.url }}" rel="alternate" type="text/html"/>
+  <updated>{{ collections.post | getNewestCollectionItemDate | dateToRfc3339WithTimezone }}</updated>
+  <id>{{ metadata.feedUrl | absoluteUrl(metadata.url) }}</id>
+  <author>
+    <name>{{ metadata.author.name }}</name>
+  </author>
+
+  {% for post in collections.post | reverse %}
+    {% set absolutePostUrl %}{{ post.url | url | absoluteUrl(metadata.url) }}{% endset %}
+    <entry>
+      <title type="html">{{ post.data.title }}</title>
+      <link href="{{ absolutePostUrl }}" rel="alternate" type="text/html" title="post.data.title"/>
+      <published>{{ post.date | dateToRfc3339WithTimezone }}</published>
+      <updated>{{ post.date | dateToRfc3339WithTimezone }}</updated>
+      <id>{{ absolutePostUrl }}</id>
+      <content type="html">
+      {{ post.templateContent | htmlToAbsoluteUrls(absolutePostUrl) }}
+      </content>
+      <author>
+        <name>{{ metadata.author.name }}</name>
+      </author>
+      {% for category in post.data.categories %}
+      <category term="{{ category }}"/>
+      {% endfor %}
+      <summary type="html">{{ post.data.summary }}</summary>
+    </entry>
+  {% endfor %}
+</feed>
