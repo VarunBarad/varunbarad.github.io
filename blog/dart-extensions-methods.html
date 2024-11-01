@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/assets/css/style.css?v=e4c3fc6202504d042d0b874c46ab9ee72d750db3">
+  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=e4c3fc6202504d042d0b874c46ab9ee72d750db3">
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <title>Dart Extension Methods - Varun Barad</title>
+  <meta name="description" content="An overview of extension methods in Dart and how they can be useful" />
+
+  <!-- Canonical URL -->
+  
+
+  <!-- RSS Feed meta-data -->
+  <link rel="alternate" type="application/atom+xml" title="Varun Barad - Curious Developer" href="https://varunbarad.com/feed.xml" />
+
+  <!-- Twitter meta-data -->
+  <meta name="twitter:site" content="@varun_barad" />
+  <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Dart Extension Methods" />
+  <meta name="twitter:description" content="An overview of extension methods in Dart and how they can be useful" />
+
+  <!-- Open-graph meta-data -->
+  <meta property="og:site_name" content="Varun Barad - Curious Developer" />
+  <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png" />
+  <meta property="og:type" content="object" />
+  <meta property="og:title" content="Dart Extension Methods" />
+  <meta property="og:url" content="https://varunbarad.com/blog/dart-extensions-methods" />
+  <meta property="og:description" content="An overview of extension methods in Dart and how they can be useful" />
+</head>
+<body>
+<div>
+  <div id="header">
+    <div class="row header">
+      <div class="title col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+        <a href="/"><div class="title">Varun Barad</div></a>
+      </div>
+      <div class="col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8">
+        <nav class="menu text-right">
+          <a href="/blog">Blog</a>
+          <a href="/projects">Projects</a>
+          <a href="/books">Books</a>
+          <a href="/ideas">Ideas</a>
+          <a href="/contact">Contact</a>
+          <a href="/resume/">My Resume</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <article class="h-entry">
+    <div class="content row">
+      <div class="post-container">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+          <div>
+            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/dart-extensions-methods">Dart Extension Methods</a></div>
+            <div class="text-center">
+              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2020-02-04 12:00:00 +0530">February 04, 2020</time>
+            </div>
+            <div class="post-content e-content"><p><img src="https://varunbarad.com/assets/images/posts/headers/dart-extension-methods.png" alt="Article Header - Dart Extension Methods" /></p>
+
+<p>Welcome devs, have you tried your hands at extensions methods? Dart recently announced support for extension methods (from Dart 2.7) and extension properties.</p>
+
+<p>Extension methods are a way to add functionality to existing libraries. When you are using someone else’s library it’s often impractical/impossible to change the API. But you can <em>extend</em> it using extension methods.</p>
+
+<h2 id="what-are-extension-methods">What are extension methods?</h2>
+
+<p>Consider the following code that parses a string into an integer:</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">'42'</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>Won’t it look cleaner/better if this functionality was available on <code class="language-plaintext highlighter-rouge">String</code> class like below?</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">'42'</span><span class="o">.</span><span class="na">parseInt</span><span class="o">()</span>
+</code></pre></div></div>
+
+<p>Since the language (where class <code class="language-plaintext highlighter-rouge">String</code> comes from) doesn’t provide such a method we can’t parse a string to an int like that. Extension methods allow us to specify such custom functionalities not provided by the library (Dart language in this case). Let’s see how to do that in next section.</p>
+
+<h2 id="writing-a-basic-extension-method">Writing a basic extension method</h2>
+
+<p>So we want to have a method <code class="language-plaintext highlighter-rouge">parseInt</code> <strong>on</strong> <code class="language-plaintext highlighter-rouge">String</code> class which would parse the given string to integer.</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">'42'</span><span class="o">.</span><span class="na">parseInt</span><span class="o">()</span>
+</code></pre></div></div>
+
+<p>For that we will define an extension method on <code class="language-plaintext highlighter-rouge">String</code> like this</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// File: extension_methods.dart</span>
+<span class="n">extension</span> <span class="n">StringExtras</span> <span class="n">on</span> <span class="kt">String</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">parseInt</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="kt">int</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="c1">// We can also define getters as extensions</span>
+    <span class="kt">int</span> <span class="kd">get</span> <span class="n">doubleLength</span> <span class="o">=&gt;</span> <span class="n">length</span> <span class="o">*</span> <span class="mi">2</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Here we have named this set of extension methods as <code class="language-plaintext highlighter-rouge">StringExtras</code>, you can name them anything you like.</p>
+
+<p><strong>Note:</strong> As you might have noticed above, we can define multiple extension methods/getters under a single extension block.</p>
+
+<h2 id="using-the-extension-method">Using the extension method</h2>
+
+<p>Extension methods (once imported) can be used just like any member method on that class’s object. Our example would go like this</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="s">'extension_methods.dart'</span><span class="o">;</span>
+
+<span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">print</span><span class="o">(</span><span class="s">'42'</span><span class="o">.</span><span class="na">parseInt</span><span class="o">()</span> <span class="o">+</span> <span class="mi">8</span><span class="o">);</span> <span class="c1">// Would print 50</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Similarly we can use the getters too</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="s">'extension_methods.dart'</span><span class="o">;</span>
+
+<span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">print</span><span class="o">(</span><span class="s">'42'</span><span class="o">.</span><span class="na">doubleLength</span><span class="o">);</span> <span class="c1">// Would print 4</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="important-notes">Important Notes</h2>
+
+<ol>
+  <li>Extension methods <em>don’t</em> work with the type <code class="language-plaintext highlighter-rouge">dynamic</code>. However they <em>do</em> work with Dart’s type inference.</li>
+  <li>Since extension methods are resolved statically, they’re as fast as calling a static function.</li>
+  <li>Extension methods can’t access private members of the class.</li>
+  <li>If an extension member has a name conflict then you should refer <a href="https://dart.dev/guides/language/extension-methods#api-conflicts">here</a> for your options.</li>
+  <li>You can define extension methods on classes which take generic type parameters (for example <code class="language-plaintext highlighter-rouge">List&lt;T&gt;</code>). Refer <a href="https://dart.dev/guides/language/extension-methods#implementing-generic-extensions">this section</a> for further details.</li>
+</ol>
+
+<h2 id="reference">Reference</h2>
+
+<p><a href="https://dart.dev/guides/language/extension-methods">Official release documentation - https://dart.dev/guides/language/extension-methods</a></p>
+
+<p>Want to discuss this or any other interesting thing, hit me up on Twitter <a href="https://twitter.com/varun_barad">@varun_barad</a>.</p>
+</div>
+          </div>
+
+          <div class="post-categories-container">
+            Categories:
+            <div>
+              
+              <a href="/category/flutter" class="badge badge-warning p-category">#flutter</a>
+              
+              <a href="/category/dart" class="badge badge-warning p-category">#dart</a>
+              
+              <a href="/category/programming" class="badge badge-warning p-category">#programming</a>
+              
+              <a href="/blog" class="badge badge-warning">#all</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+  <div>
+    <div class="footer">
+      <div>
+        
+        <a href="https://github.com/VarunBarad" rel="me"><i class="fab fa-github social-links"></i></a>
+        
+        <a href="https://twitter.com/varun_barad" rel="me"><i class="fab fa-twitter social-links"></i></a>
+        
+        <a href="https://dev.to/varunbarad" rel="me"><i class="fab fa-dev social-links"></i></a>
+        
+        <a href="https://stackoverflow.com/users/4717436/varunbarad" rel="me"><i class="fab fa-stack-overflow social-links"></i></a>
+        
+      </div>
+      <div class="developer-attribution">
+        
+        Made by <a href="https://dixita0607.github.io">Dixita Ganatra</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/assets/js/jquery.min.js?v=e4c3fc6202504d042d0b874c46ab9ee72d750db3"></script>
+<script src="/assets/js/bootstrap.min.js?v=e4c3fc6202504d042d0b874c46ab9ee72d750db3"></script>
+</body>
+</html>
