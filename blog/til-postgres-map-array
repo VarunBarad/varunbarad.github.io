@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/fontawesome-all.css">
+    <link rel="icon" type="image/png" href="/favicon.png"/>
+    <title>📝 Map an array of ids in postgres to matching data from another table - Varun Barad</title>
+    <meta name="description" content="TIL: How to map an array in postgres to other data"/>
+
+    
+
+    <!-- RSS Feed meta-data -->
+    <link type="application/atom+xml" rel="alternate" href="https://varunbarad.com/feed.xml" title="Varun Barad - Curious Developer"/>
+
+    <!-- Twitter meta-data -->
+    <meta name="twitter:site" content="@varun_barad"/>
+    <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png"/>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="📝 Map an array of ids in postgres to matching data from another table"/>
+    <meta name="twitter:description" content="TIL: How to map an array in postgres to other data"/>
+
+    <!-- Open-Graph meta-data -->
+    <meta property="og:site_name" content="Varun Barad - Curious Developer"/>
+    <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png"/>
+    <meta property="og:type" content="object"/>
+    <meta property="og:title" content="📝 Map an array of ids in postgres to matching data from another table"/>
+    <meta property="og:url" content="https://varunbarad.com/blog/til-postgres-map-array"/>
+    <meta property="og:description" content="TIL: How to map an array in postgres to other data"/>
+</head>
+<body>
+<div>
+    <div id="header">
+        <div class="row header">
+            <div class="title col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+                <a href="/">
+                    <div class="title">Varun Barad</div>
+                </a>
+            </div>
+            <div class="col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8">
+                <nav class="menu text-right">
+                    <a href="/blog">Blog</a>
+                    <a href="/projects">Projects</a>
+                    <a href="/books">Books</a>
+                    <a href="/ideas">Ideas</a>
+                    <a href="/contact">Contact</a>
+                    <a href="/resume">My Resume</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <article class="h-entry">
+        <div class="content row">
+            <div class="post-container">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <div>
+                        <div class="page-title text-uppercase text-center p-name">
+                            <a class="u-url" href="/blog/til-postgres-map-array">📝 Map an array of ids in postgres to matching data from another table</a>
+                        </div>
+                        <div class="text-center">
+                            By <a class="p-author h-card" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="Mon May 08 2023 23:10:27 GMT+0530 (India Standard Time)">May 08, 2023</time>
+                        </div>
+                        <div class="post-content e-content"><p>If we have two tables, <code>people</code> and <code>groups</code>, where <code>people</code> has a column <code>group_ids</code> which is an array of ids from <code>groups</code>, we can map the array of ids to the matching name from <code>groups</code> using the following query:</p>
+<pre><code class="language-sql">select
+    p.email as email,
+    coalesce(groups.names, '') as group_names
+
+from people as p
+    inner join (
+        select string_agg(g.name, ', ') as names, person.id as person_id
+
+        from entity_groups as g
+            inner join (
+                select id, unnest(group_ids) as group_id
+                from people
+            ) as person on person.group_id = g.id
+
+        group by person.id
+    ) as groups on groups.person_id = p.id
+
+order by email;
+</code></pre>
+<p>It is a three-step process, listed inside to out (i.e. the innermost query is executed first):</p>
+<ol>
+<li>Convert the <code>group_ids</code> array from <code>people</code> into a table of <code>person_id</code> and <code>group_id</code> using <code>unnest</code></li>
+<li>Join the <code>group_id</code> with the <code>id</code> of <code>groups</code> to get the <code>name</code> of the group</li>
+<li>Aggregate the <code>name</code> of the groups into a comma-separated string using <code>string_agg</code></li>
+</ol>
+</div>
+                    </div>
+                    <div class="post-categories-container">
+                        Categories:
+                        <div>
+                            
+                                <a href="/category/til" class="badge badge-warning">#til</a>
+                            
+                            <a href="/blog" class="badge badge-warning">#all</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+    <div>
+        <div class="footer">
+            <div>
+                <a href="https://github.com/VarunBarad" rel="me">
+                    <i class="fab fa-github social-links"></i>
+                </a>
+                <a href="https://twitter.com/varun_barad" rel="me">
+                    <i class="fab fa-twitter social-links"></i>
+                </a>
+                <a href="https://dev.to/varunbarad" rel="me">
+                    <i class="fab fa-dev social-links"></i>
+                </a>
+                <a href="https://stackoverflow.com/users/4717436/varunbarad" rel="me">
+                    <i class="fab fa-stack-overflow social-links"></i>
+                </a>
+            </div>
+            <div class="developer-attribution">
+                Made by <a href="https://dixita0607.github.io">Dixita Ganatra</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+</body>
+</html>

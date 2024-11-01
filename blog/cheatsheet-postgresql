@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/fontawesome-all.css">
+    <link rel="icon" type="image/png" href="/favicon.png"/>
+    <title>🐘 Cheatsheet - PostgreSQL - Varun Barad</title>
+    <meta name="description" content="A cheat-sheet for PostgreSQL database"/>
+
+    
+
+    <!-- RSS Feed meta-data -->
+    <link type="application/atom+xml" rel="alternate" href="https://varunbarad.com/feed.xml" title="Varun Barad - Curious Developer"/>
+
+    <!-- Twitter meta-data -->
+    <meta name="twitter:site" content="@varun_barad"/>
+    <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png"/>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="🐘 Cheatsheet - PostgreSQL"/>
+    <meta name="twitter:description" content="A cheat-sheet for PostgreSQL database"/>
+
+    <!-- Open-Graph meta-data -->
+    <meta property="og:site_name" content="Varun Barad - Curious Developer"/>
+    <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png"/>
+    <meta property="og:type" content="object"/>
+    <meta property="og:title" content="🐘 Cheatsheet - PostgreSQL"/>
+    <meta property="og:url" content="https://varunbarad.com/blog/cheatsheet-postgresql"/>
+    <meta property="og:description" content="A cheat-sheet for PostgreSQL database"/>
+</head>
+<body>
+<div>
+    <div id="header">
+        <div class="row header">
+            <div class="title col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+                <a href="/">
+                    <div class="title">Varun Barad</div>
+                </a>
+            </div>
+            <div class="col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8">
+                <nav class="menu text-right">
+                    <a href="/blog">Blog</a>
+                    <a href="/projects">Projects</a>
+                    <a href="/books">Books</a>
+                    <a href="/ideas">Ideas</a>
+                    <a href="/contact">Contact</a>
+                    <a href="/resume">My Resume</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <article class="h-entry">
+        <div class="content row">
+            <div class="post-container">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <div>
+                        <div class="page-title text-uppercase text-center p-name">
+                            <a class="u-url" href="/blog/cheatsheet-postgresql">🐘 Cheatsheet - PostgreSQL</a>
+                        </div>
+                        <div class="text-center">
+                            By <a class="p-author h-card" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="Mon May 17 2021 00:00:00 GMT+0530 (India Standard Time)">May 17, 2021</time>
+                        </div>
+                        <div class="post-content e-content"><h2>Dump database to a script (.sql) file</h2>
+<p>Extract/Dump the database contents to a script (.sql) file</p>
+<pre><code class="language-shell">pg_dump -f ~/path/to/file.sql $YOUR_DATABASE_URL
+</code></pre>
+<h2>Run a script (.sql) from file on a database</h2>
+<p>Run SQL commands from a file on a database</p>
+<pre><code class="language-shell">psql $YOUR_DATABASE_URL -f ~/path/to/file.sql
+</code></pre>
+<h2>Check whether there is any row in the table matching your condition</h2>
+<pre><code class="language-sql">select exists(select 1 from your_table where your_condition)
+</code></pre>
+<h2>Use single-quote inside a string</h2>
+<p>Put two single-quotes (') wherever you want to use a single-quote inside the string</p>
+<pre><code class="language-sql">select * from people where full_name = 'Travis O''Connor'
+</code></pre>
+<h2>Convert timestamptz to a timestamp in a particular timezone</h2>
+<p>Assuming <code>created_at</code> is a column in table <code>people</code> with type <code>timstamptz</code> and we want to see what those timestamps are in IST (Asia/Kolkata or Asia/Calcutta)</p>
+<pre><code class="language-sql">select created_at at time zone 'Asia/Kolkata' as shifted from people
+</code></pre>
+<h2>Format timestamp/date</h2>
+<p>Assuming <code>birthdate</code> is a column in table <code>people</code> with type <code>date</code> and we want to display those values in <code>10 Oct 2021</code> format</p>
+<pre><code class="language-sql">select to_char(birthdate, 'DD Mon YYYY') from people
+</code></pre>
+<p>Refer to <a href="https://www.postgresql.org/docs/current/functions-formatting.html">official docs</a> for more and/or latest details</p>
+<h2>Auto-populate values for created_at and updated_at columns</h2>
+<p>We first need to create a function which would update the value of <code>updated_at</code> column every time data in a row changes</p>
+<pre><code class="language-sql">create or replace function update_modified_timestamp() returns trigger
+language plpgsql as
+$$
+BEGIN
+    new.updated_at := current_timestamp;
+    return new;
+END;
+$$;
+</code></pre>
+<p>Then we need to provide default values to columns when defining table schema</p>
+<pre><code class="language-sql">create table people (
+    id integer primary key,
+    created_at timestamptz not null default now(),
+    updated_at timestamptz not null default now(),
+    name text not null
+);
+</code></pre>
+<p>At last we need to add a trigger to each table where we want to auto-update the value of <code>updated_at</code></p>
+<pre><code class="language-sql">create trigger update_timestamp before update on people
+for each row execute procedure update_modified_timestamp();
+</code></pre>
+<h2>Generate list of months between two dates</h2>
+<p>This will give us a list of dates for the first day of every month that falls between <code>earlier_date</code> and <code>later_date</code>. Taking the example of <code>earlier_date = '2022-11-16'</code> and <code>later_date = '2023-02-14'</code>, it will return November 2022, December 2022, January 2023 and February 2023.</p>
+<pre><code class="language-sql">select generate_series(
+    cast(date_trunc('month', earlier_date) as date),
+    cast(date_trunc('month', later_date) as date),
+    interval '1 month'
+);
+</code></pre>
+<h2>Count rows that satisfy a condition</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">payments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">customer_id</td>
+</tr>
+<tr>
+<td style="text-align:center">payment_id</td>
+</tr>
+<tr>
+<td style="text-align:center">payment_amount</td>
+</tr>
+<tr>
+<td style="text-align:center">payment_date</td>
+</tr>
+</tbody>
+</table>
+<p>If we want to count the number of payments where <code>payment_amount</code> is greater than 100 then we use a <code>filter</code> on the <code>count</code> aggregate:</p>
+<pre><code class="language-sql">select customer_id,
+    count(payment_id) filter (where payment_amount &gt; 100)
+from payments
+group by customer_id;
+</code></pre>
+<h2>Get first entry in each group</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">payments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">customer_id</td>
+</tr>
+<tr>
+<td style="text-align:center">payment_id</td>
+</tr>
+<tr>
+<td style="text-align:center">payment_amount</td>
+</tr>
+<tr>
+<td style="text-align:center">payment_date</td>
+</tr>
+</tbody>
+</table>
+<p>If we want to see the payment_id of the highest amount of payment for each customer_id then we need to do:</p>
+<pre><code class="language-sql">select distinct customer_id,
+    first_value(payment_id) over (partition by customer_id order by payment_amount desc) as highest_payment_id
+from payments
+</code></pre>
+<p>Note that you don't need to specify a <code>group by</code> clause for the overall query in this case.</p>
+<h2>Map an array of ids to matching data from another table</h2>
+<p>If we have two tables, <code>people</code> and <code>groups</code>, where <code>people</code> has a column <code>group_ids</code> which is an array of ids from <code>groups</code>, we can map the array of ids to the matching name from <code>groups</code> using the following query:</p>
+<pre><code class="language-sql">select
+    p.email as email,
+    coalesce(groups.names, '') as group_names
+
+from people as p
+    inner join (
+        select string_agg(g.name, ', ') as names, person.id as person_id
+
+        from entity_groups as g
+            inner join (
+                select id, unnest(group_ids) as group_id
+                from people
+            ) as person on person.group_id = g.id
+
+        group by person.id
+    ) as groups on groups.person_id = p.id
+
+order by email;
+</code></pre>
+<p>It is a three-step process, listed inside to out (i.e. the innermost query is executed first):</p>
+<ol>
+<li>Convert the <code>group_ids</code> array from <code>people</code> into a table of <code>person_id</code> and <code>group_id</code> using <code>unnest</code></li>
+<li>Join the <code>group_id</code> with the <code>id</code> of <code>groups</code> to get the <code>name</code> of the group</li>
+<li>Aggregate the <code>name</code> of the groups into a comma-separated string using <code>string_agg</code></li>
+</ol>
+<h2>Make a column unique after creating it</h2>
+<p>If we have a table <code>people</code> with a column <code>email</code> and we want to make it unique after we have already added it to table:</p>
+<pre><code class="language-sql">alter table people add unique (email);
+</code></pre>
+<h2>Make a colum non-nullable after creating it</h2>
+<p>If we have a table <code>people</code> with a column <code>email</code> and we want to make it non-nullable after we have already added it to table:</p>
+<pre><code class="language-sql">alter table people alter column email set not null;
+</code></pre>
+<p>Have a great day people 👋</p>
+</div>
+                    </div>
+                    <div class="post-categories-container">
+                        Categories:
+                        <div>
+                            
+                                <a href="/category/cheat-sheet" class="badge badge-warning">#cheat-sheet</a>
+                            
+                            <a href="/blog" class="badge badge-warning">#all</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+    <div>
+        <div class="footer">
+            <div>
+                <a href="https://github.com/VarunBarad" rel="me">
+                    <i class="fab fa-github social-links"></i>
+                </a>
+                <a href="https://twitter.com/varun_barad" rel="me">
+                    <i class="fab fa-twitter social-links"></i>
+                </a>
+                <a href="https://dev.to/varunbarad" rel="me">
+                    <i class="fab fa-dev social-links"></i>
+                </a>
+                <a href="https://stackoverflow.com/users/4717436/varunbarad" rel="me">
+                    <i class="fab fa-stack-overflow social-links"></i>
+                </a>
+            </div>
+            <div class="developer-attribution">
+                Made by <a href="https://dixita0607.github.io">Dixita Ganatra</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+</body>
+</html>
