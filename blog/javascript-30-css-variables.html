@@ -1,186 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/assets/css/style.css?v=e4c3fc6202504d042d0b874c46ab9ee72d750db3">
-  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=e4c3fc6202504d042d0b874c46ab9ee72d750db3">
-  <link rel="icon" type="image/png" href="/favicon.png" />
-  <title>JavaScript 30 - CSS Variables - Varun Barad</title>
-  <meta name="description" content="Day 3 of JS30 challenge where I built an analog clock with CSS and animate its changes using JS and CSS." />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/fontawesome-all.css">
+    <link rel="icon" type="image/png" href="/favicon.png"/>
+    <title>JavaScript 30 - CSS Variables - Varun Barad</title>
+    <meta name="description" content="Day 3 of JS30 challenge where I built an analog clock with CSS and animate its changes using JS and CSS."/>
 
-  <!-- Canonical URL -->
-  
+    
 
-  <!-- RSS Feed meta-data -->
-  <link rel="alternate" type="application/atom+xml" title="Varun Barad - Curious Developer" href="https://varunbarad.com/feed.xml" />
+    <!-- RSS Feed meta-data -->
+    <link type="application/atom+xml" rel="alternate" href="https://varunbarad.com/feed.xml" title="Varun Barad - Curious Developer"/>
 
-  <!-- Twitter meta-data -->
-  <meta name="twitter:site" content="@varun_barad" />
-  <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="JavaScript 30 - CSS Variables" />
-  <meta name="twitter:description" content="Day 3 of JS30 challenge where I built an analog clock with CSS and animate its changes using JS and CSS." />
+    <!-- Twitter meta-data -->
+    <meta name="twitter:site" content="@varun_barad"/>
+    <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png"/>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="JavaScript 30 - CSS Variables"/>
+    <meta name="twitter:description" content="Day 3 of JS30 challenge where I built an analog clock with CSS and animate its changes using JS and CSS."/>
 
-  <!-- Open-graph meta-data -->
-  <meta property="og:site_name" content="Varun Barad - Curious Developer" />
-  <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png" />
-  <meta property="og:type" content="object" />
-  <meta property="og:title" content="JavaScript 30 - CSS Variables" />
-  <meta property="og:url" content="https://varunbarad.com/blog/javascript-30-css-variables" />
-  <meta property="og:description" content="Day 3 of JS30 challenge where I built an analog clock with CSS and animate its changes using JS and CSS." />
+    <!-- Open-Graph meta-data -->
+    <meta property="og:site_name" content="Varun Barad - Curious Developer"/>
+    <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png"/>
+    <meta property="og:type" content="object"/>
+    <meta property="og:title" content="JavaScript 30 - CSS Variables"/>
+    <meta property="og:url" content="https://varunbarad.com/blog/javascript-30-css-variables.html"/>
+    <meta property="og:description" content="Day 3 of JS30 challenge where I built an analog clock with CSS and animate its changes using JS and CSS."/>
 </head>
 <body>
 <div>
-  <div id="header">
-    <div class="row header">
-      <div class="title col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
-        <a href="/"><div class="title">Varun Barad</div></a>
-      </div>
-      <div class="col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8">
-        <nav class="menu text-right">
-          <a href="/blog">Blog</a>
-          <a href="/projects">Projects</a>
-          <a href="/books">Books</a>
-          <a href="/ideas">Ideas</a>
-          <a href="/contact">Contact</a>
-          <a href="/resume/">My Resume</a>
-        </nav>
-      </div>
-    </div>
-  </div>
-  <article class="h-entry">
-    <div class="content row">
-      <div class="post-container">
-        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-          <div>
-            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/javascript-30-css-variables">JavaScript 30 - CSS Variables</a></div>
-            <div class="text-center">
-              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2019-10-02 12:00:00 +0530">October 02, 2019</time>
+    <div id="header">
+        <div class="row header">
+            <div class="title col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+                <a href="/">
+                    <div class="title">Varun Barad</div>
+                </a>
             </div>
-            <div class="post-content e-content"><p>On my day 3 of <a href="https://javascript30.com">JS30 challenge</a> I got introduced primarily to CSS variables but also to many other things.</p>
-
-<p>The key concepts I learned from today’s challenge were:</p>
-
-<ul>
-  <li>CSS variables</li>
-  <li><code class="language-plaintext highlighter-rouge">dataset</code> property on DOM elements</li>
-  <li>Image blur</li>
-  <li>Color input</li>
-</ul>
-
-<h2 id="css-variables">CSS variables</h2>
-
-<p>CSS variables work very similar to how we use variables in JS or any other programming language. They let us define their value at one place and then just use that same value anywhere we refer to that variable.</p>
-
-<p>For example, we can define at one place that we want text on our website to be <code class="language-plaintext highlighter-rouge">white</code> then we can define it like this</p>
-
-<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">:root</span> <span class="p">{</span>
-    <span class="py">--text-color</span><span class="p">:</span> <span class="no">white</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>Here we define this <code class="language-plaintext highlighter-rouge">text-color</code> variable at the root element. Now any place that we need to use this value we need to do something like</p>
-
-<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.content</span> <span class="p">{</span>
-    <span class="nl">color</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--text-color</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>CSS variables can be used for more than just colors. In today’s project we used these variables for storing the border thickness and color of an image and also for storing the blur amount for that image.</p>
-
-<p><strong>Note:</strong> One fun idea I have with CSS variables is that I can define the color palette of my website at one place and then provide the user with a night-mode switch. I can change colors across the whole website by changing them at just one place.</p>
-
-<p>To modify their value via JS a simple method call does the trick.</p>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">dom</span><span class="o">-</span><span class="nx">element</span><span class="o">&gt;</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">setProperty</span><span class="p">(</span><span class="dl">'</span><span class="s1">--text-color</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">red</span><span class="dl">'</span><span class="p">);</span>
-</code></pre></div></div>
-
-<p>The above snippet will change the value associated with <code class="language-plaintext highlighter-rouge">--text-color</code> at any point in the <code class="language-plaintext highlighter-rouge">dom-element</code> and any of <code class="language-plaintext highlighter-rouge">dom-element</code>.</p>
-
-<h2 id="dataset-property-on-dom-elements"><code class="language-plaintext highlighter-rouge">dataset</code> property on DOM elements</h2>
-
-<p>In HTML whenever we want to write a custom-property on an element we make use of what are called <code class="language-plaintext highlighter-rouge">data</code> attributes. A sample can be like</p>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"blur"</span> <span class="na">type=</span><span class="s">"range"</span> <span class="na">name=</span><span class="s">"blur"</span> <span class="na">min=</span><span class="s">"0"</span> <span class="na">max=</span><span class="s">"25"</span> <span class="na">value=</span><span class="s">"5"</span> <span class="na">data-sizing=</span><span class="s">"px"</span> <span class="na">data-purpose=</span><span class="s">"A slider input to select blur amount"</span><span class="nt">&gt;</span>
-</code></pre></div></div>
-
-<p>Here we have defined 2 data attributes, namely <code class="language-plaintext highlighter-rouge">data-sizing</code> and <code class="language-plaintext highlighter-rouge">data-purpose</code>.</p>
-
-<p>Now when we need to use these in JS we can simply do</p>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">inputElement</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">sizing</span><span class="p">);</span> <span class="c1">// Used to access the data-sizing attribute.</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">inputElement</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">purpose</span><span class="p">);</span> <span class="c1">// Used to access the data-purpose attribute.</span>
-</code></pre></div></div>
-
-<p><code class="language-plaintext highlighter-rouge">dataset</code> is a very simple property on DOM elements which lists all the <code class="language-plaintext highlighter-rouge">data</code> attributes defined on that element.</p>
-
-<h2 id="image-blur">Image blur</h2>
-
-<p>Today I learnt a nifty simple trick to blur an image using only CSS.</p>
-
-<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">img</span> <span class="p">{</span>
-    <span class="nl">filter</span><span class="p">:</span> <span class="n">blur</span><span class="p">(</span><span class="m">5px</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>We can just specify a <code class="language-plaintext highlighter-rouge">blur</code> CSS filter and our work is done. There are lots of other functions available which can be used as <code class="language-plaintext highlighter-rouge">filter</code>, do make sure to take a look at that list.</p>
-
-<h2 id="color-input">Color input</h2>
-
-<p>Standardisation of HTML and CSS has made it easy to create a simple and functional color-picker. The only thing that needs to be done is</p>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"base"</span> <span class="na">type=</span><span class="s">"color"</span> <span class="na">name=</span><span class="s">"base"</span> <span class="na">value=</span><span class="s">"#43bc46"</span><span class="nt">&gt;</span>
-</code></pre></div></div>
-
-<p>Here we have just declared an input tag which then takes care of displaying a color picker and also shows the user with a tiny sample of the color they have picked.</p>
-
-<h2 id="conclusion">Conclusion</h2>
-
-<p>That’s all folks, that was it for today. If you have anything unclear in this article or want to discuss anything else, hit me up on twitter <a href="https://twitter.com/varun_barad">@varun_barad</a>.</p>
-
-</div>
-          </div>
-
-          <div class="post-categories-container">
-            Categories:
-            <div>
-              
-              <a href="/category/programming" class="badge badge-warning p-category">#programming</a>
-              
-              <a href="/category/web" class="badge badge-warning p-category">#web</a>
-              
-              <a href="/category/javascript-30" class="badge badge-warning p-category">#javascript-30</a>
-              
-              <a href="/blog" class="badge badge-warning">#all</a>
+            <div class="col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8">
+                <nav class="menu text-right">
+                    <a href="/blog">Blog</a>
+                    <a href="/projects">Projects</a>
+                    <a href="/books">Books</a>
+                    <a href="/ideas">Ideas</a>
+                    <a href="/contact">Contact</a>
+                    <a href="/resume">My Resume</a>
+                </nav>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </article>
-  <div>
-    <div class="footer">
-      <div>
-        
-        <a href="https://github.com/VarunBarad" rel="me"><i class="fab fa-github social-links"></i></a>
-        
-        <a href="https://twitter.com/varun_barad" rel="me"><i class="fab fa-twitter social-links"></i></a>
-        
-        <a href="https://dev.to/varunbarad" rel="me"><i class="fab fa-dev social-links"></i></a>
-        
-        <a href="https://stackoverflow.com/users/4717436/varunbarad" rel="me"><i class="fab fa-stack-overflow social-links"></i></a>
-        
-      </div>
-      <div class="developer-attribution">
-        
-        Made by <a href="https://dixita0607.github.io">Dixita Ganatra</a>
-      </div>
+    <article class="h-entry">
+        <div class="content row">
+            <div class="post-container">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <div>
+                        <div class="page-title text-uppercase text-center p-name">
+                            <a class="u-url" href="/blog/javascript-30-css-variables.html">JavaScript 30 - CSS Variables</a>
+                        </div>
+                        <div class="text-center">
+                            By <a class="p-author h-card" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="Wed Oct 02 2019 12:00:00 GMT+0530 (India Standard Time)">October 02, 2019</time>
+                        </div>
+                        <div class="post-content e-content"><p>On my day 3 of <a href="https://javascript30.com">JS30 challenge</a> I got introduced primarily to CSS variables but also to many other things.</p>
+<p>The key concepts I learned from today's challenge were:</p>
+<ul>
+<li>CSS variables</li>
+<li><code>dataset</code> property on DOM elements</li>
+<li>Image blur</li>
+<li>Color input</li>
+</ul>
+<h2>CSS variables</h2>
+<p>CSS variables work very similar to how we use variables in JS or any other programming language. They let us define their value at one place and then just use that same value anywhere we refer to that variable.</p>
+<p>For example, we can define at one place that we want text on our website to be <code>white</code> then we can define it like this</p>
+<pre><code class="language-css">:root {
+    --text-color: white;
+}
+</code></pre>
+<p>Here we define this <code>text-color</code> variable at the root element. Now any place that we need to use this value we need to do something like</p>
+<pre><code class="language-css">.content {
+    color: var(--text-color);
+}
+</code></pre>
+<p>CSS variables can be used for more than just colors. In today's project we used these variables for storing the border thickness and color of an image and also for storing the blur amount for that image.</p>
+<p><strong>Note:</strong> One fun idea I have with CSS variables is that I can define the color palette of my website at one place and then provide the user with a night-mode switch. I can change colors across the whole website by changing them at just one place.</p>
+<p>To modify their value via JS a simple method call does the trick.</p>
+<pre><code class="language-javascript">&lt;dom-element&gt;.style.setProperty('--text-color', 'red');
+</code></pre>
+<p>The above snippet will change the value associated with <code>--text-color</code> at any point in the <code>dom-element</code> and any of <code>dom-element</code>.</p>
+<h2><code>dataset</code> property on DOM elements</h2>
+<p>In HTML whenever we want to write a custom-property on an element we make use of what are called <code>data</code> attributes. A sample can be like</p>
+<pre><code class="language-html">&lt;input id=&quot;blur&quot; type=&quot;range&quot; name=&quot;blur&quot; min=&quot;0&quot; max=&quot;25&quot; value=&quot;5&quot; data-sizing=&quot;px&quot; data-purpose=&quot;A slider input to select blur amount&quot;&gt;
+</code></pre>
+<p>Here we have defined 2 data attributes, namely <code>data-sizing</code> and <code>data-purpose</code>.</p>
+<p>Now when we need to use these in JS we can simply do</p>
+<pre><code class="language-javascript">console.log(inputElement.dataset.sizing); // Used to access the data-sizing attribute.
+console.log(inputElement.dataset.purpose); // Used to access the data-purpose attribute.
+</code></pre>
+<p><code>dataset</code> is a very simple property on DOM elements which lists all the <code>data</code> attributes defined on that element.</p>
+<h2>Image blur</h2>
+<p>Today I learnt a nifty simple trick to blur an image using only CSS.</p>
+<pre><code class="language-css">img {
+    filter: blur(5px);
+}
+</code></pre>
+<p>We can just specify a <code>blur</code> CSS filter and our work is done. There are lots of other functions available which can be used as <code>filter</code>, do make sure to take a look at that list.</p>
+<h2>Color input</h2>
+<p>Standardisation of HTML and CSS has made it easy to create a simple and functional color-picker. The only thing that needs to be done is</p>
+<pre><code class="language-html">    &lt;input id=&quot;base&quot; type=&quot;color&quot; name=&quot;base&quot; value=&quot;#43bc46&quot;&gt;
+</code></pre>
+<p>Here we have just declared an input tag which then takes care of displaying a color picker and also shows the user with a tiny sample of the color they have picked.</p>
+<h2>Conclusion</h2>
+<p>That's all folks, that was it for today. If you have anything unclear in this article or want to discuss anything else, hit me up on twitter <a href="https://twitter.com/varun_barad">@varun_barad</a>.</p>
+</div>
+                    </div>
+                    <div class="post-categories-container">
+                        Categories:
+                        <div>
+                            
+                                <a href="/category/programming" class="badge badge-warning">#programming</a>
+                            
+                                <a href="/category/web" class="badge badge-warning">#web</a>
+                            
+                                <a href="/category/javascript-30" class="badge badge-warning">#javascript-30</a>
+                            
+                            <a href="/blog" class="badge badge-warning">#all</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+    <div>
+        <div class="footer">
+            <div>
+                <a href="https://github.com/VarunBarad" rel="me">
+                    <i class="fab fa-github social-links"></i>
+                </a>
+                <a href="https://twitter.com/varun_barad" rel="me">
+                    <i class="fab fa-twitter social-links"></i>
+                </a>
+                <a href="https://dev.to/varunbarad" rel="me">
+                    <i class="fab fa-dev social-links"></i>
+                </a>
+                <a href="https://stackoverflow.com/users/4717436/varunbarad" rel="me">
+                    <i class="fab fa-stack-overflow social-links"></i>
+                </a>
+            </div>
+            <div class="developer-attribution">
+                Made by <a href="https://dixita0607.github.io">Dixita Ganatra</a>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
-<script src="/assets/js/jquery.min.js?v=e4c3fc6202504d042d0b874c46ab9ee72d750db3"></script>
-<script src="/assets/js/bootstrap.min.js?v=e4c3fc6202504d042d0b874c46ab9ee72d750db3"></script>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
 </body>
 </html>

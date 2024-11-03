@@ -1,160 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/assets/css/style.css?v=e4c3fc6202504d042d0b874c46ab9ee72d750db3">
-  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=e4c3fc6202504d042d0b874c46ab9ee72d750db3">
-  <link rel="icon" type="image/png" href="/favicon.png" />
-  <title>Not all booleans are created equal on GitHub Actions - Varun Barad</title>
-  <meta name="description" content="How to get an actual boolean input value on a manually run GitHub Action" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/fontawesome-all.css">
+    <link rel="icon" type="image/png" href="/favicon.png"/>
+    <title>Not all booleans are created equal on GitHub Actions - Varun Barad</title>
+    <meta name="description" content="How to get an actual boolean input value on a manually run GitHub Action"/>
 
-  <!-- Canonical URL -->
-  
+    
 
-  <!-- RSS Feed meta-data -->
-  <link rel="alternate" type="application/atom+xml" title="Varun Barad - Curious Developer" href="https://varunbarad.com/feed.xml" />
+    <!-- RSS Feed meta-data -->
+    <link type="application/atom+xml" rel="alternate" href="https://varunbarad.com/feed.xml" title="Varun Barad - Curious Developer"/>
 
-  <!-- Twitter meta-data -->
-  <meta name="twitter:site" content="@varun_barad" />
-  <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Not all booleans are created equal on GitHub Actions" />
-  <meta name="twitter:description" content="How to get an actual boolean input value on a manually run GitHub Action" />
+    <!-- Twitter meta-data -->
+    <meta name="twitter:site" content="@varun_barad"/>
+    <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png"/>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="Not all booleans are created equal on GitHub Actions"/>
+    <meta name="twitter:description" content="How to get an actual boolean input value on a manually run GitHub Action"/>
 
-  <!-- Open-graph meta-data -->
-  <meta property="og:site_name" content="Varun Barad - Curious Developer" />
-  <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png" />
-  <meta property="og:type" content="object" />
-  <meta property="og:title" content="Not all booleans are created equal on GitHub Actions" />
-  <meta property="og:url" content="https://varunbarad.com/blog/github-actions-input-types" />
-  <meta property="og:description" content="How to get an actual boolean input value on a manually run GitHub Action" />
+    <!-- Open-Graph meta-data -->
+    <meta property="og:site_name" content="Varun Barad - Curious Developer"/>
+    <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png"/>
+    <meta property="og:type" content="object"/>
+    <meta property="og:title" content="Not all booleans are created equal on GitHub Actions"/>
+    <meta property="og:url" content="https://varunbarad.com/blog/github-actions-input-types.html"/>
+    <meta property="og:description" content="How to get an actual boolean input value on a manually run GitHub Action"/>
 </head>
 <body>
 <div>
-  <div id="header">
-    <div class="row header">
-      <div class="title col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
-        <a href="/"><div class="title">Varun Barad</div></a>
-      </div>
-      <div class="col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8">
-        <nav class="menu text-right">
-          <a href="/blog">Blog</a>
-          <a href="/projects">Projects</a>
-          <a href="/books">Books</a>
-          <a href="/ideas">Ideas</a>
-          <a href="/contact">Contact</a>
-          <a href="/resume/">My Resume</a>
-        </nav>
-      </div>
-    </div>
-  </div>
-  <article class="h-entry">
-    <div class="content row">
-      <div class="post-container">
-        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-          <div>
-            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/github-actions-input-types">Not all booleans are created equal on GitHub Actions</a></div>
-            <div class="text-center">
-              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2024-10-05 06:55:23 +0530">October 05, 2024</time>
+    <div id="header">
+        <div class="row header">
+            <div class="title col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+                <a href="/">
+                    <div class="title">Varun Barad</div>
+                </a>
             </div>
-            <div class="post-content e-content"><p>We use the <code class="language-plaintext highlighter-rouge">workflow_dispatch</code> trigger to run a GitHub Action manually. This also allows us to specify any inputs that we want to provide to the action at the time of running (<a href="https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows#providing-inputs">link to documentation</a>).</p>
-
-<p>Take the below example where an imaginary workflow greets a person based on whether they prefer “Hello” or not as told by user. This would not work if the workflow parameter <code class="language-plaintext highlighter-rouge">greetWithHello</code> actually expects a boolean as the value of even a boolean input parameter in a <code class="language-plaintext highlighter-rouge">workflow_dispatch</code> call is actually a string <code class="language-plaintext highlighter-rouge">'true'</code>/<code class="language-plaintext highlighter-rouge">'false'</code>.</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">Show inputs</span>
-
-<span class="na">on</span><span class="pi">:</span>
-  <span class="na">workflow_dispatch</span><span class="pi">:</span>
-    <span class="na">inputs</span><span class="pi">:</span>
-      <span class="na">prefersHello</span><span class="pi">:</span>
-        <span class="na">description</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Whether</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">person</span><span class="nv"> </span><span class="s">prefers</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">greet</span><span class="nv"> </span><span class="s">with</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">Hello'</span>
-        <span class="na">required</span><span class="pi">:</span> <span class="no">true</span>
-        <span class="na">type</span><span class="pi">:</span> <span class="s">boolean</span>
-        <span class="na">default</span><span class="pi">:</span> <span class="no">false</span>
-
-<span class="na">jobs</span><span class="pi">:</span>
-  <span class="na">greet_person</span><span class="pi">:</span>
-    <span class="na">name</span><span class="pi">:</span> <span class="s">Greet the person</span>
-    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
-
-    <span class="na">steps</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Checkout repository</span>
-        <span class="na">uses</span><span class="pi">:</span> <span class="s">imaginary/greet@v1</span>
-        <span class="na">with</span><span class="pi">:</span>
-          <span class="na">greetWithHello</span><span class="pi">:</span> <span class="s">${{ github.event.inputs.prefersHello }}</span>
-</code></pre></div></div>
-
-<p>The way to convert this into an actual boolean is to compare the value of the input like this</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">${{ github.event.inputs.prefersHello == 'true' }}</span>
-</code></pre></div></div>
-
-<p>With that, the previous example turns into:</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">Show inputs</span>
-
-<span class="na">on</span><span class="pi">:</span>
-  <span class="na">workflow_dispatch</span><span class="pi">:</span>
-    <span class="na">inputs</span><span class="pi">:</span>
-      <span class="na">prefersHello</span><span class="pi">:</span>
-        <span class="na">description</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Whether</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">person</span><span class="nv"> </span><span class="s">prefers</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">greet</span><span class="nv"> </span><span class="s">with</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">Hello'</span>
-        <span class="na">required</span><span class="pi">:</span> <span class="no">true</span>
-        <span class="na">type</span><span class="pi">:</span> <span class="s">boolean</span>
-        <span class="na">default</span><span class="pi">:</span> <span class="no">false</span>
-
-<span class="na">jobs</span><span class="pi">:</span>
-  <span class="na">greet_person</span><span class="pi">:</span>
-    <span class="na">name</span><span class="pi">:</span> <span class="s">Greet the person</span>
-    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
-
-    <span class="na">steps</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Checkout repository</span>
-        <span class="na">uses</span><span class="pi">:</span> <span class="s">imaginary/greet@v1</span>
-        <span class="na">with</span><span class="pi">:</span>
-          <span class="na">greetWithHello</span><span class="pi">:</span> <span class="s">${{ github.event.inputs.prefersHello == 'true' }}</span>
-</code></pre></div></div>
-
-</div>
-          </div>
-
-          <div class="post-categories-container">
-            Categories:
-            <div>
-              
-              <a href="/category/programming" class="badge badge-warning p-category">#programming</a>
-              
-              <a href="/category/tools" class="badge badge-warning p-category">#tools</a>
-              
-              <a href="/blog" class="badge badge-warning">#all</a>
+            <div class="col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8">
+                <nav class="menu text-right">
+                    <a href="/blog">Blog</a>
+                    <a href="/projects">Projects</a>
+                    <a href="/books">Books</a>
+                    <a href="/ideas">Ideas</a>
+                    <a href="/contact">Contact</a>
+                    <a href="/resume">My Resume</a>
+                </nav>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </article>
-  <div>
-    <div class="footer">
-      <div>
-        
-        <a href="https://github.com/VarunBarad" rel="me"><i class="fab fa-github social-links"></i></a>
-        
-        <a href="https://twitter.com/varun_barad" rel="me"><i class="fab fa-twitter social-links"></i></a>
-        
-        <a href="https://dev.to/varunbarad" rel="me"><i class="fab fa-dev social-links"></i></a>
-        
-        <a href="https://stackoverflow.com/users/4717436/varunbarad" rel="me"><i class="fab fa-stack-overflow social-links"></i></a>
-        
-      </div>
-      <div class="developer-attribution">
-        
-        Made by <a href="https://dixita0607.github.io">Dixita Ganatra</a>
-      </div>
+    <article class="h-entry">
+        <div class="content row">
+            <div class="post-container">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <div>
+                        <div class="page-title text-uppercase text-center p-name">
+                            <a class="u-url" href="/blog/github-actions-input-types.html">Not all booleans are created equal on GitHub Actions</a>
+                        </div>
+                        <div class="text-center">
+                            By <a class="p-author h-card" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="Sat Oct 05 2024 06:55:23 GMT+0530 (India Standard Time)">October 05, 2024</time>
+                        </div>
+                        <div class="post-content e-content"><p>We use the <code>workflow_dispatch</code> trigger to run a GitHub Action manually. This also allows us to specify any inputs that we want to provide to the action at the time of running (<a href="https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows#providing-inputs">link to documentation</a>).</p>
+<p>Take the below example where an imaginary workflow greets a person based on whether they prefer &quot;Hello&quot; or not as told by user. This would not work if the workflow parameter <code>greetWithHello</code> actually expects a boolean as the value of even a boolean input parameter in a <code>workflow_dispatch</code> call is actually a string <code>'true'</code>/<code>'false'</code>.</p>
+<pre><code class="language-yaml">name: Show inputs
+
+on:
+  workflow_dispatch:
+    inputs:
+      prefersHello:
+        description: 'Whether the person prefers to greet with a Hello'
+        required: true
+        type: boolean
+        default: false
+
+jobs:
+  greet_person:
+    name: Greet the person
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: imaginary/greet@v1
+        with:
+          greetWithHello: ${{ github.event.inputs.prefersHello }}
+</code></pre>
+<p>The way to convert this into an actual boolean is to compare the value of the input like this</p>
+<pre><code class="language-yaml">${{ github.event.inputs.prefersHello == 'true' }}
+</code></pre>
+<p>With that, the previous example turns into:</p>
+<pre><code class="language-yaml">name: Show inputs
+
+on:
+  workflow_dispatch:
+    inputs:
+      prefersHello:
+        description: 'Whether the person prefers to greet with a Hello'
+        required: true
+        type: boolean
+        default: false
+
+jobs:
+  greet_person:
+    name: Greet the person
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: imaginary/greet@v1
+        with:
+          greetWithHello: ${{ github.event.inputs.prefersHello == 'true' }}
+</code></pre>
+</div>
+                    </div>
+                    <div class="post-categories-container">
+                        Categories:
+                        <div>
+                            
+                                <a href="/category/programming" class="badge badge-warning">#programming</a>
+                            
+                                <a href="/category/tools" class="badge badge-warning">#tools</a>
+                            
+                            <a href="/blog" class="badge badge-warning">#all</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+    <div>
+        <div class="footer">
+            <div>
+                <a href="https://github.com/VarunBarad" rel="me">
+                    <i class="fab fa-github social-links"></i>
+                </a>
+                <a href="https://twitter.com/varun_barad" rel="me">
+                    <i class="fab fa-twitter social-links"></i>
+                </a>
+                <a href="https://dev.to/varunbarad" rel="me">
+                    <i class="fab fa-dev social-links"></i>
+                </a>
+                <a href="https://stackoverflow.com/users/4717436/varunbarad" rel="me">
+                    <i class="fab fa-stack-overflow social-links"></i>
+                </a>
+            </div>
+            <div class="developer-attribution">
+                Made by <a href="https://dixita0607.github.io">Dixita Ganatra</a>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
-<script src="/assets/js/jquery.min.js?v=e4c3fc6202504d042d0b874c46ab9ee72d750db3"></script>
-<script src="/assets/js/bootstrap.min.js?v=e4c3fc6202504d042d0b874c46ab9ee72d750db3"></script>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
 </body>
 </html>

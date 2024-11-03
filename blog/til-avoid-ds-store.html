@@ -1,110 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/assets/css/style.css?v=e4c3fc6202504d042d0b874c46ab9ee72d750db3">
-  <link rel="stylesheet" href="/assets/css/fontawesome-all.css?v=e4c3fc6202504d042d0b874c46ab9ee72d750db3">
-  <link rel="icon" type="image/png" href="/favicon.png" />
-  <title>📝 Avoid .DS_Store files on removable media - Varun Barad</title>
-  <meta name="description" content="TIL: Settings change on Mac to avoid having .DS_Store files being created on USB and Network shares" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/fontawesome-all.css">
+    <link rel="icon" type="image/png" href="/favicon.png"/>
+    <title>📝 Avoid .DS_Store files on removable media - Varun Barad</title>
+    <meta name="description" content="TIL: Settings change on Mac to avoid having .DS_Store files being created on USB and Network shares"/>
 
-  <!-- Canonical URL -->
-  
+    
 
-  <!-- RSS Feed meta-data -->
-  <link rel="alternate" type="application/atom+xml" title="Varun Barad - Curious Developer" href="https://varunbarad.com/feed.xml" />
+    <!-- RSS Feed meta-data -->
+    <link type="application/atom+xml" rel="alternate" href="https://varunbarad.com/feed.xml" title="Varun Barad - Curious Developer"/>
 
-  <!-- Twitter meta-data -->
-  <meta name="twitter:site" content="@varun_barad" />
-  <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="📝 Avoid .DS_Store files on removable media" />
-  <meta name="twitter:description" content="TIL: Settings change on Mac to avoid having .DS_Store files being created on USB and Network shares" />
+    <!-- Twitter meta-data -->
+    <meta name="twitter:site" content="@varun_barad"/>
+    <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png"/>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="📝 Avoid .DS_Store files on removable media"/>
+    <meta name="twitter:description" content="TIL: Settings change on Mac to avoid having .DS_Store files being created on USB and Network shares"/>
 
-  <!-- Open-graph meta-data -->
-  <meta property="og:site_name" content="Varun Barad - Curious Developer" />
-  <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png" />
-  <meta property="og:type" content="object" />
-  <meta property="og:title" content="📝 Avoid .DS_Store files on removable media" />
-  <meta property="og:url" content="https://varunbarad.com/blog/til-avoid-ds-store" />
-  <meta property="og:description" content="TIL: Settings change on Mac to avoid having .DS_Store files being created on USB and Network shares" />
+    <!-- Open-Graph meta-data -->
+    <meta property="og:site_name" content="Varun Barad - Curious Developer"/>
+    <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png"/>
+    <meta property="og:type" content="object"/>
+    <meta property="og:title" content="📝 Avoid .DS_Store files on removable media"/>
+    <meta property="og:url" content="https://varunbarad.com/blog/til-avoid-ds-store.html"/>
+    <meta property="og:description" content="TIL: Settings change on Mac to avoid having .DS_Store files being created on USB and Network shares"/>
 </head>
 <body>
 <div>
-  <div id="header">
-    <div class="row header">
-      <div class="title col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
-        <a href="/"><div class="title">Varun Barad</div></a>
-      </div>
-      <div class="col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8">
-        <nav class="menu text-right">
-          <a href="/blog">Blog</a>
-          <a href="/projects">Projects</a>
-          <a href="/books">Books</a>
-          <a href="/ideas">Ideas</a>
-          <a href="/contact">Contact</a>
-          <a href="/resume/">My Resume</a>
-        </nav>
-      </div>
-    </div>
-  </div>
-  <article class="h-entry">
-    <div class="content row">
-      <div class="post-container">
-        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-          <div>
-            <div class="page-title text-uppercase text-center p-name"><a class="u-url" href="https://varunbarad.com/blog/til-avoid-ds-store">📝 Avoid .DS_Store files on removable media</a></div>
-            <div class="text-center">
-              By <a class="p-author h-card" rel="author" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="2023-08-09 19:24:24 +0530">August 09, 2023</time>
+    <div id="header">
+        <div class="row header">
+            <div class="title col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+                <a href="/">
+                    <div class="title">Varun Barad</div>
+                </a>
             </div>
-            <div class="post-content e-content"><p>Disable creation of metadata files (<code class="language-plaintext highlighter-rouge">.DS_Store</code> and AppleDouble files) on Network Volumes</p>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>defaults write com.apple.desktopservices DSDontWriteNetworkStores <span class="nt">-bool</span> <span class="nb">true</span>
-</code></pre></div></div>
-
-<p>Disable creation of metadata files (<code class="language-plaintext highlighter-rouge">.DS_Store</code> and AppleDouble files) on USB Volumes</p>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>defaults write com.apple.desktopservices DSDontWriteUSBStores <span class="nt">-bool</span> <span class="nb">true</span>
-</code></pre></div></div>
-</div>
-          </div>
-
-          <div class="post-categories-container">
-            Categories:
-            <div>
-              
-              <a href="/category/til" class="badge badge-warning p-category">#til</a>
-              
-              <a href="/blog" class="badge badge-warning">#all</a>
+            <div class="col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8">
+                <nav class="menu text-right">
+                    <a href="/blog">Blog</a>
+                    <a href="/projects">Projects</a>
+                    <a href="/books">Books</a>
+                    <a href="/ideas">Ideas</a>
+                    <a href="/contact">Contact</a>
+                    <a href="/resume">My Resume</a>
+                </nav>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </article>
-  <div>
-    <div class="footer">
-      <div>
-        
-        <a href="https://github.com/VarunBarad" rel="me"><i class="fab fa-github social-links"></i></a>
-        
-        <a href="https://twitter.com/varun_barad" rel="me"><i class="fab fa-twitter social-links"></i></a>
-        
-        <a href="https://dev.to/varunbarad" rel="me"><i class="fab fa-dev social-links"></i></a>
-        
-        <a href="https://stackoverflow.com/users/4717436/varunbarad" rel="me"><i class="fab fa-stack-overflow social-links"></i></a>
-        
-      </div>
-      <div class="developer-attribution">
-        
-        Made by <a href="https://dixita0607.github.io">Dixita Ganatra</a>
-      </div>
+    <article class="h-entry">
+        <div class="content row">
+            <div class="post-container">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <div>
+                        <div class="page-title text-uppercase text-center p-name">
+                            <a class="u-url" href="/blog/til-avoid-ds-store.html">📝 Avoid .DS_Store files on removable media</a>
+                        </div>
+                        <div class="text-center">
+                            By <a class="p-author h-card" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="Wed Aug 09 2023 19:24:24 GMT+0530 (India Standard Time)">August 09, 2023</time>
+                        </div>
+                        <div class="post-content e-content"><p>Disable creation of metadata files (<code>.DS_Store</code> and AppleDouble files) on Network Volumes</p>
+<pre><code class="language-shell">defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+</code></pre>
+<p>Disable creation of metadata files (<code>.DS_Store</code> and AppleDouble files) on USB Volumes</p>
+<pre><code class="language-shell">defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+</code></pre>
+</div>
+                    </div>
+                    <div class="post-categories-container">
+                        Categories:
+                        <div>
+                            
+                                <a href="/category/til" class="badge badge-warning">#til</a>
+                            
+                            <a href="/blog" class="badge badge-warning">#all</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+    <div>
+        <div class="footer">
+            <div>
+                <a href="https://github.com/VarunBarad" rel="me">
+                    <i class="fab fa-github social-links"></i>
+                </a>
+                <a href="https://twitter.com/varun_barad" rel="me">
+                    <i class="fab fa-twitter social-links"></i>
+                </a>
+                <a href="https://dev.to/varunbarad" rel="me">
+                    <i class="fab fa-dev social-links"></i>
+                </a>
+                <a href="https://stackoverflow.com/users/4717436/varunbarad" rel="me">
+                    <i class="fab fa-stack-overflow social-links"></i>
+                </a>
+            </div>
+            <div class="developer-attribution">
+                Made by <a href="https://dixita0607.github.io">Dixita Ganatra</a>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
-<script src="/assets/js/jquery.min.js?v=e4c3fc6202504d042d0b874c46ab9ee72d750db3"></script>
-<script src="/assets/js/bootstrap.min.js?v=e4c3fc6202504d042d0b874c46ab9ee72d750db3"></script>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
 </body>
 </html>
