@@ -4,12 +4,40 @@
   <subtitle>My online home where I post about new things I learn or find interesting.</subtitle>
   <link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml"/>
   <link href="https://varunbarad.com/" rel="alternate" type="text/html"/>
-  <updated>2024-10-05T06:55:23+05:30</updated>
+  <updated>2024-12-18T23:13:33+05:30</updated>
   <id>https://varunbarad.com/feed.xml</id>
   <author>
     <name>Varun Barad</name>
   </author>
 
+  
+    
+    <entry>
+      <title type="html">📝 Specifying different author and committer in git</title>
+      <link href="https://varunbarad.com/blog/til-git-author-committer.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <published>2024-12-18T23:13:33+05:30</published>
+      <updated>2024-12-18T23:13:33+05:30</updated>
+      <id>https://varunbarad.com/blog/til-git-author-committer.html</id>
+      <content type="html">
+      &lt;p&gt;In some cases you need to commit code/work that is originally written/done by someone else. For example when you are amending/rebasing a commit to change a small thing but still want to retain the attribution to original author when committing you can specify separate committer and author information.&lt;/p&gt;
+&lt;p&gt;This is not done via any flag but by specifying a couple of environment variables.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-shell&quot;&gt;# Committer Name: Sam Smith
+# Committer Email: ss@example.com
+# Author Name: Jake Johnson
+# Author Email: jj@example.com
+GIT_COMMITTER_NAME=&#39;Sam Smith&#39; GIT_COMMITTER_EMAIL=&#39;ss@example.com&#39; git commit --author &#39;Jake Johnson &amp;lt;jj@example.com&amp;gt;&#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Credits: &lt;a href=&quot;https://stackoverflow.com/a/23108169/4717436&quot;&gt;StackOverflow&lt;/a&gt;&lt;/p&gt;
+
+      </content>
+      <author>
+        <name>Varun Barad</name>
+      </author>
+      
+      <category term="til"/>
+      
+      <summary type="html">TIL: How to specify different author and committer for a commit in git</summary>
+    </entry>
   
     
     <entry>
