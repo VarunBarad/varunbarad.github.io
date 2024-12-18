@@ -51,7 +51,8 @@ permalink: "404.html"
 
     <h2>Recent articles ({{ collections.post |  size }} posts)</h2>
     <ul>
-        {% for post in collections.post limit:3 %}
+        {% assign reverse_chronological_posts = collections.post | reverse %}
+        {% for post in reverse_chronological_posts limit:3 %}
             <li>{{ post.data.title }}</li>
         {% endfor %}
     </ul>
