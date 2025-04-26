@@ -7,7 +7,7 @@
     "build:tailwind": "npm run clean:tailwind && tailwindcss --input _eleventy/assets/css/main.css --output _eleventy/assets/css/main.out.css",
     "clean": "rm -rf _site/ && rm -rf _eleventy/_site/ && npm run clean:tailwind",
     "clean:tailwind": "rm -rf _eleventy/assets/css/main.out.css",
-    "serve": "npm run build:tailwind &&  eleventy --serve",
+    "serve": "npm run build:tailwind && eleventy --serve",
     "setup-hooks": "cp _scripts/pre-commit .git/hooks/pre-commit",
     "sync-resources": "_scripts/sync-resources && node _scripts/copy-blog-posts.js"
   },
@@ -21,9 +21,11 @@
   "dependencies": {
     "@11ty/eleventy": "2.0.1",
     "@11ty/eleventy-plugin-rss": "1.2.0",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
     "@js-joda/core": "5.6.3",
     "@js-joda/timezone": "2.21.1",
     "@tailwindcss/cli": "^4.0.17",
+    "@tailwindcss/typography": "^0.5.16",
     "tailwindcss": "^4.0.17"
   }
 }

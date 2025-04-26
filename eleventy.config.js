@@ -1,4 +1,5 @@
 const feedPlugin = require('@11ty/eleventy-plugin-rss');
+const syntaxHighlightPlugin = require("@11ty/eleventy-plugin-syntaxhighlight");
 const { ZonedDateTime, ZoneId, DateTimeFormatter } = require('@js-joda/core');
 require('@js-joda/timezone');
 
@@ -31,6 +32,8 @@ module.exports = function(eleventyConfig) {
       },
     },
   });
+  
+  eleventyConfig.addPlugin(syntaxHighlightPlugin);
   
   eleventyConfig.addCollection('blogPostCategories', function(collectionApi) {
     const categoryNames = new Set();
