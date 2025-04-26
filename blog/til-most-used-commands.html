@@ -4,6 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link href="/assets/css/prism-theme/prism-darcula.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/assets/css/fontawesome-all.css">
     <link rel="icon" type="image/png" href="/favicon.png"/>
     <title>📝 Most used commands - Varun Barad</title>
@@ -62,8 +63,7 @@
                             By <a class="p-author h-card" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="Fri Feb 10 2023 11:04:06 GMT+0530 (India Standard Time)">February 10, 2023</time>
                         </div>
                         <div class="post-content e-content"><p>Use this command to view the top-5 most used commands on your Mac terminal</p>
-<pre><code class="language-shell">history | awk 'BEGIN {FS=&quot;[ \t]+|\\|&quot;} {print $5}' | sort | uniq --count | sort --reverse --sort=numeric | head --lines 5
-</code></pre>
+<pre class="language-shell"><code class="language-shell"><span class="token function">history</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'BEGIN {FS="[ \t]+|\\|"} {print $5}'</span> <span class="token operator">|</span> <span class="token function">sort</span> <span class="token operator">|</span> <span class="token function">uniq</span> <span class="token parameter variable">--count</span> <span class="token operator">|</span> <span class="token function">sort</span> <span class="token parameter variable">--reverse</span> <span class="token parameter variable">--sort</span><span class="token operator">=</span>numeric <span class="token operator">|</span> <span class="token function">head</span> <span class="token parameter variable">--lines</span> <span class="token number">5</span></code></pre>
 </div>
                     </div>
                     <div class="post-categories-container">

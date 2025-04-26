@@ -4,6 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link href="/assets/css/prism-theme/prism-darcula.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/assets/css/fontawesome-all.css">
     <link rel="icon" type="image/png" href="/favicon.png"/>
     <title>JavaScript 30 - CSS Variables - Varun Barad</title>
@@ -72,42 +73,35 @@
 <h2>CSS variables</h2>
 <p>CSS variables work very similar to how we use variables in JS or any other programming language. They let us define their value at one place and then just use that same value anywhere we refer to that variable.</p>
 <p>For example, we can define at one place that we want text on our website to be <code>white</code> then we can define it like this</p>
-<pre><code class="language-css">:root {
-    --text-color: white;
-}
-</code></pre>
+<pre class="language-css"><code class="language-css"><span class="token selector">:root</span> <span class="token punctuation">{</span>
+    <span class="token property">--text-color</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
 <p>Here we define this <code>text-color</code> variable at the root element. Now any place that we need to use this value we need to do something like</p>
-<pre><code class="language-css">.content {
-    color: var(--text-color);
-}
-</code></pre>
+<pre class="language-css"><code class="language-css"><span class="token selector">.content</span> <span class="token punctuation">{</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--text-color<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
 <p>CSS variables can be used for more than just colors. In today's project we used these variables for storing the border thickness and color of an image and also for storing the blur amount for that image.</p>
 <p><strong>Note:</strong> One fun idea I have with CSS variables is that I can define the color palette of my website at one place and then provide the user with a night-mode switch. I can change colors across the whole website by changing them at just one place.</p>
 <p>To modify their value via JS a simple method call does the trick.</p>
-<pre><code class="language-javascript">&lt;dom-element&gt;.style.setProperty('--text-color', 'red');
-</code></pre>
+<pre class="language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>dom<span class="token operator">-</span>element<span class="token operator">></span><span class="token punctuation">.</span>style<span class="token punctuation">.</span><span class="token function">setProperty</span><span class="token punctuation">(</span><span class="token string">'--text-color'</span><span class="token punctuation">,</span> <span class="token string">'red'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>The above snippet will change the value associated with <code>--text-color</code> at any point in the <code>dom-element</code> and any of <code>dom-element</code>.</p>
 <h2><code>dataset</code> property on DOM elements</h2>
 <p>In HTML whenever we want to write a custom-property on an element we make use of what are called <code>data</code> attributes. A sample can be like</p>
-<pre><code class="language-html">&lt;input id=&quot;blur&quot; type=&quot;range&quot; name=&quot;blur&quot; min=&quot;0&quot; max=&quot;25&quot; value=&quot;5&quot; data-sizing=&quot;px&quot; data-purpose=&quot;A slider input to select blur amount&quot;&gt;
-</code></pre>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>blur<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>range<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>blur<span class="token punctuation">"</span></span> <span class="token attr-name">min</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>0<span class="token punctuation">"</span></span> <span class="token attr-name">max</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>25<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>5<span class="token punctuation">"</span></span> <span class="token attr-name">data-sizing</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>px<span class="token punctuation">"</span></span> <span class="token attr-name">data-purpose</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>A slider input to select blur amount<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></code></pre>
 <p>Here we have defined 2 data attributes, namely <code>data-sizing</code> and <code>data-purpose</code>.</p>
 <p>Now when we need to use these in JS we can simply do</p>
-<pre><code class="language-javascript">console.log(inputElement.dataset.sizing); // Used to access the data-sizing attribute.
-console.log(inputElement.dataset.purpose); // Used to access the data-purpose attribute.
-</code></pre>
+<pre class="language-javascript"><code class="language-javascript">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>inputElement<span class="token punctuation">.</span>dataset<span class="token punctuation">.</span>sizing<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Used to access the data-sizing attribute.</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>inputElement<span class="token punctuation">.</span>dataset<span class="token punctuation">.</span>purpose<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Used to access the data-purpose attribute.</span></code></pre>
 <p><code>dataset</code> is a very simple property on DOM elements which lists all the <code>data</code> attributes defined on that element.</p>
 <h2>Image blur</h2>
 <p>Today I learnt a nifty simple trick to blur an image using only CSS.</p>
-<pre><code class="language-css">img {
-    filter: blur(5px);
-}
-</code></pre>
+<pre class="language-css"><code class="language-css"><span class="token selector">img</span> <span class="token punctuation">{</span>
+    <span class="token property">filter</span><span class="token punctuation">:</span> <span class="token function">blur</span><span class="token punctuation">(</span>5px<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
 <p>We can just specify a <code>blur</code> CSS filter and our work is done. There are lots of other functions available which can be used as <code>filter</code>, do make sure to take a look at that list.</p>
 <h2>Color input</h2>
 <p>Standardisation of HTML and CSS has made it easy to create a simple and functional color-picker. The only thing that needs to be done is</p>
-<pre><code class="language-html">    &lt;input id=&quot;base&quot; type=&quot;color&quot; name=&quot;base&quot; value=&quot;#43bc46&quot;&gt;
-</code></pre>
+<pre class="language-html"><code class="language-html">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>base<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>color<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>base<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#43bc46<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></code></pre>
 <p>Here we have just declared an input tag which then takes care of displaying a color picker and also shows the user with a tiny sample of the color they have picked.</p>
 <h2>Conclusion</h2>
 <p>That's all folks, that was it for today. If you have anything unclear in this article or want to discuss anything else, hit me up on twitter <a href="https://twitter.com/varun_barad">@varun_barad</a>.</p>

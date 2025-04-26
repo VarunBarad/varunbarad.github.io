@@ -4,6 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link href="/assets/css/prism-theme/prism-darcula.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/assets/css/fontawesome-all.css">
     <link rel="icon" type="image/png" href="/favicon.png"/>
     <title>📝 PostgreSQL: Make a column unique after creating it - Varun Barad</title>
@@ -62,8 +63,7 @@
                             By <a class="p-author h-card" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="Sat Aug 19 2023 14:23:22 GMT+0530 (India Standard Time)">August 19, 2023</time>
                         </div>
                         <div class="post-content e-content"><p>If we have a table <code>people</code> with a column <code>email</code> and we want to make it unique after we have already added it to table:</p>
-<pre><code class="language-sql">alter table people add unique (email);
-</code></pre>
+<pre class="language-sql"><code class="language-sql"><span class="token keyword">alter</span> <span class="token keyword">table</span> people <span class="token keyword">add</span> <span class="token keyword">unique</span> <span class="token punctuation">(</span>email<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 </div>
                     </div>
                     <div class="post-categories-container">

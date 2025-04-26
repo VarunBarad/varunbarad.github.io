@@ -4,6 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link href="/assets/css/prism-theme/prism-darcula.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/assets/css/fontawesome-all.css">
     <link rel="icon" type="image/png" href="/favicon.png"/>
     <title>Prevent back navigation to login screen - Varun Barad</title>
@@ -75,12 +76,11 @@
 <p>One of my colleague (<a href="https://twitter.com/sanchita_ag">Sanchita</a>) showed me a much better way to do this. This method does not set any flags on any activity thus they keep their natural behavior of resuming user to the fragment that they left on.</p>
 <p>What you want to do is, once the user is logged-in, you provide a couple of flags to the intent that launches the <code>DashboardActivity</code>. Those flags tell it to clear the current task and launch our <code>DashboardActivity</code> on a new task. This new task won't have the <code>LoginActivity</code> in its back-stack so when user presses back on <code>DashboardActivity</code> the app would exit instead of taking them back to <code>LoginActivity</code>.</p>
 <p>This is how the launching code for <code>DashboardActivity</code> should look like:</p>
-<pre><code class="language-kotlin">fun startDashboardActivity() {
-  val intent = Intent(context, DashboardActivity::class.java)
-  intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-  context.startActivity(intent)
-}
-</code></pre>
+<pre class="language-kotlin"><code class="language-kotlin"><span class="token keyword">fun</span> <span class="token function">startDashboardActivity</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">val</span> intent <span class="token operator">=</span> <span class="token function">Intent</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> DashboardActivity<span class="token operator">::</span><span class="token keyword">class</span><span class="token punctuation">.</span>java<span class="token punctuation">)</span>
+  intent<span class="token punctuation">.</span>flags <span class="token operator">=</span> Intent<span class="token punctuation">.</span>FLAG_ACTIVITY_CLEAR_TASK <span class="token operator">or</span> Intent<span class="token punctuation">.</span>FLAG_ACTIVITY_NEW_TASK
+  context<span class="token punctuation">.</span><span class="token function">startActivity</span><span class="token punctuation">(</span>intent<span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
 <p>You can look at this <a href="https://stackoverflow.com/a/29565717/4717436">StackOverflow answer</a> which explains those flags in much more detail.</p>
 <p>Anyways, this was more as a documentation of my learning than a tutorial so do ask if there was still anything unclear in my explanation.</p>
 <p>Feel free to reach out to me to discuss this or anything else. You can find me on Twitter <a href="https://twitter.com/varun_barad">@varun_barad</a> or <a href="mailto:contact@varunbarad.com">email me</a></p>

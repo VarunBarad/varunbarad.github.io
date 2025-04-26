@@ -4,6 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link href="/assets/css/prism-theme/prism-darcula.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/assets/css/fontawesome-all.css">
     <link rel="icon" type="image/png" href="/favicon.png"/>
     <title>HTTP Network Requests on Android Pie - Varun Barad</title>
@@ -65,27 +66,24 @@
 <p>I found 2 solutions for this. You can either enable cleartext traffic from your app for specific domains or you can set it for all the domains.</p>
 <h2>Enabling cleartext traffic for all domains (discouraged due to being less secure)</h2>
 <p>Add this attribute to the <code>&lt;application&gt;</code> tag in your <code>AndroidManifest.xml</code></p>
-<pre><code class="language-xml">android:usesCleartextTraffic=&quot;true&quot;
-</code></pre>
+<pre class="language-xml"><code class="language-xml">android:usesCleartextTraffic="true"</code></pre>
 <p>This will enable app-wide cleartext traffic for any and all domains to which your app makes a request.</p>
 <p>This is discouraged as you don't specifically allow only the domains that require cleartext.</p>
 <h2>Enabling HTTP requests for specific domains (go for this one if you can)</h2>
 <p>You first need to create a file named <code>network_security_config.xml</code> file inside your <code>res/xml</code> directory. The file contents should be as below</p>
-<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;network-security-config&gt;
-    &lt;domain-config cleartextTrafficPermitted=&quot;true&quot;&gt;
-        &lt;domain includeSubdomains=&quot;true&quot;&gt;example-domain.com&lt;/domain&gt;
-    &lt;/domain-config&gt;
-&lt;/network-security-config&gt;
-</code></pre>
+<pre class="language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="utf-8"?></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>network-security-config</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>domain-config</span> <span class="token attr-name">cleartextTrafficPermitted</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>domain</span> <span class="token attr-name">includeSubdomains</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>example-domain.com<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>domain</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>domain-config</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>network-security-config</span><span class="token punctuation">></span></span></code></pre>
 <p>You need to replace <code>example-domain.com</code> with the domain for which you want to enable http traffic. If you want to enable http for more than one domains then add relevant <code>&lt;domain&gt;</code> tags for each.</p>
 <p>Then you need to specify this file in your <code>AndroidManifest.xml</code> as below:</p>
-<pre><code class="language-xml">...
-&lt;application
-    ...
-    android:networkSecurityConfig=&quot;@xml/network_security_config&quot;&gt;
-...
-</code></pre>
+<pre class="language-xml"><code class="language-xml">...
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>application</span>
+    <span class="token attr-name">...</span>
+    <span class="token attr-name"><span class="token namespace">android:</span>networkSecurityConfig</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>@xml/network_security_config<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+...</code></pre>
 <h2>That's all folks</h2>
 <p>I faced this issue at work and now I am writing about it so others (and also me) can benefit from it in future. If you have more such ideas/examples or any other suggestions  under the sky, <a href="https://varunbarad.com/contact">contact me</a> or tweet to me <a href="https://twitter.com/varun_barad">@varun_barad</a>.</p>
 </div>

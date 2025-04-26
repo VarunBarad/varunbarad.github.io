@@ -4,6 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link href="/assets/css/prism-theme/prism-darcula.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/assets/css/fontawesome-all.css">
     <link rel="icon" type="image/png" href="/favicon.png"/>
     <title>Testing Deep-Link URLs using ADB - Varun Barad</title>
@@ -63,11 +64,9 @@
                         </div>
                         <div class="post-content e-content"><p>ADB is a treasure trove and I regularly keep finding some gem from it. Recently I was working on creating some new deep-link integrations for the company I work at. The below command fires an event similar to one that gets fired when we click on a link in the device itself.</p>
 <p>The pattern for command to trigger the deep-link is as below:</p>
-<pre><code class="language-bash">adb shell am start -a android.intent.action.VIEW -d &quot;your-link-goes-inside-these-quotes&quot;
-</code></pre>
+<pre class="language-bash"><code class="language-bash">adb shell am start <span class="token parameter variable">-a</span> android.intent.action.VIEW <span class="token parameter variable">-d</span> <span class="token string">"your-link-goes-inside-these-quotes"</span></code></pre>
 <p>Example</p>
-<pre><code class="language-bash">adb shell am start -a android.intent.action.VIEW -d &quot;https://varunbarad.com/blog&quot;
-</code></pre>
+<pre class="language-bash"><code class="language-bash">adb shell am start <span class="token parameter variable">-a</span> android.intent.action.VIEW <span class="token parameter variable">-d</span> <span class="token string">"https://varunbarad.com/blog"</span></code></pre>
 <p>This was just a quick ADB tip that I have learnt and wanted to share with you. If you have any more such tips or tricks, I would love to hear about them on <a href="https://twitter.com/varun_barad/status/1123999186574303234">twitter thread for this article</a>. Feel free to contact me for anything else that you would like to talk about <a href="https://twitter.com/varun_barad">@varun_barad</a>.</p>
 </div>
                     </div>

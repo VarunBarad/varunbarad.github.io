@@ -4,6 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link href="/assets/css/prism-theme/prism-darcula.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/assets/css/fontawesome-all.css">
     <link rel="icon" type="image/png" href="/favicon.png"/>
     <title>Group posts by year in Jekyll using Liquid - Varun Barad</title>
@@ -63,44 +64,42 @@
                         </div>
                         <div class="post-content e-content"><p>On the <a href="/blog">list-all-posts page</a> on this blog I wanted to group posts by year and show the year as a section-heading.</p>
 <p>I found a <a href="https://stackoverflow.com/a/61346228/4717436">StackOverflow answer</a> that suggested using the <code>group_by_exp</code> filter in Liquid. I used it as follows:</p>
-<pre><code class="language-html">{% assign postsByYear = site.posts | group_by_exp:&quot;post&quot;, &quot;post.date | date: '%Y'&quot; %}
+<pre class="language-html"><code class="language-html">{% assign postsByYear = site.posts | group_by_exp:"post", "post.date | date: '%Y'" %}
 {% for year in postsByYear %}
-&lt;h2&gt;{{ year.name }}&lt;/h2&gt;
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">></span></span>{{ year.name }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">></span></span>
 
-&lt;div class=&quot;post-list&quot;&gt;
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>post-list<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
   {% for post in year.items %}
-  &lt;p&gt;
-    &lt;a href=&quot;{{ post.url }}&quot; class=&quot;post-title&quot;&gt;{{ post.title }}&lt;/a&gt;
-    &lt;br&gt;
-    &lt;span class=&quot;post-description&quot;&gt;{{ post.summary }}&lt;/span&gt;
-  &lt;/p&gt;
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>{{ post.url }}<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>post-title<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>{{ post.title }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>post-description<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>{{ post.summary }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
   {% endfor %}
-&lt;/div&gt;
-{% endfor %}
-</code></pre>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+{% endfor %}</code></pre>
 <p>If you want to further do sub-sections by month then you can use something like this:</p>
-<pre><code class="language-html">{% assign postsByYear = site.posts | group_by_exp:&quot;post&quot;, &quot;post.date | date: '%Y'&quot; %}
+<pre class="language-html"><code class="language-html">{% assign postsByYear = site.posts | group_by_exp:"post", "post.date | date: '%Y'" %}
 {% for year in postsByYear %}
-&lt;h2&gt;{{ year.name }}&lt;/h2&gt;
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">></span></span>{{ year.name }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">></span></span>
 
-&lt;div class=&quot;month-list&quot;&gt;
-  {% assign postsByMonth = year.items | group_by_exp:&quot;post&quot;, &quot;post.date | date: '%B'&quot; %}
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>month-list<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  {% assign postsByMonth = year.items | group_by_exp:"post", "post.date | date: '%B'" %}
   {% for month in postsByMonth %}
-  &lt;h3&gt;{{ month.name }}&lt;/h3&gt;
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span><span class="token punctuation">></span></span>{{ month.name }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">></span></span>
 
-  &lt;div class=&quot;post-list&quot;&gt;
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>post-list<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
     {% for post in month.items %}
-    &lt;p&gt;
-      &lt;a href=&quot;{{ post.url }}&quot; class=&quot;post-title&quot;&gt;{{ post.title }}&lt;/a&gt;
-      &lt;br&gt;
-      &lt;span class=&quot;post-description&quot;&gt;{{ post.summary }}&lt;/span&gt;
-    &lt;/p&gt;
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>{{ post.url }}<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>post-title<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>{{ post.title }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>post-description<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>{{ post.summary }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
     {% endfor %}
-  &lt;/div&gt;
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
   {% endfor %}
-&lt;/div&gt;
-{% endfor %}
-</code></pre>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+{% endfor %}</code></pre>
 </div>
                     </div>
                     <div class="post-categories-container">

@@ -4,6 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link href="/assets/css/prism-theme/prism-darcula.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/assets/css/fontawesome-all.css">
     <link rel="icon" type="image/png" href="/favicon.png"/>
     <title>📝 CSS support for browser dark-mode preference - Varun Barad</title>
@@ -63,21 +64,19 @@
                         </div>
                         <div class="post-content e-content"><p>There is a simple CSS media query with which we can specify styles only for dark mode or light mode.</p>
 <p>For specifying CSS when dark mode preference is selected.</p>
-<pre><code class="language-css">@media (prefers-color-scheme: dark) {
-    body {
-        background: black;
-        color: white;
-    }
-}
-</code></pre>
+<pre class="language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">prefers-color-scheme</span><span class="token punctuation">:</span> dark<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+    <span class="token selector">body</span> <span class="token punctuation">{</span>
+        <span class="token property">background</span><span class="token punctuation">:</span> black<span class="token punctuation">;</span>
+        <span class="token property">color</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
 <p>For specifying CSS when light mode preference is selected or no active preference has been expressed.</p>
-<pre><code class="language-css">@media (prefers-color-scheme: light) {
-    body {
-        background: white;
-        color: black;
-    }
-}
-</code></pre>
+<pre class="language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">prefers-color-scheme</span><span class="token punctuation">:</span> light<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+    <span class="token selector">body</span> <span class="token punctuation">{</span>
+        <span class="token property">background</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span>
+        <span class="token property">color</span><span class="token punctuation">:</span> black<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
 <p>Original posting: <a href="https://twitter.com/varun_barad/status/1190613832575725571">https://twitter.com/varun_barad/status/1190613832575725571</a></p>
 </div>
                     </div>

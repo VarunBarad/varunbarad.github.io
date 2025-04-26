@@ -4,6 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link href="/assets/css/prism-theme/prism-darcula.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/assets/css/fontawesome-all.css">
     <link rel="icon" type="image/png" href="/favicon.png"/>
     <title>📝 Find the first entry in each group - Varun Barad</title>
@@ -83,10 +84,9 @@
 </tbody>
 </table>
 <p>If we want to see the payment_id of the highest amount of payment for each customer_id then we need to do:</p>
-<pre><code class="language-sql">select distinct customer_id,
-    first_value(payment_id) over (partition by customer_id order by payment_amount desc) as highest_payment_id
-from payments
-</code></pre>
+<pre class="language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token keyword">distinct</span> customer_id<span class="token punctuation">,</span>
+    first_value<span class="token punctuation">(</span>payment_id<span class="token punctuation">)</span> <span class="token keyword">over</span> <span class="token punctuation">(</span><span class="token keyword">partition</span> <span class="token keyword">by</span> customer_id <span class="token keyword">order</span> <span class="token keyword">by</span> payment_amount <span class="token keyword">desc</span><span class="token punctuation">)</span> <span class="token keyword">as</span> highest_payment_id
+<span class="token keyword">from</span> payments</code></pre>
 <p>Note that you don't need to specify a <code>group by</code> clause for the overall query in this case.</p>
 </div>
                     </div>

@@ -4,6 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link href="/assets/css/prism-theme/prism-darcula.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/assets/css/fontawesome-all.css">
     <link rel="icon" type="image/png" href="/favicon.png"/>
     <title>⚖️ Wracker Dev Log #001 - Varun Barad</title>
@@ -68,7 +69,7 @@
 <p>Up next was me wanting to install the dependencies for the project without them muddying up my system-wide python packages. I knew of <code>virtualenv</code> and have banged my head enough in the past that it only took me 3 tries before I had it nailed down.</p>
 <h2>Day 1 Challenging Structure</h2>
 <p>Since I wanted to use Django framework for this project and I haven't ever used it before, I went to their official getting started guide and was left with a file structure looking something like this after initialising my project.</p>
-<pre><code class="language-text">- Projects
+<pre class="language-text"><code class="language-text">- Projects
   |- wracker
      |- .gitignore
      |- wracker
@@ -78,8 +79,7 @@
            |- asgi.py
            |- settings.py
            |- urls.py
-           |- wsgi.py
-</code></pre>
+           |- wsgi.py</code></pre>
 <p>Here I tried running the commands from getting started guide inside a pre-made directory for my project. I could not understand why it needs to create 2 separate subdirectories named the same as the project. This is something I tried understanding multiple times during the day, and we'll back come to it later.</p>
 <h2>Challenge Post the SQLite</h2>
 <p>Django by default uses an SQLite database for storing data, but I wanted to use Postgres. I had already setup a <code>docker-compose.yaml</code> file to provision me a postgres database running inside a docker container. While initially the configuration part in Django for Postgres was a bit confusing, I was able to get it working after a bit of fitting in multiple pieces together. I also learned how to use environment variables in Python while dealing with this.</p>

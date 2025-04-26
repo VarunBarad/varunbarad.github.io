@@ -4,6 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link href="/assets/css/prism-theme/prism-darcula.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/assets/css/fontawesome-all.css">
     <link rel="icon" type="image/png" href="/favicon.png"/>
     <title>JavaScript 30 - Array Cardio 1 - Varun Barad</title>
@@ -71,14 +72,12 @@
 <p>As you might have observed that <code>document.querySelectorAll</code> doesn't return us an actual <code>Array</code> but instead it returns us what is called as a <code>NodeList</code>. Consequently <code>NodeList</code> doesn't have all the methods that an <code>Array</code> does (like <code>map</code>, <code>filter</code>, <code>reduce</code> etc).</p>
 <p><code>NodeList</code> is an example of what we call as &quot;iterable&quot; in JS. So whenever working with iterables we tend to prefer to convert them to an actual <code>Array</code> so that we have more options to work with.</p>
 <p>I already knew of one way to convert them:</p>
-<pre><code class="language-javascript">const anyIterable = document.querySelectorAll('a');
-const convertedArray = Array.from(anyIterable);
-</code></pre>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> anyIterable <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> convertedArray <span class="token operator">=</span> Array<span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span>anyIterable<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>Here we used the <code>Array.from</code> method to convert the iterable to an <code>Array</code>.</p>
 <p>The other way I learned today was:</p>
-<pre><code class="language-javascript">const anyIterable = document.querySelectorAll('a');
-const convertedArray = [...anyIterable];
-</code></pre>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> anyIterable <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> convertedArray <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span>anyIterable<span class="token punctuation">]</span><span class="token punctuation">;</span></code></pre>
 <p>Here we made use of a combination of 2 things:</p>
 <h4>1. ES6 spread operator <code>...</code></h4>
 <p>When we prepend an iterable with <code>...</code> (called the ES6 spread operator) what it does is it extracts all values from that iterable and replaces the <code>...anyIterable</code> part of the expression with those values.</p>

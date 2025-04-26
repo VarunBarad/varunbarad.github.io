@@ -4,6 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link href="/assets/css/prism-theme/prism-darcula.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/assets/css/fontawesome-all.css">
     <link rel="icon" type="image/png" href="/favicon.png"/>
     <title>Cheatsheet - Git - Varun Barad</title>
@@ -64,30 +65,22 @@
                         <div class="post-content e-content"><p>This is first in my collection of cheat-sheets. This is here as a blog post until I figure out how to have a separate section just for cheat-sheets and not make them show up in posts, and then find time to implement it. Till then here it is and here it will be updated as and when need arises 🙃</p>
 <h2>Show change-history of a file</h2>
 <p>History of commits where this file was changed. This only gives the commits where it was changed (not the file-diff for those commits)</p>
-<pre><code class="language-shell">git log -- &lt;file&gt;
-</code></pre>
+<pre class="language-shell"><code class="language-shell"><span class="token function">git</span> log -- <span class="token operator">&lt;</span>file<span class="token operator">></span></code></pre>
 <p>History of commits with file-diff</p>
-<pre><code class="language-shell">git log -p -- &lt;file&gt;
-</code></pre>
+<pre class="language-shell"><code class="language-shell"><span class="token function">git</span> log <span class="token parameter variable">-p</span> -- <span class="token operator">&lt;</span>file<span class="token operator">></span></code></pre>
 <p>History of commits with file-diff tracked across renames</p>
-<pre><code class="language-shell">git log --follow -p -- &lt;file&gt;
-</code></pre>
+<pre class="language-shell"><code class="language-shell"><span class="token function">git</span> log <span class="token parameter variable">--follow</span> <span class="token parameter variable">-p</span> -- <span class="token operator">&lt;</span>file<span class="token operator">></span></code></pre>
 <h2>Automatically rearrange fixup commits to their appropriate positions when rebasing</h2>
-<pre><code class="language-shell">git rebase --interactive &lt;commit-hash&gt; --autosquash
-</code></pre>
+<pre class="language-shell"><code class="language-shell"><span class="token function">git</span> rebase <span class="token parameter variable">--interactive</span> <span class="token operator">&lt;</span>commit-hash<span class="token operator">></span> <span class="token parameter variable">--autosquash</span></code></pre>
 <h2>Find which files have had the most commits</h2>
-<pre><code class="language-shell">git log --all -M -C --name-only --format='format:' &quot;$@&quot; | sort | grep -v '^$' | uniq -c | sort -n | awk 'BEGIN {print &quot;count\tfile&quot;} {print $1 &quot;\t&quot; $2}' | tail -10
-</code></pre>
+<pre class="language-shell"><code class="language-shell"><span class="token function">git</span> log <span class="token parameter variable">--all</span> <span class="token parameter variable">-M</span> <span class="token parameter variable">-C</span> --name-only <span class="token parameter variable">--format</span><span class="token operator">=</span><span class="token string">'format:'</span> <span class="token string">"<span class="token variable">$@</span>"</span> <span class="token operator">|</span> <span class="token function">sort</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token parameter variable">-v</span> <span class="token string">'^$'</span> <span class="token operator">|</span> <span class="token function">uniq</span> <span class="token parameter variable">-c</span> <span class="token operator">|</span> <span class="token function">sort</span> <span class="token parameter variable">-n</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'BEGIN {print "count\tfile"} {print $1 "\t" $2}'</span> <span class="token operator">|</span> <span class="token function">tail</span> <span class="token parameter variable">-10</span></code></pre>
 <h2>Create an empty commit</h2>
-<pre><code class="language-shell">git commit --allow-empty -m &quot;Commit message goes here&quot;
-</code></pre>
+<pre class="language-shell"><code class="language-shell"><span class="token function">git</span> commit --allow-empty <span class="token parameter variable">-m</span> <span class="token string">"Commit message goes here"</span></code></pre>
 <h2>List files in a commit</h2>
-<pre><code class="language-shell">git show --pretty=&quot;&quot; --name-only &lt;sha1-commit-hash&gt;
-</code></pre>
+<pre class="language-shell"><code class="language-shell"><span class="token function">git</span> show <span class="token parameter variable">--pretty</span><span class="token operator">=</span><span class="token string">""</span> --name-only <span class="token operator">&lt;</span>sha1-commit-hash<span class="token operator">></span></code></pre>
 <h2>Reset a branch head to a specific commit</h2>
-<pre><code class="language-shell">git checkout &lt;branch-name&gt;
-git reset --hard &lt;commit-hash&gt;
-</code></pre>
+<pre class="language-shell"><code class="language-shell"><span class="token function">git</span> checkout <span class="token operator">&lt;</span>branch-name<span class="token operator">></span>
+<span class="token function">git</span> reset <span class="token parameter variable">--hard</span> <span class="token operator">&lt;</span>commit-hash<span class="token operator">></span></code></pre>
 <p>Reference: <a href="https://stackoverflow.com/a/7310222/4717436">stackoverflow</a></p>
 <h2>Make git forget a tracked file</h2>
 <p>Let's suppose we want to remove <code>file.log</code> from git tracking but keep it in the file system.</p>

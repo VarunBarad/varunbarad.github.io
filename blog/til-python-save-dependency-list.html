@@ -4,6 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link href="/assets/css/prism-theme/prism-darcula.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/assets/css/fontawesome-all.css">
     <link rel="icon" type="image/png" href="/favicon.png"/>
     <title>📝 Save dependency list of your python project to a file - Varun Barad</title>
@@ -64,8 +65,7 @@
                         <div class="post-content e-content"><p>Node/npm lists the dependencies you install in a project in the <code>dependencies</code> key in your <code>package.json</code> file. But since python doesn't have a similar file I was exploring how to do the same for a python project.</p>
 <p>I came across the convention of a <code>requirements.txt</code> file. This file lists all the packages that are installed in your current environment.</p>
 <p>To generate the file you use:</p>
-<pre><code class="language-shell">pip freeze &gt; requirements.txt
-</code></pre>
+<pre class="language-shell"><code class="language-shell">pip freeze <span class="token operator">></span> requirements.txt</code></pre>
 </div>
                     </div>
                     <div class="post-categories-container">

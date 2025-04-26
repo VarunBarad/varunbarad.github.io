@@ -4,6 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link href="/assets/css/prism-theme/prism-darcula.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/assets/css/fontawesome-all.css">
     <link rel="icon" type="image/png" href="/favicon.png"/>
     <title>JavaScript 30 - CSS Analog Clock - Varun Barad</title>
@@ -70,30 +71,26 @@
 </ul>
 <h2>Changing rotation center of an object in CSS</h2>
 <p>By default an object in CSS rotates around its center. But in our clock we need to rotate them around one of their corners. Therefore we need to change their CSS origins</p>
-<pre><code class="language-css">.hand {
-    transform-origin: 100%;
-}
-</code></pre>
+<pre class="language-css"><code class="language-css"><span class="token selector">.hand</span> <span class="token punctuation">{</span>
+    <span class="token property">transform-origin</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
 <p>The above snippet moves the origin point for all CSS transforms to the right end of that element.</p>
 <h2>CSS Transition timing function</h2>
 <p>You can provide a timing function for your CSS transitions so that they follow it for their rate of change during the duration of your transitions.</p>
-<pre><code class="language-css">.hand {
-    transition-timing-function: ease-in-out;
-}
-</code></pre>
+<pre class="language-css"><code class="language-css"><span class="token selector">.hand</span> <span class="token punctuation">{</span>
+    <span class="token property">transition-timing-function</span><span class="token punctuation">:</span> ease-in-out<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
 <p>There are many built-in transition timing functions but I generally liked the <code>ease-in-out</code> for how its acceleration and deceleration feel much like natural movements. You can check out the rest of them if you like.</p>
 <p>My favorite ability in this was that we can provide our custom timing functions using what is known as a bezier curve specification. For example:</p>
-<pre><code class="language-css">.hand {
-    transition-timing-function: cubic-bezier(0.42, 0.0, 0.58, 1.0);
-}
-</code></pre>
+<pre class="language-css"><code class="language-css"><span class="token selector">.hand</span> <span class="token punctuation">{</span>
+    <span class="token property">transition-timing-function</span><span class="token punctuation">:</span> <span class="token function">cubic-bezier</span><span class="token punctuation">(</span>0.42<span class="token punctuation">,</span> 0.0<span class="token punctuation">,</span> 0.58<span class="token punctuation">,</span> 1.0<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
 <p>In the above code-sample I have written the <code>cubic-bezier</code> format of the <code>ease-in-out</code> timing function but you can customize the bezier curve to your heart's content using those 2 anchor points.</p>
 <h1>A weird reverse-jump in animation whenever any clock hand crosses 12 o'clock mark</h1>
 <p>The hands of my clock were moving nicely from 12 to 12 but when they were just going to reach 12 they would do a weird jump and instead of moving 1 tick forward from right before 12 to 12, they would perform a full reverse circle and reach 12 from that side.</p>
 <p>This problem was occurring because of how we calculated the angles of rotation. We used the below equation for counting number of seconds.</p>
-<pre><code class="language-javascript">const secondsDegrees = ((seconds / 60) * 360) + 90;
-// Here 90 degrees is the initial offset to make clock-hands start at 12
-</code></pre>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> secondsDegrees <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>seconds <span class="token operator">/</span> <span class="token number">60</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">360</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">90</span><span class="token punctuation">;</span>
+<span class="token comment">// Here 90 degrees is the initial offset to make clock-hands start at 12</span></code></pre>
 <p>With this what would happen is as below:</p>
 <table>
 <thead>

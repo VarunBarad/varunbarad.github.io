@@ -4,6 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link href="/assets/css/prism-theme/prism-darcula.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/assets/css/fontawesome-all.css">
     <link rel="icon" type="image/png" href="/favicon.png"/>
     <title>Cheatsheet - YouTube-DL - Varun Barad</title>
@@ -62,26 +63,19 @@
                             By <a class="p-author h-card" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="Thu Oct 07 2021 00:00:00 GMT+0530 (India Standard Time)">October 07, 2021</time>
                         </div>
                         <div class="post-content e-content"><h2>Use a separate file to record already downloaded URLs</h2>
-<pre><code class="language-shell">youtube-dl --download-archive archive.txt &quot;https://www.youtube.com/watch?v=toVfvRhWbj8&quot;
-</code></pre>
+<pre class="language-shell"><code class="language-shell">youtube-dl --download-archive archive.txt <span class="token string">"https://www.youtube.com/watch?v=toVfvRhWbj8"</span></code></pre>
 <h2>Read URLs from a file (one URL per line)</h2>
-<pre><code class="language-shell">youtube-dl -a links.txt
-</code></pre>
+<pre class="language-shell"><code class="language-shell">youtube-dl <span class="token parameter variable">-a</span> links.txt</code></pre>
 <h2>Write description to a file</h2>
-<pre><code class="language-shell">youtube-dl --write-description &quot;https://www.youtube.com/watch?v=xxX81WmXjPg&quot;
-</code></pre>
+<pre class="language-shell"><code class="language-shell">youtube-dl --write-description <span class="token string">"https://www.youtube.com/watch?v=xxX81WmXjPg"</span></code></pre>
 <h2>Embed subtitles</h2>
-<pre><code class="language-shell">youtube-dl --all-subs --embed-subs &quot;https://www.youtube.com/watch?v=xxX81WmXjPg&quot;
-</code></pre>
+<pre class="language-shell"><code class="language-shell">youtube-dl --all-subs --embed-subs <span class="token string">"https://www.youtube.com/watch?v=xxX81WmXjPg"</span></code></pre>
 <h2>Write thumbnail</h2>
-<pre><code class="language-shell">youtube-dl --write-thumbnail &quot;https://www.youtube.com/watch?v=xxX81WmXjPg&quot;
-</code></pre>
+<pre class="language-shell"><code class="language-shell">youtube-dl --write-thumbnail <span class="token string">"https://www.youtube.com/watch?v=xxX81WmXjPg"</span></code></pre>
 <h2>Extract audio from a video (and convert it to mp3)</h2>
-<pre><code class="language-shell">youtube-dl --format 'bestaudio/best' --audio-format 'mp3' &quot;https://www.youtube.com/watch?v=jVfDUvjvUSM&quot;
-</code></pre>
+<pre class="language-shell"><code class="language-shell">youtube-dl <span class="token parameter variable">--format</span> <span class="token string">'bestaudio/best'</span> --audio-format <span class="token string">'mp3'</span> <span class="token string">"https://www.youtube.com/watch?v=jVfDUvjvUSM"</span></code></pre>
 <h2>Download a video and convert it to mp4</h2>
-<pre><code class="language-shell">youtube-dl --format 'bestvideo+bestaudio/best' --recode-video 'mp4' &quot;https://www.youtube.com/watch?v=Jv8KRwF1zQs&quot;
-</code></pre>
+<pre class="language-shell"><code class="language-shell">youtube-dl <span class="token parameter variable">--format</span> <span class="token string">'bestvideo+bestaudio/best'</span> --recode-video <span class="token string">'mp4'</span> <span class="token string">"https://www.youtube.com/watch?v=Jv8KRwF1zQs"</span></code></pre>
 <p>Have fun and be responsible 🤺</p>
 </div>
                     </div>

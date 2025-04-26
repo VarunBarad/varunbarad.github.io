@@ -4,6 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link href="/assets/css/prism-theme/prism-darcula.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/assets/css/fontawesome-all.css">
     <link rel="icon" type="image/png" href="/favicon.png"/>
     <title>Show/Hide Layout Bounds in Android - Varun Barad</title>
@@ -63,21 +64,18 @@
                         </div>
                         <div class="post-content e-content"><p>Sometimes while working in Android we need to display the layout-bounds on device. Recent Android versions do provide an action-tile to do so. But on previous versions, we had to go too deep into the Settings application. I wanted to be able to perform the switch from my computer.</p>
 <p>ADB does provide methods to do so, but the commands are not easy to remember and also get tiresome after some time.</p>
-<pre><code class="language-bash"># We need to execute both lines to
-# make the layout-bounds show
-adb shell setprop debug.layout true
-adb shell service call activity 1599295570
-</code></pre>
+<pre class="language-bash"><code class="language-bash"><span class="token comment"># We need to execute both lines to</span>
+<span class="token comment"># make the layout-bounds show</span>
+adb shell setprop debug.layout <span class="token boolean">true</span>
+adb shell <span class="token function">service</span> call activity <span class="token number">1599295570</span></code></pre>
 <p>So I made 2 files named <code>show-lb.sh</code> and <code>hide-lb.sh</code>, which respectively show and hide the layout-bounds on our testing device.</p>
 <p>The files are as below:</p>
 <p><code>show-lb.sh</code></p>
-<pre><code class="language-bash">adb shell setprop debug.layout true &gt; /dev/null 2&gt;&amp;1
-adb shell service call activity 1599295570 &gt; /dev/null 2&gt;&amp;1
-</code></pre>
+<pre class="language-bash"><code class="language-bash">adb shell setprop debug.layout <span class="token boolean">true</span> <span class="token operator">></span> /dev/null <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&amp;1</span>
+adb shell <span class="token function">service</span> call activity <span class="token number">1599295570</span> <span class="token operator">></span> /dev/null <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&amp;1</span></code></pre>
 <p><code>hide-lb.sh</code></p>
-<pre><code class="language-bash">adb shell setprop debug.layout false &gt; /dev/null 2&gt;&amp;1
-adb shell service call activity 1599295570 &gt; /dev/null 2&gt;&amp;1
-</code></pre>
+<pre class="language-bash"><code class="language-bash">adb shell setprop debug.layout <span class="token boolean">false</span> <span class="token operator">></span> /dev/null <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&amp;1</span>
+adb shell <span class="token function">service</span> call activity <span class="token number">1599295570</span> <span class="token operator">></span> /dev/null <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&amp;1</span></code></pre>
 <p>That <code>&gt; /dev/null 2&gt;&amp;1</code> part at the end of each line is just so that the output of that particular command does not get displayed in our terminal as we don't need it.</p>
 <p><code>Note for Windows users:</code> You friends need to omit the <code>&gt; /dev/null 2&gt;&amp;1</code> and save these files as <code>show-lb.bat</code> and <code>hide-lb.bat</code></p>
 <p>You can save these files (make sure to give them <code>executable</code> permission if you are on a unix-based machine) and then add their location to system's <code>PATH</code> variable. That way you can execute these from anywhere.</p>

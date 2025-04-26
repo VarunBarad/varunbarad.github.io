@@ -4,6 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link href="/assets/css/prism-theme/prism-darcula.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/assets/css/fontawesome-all.css">
     <link rel="icon" type="image/png" href="/favicon.png"/>
     <title>Switching RxJava schedulers between app code and corresponding tests - Varun Barad</title>
@@ -63,61 +64,58 @@
                         </div>
                         <div class="post-content e-content"><p>When using RxJava we need to specify the schedulers which we want to use to 1) perform the given task and 2) return result of the operation chain.</p>
 <p>One of the interesting ways I found while working on a take-home challenge for a company was as below:</p>
-<pre><code class="language-kotlin">object VarunSchedulers {
-    private var schedulers: RxSchedulers = RxSchedulers.Default
+<pre class="language-kotlin"><code class="language-kotlin"><span class="token keyword">object</span> VarunSchedulers <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token keyword">var</span> schedulers<span class="token operator">:</span> RxSchedulers <span class="token operator">=</span> RxSchedulers<span class="token punctuation">.</span>Default
 
-    fun enableTesting() {
-        this.schedulers = RxSchedulers.Test
-    }
+    <span class="token keyword">fun</span> <span class="token function">enableTesting</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>schedulers <span class="token operator">=</span> RxSchedulers<span class="token punctuation">.</span>Test
+    <span class="token punctuation">}</span>
 
-    fun disableTesting() {
-        this.schedulers = RxSchedulers.Default
-    }
+    <span class="token keyword">fun</span> <span class="token function">disableTesting</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>schedulers <span class="token operator">=</span> RxSchedulers<span class="token punctuation">.</span>Default
+    <span class="token punctuation">}</span>
 
-    fun io(): Scheduler = this.schedulers.io()
-    fun computation(): Scheduler = this.schedulers.computation()
-    fun main(): Scheduler = this.schedulers.main()
+    <span class="token keyword">fun</span> <span class="token function">io</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> Scheduler <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>schedulers<span class="token punctuation">.</span><span class="token function">io</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">fun</span> <span class="token function">computation</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> Scheduler <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>schedulers<span class="token punctuation">.</span><span class="token function">computation</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">fun</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> Scheduler <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>schedulers<span class="token punctuation">.</span><span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-    private sealed class RxSchedulers {
-        abstract fun io(): Scheduler
-        abstract fun computation(): Scheduler
-        abstract fun main(): Scheduler
+    <span class="token keyword">private</span> <span class="token keyword">sealed</span> <span class="token keyword">class</span> RxSchedulers <span class="token punctuation">{</span>
+        <span class="token keyword">abstract</span> <span class="token keyword">fun</span> <span class="token function">io</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> Scheduler
+        <span class="token keyword">abstract</span> <span class="token keyword">fun</span> <span class="token function">computation</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> Scheduler
+        <span class="token keyword">abstract</span> <span class="token keyword">fun</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> Scheduler
 
-        object Test : RxSchedulers() {
-            override fun io(): Scheduler = Schedulers.trampoline()
-            override fun computation(): Scheduler = Schedulers.trampoline()
-            override fun main(): Scheduler = Schedulers.trampoline()
-        }
+        <span class="token keyword">object</span> Test <span class="token operator">:</span> <span class="token function">RxSchedulers</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">override</span> <span class="token keyword">fun</span> <span class="token function">io</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> Scheduler <span class="token operator">=</span> Schedulers<span class="token punctuation">.</span><span class="token function">trampoline</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token keyword">override</span> <span class="token keyword">fun</span> <span class="token function">computation</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> Scheduler <span class="token operator">=</span> Schedulers<span class="token punctuation">.</span><span class="token function">trampoline</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token keyword">override</span> <span class="token keyword">fun</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> Scheduler <span class="token operator">=</span> Schedulers<span class="token punctuation">.</span><span class="token function">trampoline</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
 
-        object Default : RxSchedulers() {
-            override fun io(): Scheduler = Schedulers.io()
-            override fun computation(): Scheduler = Schedulers.computation()
-            override fun main(): Scheduler = AndroidSchedulers.mainThread()
-        }
-    }
-}
-</code></pre>
+        <span class="token keyword">object</span> Default <span class="token operator">:</span> <span class="token function">RxSchedulers</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">override</span> <span class="token keyword">fun</span> <span class="token function">io</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> Scheduler <span class="token operator">=</span> Schedulers<span class="token punctuation">.</span><span class="token function">io</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token keyword">override</span> <span class="token keyword">fun</span> <span class="token function">computation</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> Scheduler <span class="token operator">=</span> Schedulers<span class="token punctuation">.</span><span class="token function">computation</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token keyword">override</span> <span class="token keyword">fun</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> Scheduler <span class="token operator">=</span> AndroidSchedulers<span class="token punctuation">.</span><span class="token function">mainThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
 <p>Now let's take the example of fetching a network query, we can simply do this</p>
-<pre><code class="language-kotlin">pandaService.getCutestPanda()
-    .subscribeOn(VarunSchedulers.io())
-    .observeOn(VarunSchedulers.main())
-    ...
-</code></pre>
+<pre class="language-kotlin"><code class="language-kotlin">pandaService<span class="token punctuation">.</span><span class="token function">getCutestPanda</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">subscribeOn</span><span class="token punctuation">(</span>VarunSchedulers<span class="token punctuation">.</span><span class="token function">io</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">observeOn</span><span class="token punctuation">(</span>VarunSchedulers<span class="token punctuation">.</span><span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token operator">..</span><span class="token punctuation">.</span></code></pre>
 <p>And when we write our unit-tests we can easily turn testing-mode on and off using the <code>@Before</code> and <code>@After</code> methods.</p>
-<pre><code class="language-kotlin">class SomeTestClass {
-    @Before
-    fun setupTests() {
-        VarunSchedulers.enableTesting()
-    }
+<pre class="language-kotlin"><code class="language-kotlin"><span class="token keyword">class</span> SomeTestClass <span class="token punctuation">{</span>
+    <span class="token annotation builtin">@Before</span>
+    <span class="token keyword">fun</span> <span class="token function">setupTests</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        VarunSchedulers<span class="token punctuation">.</span><span class="token function">enableTesting</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
     
-    @After
-    fun tearDown() {
-        VarunSchedulers.disableTesting()
-    }
+    <span class="token annotation builtin">@After</span>
+    <span class="token keyword">fun</span> <span class="token function">tearDown</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        VarunSchedulers<span class="token punctuation">.</span><span class="token function">disableTesting</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
     
-    // Write your tests
-}
-</code></pre>
+    <span class="token comment">// Write your tests</span>
+<span class="token punctuation">}</span></code></pre>
 <p>Now whenever we are inside tests, then automatically the <code>trampoline</code> schedulers are assigned and respectively appropriate schedulers by default in case we are not in tests.</p>
 <p>If you have more such tricks up your sleeve or something in here isn't clear to you or you just want to chat then hit me up on twitter <a href="https://twitter.com/varun_barad">@varun_barad</a>.</p>
 </div>

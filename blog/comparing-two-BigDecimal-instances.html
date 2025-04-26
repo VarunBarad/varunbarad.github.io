@@ -4,6 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link href="/assets/css/prism-theme/prism-darcula.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/assets/css/fontawesome-all.css">
     <link rel="icon" type="image/png" href="/favicon.png"/>
     <title>📝 Comparing two BigDecimal instances - Varun Barad</title>
@@ -62,26 +63,23 @@
                             By <a class="p-author h-card" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="Thu Jul 29 2021 00:00:00 GMT+0530 (India Standard Time)">July 29, 2021</time>
                         </div>
                         <div class="post-content e-content"><p>If you have two instances of BigDecimal as following</p>
-<pre><code class="language-kotlin">val a = 7.5.toBigDecimal()
-val b = 7.50.toBigDecimal()
-</code></pre>
+<pre class="language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> a <span class="token operator">=</span> <span class="token number">7.5</span><span class="token punctuation">.</span><span class="token function">toBigDecimal</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">val</span> b <span class="token operator">=</span> <span class="token number">7.50</span><span class="token punctuation">.</span><span class="token function">toBigDecimal</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 <p>It seems that they are equal in value and should return true when doing <code>a == b</code> but they don't. The reason is that <code>b</code> is more precise than <code>a</code> and therefore not equal in value.</p>
 <p>So to compare the magnitude of two <code>BigDecimal</code>s (while ignoring their precision) we need to use <code>a.compareTo(b)</code>. When both the numbers are same in magnitude <code>compareTo</code> returns <code>0</code>.</p>
 <p>So in Kotlin we can create an extension function like this</p>
-<pre><code class="language-kotlin">fun BigDecimal.isEqualInMagnitude(num: BigDecimal): Boolean {
-    return this.compareTo(num) == 0
-}
-</code></pre>
+<pre class="language-kotlin"><code class="language-kotlin"><span class="token keyword">fun</span> BigDecimal<span class="token punctuation">.</span><span class="token function">isEqualInMagnitude</span><span class="token punctuation">(</span>num<span class="token operator">:</span> BigDecimal<span class="token punctuation">)</span><span class="token operator">:</span> Boolean <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">compareTo</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span>
+<span class="token punctuation">}</span></code></pre>
 <p>And then when we need to compare two numbers we can simply do</p>
-<pre><code class="language-kotlin">val a = 7.5.toBigDecimal()
-val b = 7.50.toBigDecimal()
+<pre class="language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> a <span class="token operator">=</span> <span class="token number">7.5</span><span class="token punctuation">.</span><span class="token function">toBigDecimal</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">val</span> b <span class="token operator">=</span> <span class="token number">7.50</span><span class="token punctuation">.</span><span class="token function">toBigDecimal</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-if (a.isEqualInMagnitude(b)) {
-    println(&quot;Equal in magnitude&quot;)
-} else {
-    println(&quot;Magnitudes of both numbers don't match&quot;)
-}
-</code></pre>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>a<span class="token punctuation">.</span><span class="token function">isEqualInMagnitude</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">println</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"Equal in magnitude"</span></span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token function">println</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"Magnitudes of both numbers don't match"</span></span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
 </div>
                     </div>
                     <div class="post-categories-container">

@@ -4,6 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link href="/assets/css/prism-theme/prism-darcula.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/assets/css/fontawesome-all.css">
     <link rel="icon" type="image/png" href="/favicon.png"/>
     <title>📝 How to make non-capturing groups in RegEx - Varun Barad</title>
@@ -69,15 +70,12 @@ https://randomwebsite.com/file_64fe4cd
 </code></pre>
 <p>And I had to extract out only the <code>file_64fe4cd</code> part from it.</p>
 <p>I started with this regex:</p>
-<pre><code class="language-regexp">^https://(www\.)?randomwebsite.com/(file_\w+)$
-</code></pre>
+<pre class="language-regexp"><code class="language-regexp">^https://(www\.)?randomwebsite.com/(file_\w+)$</code></pre>
 <p>The problem this was giving me was it was providing two captured groups. One for the <code>(www\.)?</code> and the other one for <code>(file_\w+)</code> (the one I wanted).</p>
 <p>I wanted to treat the first group as a group (for whether it could be present) but not have it captured. That's how I got to know about non-capturing groups in regex. This is how you write a non-capturing group:</p>
-<pre><code class="language-regexp">(?:&lt;rest-of-your-group-match-here&gt;)
-</code></pre>
+<pre class="language-regexp"><code class="language-regexp">(?:<rest-of-your-group-match-here>)</code></pre>
 <p>So our regex now becomes</p>
-<pre><code class="language-regexp">^https://(?:www\.)?randomwebsite.com/(file_\w+)$
-</code></pre>
+<pre class="language-regexp"><code class="language-regexp">^https://(?:www\.)?randomwebsite.com/(file_\w+)$</code></pre>
 </div>
                     </div>
                     <div class="post-categories-container">

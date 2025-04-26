@@ -4,6 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link href="/assets/css/prism-theme/prism-darcula.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/assets/css/fontawesome-all.css">
     <link rel="icon" type="image/png" href="/favicon.png"/>
     <title>📝 Specifying different author and committer in git - Varun Barad</title>
@@ -63,12 +64,11 @@
                         </div>
                         <div class="post-content e-content"><p>In some cases you need to commit code/work that is originally written/done by someone else. For example when you are amending/rebasing a commit to change a small thing but still want to retain the attribution to original author when committing you can specify separate committer and author information.</p>
 <p>This is not done via any flag but by specifying a couple of environment variables.</p>
-<pre><code class="language-shell"># Committer Name: Sam Smith
-# Committer Email: ss@example.com
-# Author Name: Jake Johnson
-# Author Email: jj@example.com
-GIT_COMMITTER_NAME='Sam Smith' GIT_COMMITTER_EMAIL='ss@example.com' git commit --author 'Jake Johnson &lt;jj@example.com&gt;'
-</code></pre>
+<pre class="language-shell"><code class="language-shell"><span class="token comment"># Committer Name: Sam Smith</span>
+<span class="token comment"># Committer Email: ss@example.com</span>
+<span class="token comment"># Author Name: Jake Johnson</span>
+<span class="token comment"># Author Email: jj@example.com</span>
+<span class="token assign-left variable">GIT_COMMITTER_NAME</span><span class="token operator">=</span><span class="token string">'Sam Smith'</span> <span class="token assign-left variable">GIT_COMMITTER_EMAIL</span><span class="token operator">=</span><span class="token string">'ss@example.com'</span> <span class="token function">git</span> commit <span class="token parameter variable">--author</span> <span class="token string">'Jake Johnson &lt;jj@example.com>'</span></code></pre>
 <p>Credits: <a href="https://stackoverflow.com/a/23108169/4717436">StackOverflow</a></p>
 </div>
                     </div>

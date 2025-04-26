@@ -4,6 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link href="/assets/css/prism-theme/prism-darcula.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/assets/css/fontawesome-all.css">
     <link rel="icon" type="image/png" href="/favicon.png"/>
     <title>📝 Delay subtitles using ffmpeg - Varun Barad</title>
@@ -62,12 +63,10 @@
                             By <a class="p-author h-card" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="Fri Jun 28 2024 11:11:33 GMT+0530 (India Standard Time)">June 28, 2024</time>
                         </div>
                         <div class="post-content e-content"><p>Sometimes you get subtitles which are not in sync with the video. You can use <code>ffmpeg</code> to add a fixed delay to all subtitles. Here is how you can do it:</p>
-<pre><code class="language-shell">ffmpeg -itsoffset &lt;amount-to-delay-in-seconds&gt; -i input.srt -c copy output.srt
-</code></pre>
+<pre class="language-shell"><code class="language-shell">ffmpeg <span class="token parameter variable">-itsoffset</span> <span class="token operator">&lt;</span>amount-to-delay-in-seconds<span class="token operator">></span> <span class="token parameter variable">-i</span> input.srt <span class="token parameter variable">-c</span> copy output.srt</code></pre>
 <p>This will create a new file <code>output.srt</code> with all subtitles delayed by the specified amount. You can use this command to delay subtitles by any amount of seconds. Negative and decimal values are also supported. For example:</p>
-<pre><code class="language-shell"># This would delay the subtitles by 2.5 seconds
-ffmpeg -itsoffset 2.5 -i input.srt -c copy output.srt
-</code></pre>
+<pre class="language-shell"><code class="language-shell"><span class="token comment"># This would delay the subtitles by 2.5 seconds</span>
+ffmpeg <span class="token parameter variable">-itsoffset</span> <span class="token number">2.5</span> <span class="token parameter variable">-i</span> input.srt <span class="token parameter variable">-c</span> copy output.srt</code></pre>
 <p>Credits: <a href="https://stackoverflow.com/a/57821897/4717436">StackOverflow</a></p>
 </div>
                     </div>

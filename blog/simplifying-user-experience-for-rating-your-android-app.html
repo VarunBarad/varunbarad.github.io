@@ -4,6 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link href="/assets/css/prism-theme/prism-darcula.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/assets/css/fontawesome-all.css">
     <link rel="icon" type="image/png" href="/favicon.png"/>
     <title>Simplifying User-Experience for rating your Android app - Varun Barad</title>
@@ -77,13 +78,12 @@
 </ol>
 <h2>1. Displaying &quot;Rate-Me&quot; option to user</h2>
 <p>There are many options to display an option to user for rating your app. I will be using a simple button for this purpose.</p>
-<pre><code class="language-xml">&lt;Button
-    android:id=&quot;@+id/button_rateMe&quot;
-    android:layout_width=&quot;wrap_content&quot;
-    android:layout_height=&quot;wrap_content&quot;
-    android:text=&quot;Rate Me!&quot;
-    android:onClick=&quot;rateApp&quot; /&gt;
-</code></pre>
+<pre class="language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Button</span>
+    <span class="token attr-name"><span class="token namespace">android:</span>id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>@+id/button_rateMe<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>text</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Rate Me!<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>onClick</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>rateApp<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span></code></pre>
 <p>You have many other options like:</p>
 <ul>
 <li>Dialog</li>
@@ -92,36 +92,34 @@
 </ul>
 <h2>2. Launching the Play Store listing</h2>
 <p>Now comes the part where we launch the Store listing for our app when user clicks on whatever we displayed above. Continuing the above example, I have the below code in my Activity in which the above button is displayed.</p>
-<pre><code class="language-java">// Java
-public void rateApp(View rateMeButton) {
-    String packageName = this.getPackageName();
-    String playStoreAppUri = &quot;market://details?id=&quot; + packageName;
-    String playStoreSiteUri = &quot;https://play.google.com/store/apps/details?id=&quot; + packageName;
+<pre class="language-java"><code class="language-java"><span class="token comment">// Java</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">rateApp</span><span class="token punctuation">(</span><span class="token class-name">View</span> rateMeButton<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token class-name">String</span> packageName <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getPackageName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">String</span> playStoreAppUri <span class="token operator">=</span> <span class="token string">"market://details?id="</span> <span class="token operator">+</span> packageName<span class="token punctuation">;</span>
+    <span class="token class-name">String</span> playStoreSiteUri <span class="token operator">=</span> <span class="token string">"https://play.google.com/store/apps/details?id="</span> <span class="token operator">+</span> packageName<span class="token punctuation">;</span>
     
-    try {
-        Intent playStoreAppIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(playStoreAppUri));
-        startActivity(playStoreAppIntent);
-    } catch (ActivityNotFoundException e) {
-        Intent playStoreBrowserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(playStoreSiteUri));
-        startActivity(playStoreBrowserIntent);
-    }
-}
-</code></pre>
-<pre><code class="language-kotlin">// Kotlin
-public fun rateApp(rateMeButton: View): Unit {
-    val packageName = this.packageName
-    val playStoreAppUri = &quot;market://details?id=$packageName&quot;
-    val playStoreSiteUri = &quot;https://play.google.com/store/apps/details?id=$packageName&quot;
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+        <span class="token class-name">Intent</span> playStoreAppIntent <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Intent</span><span class="token punctuation">(</span><span class="token class-name">Intent</span><span class="token punctuation">.</span><span class="token constant">ACTION_VIEW</span><span class="token punctuation">,</span> <span class="token class-name">Uri</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>playStoreAppUri<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">startActivity</span><span class="token punctuation">(</span>playStoreAppIntent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">ActivityNotFoundException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">Intent</span> playStoreBrowserIntent <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Intent</span><span class="token punctuation">(</span><span class="token class-name">Intent</span><span class="token punctuation">.</span><span class="token constant">ACTION_VIEW</span><span class="token punctuation">,</span> <span class="token class-name">Uri</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>playStoreSiteUri<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">startActivity</span><span class="token punctuation">(</span>playStoreBrowserIntent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<pre class="language-kotlin"><code class="language-kotlin"><span class="token comment">// Kotlin</span>
+<span class="token keyword">public</span> <span class="token keyword">fun</span> <span class="token function">rateApp</span><span class="token punctuation">(</span>rateMeButton<span class="token operator">:</span> View<span class="token punctuation">)</span><span class="token operator">:</span> Unit <span class="token punctuation">{</span>
+    <span class="token keyword">val</span> packageName <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>packageName
+    <span class="token keyword">val</span> playStoreAppUri <span class="token operator">=</span> <span class="token string-literal singleline"><span class="token string">"market://details?id=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$</span><span class="token expression">packageName</span></span><span class="token string">"</span></span>
+    <span class="token keyword">val</span> playStoreSiteUri <span class="token operator">=</span> <span class="token string-literal singleline"><span class="token string">"https://play.google.com/store/apps/details?id=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$</span><span class="token expression">packageName</span></span><span class="token string">"</span></span>
     
-    try {
-        val playStoreAppIntent = Intent(Intent.ACTION_VIEW, Uri.parse(playStoreAppUri))
-        startActivity(playStoreAppIntent)
-    } catch (e: ActivityNotFoundException) {
-        val playStoreBrowserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(playStoreSiteUri))
-        startActivity(playStoreBrowserIntent)
-    }
-}
-</code></pre>
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+        <span class="token keyword">val</span> playStoreAppIntent <span class="token operator">=</span> <span class="token function">Intent</span><span class="token punctuation">(</span>Intent<span class="token punctuation">.</span>ACTION_VIEW<span class="token punctuation">,</span> Uri<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>playStoreAppUri<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token function">startActivity</span><span class="token punctuation">(</span>playStoreAppIntent<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token operator">:</span> ActivityNotFoundException<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">val</span> playStoreBrowserIntent <span class="token operator">=</span> <span class="token function">Intent</span><span class="token punctuation">(</span>Intent<span class="token punctuation">.</span>ACTION_VIEW<span class="token punctuation">,</span> Uri<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>playStoreSiteUri<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token function">startActivity</span><span class="token punctuation">(</span>playStoreBrowserIntent<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
 <p>Let me explain what the above code does.</p>
 <p>If you have ever paid attention to the URL of the store-listing of any app on the Play Store then you would have noticed that the app’s package name is used as it’s unique identifier on the store. The structure is like this:</p>
 <p><code>https://play.google.com/store/apps/details?id=&lt;package-name-of-your-app&gt;</code></p>

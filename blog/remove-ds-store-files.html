@@ -4,6 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link href="/assets/css/prism-theme/prism-darcula.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/assets/css/fontawesome-all.css">
     <link rel="icon" type="image/png" href="/favicon.png"/>
     <title>📝 Recursively remove .DS_Store files - Varun Barad</title>
@@ -61,11 +62,9 @@
                         <div class="text-center">
                             By <a class="p-author h-card" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="Wed Aug 09 2023 14:49:36 GMT+0530 (India Standard Time)">August 09, 2023</time>
                         </div>
-                        <div class="post-content e-content"><pre><code class="language-shell">find . -name &quot;.DS_Store&quot; -type f -delete
-</code></pre>
+                        <div class="post-content e-content"><pre class="language-shell"><code class="language-shell"><span class="token function">find</span> <span class="token builtin class-name">.</span> <span class="token parameter variable">-name</span> <span class="token string">".DS_Store"</span> <span class="token parameter variable">-type</span> f <span class="token parameter variable">-delete</span></code></pre>
 <p>If you just want to list out those files then skip the <code>-delete</code> flag.</p>
-<pre><code class="language-shell">find . -name &quot;.DS_Store&quot; -type f
-</code></pre>
+<pre class="language-shell"><code class="language-shell"><span class="token function">find</span> <span class="token builtin class-name">.</span> <span class="token parameter variable">-name</span> <span class="token string">".DS_Store"</span> <span class="token parameter variable">-type</span> f</code></pre>
 </div>
                     </div>
                     <div class="post-categories-container">

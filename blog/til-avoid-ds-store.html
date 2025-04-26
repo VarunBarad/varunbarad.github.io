@@ -4,6 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link href="/assets/css/prism-theme/prism-darcula.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/assets/css/fontawesome-all.css">
     <link rel="icon" type="image/png" href="/favicon.png"/>
     <title>📝 Avoid .DS_Store files on removable media - Varun Barad</title>
@@ -62,11 +63,9 @@
                             By <a class="p-author h-card" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="Wed Aug 09 2023 19:24:24 GMT+0530 (India Standard Time)">August 09, 2023</time>
                         </div>
                         <div class="post-content e-content"><p>Disable creation of metadata files (<code>.DS_Store</code> and AppleDouble files) on Network Volumes</p>
-<pre><code class="language-shell">defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
-</code></pre>
+<pre class="language-shell"><code class="language-shell">defaults <span class="token function">write</span> com.apple.desktopservices DSDontWriteNetworkStores <span class="token parameter variable">-bool</span> <span class="token boolean">true</span></code></pre>
 <p>Disable creation of metadata files (<code>.DS_Store</code> and AppleDouble files) on USB Volumes</p>
-<pre><code class="language-shell">defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
-</code></pre>
+<pre class="language-shell"><code class="language-shell">defaults <span class="token function">write</span> com.apple.desktopservices DSDontWriteUSBStores <span class="token parameter variable">-bool</span> <span class="token boolean">true</span></code></pre>
 </div>
                     </div>
                     <div class="post-categories-container">

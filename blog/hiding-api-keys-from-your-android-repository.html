@@ -4,6 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link href="/assets/css/prism-theme/prism-darcula.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/assets/css/fontawesome-all.css">
     <link rel="icon" type="image/png" href="/favicon.png"/>
     <title>Hiding API keys from your Android repository - Varun Barad</title>
@@ -77,8 +78,7 @@
 </ul>
 <p>Inside it there would be a file named <code>gradle.properties</code> (just create it if there isn’t any).</p>
 <p>After that, add your key to the file as a property. If your key was <code>my-awesome-api-key</code>, the file after adding the key might look something like:</p>
-<pre><code class="language-java">MyAwesomeApp_ApiKey=&quot;my-awesome-api-key&quot;
-</code></pre>
+<pre class="language-java"><code class="language-java"><span class="token class-name">MyAwesomeApp_ApiKey</span><span class="token operator">=</span><span class="token string">"my-awesome-api-key"</span></code></pre>
 <p>I prefer to use this format <code>&lt;Project Name&gt;_&lt;Key Property Name&gt;</code> so that I don’t mix up keys for different projects by mistake.</p>
 <h2>2. Importing the key in your project</h2>
 <ul>
@@ -88,43 +88,39 @@
 <li>If you want to access the key in your XML files (layouts and other resources), then add it as a <code>resValue</code>.</li>
 </ul>
 <p>After doing so, your <code>build.gradle</code> might look like this:</p>
-<pre><code class="language-gradle">buildTypes {
-  debug {
-    buildConfigField 'String', &quot;ApiKey&quot;, MyAwesomeApp_ApiKey
-    resValue 'string', &quot;api_key&quot;, MyAwesomeApp_ApiKey
-  }
-  release {
-    minifyEnabled false
-    proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-    buildConfigField 'String', &quot;ApiKey&quot;, MyAwesomeApp_ApiKey
-    resValue 'string', &quot;api_key&quot;, MyAwesomeApp_ApiKey
-  }
-}
-</code></pre>
+<pre class="language-gradle"><code class="language-gradle">buildTypes <span class="token punctuation">{</span>
+  debug <span class="token punctuation">{</span>
+    buildConfigField <span class="token string">'String'</span><span class="token punctuation">,</span> <span class="token interpolation-string"><span class="token string">"ApiKey"</span></span><span class="token punctuation">,</span> MyAwesomeApp_ApiKey
+    resValue <span class="token string">'string'</span><span class="token punctuation">,</span> <span class="token interpolation-string"><span class="token string">"api_key"</span></span><span class="token punctuation">,</span> MyAwesomeApp_ApiKey
+  <span class="token punctuation">}</span>
+  release <span class="token punctuation">{</span>
+    minifyEnabled <span class="token boolean">false</span>
+    proguardFiles <span class="token function">getDefaultProguardFile</span><span class="token punctuation">(</span><span class="token string">'proguard-android.txt'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'proguard-rules.pro'</span>
+    buildConfigField <span class="token string">'String'</span><span class="token punctuation">,</span> <span class="token interpolation-string"><span class="token string">"ApiKey"</span></span><span class="token punctuation">,</span> MyAwesomeApp_ApiKey
+    resValue <span class="token string">'string'</span><span class="token punctuation">,</span> <span class="token interpolation-string"><span class="token string">"api_key"</span></span><span class="token punctuation">,</span> MyAwesomeApp_ApiKey
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
 <h2>3. Using the key in your app's code</h2>
 <p>Now you can access the key from your code as described below.</p>
 <h3>Accessing in Java</h3>
 <p>It is available as a standard String in your Java/Kotlin (if you use Kotlin, you good sir just became a friend of mine) code. To access it:</p>
-<pre><code class="language-java">// Java
-...
-String apiKey = BuildConfig.ApiKey;
-...
-</code></pre>
-<pre><code class="language-kotlin">// Kotlin
-...
-val apiKey: String = BuildConfig.ApiKey;
-...
-</code></pre>
+<pre class="language-java"><code class="language-java"><span class="token comment">// Java</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token class-name">String</span> apiKey <span class="token operator">=</span> <span class="token class-name">BuildConfig<span class="token punctuation">.</span>ApiKey</span><span class="token punctuation">;</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span></code></pre>
+<pre class="language-kotlin"><code class="language-kotlin"><span class="token comment">// Kotlin</span>
+<span class="token operator">..</span><span class="token punctuation">.</span>
+<span class="token keyword">val</span> apiKey<span class="token operator">:</span> String <span class="token operator">=</span> BuildConfig<span class="token punctuation">.</span>ApiKey<span class="token punctuation">;</span>
+<span class="token operator">..</span><span class="token punctuation">.</span></code></pre>
 <h3>Accessing in XML</h3>
 <p>If you want to use it in XML files (like AdMob keys are needed sometimes in XML), you can access them just like any other string resource (used in the last line):</p>
-<pre><code class="language-xml">&lt;com.google.android.gms.ads.AdView
-  xmlns:ads=&quot;http://schemas.android.com/apk/res-auto&quot;
-  android:id=&quot;@+id/adView_banner&quot;
-  android:layout_width=&quot;wrap_content&quot;
-  android:layout_height=&quot;wrap_content&quot;
-  ads:adSize=&quot;BANNER&quot;
-  ads:adUnitId=&quot;@string/api_key&quot;/&gt;
-</code></pre>
+<pre class="language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>com.google.android.gms.ads.AdView</span>
+  <span class="token attr-name"><span class="token namespace">xmlns:</span>ads</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://schemas.android.com/apk/res-auto<span class="token punctuation">"</span></span>
+  <span class="token attr-name"><span class="token namespace">android:</span>id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>@+id/adView_banner<span class="token punctuation">"</span></span>
+  <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
+  <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
+  <span class="token attr-name"><span class="token namespace">ads:</span>adSize</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>BANNER<span class="token punctuation">"</span></span>
+  <span class="token attr-name"><span class="token namespace">ads:</span>adUnitId</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>@string/api_key<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span></code></pre>
 <h2>Done</h2>
 <p>Now you can safely have a public repository that can reference API keys. You can also have different keys for debug and release (just specify different property names in respective build-types).</p>
 <h3>Being a good samaritan</h3>

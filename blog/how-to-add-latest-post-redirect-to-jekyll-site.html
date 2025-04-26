@@ -4,6 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link href="/assets/css/prism-theme/prism-darcula.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/assets/css/fontawesome-all.css">
     <link rel="icon" type="image/png" href="/favicon.png"/>
     <title>How to add "latest" post redirect to Jekyll site - Varun Barad</title>
@@ -65,16 +66,15 @@
 <p>Since my website is statically generated and hosted, it wasn't an option for me to specify a server-side <code>30x</code> redirect for that particular URL to my latest post.</p>
 <p>So what I ended up doing is generate a page on each build which would redirect user to the latest post using JS. To get the information about latest post, I made use of Jekyll's Liquid templating <em>syntax</em> (not sure what else to call it).</p>
 <p>So the <code>&lt;body&gt;</code> tag of that page ended up looking like this:</p>
-<pre><code class="language-html">&lt;body&gt;
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
 {%- assign latest_post = site.posts[0] -%}
-&lt;p&gt;Redirecting you to {{ latest_post.title }}&lt;/p&gt;
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>Redirecting you to {{ latest_post.title }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
 
-&lt;script&gt;
-    window.location.href = &quot;{{ latest_post.url }}&quot;;
-&lt;/script&gt;
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+    window<span class="token punctuation">.</span>location<span class="token punctuation">.</span>href <span class="token operator">=</span> <span class="token string">"{{ latest_post.url }}"</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
 
-&lt;/body&gt;
-</code></pre>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span></code></pre>
 <p>Here I get the details of latest post by taking the first post in the list <code>site.posts</code>. AFAIK <code>site.posts</code> is sorted in descending order by publishing date, so this approach fetches me the last published post.</p>
 <p>Then it is a simple matter of setting the <code>window.location.href</code> to the final url of the latest post.</p>
 <p>The final task remaining was to make sure that this page was compiled and generated exactly at <code>https://varunbarad.com/blog/latest</code>. For that I specified a <code>permalink: &quot;/blog/latest/&quot;</code> in the front-matter for that page. That way Jekyll knows where to put the final generated HTML file for that page.</p>

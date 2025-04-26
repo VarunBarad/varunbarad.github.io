@@ -4,6 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link href="/assets/css/prism-theme/prism-darcula.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/assets/css/fontawesome-all.css">
     <link rel="icon" type="image/png" href="/favicon.png"/>
     <title>Check network connectivity on Android in 10 lines - Varun Barad</title>
@@ -65,58 +66,53 @@
 <p>Note: This is checking whether or not the device is connected to a network (and not whether it is connected to Internet or not).</p>
 <p>The way Android provides to check for network connectivity is just 10 lines of code. But me being the lazy coder that I am, I just write that code inside a helper method once and then use that one-line method call everywhere that I need to check for connectivity.</p>
 <p>As you can see in the code-block below, it is quite easy to wrap the connectivity check logic in a function.</p>
-<pre><code class="language-java">// Java code sample
+<pre class="language-java"><code class="language-java"><span class="token comment">// Java code sample</span>
 
-public class ConnectivityHelper {
-  public static boolean isConnectedToNetwork(Context context) {
-    ConnectivityManager connectivityManager =
-        (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ConnectivityHelper</span> <span class="token punctuation">{</span>
+  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">boolean</span> <span class="token function">isConnectedToNetwork</span><span class="token punctuation">(</span><span class="token class-name">Context</span> context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token class-name">ConnectivityManager</span> connectivityManager <span class="token operator">=</span>
+        <span class="token punctuation">(</span><span class="token class-name">ConnectivityManager</span><span class="token punctuation">)</span> context<span class="token punctuation">.</span><span class="token function">getSystemService</span><span class="token punctuation">(</span><span class="token class-name">Context</span><span class="token punctuation">.</span><span class="token constant">CONNECTIVITY_SERVICE</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     
-    boolean isConnected = false;
-    if (connectivityManager != null) {
-      NetworkInfo activeNetwork = connectivityManager.getActiveNetworkInfo();
-      isConnected = (activeNetwork != null) &amp;&amp; (activeNetwork.isConnectedOrConnecting());
-    }
+    <span class="token keyword">boolean</span> isConnected <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>connectivityManager <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token class-name">NetworkInfo</span> activeNetwork <span class="token operator">=</span> connectivityManager<span class="token punctuation">.</span><span class="token function">getActiveNetworkInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      isConnected <span class="token operator">=</span> <span class="token punctuation">(</span>activeNetwork <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>activeNetwork<span class="token punctuation">.</span><span class="token function">isConnectedOrConnecting</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
     
-    return isConnected;
-  }
-}
-</code></pre>
-<pre><code class="language-kotlin">// Kotlin code sample
+    <span class="token keyword">return</span> isConnected<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<pre class="language-kotlin"><code class="language-kotlin"><span class="token comment">// Kotlin code sample</span>
 
-// The next line should be the first statement in the file
-@file:JvmName(&quot;ConnectivityHelper&quot;) // This line is only needed if you don't want caller statement in Java to change
+<span class="token comment">// The next line should be the first statement in the file</span>
+<span class="token annotation builtin">@file:JvmName</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"ConnectivityHelper"</span></span><span class="token punctuation">)</span> <span class="token comment">// This line is only needed if you don't want caller statement in Java to change</span>
 
-fun Context.isConnectedToNetwork(): Boolean {
-  val connectivityManager = this.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager?
-  return connectivityManager?.activeNetworkInfo?.isConnectedOrConnecting() ?: false
-}
-</code></pre>
+<span class="token keyword">fun</span> Context<span class="token punctuation">.</span><span class="token function">isConnectedToNetwork</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> Boolean <span class="token punctuation">{</span>
+  <span class="token keyword">val</span> connectivityManager <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getSystemService</span><span class="token punctuation">(</span>Context<span class="token punctuation">.</span>CONNECTIVITY_SERVICE<span class="token punctuation">)</span> <span class="token keyword">as</span> ConnectivityManager<span class="token operator">?</span>
+  <span class="token keyword">return</span> connectivityManager<span class="token operator">?</span><span class="token punctuation">.</span>activeNetworkInfo<span class="token operator">?</span><span class="token punctuation">.</span><span class="token function">isConnectedOrConnecting</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">?:</span> <span class="token boolean">false</span>
+<span class="token punctuation">}</span></code></pre>
 <p>You also need to have the <code>ACCESS_NETWORK_STATE</code> permission added in your manifest like below.</p>
-<pre><code class="language-xml">&lt;manifest ...&gt;
+<pre class="language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>manifest</span> <span class="token attr-name">...</span><span class="token punctuation">></span></span>
   
-  &lt;uses-permission android:name=&quot;android.permission.ACCESS_NETWORK_STATE&quot; /&gt;
-  &lt;application ...&gt;
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>uses-permission</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>android.permission.ACCESS_NETWORK_STATE<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>application</span> <span class="token attr-name">...</span><span class="token punctuation">></span></span>
     ...
-  &lt;/application&gt;
-&lt;/manifest&gt;
-</code></pre>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>application</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>manifest</span><span class="token punctuation">></span></span></code></pre>
 <h3>Done</h3>
 <p>Now anywhere that you need to check the connection, you only need to</p>
-<pre><code class="language-java">// Java code sample
-if (ConnectivityHelper.isConnectedToNetwork(context)) {
-  // Show the connected screen
-} else {
-  // Show disconnected screen
-}
-</code></pre>
-<pre><code class="language-kotlin">// Kotlin code sample
-if (context.isConnectedToInternet()) {
-  // Show the connected screen
-} else {
-  // Show disconnected screen
-}
-</code></pre>
+<pre class="language-java"><code class="language-java"><span class="token comment">// Java code sample</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token class-name">ConnectivityHelper</span><span class="token punctuation">.</span><span class="token function">isConnectedToNetwork</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Show the connected screen</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Show disconnected screen</span>
+<span class="token punctuation">}</span></code></pre>
+<pre class="language-kotlin"><code class="language-kotlin"><span class="token comment">// Kotlin code sample</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>context<span class="token punctuation">.</span><span class="token function">isConnectedToInternet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Show the connected screen</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Show disconnected screen</span>
+<span class="token punctuation">}</span></code></pre>
 <h2>Further reading</h2>
 <p>The <a href="https://developer.android.com/training/monitoring-device-state/connectivity-monitoring.html">Official Documentations</a> are a good place to find more about this.</p>
 <p>If you know of a better way for this, <a href="https://varunbarad.com/contact">contact me</a> or tweet to me <a href="https://twitter.com/varun_barad">@varun_barad</a>. You can even send me ideas for any other topics that you would like to know about.</p>

@@ -4,6 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link href="/assets/css/prism-theme/prism-darcula.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/assets/css/fontawesome-all.css">
     <link rel="icon" type="image/png" href="/favicon.png"/>
     <title>📝 Map an array of ids in postgres to matching data from another table - Varun Barad</title>
@@ -62,25 +63,24 @@
                             By <a class="p-author h-card" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="Mon May 08 2023 23:10:27 GMT+0530 (India Standard Time)">May 08, 2023</time>
                         </div>
                         <div class="post-content e-content"><p>If we have two tables, <code>people</code> and <code>groups</code>, where <code>people</code> has a column <code>group_ids</code> which is an array of ids from <code>groups</code>, we can map the array of ids to the matching name from <code>groups</code> using the following query:</p>
-<pre><code class="language-sql">select
-    p.email as email,
-    coalesce(groups.names, '') as group_names
+<pre class="language-sql"><code class="language-sql"><span class="token keyword">select</span>
+    p<span class="token punctuation">.</span>email <span class="token keyword">as</span> email<span class="token punctuation">,</span>
+    <span class="token keyword">coalesce</span><span class="token punctuation">(</span>groups<span class="token punctuation">.</span>names<span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span> <span class="token keyword">as</span> group_names
 
-from people as p
-    inner join (
-        select string_agg(g.name, ', ') as names, person.id as person_id
+<span class="token keyword">from</span> people <span class="token keyword">as</span> p
+    <span class="token keyword">inner</span> <span class="token keyword">join</span> <span class="token punctuation">(</span>
+        <span class="token keyword">select</span> string_agg<span class="token punctuation">(</span>g<span class="token punctuation">.</span>name<span class="token punctuation">,</span> <span class="token string">', '</span><span class="token punctuation">)</span> <span class="token keyword">as</span> names<span class="token punctuation">,</span> person<span class="token punctuation">.</span>id <span class="token keyword">as</span> person_id
 
-        from entity_groups as g
-            inner join (
-                select id, unnest(group_ids) as group_id
-                from people
-            ) as person on person.group_id = g.id
+        <span class="token keyword">from</span> entity_groups <span class="token keyword">as</span> g
+            <span class="token keyword">inner</span> <span class="token keyword">join</span> <span class="token punctuation">(</span>
+                <span class="token keyword">select</span> id<span class="token punctuation">,</span> unnest<span class="token punctuation">(</span>group_ids<span class="token punctuation">)</span> <span class="token keyword">as</span> group_id
+                <span class="token keyword">from</span> people
+            <span class="token punctuation">)</span> <span class="token keyword">as</span> person <span class="token keyword">on</span> person<span class="token punctuation">.</span>group_id <span class="token operator">=</span> g<span class="token punctuation">.</span>id
 
-        group by person.id
-    ) as groups on groups.person_id = p.id
+        <span class="token keyword">group</span> <span class="token keyword">by</span> person<span class="token punctuation">.</span>id
+    <span class="token punctuation">)</span> <span class="token keyword">as</span> groups <span class="token keyword">on</span> groups<span class="token punctuation">.</span>person_id <span class="token operator">=</span> p<span class="token punctuation">.</span>id
 
-order by email;
-</code></pre>
+<span class="token keyword">order</span> <span class="token keyword">by</span> email<span class="token punctuation">;</span></code></pre>
 <p>It is a three-step process, listed inside to out (i.e. the innermost query is executed first):</p>
 <ol>
 <li>Convert the <code>group_ids</code> array from <code>people</code> into a table of <code>person_id</code> and <code>group_id</code> using <code>unnest</code></li>
