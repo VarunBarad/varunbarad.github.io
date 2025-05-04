@@ -1,5 +1,21 @@
 [
   {
+    "name": "🗃️️Valet",
+    "description": [
+      "As a valet in the real world parks cars in their appropriate places, so does this valet of mine scans the inbox directory and processes and parks various files into their appropriate destinations."
+    ],
+    "links": [
+      {
+        "text": "Source code",
+        "destination": "https://github.com/VarunBarad/valet"
+      },
+      {
+        "text": "Introductory blog post",
+        "destination": "/blog/project-valet"
+      }
+    ]
+  },
+  {
     "name": "⌨️ Typractice",
     "description": [
       "While there are a lot of websites available around to practice your typing, I wanted to build my own which is free of any ads or tracking.",
