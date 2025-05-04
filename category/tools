@@ -261,6 +261,8 @@
     
       <a href="/category/python" class="badge">#python</a>
     
+      <a href="/category/rust" class="badge">#rust</a>
+    
       <a href="/category/rx-java" class="badge">#rx-java</a>
     
       <a href="/category/til" class="badge">#til</a>
@@ -268,6 +270,8 @@
       <a href="/category/tools" class="badge">#tools</a>
     
       <a href="/category/typractice" class="badge">#typractice</a>
+    
+      <a href="/category/valet" class="badge">#valet</a>
     
       <a href="/category/web" class="badge">#web</a>
     
@@ -278,6 +282,20 @@
 
   
   <div class="periods-wrapper">
+    
+      <div class="period">
+        <h2 class="period-title">2025 (1)</h2>
+
+        <div class="post-list">
+          
+            <p class="post-item">
+              <a href="/blog/project-valet.html" class="post-title">🗃️ My valet parks my files for me</a>
+              <br>
+              <span class="post-description">I finally stitched-together a valet to process and park various files from my inbox to their respective destinations</span>
+            </p>
+          
+        </div>
+      </div>
     
       <div class="period">
         <h2 class="period-title">2024 (2)</h2>

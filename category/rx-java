@@ -261,6 +261,8 @@
     
       <a href="/category/python" class="badge">#python</a>
     
+      <a href="/category/rust" class="badge">#rust</a>
+    
       <a href="/category/rx-java" class="badge">#rx-java</a>
     
       <a href="/category/til" class="badge">#til</a>
@@ -268,6 +270,8 @@
       <a href="/category/tools" class="badge">#tools</a>
     
       <a href="/category/typractice" class="badge">#typractice</a>
+    
+      <a href="/category/valet" class="badge">#valet</a>
     
       <a href="/category/web" class="badge">#web</a>
     

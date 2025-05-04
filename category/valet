@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="icon" type="image/png" href="/favicon.png"/>
-  <title>Blog (javascript-30) - Varun Barad</title>
+  <title>Blog (valet) - Varun Barad</title>
   <meta name="description" content="My online home where I post about new things I learn or find interesting."/>
 
   <!-- RSS Feed meta-data -->
@@ -22,7 +22,7 @@
   <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png"/>
   <meta property="og:type" content="object"/>
   <meta property="og:title" content="Varun Barad - Curious Developer"/>
-  <meta property="og:url" content="https://varunbarad.com/category/javascript-30"/>
+  <meta property="og:url" content="https://varunbarad.com/category/valet"/>
   <meta property="og:description" content="My online home where I post about new things I learn or find interesting."/>
 
   <!-- Styles kept here for now -->
@@ -221,7 +221,7 @@
 
 
 <main>
-  <h1>Blog (#javascript-30)</h1>
+  <h1>Blog (#valet)</h1>
 
   <div class="badge-list">
     
@@ -284,32 +284,14 @@
   <div class="periods-wrapper">
     
       <div class="period">
-        <h2 class="period-title">2019 (4)</h2>
+        <h2 class="period-title">2025 (1)</h2>
 
         <div class="post-list">
           
             <p class="post-item">
-              <a href="/blog/javascript-30-array-cardio-1.html" class="post-title">JavaScript 30 - Array Cardio 1</a>
+              <a href="/blog/project-valet.html" class="post-title">🗃️ My valet parks my files for me</a>
               <br>
-              <span class="post-description">Day 4 of JS30 challenge, today we worked with various methods on array and I learned one nifty trick of displaying them in console.</span>
-            </p>
-          
-            <p class="post-item">
-              <a href="/blog/javascript-30-css-variables.html" class="post-title">JavaScript 30 - CSS Variables</a>
-              <br>
-              <span class="post-description">Day 3 of JS30 challenge where I built an analog clock with CSS and animate its changes using JS and CSS.</span>
-            </p>
-          
-            <p class="post-item">
-              <a href="/blog/javascript-30-css-analog-clock.html" class="post-title">JavaScript 30 - CSS Analog Clock</a>
-              <br>
-              <span class="post-description">Day 2 of JS30 challenge where I built an analog clock with CSS and animate its changes using JS and CSS.</span>
-            </p>
-          
-            <p class="post-item">
-              <a href="/blog/javascript-30-building-a-drum-kit.html" class="post-title">JavaScript 30 - Building a Drum Kit</a>
-              <br>
-              <span class="post-description">I started the JavaScript30 challenge from Wes Bos today and learnt how to build a simple drum-kit.</span>
+              <span class="post-description">I finally stitched-together a valet to process and park various files from my inbox to their respective destinations</span>
             </p>
           
         </div>
