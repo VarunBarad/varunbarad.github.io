@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link href="/assets/css/prism-theme/prism-darcula.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/assets/css/fontawesome-all.css">
+    <link rel="icon" type="image/png" href="/favicon.png"/>
+    <title>JavaScript 30 - CSS Variables - Varun Barad</title>
+    <meta name="description" content="Day 3 of JS30 challenge where I built an analog clock with CSS and animate its changes using JS and CSS."/>
+
+    
+
+    <!-- RSS Feed meta-data -->
+    <link type="application/atom+xml" rel="alternate" href="https://varunbarad.com/feed.xml" title="Varun Barad - Curious Developer"/>
+
+    <!-- Twitter meta-data -->
+    <meta name="twitter:site" content="@varun_barad"/>
+    <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png"/>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="JavaScript 30 - CSS Variables"/>
+    <meta name="twitter:description" content="Day 3 of JS30 challenge where I built an analog clock with CSS and animate its changes using JS and CSS."/>
+
+    <!-- Open-Graph meta-data -->
+    <meta property="og:site_name" content="Varun Barad - Curious Developer"/>
+    <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png"/>
+    <meta property="og:type" content="object"/>
+    <meta property="og:title" content="JavaScript 30 - CSS Variables"/>
+    <meta property="og:url" content="https://varunbarad.com/blog/javascript-30-css-variables.html"/>
+    <meta property="og:description" content="Day 3 of JS30 challenge where I built an analog clock with CSS and animate its changes using JS and CSS."/>
+</head>
+<body>
+<div>
+    <div id="header">
+        <div class="row header">
+            <div class="title col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+                <a href="/">
+                    <div class="title">Varun Barad</div>
+                </a>
+            </div>
+            <div class="col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8">
+                <nav class="menu text-right">
+                    <a href="/blog">Blog</a>
+                    <a href="/projects">Projects</a>
+                    <a href="/books">Books</a>
+                    <a href="/ideas">Ideas</a>
+                    <a href="/contact">Contact</a>
+                    <a href="/resume">My Resume</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <article class="h-entry">
+        <div class="content row">
+            <div class="post-container">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <div>
+                        <div class="page-title text-uppercase text-center p-name">
+                            <a class="u-url" href="/blog/javascript-30-css-variables.html">JavaScript 30 - CSS Variables</a>
+                        </div>
+                        <div class="text-center">
+                            By <a class="p-author h-card" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="Wed Oct 02 2019 12:00:00 GMT+0530 (India Standard Time)">October 02, 2019</time>
+                        </div>
+                        <div class="post-content e-content"><p>On my day 3 of <a href="https://javascript30.com">JS30 challenge</a> I got introduced primarily to CSS variables but also to many other things.</p>
+<p>The key concepts I learned from today's challenge were:</p>
+<ul>
+<li>CSS variables</li>
+<li><code>dataset</code> property on DOM elements</li>
+<li>Image blur</li>
+<li>Color input</li>
+</ul>
+<h2>CSS variables</h2>
+<p>CSS variables work very similar to how we use variables in JS or any other programming language. They let us define their value at one place and then just use that same value anywhere we refer to that variable.</p>
+<p>For example, we can define at one place that we want text on our website to be <code>white</code> then we can define it like this</p>
+<pre class="language-css"><code class="language-css"><span class="token selector">:root</span> <span class="token punctuation">{</span>
+    <span class="token property">--text-color</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Here we define this <code>text-color</code> variable at the root element. Now any place that we need to use this value we need to do something like</p>
+<pre class="language-css"><code class="language-css"><span class="token selector">.content</span> <span class="token punctuation">{</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--text-color<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>CSS variables can be used for more than just colors. In today's project we used these variables for storing the border thickness and color of an image and also for storing the blur amount for that image.</p>
+<p><strong>Note:</strong> One fun idea I have with CSS variables is that I can define the color palette of my website at one place and then provide the user with a night-mode switch. I can change colors across the whole website by changing them at just one place.</p>
+<p>To modify their value via JS a simple method call does the trick.</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>dom<span class="token operator">-</span>element<span class="token operator">></span><span class="token punctuation">.</span>style<span class="token punctuation">.</span><span class="token function">setProperty</span><span class="token punctuation">(</span><span class="token string">'--text-color'</span><span class="token punctuation">,</span> <span class="token string">'red'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>The above snippet will change the value associated with <code>--text-color</code> at any point in the <code>dom-element</code> and any of <code>dom-element</code>.</p>
+<h2><code>dataset</code> property on DOM elements</h2>
+<p>In HTML whenever we want to write a custom-property on an element we make use of what are called <code>data</code> attributes. A sample can be like</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>blur<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>range<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>blur<span class="token punctuation">"</span></span> <span class="token attr-name">min</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>0<span class="token punctuation">"</span></span> <span class="token attr-name">max</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>25<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>5<span class="token punctuation">"</span></span> <span class="token attr-name">data-sizing</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>px<span class="token punctuation">"</span></span> <span class="token attr-name">data-purpose</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>A slider input to select blur amount<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></code></pre>
+<p>Here we have defined 2 data attributes, namely <code>data-sizing</code> and <code>data-purpose</code>.</p>
+<p>Now when we need to use these in JS we can simply do</p>
+<pre class="language-javascript"><code class="language-javascript">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>inputElement<span class="token punctuation">.</span>dataset<span class="token punctuation">.</span>sizing<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Used to access the data-sizing attribute.</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>inputElement<span class="token punctuation">.</span>dataset<span class="token punctuation">.</span>purpose<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Used to access the data-purpose attribute.</span></code></pre>
+<p><code>dataset</code> is a very simple property on DOM elements which lists all the <code>data</code> attributes defined on that element.</p>
+<h2>Image blur</h2>
+<p>Today I learnt a nifty simple trick to blur an image using only CSS.</p>
+<pre class="language-css"><code class="language-css"><span class="token selector">img</span> <span class="token punctuation">{</span>
+    <span class="token property">filter</span><span class="token punctuation">:</span> <span class="token function">blur</span><span class="token punctuation">(</span>5px<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>We can just specify a <code>blur</code> CSS filter and our work is done. There are lots of other functions available which can be used as <code>filter</code>, do make sure to take a look at that list.</p>
+<h2>Color input</h2>
+<p>Standardisation of HTML and CSS has made it easy to create a simple and functional color-picker. The only thing that needs to be done is</p>
+<pre class="language-html"><code class="language-html">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>base<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>color<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>base<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#43bc46<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></code></pre>
+<p>Here we have just declared an input tag which then takes care of displaying a color picker and also shows the user with a tiny sample of the color they have picked.</p>
+<h2>Conclusion</h2>
+<p>That's all folks, that was it for today. If you have anything unclear in this article or want to discuss anything else, hit me up on twitter <a href="https://twitter.com/varun_barad">@varun_barad</a>.</p>
+</div>
+                    </div>
+                    <div class="post-categories-container">
+                        Categories:
+                        <div>
+                            
+                                <a href="/category/programming" class="badge badge-warning">#programming</a>
+                            
+                                <a href="/category/web" class="badge badge-warning">#web</a>
+                            
+                                <a href="/category/javascript-30" class="badge badge-warning">#javascript-30</a>
+                            
+                            <a href="/blog" class="badge badge-warning">#all</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+    <div>
+        <div class="footer">
+            <div>
+                <a href="https://github.com/VarunBarad" rel="me">
+                    <i class="fab fa-github social-links"></i>
+                </a>
+                <a href="https://twitter.com/varun_barad" rel="me">
+                    <i class="fab fa-twitter social-links"></i>
+                </a>
+                <a href="https://dev.to/varunbarad" rel="me">
+                    <i class="fab fa-dev social-links"></i>
+                </a>
+                <a href="https://stackoverflow.com/users/4717436/varunbarad" rel="me">
+                    <i class="fab fa-stack-overflow social-links"></i>
+                </a>
+            </div>
+            <div class="developer-attribution">
+                Made by <a href="https://dixita0607.github.io">Dixita Ganatra</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+</body>
+</html>
