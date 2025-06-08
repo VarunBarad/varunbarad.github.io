@@ -4,12 +4,61 @@
   <subtitle>My online home where I post about new things I learn or find interesting.</subtitle>
   <link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml"/>
   <link href="https://varunbarad.com/" rel="alternate" type="text/html"/>
-  <updated>2025-06-08T07:37:59+05:30</updated>
+  <updated>2025-06-08T19:24:15+05:30</updated>
   <id>https://varunbarad.com/feed.xml</id>
   <author>
     <name>Varun Barad</name>
   </author>
 
+  
+    
+    <entry>
+      <title type="html">📝 Rust read build-time environment variables at run-time</title>
+      <link href="https://varunbarad.com/blog/til-rust-build-time-env-vars.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <published>2025-06-08T19:24:15+05:30</published>
+      <updated>2025-06-08T19:24:15+05:30</updated>
+      <id>https://varunbarad.com/blog/til-rust-build-time-env-vars.html</id>
+      <content type="html">
+      &lt;p&gt;When building &lt;a href=&quot;https://varunbarad.com/blog/project-valet&quot;&gt;valet&lt;/a&gt; I required a couple pieces of configuration values but didn&#39;t want to read them from a file and didn&#39;t want them to be forever present in my environment variables so that I can read from there on runtime. Neither did I want to put them in code anywhere, so I looked for if there was a way where I read a value from somewhere (environment variable in this case) at compile-time and then use that value during run-time without needing to have that source available at run-time.&lt;/p&gt;
+&lt;p&gt;That&#39;s where I first encountered how to configure your build process using &lt;code&gt;build.rs&lt;/code&gt;. So let&#39;s take this example that you need to read &lt;code&gt;VALET_CONFIG_SOMETHING&lt;/code&gt; environment variable at build-time and then have its value available at run-time you need to put this in your &lt;code&gt;build.rs&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&quot;language-rust&quot;&gt;&lt;code class=&quot;language-rust&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;token function-definition function&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; compile_time_config &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token namespace&quot;&gt;std&lt;span class=&quot;token punctuation&quot;&gt;::&lt;/span&gt;env&lt;span class=&quot;token punctuation&quot;&gt;::&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;var&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;VALET_CONFIG_SOMETHING&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;expect&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;Please provide config&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token macro property&quot;&gt;println!&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;cargo:rustc-env=CONFIG_SOMETHING={}&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; compile_time_config&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;token comment&quot;&gt;// Rebuild when these change&lt;/span&gt;
+    &lt;span class=&quot;token macro property&quot;&gt;println!&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;cargo:rerun-if-changed=build.rs&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token macro property&quot;&gt;println!&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;cargo:rerun-if-env-changed=VALET_CONFIG_SOMETHING&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And then to use it in your program you need to do something like this:&lt;/p&gt;
+&lt;pre class=&quot;language-rust&quot;&gt;&lt;code class=&quot;language-rust&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;token function-definition function&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token macro property&quot;&gt;println!&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;Config found at run-time: {}&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token macro property&quot;&gt;env!&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;CONFIG_SOMETHING&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;To ensure cargo uses your build-script, you need to add this line to your &lt;code&gt;Cargo.toml&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&quot;language-toml&quot;&gt;&lt;code class=&quot;language-toml&quot;&gt;&lt;span class=&quot;token key property&quot;&gt;build&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;build.rs&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Then you need to ensure that the variable is available at build-time:&lt;/p&gt;
+&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;$ &lt;span class=&quot;token assign-left variable&quot;&gt;VALET_CONFIG_SOMETHING&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;A value for config&quot;&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;cargo&lt;/span&gt; build
+Finished &lt;span class=&quot;token variable&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;`&lt;/span&gt;dev&lt;span class=&quot;token variable&quot;&gt;`&lt;/span&gt;&lt;/span&gt; profile &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;unoptimized + debuginfo&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; target&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;s&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;.00s&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And then check that the value is available later at run-time:&lt;/p&gt;
+&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;$ ./target/debug/valet
+Config found at run-time: A value &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; config&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Articles related to project valet&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://varunbarad.com/blog/project-valet&quot;&gt;Project valet announcement&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://varunbarad.com/blog/til-read-smb-share-password-from-macos-keychain&quot;&gt;Read SMB share password from MacOS Keychain&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Rust read build-time environment variables at run-time (this article)&lt;/li&gt;
+&lt;/ol&gt;
+
+      </content>
+      <author>
+        <name>Varun Barad</name>
+      </author>
+      
+      <category term="til"/>
+      
+      <category term="programming"/>
+      
+      <summary type="html">TIL: How to read in a rust program at run-time the environment variables that were only defined at build-time</summary>
+    </entry>
   
     
     <entry>
@@ -55,6 +104,7 @@
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&quot;https://varunbarad.com/blog/project-valet&quot;&gt;Project valet announcement&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Read SMB share password from MacOS Keychain (this article)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://varunbarad.com/blog/til-rust-build-time-env-vars&quot;&gt;Rust read build-time environment variables at run-time&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
       </content>
@@ -152,6 +202,7 @@ mount_smbfs &lt;span class=&quot;token string&quot;&gt;&quot;//varun@delphinus/L
 &lt;ol&gt;
 &lt;li&gt;Project valet announcement (this article)&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://varunbarad.com/blog/til-read-smb-share-password-from-macos-keychain&quot;&gt;Read SMB share password from MacOS Keychain&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://varunbarad.com/blog/til-rust-build-time-env-vars&quot;&gt;Rust read build-time environment variables at run-time&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
       </content>
