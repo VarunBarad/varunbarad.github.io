@@ -286,6 +286,20 @@
   <div class="periods-wrapper">
     
       <div class="period">
+        <h2 class="period-title">2025 (1)</h2>
+
+        <div class="post-list">
+          
+            <p class="post-item">
+              <a href="/blog/til-read-smb-share-password-from-macos-keychain.html" class="post-title">📝 Read SMB share password from MacOS Keychain</a>
+              <br>
+              <span class="post-description">TIL: How to access entries from MacOS Keychain programmatically, specifically an SMB share's record</span>
+            </p>
+          
+        </div>
+      </div>
+    
+      <div class="period">
         <h2 class="period-title">2024 (4)</h2>
 
         <div class="post-list">

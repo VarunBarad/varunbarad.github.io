@@ -4,12 +4,70 @@
   <subtitle>My online home where I post about new things I learn or find interesting.</subtitle>
   <link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml"/>
   <link href="https://varunbarad.com/" rel="alternate" type="text/html"/>
-  <updated>2025-05-25T10:28:58+05:30</updated>
+  <updated>2025-06-08T07:37:59+05:30</updated>
   <id>https://varunbarad.com/feed.xml</id>
   <author>
     <name>Varun Barad</name>
   </author>
 
+  
+    
+    <entry>
+      <title type="html">📝 Read SMB share password from MacOS Keychain</title>
+      <link href="https://varunbarad.com/blog/til-read-smb-share-password-from-macos-keychain.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <published>2025-06-08T07:37:59+05:30</published>
+      <updated>2025-06-08T07:37:59+05:30</updated>
+      <id>https://varunbarad.com/blog/til-read-smb-share-password-from-macos-keychain.html</id>
+      <content type="html">
+      &lt;p&gt;When building &lt;a href=&quot;https://varunbarad.com/blog/project-valet&quot;&gt;valet&lt;/a&gt; I needed to provide the password for my account on the SMB share hosted on my NAS. I did not want to input it every-time I run valet, but neither did I want to bake it in either the source code or in any build-time variable as then I have to recompile from source every time my password changes.&lt;/p&gt;
+&lt;p&gt;Since I already had it stored in my laptop&#39;s Keychain Access as it is used when I want to mount the share using Finder, I decided to try and read from there. All the online places mention how to retrieve either a record for a website account or retrieve a generic account. But none mentions an SMB share specifically.&lt;/p&gt;
+&lt;p&gt;Here&#39;s a sample entry stored in Keychain Access for an SMB share:&lt;/p&gt;
+&lt;img alt=&quot;A record showing stored SMB credentials in Keychain Access&quot; src=&quot;https://varunbarad.com/assets/images/posts/til-access-macos-keychain-programmatically/entry-in-keychain-access.png&quot; style=&quot;width: 50%; height: auto;&quot; /&gt;
+&lt;h2&gt;Accessing from shell/terminal&lt;/h2&gt;
+&lt;p&gt;And here&#39;s the way to retrieve the password from terminal:&lt;/p&gt;
+&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;security find-internet-password &lt;span class=&quot;token parameter variable&quot;&gt;-a&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;varun&quot;&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-s&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;ella&quot;&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-g&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-w&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;/Users/varun/Library/Keychains/login.keychain-db&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here&#39;s what each option means:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-a&lt;/code&gt;: Corresponds to the username&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-s&lt;/code&gt;: Corresponds to the server. In case of SMB share we don&#39;t have to enter the full-path (&lt;code&gt;smb://ella&lt;/code&gt;) but only its name&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-g&lt;/code&gt;: Display the password for the item found&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-w&lt;/code&gt;: Display only the password and not the whole record&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Accessing from Rust&lt;/h2&gt;
+&lt;p&gt;There is a nice crate in rust called &lt;a href=&quot;https://crates.io/crates/security-framework&quot;&gt;&lt;code&gt;security-framework&lt;/code&gt;&lt;/a&gt; which handles things for us. Here&#39;s a snippet of how to get the password in a string in rust:&lt;/p&gt;
+&lt;pre class=&quot;language-rust&quot;&gt;&lt;code class=&quot;language-rust&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;token function-definition function&quot;&gt;get_network_share_password&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;-&gt;&lt;/span&gt; &lt;span class=&quot;token namespace&quot;&gt;std&lt;span class=&quot;token punctuation&quot;&gt;::&lt;/span&gt;io&lt;span class=&quot;token punctuation&quot;&gt;::&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;Result&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; keychain &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;SecKeychain&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;/Users/varun/Library/Keychains/login.keychain-db&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;unwrap&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;password&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; _&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;find_internet_password&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;token class-name&quot;&gt;Some&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;keychain&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;token string&quot;&gt;&quot;ella&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;token class-name&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;token string&quot;&gt;&quot;varun&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;token string&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;token class-name&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;token class-name&quot;&gt;SecProtocolType&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;SMB&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;token class-name&quot;&gt;SecAuthenticationType&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;Any&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;unwrap&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Ok&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;from_utf8&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;password&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;to_vec&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;unwrap&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Articles related to project valet&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://varunbarad.com/blog/project-valet&quot;&gt;Project valet announcement&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Read SMB share password from MacOS Keychain (this article)&lt;/li&gt;
+&lt;/ol&gt;
+
+      </content>
+      <author>
+        <name>Varun Barad</name>
+      </author>
+      
+      <category term="til"/>
+      
+      <category term="programming"/>
+      
+      <summary type="html">TIL: How to access entries from MacOS Keychain programmatically, specifically an SMB share&#39;s record</summary>
+    </entry>
   
     
     <entry>
@@ -90,6 +148,11 @@ mount_smbfs &lt;span class=&quot;token string&quot;&gt;&quot;//varun@delphinus/L
 &lt;li&gt;The bills that I create for my consulting clients&lt;/li&gt;
 &lt;li&gt;Some of the bills that I receive (for example from my ISP)&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h2&gt;Articles related to project valet&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Project valet announcement (this article)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://varunbarad.com/blog/til-read-smb-share-password-from-macos-keychain&quot;&gt;Read SMB share password from MacOS Keychain&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
 
       </content>
       <author>
