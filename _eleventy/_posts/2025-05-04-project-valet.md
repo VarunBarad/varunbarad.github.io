@@ -70,3 +70,8 @@ The current version of valet only handles a couple of my credit card statements 
 
 - The bills that I create for my consulting clients
 - Some of the bills that I receive (for example from my ISP)
+
+## Articles related to project valet
+
+1. Project valet announcement (this article)
+2. [Read SMB share password from MacOS Keychain](./til-read-smb-share-password-from-macos-keychain)
