@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "Techniques to Improve Focus"
 summary: "How to build your focus muscle when it has atrophied over the years"
 date: 2020-08-21T00:00:00+0530

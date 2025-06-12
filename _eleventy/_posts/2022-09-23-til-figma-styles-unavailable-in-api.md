@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "📝 Figma styles not present in the API response"
 summary: "TIL: Why Figma returns empty styles in API and how to fix it"
 date: 2022-09-23T13:01:54+0530

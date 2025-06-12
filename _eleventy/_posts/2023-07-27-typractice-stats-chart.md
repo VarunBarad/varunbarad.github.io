@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "⌨️ Showing historical statistics"
 summary: "I added a chart to show your progress over time"
 date: 2023-07-27T22:11:36+0530

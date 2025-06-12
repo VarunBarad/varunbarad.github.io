@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "📝 Delay subtitles using ffmpeg"
 summary: "TIL: How to delay all subtitles in a file by a fixed amount using ffmpeg"
 date: 2024-06-28T11:11:33+0530

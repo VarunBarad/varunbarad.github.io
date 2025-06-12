@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "Cheatsheet - ImageMagick"
 summary: "A cheat-sheet for ImageMagick"
 date: 2021-10-17T00:00:00+0530

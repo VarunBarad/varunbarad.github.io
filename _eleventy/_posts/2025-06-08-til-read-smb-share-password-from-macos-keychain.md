@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "📝 Read SMB share password from MacOS Keychain"
 summary: "TIL: How to access entries from MacOS Keychain programmatically, specifically an SMB share's record"
 date: 2025-06-08T07:37:59+0530

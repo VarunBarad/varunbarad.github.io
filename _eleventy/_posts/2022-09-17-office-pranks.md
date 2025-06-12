@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "Office Pranks"
 summary: "A list of simple and safe pranks you can pull on your colleagues."
 date: 2022-09-17T06:40:13+0530

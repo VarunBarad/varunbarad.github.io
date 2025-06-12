@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "📝 Recursively remove .DS_Store files"
 summary: "TIL: Shell command to recursively remove .DS_Store files"
 date: 2023-08-09T14:49:36+0530

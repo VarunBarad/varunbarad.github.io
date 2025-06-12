@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "📝 List files updated in a git commit"
 summary: "TIL: How to see a list of files updated in a git commit"
 date: 2021-11-17T00:00:00+0530

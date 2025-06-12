@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "Dart Extension Methods"
 summary: "An overview of extension methods in Dart and how they can be useful"
 date: 2020-02-04T12:00:00+0530

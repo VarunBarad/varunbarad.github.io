@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "Challenge Update: Two and a Quarter Books"
 summary: "Update on my 2020 year-end reading challenge"
 date: 2021-01-10T00:00:00+0530

@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "Sync git fork with upstream"
 summary: "This is a simple guide on how to sync your fork of a git/github project with upstream changes."
 date: 2019-10-25T12:00:00+0530

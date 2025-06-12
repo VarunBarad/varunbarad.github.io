@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "Useful fonts"
 summary: "A list of useful fonts which can be used."
 date: 2022-08-12T00:00:00+0530

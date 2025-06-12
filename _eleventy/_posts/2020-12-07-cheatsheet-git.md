@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "Cheatsheet - Git"
 summary: "A cheat-sheet for git CLI"
 date: 2020-12-07T00:00:00+0530

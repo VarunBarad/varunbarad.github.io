@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "📝 Castle Under Threat"
 summary: "TIL: You cannot castle your king in chess if king's path is under threat"
 date: 2021-06-29T00:00:00+0530

@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "📝 Outputting text with echo without a newline"
 summary: "TIL: How to output text with echo without a newline at the end of it"
 date: 2024-04-06T15:14:19+0530

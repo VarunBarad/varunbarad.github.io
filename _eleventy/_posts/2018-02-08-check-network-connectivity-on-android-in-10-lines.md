@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title:  "Check network connectivity on Android in 10 lines"
 summary: "Let's see how simple it is to show correct feedback to user on whether they are connected to the network or not in Android."
 date: 2018-02-08T12:00:00+0530

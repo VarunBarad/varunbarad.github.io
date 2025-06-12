@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title:  "JavaScript 30 - CSS Variables"
 summary: "Day 3 of JS30 challenge where I built an analog clock with CSS and animate its changes using JS and CSS."
 date: 2019-10-02T12:00:00+0530

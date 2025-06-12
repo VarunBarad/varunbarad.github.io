@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "Challenge Update: The Adventures of Sherlock Holmes"
 summary: "Update on my 2020 year-end reading challenge"
 date: 2020-12-06T00:00:00+0530

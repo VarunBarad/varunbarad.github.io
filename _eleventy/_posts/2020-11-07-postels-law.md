@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "Postel's Law"
 summary: "A good yardstick to increase developer sanity"
 date: 2020-11-07T00:00:00+0530

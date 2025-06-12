@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "🗃️ My valet parks my files for me"
 summary: "I finally stitched-together a valet to process and park various files from my inbox to their respective destinations"
 date: 2025-05-04T11:59:13+0530

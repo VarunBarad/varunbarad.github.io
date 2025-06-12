@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "📝 Navigate to a path in Mac Finder"
 summary: "TIL: How to navigate to a given system path without clicking through folders"
 date: 2023-03-14T18:32:10+0530

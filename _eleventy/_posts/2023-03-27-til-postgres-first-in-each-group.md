@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "📝 Find the first entry in each group"
 summary: "TIL: How to get the first entry from each group given a sort order"
 date: 2023-03-27T17:39:15+0530

@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title:  "Creating a single-file backup of your git repository"
 summary: "I created a python script which creates a zip-file containing the git-bundle and all the patch-files for different stashed changes in your repository."
 date: 2019-03-03T12:00:00+0530

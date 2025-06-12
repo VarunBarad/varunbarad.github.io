@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "Achievement Unlocked: Finished my first exercise challenge"
 summary: "I have taken on many exercise challenges in the past but this is the first time I finished one."
 date: 2020-11-29T00:00:00+0530

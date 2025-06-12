@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "📝 PostgreSQL: Make a column unique after creating it"
 summary: "TIL: How to add unique constraint to an existing column in a PostgreSQL table"
 date: 2023-08-19T14:23:22+0530

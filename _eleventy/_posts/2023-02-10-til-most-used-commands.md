@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "📝 Most used commands"
 summary: "TIL: How to view your most used terminal commands on a Mac"
 date: 2023-02-10T11:04:06+0530

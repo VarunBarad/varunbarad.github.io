@@ -1,0 +1,117 @@
+---
+permalink: '/new_blog/{{ page.fileSlug }}.html'
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    {% comment %}<link rel="stylesheet" href="/assets/css/style.css">{% endcomment %}
+    <link rel="stylesheet" href="/assets/css/prism-theme/prism-darcula.css" />
+    {% comment %}<link rel="stylesheet" href="/assets/css/fontawesome-all.css" />{% endcomment %}
+    <link rel="stylesheet" href="/assets/css/pico.css" />
+    <link rel="icon" type="image/png" href="/favicon.png"/>
+    <title>{{ title }} - Varun Barad</title>
+    <meta name="description" content="{{ summary }}"/>
+
+    {% if canonical_url %}
+        <!-- Canonical URL -->
+        <link rel="canonical" href="{{ canonical_url }}">
+    {% endif %}
+
+    <!-- RSS Feed meta-data -->
+    <link type="application/atom+xml" rel="alternate" href="{{ site.url }}/feed.xml" title="{{ site.title }}"/>
+
+    <!-- Twitter meta-data -->
+    <meta name="twitter:site" content="@{{ site.twitter_username }}"/>
+    <meta name="twitter:image:src" content="{{ site.url }}/assets/images/logo-hd.png"/>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="{{ title }}"/>
+    <meta name="twitter:description" content="{{ summary }}"/>
+
+    <!-- Open-Graph meta-data -->
+    <meta property="og:site_name" content="{{ site.title }}"/>
+    <meta property="og:image" content="{{ site.url }}/assets/images/logo-hd.png"/>
+    <meta property="og:type" content="object"/>
+    <meta property="og:title" content="{{ title }}"/>
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}"/>
+    <meta property="og:description" content="{{ summary }}"/>
+</head>
+<body class="container-fluid">
+<header id="header">
+    <nav>
+        <ul>
+            <li><a href="/"><strong>Varun Barad</strong></a></li>
+        </ul>
+        <ul>
+            <li class="secondary"><a href="/blog">Blog</a></li>
+            <li class="secondary"><a href="/projects">Projects</a></li>
+            <li class="secondary"><a href="/ideas">Ideas</a></li>
+            <li class="secondary"><a href="/contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+<main class="container">
+    <hgroup>
+        <h2>{{ title }}</h2>
+        <p>By Varun Barad on <time class="post-date dt-published" datetime="{{ page.date }}">{{ page.date | date: '%B %d, %Y' }}</time></p>
+    </hgroup>
+
+    <section class="post-content e-content">{{ content }}</section>
+
+    <section class="post-categories-container">
+        Categories:
+        {% for category in categories %}
+            <a href="/category/{{ category }}.html" class="badge badge-warning">#{{ category }}</a>
+        {% endfor %}
+        <a href="/blog" class="badge badge-warning">#all</a>
+    </section>
+</main>
+<footer class="container-fluid">
+    <div class="grid">
+        <aside>
+            <nav>
+                <ul>
+                    <li><strong>Core</strong></li>
+                    <li>Blog</li>
+                    <li>Now</li>
+                    <li>Contact</li>
+                    <li>Resume</li>
+                    <li>Wishlist</li>
+                </ul>
+            </nav>
+        </aside>
+        <aside>
+            <nav>
+                <ul>
+                    <li><strong>Creation</strong></li>
+                    <li>Projects</li>
+                    <li>Ideas</li>
+                    <li>Uses</li>
+                    <li>Changelog</li>
+                    <li>Feeds</li>
+                    <li>Colophon</li>
+                </ul>
+            </nav>
+        </aside>
+        <aside>
+            <nav>
+                <ul>
+                    <li><strong>Consumption</strong></li>
+                    <li>Books</li>
+                    <li>Movies</li>
+                    <li>Games</li>
+                    <li>Recipes</li>
+                    <li>Blogroll</li>
+                    <li>Postroll</li>
+                </ul>
+            </nav>
+        </aside>
+    </div>
+
+    <div class="developer-attribution">
+        Made by <a href="https://dixita0607.github.io">Dixita Ganatra</a>
+    </div>
+</footer>
+</body>
+</html>

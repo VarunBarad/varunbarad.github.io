@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "Java convert LocalDateTime to Instant using ZoneId"
 summary: "How to convert from LocalDateTime to Instant using ZoneId without ZoneOffset in Java 8 Time APIs"
 date: 2020-12-14T00:00:00+0530

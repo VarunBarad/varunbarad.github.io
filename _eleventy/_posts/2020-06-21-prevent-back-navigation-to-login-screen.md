@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "Prevent back navigation to login screen"
 summary: "The guide to correct way of preventing back navigation to login screens once user is logged-in"
 date: 2020-06-21T12:00:00+0530

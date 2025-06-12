@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "📝 Remove password from PDF files using qpdf"
 summary: "TIL: If you know the password then you can remove it from PDF files using qpdf"
 date: 2024-05-02T00:28:40+0530

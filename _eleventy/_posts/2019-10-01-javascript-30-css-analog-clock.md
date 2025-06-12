@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title:  "JavaScript 30 - CSS Analog Clock"
 summary: "Day 2 of JS30 challenge where I built an analog clock with CSS and animate its changes using JS and CSS."
 date: 2019-10-01T12:00:00+0530

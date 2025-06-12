@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "Fixing the torch 🔦"
 summary: "I fixed a torch and that has made me extremely elated"
 date: 2025-05-25T10:28:58+0530

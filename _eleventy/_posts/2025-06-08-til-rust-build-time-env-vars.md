@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "📝 Rust read build-time environment variables at run-time"
 summary: "TIL: How to read in a rust program at run-time the environment variables that were only defined at build-time"
 date: 2025-06-08T19:24:15+0530

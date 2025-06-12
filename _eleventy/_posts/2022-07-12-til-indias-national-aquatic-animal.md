@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "📝 India's national aquatic animal"
 summary: "TIL: India has a species of dolphin as its national aquatic animal."
 date: 2022-07-12T00:00:00+0530

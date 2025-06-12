@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "📝 Map an array of ids in postgres to matching data from another table"
 summary: "TIL: How to map an array in postgres to other data"
 date: 2023-05-08T23:10:27+0530

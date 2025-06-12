@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "📝 Counting days between 2 dates in PostgreSQL"
 summary: "TIL: You can use the extract function to find difference in days between 2 dates"
 date: 2023-04-09T07:52:44+0530

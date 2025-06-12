@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "🗂 Filenames can't just be anything"
 summary: "There are limitations on how long a filename can be or even what characters it can contain. And they differ across different filesystems."
 date: 2024-04-12T09:01:19+0530

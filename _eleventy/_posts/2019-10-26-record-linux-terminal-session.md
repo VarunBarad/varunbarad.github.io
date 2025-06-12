@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "Record Linux terminal session"
 summary: "How to record your linux terminal session to work on later."
 date: 2019-10-26T12:00:00+0530

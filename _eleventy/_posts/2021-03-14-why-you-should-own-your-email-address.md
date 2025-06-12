@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "Why you should own your email address?"
 summary: "My write-up on reasons why it is better for you to own your email address."
 date: 2021-03-14T00:00:00+0530

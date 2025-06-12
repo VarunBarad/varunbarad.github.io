@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "P vs NP Algorithm Problem Types"
 summary: "I finally wrapped my head around the differences between P vs NP vs NP-Complete problems"
 date: 2020-02-02T12:00:00+0530

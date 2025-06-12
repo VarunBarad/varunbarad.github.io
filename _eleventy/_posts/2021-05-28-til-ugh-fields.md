@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "📝 Ugh fields"
 summary: "TIL: What are \"ugh fields\" and why everyone should atleast know about them."
 date: 2021-05-28T00:00:00+0530

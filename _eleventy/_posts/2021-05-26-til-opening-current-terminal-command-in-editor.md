@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "📝 Opening current terminal command in $EDITOR"
 summary: "TIL: Ctrl+X followed by Ctrl+E opens the command you are currently editing in your $EDITOR program"
 date: 2021-05-26T00:00:00+0530

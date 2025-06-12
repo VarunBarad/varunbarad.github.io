@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "Check if your request body is compressed"
 summary: "Make sure to know what is the default request body compression setting in your http library is"
 date: 2020-10-11T00:00:00+0530

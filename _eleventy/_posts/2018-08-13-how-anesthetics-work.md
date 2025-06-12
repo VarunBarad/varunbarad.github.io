@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title:  "How anesthetics work"
 summary: "A post on the different categories of anesthetics and their working mechanisms and differences."
 date: 2018-08-13T12:00:00+0530
@@ -139,5 +139,3 @@ I am not a doctor and I don't pose as one on the internet. This post is just a c
 
 [source-how-stuff-works-anesthetics]: https://science.howstuffworks.com/anesthesia.htm
 [source-drugs-com-novocaine]: https://www.drugs.com/pro/novocain.html
-
-

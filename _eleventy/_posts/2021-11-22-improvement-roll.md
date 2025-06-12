@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "Improvement Roll"
 summary: "A tiny website to suggest you useful things to do in down-time"
 date: 2021-11-22T00:00:00+0530

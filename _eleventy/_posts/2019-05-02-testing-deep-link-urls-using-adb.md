@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title:  "Testing Deep-Link URLs using ADB"
 summary: "Simple adb command to help you fire deep-link url in mobile from your console."
 date: 2019-05-02T12:00:00+0530

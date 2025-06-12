@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "🐳 Starting docker on demand"
 summary: "How to avoid not having docker running when you run <code>docker</code> or <code>docker-compose</code> commands"
 date: 2023-09-11T13:17:31+0530

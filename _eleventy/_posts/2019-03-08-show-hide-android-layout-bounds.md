@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title:  "Show/Hide Layout Bounds in Android"
 summary: "A couple of scripts that help to toggle display of layout-bounds on connected Android device using ADB."
 date: 2019-03-08T12:00:00+0530

@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "📝 Comparing two BigDecimal instances"
 summary: "TIL: Turns out that 7.5.toBigDecimal() and 7.50.toBigDecimal() are not equal"
 date: 2021-07-29T00:00:00+0530

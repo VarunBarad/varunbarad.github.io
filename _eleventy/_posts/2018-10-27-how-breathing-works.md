@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title:  "How Breathing Works"
 summary: "Ever wondered how our breathing is regulated? Let me take you on a ride down the wind-pipe."
 date: 2018-10-27T12:00:00+0530

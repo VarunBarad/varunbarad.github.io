@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "📝 How to make non-capturing groups in RegEx"
 summary: "TIL: What are non-capturing groups and how we can use them"
 date: 2022-08-30T07:44:04+0530

@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "📝 Taking a heap-dump from a running JVM process"
 summary: "TIL: How to take heap-dump from a running JVM process"
 date: 2023-01-19T13:00:00+0530

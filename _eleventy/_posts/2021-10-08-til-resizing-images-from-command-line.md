@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "📝 Resizing images from command-line"
 summary: "TIL: Resizing images from command-line while centering them and adding a transparent background."
 date: 2021-10-08T00:00:00+0530

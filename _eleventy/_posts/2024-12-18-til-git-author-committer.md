@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "📝 Specifying different author and committer in git"
 summary: "TIL: How to specify different author and committer for a commit in git"
 date: 2024-12-18T23:13:33+0530

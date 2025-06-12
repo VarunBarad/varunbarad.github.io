@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "Windows Symlink"
 summary: "How to create a Linux-like symlink on Windows"
 date: 2021-07-24T00:00:00+0530

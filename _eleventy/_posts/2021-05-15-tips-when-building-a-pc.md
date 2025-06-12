@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "Tips when building a PC"
 summary: "A friend asked me what to look out for when building a PC and this is the list"
 date: 2021-05-15T00:00:00+0530

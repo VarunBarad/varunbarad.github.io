@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title:  "How to add \"latest\" post redirect to Jekyll site"
 summary: "I wanted to add a URL to my site which will always redirect the visitor to the latest blog post I have published at that time."
 date: 2019-10-08T12:00:00+0530

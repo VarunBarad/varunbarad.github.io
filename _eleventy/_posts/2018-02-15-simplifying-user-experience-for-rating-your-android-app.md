@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title:  "Simplifying User-Experience for rating your Android app"
 summary: "Make it easy for your users to rate your Android app."
 date: 2018-02-15T12:00:00+0530

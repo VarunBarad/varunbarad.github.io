@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "📝 Save dependency list of your python project to a file"
 summary: "TIL: How to do for python what we get with `dependencies` in npm `package.json`"
 date: 2023-05-22T16:10:27+0530

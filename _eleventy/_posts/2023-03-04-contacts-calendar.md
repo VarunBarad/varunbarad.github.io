@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "Contacts Calendar"
 summary: "A website which lets you export a calendar of important dates from your Google Contacts"
 date: 2023-03-04T17:18:03+0530

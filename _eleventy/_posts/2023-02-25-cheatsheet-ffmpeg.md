@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "Cheatsheet - ffmpeg"
 summary: "A cheat-sheet for ffmpeg"
 date: 2023-02-25T10:36:10+0530

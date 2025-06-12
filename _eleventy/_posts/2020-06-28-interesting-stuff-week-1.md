@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "Interesting Stuff - Week 1"
 summary: "My weekly newsletter of things I found interesting"
 date: 2020-06-28T12:00:00+0530

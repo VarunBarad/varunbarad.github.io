@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "📝 Custom 404 in Express"
 summary: "TIL: How to return custom response for a 404 in Express on NodeJS"
 date: 2023-06-02T17:52:02+0530

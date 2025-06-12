@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "📝 Authentication with wget"
 summary: "TIL: How to provide username and password for simple authentication when downloading files using wget"
 date: 2022-09-04T07:43:54+0530

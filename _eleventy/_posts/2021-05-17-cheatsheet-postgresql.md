@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "🐘 Cheatsheet - PostgreSQL"
 summary: "A cheat-sheet for PostgreSQL database"
 date: 2021-05-17T00:00:00+0530

@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title:  "How to Stop Worrying and Start Living"
 summary: "Here are some things I found noteworthy in the book \"How to Stop Worrying and Start Living\" by Dale Carnegie."
 date: 2017-01-01T12:00:00+0530

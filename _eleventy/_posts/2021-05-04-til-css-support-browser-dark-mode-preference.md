@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "📝 CSS support for browser dark-mode preference"
 summary: "TIL: How to support dark-mode preference of browser via CSS"
 date: 2021-05-04T00:00:00+0530

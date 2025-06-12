@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "Immigration Dead Man's Switch"
 summary: "How to protect your data and yourself while passing through customs/immigration check"
 date: 2020-05-16T12:00:00+0530

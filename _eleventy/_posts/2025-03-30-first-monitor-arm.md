@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "Installing my first monitor arm"
 summary: "I installed my first monitor arm and it is a desk changer."
 date: 2025-03-30T23:12:26+0530

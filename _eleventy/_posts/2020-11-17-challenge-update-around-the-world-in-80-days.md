@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "Challenge Update: Around the World in 80 Days"
 summary: "Update on my 2020 year-end reading challenge"
 date: 2020-11-17T00:00:00+0530

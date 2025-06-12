@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "Group posts by year in Jekyll using Liquid"
 summary: "You can use the `group_by_exp` filter in Liquid to group posts by year"
 date: 2023-05-10T07:55:00+0530

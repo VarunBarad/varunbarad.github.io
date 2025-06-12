@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "🎬 Movie rating system"
 summary: "A simple heuristic to rate movies based on their viewability and enjoyment"
 date: 2023-07-22T11:31:20+0530

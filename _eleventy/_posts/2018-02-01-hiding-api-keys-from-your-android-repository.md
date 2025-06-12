@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title:  "Hiding API keys from your Android repository"
 summary: "Learn how to secure your API keys while keeping the source code for that Android app open-source."
 date: 2018-02-01T12:00:00+0530

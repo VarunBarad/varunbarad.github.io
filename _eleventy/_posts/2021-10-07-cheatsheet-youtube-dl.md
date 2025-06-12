@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "Cheatsheet - YouTube-DL"
 summary: "A cheat-sheet for YouTube-DL CLI"
 date: 2021-10-07T00:00:00+0530

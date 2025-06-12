@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title:  "Don't worry about specializing yet!"
 summary: "What technologies should I be learning, so that they prove helpful in my career?"
 date: 2019-03-19T12:00:00+0530

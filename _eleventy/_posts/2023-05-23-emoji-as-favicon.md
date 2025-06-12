@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "📝 Using emoji as a favicon"
 summary: "TIL: How to write a simple SVG which renders an emoji as a favicon"
 date: 2023-05-23T17:32:32+0530

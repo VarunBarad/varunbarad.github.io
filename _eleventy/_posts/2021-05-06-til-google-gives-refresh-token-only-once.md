@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "📝 Google gives refresh token only once"
 summary: "TIL: Google doesn't return refresh token on subsequent authentication after the first one."
 date: 2021-05-06T00:00:00+0530

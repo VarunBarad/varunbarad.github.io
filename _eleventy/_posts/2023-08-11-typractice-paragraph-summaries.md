@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "⌨️ Paragraph performance summaries"
 summary: "I added a chart to show your progress over time"
 date: 2023-08-11T21:33:50+0530

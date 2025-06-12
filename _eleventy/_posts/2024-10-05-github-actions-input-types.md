@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "Not all booleans are created equal on GitHub Actions"
 summary: "How to get an actual boolean input value on a manually run GitHub Action"
 date: 2024-10-05T06:55:23+0530

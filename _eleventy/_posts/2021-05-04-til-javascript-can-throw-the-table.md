@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "📝 JavaScript can \"throw\" the table"
 summary: "TIL: JavaScript can throw anything"
 date: 2021-05-04T12:00:00+0530

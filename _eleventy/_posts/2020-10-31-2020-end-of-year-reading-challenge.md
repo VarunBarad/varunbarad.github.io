@@ -1,7 +1,7 @@
 ---
 tags:
   - post
-layout: post
+layout: new_post
 title: "2020 End of Year Reading Challenge"
 summary: "I went to a nearby bookstore this week and now taking on a reading challenge"
 date: 2020-10-31T00:00:00+0530
