@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+    <link rel="stylesheet" href="/assets/css/prism-theme/prism-darcula.css" />
+    
+    <link rel="stylesheet" href="/assets/css/pico.css" />
+    <link rel="icon" type="image/png" href="/favicon.png"/>
+    <title>Write Custom Android Lint Rule - Manifest File - Varun Barad</title>
+    <meta name="description" content="Writing our own custom android lint rules for verifying AndroidManifest file."/>
+
+    
+
+    <!-- RSS Feed meta-data -->
+    <link type="application/atom+xml" rel="alternate" href="https://varunbarad.com/feed.xml" title="Varun Barad - Curious Developer"/>
+
+    <!-- Twitter meta-data -->
+    <meta name="twitter:site" content="@varun_barad"/>
+    <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png"/>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="Write Custom Android Lint Rule - Manifest File"/>
+    <meta name="twitter:description" content="Writing our own custom android lint rules for verifying AndroidManifest file."/>
+
+    <!-- Open-Graph meta-data -->
+    <meta property="og:site_name" content="Varun Barad - Curious Developer"/>
+    <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png"/>
+    <meta property="og:type" content="object"/>
+    <meta property="og:title" content="Write Custom Android Lint Rule - Manifest File"/>
+    <meta property="og:url" content="https://varunbarad.com/new_blog/write-custom-android-lint-rule-manifest-file.html"/>
+    <meta property="og:description" content="Writing our own custom android lint rules for verifying AndroidManifest file."/>
+</head>
+<body class="container-fluid">
+<header id="header">
+    <nav>
+        <ul>
+            <li><a href="/"><strong>Varun Barad</strong></a></li>
+        </ul>
+        <ul>
+            <li class="secondary"><a href="/blog">Blog</a></li>
+            <li class="secondary"><a href="/projects">Projects</a></li>
+            <li class="secondary"><a href="/ideas">Ideas</a></li>
+            <li class="secondary"><a href="/contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+<main class="container">
+    <hgroup>
+        <h2>Write Custom Android Lint Rule - Manifest File</h2>
+        <p>By Varun Barad on <time class="post-date dt-published" datetime="Fri Feb 28 2020 12:00:00 GMT+0530 (India Standard Time)">February 28, 2020</time></p>
+    </hgroup>
+
+    <section class="post-content e-content"><p>Welcome folks, last time we wrote a lint check for making sure that all of our <code>EditText</code> have the <code>android:inputType</code> attribute.</p>
+<p>This time we will be writing a check which works on our <code>AndroidManifest.xml</code> file. This check will ensure that our <code>application</code> tag has a child <code>meta-data</code> tag with attribute <code>android:name=&quot;android.webkit.WebView.MetricsOptOut&quot;</code>. Read the background for that <a href="https://developer.android.com/guide/webapps/managing-webview#metrics">here</a>.</p>
+<p>If you haven't yet then first go through <a href="https://varunbarad.com/blog/write-custom-android-lint-rule-layout-files">the last post</a> otherwise you might not understand many things as we will be building upon what we have created in that post.</p>
+<h2>Changes to add to last project</h2>
+<p>We will be building upon the <code>lint-checks</code> module we created last time. We would need to make following changes:</p>
+<ul>
+<li>Add a new issue and detector pertaining to this manifest check</li>
+<li>Register the new issue in <code>LintRegistry</code> class</li>
+</ul>
+<h2>Create the detector</h2>
+<p>Create a class named <code>WebViewMetricsMetaTagDetector</code> which extends from <code>ManifestDetector</code></p>
+<pre class="language-kotlin"><code class="language-kotlin"><span class="token keyword">class</span> WebViewMetricsMetaTagDetector <span class="token operator">:</span> <span class="token function">ManifestDetector</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token operator">..</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Now to define the Issue.</p>
+<pre class="language-kotlin"><code class="language-kotlin"><span class="token keyword">companion</span> <span class="token keyword">object</span> <span class="token punctuation">{</span>
+    <span class="token annotation builtin">@JvmStatic</span>
+    <span class="token keyword">internal</span> <span class="token keyword">val</span> ISSUE_MISSING_WEBVIEW_METRICS_META_TAG <span class="token operator">=</span> Issue<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>
+        id <span class="token operator">=</span> <span class="token string-literal singleline"><span class="token string">"MissingWebViewMetricsMetaTag"</span></span><span class="token punctuation">,</span>
+        briefDescription <span class="token operator">=</span> <span class="token string-literal singleline"><span class="token string">"Specify whether you want to opt-out of metrics tracking via WebView."</span></span><span class="token punctuation">,</span>
+        explanation <span class="token operator">=</span> <span class="token string-literal singleline"><span class="token string">"WebView can upload diagnostic data to Google. You can opt-out by specifying a `meta-data` tag under your `application` tag in manifest."</span></span><span class="token punctuation">,</span>
+        category <span class="token operator">=</span> Category<span class="token punctuation">.</span>SECURITY<span class="token punctuation">,</span>
+        priority <span class="token operator">=</span> <span class="token number">8</span><span class="token punctuation">,</span>
+        severity <span class="token operator">=</span> Severity<span class="token punctuation">.</span>ERROR<span class="token punctuation">,</span>
+        implementation <span class="token operator">=</span> <span class="token function">Implementation</span><span class="token punctuation">(</span>
+            WebViewMetricsMetaTagDetector<span class="token operator">::</span><span class="token keyword">class</span><span class="token punctuation">.</span>java<span class="token punctuation">,</span>
+            Scope<span class="token punctuation">.</span>MANIFEST_SCOPE
+        <span class="token punctuation">)</span>
+    <span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addMoreInfo</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"https://developer.android.com/guide/webapps/managing-webview#metrics"</span></span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<p>The things that have changed here are:</p>
+<ol>
+<li><code>id</code>, <code>briefDescription</code> and <code>explanation</code> for the issue.</li>
+<li>Scope inside the Implementation object passed against <code>implementation</code> parameter. We changed from <code>Scope.ALL_RESOURCES_SCOPE</code> to <code>Scope.MANIFEST_SCOPE</code>.</li>
+</ol>
+<p>We now override the 2 required methods:</p>
+<pre class="language-kotlin"><code class="language-kotlin"><span class="token keyword">override</span> <span class="token keyword">fun</span> <span class="token function">getApplicableElements</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> Collection<span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token operator">?</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token function">listOf</span><span class="token punctuation">(</span>
+        SdkConstants<span class="token punctuation">.</span>TAG_APPLICATION
+    <span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">override</span> <span class="token keyword">fun</span> <span class="token function">visitElement</span><span class="token punctuation">(</span>context<span class="token operator">:</span> XmlContext<span class="token punctuation">,</span> element<span class="token operator">:</span> Element<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">val</span> containsWebViewMetricsOptOutTag <span class="token operator">=</span> element<span class="token punctuation">.</span>childNodes
+        <span class="token punctuation">.</span><span class="token function">toList</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">filter</span> <span class="token punctuation">{</span> it<span class="token punctuation">.</span>nodeName <span class="token operator">==</span> <span class="token string-literal singleline"><span class="token string">"meta-data"</span></span> <span class="token punctuation">}</span>
+        <span class="token punctuation">.</span><span class="token function">any</span> <span class="token punctuation">{</span> node <span class="token operator">-></span>
+            node<span class="token punctuation">.</span>attributes<span class="token punctuation">.</span><span class="token function">toPairedNameValueList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">filter</span> <span class="token punctuation">{</span> attribute <span class="token operator">-></span>
+                attribute<span class="token punctuation">.</span>first <span class="token operator">==</span> <span class="token string-literal singleline"><span class="token string">"android:name"</span></span> <span class="token operator">&amp;&amp;</span> attribute<span class="token punctuation">.</span>second <span class="token operator">==</span> <span class="token string-literal singleline"><span class="token string">"android.webkit.WebView.MetricsOptOut"</span></span>
+            <span class="token punctuation">}</span><span class="token punctuation">.</span><span class="token function">isNotEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>containsWebViewMetricsOptOutTag<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        context<span class="token punctuation">.</span><span class="token function">report</span><span class="token punctuation">(</span>
+            issue <span class="token operator">=</span> ISSUE_MISSING_WEBVIEW_METRICS_META_TAG<span class="token punctuation">,</span>
+            location <span class="token operator">=</span> context<span class="token punctuation">.</span><span class="token function">getLocation</span><span class="token punctuation">(</span>element<span class="token punctuation">)</span><span class="token punctuation">,</span>
+            message <span class="token operator">=</span> ISSUE_MISSING_WEBVIEW_METRICS_META_TAG<span class="token punctuation">.</span><span class="token function">getExplanation</span><span class="token punctuation">(</span>TextFormat<span class="token punctuation">.</span>TEXT<span class="token punctuation">)</span>
+        <span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>In the <code>visitElement</code> method, we are traversing through all children of <code>&lt;application&gt;</code> and checking that a <code>meta-data</code> tag with attribute <code>android:name=&quot;android.webkit.WebView.MetricsOptOut&quot;</code> exists. If it does not exist then we raise our issue <code>ISSUE_MISSING_WEBVIEW_METRICS_META_TAG</code>.</p>
+<h2>Register the new issue</h2>
+<p>The last thing we need to do now is to add the above created issue in our <code>LintRegistry</code> class.</p>
+<pre class="language-kotlin"><code class="language-kotlin"><span class="token keyword">class</span> LintRegistry <span class="token operator">:</span> <span class="token function">IssueRegistry</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">override</span> <span class="token keyword">val</span> api<span class="token operator">:</span> Int
+        <span class="token keyword">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> CURRENT_API
+
+    <span class="token keyword">override</span> <span class="token keyword">val</span> issues<span class="token operator">:</span> List<span class="token operator">&lt;</span>Issue<span class="token operator">></span>
+        <span class="token keyword">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token function">listOf</span><span class="token punctuation">(</span>
+            InputTypeDetector<span class="token punctuation">.</span>ISSUE_MISSING_INPUT_TYPE<span class="token punctuation">,</span>
+            WebViewMetricsMetaTagDetector<span class="token punctuation">.</span>ISSUE_MISSING_WEBVIEW_METRICS_META_TAG <span class="token comment">// We added this line</span>
+        <span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<h2>Run the lint checks</h2>
+<p>There we are done, now to run the lint checks using gradle</p>
+<pre class="language-shell"><code class="language-shell">./gradlew lint</code></pre>
+<p>Want to discuss this or any other interesting thing, hit me up on Twitter <a href="https://twitter.com/varun_barad">@varun_barad</a>.</p>
+</section>
+
+    <section class="post-categories-container">
+        Categories:
+        
+            <a href="/category/android.html" class="badge badge-warning">#android</a>
+        
+            <a href="/category/programming.html" class="badge badge-warning">#programming</a>
+        
+        <a href="/blog" class="badge badge-warning">#all</a>
+    </section>
+</main>
+<footer class="container-fluid">
+    <div class="grid">
+        <aside>
+            <nav>
+                <ul>
+                    <li><strong>Core</strong></li>
+                    <li>Blog</li>
+                    <li>Now</li>
+                    <li>Contact</li>
+                    <li>Resume</li>
+                    <li>Wishlist</li>
+                </ul>
+            </nav>
+        </aside>
+        <aside>
+            <nav>
+                <ul>
+                    <li><strong>Creation</strong></li>
+                    <li>Projects</li>
+                    <li>Ideas</li>
+                    <li>Uses</li>
+                    <li>Changelog</li>
+                    <li>Feeds</li>
+                    <li>Colophon</li>
+                </ul>
+            </nav>
+        </aside>
+        <aside>
+            <nav>
+                <ul>
+                    <li><strong>Consumption</strong></li>
+                    <li>Books</li>
+                    <li>Movies</li>
+                    <li>Games</li>
+                    <li>Recipes</li>
+                    <li>Blogroll</li>
+                    <li>Postroll</li>
+                </ul>
+            </nav>
+        </aside>
+    </div>
+
+    <div class="developer-attribution">
+        Made by <a href="https://dixita0607.github.io">Dixita Ganatra</a>
+    </div>
+</footer>
+</body>
+</html>

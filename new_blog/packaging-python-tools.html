@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+    <link rel="stylesheet" href="/assets/css/prism-theme/prism-darcula.css" />
+    
+    <link rel="stylesheet" href="/assets/css/pico.css" />
+    <link rel="icon" type="image/png" href="/favicon.png"/>
+    <title>🐍 Packaging my first Python tool - Varun Barad</title>
+    <meta name="description" content="My experience of packaging my first Python tool"/>
+
+    
+
+    <!-- RSS Feed meta-data -->
+    <link type="application/atom+xml" rel="alternate" href="https://varunbarad.com/feed.xml" title="Varun Barad - Curious Developer"/>
+
+    <!-- Twitter meta-data -->
+    <meta name="twitter:site" content="@varun_barad"/>
+    <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png"/>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="🐍 Packaging my first Python tool"/>
+    <meta name="twitter:description" content="My experience of packaging my first Python tool"/>
+
+    <!-- Open-Graph meta-data -->
+    <meta property="og:site_name" content="Varun Barad - Curious Developer"/>
+    <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png"/>
+    <meta property="og:type" content="object"/>
+    <meta property="og:title" content="🐍 Packaging my first Python tool"/>
+    <meta property="og:url" content="https://varunbarad.com/new_blog/packaging-python-tools.html"/>
+    <meta property="og:description" content="My experience of packaging my first Python tool"/>
+</head>
+<body class="container-fluid">
+<header id="header">
+    <nav>
+        <ul>
+            <li><a href="/"><strong>Varun Barad</strong></a></li>
+        </ul>
+        <ul>
+            <li class="secondary"><a href="/blog">Blog</a></li>
+            <li class="secondary"><a href="/projects">Projects</a></li>
+            <li class="secondary"><a href="/ideas">Ideas</a></li>
+            <li class="secondary"><a href="/contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+<main class="container">
+    <hgroup>
+        <h2>🐍 Packaging my first Python tool</h2>
+        <p>By Varun Barad on <time class="post-date dt-published" datetime="Sun Apr 21 2024 07:57:19 GMT+0530 (India Standard Time)">April 21, 2024</time></p>
+    </hgroup>
+
+    <section class="post-content e-content"><p>I want to make tools and scripts to simplify my work and make it easier.</p>
+<h2>The first tool in the tool-belt</h2>
+<p>Amongst the many ideas I have in mind, I decided to start with one which would help me log what all I do during my work hours. So after summoning all my creative juices, I decided to name it <code>worklog</code>. This tool when invoked, takes a text input from the user and logs an entry to a CSV file along with the current timestamp. Below is the code for its first version (can totally be ignored for this post):</p>
+<pre class="language-python"><code class="language-python"><span class="token comment">#!/usr/bin/env python3</span>
+
+
+<span class="token keyword">import</span> csv
+<span class="token keyword">import</span> datetime
+
+
+<span class="token keyword">def</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    worklog_file <span class="token operator">=</span> <span class="token string">'/Users/varunb/worklog.csv'</span>
+
+    worklog_entries <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span>worklog_file<span class="token punctuation">,</span> <span class="token string">'r'</span><span class="token punctuation">,</span> newline<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">)</span> <span class="token keyword">as</span> csvFile<span class="token punctuation">:</span>
+        reader <span class="token operator">=</span> csv<span class="token punctuation">.</span>DictReader<span class="token punctuation">(</span>csvFile<span class="token punctuation">)</span>
+        worklog_entries<span class="token punctuation">.</span>extend<span class="token punctuation">(</span>reader<span class="token punctuation">)</span>
+
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Enter the new worklog entry'</span><span class="token punctuation">)</span>
+    new_entry <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    now <span class="token operator">=</span> datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">.</span>now<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    formatted_now <span class="token operator">=</span> now<span class="token punctuation">.</span>strftime<span class="token punctuation">(</span><span class="token string">'%Y-%m-%dT%H:%M+05:30'</span><span class="token punctuation">)</span>
+
+    worklog_entries<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">{</span>
+        <span class="token string">'timestamp'</span><span class="token punctuation">:</span> formatted_now<span class="token punctuation">,</span>
+        <span class="token string">'contents'</span><span class="token punctuation">:</span> new_entry<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span>worklog_file<span class="token punctuation">,</span> <span class="token string">'w'</span><span class="token punctuation">,</span> newline<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">)</span> <span class="token keyword">as</span> csvFile<span class="token punctuation">:</span>
+        headers <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'timestamp'</span><span class="token punctuation">,</span> <span class="token string">'contents'</span><span class="token punctuation">]</span>
+        writer <span class="token operator">=</span> csv<span class="token punctuation">.</span>DictWriter<span class="token punctuation">(</span>csvFile<span class="token punctuation">,</span> fieldnames<span class="token operator">=</span>headers<span class="token punctuation">)</span>
+        writer<span class="token punctuation">.</span>writeheader<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        writer<span class="token punctuation">.</span>writerows<span class="token punctuation">(</span>worklog_entries<span class="token punctuation">)</span>
+
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'{} Worklog updated!'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>now<span class="token punctuation">.</span>strftime<span class="token punctuation">(</span><span class="token string">'%H:%M'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    main<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>My directory structure of the project at this moment was:</p>
+<pre class="language-text"><code class="language-text">worklog/
+└── src/
+    └── main.py</code></pre>
+<h2>Running worklog</h2>
+<p>Whenever I wanted to, I ran the script by specifying its full path in the terminal like <code>/Users/varunb/Projects/worklog/src/main.py</code>. Since currently the script does not have any dependencies on external libraries, this approach worked fine. But I wanted to have a setup where I could run it from anywhere on my system and neither have to worry about the full path to the script, nor have to have the dependencies installed in the global Python environment. I knew it was possible to write command-line tools in Python that satisfied both of those requirements as <a href="https://github.com/yt-dlp/yt-dlp">yt-dlp</a> is a Python based tool meeting both of those requirements. Looking around told me that I need to look for <a href="https://pipx.pypa.io/"><code>pipx</code></a>.</p>
+<h2>Packaging it</h2>
+<p>I initially started with the <code>setup.py</code> route as I found a <a href="https://python-packaging.readthedocs.io/en/latest/index.html">guide for it</a> first, but then found that <code>pipx</code> has a different suggested way (using <code>pyproject.toml</code>) and they also provided a <a href="https://setuptools.pypa.io/en/latest/userguide/quickstart.html">guide for the same</a>.</p>
+<p>My final directory structure looked like this:</p>
+<pre class="language-text"><code class="language-text">worklog/
+├── pyproject.toml
+└── src/
+    └── worklog/
+        └── __init__.py</code></pre>
+<p>With <code>pyproject.toml</code> looking like this:</p>
+<pre class="language-toml"><code class="language-toml"><span class="token punctuation">[</span><span class="token table class-name">build-system</span><span class="token punctuation">]</span>
+<span class="token key property">requires</span> <span class="token punctuation">=</span> <span class="token punctuation">[</span><span class="token string">"setuptools"</span><span class="token punctuation">]</span>
+<span class="token key property">build-backend</span> <span class="token punctuation">=</span> <span class="token string">"setuptools.build_meta"</span>
+
+<span class="token punctuation">[</span><span class="token table class-name">project</span><span class="token punctuation">]</span>
+<span class="token key property">name</span> <span class="token punctuation">=</span> <span class="token string">"worklog"</span>
+<span class="token key property">description</span> <span class="token punctuation">=</span> <span class="token string">"A simple log of my work"</span>
+<span class="token key property">version</span> <span class="token punctuation">=</span> <span class="token string">"0.1"</span>
+<span class="token key property">authors</span> <span class="token punctuation">=</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span> <span class="token key property">name</span> <span class="token punctuation">=</span> <span class="token string">"Varun Barad"</span><span class="token punctuation">,</span> <span class="token key property">email</span> <span class="token punctuation">=</span> <span class="token string">"contact@varunbarad.com"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span>
+<span class="token key property">dependencies</span> <span class="token punctuation">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+
+<span class="token punctuation">[</span><span class="token table class-name">project.urls</span><span class="token punctuation">]</span>
+<span class="token key property">Homepage</span> <span class="token punctuation">=</span> <span class="token string">"https://github.com/VarunBarad/worklog.git"</span>
+
+<span class="token punctuation">[</span><span class="token table class-name">project.scripts</span><span class="token punctuation">]</span>
+<span class="token key property">worklog</span> <span class="token punctuation">=</span> <span class="token string">"worklog:main"</span></code></pre>
+<p>And <code>src/worklog/__init__.py</code> remaining mostly unchanged:</p>
+<pre class="language-python"><code class="language-python"><span class="token keyword">import</span> csv
+<span class="token keyword">import</span> datetime
+
+
+<span class="token keyword">def</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    worklog_file <span class="token operator">=</span> <span class="token string">'/Users/varunb/worklog.csv'</span>
+
+    worklog_entries <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span>worklog_file<span class="token punctuation">,</span> <span class="token string">'r'</span><span class="token punctuation">,</span> newline<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">)</span> <span class="token keyword">as</span> csvFile<span class="token punctuation">:</span>
+        reader <span class="token operator">=</span> csv<span class="token punctuation">.</span>DictReader<span class="token punctuation">(</span>csvFile<span class="token punctuation">)</span>
+        worklog_entries<span class="token punctuation">.</span>extend<span class="token punctuation">(</span>reader<span class="token punctuation">)</span>
+
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Enter the new worklog entry'</span><span class="token punctuation">)</span>
+    new_entry <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    now <span class="token operator">=</span> datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">.</span>now<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    formatted_now <span class="token operator">=</span> now<span class="token punctuation">.</span>strftime<span class="token punctuation">(</span><span class="token string">'%Y-%m-%dT%H:%M+05:30'</span><span class="token punctuation">)</span>
+
+    worklog_entries<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">{</span>
+        <span class="token string">'timestamp'</span><span class="token punctuation">:</span> formatted_now<span class="token punctuation">,</span>
+        <span class="token string">'contents'</span><span class="token punctuation">:</span> new_entry<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span>worklog_file<span class="token punctuation">,</span> <span class="token string">'w'</span><span class="token punctuation">,</span> newline<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">)</span> <span class="token keyword">as</span> csvFile<span class="token punctuation">:</span>
+        headers <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'timestamp'</span><span class="token punctuation">,</span> <span class="token string">'contents'</span><span class="token punctuation">]</span>
+        writer <span class="token operator">=</span> csv<span class="token punctuation">.</span>DictWriter<span class="token punctuation">(</span>csvFile<span class="token punctuation">,</span> fieldnames<span class="token operator">=</span>headers<span class="token punctuation">)</span>
+        writer<span class="token punctuation">.</span>writeheader<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        writer<span class="token punctuation">.</span>writerows<span class="token punctuation">(</span>worklog_entries<span class="token punctuation">)</span>
+
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'{} Worklog updated!'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>now<span class="token punctuation">.</span>strftime<span class="token punctuation">(</span><span class="token string">'%H:%M'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<h2>Installing it</h2>
+<p>After all of this now I can do <code>pipx install /path/to/worklog/ worklog</code> and that would install my tool and make it available to run from anywhere on my system with a simple <code>worklog</code> command. This also takes care of creating a virtual-environment for the dependencies of this tool and installing them in there.</p>
+</section>
+
+    <section class="post-categories-container">
+        Categories:
+        
+            <a href="/category/programming.html" class="badge badge-warning">#programming</a>
+        
+            <a href="/category/tools.html" class="badge badge-warning">#tools</a>
+        
+        <a href="/blog" class="badge badge-warning">#all</a>
+    </section>
+</main>
+<footer class="container-fluid">
+    <div class="grid">
+        <aside>
+            <nav>
+                <ul>
+                    <li><strong>Core</strong></li>
+                    <li>Blog</li>
+                    <li>Now</li>
+                    <li>Contact</li>
+                    <li>Resume</li>
+                    <li>Wishlist</li>
+                </ul>
+            </nav>
+        </aside>
+        <aside>
+            <nav>
+                <ul>
+                    <li><strong>Creation</strong></li>
+                    <li>Projects</li>
+                    <li>Ideas</li>
+                    <li>Uses</li>
+                    <li>Changelog</li>
+                    <li>Feeds</li>
+                    <li>Colophon</li>
+                </ul>
+            </nav>
+        </aside>
+        <aside>
+            <nav>
+                <ul>
+                    <li><strong>Consumption</strong></li>
+                    <li>Books</li>
+                    <li>Movies</li>
+                    <li>Games</li>
+                    <li>Recipes</li>
+                    <li>Blogroll</li>
+                    <li>Postroll</li>
+                </ul>
+            </nav>
+        </aside>
+    </div>
+
+    <div class="developer-attribution">
+        Made by <a href="https://dixita0607.github.io">Dixita Ganatra</a>
+    </div>
+</footer>
+</body>
+</html>

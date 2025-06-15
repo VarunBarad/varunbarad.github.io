@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link href="/assets/css/prism-theme/prism-darcula.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/assets/css/fontawesome-all.css">
+    <link rel="icon" type="image/png" href="/favicon.png"/>
+    <title>📝 Mount an SMB share on Mac OS using Rust - Varun Barad</title>
+    <meta name="description" content="TIL: How to mount an SMB share on Mac OS programmatically using Rust"/>
+
+    
+
+    <!-- RSS Feed meta-data -->
+    <link type="application/atom+xml" rel="alternate" href="https://varunbarad.com/feed.xml" title="Varun Barad - Curious Developer"/>
+
+    <!-- Twitter meta-data -->
+    <meta name="twitter:site" content="@varun_barad"/>
+    <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png"/>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="📝 Mount an SMB share on Mac OS using Rust"/>
+    <meta name="twitter:description" content="TIL: How to mount an SMB share on Mac OS programmatically using Rust"/>
+
+    <!-- Open-Graph meta-data -->
+    <meta property="og:site_name" content="Varun Barad - Curious Developer"/>
+    <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png"/>
+    <meta property="og:type" content="object"/>
+    <meta property="og:title" content="📝 Mount an SMB share on Mac OS using Rust"/>
+    <meta property="og:url" content="https://varunbarad.com/blog/til-macos_mount_remote_smb_share.html"/>
+    <meta property="og:description" content="TIL: How to mount an SMB share on Mac OS programmatically using Rust"/>
+</head>
+<body>
+<div>
+    <div id="header">
+        <div class="row header">
+            <div class="title col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+                <a href="/">
+                    <div class="title">Varun Barad</div>
+                </a>
+            </div>
+            <div class="col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8">
+                <nav class="menu text-right">
+                    <a href="/blog">Blog</a>
+                    <a href="/projects">Projects</a>
+                    <a href="/books">Books</a>
+                    <a href="/ideas">Ideas</a>
+                    <a href="/contact">Contact</a>
+                    <a href="/resume">My Resume</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <article class="h-entry">
+        <div class="content row">
+            <div class="post-container">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <div>
+                        <div class="page-title text-uppercase text-center p-name">
+                            <a class="u-url" href="/blog/til-macos_mount_remote_smb_share.html">📝 Mount an SMB share on Mac OS using Rust</a>
+                        </div>
+                        <div class="text-center">
+                            By <a class="p-author h-card" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="Sun Jun 15 2025 08:16:58 GMT+0530 (India Standard Time)">June 15, 2025</time>
+                        </div>
+                        <div class="post-content e-content"><p>Just as before, while working on my last project (<a href="./project-valet">valet</a>) I learned something new. I wanted to mount a remote SMB share from my NAS onto my laptop as that shared storage is where I eventually want to store all my files once they are cleaned-up and sorted appropriately. I know how to do that using Finder but this time I needed to do it from inside a program.</p>
+<blockquote>
+<p>Aside: I think I should stop writing this under a TIL because at the time I am writing this, it has been more than 3 weeks since I learned how to do this.</p>
+</blockquote>
+<h3>The AppleScript way</h3>
+<p>Previously I have mounted the same share using AppleScript. The share URL follows this pattern <code>smb://&lt;username-on-server&gt;@&lt;name-of-server&gt;/&lt;name-of-shared-folder&gt;</code>, and the whole command goes something like this:</p>
+<pre class="language-applescript"><code class="language-applescript">mount volume <span class="token string">"smb://varun@ella/Legal Documents"</span></code></pre>
+<p>This would automatically use the stored password from my Keychain. But the problem here was that I needed to run it from inside a rust program which does not directly run apple-script but can run shell-scripts. To execute the above as a shell-script I need to pass it to the <code>osascript</code> program like this:</p>
+<pre class="language-shell"><code class="language-shell">osascript <span class="token parameter variable">-e</span> <span class="token string">'mount volume "smb://varun@ella/Legal Documents"'</span></code></pre>
+<blockquote>
+<p>Aside: As I am writing this next section, it comes to my mind that I could have made it work with just this setup and that would have simplified my work a lot. I then would not have had to figure out how to access the Keychain or how to properly escape these paths. But alas, that is the life of a programmer 😅</p>
+</blockquote>
+<p>Here, to ensure that the full directory name &quot;Legal Documents&quot; is parsed correctly, we had to put the complete share URL inside double-quotes. And then to ensure the complete apple-script is parsed correctly, we had to put that inside another pair of single-quotes.</p>
+<h3>The shell-script way</h3>
+<p>The underlying program to use in a shell-script would be <code>mount_smbfs</code> which takes two arguments:</p>
+<ul>
+<li>Complete URL of the remote-share which is built of below four parts and formatted like this <code>//u:p@s/f</code>
+<ul>
+<li><code>u</code>: Username on server</li>
+<li><code>p</code>: Password of the above username on server</li>
+<li><code>s</code>: Name/Network-address of the server</li>
+<li><code>f</code>: URL-escaped name of the shared folder</li>
+</ul>
+</li>
+<li>Directory (ensure it is empty) on your local machine where to mount the share</li>
+</ul>
+<p>The invocation for that goes like:</p>
+<pre class="language-shell"><code class="language-shell">mount_smbfs <span class="token string">"//varun:some-password@ella/Legal%20Documents"</span> <span class="token string">"/Volumes/Legal Documents"</span></code></pre>
+<p>Here we get control over where the shared folder gets mounted locally, but now we have to supply the password ourselves (here's how to <a href="./til-read-smb-share-password-from-macos-keychain">get it from Keychain</a>).</p>
+<h3>Using the <code>mount_smbfs</code> command from Rust</h3>
+<p>Now we can use <code>Command</code> from rust's standard-library to call <code>mount_smbfs</code> and mount the share. For that we need to ensure that all the components are appropriately escaped to form a proper URL. To do that we use the <a href="https://crates.io/crates/url"><code>url</code> crate</a>. Here's how we do that:</p>
+<pre class="language-rust"><code class="language-rust"><span class="token keyword">fn</span> <span class="token function-definition function">get_storage_mount_path_remote</span><span class="token punctuation">(</span>
+    username<span class="token punctuation">:</span> <span class="token operator">&amp;</span><span class="token keyword">str</span><span class="token punctuation">,</span>
+    password<span class="token punctuation">:</span> <span class="token operator">&amp;</span><span class="token keyword">str</span><span class="token punctuation">,</span>
+    server_name<span class="token punctuation">:</span> <span class="token operator">&amp;</span><span class="token keyword">str</span><span class="token punctuation">,</span>
+    shared_folder_name<span class="token punctuation">:</span> <span class="token operator">&amp;</span><span class="token keyword">str</span><span class="token punctuation">,</span>
+<span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token class-name">String</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> encoded_password <span class="token operator">=</span> <span class="token namespace">form_urlencoded<span class="token punctuation">::</span></span><span class="token function">byte_serialize</span><span class="token punctuation">(</span>password<span class="token punctuation">.</span><span class="token function">as_bytes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">::</span><span class="token operator">&lt;</span><span class="token class-name">String</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> actual_url <span class="token operator">=</span> <span class="token macro property">format!</span><span class="token punctuation">(</span><span class="token string">"//{}:{}@{}/{}"</span><span class="token punctuation">,</span> username<span class="token punctuation">,</span> encoded_password<span class="token punctuation">,</span> server_name<span class="token punctuation">,</span> shared_folder_name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> prefixed_url <span class="token operator">=</span> <span class="token macro property">format!</span><span class="token punctuation">(</span><span class="token string">"https:{}"</span><span class="token punctuation">,</span> actual_url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> parsed_url <span class="token operator">=</span> <span class="token class-name">Url</span><span class="token punctuation">::</span><span class="token function">parse</span><span class="token punctuation">(</span>prefixed_url<span class="token punctuation">.</span><span class="token function">as_str</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">unwrap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> parsed_url
+        <span class="token punctuation">.</span><span class="token function">to_string</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">strip_prefix</span><span class="token punctuation">(</span><span class="token string">"https:"</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">unwrap</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">to_string</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>We need to:</p>
+<ol>
+<li>First encode the password using <a href="https://crates.io/crates/form_urlencoded"><code>form_urlencoded</code> crate</a> (a dependency of the <code>url</code> crate) to ensure proper escaping of it</li>
+<li>Form the whole URL and prefix it with a protocol (any protocol should work) at the beginning, we use <code>https</code> here. This is because the <code>Url::parse</code> method expects a complete URL and a complete URL needs to have a protocol</li>
+<li>Convert the <code>Url</code> object to its string representation and strip the protocol prefix from it</li>
+</ol>
+<p>And using that cleaned-up URL we can then go and invoke the <code>mount_smbfs</code> command like this:</p>
+<pre class="language-rust"><code class="language-rust"><span class="token comment">// Ensure there is a directory created where we want to mount the SMB share</span>
+<span class="token namespace">std<span class="token punctuation">::</span>fs<span class="token punctuation">::</span></span><span class="token function">create_dir_all</span><span class="token punctuation">(</span><span class="token class-name">Path</span><span class="token punctuation">::</span><span class="token function">new</span><span class="token punctuation">(</span>storage_mount_path_local<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">unwrap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">Command</span><span class="token punctuation">::</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token string">"mount_smbfs"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">arg</span><span class="token punctuation">(</span>storage_mount_path_remote<span class="token punctuation">.</span><span class="token function">as_str</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">arg</span><span class="token punctuation">(</span>storage_mount_path_local<span class="token punctuation">.</span><span class="token function">as_str</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">output</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">unwrap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h2>Articles related to project valet</h2>
+<ol>
+<li><a href="./project-valet">Project valet announcement</a></li>
+<li><a href="./til-read-smb-share-password-from-macos-keychain">Read SMB share password from MacOS Keychain</a></li>
+<li><a href="./til-rust-build-time-env-vars">Rust read build-time environment variables at run-time</a></li>
+<li>Mount an SMB share on Mac OS using Rust (this article)</li>
+</ol>
+</div>
+                    </div>
+                    <div class="post-categories-container">
+                        Categories:
+                        <div>
+                            
+                                <a href="/category/til.html" class="badge badge-warning">#til</a>
+                            
+                                <a href="/category/programming.html" class="badge badge-warning">#programming</a>
+                            
+                            <a href="/blog" class="badge badge-warning">#all</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+    <div>
+        <div class="footer">
+            <div>
+                <a href="https://github.com/VarunBarad" rel="me">
+                    <i class="fab fa-github social-links"></i>
+                </a>
+                <a href="https://twitter.com/varun_barad" rel="me">
+                    <i class="fab fa-twitter social-links"></i>
+                </a>
+                <a href="https://dev.to/varunbarad" rel="me">
+                    <i class="fab fa-dev social-links"></i>
+                </a>
+                <a href="https://stackoverflow.com/users/4717436/varunbarad" rel="me">
+                    <i class="fab fa-stack-overflow social-links"></i>
+                </a>
+            </div>
+            <div class="developer-attribution">
+                Made by <a href="https://dixita0607.github.io">Dixita Ganatra</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+</body>
+</html>

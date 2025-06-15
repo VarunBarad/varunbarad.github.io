@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+    <link rel="stylesheet" href="/assets/css/prism-theme/prism-darcula.css" />
+    
+    <link rel="stylesheet" href="/assets/css/pico.css" />
+    <link rel="icon" type="image/png" href="/favicon.png"/>
+    <title>Improvement Roll - Varun Barad</title>
+    <meta name="description" content="A tiny website to suggest you useful things to do in down-time"/>
+
+    
+
+    <!-- RSS Feed meta-data -->
+    <link type="application/atom+xml" rel="alternate" href="https://varunbarad.com/feed.xml" title="Varun Barad - Curious Developer"/>
+
+    <!-- Twitter meta-data -->
+    <meta name="twitter:site" content="@varun_barad"/>
+    <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png"/>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="Improvement Roll"/>
+    <meta name="twitter:description" content="A tiny website to suggest you useful things to do in down-time"/>
+
+    <!-- Open-Graph meta-data -->
+    <meta property="og:site_name" content="Varun Barad - Curious Developer"/>
+    <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png"/>
+    <meta property="og:type" content="object"/>
+    <meta property="og:title" content="Improvement Roll"/>
+    <meta property="og:url" content="https://varunbarad.com/new_blog/improvement-roll.html"/>
+    <meta property="og:description" content="A tiny website to suggest you useful things to do in down-time"/>
+</head>
+<body class="container-fluid">
+<header id="header">
+    <nav>
+        <ul>
+            <li><a href="/"><strong>Varun Barad</strong></a></li>
+        </ul>
+        <ul>
+            <li class="secondary"><a href="/blog">Blog</a></li>
+            <li class="secondary"><a href="/projects">Projects</a></li>
+            <li class="secondary"><a href="/ideas">Ideas</a></li>
+            <li class="secondary"><a href="/contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+<main class="container">
+    <hgroup>
+        <h2>Improvement Roll</h2>
+        <p>By Varun Barad on <time class="post-date dt-published" datetime="Mon Nov 22 2021 00:00:00 GMT+0530 (India Standard Time)">November 22, 2021</time></p>
+    </hgroup>
+
+    <section class="post-content e-content"><p>So I finally finished a side-project after a long time and rolled it out public. You can find it <a href="https://improvement-roll.varunbarad.com">here</a>.</p>
+<p>It is a tiny website which suggests you useful things you can do in your down-time instead of letting it be sucked in the maw of social media.</p>
+<p>The idea for this came when I saw an app by the same name on the F-Droid store. The experience I wanted was a bit different from what I had with that app and also I thought that this was so trivial that it didn't need a full-fledged native app and that just a simple website should do the trick.</p>
+<p>So I set out to building it. As with some of my other frontend related stuff, my aim was to keep this thing as less dependent on external libraries as I can (0 external dependencies sounds perfect for something of this size). Ended up not importing any external libraries/frameworks in either JS or CSS land.</p>
+<p>Later I thought that it would be awesome if I could access it offline too, if it has loaded itself in my browser once before. And so I looked into PWAs and implemented the simplest version I could find online to just setup a basic cache using the service-worker so that if the website has been loaded once in your browser it will load fine even if there is no internet connection.</p>
+<p>After doing all that it occurred to me, this website might turn out to be something completely useless to people who have JS disabled in their browsers. So I started thinking as to what value I can provide to users with JS even though the whole core of this is built using conditionals and random number generators and other stuff which can't be replicated with just HTML &amp; CSS. So then I landed on the idea to provide <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code> tags for each block of time where the whole list of that tasks for that time-block will be visible.</p>
+</section>
+
+    <section class="post-categories-container">
+        Categories:
+        
+            <a href="/category/javascript.html" class="badge badge-warning">#javascript</a>
+        
+            <a href="/category/web.html" class="badge badge-warning">#web</a>
+        
+            <a href="/category/programming.html" class="badge badge-warning">#programming</a>
+        
+        <a href="/blog" class="badge badge-warning">#all</a>
+    </section>
+</main>
+<footer class="container-fluid">
+    <div class="grid">
+        <aside>
+            <nav>
+                <ul>
+                    <li><strong>Core</strong></li>
+                    <li>Blog</li>
+                    <li>Now</li>
+                    <li>Contact</li>
+                    <li>Resume</li>
+                    <li>Wishlist</li>
+                </ul>
+            </nav>
+        </aside>
+        <aside>
+            <nav>
+                <ul>
+                    <li><strong>Creation</strong></li>
+                    <li>Projects</li>
+                    <li>Ideas</li>
+                    <li>Uses</li>
+                    <li>Changelog</li>
+                    <li>Feeds</li>
+                    <li>Colophon</li>
+                </ul>
+            </nav>
+        </aside>
+        <aside>
+            <nav>
+                <ul>
+                    <li><strong>Consumption</strong></li>
+                    <li>Books</li>
+                    <li>Movies</li>
+                    <li>Games</li>
+                    <li>Recipes</li>
+                    <li>Blogroll</li>
+                    <li>Postroll</li>
+                </ul>
+            </nav>
+        </aside>
+    </div>
+
+    <div class="developer-attribution">
+        Made by <a href="https://dixita0607.github.io">Dixita Ganatra</a>
+    </div>
+</footer>
+</body>
+</html>

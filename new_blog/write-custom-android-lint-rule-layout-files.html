@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+    <link rel="stylesheet" href="/assets/css/prism-theme/prism-darcula.css" />
+    
+    <link rel="stylesheet" href="/assets/css/pico.css" />
+    <link rel="icon" type="image/png" href="/favicon.png"/>
+    <title>Write Custom Android Lint Rule - Layout Files - Varun Barad</title>
+    <meta name="description" content="Writing our own custom android lint rules for verifying layout files."/>
+
+    
+
+    <!-- RSS Feed meta-data -->
+    <link type="application/atom+xml" rel="alternate" href="https://varunbarad.com/feed.xml" title="Varun Barad - Curious Developer"/>
+
+    <!-- Twitter meta-data -->
+    <meta name="twitter:site" content="@varun_barad"/>
+    <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png"/>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="Write Custom Android Lint Rule - Layout Files"/>
+    <meta name="twitter:description" content="Writing our own custom android lint rules for verifying layout files."/>
+
+    <!-- Open-Graph meta-data -->
+    <meta property="og:site_name" content="Varun Barad - Curious Developer"/>
+    <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png"/>
+    <meta property="og:type" content="object"/>
+    <meta property="og:title" content="Write Custom Android Lint Rule - Layout Files"/>
+    <meta property="og:url" content="https://varunbarad.com/new_blog/write-custom-android-lint-rule-layout-files.html"/>
+    <meta property="og:description" content="Writing our own custom android lint rules for verifying layout files."/>
+</head>
+<body class="container-fluid">
+<header id="header">
+    <nav>
+        <ul>
+            <li><a href="/"><strong>Varun Barad</strong></a></li>
+        </ul>
+        <ul>
+            <li class="secondary"><a href="/blog">Blog</a></li>
+            <li class="secondary"><a href="/projects">Projects</a></li>
+            <li class="secondary"><a href="/ideas">Ideas</a></li>
+            <li class="secondary"><a href="/contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+<main class="container">
+    <hgroup>
+        <h2>Write Custom Android Lint Rule - Layout Files</h2>
+        <p>By Varun Barad on <time class="post-date dt-published" datetime="Thu Feb 27 2020 12:00:00 GMT+0530 (India Standard Time)">February 27, 2020</time></p>
+    </hgroup>
+
+    <section class="post-content e-content"><p><img src="https://varunbarad.com/assets/images/posts/headers/write-custom-android-lint-rule-layout-files.jpg" alt="Article Header - Write Custom Android Lint Rules"></p>
+<p>Welcome devs, I recently faced an issue where if I didn't specify any <code>android:inputType</code> for <code>EditText</code> then keyboard capitalisation did not correctly show. The deeper problem was that I always forgot to include that attribute. So I decided to use a lint check which would fail my build if any of my <code>EditText</code> does not have the <code>android:inputType</code> attribute.</p>
+<p>Since there was no such thing included in pre-provided checks I decided to write a custom lint rule. What follows is a guide on how to write a lint-check which goes checks all of our layout files and flags any <code>EditText</code> without <code>android:inputType</code> attribute.</p>
+<h2>What is Android lint?</h2>
+<p>Android lint is a tool which provides us static code-analysis (it does not need to run the application to identify potential problems). The Android SDK already provides us with some pre-made lint checks, but the best part is that it allows us to write our own custom lint checks.</p>
+<h2>Writing a custom lint check</h2>
+<p>We will be writing a lint check which checks whether each <code>EditText</code>, <code>androidx.appcompat.widget.AppCompatEditText</code> and <code>android.support.v7.widget.AppCompatEditText</code> has the <code>android:inputType</code> attribute defined or not.
+This lint check is set to fail the build when it finds any of the above element not containing the <code>android:inputType</code> attribute.</p>
+<h3>Create a new Library Module</h3>
+<p>In the project for which you want to write the lint check, add a new &quot;Java or Kotlin Library&quot; module.</p>
+<ul>
+<li>For Library name you can put anything but I have used <code>lint-checks</code></li>
+<li>For Class name put <code>LintRegistry</code> (we will get to the reasoning later)</li>
+<li>I have selected Kotlin as the language</li>
+</ul>
+<p><img src="https://varunbarad.com/assets/images/posts/write-custom-android-lint-rule-layout-files/create-new-module.png" alt="Screenshot - Add new Java or Kotlin Library Module"></p>
+<h3>Add dependencies in Gradle</h3>
+<p>You only need 3 dependencies in your <code>lint-checks</code> module's <code>build.gradle</code> and all of them need to be only <code>compileOnly</code></p>
+<pre class="language-groovy"><code class="language-groovy">dependencies <span class="token punctuation">{</span>
+    compileOnly <span class="token interpolation-string"><span class="token string">"org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.61"</span></span>
+    compileOnly <span class="token interpolation-string"><span class="token string">"com.android.tools.lint:lint-api:26.6.0"</span></span>
+    compileOnly <span class="token interpolation-string"><span class="token string">"com.android.tools.lint:lint-checks:26.6.0"</span></span>
+<span class="token punctuation">}</span></code></pre>
+<h3>Create the detector</h3>
+<p>Now let's write the class which will actually detect the issues. We create a new class named <code>InputTypeDetector</code> which extends from <code>LayoutDetector</code></p>
+<pre class="language-kotlin"><code class="language-kotlin"><span class="token keyword">class</span> InputTypeDetector <span class="token operator">:</span> <span class="token function">LayoutDetector</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token operator">..</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Now we specify the Issue that we want our detector to raise when we find and edit-text without input-type. We declare it as a property under companion object of this class (and mark it with <code>@JvmStatic</code> so that it appears as static field when accessed from Java code).</p>
+<pre class="language-kotlin"><code class="language-kotlin"><span class="token keyword">companion</span> <span class="token keyword">object</span> <span class="token punctuation">{</span>
+    <span class="token annotation builtin">@JvmStatic</span>
+    <span class="token keyword">internal</span> <span class="token keyword">val</span> ISSUE_MISSING_INPUT_TYPE <span class="token operator">=</span> Issue<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>
+        id <span class="token operator">=</span> <span class="token string-literal singleline"><span class="token string">"MissingInputType"</span></span><span class="token punctuation">,</span>
+        briefDescription <span class="token operator">=</span> <span class="token string-literal singleline"><span class="token string">"Specify inputType attribute to get proper keyboard shown by system."</span></span><span class="token punctuation">,</span>
+        explanation <span class="token operator">=</span> <span class="token string-literal singleline"><span class="token string">"You should specify an inputType for each EditText so that you can get the proper keyboard to be shown by system."</span></span><span class="token punctuation">,</span>
+        category <span class="token operator">=</span> Category<span class="token punctuation">.</span>USABILITY<span class="token punctuation">,</span>
+        priority <span class="token operator">=</span> <span class="token number">8</span><span class="token punctuation">,</span>
+        severity <span class="token operator">=</span> Severity<span class="token punctuation">.</span>ERROR<span class="token punctuation">,</span>
+        implementation <span class="token operator">=</span> <span class="token function">Implementation</span><span class="token punctuation">(</span>
+            InputTypeDetector<span class="token operator">::</span><span class="token keyword">class</span><span class="token punctuation">.</span>java<span class="token punctuation">,</span>
+            Scope<span class="token punctuation">.</span>ALL_RESOURCES_SCOPE
+        <span class="token punctuation">)</span>
+    <span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addMoreInfo</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"https://developer.android.com/training/keyboard-input/style"</span></span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<p>The important things here are:</p>
+<ul>
+<li><code>id</code> - The name which is shown in the lint report</li>
+<li><code>severity</code> - There are many types of severity, here we have specified <code>ERROR</code> as we want the build to fail when we find this issue</li>
+<li><code>implementation</code> - The implementation defines which XML files to scan for this issue and which detector to use to detect this issue.</li>
+</ul>
+<p>After that we override the function <code>getApplicableElements</code>, where we specify for which elements we want this detector to be run (so that our detector doesn't get unnecessarily called for every element).</p>
+<pre class="language-kotlin"><code class="language-kotlin"><span class="token keyword">override</span> <span class="token keyword">fun</span> <span class="token function">getApplicableElements</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> Collection<span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token operator">?</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token function">listOf</span><span class="token punctuation">(</span>
+        SdkConstants<span class="token punctuation">.</span>EDIT_TEXT<span class="token punctuation">,</span>
+        <span class="token string-literal singleline"><span class="token string">"androidx.appcompat.widget.AppCompatEditText"</span></span><span class="token punctuation">,</span>
+        <span class="token string-literal singleline"><span class="token string">"android.support.v7.widget.AppCompatEditText"</span></span>
+    <span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Since we only want our detector to be called for <code>EditText</code>, <code>androidx.appcompat.widget.AppCompatEditText</code> and <code>android.support.v7.widget.AppCompatEditText</code> we return a list of all of them.</p>
+<p>The last thing remaining to be done in detector is to actually determine if any given element has the problem or not. For that we override the <code>visitElement</code> method.</p>
+<pre class="language-kotlin"><code class="language-kotlin"><span class="token keyword">override</span> <span class="token keyword">fun</span> <span class="token function">visitElement</span><span class="token punctuation">(</span>context<span class="token operator">:</span> XmlContext<span class="token punctuation">,</span> element<span class="token operator">:</span> Element<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>element<span class="token punctuation">.</span><span class="token function">hasAttribute</span><span class="token punctuation">(</span>SdkConstants<span class="token punctuation">.</span>ATTR_INPUT_TYPE<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// Check if the element has the `android:inputType` attribute</span>
+        context<span class="token punctuation">.</span><span class="token function">report</span><span class="token punctuation">(</span>
+            issue <span class="token operator">=</span> ISSUE_MISSING_INPUT_TYPE<span class="token punctuation">,</span> <span class="token comment">// The issue that we defined above</span>
+            location <span class="token operator">=</span> context<span class="token punctuation">.</span><span class="token function">getLocation</span><span class="token punctuation">(</span>element<span class="token punctuation">)</span><span class="token punctuation">,</span>
+            message <span class="token operator">=</span> ISSUE_MISSING_INPUT_TYPE<span class="token punctuation">.</span><span class="token function">getExplanation</span><span class="token punctuation">(</span>TextFormat<span class="token punctuation">.</span>TEXT<span class="token punctuation">)</span>
+        <span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Here we are doing 2 things</p>
+<ol>
+<li>Checking if given element has the <code>android:inputType</code> attribute or not</li>
+<li>Raise the issue if the <code>android:inputType</code> attribute is not present</li>
+</ol>
+<p><strong>Note:</strong> One thing you might have noticed is the <code>location</code> parameter, that is used by the <code>lint</code> tool to show exactly where any issue is reported.</p>
+<h3>Registering the Issue</h3>
+<p>Now we have declared the issue and corresponding detector, but we need to register them at a central location so that the lint tool knows that it has to execute these checks too. For that we go back to our <code>LintRegistry</code> class that we declared earlier when creating the <code>lint-checks</code> module.</p>
+<p>We extend that class from <code>IssueRegistry</code> class and override a couple of properties.</p>
+<pre class="language-kotlin"><code class="language-kotlin"><span class="token keyword">class</span> LintRegistry <span class="token operator">:</span> <span class="token function">IssueRegistry</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">override</span> <span class="token keyword">val</span> api<span class="token operator">:</span> Int
+        <span class="token keyword">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> CURRENT_API
+
+    <span class="token keyword">override</span> <span class="token keyword">val</span> issues<span class="token operator">:</span> List<span class="token operator">&lt;</span>Issue<span class="token operator">></span>
+        <span class="token keyword">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token function">listOf</span><span class="token punctuation">(</span>
+            InputTypeDetector<span class="token punctuation">.</span>ISSUE_MISSING_INPUT_TYPE
+        <span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Any future issues that we declare/write are to be added to this <code>issues</code> property list.</p>
+<h3>Registering our Issue Registry</h3>
+<p>We now need to declare this class within the manifest of our JAR. We do this in our build script. Add the following block under your <code>lint-checks</code> module's <code>build.gradle</code> file</p>
+<pre class="language-groovy"><code class="language-groovy">jar <span class="token punctuation">{</span>
+    manifest <span class="token punctuation">{</span>
+        <span class="token comment">// Format is</span>
+        <span class="token comment">// attributes("Lint-Registry-v2": "&lt;fully-qualified-class-name-of-your-issue-registry>")</span>
+        <span class="token function">attributes</span><span class="token punctuation">(</span><span class="token interpolation-string"><span class="token string">"Lint-Registry-v2"</span></span><span class="token punctuation">:</span> <span class="token interpolation-string"><span class="token string">"com.varunbarad.androidlintchecks.LintRegistry"</span></span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h2>Integrating our custom lint check module into our project</h2>
+<p>In your <code>app</code> module go and add a <code>lintChecks</code> dependency on your <code>lint-checks</code> module like this</p>
+<pre class="language-groovy"><code class="language-groovy">dependencies <span class="token punctuation">{</span>
+    lintChecks <span class="token function">project</span><span class="token punctuation">(</span><span class="token interpolation-string"><span class="token string">":lint-checks"</span></span><span class="token punctuation">)</span>
+    <span class="token punctuation">...</span>
+<span class="token punctuation">}</span></code></pre>
+<h2>Run the lint checks</h2>
+<p>That was all that was needed to write your custom lint check. Now whenever you run a lint check using gradle, it will also check whether your code passes our custom lint checks or not.</p>
+<pre class="language-shell"><code class="language-shell"><span class="token comment"># Command to run lint check</span>
+./gradlew lint</code></pre>
+<p>Want to discuss this or any other interesting thing, hit me up on Twitter <a href="https://twitter.com/varun_barad">@varun_barad</a>.</p>
+<h3>Edits</h3>
+<ol>
+<li><strong>2020-03-02:</strong> Add the step of &quot;Registering our Issue Registry&quot;</li>
+</ol>
+</section>
+
+    <section class="post-categories-container">
+        Categories:
+        
+            <a href="/category/android.html" class="badge badge-warning">#android</a>
+        
+            <a href="/category/programming.html" class="badge badge-warning">#programming</a>
+        
+        <a href="/blog" class="badge badge-warning">#all</a>
+    </section>
+</main>
+<footer class="container-fluid">
+    <div class="grid">
+        <aside>
+            <nav>
+                <ul>
+                    <li><strong>Core</strong></li>
+                    <li>Blog</li>
+                    <li>Now</li>
+                    <li>Contact</li>
+                    <li>Resume</li>
+                    <li>Wishlist</li>
+                </ul>
+            </nav>
+        </aside>
+        <aside>
+            <nav>
+                <ul>
+                    <li><strong>Creation</strong></li>
+                    <li>Projects</li>
+                    <li>Ideas</li>
+                    <li>Uses</li>
+                    <li>Changelog</li>
+                    <li>Feeds</li>
+                    <li>Colophon</li>
+                </ul>
+            </nav>
+        </aside>
+        <aside>
+            <nav>
+                <ul>
+                    <li><strong>Consumption</strong></li>
+                    <li>Books</li>
+                    <li>Movies</li>
+                    <li>Games</li>
+                    <li>Recipes</li>
+                    <li>Blogroll</li>
+                    <li>Postroll</li>
+                </ul>
+            </nav>
+        </aside>
+    </div>
+
+    <div class="developer-attribution">
+        Made by <a href="https://dixita0607.github.io">Dixita Ganatra</a>
+    </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+    <link rel="stylesheet" href="/assets/css/prism-theme/prism-darcula.css" />
+    
+    <link rel="stylesheet" href="/assets/css/pico.css" />
+    <link rel="icon" type="image/png" href="/favicon.png"/>
+    <title>📝 Save dependency list of your python project to a file - Varun Barad</title>
+    <meta name="description" content="TIL: How to do for python what we get with `dependencies` in npm `package.json`"/>
+
+    
+
+    <!-- RSS Feed meta-data -->
+    <link type="application/atom+xml" rel="alternate" href="https://varunbarad.com/feed.xml" title="Varun Barad - Curious Developer"/>
+
+    <!-- Twitter meta-data -->
+    <meta name="twitter:site" content="@varun_barad"/>
+    <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png"/>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="📝 Save dependency list of your python project to a file"/>
+    <meta name="twitter:description" content="TIL: How to do for python what we get with `dependencies` in npm `package.json`"/>
+
+    <!-- Open-Graph meta-data -->
+    <meta property="og:site_name" content="Varun Barad - Curious Developer"/>
+    <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png"/>
+    <meta property="og:type" content="object"/>
+    <meta property="og:title" content="📝 Save dependency list of your python project to a file"/>
+    <meta property="og:url" content="https://varunbarad.com/new_blog/til-python-save-dependency-list.html"/>
+    <meta property="og:description" content="TIL: How to do for python what we get with `dependencies` in npm `package.json`"/>
+</head>
+<body class="container-fluid">
+<header id="header">
+    <nav>
+        <ul>
+            <li><a href="/"><strong>Varun Barad</strong></a></li>
+        </ul>
+        <ul>
+            <li class="secondary"><a href="/blog">Blog</a></li>
+            <li class="secondary"><a href="/projects">Projects</a></li>
+            <li class="secondary"><a href="/ideas">Ideas</a></li>
+            <li class="secondary"><a href="/contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+<main class="container">
+    <hgroup>
+        <h2>📝 Save dependency list of your python project to a file</h2>
+        <p>By Varun Barad on <time class="post-date dt-published" datetime="Mon May 22 2023 16:10:27 GMT+0530 (India Standard Time)">May 22, 2023</time></p>
+    </hgroup>
+
+    <section class="post-content e-content"><p>Node/npm lists the dependencies you install in a project in the <code>dependencies</code> key in your <code>package.json</code> file. But since python doesn't have a similar file I was exploring how to do the same for a python project.</p>
+<p>I came across the convention of a <code>requirements.txt</code> file. This file lists all the packages that are installed in your current environment.</p>
+<p>To generate the file you use:</p>
+<pre class="language-shell"><code class="language-shell">pip freeze <span class="token operator">></span> requirements.txt</code></pre>
+</section>
+
+    <section class="post-categories-container">
+        Categories:
+        
+            <a href="/category/til.html" class="badge badge-warning">#til</a>
+        
+            <a href="/category/python.html" class="badge badge-warning">#python</a>
+        
+            <a href="/category/programming.html" class="badge badge-warning">#programming</a>
+        
+        <a href="/blog" class="badge badge-warning">#all</a>
+    </section>
+</main>
+<footer class="container-fluid">
+    <div class="grid">
+        <aside>
+            <nav>
+                <ul>
+                    <li><strong>Core</strong></li>
+                    <li>Blog</li>
+                    <li>Now</li>
+                    <li>Contact</li>
+                    <li>Resume</li>
+                    <li>Wishlist</li>
+                </ul>
+            </nav>
+        </aside>
+        <aside>
+            <nav>
+                <ul>
+                    <li><strong>Creation</strong></li>
+                    <li>Projects</li>
+                    <li>Ideas</li>
+                    <li>Uses</li>
+                    <li>Changelog</li>
+                    <li>Feeds</li>
+                    <li>Colophon</li>
+                </ul>
+            </nav>
+        </aside>
+        <aside>
+            <nav>
+                <ul>
+                    <li><strong>Consumption</strong></li>
+                    <li>Books</li>
+                    <li>Movies</li>
+                    <li>Games</li>
+                    <li>Recipes</li>
+                    <li>Blogroll</li>
+                    <li>Postroll</li>
+                </ul>
+            </nav>
+        </aside>
+    </div>
+
+    <div class="developer-attribution">
+        Made by <a href="https://dixita0607.github.io">Dixita Ganatra</a>
+    </div>
+</footer>
+</body>
+</html>

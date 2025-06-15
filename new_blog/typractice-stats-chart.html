@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+    <link rel="stylesheet" href="/assets/css/prism-theme/prism-darcula.css" />
+    
+    <link rel="stylesheet" href="/assets/css/pico.css" />
+    <link rel="icon" type="image/png" href="/favicon.png"/>
+    <title>⌨️ Showing historical statistics - Varun Barad</title>
+    <meta name="description" content="I added a chart to show your progress over time"/>
+
+    
+
+    <!-- RSS Feed meta-data -->
+    <link type="application/atom+xml" rel="alternate" href="https://varunbarad.com/feed.xml" title="Varun Barad - Curious Developer"/>
+
+    <!-- Twitter meta-data -->
+    <meta name="twitter:site" content="@varun_barad"/>
+    <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png"/>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="⌨️ Showing historical statistics"/>
+    <meta name="twitter:description" content="I added a chart to show your progress over time"/>
+
+    <!-- Open-Graph meta-data -->
+    <meta property="og:site_name" content="Varun Barad - Curious Developer"/>
+    <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png"/>
+    <meta property="og:type" content="object"/>
+    <meta property="og:title" content="⌨️ Showing historical statistics"/>
+    <meta property="og:url" content="https://varunbarad.com/new_blog/typractice-stats-chart.html"/>
+    <meta property="og:description" content="I added a chart to show your progress over time"/>
+</head>
+<body class="container-fluid">
+<header id="header">
+    <nav>
+        <ul>
+            <li><a href="/"><strong>Varun Barad</strong></a></li>
+        </ul>
+        <ul>
+            <li class="secondary"><a href="/blog">Blog</a></li>
+            <li class="secondary"><a href="/projects">Projects</a></li>
+            <li class="secondary"><a href="/ideas">Ideas</a></li>
+            <li class="secondary"><a href="/contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+<main class="container">
+    <hgroup>
+        <h2>⌨️ Showing historical statistics</h2>
+        <p>By Varun Barad on <time class="post-date dt-published" datetime="Thu Jul 27 2023 22:11:36 GMT+0530 (India Standard Time)">July 27, 2023</time></p>
+    </hgroup>
+
+    <section class="post-content e-content"><p>While I was accruing the typing speed data each time I practiced on Typractice, the user was not able to see it. They had no way of knowing how they have progressed (or regressed) over time.</p>
+<p>I started by wanting to add a table where each entry will be shown but instead went ahead with a chart because it looks fancier, and also it makes it easier for the user to see the trend.</p>
+<p>Looked around a bit for a charting library and decided to go with the <a href="https://chartjs.org">Chart.js</a> library which has sane defaults with options to customize a lot of things.</p>
+<p>Each entry in the line-chart represents the speed (in words-per-minute) and the timestamp of the attempt. You can also hover over each point to see the exact value.</p>
+<p>Would love to see how your speed has changed over time. Send me screenshots of your charts.</p>
+<p><img src="../assets/images/posts/project-typractice/stats-chart.png" alt="screenshot of the stats page"></p>
+<h2>Articles on this project</h2>
+<ol>
+<li><a href="./project-typractice">Public release</a></li>
+<li>Adding stats chart (this article)</li>
+<li><a href="./typractice-paragraph-summaries">Adding summary stats table</a></li>
+</ol>
+</section>
+
+    <section class="post-categories-container">
+        Categories:
+        
+            <a href="/category/typractice.html" class="badge badge-warning">#typractice</a>
+        
+            <a href="/category/web.html" class="badge badge-warning">#web</a>
+        
+            <a href="/category/programming.html" class="badge badge-warning">#programming</a>
+        
+        <a href="/blog" class="badge badge-warning">#all</a>
+    </section>
+</main>
+<footer class="container-fluid">
+    <div class="grid">
+        <aside>
+            <nav>
+                <ul>
+                    <li><strong>Core</strong></li>
+                    <li>Blog</li>
+                    <li>Now</li>
+                    <li>Contact</li>
+                    <li>Resume</li>
+                    <li>Wishlist</li>
+                </ul>
+            </nav>
+        </aside>
+        <aside>
+            <nav>
+                <ul>
+                    <li><strong>Creation</strong></li>
+                    <li>Projects</li>
+                    <li>Ideas</li>
+                    <li>Uses</li>
+                    <li>Changelog</li>
+                    <li>Feeds</li>
+                    <li>Colophon</li>
+                </ul>
+            </nav>
+        </aside>
+        <aside>
+            <nav>
+                <ul>
+                    <li><strong>Consumption</strong></li>
+                    <li>Books</li>
+                    <li>Movies</li>
+                    <li>Games</li>
+                    <li>Recipes</li>
+                    <li>Blogroll</li>
+                    <li>Postroll</li>
+                </ul>
+            </nav>
+        </aside>
+    </div>
+
+    <div class="developer-attribution">
+        Made by <a href="https://dixita0607.github.io">Dixita Ganatra</a>
+    </div>
+</footer>
+</body>
+</html>

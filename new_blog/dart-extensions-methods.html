@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+    <link rel="stylesheet" href="/assets/css/prism-theme/prism-darcula.css" />
+    
+    <link rel="stylesheet" href="/assets/css/pico.css" />
+    <link rel="icon" type="image/png" href="/favicon.png"/>
+    <title>Dart Extension Methods - Varun Barad</title>
+    <meta name="description" content="An overview of extension methods in Dart and how they can be useful"/>
+
+    
+
+    <!-- RSS Feed meta-data -->
+    <link type="application/atom+xml" rel="alternate" href="https://varunbarad.com/feed.xml" title="Varun Barad - Curious Developer"/>
+
+    <!-- Twitter meta-data -->
+    <meta name="twitter:site" content="@varun_barad"/>
+    <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png"/>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="Dart Extension Methods"/>
+    <meta name="twitter:description" content="An overview of extension methods in Dart and how they can be useful"/>
+
+    <!-- Open-Graph meta-data -->
+    <meta property="og:site_name" content="Varun Barad - Curious Developer"/>
+    <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png"/>
+    <meta property="og:type" content="object"/>
+    <meta property="og:title" content="Dart Extension Methods"/>
+    <meta property="og:url" content="https://varunbarad.com/new_blog/dart-extensions-methods.html"/>
+    <meta property="og:description" content="An overview of extension methods in Dart and how they can be useful"/>
+</head>
+<body class="container-fluid">
+<header id="header">
+    <nav>
+        <ul>
+            <li><a href="/"><strong>Varun Barad</strong></a></li>
+        </ul>
+        <ul>
+            <li class="secondary"><a href="/blog">Blog</a></li>
+            <li class="secondary"><a href="/projects">Projects</a></li>
+            <li class="secondary"><a href="/ideas">Ideas</a></li>
+            <li class="secondary"><a href="/contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+<main class="container">
+    <hgroup>
+        <h2>Dart Extension Methods</h2>
+        <p>By Varun Barad on <time class="post-date dt-published" datetime="Tue Feb 04 2020 12:00:00 GMT+0530 (India Standard Time)">February 04, 2020</time></p>
+    </hgroup>
+
+    <section class="post-content e-content"><p><img src="https://varunbarad.com/assets/images/posts/headers/dart-extension-methods.png" alt="Article Header - Dart Extension Methods"></p>
+<p>Welcome devs, have you tried your hands at extensions methods? Dart recently announced support for extension methods (from Dart 2.7) and extension properties.</p>
+<p>Extension methods are a way to add functionality to existing libraries. When you are using someone else's library it's often impractical/impossible to change the API. But you can <em>extend</em> it using extension methods.</p>
+<h2>What are extension methods?</h2>
+<p>Consider the following code that parses a string into an integer:</p>
+<pre class="language-dart"><code class="language-dart">int<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'42'</span></span><span class="token punctuation">)</span></code></pre>
+<p>Won't it look cleaner/better if this functionality was available on <code>String</code> class like below?</p>
+<pre class="language-dart"><code class="language-dart"><span class="token string-literal"><span class="token string">'42'</span></span><span class="token punctuation">.</span><span class="token function">parseInt</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>Since the language (where class <code>String</code> comes from) doesn't provide such a method we can't parse a string to an int like that. Extension methods allow us to specify such custom functionalities not provided by the library (Dart language in this case). Let's see how to do that in next section.</p>
+<h2>Writing a basic extension method</h2>
+<p>So we want to have a method <code>parseInt</code> <strong>on</strong> <code>String</code> class which would parse the given string to integer.</p>
+<pre class="language-dart"><code class="language-dart"><span class="token string-literal"><span class="token string">'42'</span></span><span class="token punctuation">.</span><span class="token function">parseInt</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>For that we will define an extension method on <code>String</code> like this</p>
+<pre class="language-dart"><code class="language-dart"><span class="token comment">// File: extension_methods.dart</span>
+<span class="token keyword">extension</span> <span class="token class-name">StringExtras</span> <span class="token keyword">on</span> <span class="token class-name">String</span> <span class="token punctuation">{</span>
+    int <span class="token function">parseInt</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> int<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// We can also define getters as extensions</span>
+    int <span class="token keyword">get</span> doubleLength <span class="token operator">=</span><span class="token operator">></span> length <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Here we have named this set of extension methods as <code>StringExtras</code>, you can name them anything you like.</p>
+<p><strong>Note:</strong> As you might have noticed above, we can define multiple extension methods/getters under a single extension block.</p>
+<h2>Using the extension method</h2>
+<p>Extension methods (once imported) can be used just like any member method on that class's object. Our example would go like this</p>
+<pre class="language-dart"><code class="language-dart"><span class="token keyword">import</span> <span class="token string-literal"><span class="token string">'extension_methods.dart'</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'42'</span></span><span class="token punctuation">.</span><span class="token function">parseInt</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Would print 50</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Similarly we can use the getters too</p>
+<pre class="language-dart"><code class="language-dart"><span class="token keyword">import</span> <span class="token string-literal"><span class="token string">'extension_methods.dart'</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'42'</span></span><span class="token punctuation">.</span>doubleLength<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Would print 4</span>
+<span class="token punctuation">}</span></code></pre>
+<h2>Important Notes</h2>
+<ol>
+<li>Extension methods <em>don't</em> work with the type <code>dynamic</code>. However they <em>do</em> work with Dart's type inference.</li>
+<li>Since extension methods are resolved statically, they're as fast as calling a static function.</li>
+<li>Extension methods can't access private members of the class.</li>
+<li>If an extension member has a name conflict then you should refer <a href="https://dart.dev/guides/language/extension-methods#api-conflicts">here</a> for your options.</li>
+<li>You can define extension methods on classes which take generic type parameters (for example <code>List&lt;T&gt;</code>). Refer <a href="https://dart.dev/guides/language/extension-methods#implementing-generic-extensions">this section</a> for further details.</li>
+</ol>
+<h2>Reference</h2>
+<p><a href="https://dart.dev/guides/language/extension-methods">Official release documentation - https://dart.dev/guides/language/extension-methods</a></p>
+<p>Want to discuss this or any other interesting thing, hit me up on Twitter <a href="https://twitter.com/varun_barad">@varun_barad</a>.</p>
+</section>
+
+    <section class="post-categories-container">
+        Categories:
+        
+            <a href="/category/flutter.html" class="badge badge-warning">#flutter</a>
+        
+            <a href="/category/dart.html" class="badge badge-warning">#dart</a>
+        
+            <a href="/category/programming.html" class="badge badge-warning">#programming</a>
+        
+        <a href="/blog" class="badge badge-warning">#all</a>
+    </section>
+</main>
+<footer class="container-fluid">
+    <div class="grid">
+        <aside>
+            <nav>
+                <ul>
+                    <li><strong>Core</strong></li>
+                    <li>Blog</li>
+                    <li>Now</li>
+                    <li>Contact</li>
+                    <li>Resume</li>
+                    <li>Wishlist</li>
+                </ul>
+            </nav>
+        </aside>
+        <aside>
+            <nav>
+                <ul>
+                    <li><strong>Creation</strong></li>
+                    <li>Projects</li>
+                    <li>Ideas</li>
+                    <li>Uses</li>
+                    <li>Changelog</li>
+                    <li>Feeds</li>
+                    <li>Colophon</li>
+                </ul>
+            </nav>
+        </aside>
+        <aside>
+            <nav>
+                <ul>
+                    <li><strong>Consumption</strong></li>
+                    <li>Books</li>
+                    <li>Movies</li>
+                    <li>Games</li>
+                    <li>Recipes</li>
+                    <li>Blogroll</li>
+                    <li>Postroll</li>
+                </ul>
+            </nav>
+        </aside>
+    </div>
+
+    <div class="developer-attribution">
+        Made by <a href="https://dixita0607.github.io">Dixita Ganatra</a>
+    </div>
+</footer>
+</body>
+</html>

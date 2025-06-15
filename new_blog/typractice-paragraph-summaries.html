@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+    <link rel="stylesheet" href="/assets/css/prism-theme/prism-darcula.css" />
+    
+    <link rel="stylesheet" href="/assets/css/pico.css" />
+    <link rel="icon" type="image/png" href="/favicon.png"/>
+    <title>⌨️ Paragraph performance summaries - Varun Barad</title>
+    <meta name="description" content="I added a chart to show your progress over time"/>
+
+    
+
+    <!-- RSS Feed meta-data -->
+    <link type="application/atom+xml" rel="alternate" href="https://varunbarad.com/feed.xml" title="Varun Barad - Curious Developer"/>
+
+    <!-- Twitter meta-data -->
+    <meta name="twitter:site" content="@varun_barad"/>
+    <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png"/>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="⌨️ Paragraph performance summaries"/>
+    <meta name="twitter:description" content="I added a chart to show your progress over time"/>
+
+    <!-- Open-Graph meta-data -->
+    <meta property="og:site_name" content="Varun Barad - Curious Developer"/>
+    <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png"/>
+    <meta property="og:type" content="object"/>
+    <meta property="og:title" content="⌨️ Paragraph performance summaries"/>
+    <meta property="og:url" content="https://varunbarad.com/new_blog/typractice-paragraph-summaries.html"/>
+    <meta property="og:description" content="I added a chart to show your progress over time"/>
+</head>
+<body class="container-fluid">
+<header id="header">
+    <nav>
+        <ul>
+            <li><a href="/"><strong>Varun Barad</strong></a></li>
+        </ul>
+        <ul>
+            <li class="secondary"><a href="/blog">Blog</a></li>
+            <li class="secondary"><a href="/projects">Projects</a></li>
+            <li class="secondary"><a href="/ideas">Ideas</a></li>
+            <li class="secondary"><a href="/contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+<main class="container">
+    <hgroup>
+        <h2>⌨️ Paragraph performance summaries</h2>
+        <p>By Varun Barad on <time class="post-date dt-published" datetime="Fri Aug 11 2023 21:33:50 GMT+0530 (India Standard Time)">August 11, 2023</time></p>
+    </hgroup>
+
+    <section class="post-content e-content"><p>Apart from the graph I added last time I also wanted people to have a table where they can see their performance. Initially I was going to present the top 10 performance according to words-per-minute show up in the table. Something like a leaderboard.</p>
+<p>But as I was writing the code, GitHub Copilot autofilled for me the code of a table which shows a summary of user's performance on each paragraph. I liked the idea and went with it. Wrote a bit of CSS to make the table have rounded corners and other such touch-ups.</p>
+<p>For each different paragraph that you have typed in, you can now see the following data-points:</p>
+<ol>
+<li>Paragraph number</li>
+<li>Number of attempts you have made</li>
+<li>Your best, worst and average time in minutes</li>
+<li>Your best, worst and average speed in words-per-minute</li>
+</ol>
+<p>The website looks usably nice on a laptop and desktop, it has all the functionalities that I wanted it to have. Now I declare this project as finished. I won't make any new changes to it unless to fix a bug. This declaration is primarily for me to stop myself from spending any more time thinking about this 😅.</p>
+<p><img src="../assets/images/posts/project-typractice/stats-table.png" alt="screenshot of the summary stats table"></p>
+<h2>Articles on this project</h2>
+<ol>
+<li><a href="./project-typractice">Public release</a></li>
+<li><a href="./typractice-stats-chart">Adding stats chart</a></li>
+<li>Adding summary stats table (this article)</li>
+</ol>
+</section>
+
+    <section class="post-categories-container">
+        Categories:
+        
+            <a href="/category/typractice.html" class="badge badge-warning">#typractice</a>
+        
+            <a href="/category/web.html" class="badge badge-warning">#web</a>
+        
+            <a href="/category/programming.html" class="badge badge-warning">#programming</a>
+        
+        <a href="/blog" class="badge badge-warning">#all</a>
+    </section>
+</main>
+<footer class="container-fluid">
+    <div class="grid">
+        <aside>
+            <nav>
+                <ul>
+                    <li><strong>Core</strong></li>
+                    <li>Blog</li>
+                    <li>Now</li>
+                    <li>Contact</li>
+                    <li>Resume</li>
+                    <li>Wishlist</li>
+                </ul>
+            </nav>
+        </aside>
+        <aside>
+            <nav>
+                <ul>
+                    <li><strong>Creation</strong></li>
+                    <li>Projects</li>
+                    <li>Ideas</li>
+                    <li>Uses</li>
+                    <li>Changelog</li>
+                    <li>Feeds</li>
+                    <li>Colophon</li>
+                </ul>
+            </nav>
+        </aside>
+        <aside>
+            <nav>
+                <ul>
+                    <li><strong>Consumption</strong></li>
+                    <li>Books</li>
+                    <li>Movies</li>
+                    <li>Games</li>
+                    <li>Recipes</li>
+                    <li>Blogroll</li>
+                    <li>Postroll</li>
+                </ul>
+            </nav>
+        </aside>
+    </div>
+
+    <div class="developer-attribution">
+        Made by <a href="https://dixita0607.github.io">Dixita Ganatra</a>
+    </div>
+</footer>
+</body>
+</html>

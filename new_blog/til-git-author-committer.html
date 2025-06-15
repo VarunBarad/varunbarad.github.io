@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+    <link rel="stylesheet" href="/assets/css/prism-theme/prism-darcula.css" />
+    
+    <link rel="stylesheet" href="/assets/css/pico.css" />
+    <link rel="icon" type="image/png" href="/favicon.png"/>
+    <title>📝 Specifying different author and committer in git - Varun Barad</title>
+    <meta name="description" content="TIL: How to specify different author and committer for a commit in git"/>
+
+    
+
+    <!-- RSS Feed meta-data -->
+    <link type="application/atom+xml" rel="alternate" href="https://varunbarad.com/feed.xml" title="Varun Barad - Curious Developer"/>
+
+    <!-- Twitter meta-data -->
+    <meta name="twitter:site" content="@varun_barad"/>
+    <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png"/>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="📝 Specifying different author and committer in git"/>
+    <meta name="twitter:description" content="TIL: How to specify different author and committer for a commit in git"/>
+
+    <!-- Open-Graph meta-data -->
+    <meta property="og:site_name" content="Varun Barad - Curious Developer"/>
+    <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png"/>
+    <meta property="og:type" content="object"/>
+    <meta property="og:title" content="📝 Specifying different author and committer in git"/>
+    <meta property="og:url" content="https://varunbarad.com/new_blog/til-git-author-committer.html"/>
+    <meta property="og:description" content="TIL: How to specify different author and committer for a commit in git"/>
+</head>
+<body class="container-fluid">
+<header id="header">
+    <nav>
+        <ul>
+            <li><a href="/"><strong>Varun Barad</strong></a></li>
+        </ul>
+        <ul>
+            <li class="secondary"><a href="/blog">Blog</a></li>
+            <li class="secondary"><a href="/projects">Projects</a></li>
+            <li class="secondary"><a href="/ideas">Ideas</a></li>
+            <li class="secondary"><a href="/contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+<main class="container">
+    <hgroup>
+        <h2>📝 Specifying different author and committer in git</h2>
+        <p>By Varun Barad on <time class="post-date dt-published" datetime="Wed Dec 18 2024 23:13:33 GMT+0530 (India Standard Time)">December 18, 2024</time></p>
+    </hgroup>
+
+    <section class="post-content e-content"><p>In some cases you need to commit code/work that is originally written/done by someone else. For example when you are amending/rebasing a commit to change a small thing but still want to retain the attribution to original author when committing you can specify separate committer and author information.</p>
+<p>This is not done via any flag but by specifying a couple of environment variables.</p>
+<pre class="language-shell"><code class="language-shell"><span class="token comment"># Committer Name: Sam Smith</span>
+<span class="token comment"># Committer Email: ss@example.com</span>
+<span class="token comment"># Author Name: Jake Johnson</span>
+<span class="token comment"># Author Email: jj@example.com</span>
+<span class="token assign-left variable">GIT_COMMITTER_NAME</span><span class="token operator">=</span><span class="token string">'Sam Smith'</span> <span class="token assign-left variable">GIT_COMMITTER_EMAIL</span><span class="token operator">=</span><span class="token string">'ss@example.com'</span> <span class="token function">git</span> commit <span class="token parameter variable">--author</span> <span class="token string">'Jake Johnson &lt;jj@example.com>'</span></code></pre>
+<p>Credits: <a href="https://stackoverflow.com/a/23108169/4717436">StackOverflow</a></p>
+</section>
+
+    <section class="post-categories-container">
+        Categories:
+        
+            <a href="/category/til.html" class="badge badge-warning">#til</a>
+        
+        <a href="/blog" class="badge badge-warning">#all</a>
+    </section>
+</main>
+<footer class="container-fluid">
+    <div class="grid">
+        <aside>
+            <nav>
+                <ul>
+                    <li><strong>Core</strong></li>
+                    <li>Blog</li>
+                    <li>Now</li>
+                    <li>Contact</li>
+                    <li>Resume</li>
+                    <li>Wishlist</li>
+                </ul>
+            </nav>
+        </aside>
+        <aside>
+            <nav>
+                <ul>
+                    <li><strong>Creation</strong></li>
+                    <li>Projects</li>
+                    <li>Ideas</li>
+                    <li>Uses</li>
+                    <li>Changelog</li>
+                    <li>Feeds</li>
+                    <li>Colophon</li>
+                </ul>
+            </nav>
+        </aside>
+        <aside>
+            <nav>
+                <ul>
+                    <li><strong>Consumption</strong></li>
+                    <li>Books</li>
+                    <li>Movies</li>
+                    <li>Games</li>
+                    <li>Recipes</li>
+                    <li>Blogroll</li>
+                    <li>Postroll</li>
+                </ul>
+            </nav>
+        </aside>
+    </div>
+
+    <div class="developer-attribution">
+        Made by <a href="https://dixita0607.github.io">Dixita Ganatra</a>
+    </div>
+</footer>
+</body>
+</html>

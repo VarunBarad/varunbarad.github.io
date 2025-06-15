@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+    <link rel="stylesheet" href="/assets/css/prism-theme/prism-darcula.css" />
+    
+    <link rel="stylesheet" href="/assets/css/pico.css" />
+    <link rel="icon" type="image/png" href="/favicon.png"/>
+    <title>Not all booleans are created equal on GitHub Actions - Varun Barad</title>
+    <meta name="description" content="How to get an actual boolean input value on a manually run GitHub Action"/>
+
+    
+
+    <!-- RSS Feed meta-data -->
+    <link type="application/atom+xml" rel="alternate" href="https://varunbarad.com/feed.xml" title="Varun Barad - Curious Developer"/>
+
+    <!-- Twitter meta-data -->
+    <meta name="twitter:site" content="@varun_barad"/>
+    <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png"/>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="Not all booleans are created equal on GitHub Actions"/>
+    <meta name="twitter:description" content="How to get an actual boolean input value on a manually run GitHub Action"/>
+
+    <!-- Open-Graph meta-data -->
+    <meta property="og:site_name" content="Varun Barad - Curious Developer"/>
+    <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png"/>
+    <meta property="og:type" content="object"/>
+    <meta property="og:title" content="Not all booleans are created equal on GitHub Actions"/>
+    <meta property="og:url" content="https://varunbarad.com/new_blog/github-actions-input-types.html"/>
+    <meta property="og:description" content="How to get an actual boolean input value on a manually run GitHub Action"/>
+</head>
+<body class="container-fluid">
+<header id="header">
+    <nav>
+        <ul>
+            <li><a href="/"><strong>Varun Barad</strong></a></li>
+        </ul>
+        <ul>
+            <li class="secondary"><a href="/blog">Blog</a></li>
+            <li class="secondary"><a href="/projects">Projects</a></li>
+            <li class="secondary"><a href="/ideas">Ideas</a></li>
+            <li class="secondary"><a href="/contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+<main class="container">
+    <hgroup>
+        <h2>Not all booleans are created equal on GitHub Actions</h2>
+        <p>By Varun Barad on <time class="post-date dt-published" datetime="Sat Oct 05 2024 06:55:23 GMT+0530 (India Standard Time)">October 05, 2024</time></p>
+    </hgroup>
+
+    <section class="post-content e-content"><p>We use the <code>workflow_dispatch</code> trigger to run a GitHub Action manually. This also allows us to specify any inputs that we want to provide to the action at the time of running (<a href="https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows#providing-inputs">link to documentation</a>).</p>
+<p>Take the below example where an imaginary workflow greets a person based on whether they prefer &quot;Hello&quot; or not as told by user. This would not work if the workflow parameter <code>greetWithHello</code> actually expects a boolean as the value of even a boolean input parameter in a <code>workflow_dispatch</code> call is actually a string <code>'true'</code>/<code>'false'</code>.</p>
+<pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">name</span><span class="token punctuation">:</span> Show inputs
+
+<span class="token key atrule">on</span><span class="token punctuation">:</span>
+  <span class="token key atrule">workflow_dispatch</span><span class="token punctuation">:</span>
+    <span class="token key atrule">inputs</span><span class="token punctuation">:</span>
+      <span class="token key atrule">prefersHello</span><span class="token punctuation">:</span>
+        <span class="token key atrule">description</span><span class="token punctuation">:</span> <span class="token string">'Whether the person prefers to greet with a Hello'</span>
+        <span class="token key atrule">required</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+        <span class="token key atrule">type</span><span class="token punctuation">:</span> boolean
+        <span class="token key atrule">default</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+
+<span class="token key atrule">jobs</span><span class="token punctuation">:</span>
+  <span class="token key atrule">greet_person</span><span class="token punctuation">:</span>
+    <span class="token key atrule">name</span><span class="token punctuation">:</span> Greet the person
+    <span class="token key atrule">runs-on</span><span class="token punctuation">:</span> ubuntu<span class="token punctuation">-</span>latest
+
+    <span class="token key atrule">steps</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Checkout repository
+        <span class="token key atrule">uses</span><span class="token punctuation">:</span> imaginary/greet@v1
+        <span class="token key atrule">with</span><span class="token punctuation">:</span>
+          <span class="token key atrule">greetWithHello</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> github.event.inputs.prefersHello <span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre>
+<p>The way to convert this into an actual boolean is to compare the value of the input like this</p>
+<pre class="language-yaml"><code class="language-yaml">$<span class="token punctuation">{</span><span class="token punctuation">{</span> github.event.inputs.prefersHello == 'true' <span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre>
+<p>With that, the previous example turns into:</p>
+<pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">name</span><span class="token punctuation">:</span> Show inputs
+
+<span class="token key atrule">on</span><span class="token punctuation">:</span>
+  <span class="token key atrule">workflow_dispatch</span><span class="token punctuation">:</span>
+    <span class="token key atrule">inputs</span><span class="token punctuation">:</span>
+      <span class="token key atrule">prefersHello</span><span class="token punctuation">:</span>
+        <span class="token key atrule">description</span><span class="token punctuation">:</span> <span class="token string">'Whether the person prefers to greet with a Hello'</span>
+        <span class="token key atrule">required</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+        <span class="token key atrule">type</span><span class="token punctuation">:</span> boolean
+        <span class="token key atrule">default</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+
+<span class="token key atrule">jobs</span><span class="token punctuation">:</span>
+  <span class="token key atrule">greet_person</span><span class="token punctuation">:</span>
+    <span class="token key atrule">name</span><span class="token punctuation">:</span> Greet the person
+    <span class="token key atrule">runs-on</span><span class="token punctuation">:</span> ubuntu<span class="token punctuation">-</span>latest
+
+    <span class="token key atrule">steps</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Checkout repository
+        <span class="token key atrule">uses</span><span class="token punctuation">:</span> imaginary/greet@v1
+        <span class="token key atrule">with</span><span class="token punctuation">:</span>
+          <span class="token key atrule">greetWithHello</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> github.event.inputs.prefersHello == 'true' <span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre>
+</section>
+
+    <section class="post-categories-container">
+        Categories:
+        
+            <a href="/category/programming.html" class="badge badge-warning">#programming</a>
+        
+            <a href="/category/tools.html" class="badge badge-warning">#tools</a>
+        
+        <a href="/blog" class="badge badge-warning">#all</a>
+    </section>
+</main>
+<footer class="container-fluid">
+    <div class="grid">
+        <aside>
+            <nav>
+                <ul>
+                    <li><strong>Core</strong></li>
+                    <li>Blog</li>
+                    <li>Now</li>
+                    <li>Contact</li>
+                    <li>Resume</li>
+                    <li>Wishlist</li>
+                </ul>
+            </nav>
+        </aside>
+        <aside>
+            <nav>
+                <ul>
+                    <li><strong>Creation</strong></li>
+                    <li>Projects</li>
+                    <li>Ideas</li>
+                    <li>Uses</li>
+                    <li>Changelog</li>
+                    <li>Feeds</li>
+                    <li>Colophon</li>
+                </ul>
+            </nav>
+        </aside>
+        <aside>
+            <nav>
+                <ul>
+                    <li><strong>Consumption</strong></li>
+                    <li>Books</li>
+                    <li>Movies</li>
+                    <li>Games</li>
+                    <li>Recipes</li>
+                    <li>Blogroll</li>
+                    <li>Postroll</li>
+                </ul>
+            </nav>
+        </aside>
+    </div>
+
+    <div class="developer-attribution">
+        Made by <a href="https://dixita0607.github.io">Dixita Ganatra</a>
+    </div>
+</footer>
+</body>
+</html>

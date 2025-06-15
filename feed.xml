@@ -4,12 +4,102 @@
   <subtitle>My online home where I post about new things I learn or find interesting.</subtitle>
   <link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml"/>
   <link href="https://varunbarad.com/" rel="alternate" type="text/html"/>
-  <updated>2025-06-08T19:24:15+05:30</updated>
+  <updated>2025-06-15T08:16:58+05:30</updated>
   <id>https://varunbarad.com/feed.xml</id>
   <author>
     <name>Varun Barad</name>
   </author>
 
+  
+    
+    <entry>
+      <title type="html">📝 Mount an SMB share on Mac OS using Rust</title>
+      <link href="https://varunbarad.com/blog/til-macos_mount_remote_smb_share.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <published>2025-06-15T08:16:58+05:30</published>
+      <updated>2025-06-15T08:16:58+05:30</updated>
+      <id>https://varunbarad.com/blog/til-macos_mount_remote_smb_share.html</id>
+      <content type="html">
+      &lt;p&gt;Just as before, while working on my last project (&lt;a href=&quot;https://varunbarad.com/blog/project-valet&quot;&gt;valet&lt;/a&gt;) I learned something new. I wanted to mount a remote SMB share from my NAS onto my laptop as that shared storage is where I eventually want to store all my files once they are cleaned-up and sorted appropriately. I know how to do that using Finder but this time I needed to do it from inside a program.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Aside: I think I should stop writing this under a TIL because at the time I am writing this, it has been more than 3 weeks since I learned how to do this.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;The AppleScript way&lt;/h3&gt;
+&lt;p&gt;Previously I have mounted the same share using AppleScript. The share URL follows this pattern &lt;code&gt;smb://&amp;lt;username-on-server&amp;gt;@&amp;lt;name-of-server&amp;gt;/&amp;lt;name-of-shared-folder&amp;gt;&lt;/code&gt;, and the whole command goes something like this:&lt;/p&gt;
+&lt;pre class=&quot;language-applescript&quot;&gt;&lt;code class=&quot;language-applescript&quot;&gt;mount volume &lt;span class=&quot;token string&quot;&gt;&quot;smb://varun@ella/Legal Documents&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This would automatically use the stored password from my Keychain. But the problem here was that I needed to run it from inside a rust program which does not directly run apple-script but can run shell-scripts. To execute the above as a shell-script I need to pass it to the &lt;code&gt;osascript&lt;/code&gt; program like this:&lt;/p&gt;
+&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;osascript &lt;span class=&quot;token parameter variable&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&#39;mount volume &quot;smb://varun@ella/Legal Documents&quot;&#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Aside: As I am writing this next section, it comes to my mind that I could have made it work with just this setup and that would have simplified my work a lot. I then would not have had to figure out how to access the Keychain or how to properly escape these paths. But alas, that is the life of a programmer 😅&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Here, to ensure that the full directory name &amp;quot;Legal Documents&amp;quot; is parsed correctly, we had to put the complete share URL inside double-quotes. And then to ensure the complete apple-script is parsed correctly, we had to put that inside another pair of single-quotes.&lt;/p&gt;
+&lt;h3&gt;The shell-script way&lt;/h3&gt;
+&lt;p&gt;The underlying program to use in a shell-script would be &lt;code&gt;mount_smbfs&lt;/code&gt; which takes two arguments:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Complete URL of the remote-share which is built of below four parts and formatted like this &lt;code&gt;//u:p@s/f&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;u&lt;/code&gt;: Username on server&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;p&lt;/code&gt;: Password of the above username on server&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;s&lt;/code&gt;: Name/Network-address of the server&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;f&lt;/code&gt;: URL-escaped name of the shared folder&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Directory (ensure it is empty) on your local machine where to mount the share&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The invocation for that goes like:&lt;/p&gt;
+&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;mount_smbfs &lt;span class=&quot;token string&quot;&gt;&quot;//varun:some-password@ella/Legal%20Documents&quot;&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;/Volumes/Legal Documents&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here we get control over where the shared folder gets mounted locally, but now we have to supply the password ourselves (here&#39;s how to &lt;a href=&quot;https://varunbarad.com/blog/til-read-smb-share-password-from-macos-keychain&quot;&gt;get it from Keychain&lt;/a&gt;).&lt;/p&gt;
+&lt;h3&gt;Using the &lt;code&gt;mount_smbfs&lt;/code&gt; command from Rust&lt;/h3&gt;
+&lt;p&gt;Now we can use &lt;code&gt;Command&lt;/code&gt; from rust&#39;s standard-library to call &lt;code&gt;mount_smbfs&lt;/code&gt; and mount the share. For that we need to ensure that all the components are appropriately escaped to form a proper URL. To do that we use the &lt;a href=&quot;https://crates.io/crates/url&quot;&gt;&lt;code&gt;url&lt;/code&gt; crate&lt;/a&gt;. Here&#39;s how we do that:&lt;/p&gt;
+&lt;pre class=&quot;language-rust&quot;&gt;&lt;code class=&quot;language-rust&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;token function-definition function&quot;&gt;get_storage_mount_path_remote&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+    username&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    password&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    server_name&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    shared_folder_name&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;-&gt;&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; encoded_password &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token namespace&quot;&gt;form_urlencoded&lt;span class=&quot;token punctuation&quot;&gt;::&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;byte_serialize&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;password&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;as_bytes&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;collect&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; actual_url &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token macro property&quot;&gt;format!&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;//{}:{}@{}/{}&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; username&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; encoded_password&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; server_name&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; shared_folder_name&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; prefixed_url &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token macro property&quot;&gt;format!&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;https:{}&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; actual_url&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; parsed_url &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Url&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;prefixed_url&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;as_str&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;unwrap&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; parsed_url
+        &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;to_string&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;strip_prefix&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;https:&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;unwrap&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;to_string&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We need to:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;First encode the password using &lt;a href=&quot;https://crates.io/crates/form_urlencoded&quot;&gt;&lt;code&gt;form_urlencoded&lt;/code&gt; crate&lt;/a&gt; (a dependency of the &lt;code&gt;url&lt;/code&gt; crate) to ensure proper escaping of it&lt;/li&gt;
+&lt;li&gt;Form the whole URL and prefix it with a protocol (any protocol should work) at the beginning, we use &lt;code&gt;https&lt;/code&gt; here. This is because the &lt;code&gt;Url::parse&lt;/code&gt; method expects a complete URL and a complete URL needs to have a protocol&lt;/li&gt;
+&lt;li&gt;Convert the &lt;code&gt;Url&lt;/code&gt; object to its string representation and strip the protocol prefix from it&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;And using that cleaned-up URL we can then go and invoke the &lt;code&gt;mount_smbfs&lt;/code&gt; command like this:&lt;/p&gt;
+&lt;pre class=&quot;language-rust&quot;&gt;&lt;code class=&quot;language-rust&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// Ensure there is a directory created where we want to mount the SMB share&lt;/span&gt;
+&lt;span class=&quot;token namespace&quot;&gt;std&lt;span class=&quot;token punctuation&quot;&gt;::&lt;/span&gt;fs&lt;span class=&quot;token punctuation&quot;&gt;::&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;create_dir_all&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;Path&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;storage_mount_path_local&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;unwrap&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token class-name&quot;&gt;Command&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;mount_smbfs&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;arg&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;storage_mount_path_remote&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;as_str&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;arg&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;storage_mount_path_local&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;as_str&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;unwrap&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Articles related to project valet&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://varunbarad.com/blog/project-valet&quot;&gt;Project valet announcement&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://varunbarad.com/blog/til-read-smb-share-password-from-macos-keychain&quot;&gt;Read SMB share password from MacOS Keychain&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://varunbarad.com/blog/til-rust-build-time-env-vars&quot;&gt;Rust read build-time environment variables at run-time&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Mount an SMB share on Mac OS using Rust (this article)&lt;/li&gt;
+&lt;/ol&gt;
+
+      </content>
+      <author>
+        <name>Varun Barad</name>
+      </author>
+      
+      <category term="til"/>
+      
+      <category term="programming"/>
+      
+      <summary type="html">TIL: How to mount an SMB share on Mac OS programmatically using Rust</summary>
+    </entry>
   
     
     <entry>
@@ -46,6 +136,7 @@ Config found at run-time: A value &lt;span class=&quot;token keyword&quot;&gt;fo
 &lt;li&gt;&lt;a href=&quot;https://varunbarad.com/blog/project-valet&quot;&gt;Project valet announcement&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://varunbarad.com/blog/til-read-smb-share-password-from-macos-keychain&quot;&gt;Read SMB share password from MacOS Keychain&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Rust read build-time environment variables at run-time (this article)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://varunbarad.com/blog/til-macos_mount_remote_smb_share&quot;&gt;Mount an SMB share on Mac OS using Rust&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
       </content>
@@ -105,6 +196,7 @@ Config found at run-time: A value &lt;span class=&quot;token keyword&quot;&gt;fo
 &lt;li&gt;&lt;a href=&quot;https://varunbarad.com/blog/project-valet&quot;&gt;Project valet announcement&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Read SMB share password from MacOS Keychain (this article)&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://varunbarad.com/blog/til-rust-build-time-env-vars&quot;&gt;Rust read build-time environment variables at run-time&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://varunbarad.com/blog/til-macos_mount_remote_smb_share&quot;&gt;Mount an SMB share on Mac OS using Rust&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
       </content>
@@ -203,6 +295,7 @@ mount_smbfs &lt;span class=&quot;token string&quot;&gt;&quot;//varun@delphinus/L
 &lt;li&gt;Project valet announcement (this article)&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://varunbarad.com/blog/til-read-smb-share-password-from-macos-keychain&quot;&gt;Read SMB share password from MacOS Keychain&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://varunbarad.com/blog/til-rust-build-time-env-vars&quot;&gt;Rust read build-time environment variables at run-time&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://varunbarad.com/blog/til-macos_mount_remote_smb_share&quot;&gt;Mount an SMB share on Mac OS using Rust&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
       </content>
