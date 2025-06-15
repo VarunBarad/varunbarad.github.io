@@ -58,3 +58,4 @@ Config found at run-time: A value for config
 1. [Project valet announcement](./project-valet)
 2. [Read SMB share password from MacOS Keychain](./til-read-smb-share-password-from-macos-keychain)
 3. Rust read build-time environment variables at run-time (this article)
+4. [Mount an SMB share on Mac OS using Rust](./til-macos_mount_remote_smb_share)

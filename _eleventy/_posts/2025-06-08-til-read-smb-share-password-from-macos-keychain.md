@@ -61,3 +61,4 @@ fn get_network_share_password() -> std::io::Result<String> {
 1. [Project valet announcement](./project-valet)
 2. Read SMB share password from MacOS Keychain (this article)
 3. [Rust read build-time environment variables at run-time](./til-rust-build-time-env-vars)
+4. [Mount an SMB share on Mac OS using Rust](./til-macos_mount_remote_smb_share)
