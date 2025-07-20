@@ -1,6 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 
+/**
+ * @param {Dirent} file
+ * @returns {string}
+ */
 const getFileContents = (file) => {
   return fs.readFileSync(path.join(file.parentPath, file.name), {
     encoding: 'utf8',
@@ -8,6 +12,10 @@ const getFileContents = (file) => {
   })
 };
 
+/**
+ * @param {Dirent} postFile
+ * @returns {{fileName: string, contents: string}}
+ */
 const extractPostData = (postFile) => {
   return {
     fileName: postFile.name,
