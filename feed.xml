@@ -4,12 +4,39 @@
   <subtitle>My online home where I post about new things I learn or find interesting.</subtitle>
   <link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml"/>
   <link href="https://varunbarad.com/" rel="alternate" type="text/html"/>
-  <updated>2025-08-01T07:44:51+05:30</updated>
+  <updated>2025-08-02T16:18:43+05:30</updated>
   <id>https://varunbarad.com/feed.xml</id>
   <author>
     <name>Varun Barad</name>
   </author>
 
+  
+    
+    <entry>
+      <title type="html">📝 Link to a specific piece of text on a webpage</title>
+      <link href="https://varunbarad.com/blog/til-link-text-on-webpage.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <published>2025-08-02T16:18:43+05:30</published>
+      <updated>2025-08-02T16:18:43+05:30</updated>
+      <id>https://varunbarad.com/blog/til-link-text-on-webpage.html</id>
+      <content type="html">
+      &lt;p&gt;Let&#39;s say you needed to link to the &amp;quot;Rainbow Badge&amp;quot; section on &lt;a href=&quot;https://nerdgirlthoughts.game.blog/2025/07/10/blaugust-2025-is-coming/&quot;&gt;this page&lt;/a&gt;, it is not an element with an &lt;code&gt;id&lt;/code&gt; set so that you can directly append a &lt;code&gt;&amp;lt;page-url&amp;gt;#element_id&lt;/code&gt; and call it a day.&lt;/p&gt;
+&lt;p&gt;Recently browsers have also started supporting linking directly to any text of your choice on any given page. That concept is called &amp;quot;Text Fragments&amp;quot; (&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Fragment/Text_fragments&quot;&gt;link to MDN docs&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;The basic structure of your URL needs to be like below:&lt;/p&gt;
+&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;&amp;lt;your-page-url&amp;gt;#:~:text=&amp;lt;your-target-text-url-encoded&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So for my above example I would have to use a link that looks something like this:&lt;/p&gt;
+&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;https://nerdgirlthoughts.game.blog/2025/07/10/blaugust-2025-is-coming/#:~:text=Rainbow%20Diamond%20Award&lt;/code&gt;&lt;/pre&gt;
+
+      </content>
+      <author>
+        <name>Varun Barad</name>
+      </author>
+      
+      <category term="til"/>
+      
+      <category term="blaugust-2025"/>
+      
+      <summary type="html">TIL: How to link to a specific </summary>
+    </entry>
   
     
     <entry>
