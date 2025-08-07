@@ -4,12 +4,50 @@
   <subtitle>My online home where I post about new things I learn or find interesting.</subtitle>
   <link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml"/>
   <link href="https://varunbarad.com/" rel="alternate" type="text/html"/>
-  <updated>2025-08-03T00:24:04+05:30</updated>
+  <updated>2025-08-07T23:14:59+05:30</updated>
   <id>https://varunbarad.com/feed.xml</id>
   <author>
     <name>Varun Barad</name>
   </author>
 
+  
+    
+    <entry>
+      <title type="html">📇 Naming my devices</title>
+      <link href="https://varunbarad.com/blog/naming-devices.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <published>2025-08-07T23:14:59+05:30</published>
+      <updated>2025-08-07T23:14:59+05:30</updated>
+      <id>https://varunbarad.com/blog/naming-devices.html</id>
+      <content type="html">
+      &lt;p&gt;Every time since my childhood when setting up a new device, it asked me to give the device a name. The most common instance so far has been setting up my computer, and I would end up naming it something like &amp;quot;Varun Computer&amp;quot;, &amp;quot;Home Computer&amp;quot;, or something along those lines.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.lifewire.com/how-to-clean-install-windows-8-or-8-1-2626254#:~:text=Pick%20a%20Color%20Theme%20%26%20Name%20Your%20PC&quot;&gt;&lt;img src=&quot;https://varunbarad.com/assets/images/posts/naming-devices/windows-setup.webp&quot; alt=&quot;Windows Setup screen asking to give the computer a name&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;It is only in the past few years, after I read a post by someone on how they decide names for their devices, that the thought even occurred to me that those names for my devices don&#39;t have to be so dry and meaningless. That I can treat naming my devices with some thought put into it, and name them based on some theme or the purpose that they will be serving.&lt;/p&gt;
+&lt;p&gt;Since then, the theme I have started with my devices is &amp;quot;celestial bodies/objects&amp;quot;. I try to name my devices based on some constellation. Here are some of the names I have assigned since then:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;orion&lt;/strong&gt;, as it was the first constellation I had learned to identify in the night sky&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;andromeda&lt;/strong&gt;, as it is the nearest major galaxy to our own &amp;quot;Milky Way&amp;quot;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;phoenix&lt;/strong&gt;, as that computer had completely crashed itself, but when fixing the hardware issue, the service center gave me a significant RAM upgrade as they didn&#39;t have the exact matching components&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;delphinus&lt;/strong&gt; was given to my NAS, as it is the constellation containing dolphins, and when naming it I remembered that dolphins have good memory&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;scribe&lt;/strong&gt;: this is an exception, as it is both a project and a device. This is basically the name I am giving to a Raspberry Pi which is used to convert an old printer into a network-attached printer&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;aarohan&lt;/strong&gt; was named before deciding on the theme, but it still had some thought put into it because that word in Hindi means &amp;quot;to ascend&amp;quot;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Other people who have written on naming their devices&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://hamatti.org/posts/naming-devices-is-fun/&quot;&gt;Juha-Matti Santala&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://rknight.me/blog/naming-my-computers/&quot;&gt;Robb Knight&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </content>
+      <author>
+        <name>Varun Barad</name>
+      </author>
+      
+      <category term="blaugust-2025"/>
+      
+      <category term="miscellaneous"/>
+      
+      <summary type="html">How I have started to decide on names for my devices</summary>
+    </entry>
   
     
     <entry>
