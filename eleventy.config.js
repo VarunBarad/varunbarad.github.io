@@ -4,9 +4,9 @@ const { ZonedDateTime, ZoneId, DateTimeFormatter } = require('@js-joda/core');
 require('@js-joda/timezone');
 
 module.exports = function(eleventyConfig) {
-  eleventyConfig.addPassthroughCopy("_eleventy/favicon.png");
-  eleventyConfig.addPassthroughCopy("_eleventy/assets");
-  eleventyConfig.addPassthroughCopy("_eleventy/podcasts");
+  eleventyConfig.addPassthroughCopy("favicon.png");
+  eleventyConfig.addPassthroughCopy("assets");
+  eleventyConfig.addPassthroughCopy("podcasts");
   
   eleventyConfig.addNunjucksFilter('dateToRfc3339WithTimezone', (inputDateObj) => {
     return ZonedDateTime.parse(inputDateObj.toISOString())
@@ -54,8 +54,8 @@ module.exports = function(eleventyConfig) {
     dir: {
       layouts: "_layouts",
       includes: "_includes",
-      input: "_eleventy",
-      output: "_eleventy/_site",
+      input: ".",
+      output: "_site",
     },
   };
 };
