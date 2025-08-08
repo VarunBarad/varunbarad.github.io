@@ -2,7 +2,7 @@
 layout: post
 title: "Testing markdown support of my theme"
 summary: ""
-date: 2024-01-01 00:00:00 +0530
+date: 2024-01-01T00:00:00+0530
 categories:
   - "programming"
 ---
