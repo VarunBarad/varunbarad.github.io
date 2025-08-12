@@ -4,12 +4,37 @@
   <subtitle>My online home where I post about new things I learn or find interesting.</subtitle>
   <link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml"/>
   <link href="https://varunbarad.com/" rel="alternate" type="text/html"/>
-  <updated>2025-08-11T08:47:04+05:30</updated>
+  <updated>2025-08-12T23:27:30+05:30</updated>
   <id>https://varunbarad.com/feed.xml</id>
   <author>
     <name>Varun Barad</name>
   </author>
 
+  
+    
+    <entry>
+      <title type="html">Writing incentives, Building constraints</title>
+      <link href="https://varunbarad.com/blog/writing-incentives-building-constraints.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <published>2025-08-12T23:27:30+05:30</published>
+      <updated>2025-08-12T23:27:30+05:30</updated>
+      <id>https://varunbarad.com/blog/writing-incentives-building-constraints.html</id>
+      <content type="html">
+      &lt;p&gt;When you like building things and also want to write about them, but you have a bias toward building over writing, the writing-about-it part doesn’t happen very often. A solution I’ve found is to not move from one project to the next until I’ve written about the one I just finished (getting it to a good-enough point counts as finished).&lt;/p&gt;
+&lt;p&gt;When I made &lt;a href=&quot;https://varunbarad.com/blog/project-valet&quot;&gt;valet&lt;/a&gt;, I ended up writing four different posts about that project—only because I didn’t allow myself to start the next one before finishing all the writing I had related to valet.&lt;/p&gt;
+&lt;p&gt;This approach can also help ensure our blogs don’t become the kind where the only posts are about setting up the blog/platform and upgrading it. The rule here: write and publish an article before you’re allowed to add any new feature to the site. Want to add a &amp;quot;now&amp;quot; page? Then first write a post about “your thoughts on comments in blogs” (or anything you want to write about) before adding that page.&lt;/p&gt;
+&lt;p&gt;I read about this concept on someone’s blog, but I can’t remember whose. I’ll update with the link if I find it.&lt;/p&gt;
+
+      </content>
+      <author>
+        <name>Varun Barad</name>
+      </author>
+      
+      <category term="blaugust-2025"/>
+      
+      <category term="miscellaneous"/>
+      
+      <summary type="html">How to ensure you balance your time between building stuff and writing about it</summary>
+    </entry>
   
     
     <entry>
