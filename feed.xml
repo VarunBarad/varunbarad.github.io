@@ -4,12 +4,41 @@
   <subtitle>My online home where I post about new things I learn or find interesting.</subtitle>
   <link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml"/>
   <link href="https://varunbarad.com/" rel="alternate" type="text/html"/>
-  <updated>2025-08-12T23:27:30+05:30</updated>
+  <updated>2025-08-13T11:59:13+05:30</updated>
   <id>https://varunbarad.com/feed.xml</id>
   <author>
     <name>Varun Barad</name>
   </author>
 
+  
+    
+    <entry>
+      <title type="html">🖨️ My scribe writes my documents out in the physical world</title>
+      <link href="https://varunbarad.com/blog/project-scribe.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <published>2025-08-13T11:59:13+05:30</published>
+      <updated>2025-08-13T11:59:13+05:30</updated>
+      <id>https://varunbarad.com/blog/project-scribe.html</id>
+      <content type="html">
+      &lt;p&gt;More than a decade ago was when I first learned of network connected printers and then when I learned that we can turn a local-only printer into a networked printer just by using a Raspberry Pi I jumped into the pool to try it. I had a HP LaserJet 1020 (which I still have) which works flawlessly when using over a local USB connection from a Windows machine which I wanted to be able to use over network.&lt;/p&gt;
+&lt;p&gt;When I first tried that back around 2014-2015 I learned that the particular printer I had was not directly supported by &lt;a href=&quot;https://en.wikipedia.org/wiki/CUPS&quot;&gt;CUPS&lt;/a&gt;. So I had to leave it there. Sometime near the end of last year I came across &lt;a href=&quot;https://tripad.medium.com/turning-my-old-printer-into-a-wireless-printer-with-a-raspberry-pi-1fb6d73e35a4&quot;&gt;an article&lt;/a&gt; where the author had achieved exactly what I strived to all those years ago. That is when I found out that CUPS can be extended to add support for these printers.&lt;/p&gt;
+&lt;p&gt;I knew things weren&#39;t going to work perfectly the first time and even if they did, I wanted to be able to reproduce it for multiple other such printers that my dad has (a Pi will be deployed at each one). So I went through the article step-by-step and turned all the required steps into a script which I can run on a newly flashed card containing Raspbian OS. You can see the script &lt;a href=&quot;https://github.com/VarunBarad/scribe&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;And it works. I tested it by printing from a Mac, an Android phone, even an iPhone and it does print from all those devices. I then connected it through a &lt;a href=&quot;https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/&quot;&gt;Cloudflare Tunnel&lt;/a&gt; and was able to print over the internet from outside my local network.&lt;/p&gt;
+&lt;p&gt;Now, there are a few hiccups which would need to be ironed out before I can use this as my full-time printer setup.&lt;/p&gt;
+&lt;p&gt;First and the most annoying, it takes a very long time between hitting &amp;quot;Print&amp;quot; and it actually starting the print. My suspicion is that both the network transfer as well as processing the document on a Pi might be the cause.&lt;/p&gt;
+&lt;p&gt;The second one I don&#39;t hit as frequently is that it can&#39;t handle double-sided printing as well as HP&#39;s proprietary driver handles on Windows. Not sure if there is a solution for this or not but will try looking around.&lt;/p&gt;
+&lt;p&gt;And the easiest to fix one is that the script currently depends on two external resources (&lt;a href=&quot;https://github.com/koenkooi/foo2zjs&quot;&gt;first&lt;/a&gt; and &lt;a href=&quot;https://www.quirinux.org/printers/sihp1020.tar.gz&quot;&gt;second&lt;/a&gt;) which I will eventually bring in-house (just a local mirror should do the trick) to avoid them being rug-pulled.&lt;/p&gt;
+
+      </content>
+      <author>
+        <name>Varun Barad</name>
+      </author>
+      
+      <category term="scribe"/>
+      
+      <category term="blaugust-2025"/>
+      
+      <summary type="html">My trusty HP LaserJet 1020 now can print over network</summary>
+    </entry>
   
     
     <entry>
