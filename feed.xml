@@ -4,12 +4,67 @@
   <subtitle>My online home where I post about new things I learn or find interesting.</subtitle>
   <link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml"/>
   <link href="https://varunbarad.com/" rel="alternate" type="text/html"/>
-  <updated>2025-08-13T23:43:55+05:30</updated>
+  <updated>2025-08-15T13:12:02+05:30</updated>
   <id>https://varunbarad.com/feed.xml</id>
   <author>
     <name>Varun Barad</name>
   </author>
 
+  
+    
+    <entry>
+      <title type="html">The blog questions challenge</title>
+      <link href="https://varunbarad.com/blog/blog-questions-challenge-2025.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <published>2025-08-15T13:12:02+05:30</published>
+      <updated>2025-08-15T13:12:02+05:30</updated>
+      <id>https://varunbarad.com/blog/blog-questions-challenge-2025.html</id>
+      <content type="html">
+      &lt;p&gt;This was a challenge/chain letter that went around near the beginning of this year. I wasn&#39;t tagged, but after reading &lt;a href=&quot;https://localghost.dev/blog/the-blog-questions-challenge/&quot;&gt;Sophie&#39;s post&lt;/a&gt; yesterday, I accepted the tag from her.&lt;/p&gt;
+&lt;h2&gt;Why did you start blogging in the first place?&lt;/h2&gt;
+&lt;p&gt;I always wanted an online home I could point people to. By the time I reached college, I’d already seen the peak, fall, and sunset of Orkut. So I was sure it had to be a place under my control — a personal website.&lt;/p&gt;
+&lt;p&gt;Around the time I left college, I bought this domain and launched the first version of this site. Back then, it was mostly an online résumé with no blog or other functionalities.&lt;/p&gt;
+&lt;p&gt;As I read more blogs from professionals in my industry, I felt that I also should write similar stuff, like bugs that I encounter or some new concept that I learn. And that is how this blog was born.&lt;/p&gt;
+&lt;h2&gt;What platform are you using to manage your blog and why did you choose it? Have you blogged on other platforms before?&lt;/h2&gt;
+&lt;p&gt;The current version is built using &lt;a href=&quot;https://11ty.dev/&quot;&gt;Eleventy&lt;/a&gt;, a Node.js-based static site generator. I chose it because I wanted a build system that used JavaScript but didn’t want to ship unnecessary JS to readers. Hosting is on &lt;a href=&quot;https://netlify.com/&quot;&gt;Netlify&lt;/a&gt; these days.&lt;/p&gt;
+&lt;p&gt;Before that, &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt; was responsible for that duty, as it was supported out-of-the-box on GitHub Pages (where this blog used to be hosted). As I started to add more features, I found Jekyll&#39;s Ruby ecosystem unfamiliar and harder to work with.&lt;/p&gt;
+&lt;p&gt;And way back in the starting days, the site was just three files (one each of HTML, CSS, and JS) from a popular Bootstrap template. It was so common that within a week, I saw two other live sites using the exact same template 😅.&lt;/p&gt;
+&lt;h2&gt;How do you write your posts? For example, in a local editing tool, or in a panel/dashboard that&#39;s part of your blog?&lt;/h2&gt;
+&lt;p&gt;All of my posts get created inside my IDE (I use WebStorm for this project). Most get written there too, but some I would open in &lt;a href=&quot;https://typora.io/&quot;&gt;Typora&lt;/a&gt;, especially if it is prose-heavy. I once considered adding a writing/admin section to the blog, but it felt like too much overhead for too little benefit.&lt;/p&gt;
+&lt;p&gt;What I might start doing more frequently is to start a draft/post in &lt;a href=&quot;https://obsidian.md/&quot;&gt;Obsidian&lt;/a&gt; and then move it to the blog when it is ready. I also want to create scripts that would create the right file given the type of post I want to write and open it directly in Typora, so I don&#39;t necessarily need to open my IDE.&lt;/p&gt;
+&lt;h2&gt;When do you feel most inspired to write?&lt;/h2&gt;
+&lt;p&gt;Almost never. I like having written, but the starting inertia is always huge. In rare cases, I would have an idea/topic lodged in my head which demands to be written, and those are some of the easiest posts to write.&lt;/p&gt;
+&lt;h2&gt;Do you publish immediately after writing, or do you let it simmer a bit as a draft?&lt;/h2&gt;
+&lt;p&gt;As soon as I complete writing (which might take multiple sessions), I move to fixing the grammar and structure, and maybe some light editing. After that it goes straight to be published without any further delays.&lt;/p&gt;
+&lt;h2&gt;What&#39;s your favourite post on your blog?&lt;/h2&gt;
+&lt;p&gt;It&#39;s like picking a favourite child, but I will play favourites. &lt;a href=&quot;https://varunbarad.com/blog/filename-limits&quot;&gt;&amp;quot;🗂 Filenames can&#39;t just be anything&amp;quot;&lt;/a&gt; was the most satisfying to write. Researching it was a real head-scratcher. I want people to know those details, but also hope they never need to.&lt;/p&gt;
+&lt;h2&gt;Any future plans for your blog? Maybe a redesign, a move to another platform, or adding a new feature?&lt;/h2&gt;
+&lt;p&gt;Recently I&#39;ve had plenty of ideas. Some I&#39;ll implement this year:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A simple changelog based on &lt;a href=&quot;https://keepachangelog.com/&quot;&gt;Keep a Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;A complete redesign, as neither my older theme (on post pages) nor my current theme (on other pages) are looking that good&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Some that might go into the next year:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Adding a &lt;a href=&quot;https://nownownow.com/&quot;&gt;&amp;quot;now&amp;quot;&lt;/a&gt; page with archives&lt;/li&gt;
+&lt;li&gt;Improving the &amp;quot;Books&amp;quot; page and adding similar ones for &amp;quot;Movies&amp;quot; and &amp;quot;Games&amp;quot;&lt;/li&gt;
+&lt;li&gt;Noting down some of my favorite recipes (will also try integrating &lt;a href=&quot;https://rknight.me/blog/adding-cooklang-support-to-eleventy-two-ways/&quot;&gt;cooklang&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Who&#39;s next?&lt;/h2&gt;
+&lt;p&gt;Since I am more than half-a-year late to the bandwagon, I have little hope. But I would like to see the answers from &lt;a href=&quot;https://notes.druchan.com/&quot;&gt;Chandru&lt;/a&gt;, &lt;a href=&quot;https://afsheen.me/&quot;&gt;Afsheen&lt;/a&gt; and &lt;a href=&quot;https://hamatti.org/&quot;&gt;Juhis&lt;/a&gt; if they&#39;re interested.&lt;/p&gt;
+
+      </content>
+      <author>
+        <name>Varun Barad</name>
+      </author>
+      
+      <category term="blaugust-2025"/>
+      
+      <category term="meta"/>
+      
+      <category term="personal"/>
+      
+      <summary type="html">The chain-letter type post that did the rounds of interweb earlier this year</summary>
+    </entry>
   
     
     <entry>
