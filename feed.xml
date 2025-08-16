@@ -4,12 +4,81 @@
   <subtitle>My online home where I post about new things I learn or find interesting.</subtitle>
   <link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml"/>
   <link href="https://varunbarad.com/" rel="alternate" type="text/html"/>
-  <updated>2025-08-15T13:12:02+05:30</updated>
+  <updated>2025-08-17T03:24:25+05:30</updated>
   <id>https://varunbarad.com/feed.xml</id>
   <author>
     <name>Varun Barad</name>
   </author>
 
+  
+    
+    <entry>
+      <title type="html">Tabbed navigation on a screen in a Vue app</title>
+      <link href="https://varunbarad.com/blog/vue-children-tabs.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <published>2025-08-17T03:24:25+05:30</published>
+      <updated>2025-08-17T03:24:25+05:30</updated>
+      <id>https://varunbarad.com/blog/vue-children-tabs.html</id>
+      <content type="html">
+      &lt;h2&gt;Problem Statement&lt;/h2&gt;
+&lt;p&gt;In a &lt;a href=&quot;https://vuejs.org/&quot;&gt;Vue&lt;/a&gt; application I needed to have a screen (on path &lt;code&gt;/department/:departmentId&lt;/code&gt;) where I need to show one common header containing a selector between three tabs and then a body section which would show different content based on which tab was selected. And each tab would be associated with a different sub-path:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&amp;quot;Overview&amp;quot;  -&amp;gt; &lt;code&gt;/department/:id&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&amp;quot;Members&amp;quot; -&amp;gt; &lt;code&gt;/department/:id/members&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&amp;quot;Clients&amp;quot; -&amp;gt; &lt;code&gt;/department/:id/clients&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;It also had to be implemented that navigating directly to any of the sub-paths should open the correct page.&lt;/p&gt;
+&lt;h2&gt;Solution Approach&lt;/h2&gt;
+&lt;p&gt;I needed to use &lt;code&gt;&amp;lt;router-view /&amp;gt;&lt;/code&gt; and the &lt;a href=&quot;https://router.vuejs.org/guide/essentials/nested-routes.html&quot;&gt;nested routes&lt;/a&gt; feature from &lt;a href=&quot;https://router.vuejs.org/&quot;&gt;vue-router&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Configuring the router&lt;/h2&gt;
+&lt;p&gt;Here is how we configured the routes:&lt;/p&gt;
+&lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; routes &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    path&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&#39;/department/:id&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token function-variable function&quot;&gt;component&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&#39;@/views/department/Index.vue&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    children&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; path&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&#39;&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; name&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&#39;department-overview&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token function-variable function&quot;&gt;component&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&#39;@/views/department/TabOverview.vue&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; path&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&#39;members&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; name&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&#39;department-members&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token function-variable function&quot;&gt;component&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&#39;@/views/department/TabMembers.vue&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; path&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&#39;clients&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; name&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&#39;department-clients&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token function-variable function&quot;&gt;component&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&#39;@/views/department/TabClients.vue&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Notice that we haven&#39;t specified any extra &lt;code&gt;path&lt;/code&gt; for the &amp;quot;Overview&amp;quot; tab. This is by design and will be explained later.&lt;/p&gt;
+&lt;h2&gt;Setting up the root view&lt;/h2&gt;
+&lt;p&gt;And the contents of &lt;code&gt;Index.vue&lt;/code&gt; (containing the overall page contents) looked something like this:&lt;/p&gt;
+&lt;pre class=&quot;language-vue&quot;&gt;&lt;code class=&quot;language-vue&quot;&gt;&amp;lt;script setup lang=&quot;ts&quot;&amp;gt;&amp;lt;/script&amp;gt;
+
+&amp;lt;template&amp;gt;
+  &amp;lt;nav&amp;gt;
+    &amp;lt;router-link :to=&quot;{ name: &#39;department-overview&#39; }&quot;&amp;gt;Overview&amp;lt;/router-link&amp;gt;
+    &amp;lt;router-link :to=&quot;{ name: &#39;department-members&#39; }&quot;&amp;gt;Members&amp;lt;/router-link&amp;gt;
+    &amp;lt;router-link :to=&quot;{ name: &#39;department-clients&#39; }&quot;&amp;gt;Clients&amp;lt;/router-link&amp;gt;
+  &amp;lt;/nav&amp;gt;
+  &amp;lt;main&amp;gt;
+    &amp;lt;router-view /&amp;gt;
+  &amp;lt;/main&amp;gt;
+&amp;lt;/template&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Individual tab contents&lt;/h2&gt;
+&lt;p&gt;Each tab&#39;s file turns out pretty simple, something like this:&lt;/p&gt;
+&lt;pre class=&quot;language-vue&quot;&gt;&lt;code class=&quot;language-vue&quot;&gt;&amp;lt;script setup lang=&quot;ts&quot;&amp;gt;&amp;lt;/script&amp;gt;
+
+&amp;lt;template&amp;gt;
+  &amp;lt;p&amp;gt;Overview/Members/Clients&amp;lt;/p&amp;gt;
+&amp;lt;/template&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Combining the ingredients&lt;/h2&gt;
+&lt;p&gt;The reason we did not specify an extra &lt;code&gt;path&lt;/code&gt; in our router is that we need to show it directly when &lt;code&gt;/department/:id&lt;/code&gt; is opened. Now when we go to &lt;code&gt;/department/:id&lt;/code&gt; we see the header bar showing the three tab links and the contents of the &amp;quot;Overview&amp;quot; tab under it. Clicking on any other tab shows that content below the header bar, also the url gets updated.&lt;/p&gt;
+&lt;p&gt;This gives us clean URLs, browser history support, the ability to persist tab-selection across page refresh, and the ability to directly navigate to any tab via URL. No manual state management is required to determine what content to show, it will automatically update based on the URL.&lt;/p&gt;
+
+      </content>
+      <author>
+        <name>Varun Barad</name>
+      </author>
+      
+      <category term="blaugust-2025"/>
+      
+      <category term="programming"/>
+      
+      <summary type="html">How to make tabbed navigation with appropriate sub-paths using vue-router and nested routes</summary>
+    </entry>
   
     
     <entry>
