@@ -4,12 +4,72 @@
   <subtitle>My online home where I post about new things I learn or find interesting.</subtitle>
   <link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml"/>
   <link href="https://varunbarad.com/" rel="alternate" type="text/html"/>
-  <updated>2025-08-17T03:24:25+05:30</updated>
+  <updated>2025-08-17T12:11:13+05:30</updated>
   <id>https://varunbarad.com/feed.xml</id>
   <author>
     <name>Varun Barad</name>
   </author>
 
+  
+    
+    <entry>
+      <title type="html">💾 My email backup workflow</title>
+      <link href="https://varunbarad.com/blog/backup-workflow-email.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <published>2025-08-17T12:11:13+05:30</published>
+      <updated>2025-08-17T12:11:13+05:30</updated>
+      <id>https://varunbarad.com/blog/backup-workflow-email.html</id>
+      <content type="html">
+      &lt;p&gt;I have previously serenaded about &lt;a href=&quot;https://varunbarad.com/blog/why-you-should-own-your-email-address&quot;&gt;why I consider email a critical service&lt;/a&gt;. And for anything you consider critical, you should have a backup of/for it. I use &lt;a href=&quot;https://fastmail.com/&quot;&gt;Fastmail&lt;/a&gt; as my email host, and this is my weekly workflow for backing it up:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Fetch all the new emails over IMAP&lt;/li&gt;
+&lt;li&gt;Compress the local mail store to &lt;code&gt;.zip&lt;/code&gt; archive&lt;/li&gt;
+&lt;li&gt;Store that archive file on my NAS&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Fetch emails from Fastmail to a local store&lt;/h2&gt;
+&lt;p&gt;I use the program &lt;a href=&quot;https://sourceforge.net/projects/mailsync/&quot;&gt;Mailsync&lt;/a&gt; to download from Fastmail using the IMAP protocol. Here&#39;s my config and the command I use to run that backup:&lt;/p&gt;
+&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;mbsync &lt;span class=&quot;token parameter variable&quot;&gt;--all&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;--config&lt;/span&gt; /Users/varunb/.config/mailsync.rc&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;IMAPAccount fastmail
+Host imap.fastmail.com
+User contact@example.com
+PassCmd &lt;span class=&quot;token string&quot;&gt;&quot;cat /Users/varunb/.secret/FASTMAIL_PASSWORD&quot;&lt;/span&gt;
+AuthMechs LOGIN
+SSLType IMAPS
+PipelineDepth &lt;span class=&quot;token number&quot;&gt;50&lt;/span&gt;
+
+IMAPStore fastmail-remote
+Account fastmail
+
+MaildirStore fastmail-local
+Path /Users/varunb/temp/fastmail/
+Inbox /Users/varunb/temp/fastmail/Inbox
+SubFolders Verbatim
+
+Channel fastmail
+Far :fastmail-remote:
+Near :fastmail-local:
+Patterns *
+Create Near
+Expunge Near
+SyncState *
+Sync Pull&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here, in line 4, you can see that instead of supplying the credentials for Fastmail directly in the config file, I use a separate file to store the password and use the &lt;code&gt;PassCmd&lt;/code&gt; option to tell it how it can find the credentials.&lt;/p&gt;
+&lt;h2&gt;Compress the local store to a zip file&lt;/h2&gt;
+&lt;p&gt;Once Mailsync finishes downloading the emails, I take the whole local store and compress it to a single timestamped &lt;code&gt;.zip&lt;/code&gt; file with the highest compression ratio (speed does not matter here as much as space savings matters):&lt;/p&gt;
+&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;zip&lt;/span&gt; --recurse-paths &lt;span class=&quot;token parameter variable&quot;&gt;--test&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;--quiet&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-9&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;/Users/varunb/temp/fastmail_2025-08-17_02-12-12.zip&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Transfer the archive to NAS&lt;/h2&gt;
+&lt;p&gt;I copy the archive to NAS using a simple &lt;code&gt;cp&lt;/code&gt; command and if that is successful then we remove the local archive file. But I let the local mail store around as that reduces the amount of network transfer that has to take place the next time I run &lt;code&gt;mbsync&lt;/code&gt;.&lt;/p&gt;
+
+      </content>
+      <author>
+        <name>Varun Barad</name>
+      </author>
+      
+      <category term="backups"/>
+      
+      <category term="blaugust-2025"/>
+      
+      <summary type="html">The why and how of my email backups</summary>
+    </entry>
   
     
     <entry>
