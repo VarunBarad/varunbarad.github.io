@@ -4,12 +4,46 @@
   <subtitle>My online home where I post about new things I learn or find interesting.</subtitle>
   <link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml"/>
   <link href="https://varunbarad.com/" rel="alternate" type="text/html"/>
-  <updated>2025-08-19T10:25:17+05:30</updated>
+  <updated>2025-08-20T01:19:06+05:30</updated>
   <id>https://varunbarad.com/feed.xml</id>
   <author>
     <name>Varun Barad</name>
   </author>
 
+  
+    
+    <entry>
+      <title type="html">📝 Setting up MongoDB for local development with docker compose</title>
+      <link href="https://varunbarad.com/blog/mongodb-local-docker-compose.html" rel="alternate" type="text/html" title="📝 Setting up MongoDB for local development with docker compose"/>
+      <published>2025-08-20T01:19:06+05:30</published>
+      <updated>2025-08-20T01:19:06+05:30</updated>
+      <id>https://varunbarad.com/blog/mongodb-local-docker-compose.html</id>
+      <content type="html">
+      &lt;p&gt;Recently for a project I needed to setup a local mongodb instance using docker (via docker-compose). I set up this simple compose file:&lt;/p&gt;
+&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;token key atrule&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;3.1&quot;&lt;/span&gt;
+&lt;span class=&quot;token key atrule&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;token key atrule&quot;&gt;mongo&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;container_name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; node&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;auth&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;mongo
+    &lt;span class=&quot;token key atrule&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; mongo&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;4.4.20&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;rc0&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;focal
+    &lt;span class=&quot;token key atrule&quot;&gt;environment&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token key atrule&quot;&gt;MONGO_INITDB_DATABASE&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; authdb
+      &lt;span class=&quot;token key atrule&quot;&gt;MONGO_INITDB_ROOT_USERNAME&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; mongo&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;admin
+      &lt;span class=&quot;token key atrule&quot;&gt;MONGO_INITDB_ROOT_PASSWORD&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; admin&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;password
+    &lt;span class=&quot;token key atrule&quot;&gt;ports&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;27017:27017&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Mongo stores the login credentials in a database named &lt;code&gt;admin&lt;/code&gt; so we would need to specify that too (as &lt;code&gt;authSource&lt;/code&gt;) when connecting to it:&lt;/p&gt;
+&lt;pre class=&quot;language-dotenv&quot;&gt;&lt;code class=&quot;language-dotenv&quot;&gt;MONGO_URL=mongodb://mongo-admin:admin-password@localhost:27017/authdb?retryWrites=true&amp;w=majority&amp;authSource=admin&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Thanks to &lt;a href=&quot;https://stackoverflow.com/a/75320403/4717436&quot;&gt;Hans Kilian&lt;/a&gt; over on StockOverflow.&lt;/p&gt;
+
+      </content>
+      <author>
+        <name>Varun Barad</name>
+      </author>
+      
+      <category term="til"/>
+      
+      <summary type="html">TIL: How to setup MongoDB for local development</summary>
+    </entry>
   
     
     <entry>

@@ -60,9 +60,23 @@
                             <a class="u-url" href="/blog/mongodb-local-docker-compose.html">📝 Setting up MongoDB for local development with docker compose</a>
                         </div>
                         <div class="text-center">
-                            By <a class="p-author h-card" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="Tue Apr 11 2023 08:10:27 GMT+0530 (India Standard Time)">April 11, 2023</time>
+                            By <a class="p-author h-card" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="Wed Aug 20 2025 01:19:06 GMT+0530 (India Standard Time)">August 20, 2025</time>
                         </div>
-                        <div class="post-content e-content"><h1>https://stackoverflow.com/a/75320403/4717436</h1>
+                        <div class="post-content e-content"><p>Recently for a project I needed to setup a local mongodb instance using docker (via docker-compose). I set up this simple compose file:</p>
+<pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">"3.1"</span>
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+  <span class="token key atrule">mongo</span><span class="token punctuation">:</span>
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> node<span class="token punctuation">-</span>auth<span class="token punctuation">-</span>mongo
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> mongo<span class="token punctuation">:</span>4.4.20<span class="token punctuation">-</span>rc0<span class="token punctuation">-</span>focal
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token key atrule">MONGO_INITDB_DATABASE</span><span class="token punctuation">:</span> authdb
+      <span class="token key atrule">MONGO_INITDB_ROOT_USERNAME</span><span class="token punctuation">:</span> mongo<span class="token punctuation">-</span>admin
+      <span class="token key atrule">MONGO_INITDB_ROOT_PASSWORD</span><span class="token punctuation">:</span> admin<span class="token punctuation">-</span>password
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token string">"27017:27017"</span></code></pre>
+<p>Mongo stores the login credentials in a database named <code>admin</code> so we would need to specify that too (as <code>authSource</code>) when connecting to it:</p>
+<pre class="language-dotenv"><code class="language-dotenv">MONGO_URL=mongodb://mongo-admin:admin-password@localhost:27017/authdb?retryWrites=true&w=majority&authSource=admin</code></pre>
+<p>Thanks to <a href="https://stackoverflow.com/a/75320403/4717436">Hans Kilian</a> over on StockOverflow.</p>
 </div>
                     </div>
                     <div class="post-categories-container">
