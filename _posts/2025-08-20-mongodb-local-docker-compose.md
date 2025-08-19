@@ -7,6 +7,7 @@ summary: "TIL: How to setup MongoDB for local development"
 date: 2025-08-20T01:19:06+0530
 categories:
   - "til"
+  - "blaugust-2025"
 ---
 
 Recently for a project I needed to setup a local mongodb instance using docker (via docker-compose). I set up this simple compose file:
