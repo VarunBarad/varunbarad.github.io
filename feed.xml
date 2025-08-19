@@ -4,7 +4,7 @@
   <subtitle>My online home where I post about new things I learn or find interesting.</subtitle>
   <link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml"/>
   <link href="https://varunbarad.com/" rel="alternate" type="text/html"/>
-  <updated>2025-08-17T22:29:49+05:30</updated>
+  <updated>2025-08-19T10:25:17+05:30</updated>
   <id>https://varunbarad.com/feed.xml</id>
   <author>
     <name>Varun Barad</name>
@@ -13,8 +13,37 @@
   
     
     <entry>
+      <title type="html">📚 The Phoenix Project</title>
+      <link href="https://varunbarad.com/blog/book-phoenix-project.html" rel="alternate" type="text/html" title="📚 The Phoenix Project"/>
+      <published>2025-08-19T10:25:17+05:30</published>
+      <updated>2025-08-19T10:25:17+05:30</updated>
+      <id>https://varunbarad.com/blog/book-phoenix-project.html</id>
+      <content type="html">
+      &lt;p&gt;&lt;img alt=&quot;Cover of the book The Phoenix Project&quot; src=&quot;https://varunbarad.com/assets/images/books/the-phoenix-project-cover.webp&quot; style=&quot;width: fit-content; height: 320px;&quot; /&gt; &lt;br /&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Bill is an IT manager at Parts Unlimited. It&#39;s Tuesday morning and on his drive into the office, Bill gets a call from the CEO.&lt;/p&gt;
+&lt;p&gt;The company&#39;s new IT initiative, code named Phoenix Project, is critical to the future of Parts Unlimited, but the project is massively over budget and very late. The CEO wants Bill to report directly to him and fix the mess in ninety days or else Bill&#39;s entire department will be outsourced. With the help of a prospective board member and his mysterious philosophy of The Three Ways, Bill starts to see that IT work has more in common with manufacturing plant work than he ever imagined. With the clock ticking, Bill must organize work flow streamline interdepartmental communications, and effectively serve the other business functions at Parts Unlimited. In a fast-paced and entertaining style, three luminaries of the DevOps movement deliver a story that anyone who works in IT will recognize. Readers will not only learn how to improve their own IT organizations, they&#39;ll never view IT the same way again.&lt;/p&gt;
+&lt;p&gt;— &lt;a href=&quot;https://openlibrary.org/books/OL26394601M/The_Phoenix_Project&quot;&gt;Open Library&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;While there are a lot of cliché tropes, I still highly recommend this book to every IT professional as it is the only (along with &lt;a href=&quot;https://varunbarad.com/blog/book-phoenix-project.html&quot;&gt;The Unicorn Project&lt;/a&gt;) story/novel written about out profession.&lt;/p&gt;
+&lt;p&gt;It helps a lot to learn about &amp;quot;The Three Ways&amp;quot; and to try and incorporate them into our daily lives whether we are a developer or an ops person or someone else along the chain of software production. You will also be able to spot yourself and quite a few of your colleagues in the characters in here.&lt;/p&gt;
+
+      </content>
+      <author>
+        <name>Varun Barad</name>
+      </author>
+      
+      <category term="blaugust-2025"/>
+      
+      <category term="book-highlights"/>
+      
+      <summary type="html">My thoughts and opinions on this book</summary>
+    </entry>
+  
+    
+    <entry>
       <title type="html">💬 Why am I making myself go through Blaugust?</title>
-      <link href="https://varunbarad.com/blog/replying-to-jedda.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/replying-to-jedda.html" rel="alternate" type="text/html" title="💬 Why am I making myself go through Blaugust?"/>
       <published>2025-08-17T22:29:49+05:30</published>
       <updated>2025-08-17T22:29:49+05:30</updated>
       <id>https://varunbarad.com/blog/replying-to-jedda.html</id>
@@ -47,7 +76,7 @@
     
     <entry>
       <title type="html">How to get a random point inside a circle</title>
-      <link href="https://varunbarad.com/blog/random-point-inside-circle.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/random-point-inside-circle.html" rel="alternate" type="text/html" title="How to get a random point inside a circle"/>
       <published>2025-08-17T16:15:48+05:30</published>
       <updated>2025-08-17T16:15:48+05:30</updated>
       <id>https://varunbarad.com/blog/random-point-inside-circle.html</id>
@@ -112,7 +141,7 @@
     
     <entry>
       <title type="html">💾 My email backup workflow</title>
-      <link href="https://varunbarad.com/blog/backup-workflow-email.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/backup-workflow-email.html" rel="alternate" type="text/html" title="💾 My email backup workflow"/>
       <published>2025-08-17T12:11:13+05:30</published>
       <updated>2025-08-17T12:11:13+05:30</updated>
       <id>https://varunbarad.com/blog/backup-workflow-email.html</id>
@@ -172,7 +201,7 @@ Sync Pull&lt;/code&gt;&lt;/pre&gt;
     
     <entry>
       <title type="html">Tabbed navigation on a screen in a Vue app</title>
-      <link href="https://varunbarad.com/blog/vue-children-tabs.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/vue-children-tabs.html" rel="alternate" type="text/html" title="Tabbed navigation on a screen in a Vue app"/>
       <published>2025-08-17T03:24:25+05:30</published>
       <updated>2025-08-17T03:24:25+05:30</updated>
       <id>https://varunbarad.com/blog/vue-children-tabs.html</id>
@@ -241,7 +270,7 @@ Sync Pull&lt;/code&gt;&lt;/pre&gt;
     
     <entry>
       <title type="html">The blog questions challenge</title>
-      <link href="https://varunbarad.com/blog/blog-questions-challenge-2025.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/blog-questions-challenge-2025.html" rel="alternate" type="text/html" title="The blog questions challenge"/>
       <published>2025-08-15T13:12:02+05:30</published>
       <updated>2025-08-15T13:12:02+05:30</updated>
       <id>https://varunbarad.com/blog/blog-questions-challenge-2025.html</id>
@@ -296,7 +325,7 @@ Sync Pull&lt;/code&gt;&lt;/pre&gt;
     
     <entry>
       <title type="html">🧘‍♂️ Hip Stretches</title>
-      <link href="https://varunbarad.com/blog/exercise-hip-stretches.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/exercise-hip-stretches.html" rel="alternate" type="text/html" title="🧘‍♂️ Hip Stretches"/>
       <published>2025-08-13T23:43:55+05:30</published>
       <updated>2025-08-13T23:43:55+05:30</updated>
       <id>https://varunbarad.com/blog/exercise-hip-stretches.html</id>
@@ -365,7 +394,7 @@ Sync Pull&lt;/code&gt;&lt;/pre&gt;
     
     <entry>
       <title type="html">🖨️ My scribe writes my documents out in the physical world</title>
-      <link href="https://varunbarad.com/blog/project-scribe.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/project-scribe.html" rel="alternate" type="text/html" title="🖨️ My scribe writes my documents out in the physical world"/>
       <published>2025-08-13T11:59:13+05:30</published>
       <updated>2025-08-13T11:59:13+05:30</updated>
       <id>https://varunbarad.com/blog/project-scribe.html</id>
@@ -394,7 +423,7 @@ Sync Pull&lt;/code&gt;&lt;/pre&gt;
     
     <entry>
       <title type="html">Writing incentives, Building constraints</title>
-      <link href="https://varunbarad.com/blog/writing-incentives-building-constraints.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/writing-incentives-building-constraints.html" rel="alternate" type="text/html" title="Writing incentives, Building constraints"/>
       <published>2025-08-12T23:27:30+05:30</published>
       <updated>2025-08-12T23:27:30+05:30</updated>
       <id>https://varunbarad.com/blog/writing-incentives-building-constraints.html</id>
@@ -419,7 +448,7 @@ Sync Pull&lt;/code&gt;&lt;/pre&gt;
     
     <entry>
       <title type="html">🧳Goa Trip 2025</title>
-      <link href="https://varunbarad.com/blog/trip-goa.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/trip-goa.html" rel="alternate" type="text/html" title="🧳Goa Trip 2025"/>
       <published>2025-08-11T08:47:04+05:30</published>
       <updated>2025-08-11T08:47:04+05:30</updated>
       <id>https://varunbarad.com/blog/trip-goa.html</id>
@@ -466,7 +495,7 @@ Sync Pull&lt;/code&gt;&lt;/pre&gt;
     
     <entry>
       <title type="html">👨‍🍳 Cardamom Tea 🫖</title>
-      <link href="https://varunbarad.com/blog/recipe-cardamom-tea.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/recipe-cardamom-tea.html" rel="alternate" type="text/html" title="👨‍🍳 Cardamom Tea 🫖"/>
       <published>2025-08-08T22:38:24+05:30</published>
       <updated>2025-08-08T22:38:24+05:30</updated>
       <id>https://varunbarad.com/blog/recipe-cardamom-tea.html</id>
@@ -515,7 +544,7 @@ Sync Pull&lt;/code&gt;&lt;/pre&gt;
     
     <entry>
       <title type="html">📇 Naming my devices</title>
-      <link href="https://varunbarad.com/blog/naming-devices.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/naming-devices.html" rel="alternate" type="text/html" title="📇 Naming my devices"/>
       <published>2025-08-07T23:14:59+05:30</published>
       <updated>2025-08-07T23:14:59+05:30</updated>
       <id>https://varunbarad.com/blog/naming-devices.html</id>
@@ -553,7 +582,7 @@ Sync Pull&lt;/code&gt;&lt;/pre&gt;
     
     <entry>
       <title type="html">🎮 Games through the ages</title>
-      <link href="https://varunbarad.com/blog/games-through-the-ages.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/games-through-the-ages.html" rel="alternate" type="text/html" title="🎮 Games through the ages"/>
       <published>2025-08-03T00:24:04+05:30</published>
       <updated>2025-08-03T00:24:04+05:30</updated>
       <id>https://varunbarad.com/blog/games-through-the-ages.html</id>
@@ -614,7 +643,7 @@ Sync Pull&lt;/code&gt;&lt;/pre&gt;
     
     <entry>
       <title type="html">📝 Link to a specific piece of text on a webpage</title>
-      <link href="https://varunbarad.com/blog/til-link-text-on-webpage.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/til-link-text-on-webpage.html" rel="alternate" type="text/html" title="📝 Link to a specific piece of text on a webpage"/>
       <published>2025-08-02T16:18:43+05:30</published>
       <updated>2025-08-02T16:18:43+05:30</updated>
       <id>https://varunbarad.com/blog/til-link-text-on-webpage.html</id>
@@ -641,7 +670,7 @@ Sync Pull&lt;/code&gt;&lt;/pre&gt;
     
     <entry>
       <title type="html">📜 Blaugust 2025</title>
-      <link href="https://varunbarad.com/blog/blaugust-2025.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/blaugust-2025.html" rel="alternate" type="text/html" title="📜 Blaugust 2025"/>
       <published>2025-08-01T07:44:51+05:30</published>
       <updated>2025-08-01T07:44:51+05:30</updated>
       <id>https://varunbarad.com/blog/blaugust-2025.html</id>
@@ -664,7 +693,7 @@ Sync Pull&lt;/code&gt;&lt;/pre&gt;
     
     <entry>
       <title type="html">📝 Mount an SMB share on Mac OS using Rust</title>
-      <link href="https://varunbarad.com/blog/til-macos_mount_remote_smb_share.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/til-macos_mount_remote_smb_share.html" rel="alternate" type="text/html" title="📝 Mount an SMB share on Mac OS using Rust"/>
       <published>2025-06-15T08:16:58+05:30</published>
       <updated>2025-06-15T08:16:58+05:30</updated>
       <id>https://varunbarad.com/blog/til-macos_mount_remote_smb_share.html</id>
@@ -754,7 +783,7 @@ Sync Pull&lt;/code&gt;&lt;/pre&gt;
     
     <entry>
       <title type="html">📝 Rust read build-time environment variables at run-time</title>
-      <link href="https://varunbarad.com/blog/til-rust-build-time-env-vars.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/til-rust-build-time-env-vars.html" rel="alternate" type="text/html" title="📝 Rust read build-time environment variables at run-time"/>
       <published>2025-06-08T19:24:15+05:30</published>
       <updated>2025-06-08T19:24:15+05:30</updated>
       <id>https://varunbarad.com/blog/til-rust-build-time-env-vars.html</id>
@@ -804,7 +833,7 @@ Config found at run-time: A value &lt;span class=&quot;token keyword&quot;&gt;fo
     
     <entry>
       <title type="html">📝 Read SMB share password from MacOS Keychain</title>
-      <link href="https://varunbarad.com/blog/til-read-smb-share-password-from-macos-keychain.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/til-read-smb-share-password-from-macos-keychain.html" rel="alternate" type="text/html" title="📝 Read SMB share password from MacOS Keychain"/>
       <published>2025-06-08T07:37:59+05:30</published>
       <updated>2025-06-08T07:37:59+05:30</updated>
       <id>https://varunbarad.com/blog/til-read-smb-share-password-from-macos-keychain.html</id>
@@ -864,7 +893,7 @@ Config found at run-time: A value &lt;span class=&quot;token keyword&quot;&gt;fo
     
     <entry>
       <title type="html">Fixing the torch 🔦</title>
-      <link href="https://varunbarad.com/blog/fixing-the-torch.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/fixing-the-torch.html" rel="alternate" type="text/html" title="Fixing the torch 🔦"/>
       <published>2025-05-25T10:28:58+05:30</published>
       <updated>2025-05-25T10:28:58+05:30</updated>
       <id>https://varunbarad.com/blog/fixing-the-torch.html</id>
@@ -890,7 +919,7 @@ Config found at run-time: A value &lt;span class=&quot;token keyword&quot;&gt;fo
     
     <entry>
       <title type="html">🗃️ My valet parks my files for me</title>
-      <link href="https://varunbarad.com/blog/project-valet.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/project-valet.html" rel="alternate" type="text/html" title="🗃️ My valet parks my files for me"/>
       <published>2025-05-04T11:59:13+05:30</published>
       <updated>2025-05-04T11:59:13+05:30</updated>
       <id>https://varunbarad.com/blog/project-valet.html</id>
@@ -967,7 +996,7 @@ mount_smbfs &lt;span class=&quot;token string&quot;&gt;&quot;//varun@delphinus/L
     
     <entry>
       <title type="html">Installing my first monitor arm</title>
-      <link href="https://varunbarad.com/blog/first-monitor-arm.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/first-monitor-arm.html" rel="alternate" type="text/html" title="Installing my first monitor arm"/>
       <published>2025-03-30T23:12:26+05:30</published>
       <updated>2025-03-30T23:12:26+05:30</updated>
       <id>https://varunbarad.com/blog/first-monitor-arm.html</id>
@@ -998,7 +1027,7 @@ mount_smbfs &lt;span class=&quot;token string&quot;&gt;&quot;//varun@delphinus/L
     
     <entry>
       <title type="html">📝 Specifying different author and committer in git</title>
-      <link href="https://varunbarad.com/blog/til-git-author-committer.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/til-git-author-committer.html" rel="alternate" type="text/html" title="📝 Specifying different author and committer in git"/>
       <published>2024-12-18T23:13:33+05:30</published>
       <updated>2024-12-18T23:13:33+05:30</updated>
       <id>https://varunbarad.com/blog/til-git-author-committer.html</id>
@@ -1025,7 +1054,7 @@ mount_smbfs &lt;span class=&quot;token string&quot;&gt;&quot;//varun@delphinus/L
     
     <entry>
       <title type="html">Not all booleans are created equal on GitHub Actions</title>
-      <link href="https://varunbarad.com/blog/github-actions-input-types.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/github-actions-input-types.html" rel="alternate" type="text/html" title="Not all booleans are created equal on GitHub Actions"/>
       <published>2024-10-05T06:55:23+05:30</published>
       <updated>2024-10-05T06:55:23+05:30</updated>
       <id>https://varunbarad.com/blog/github-actions-input-types.html</id>
@@ -1093,7 +1122,7 @@ mount_smbfs &lt;span class=&quot;token string&quot;&gt;&quot;//varun@delphinus/L
     
     <entry>
       <title type="html">📝 Delay subtitles using ffmpeg</title>
-      <link href="https://varunbarad.com/blog/til-ffmpeg-delay-subtitles.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/til-ffmpeg-delay-subtitles.html" rel="alternate" type="text/html" title="📝 Delay subtitles using ffmpeg"/>
       <published>2024-06-28T11:11:33+05:30</published>
       <updated>2024-06-28T11:11:33+05:30</updated>
       <id>https://varunbarad.com/blog/til-ffmpeg-delay-subtitles.html</id>
@@ -1118,7 +1147,7 @@ ffmpeg &lt;span class=&quot;token parameter variable&quot;&gt;-itsoffset&lt;/spa
     
     <entry>
       <title type="html">📝 Remove password from PDF files using qpdf</title>
-      <link href="https://varunbarad.com/blog/til-remove-pdf-password.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/til-remove-pdf-password.html" rel="alternate" type="text/html" title="📝 Remove password from PDF files using qpdf"/>
       <published>2024-05-02T00:28:40+05:30</published>
       <updated>2024-05-02T00:28:40+05:30</updated>
       <id>https://varunbarad.com/blog/til-remove-pdf-password.html</id>
@@ -1142,7 +1171,7 @@ ffmpeg &lt;span class=&quot;token parameter variable&quot;&gt;-itsoffset&lt;/spa
     
     <entry>
       <title type="html">🐍 Packaging my first Python tool</title>
-      <link href="https://varunbarad.com/blog/packaging-python-tools.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/packaging-python-tools.html" rel="alternate" type="text/html" title="🐍 Packaging my first Python tool"/>
       <published>2024-04-21T07:57:19+05:30</published>
       <updated>2024-04-21T07:57:19+05:30</updated>
       <id>https://varunbarad.com/blog/packaging-python-tools.html</id>
@@ -1269,7 +1298,7 @@ ffmpeg &lt;span class=&quot;token parameter variable&quot;&gt;-itsoffset&lt;/spa
     
     <entry>
       <title type="html">🗂 Filenames can&#39;t just be anything</title>
-      <link href="https://varunbarad.com/blog/filename-limits.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/filename-limits.html" rel="alternate" type="text/html" title="🗂 Filenames can&#39;t just be anything"/>
       <published>2024-04-12T09:01:19+05:30</published>
       <updated>2024-04-12T09:01:19+05:30</updated>
       <id>https://varunbarad.com/blog/filename-limits.html</id>
@@ -1310,7 +1339,7 @@ ffmpeg &lt;span class=&quot;token parameter variable&quot;&gt;-itsoffset&lt;/spa
     
     <entry>
       <title type="html">📝 Outputting text with echo without a newline</title>
-      <link href="https://varunbarad.com/blog/til-echo-without-newline.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/til-echo-without-newline.html" rel="alternate" type="text/html" title="📝 Outputting text with echo without a newline"/>
       <published>2024-04-06T15:14:19+05:30</published>
       <updated>2024-04-06T15:14:19+05:30</updated>
       <id>https://varunbarad.com/blog/til-echo-without-newline.html</id>
@@ -1331,7 +1360,7 @@ ffmpeg &lt;span class=&quot;token parameter variable&quot;&gt;-itsoffset&lt;/spa
     
     <entry>
       <title type="html">🐳 Starting docker on demand</title>
-      <link href="https://varunbarad.com/blog/starting-docker-on-demand.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/starting-docker-on-demand.html" rel="alternate" type="text/html" title="🐳 Starting docker on demand"/>
       <published>2023-09-11T13:17:31+05:30</published>
       <updated>2023-09-11T13:17:31+05:30</updated>
       <id>https://varunbarad.com/blog/starting-docker-on-demand.html</id>
@@ -1408,7 +1437,7 @@ ffmpeg &lt;span class=&quot;token parameter variable&quot;&gt;-itsoffset&lt;/spa
     
     <entry>
       <title type="html">📝 PostgreSQL: Mark a column non-nullable after creating it</title>
-      <link href="https://varunbarad.com/blog/til-postgresql-make-existing-column-non-nullable.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/til-postgresql-make-existing-column-non-nullable.html" rel="alternate" type="text/html" title="📝 PostgreSQL: Mark a column non-nullable after creating it"/>
       <published>2023-08-20T14:23:22+05:30</published>
       <updated>2023-08-20T14:23:22+05:30</updated>
       <id>https://varunbarad.com/blog/til-postgresql-make-existing-column-non-nullable.html</id>
@@ -1429,7 +1458,7 @@ ffmpeg &lt;span class=&quot;token parameter variable&quot;&gt;-itsoffset&lt;/spa
     
     <entry>
       <title type="html">📝 PostgreSQL: Make a column unique after creating it</title>
-      <link href="https://varunbarad.com/blog/til-postgresql-make-existing-column-unique.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/til-postgresql-make-existing-column-unique.html" rel="alternate" type="text/html" title="📝 PostgreSQL: Make a column unique after creating it"/>
       <published>2023-08-19T14:23:22+05:30</published>
       <updated>2023-08-19T14:23:22+05:30</updated>
       <id>https://varunbarad.com/blog/til-postgresql-make-existing-column-unique.html</id>
@@ -1450,7 +1479,7 @@ ffmpeg &lt;span class=&quot;token parameter variable&quot;&gt;-itsoffset&lt;/spa
     
     <entry>
       <title type="html">⚖️ Wracker Dev Log #003</title>
-      <link href="https://varunbarad.com/blog/wracker-log-003.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/wracker-log-003.html" rel="alternate" type="text/html" title="⚖️ Wracker Dev Log #003"/>
       <published>2023-08-17T06:58:27+05:30</published>
       <updated>2023-08-17T06:58:27+05:30</updated>
       <id>https://varunbarad.com/blog/wracker-log-003.html</id>
@@ -1492,7 +1521,7 @@ ffmpeg &lt;span class=&quot;token parameter variable&quot;&gt;-itsoffset&lt;/spa
     
     <entry>
       <title type="html">⌨️ Paragraph performance summaries</title>
-      <link href="https://varunbarad.com/blog/typractice-paragraph-summaries.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/typractice-paragraph-summaries.html" rel="alternate" type="text/html" title="⌨️ Paragraph performance summaries"/>
       <published>2023-08-11T21:33:50+05:30</published>
       <updated>2023-08-11T21:33:50+05:30</updated>
       <id>https://varunbarad.com/blog/typractice-paragraph-summaries.html</id>
@@ -1532,7 +1561,7 @@ ffmpeg &lt;span class=&quot;token parameter variable&quot;&gt;-itsoffset&lt;/spa
     
     <entry>
       <title type="html">📝 Avoid .DS_Store files on removable media</title>
-      <link href="https://varunbarad.com/blog/til-avoid-ds-store.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/til-avoid-ds-store.html" rel="alternate" type="text/html" title="📝 Avoid .DS_Store files on removable media"/>
       <published>2023-08-09T19:24:24+05:30</published>
       <updated>2023-08-09T19:24:24+05:30</updated>
       <id>https://varunbarad.com/blog/til-avoid-ds-store.html</id>
@@ -1555,7 +1584,7 @@ ffmpeg &lt;span class=&quot;token parameter variable&quot;&gt;-itsoffset&lt;/spa
     
     <entry>
       <title type="html">📝 Recursively remove .DS_Store files</title>
-      <link href="https://varunbarad.com/blog/remove-ds-store-files.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/remove-ds-store-files.html" rel="alternate" type="text/html" title="📝 Recursively remove .DS_Store files"/>
       <published>2023-08-09T14:49:36+05:30</published>
       <updated>2023-08-09T14:49:36+05:30</updated>
       <id>https://varunbarad.com/blog/remove-ds-store-files.html</id>
@@ -1577,7 +1606,7 @@ ffmpeg &lt;span class=&quot;token parameter variable&quot;&gt;-itsoffset&lt;/spa
     
     <entry>
       <title type="html">⌨️ Showing historical statistics</title>
-      <link href="https://varunbarad.com/blog/typractice-stats-chart.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/typractice-stats-chart.html" rel="alternate" type="text/html" title="⌨️ Showing historical statistics"/>
       <published>2023-07-27T22:11:36+05:30</published>
       <updated>2023-07-27T22:11:36+05:30</updated>
       <id>https://varunbarad.com/blog/typractice-stats-chart.html</id>
@@ -1612,7 +1641,7 @@ ffmpeg &lt;span class=&quot;token parameter variable&quot;&gt;-itsoffset&lt;/spa
     
     <entry>
       <title type="html">🎬 Movie rating system</title>
-      <link href="https://varunbarad.com/blog/movie-rating-system.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/movie-rating-system.html" rel="alternate" type="text/html" title="🎬 Movie rating system"/>
       <published>2023-07-22T11:31:20+05:30</published>
       <updated>2023-07-22T11:31:20+05:30</updated>
       <id>https://varunbarad.com/blog/movie-rating-system.html</id>
@@ -1679,7 +1708,7 @@ ffmpeg &lt;span class=&quot;token parameter variable&quot;&gt;-itsoffset&lt;/spa
     
     <entry>
       <title type="html">⚖️ Wracker Dev Log #002</title>
-      <link href="https://varunbarad.com/blog/wracker-log-002.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/wracker-log-002.html" rel="alternate" type="text/html" title="⚖️ Wracker Dev Log #002"/>
       <published>2023-06-12T19:35:00+05:30</published>
       <updated>2023-06-12T19:35:00+05:30</updated>
       <id>https://varunbarad.com/blog/wracker-log-002.html</id>
@@ -1721,7 +1750,7 @@ ffmpeg &lt;span class=&quot;token parameter variable&quot;&gt;-itsoffset&lt;/spa
     
     <entry>
       <title type="html">📝 Custom 404 in Express</title>
-      <link href="https://varunbarad.com/blog/til-handle-404-node-express.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/til-handle-404-node-express.html" rel="alternate" type="text/html" title="📝 Custom 404 in Express"/>
       <published>2023-06-02T17:52:02+05:30</published>
       <updated>2023-06-02T17:52:02+05:30</updated>
       <id>https://varunbarad.com/blog/til-handle-404-node-express.html</id>
@@ -1753,7 +1782,7 @@ ffmpeg &lt;span class=&quot;token parameter variable&quot;&gt;-itsoffset&lt;/spa
     
     <entry>
       <title type="html">⌨️ Typractice</title>
-      <link href="https://varunbarad.com/blog/project-typractice.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/project-typractice.html" rel="alternate" type="text/html" title="⌨️ Typractice"/>
       <published>2023-05-25T12:21:38+05:30</published>
       <updated>2023-05-25T12:21:38+05:30</updated>
       <id>https://varunbarad.com/blog/project-typractice.html</id>
@@ -1790,7 +1819,7 @@ ffmpeg &lt;span class=&quot;token parameter variable&quot;&gt;-itsoffset&lt;/spa
     
     <entry>
       <title type="html">📝 Using emoji as a favicon</title>
-      <link href="https://varunbarad.com/blog/emoji-as-favicon.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/emoji-as-favicon.html" rel="alternate" type="text/html" title="📝 Using emoji as a favicon"/>
       <published>2023-05-23T17:32:32+05:30</published>
       <updated>2023-05-23T17:32:32+05:30</updated>
       <id>https://varunbarad.com/blog/emoji-as-favicon.html</id>
@@ -1814,7 +1843,7 @@ ffmpeg &lt;span class=&quot;token parameter variable&quot;&gt;-itsoffset&lt;/spa
     
     <entry>
       <title type="html">⚖️ Wracker Dev Log #001</title>
-      <link href="https://varunbarad.com/blog/wracker-log-001.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/wracker-log-001.html" rel="alternate" type="text/html" title="⚖️ Wracker Dev Log #001"/>
       <published>2023-05-22T23:55:00+05:30</published>
       <updated>2023-05-22T23:55:00+05:30</updated>
       <id>https://varunbarad.com/blog/wracker-log-001.html</id>
@@ -1871,7 +1900,7 @@ ffmpeg &lt;span class=&quot;token parameter variable&quot;&gt;-itsoffset&lt;/spa
     
     <entry>
       <title type="html">📝 Save dependency list of your python project to a file</title>
-      <link href="https://varunbarad.com/blog/til-python-save-dependency-list.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/til-python-save-dependency-list.html" rel="alternate" type="text/html" title="📝 Save dependency list of your python project to a file"/>
       <published>2023-05-22T16:10:27+05:30</published>
       <updated>2023-05-22T16:10:27+05:30</updated>
       <id>https://varunbarad.com/blog/til-python-save-dependency-list.html</id>
@@ -1898,7 +1927,7 @@ ffmpeg &lt;span class=&quot;token parameter variable&quot;&gt;-itsoffset&lt;/spa
     
     <entry>
       <title type="html">Group posts by year in Jekyll using Liquid</title>
-      <link href="https://varunbarad.com/blog/group-posts-by-year-jekyll.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/group-posts-by-year-jekyll.html" rel="alternate" type="text/html" title="Group posts by year in Jekyll using Liquid"/>
       <published>2023-05-10T07:55:00+05:30</published>
       <updated>2023-05-10T07:55:00+05:30</updated>
       <id>https://varunbarad.com/blog/group-posts-by-year-jekyll.html</id>
@@ -1955,7 +1984,7 @@ ffmpeg &lt;span class=&quot;token parameter variable&quot;&gt;-itsoffset&lt;/spa
     
     <entry>
       <title type="html">📝 Map an array of ids in postgres to matching data from another table</title>
-      <link href="https://varunbarad.com/blog/til-postgres-map-array.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/til-postgres-map-array.html" rel="alternate" type="text/html" title="📝 Map an array of ids in postgres to matching data from another table"/>
       <published>2023-05-08T23:10:27+05:30</published>
       <updated>2023-05-08T23:10:27+05:30</updated>
       <id>https://varunbarad.com/blog/til-postgres-map-array.html</id>
@@ -1999,7 +2028,7 @@ ffmpeg &lt;span class=&quot;token parameter variable&quot;&gt;-itsoffset&lt;/spa
     
     <entry>
       <title type="html">📝 Counting days between 2 dates in PostgreSQL</title>
-      <link href="https://varunbarad.com/blog/til-postgres-days-between-dates.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/til-postgres-days-between-dates.html" rel="alternate" type="text/html" title="📝 Counting days between 2 dates in PostgreSQL"/>
       <published>2023-04-09T07:52:44+05:30</published>
       <updated>2023-04-09T07:52:44+05:30</updated>
       <id>https://varunbarad.com/blog/til-postgres-days-between-dates.html</id>
@@ -2044,7 +2073,7 @@ ffmpeg &lt;span class=&quot;token parameter variable&quot;&gt;-itsoffset&lt;/spa
     
     <entry>
       <title type="html">📝 Find the first entry in each group</title>
-      <link href="https://varunbarad.com/blog/til-postgres-first-in-each-group.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/til-postgres-first-in-each-group.html" rel="alternate" type="text/html" title="📝 Find the first entry in each group"/>
       <published>2023-03-27T17:39:15+05:30</published>
       <updated>2023-03-27T17:39:15+05:30</updated>
       <id>https://varunbarad.com/blog/til-postgres-first-in-each-group.html</id>
@@ -2089,7 +2118,7 @@ ffmpeg &lt;span class=&quot;token parameter variable&quot;&gt;-itsoffset&lt;/spa
     
     <entry>
       <title type="html">📝 Navigate to a path in Mac Finder</title>
-      <link href="https://varunbarad.com/blog/til-navigate-path-mac-finder.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/til-navigate-path-mac-finder.html" rel="alternate" type="text/html" title="📝 Navigate to a path in Mac Finder"/>
       <published>2023-03-14T18:32:10+05:30</published>
       <updated>2023-03-14T18:32:10+05:30</updated>
       <id>https://varunbarad.com/blog/til-navigate-path-mac-finder.html</id>
@@ -2111,7 +2140,7 @@ ffmpeg &lt;span class=&quot;token parameter variable&quot;&gt;-itsoffset&lt;/spa
     
     <entry>
       <title type="html">Contacts Calendar</title>
-      <link href="https://varunbarad.com/blog/contacts-calendar.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/contacts-calendar.html" rel="alternate" type="text/html" title="Contacts Calendar"/>
       <published>2023-03-04T17:18:03+05:30</published>
       <updated>2023-03-04T17:18:03+05:30</updated>
       <id>https://varunbarad.com/blog/contacts-calendar.html</id>
@@ -2140,7 +2169,7 @@ ffmpeg &lt;span class=&quot;token parameter variable&quot;&gt;-itsoffset&lt;/spa
     
     <entry>
       <title type="html">Cheatsheet - ffmpeg</title>
-      <link href="https://varunbarad.com/blog/cheatsheet-ffmpeg.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/cheatsheet-ffmpeg.html" rel="alternate" type="text/html" title="Cheatsheet - ffmpeg"/>
       <published>2023-02-25T10:36:10+05:30</published>
       <updated>2023-02-25T10:36:10+05:30</updated>
       <id>https://varunbarad.com/blog/cheatsheet-ffmpeg.html</id>
@@ -2185,7 +2214,7 @@ ffmpeg &lt;span class=&quot;token parameter variable&quot;&gt;-itsoffset&lt;/spa
     
     <entry>
       <title type="html">📝 Most used commands</title>
-      <link href="https://varunbarad.com/blog/til-most-used-commands.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/til-most-used-commands.html" rel="alternate" type="text/html" title="📝 Most used commands"/>
       <published>2023-02-10T11:04:06+05:30</published>
       <updated>2023-02-10T11:04:06+05:30</updated>
       <id>https://varunbarad.com/blog/til-most-used-commands.html</id>
@@ -2206,7 +2235,7 @@ ffmpeg &lt;span class=&quot;token parameter variable&quot;&gt;-itsoffset&lt;/spa
     
     <entry>
       <title type="html">📝 wget with custom filename</title>
-      <link href="https://varunbarad.com/blog/til-wget-custom-filename.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/til-wget-custom-filename.html" rel="alternate" type="text/html" title="📝 wget with custom filename"/>
       <published>2023-02-08T14:59:48+05:30</published>
       <updated>2023-02-08T14:59:48+05:30</updated>
       <id>https://varunbarad.com/blog/til-wget-custom-filename.html</id>
@@ -2226,7 +2255,7 @@ ffmpeg &lt;span class=&quot;token parameter variable&quot;&gt;-itsoffset&lt;/spa
     
     <entry>
       <title type="html">📝 Taking a heap-dump from a running JVM process</title>
-      <link href="https://varunbarad.com/blog/til-heap-dump-from-jvm.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/til-heap-dump-from-jvm.html" rel="alternate" type="text/html" title="📝 Taking a heap-dump from a running JVM process"/>
       <published>2023-01-19T13:00:00+05:30</published>
       <updated>2023-01-19T13:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/til-heap-dump-from-jvm.html</id>
@@ -2248,7 +2277,7 @@ ffmpeg &lt;span class=&quot;token parameter variable&quot;&gt;-itsoffset&lt;/spa
     
     <entry>
       <title type="html">📝 Figma styles not present in the API response</title>
-      <link href="https://varunbarad.com/blog/til-figma-styles-unavailable-in-api.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/til-figma-styles-unavailable-in-api.html" rel="alternate" type="text/html" title="📝 Figma styles not present in the API response"/>
       <published>2022-09-23T13:01:54+05:30</published>
       <updated>2022-09-23T13:01:54+05:30</updated>
       <id>https://varunbarad.com/blog/til-figma-styles-unavailable-in-api.html</id>
@@ -2276,7 +2305,7 @@ ffmpeg &lt;span class=&quot;token parameter variable&quot;&gt;-itsoffset&lt;/spa
     
     <entry>
       <title type="html">Office Pranks</title>
-      <link href="https://varunbarad.com/blog/office-pranks.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/office-pranks.html" rel="alternate" type="text/html" title="Office Pranks"/>
       <published>2022-09-17T06:40:13+05:30</published>
       <updated>2022-09-17T06:40:13+05:30</updated>
       <id>https://varunbarad.com/blog/office-pranks.html</id>
@@ -2302,7 +2331,7 @@ ffmpeg &lt;span class=&quot;token parameter variable&quot;&gt;-itsoffset&lt;/spa
     
     <entry>
       <title type="html">📝 Authentication with wget</title>
-      <link href="https://varunbarad.com/blog/til-authentication-with-wget.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/til-authentication-with-wget.html" rel="alternate" type="text/html" title="📝 Authentication with wget"/>
       <published>2022-09-04T07:43:54+05:30</published>
       <updated>2022-09-04T07:43:54+05:30</updated>
       <id>https://varunbarad.com/blog/til-authentication-with-wget.html</id>
@@ -2329,7 +2358,7 @@ ffmpeg &lt;span class=&quot;token parameter variable&quot;&gt;-itsoffset&lt;/spa
     
     <entry>
       <title type="html">📝 How to make non-capturing groups in RegEx</title>
-      <link href="https://varunbarad.com/blog/til-regex-non-capturing-groups.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/til-regex-non-capturing-groups.html" rel="alternate" type="text/html" title="📝 How to make non-capturing groups in RegEx"/>
       <published>2022-08-30T07:44:04+05:30</published>
       <updated>2022-08-30T07:44:04+05:30</updated>
       <id>https://varunbarad.com/blog/til-regex-non-capturing-groups.html</id>
@@ -2362,7 +2391,7 @@ https://randomwebsite.com/file_64fe4cd
     
     <entry>
       <title type="html">Useful fonts</title>
-      <link href="https://varunbarad.com/blog/useful-fonts.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/useful-fonts.html" rel="alternate" type="text/html" title="Useful fonts"/>
       <published>2022-08-12T00:00:00+05:30</published>
       <updated>2022-08-12T00:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/useful-fonts.html</id>
@@ -2387,7 +2416,7 @@ https://randomwebsite.com/file_64fe4cd
     
     <entry>
       <title type="html">📝 India&#39;s national aquatic animal</title>
-      <link href="https://varunbarad.com/blog/til-indias-national-aquatic-animal.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/til-indias-national-aquatic-animal.html" rel="alternate" type="text/html" title="📝 India&#39;s national aquatic animal"/>
       <published>2022-07-12T00:00:00+05:30</published>
       <updated>2022-07-12T00:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/til-indias-national-aquatic-animal.html</id>
@@ -2410,7 +2439,7 @@ https://randomwebsite.com/file_64fe4cd
     
     <entry>
       <title type="html">Safe alphanumeric password base</title>
-      <link href="https://varunbarad.com/blog/safe-alphanumeric-password-base.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/safe-alphanumeric-password-base.html" rel="alternate" type="text/html" title="Safe alphanumeric password base"/>
       <published>2022-03-29T00:00:00+05:30</published>
       <updated>2022-03-29T00:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/safe-alphanumeric-password-base.html</id>
@@ -2431,7 +2460,7 @@ https://randomwebsite.com/file_64fe4cd
     
     <entry>
       <title type="html">Improvement Roll</title>
-      <link href="https://varunbarad.com/blog/improvement-roll.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/improvement-roll.html" rel="alternate" type="text/html" title="Improvement Roll"/>
       <published>2021-11-22T00:00:00+05:30</published>
       <updated>2021-11-22T00:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/improvement-roll.html</id>
@@ -2460,7 +2489,7 @@ https://randomwebsite.com/file_64fe4cd
     
     <entry>
       <title type="html">📝 List files updated in a git commit</title>
-      <link href="https://varunbarad.com/blog/til-list-files-in-a-git-commit.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/til-list-files-in-a-git-commit.html" rel="alternate" type="text/html" title="📝 List files updated in a git commit"/>
       <published>2021-11-17T00:00:00+05:30</published>
       <updated>2021-11-17T00:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/til-list-files-in-a-git-commit.html</id>
@@ -2481,7 +2510,7 @@ https://randomwebsite.com/file_64fe4cd
     
     <entry>
       <title type="html">📝 Centering elements with CSS</title>
-      <link href="https://varunbarad.com/blog/til-centering-elements-with-css.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/til-centering-elements-with-css.html" rel="alternate" type="text/html" title="📝 Centering elements with CSS"/>
       <published>2021-10-31T00:00:00+05:30</published>
       <updated>2021-10-31T00:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/til-centering-elements-with-css.html</id>
@@ -2506,7 +2535,7 @@ https://randomwebsite.com/file_64fe4cd
     
     <entry>
       <title type="html">Cheatsheet - ImageMagick</title>
-      <link href="https://varunbarad.com/blog/cheatsheet-imagemagick.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/cheatsheet-imagemagick.html" rel="alternate" type="text/html" title="Cheatsheet - ImageMagick"/>
       <published>2021-10-17T00:00:00+05:30</published>
       <updated>2021-10-17T00:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/cheatsheet-imagemagick.html</id>
@@ -2544,7 +2573,7 @@ https://randomwebsite.com/file_64fe4cd
     
     <entry>
       <title type="html">📝 Resizing images from command-line</title>
-      <link href="https://varunbarad.com/blog/til-resizing-images-from-command-line.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/til-resizing-images-from-command-line.html" rel="alternate" type="text/html" title="📝 Resizing images from command-line"/>
       <published>2021-10-08T00:00:00+05:30</published>
       <updated>2021-10-08T00:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/til-resizing-images-from-command-line.html</id>
@@ -2571,7 +2600,7 @@ https://randomwebsite.com/file_64fe4cd
     
     <entry>
       <title type="html">Cheatsheet - YouTube-DL</title>
-      <link href="https://varunbarad.com/blog/cheatsheet-youtube-dl.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/cheatsheet-youtube-dl.html" rel="alternate" type="text/html" title="Cheatsheet - YouTube-DL"/>
       <published>2021-10-07T00:00:00+05:30</published>
       <updated>2021-10-07T00:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/cheatsheet-youtube-dl.html</id>
@@ -2605,7 +2634,7 @@ https://randomwebsite.com/file_64fe4cd
     
     <entry>
       <title type="html">📝 Comparing two BigDecimal instances</title>
-      <link href="https://varunbarad.com/blog/comparing-two-BigDecimal-instances.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/comparing-two-BigDecimal-instances.html" rel="alternate" type="text/html" title="📝 Comparing two BigDecimal instances"/>
       <published>2021-07-29T00:00:00+05:30</published>
       <updated>2021-07-29T00:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/comparing-two-BigDecimal-instances.html</id>
@@ -2642,7 +2671,7 @@ https://randomwebsite.com/file_64fe4cd
     
     <entry>
       <title type="html">Windows Symlink</title>
-      <link href="https://varunbarad.com/blog/windows-symlink.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/windows-symlink.html" rel="alternate" type="text/html" title="Windows Symlink"/>
       <published>2021-07-24T00:00:00+05:30</published>
       <updated>2021-07-24T00:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/windows-symlink.html</id>
@@ -2665,7 +2694,7 @@ https://randomwebsite.com/file_64fe4cd
     
     <entry>
       <title type="html">500 Million, But Not a Single One More</title>
-      <link href="https://varunbarad.com/blog/500-million-but-not-a-single-one-more.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/500-million-but-not-a-single-one-more.html" rel="alternate" type="text/html" title="500 Million, But Not a Single One More"/>
       <published>2021-07-18T00:00:00+05:30</published>
       <updated>2021-07-18T00:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/500-million-but-not-a-single-one-more.html</id>
@@ -2706,7 +2735,7 @@ Your browser does not support the &lt;code&gt;audio&lt;/code&gt; element.
     
     <entry>
       <title type="html">📝 Castle Under Threat</title>
-      <link href="https://varunbarad.com/blog/til-castle-under-threat.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/til-castle-under-threat.html" rel="alternate" type="text/html" title="📝 Castle Under Threat"/>
       <published>2021-06-29T00:00:00+05:30</published>
       <updated>2021-06-29T00:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/til-castle-under-threat.html</id>
@@ -2731,7 +2760,7 @@ We cannot castle in this case because the square where king would end up is thre
     
     <entry>
       <title type="html">📝 Ugh fields</title>
-      <link href="https://varunbarad.com/blog/til-ugh-fields.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/til-ugh-fields.html" rel="alternate" type="text/html" title="📝 Ugh fields"/>
       <published>2021-05-28T00:00:00+05:30</published>
       <updated>2021-05-28T00:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/til-ugh-fields.html</id>
@@ -2753,7 +2782,7 @@ We cannot castle in this case because the square where king would end up is thre
     
     <entry>
       <title type="html">📝 Opening current terminal command in $EDITOR</title>
-      <link href="https://varunbarad.com/blog/til-opening-current-terminal-command-in-editor.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/til-opening-current-terminal-command-in-editor.html" rel="alternate" type="text/html" title="📝 Opening current terminal command in $EDITOR"/>
       <published>2021-05-26T00:00:00+05:30</published>
       <updated>2021-05-26T00:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/til-opening-current-terminal-command-in-editor.html</id>
@@ -2774,7 +2803,7 @@ We cannot castle in this case because the square where king would end up is thre
     
     <entry>
       <title type="html">🐘 Cheatsheet - PostgreSQL</title>
-      <link href="https://varunbarad.com/blog/cheatsheet-postgresql.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/cheatsheet-postgresql.html" rel="alternate" type="text/html" title="🐘 Cheatsheet - PostgreSQL"/>
       <published>2021-05-17T00:00:00+05:30</published>
       <updated>2021-05-17T00:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/cheatsheet-postgresql.html</id>
@@ -2925,7 +2954,7 @@ $$&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt
     
     <entry>
       <title type="html">Tips when building a PC</title>
-      <link href="https://varunbarad.com/blog/tips-when-building-a-pc.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/tips-when-building-a-pc.html" rel="alternate" type="text/html" title="Tips when building a PC"/>
       <published>2021-05-15T00:00:00+05:30</published>
       <updated>2021-05-15T00:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/tips-when-building-a-pc.html</id>
@@ -2956,7 +2985,7 @@ $$&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt
     
     <entry>
       <title type="html">📝 Google gives refresh token only once</title>
-      <link href="https://varunbarad.com/blog/til-google-gives-refresh-token-only-once.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/til-google-gives-refresh-token-only-once.html" rel="alternate" type="text/html" title="📝 Google gives refresh token only once"/>
       <published>2021-05-06T00:00:00+05:30</published>
       <updated>2021-05-06T00:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/til-google-gives-refresh-token-only-once.html</id>
@@ -2979,7 +3008,7 @@ $$&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt
     
     <entry>
       <title type="html">📝 JavaScript can &quot;throw&quot; the table</title>
-      <link href="https://varunbarad.com/blog/til-javascript-can-throw-the-table.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/til-javascript-can-throw-the-table.html" rel="alternate" type="text/html" title="📝 JavaScript can &quot;throw&quot; the table"/>
       <published>2021-05-04T12:00:00+05:30</published>
       <updated>2021-05-04T12:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/til-javascript-can-throw-the-table.html</id>
@@ -3006,7 +3035,7 @@ $$&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt
     
     <entry>
       <title type="html">📝 CSS support for browser dark-mode preference</title>
-      <link href="https://varunbarad.com/blog/til-css-support-browser-dark-mode-preference.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/til-css-support-browser-dark-mode-preference.html" rel="alternate" type="text/html" title="📝 CSS support for browser dark-mode preference"/>
       <published>2021-05-04T00:00:00+05:30</published>
       <updated>2021-05-04T00:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/til-css-support-browser-dark-mode-preference.html</id>
@@ -3041,7 +3070,7 @@ $$&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt
     
     <entry>
       <title type="html">Why you should own your email address?</title>
-      <link href="https://varunbarad.com/blog/why-you-should-own-your-email-address.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/why-you-should-own-your-email-address.html" rel="alternate" type="text/html" title="Why you should own your email address?"/>
       <published>2021-03-14T00:00:00+05:30</published>
       <updated>2021-03-14T00:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/why-you-should-own-your-email-address.html</id>
@@ -3066,7 +3095,7 @@ $$&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt
     
     <entry>
       <title type="html">Challenge Update: Two and a Quarter Books</title>
-      <link href="https://varunbarad.com/blog/challenge-update-two-and-a-quarter-books.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/challenge-update-two-and-a-quarter-books.html" rel="alternate" type="text/html" title="Challenge Update: Two and a Quarter Books"/>
       <published>2021-01-10T00:00:00+05:30</published>
       <updated>2021-01-10T00:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/challenge-update-two-and-a-quarter-books.html</id>
@@ -3095,7 +3124,7 @@ $$&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt
     
     <entry>
       <title type="html">2020: Year in review</title>
-      <link href="https://varunbarad.com/blog/2020-year-in-review.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/2020-year-in-review.html" rel="alternate" type="text/html" title="2020: Year in review"/>
       <published>2021-01-09T00:00:00+05:30</published>
       <updated>2021-01-09T00:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/2020-year-in-review.html</id>
@@ -3136,7 +3165,7 @@ $$&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt
     
     <entry>
       <title type="html">Java convert LocalDateTime to Instant using ZoneId</title>
-      <link href="https://varunbarad.com/blog/java-convert-localdatetime-to-instant-using-zoneid.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/java-convert-localdatetime-to-instant-using-zoneid.html" rel="alternate" type="text/html" title="Java convert LocalDateTime to Instant using ZoneId"/>
       <published>2020-12-14T00:00:00+05:30</published>
       <updated>2020-12-14T00:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/java-convert-localdatetime-to-instant-using-zoneid.html</id>
@@ -3161,7 +3190,7 @@ $$&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt
     
     <entry>
       <title type="html">Cheatsheet - Git</title>
-      <link href="https://varunbarad.com/blog/cheatsheet-git.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/cheatsheet-git.html" rel="alternate" type="text/html" title="Cheatsheet - Git"/>
       <published>2020-12-07T00:00:00+05:30</published>
       <updated>2020-12-07T00:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/cheatsheet-git.html</id>
@@ -3209,7 +3238,7 @@ $$&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt
     
     <entry>
       <title type="html">Challenge Update: The Adventures of Sherlock Holmes</title>
-      <link href="https://varunbarad.com/blog/challenge-update-the-adventures-of-sherlock-holmes.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/challenge-update-the-adventures-of-sherlock-holmes.html" rel="alternate" type="text/html" title="Challenge Update: The Adventures of Sherlock Holmes"/>
       <published>2020-12-06T00:00:00+05:30</published>
       <updated>2020-12-06T00:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/challenge-update-the-adventures-of-sherlock-holmes.html</id>
@@ -3238,7 +3267,7 @@ $$&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt
     
     <entry>
       <title type="html">Achievement Unlocked: Finished my first exercise challenge</title>
-      <link href="https://varunbarad.com/blog/achievement-unlocked-first-exercise-challenge.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/achievement-unlocked-first-exercise-challenge.html" rel="alternate" type="text/html" title="Achievement Unlocked: Finished my first exercise challenge"/>
       <published>2020-11-29T00:00:00+05:30</published>
       <updated>2020-11-29T00:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/achievement-unlocked-first-exercise-challenge.html</id>
@@ -3270,7 +3299,7 @@ $$&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt
     
     <entry>
       <title type="html">Challenge Update: Around the World in 80 Days</title>
-      <link href="https://varunbarad.com/blog/challenge-update-around-the-world-in-80-days.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/challenge-update-around-the-world-in-80-days.html" rel="alternate" type="text/html" title="Challenge Update: Around the World in 80 Days"/>
       <published>2020-11-17T00:00:00+05:30</published>
       <updated>2020-11-17T00:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/challenge-update-around-the-world-in-80-days.html</id>
@@ -3299,7 +3328,7 @@ $$&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt
     
     <entry>
       <title type="html">Postel&#39;s Law</title>
-      <link href="https://varunbarad.com/blog/postels-law.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/postels-law.html" rel="alternate" type="text/html" title="Postel&#39;s Law"/>
       <published>2020-11-07T00:00:00+05:30</published>
       <updated>2020-11-07T00:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/postels-law.html</id>
@@ -3333,7 +3362,7 @@ $$&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt
     
     <entry>
       <title type="html">2020 End of Year Reading Challenge</title>
-      <link href="https://varunbarad.com/blog/2020-end-of-year-reading-challenge.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/2020-end-of-year-reading-challenge.html" rel="alternate" type="text/html" title="2020 End of Year Reading Challenge"/>
       <published>2020-10-31T00:00:00+05:30</published>
       <updated>2020-10-31T00:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/2020-end-of-year-reading-challenge.html</id>
@@ -3369,7 +3398,7 @@ $$&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt
     
     <entry>
       <title type="html">Check if your request body is compressed</title>
-      <link href="https://varunbarad.com/blog/check-if-your-request-body-is-compressed.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/check-if-your-request-body-is-compressed.html" rel="alternate" type="text/html" title="Check if your request body is compressed"/>
       <published>2020-10-11T00:00:00+05:30</published>
       <updated>2020-10-11T00:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/check-if-your-request-body-is-compressed.html</id>
@@ -3407,7 +3436,7 @@ $$&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt
     
     <entry>
       <title type="html">Techniques to Improve Focus</title>
-      <link href="https://varunbarad.com/blog/techniques-to-improve-focus.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/techniques-to-improve-focus.html" rel="alternate" type="text/html" title="Techniques to Improve Focus"/>
       <published>2020-08-21T00:00:00+05:30</published>
       <updated>2020-08-21T00:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/techniques-to-improve-focus.html</id>
@@ -3433,7 +3462,7 @@ $$&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt
     
     <entry>
       <title type="html">Interesting Stuff - Week 4</title>
-      <link href="https://varunbarad.com/blog/interesting-stuff-week-4.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/interesting-stuff-week-4.html" rel="alternate" type="text/html" title="Interesting Stuff - Week 4"/>
       <published>2020-07-19T12:00:00+05:30</published>
       <updated>2020-07-19T12:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/interesting-stuff-week-4.html</id>
@@ -3462,7 +3491,7 @@ $$&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt
     
     <entry>
       <title type="html">Interesting Stuff - Week 3</title>
-      <link href="https://varunbarad.com/blog/interesting-stuff-week-3.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/interesting-stuff-week-3.html" rel="alternate" type="text/html" title="Interesting Stuff - Week 3"/>
       <published>2020-07-12T12:00:00+05:30</published>
       <updated>2020-07-12T12:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/interesting-stuff-week-3.html</id>
@@ -3495,7 +3524,7 @@ $$&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt
     
     <entry>
       <title type="html">Interesting Stuff - Week 2</title>
-      <link href="https://varunbarad.com/blog/interesting-stuff-week-2.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/interesting-stuff-week-2.html" rel="alternate" type="text/html" title="Interesting Stuff - Week 2"/>
       <published>2020-07-05T12:00:00+05:30</published>
       <updated>2020-07-05T12:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/interesting-stuff-week-2.html</id>
@@ -3522,7 +3551,7 @@ $$&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt
     
     <entry>
       <title type="html">Interesting Stuff - Week 1</title>
-      <link href="https://varunbarad.com/blog/interesting-stuff-week-1.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/interesting-stuff-week-1.html" rel="alternate" type="text/html" title="Interesting Stuff - Week 1"/>
       <published>2020-06-28T12:00:00+05:30</published>
       <updated>2020-06-28T12:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/interesting-stuff-week-1.html</id>
@@ -3553,7 +3582,7 @@ $$&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt
     
     <entry>
       <title type="html">Prevent back navigation to login screen</title>
-      <link href="https://varunbarad.com/blog/prevent-back-navigation-to-login-screen.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/prevent-back-navigation-to-login-screen.html" rel="alternate" type="text/html" title="Prevent back navigation to login screen"/>
       <published>2020-06-21T12:00:00+05:30</published>
       <updated>2020-06-21T12:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/prevent-back-navigation-to-login-screen.html</id>
@@ -3596,7 +3625,7 @@ $$&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt
     
     <entry>
       <title type="html">Foie Gras</title>
-      <link href="https://varunbarad.com/blog/foie-gras.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/foie-gras.html" rel="alternate" type="text/html" title="Foie Gras"/>
       <published>2020-06-17T12:00:00+05:30</published>
       <updated>2020-06-17T12:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/foie-gras.html</id>
@@ -3621,7 +3650,7 @@ $$&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt
     
     <entry>
       <title type="html">Immigration Dead Man&#39;s Switch</title>
-      <link href="https://varunbarad.com/blog/immigration-dead-mans-switch.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/immigration-dead-mans-switch.html" rel="alternate" type="text/html" title="Immigration Dead Man&#39;s Switch"/>
       <published>2020-05-16T12:00:00+05:30</published>
       <updated>2020-05-16T12:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/immigration-dead-mans-switch.html</id>
@@ -3652,7 +3681,7 @@ $$&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt
     
     <entry>
       <title type="html">Keep Android screen on When USB is connected</title>
-      <link href="https://varunbarad.com/blog/keep-android-screen-on-when-usb-connected.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/keep-android-screen-on-when-usb-connected.html" rel="alternate" type="text/html" title="Keep Android screen on When USB is connected"/>
       <published>2020-05-11T12:00:00+05:30</published>
       <updated>2020-05-11T12:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/keep-android-screen-on-when-usb-connected.html</id>
@@ -3677,7 +3706,7 @@ $$&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt
     
     <entry>
       <title type="html">Write Custom Android Lint Rule - Manifest File</title>
-      <link href="https://varunbarad.com/blog/write-custom-android-lint-rule-manifest-file.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/write-custom-android-lint-rule-manifest-file.html" rel="alternate" type="text/html" title="Write Custom Android Lint Rule - Manifest File"/>
       <published>2020-02-28T12:00:00+05:30</published>
       <updated>2020-02-28T12:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/write-custom-android-lint-rule-manifest-file.html</id>
@@ -3775,7 +3804,7 @@ $$&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt
     
     <entry>
       <title type="html">Write Custom Android Lint Rule - Layout Files</title>
-      <link href="https://varunbarad.com/blog/write-custom-android-lint-rule-layout-files.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/write-custom-android-lint-rule-layout-files.html" rel="alternate" type="text/html" title="Write Custom Android Lint Rule - Layout Files"/>
       <published>2020-02-27T12:00:00+05:30</published>
       <updated>2020-02-27T12:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/write-custom-android-lint-rule-layout-files.html</id>
@@ -3908,7 +3937,7 @@ This lint check is set to fail the build when it finds any of the above element 
     
     <entry>
       <title type="html">Dart Extension Methods</title>
-      <link href="https://varunbarad.com/blog/dart-extensions-methods.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/dart-extensions-methods.html" rel="alternate" type="text/html" title="Dart Extension Methods"/>
       <published>2020-02-04T12:00:00+05:30</published>
       <updated>2020-02-04T12:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/dart-extensions-methods.html</id>
@@ -3978,7 +4007,7 @@ This lint check is set to fail the build when it finds any of the above element 
     
     <entry>
       <title type="html">P vs NP Algorithm Problem Types</title>
-      <link href="https://varunbarad.com/blog/p-vs-np-algorithm-problem-types.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/p-vs-np-algorithm-problem-types.html" rel="alternate" type="text/html" title="P vs NP Algorithm Problem Types"/>
       <published>2020-02-02T12:00:00+05:30</published>
       <updated>2020-02-02T12:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/p-vs-np-algorithm-problem-types.html</id>
@@ -4015,7 +4044,7 @@ This lint check is set to fail the build when it finds any of the above element 
     
     <entry>
       <title type="html">Record Linux terminal session</title>
-      <link href="https://varunbarad.com/blog/record-linux-terminal-session.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/record-linux-terminal-session.html" rel="alternate" type="text/html" title="Record Linux terminal session"/>
       <published>2019-10-26T12:00:00+05:30</published>
       <updated>2019-10-26T12:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/record-linux-terminal-session.html</id>
@@ -4045,7 +4074,7 @@ This lint check is set to fail the build when it finds any of the above element 
     
     <entry>
       <title type="html">Sync git fork with upstream</title>
-      <link href="https://varunbarad.com/blog/sync-git-fork-with-upstream.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/sync-git-fork-with-upstream.html" rel="alternate" type="text/html" title="Sync git fork with upstream"/>
       <published>2019-10-25T12:00:00+05:30</published>
       <updated>2019-10-25T12:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/sync-git-fork-with-upstream.html</id>
@@ -4083,7 +4112,7 @@ This lint check is set to fail the build when it finds any of the above element 
     
     <entry>
       <title type="html">How to add &quot;latest&quot; post redirect to Jekyll site</title>
-      <link href="https://varunbarad.com/blog/how-to-add-latest-post-redirect-to-jekyll-site.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/how-to-add-latest-post-redirect-to-jekyll-site.html" rel="alternate" type="text/html" title="How to add &quot;latest&quot; post redirect to Jekyll site"/>
       <published>2019-10-08T12:00:00+05:30</published>
       <updated>2019-10-08T12:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/how-to-add-latest-post-redirect-to-jekyll-site.html</id>
@@ -4123,7 +4152,7 @@ This lint check is set to fail the build when it finds any of the above element 
     
     <entry>
       <title type="html">JavaScript 30 - Array Cardio 1</title>
-      <link href="https://varunbarad.com/blog/javascript-30-array-cardio-1.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/javascript-30-array-cardio-1.html" rel="alternate" type="text/html" title="JavaScript 30 - Array Cardio 1"/>
       <published>2019-10-03T12:00:00+05:30</published>
       <updated>2019-10-03T12:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/javascript-30-array-cardio-1.html</id>
@@ -4170,7 +4199,7 @@ This lint check is set to fail the build when it finds any of the above element 
     
     <entry>
       <title type="html">JavaScript 30 - CSS Variables</title>
-      <link href="https://varunbarad.com/blog/javascript-30-css-variables.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/javascript-30-css-variables.html" rel="alternate" type="text/html" title="JavaScript 30 - CSS Variables"/>
       <published>2019-10-02T12:00:00+05:30</published>
       <updated>2019-10-02T12:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/javascript-30-css-variables.html</id>
@@ -4236,7 +4265,7 @@ console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span cl
     
     <entry>
       <title type="html">JavaScript 30 - CSS Analog Clock</title>
-      <link href="https://varunbarad.com/blog/javascript-30-css-analog-clock.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/javascript-30-css-analog-clock.html" rel="alternate" type="text/html" title="JavaScript 30 - CSS Analog Clock"/>
       <published>2019-10-01T12:00:00+05:30</published>
       <updated>2019-10-01T12:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/javascript-30-css-analog-clock.html</id>
@@ -4353,7 +4382,7 @@ console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span cl
     
     <entry>
       <title type="html">JavaScript 30 - Building a Drum Kit</title>
-      <link href="https://varunbarad.com/blog/javascript-30-building-a-drum-kit.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/javascript-30-building-a-drum-kit.html" rel="alternate" type="text/html" title="JavaScript 30 - Building a Drum Kit"/>
       <published>2019-09-30T12:00:00+05:30</published>
       <updated>2019-09-30T12:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/javascript-30-building-a-drum-kit.html</id>
@@ -4428,7 +4457,7 @@ document&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span c
     
     <entry>
       <title type="html">Switching RxJava schedulers between app code and corresponding tests</title>
-      <link href="https://varunbarad.com/blog/switching-rxjava-schedulers-between-app-code-and-corresponding-tests.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/switching-rxjava-schedulers-between-app-code-and-corresponding-tests.html" rel="alternate" type="text/html" title="Switching RxJava schedulers between app code and corresponding tests"/>
       <published>2019-08-16T12:00:00+05:30</published>
       <updated>2019-08-16T12:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/switching-rxjava-schedulers-between-app-code-and-corresponding-tests.html</id>
@@ -4505,7 +4534,7 @@ document&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span c
     
     <entry>
       <title type="html">Make git forget a tracked file</title>
-      <link href="https://varunbarad.com/blog/make-git-forget-a-tracked-file.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/make-git-forget-a-tracked-file.html" rel="alternate" type="text/html" title="Make git forget a tracked file"/>
       <published>2019-06-06T12:00:00+05:30</published>
       <updated>2019-06-06T12:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/make-git-forget-a-tracked-file.html</id>
@@ -4537,7 +4566,7 @@ document&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span c
     
     <entry>
       <title type="html">Testing Deep-Link URLs using ADB</title>
-      <link href="https://varunbarad.com/blog/testing-deep-link-urls-using-adb.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/testing-deep-link-urls-using-adb.html" rel="alternate" type="text/html" title="Testing Deep-Link URLs using ADB"/>
       <published>2019-05-02T12:00:00+05:30</published>
       <updated>2019-05-02T12:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/testing-deep-link-urls-using-adb.html</id>
@@ -4562,7 +4591,7 @@ document&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span c
     
     <entry>
       <title type="html">HTTP Network Requests on Android Pie</title>
-      <link href="https://varunbarad.com/blog/http-network-requests-on-android-pie.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/http-network-requests-on-android-pie.html" rel="alternate" type="text/html" title="HTTP Network Requests on Android Pie"/>
       <published>2019-04-07T12:00:00+05:30</published>
       <updated>2019-04-07T12:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/http-network-requests-on-android-pie.html</id>
@@ -4605,7 +4634,7 @@ document&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span c
     
     <entry>
       <title type="html">Don&#39;t worry about specializing yet!</title>
-      <link href="https://varunbarad.com/blog/dont-worry-about-specializing-yet.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/dont-worry-about-specializing-yet.html" rel="alternate" type="text/html" title="Don&#39;t worry about specializing yet!"/>
       <published>2019-03-19T12:00:00+05:30</published>
       <updated>2019-03-19T12:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/dont-worry-about-specializing-yet.html</id>
@@ -4650,7 +4679,7 @@ document&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span c
     
     <entry>
       <title type="html">Show/Hide Layout Bounds in Android</title>
-      <link href="https://varunbarad.com/blog/show-hide-android-layout-bounds.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/show-hide-android-layout-bounds.html" rel="alternate" type="text/html" title="Show/Hide Layout Bounds in Android"/>
       <published>2019-03-08T12:00:00+05:30</published>
       <updated>2019-03-08T12:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/show-hide-android-layout-bounds.html</id>
@@ -4691,7 +4720,7 @@ adb shell &lt;span class=&quot;token function&quot;&gt;service&lt;/span&gt; call
     
     <entry>
       <title type="html">Creating a single-file backup of your git repository</title>
-      <link href="https://varunbarad.com/blog/git-repository-single-file-backup.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/git-repository-single-file-backup.html" rel="alternate" type="text/html" title="Creating a single-file backup of your git repository"/>
       <published>2019-03-03T12:00:00+05:30</published>
       <updated>2019-03-03T12:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/git-repository-single-file-backup.html</id>
@@ -4898,7 +4927,7 @@ zip_file_path &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; os&lt;
     
     <entry>
       <title type="html">How Breathing Works</title>
-      <link href="https://varunbarad.com/blog/how-breathing-works.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/how-breathing-works.html" rel="alternate" type="text/html" title="How Breathing Works"/>
       <published>2018-10-27T12:00:00+05:30</published>
       <updated>2018-10-27T12:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/how-breathing-works.html</id>
@@ -4975,7 +5004,7 @@ zip_file_path &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; os&lt;
     
     <entry>
       <title type="html">APGAR score</title>
-      <link href="https://varunbarad.com/blog/apgar-score.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/apgar-score.html" rel="alternate" type="text/html" title="APGAR score"/>
       <published>2018-10-19T12:00:00+05:30</published>
       <updated>2018-10-19T12:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/apgar-score.html</id>
@@ -5062,7 +5091,7 @@ zip_file_path &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; os&lt;
     
     <entry>
       <title type="html">How anesthetics work</title>
-      <link href="https://varunbarad.com/blog/how-anesthetics-work.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/how-anesthetics-work.html" rel="alternate" type="text/html" title="How anesthetics work"/>
       <published>2018-08-13T12:00:00+05:30</published>
       <updated>2018-08-13T12:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/how-anesthetics-work.html</id>
@@ -5199,7 +5228,7 @@ It involves an injection into the cerebro-spinal fluid or the epidural space jus
     
     <entry>
       <title type="html">Critical mistakes to avoid in Android development</title>
-      <link href="https://varunbarad.com/blog/critical-mistakes-to-avoid-in-android-development.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/critical-mistakes-to-avoid-in-android-development.html" rel="alternate" type="text/html" title="Critical mistakes to avoid in Android development"/>
       <published>2018-03-14T12:00:00+05:30</published>
       <updated>2018-03-14T12:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/critical-mistakes-to-avoid-in-android-development.html</id>
@@ -5263,7 +5292,7 @@ It involves an injection into the cerebro-spinal fluid or the epidural space jus
     
     <entry>
       <title type="html">Simplifying User-Experience for rating your Android app</title>
-      <link href="https://varunbarad.com/blog/simplifying-user-experience-for-rating-your-android-app.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/simplifying-user-experience-for-rating-your-android-app.html" rel="alternate" type="text/html" title="Simplifying User-Experience for rating your Android app"/>
       <published>2018-02-15T12:00:00+05:30</published>
       <updated>2018-02-15T12:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/simplifying-user-experience-for-rating-your-android-app.html</id>
@@ -5349,7 +5378,7 @@ It involves an injection into the cerebro-spinal fluid or the epidural space jus
     
     <entry>
       <title type="html">Check network connectivity on Android in 10 lines</title>
-      <link href="https://varunbarad.com/blog/check-network-connectivity-on-android-in-10-lines.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/check-network-connectivity-on-android-in-10-lines.html" rel="alternate" type="text/html" title="Check network connectivity on Android in 10 lines"/>
       <published>2018-02-08T12:00:00+05:30</published>
       <updated>2018-02-08T12:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/check-network-connectivity-on-android-in-10-lines.html</id>
@@ -5422,7 +5451,7 @@ It involves an injection into the cerebro-spinal fluid or the epidural space jus
     
     <entry>
       <title type="html">Hiding API keys from your Android repository</title>
-      <link href="https://varunbarad.com/blog/hiding-api-keys-from-your-android-repository.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/hiding-api-keys-from-your-android-repository.html" rel="alternate" type="text/html" title="Hiding API keys from your Android repository"/>
       <published>2018-02-01T12:00:00+05:30</published>
       <updated>2018-02-01T12:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/hiding-api-keys-from-your-android-repository.html</id>
@@ -5505,7 +5534,7 @@ It involves an injection into the cerebro-spinal fluid or the epidural space jus
     
     <entry>
       <title type="html">How to Stop Worrying and Start Living</title>
-      <link href="https://varunbarad.com/blog/how-to-stop-worrying-and-start-living.html" rel="alternate" type="text/html" title="post.data.title"/>
+      <link href="https://varunbarad.com/blog/how-to-stop-worrying-and-start-living.html" rel="alternate" type="text/html" title="How to Stop Worrying and Start Living"/>
       <published>2017-01-01T12:00:00+05:30</published>
       <updated>2017-01-01T12:00:00+05:30</updated>
       <id>https://varunbarad.com/blog/how-to-stop-worrying-and-start-living.html</id>
