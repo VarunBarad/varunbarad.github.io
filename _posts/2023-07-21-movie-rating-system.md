@@ -8,6 +8,7 @@ date: 2023-07-22T11:31:20+0530
 categories:
   - "miscellaneous"
   - "life-hack"
+  - "movies"
 ---
 
 ## Introduction
