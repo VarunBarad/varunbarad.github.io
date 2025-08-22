@@ -4,12 +4,55 @@
   <subtitle>My online home where I post about new things I learn or find interesting.</subtitle>
   <link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml"/>
   <link href="https://varunbarad.com/" rel="alternate" type="text/html"/>
-  <updated>2025-08-21T22:52:44+05:30</updated>
+  <updated>2025-08-22T21:54:41+05:30</updated>
   <id>https://varunbarad.com/feed.xml</id>
   <author>
     <name>Varun Barad</name>
   </author>
 
+  
+    
+    <entry>
+      <title type="html">⌨️ Say hi to a new keyboard</title>
+      <link href="https://varunbarad.com/blog/keyboard-kc-v6max-intro.html" rel="alternate" type="text/html" title="⌨️ Say hi to a new keyboard"/>
+      <published>2025-08-22T21:54:41+05:30</published>
+      <updated>2025-08-22T21:54:41+05:30</updated>
+      <id>https://varunbarad.com/blog/keyboard-kc-v6max-intro.html</id>
+      <content type="html">
+      &lt;p&gt;&lt;img src=&quot;https://varunbarad.com/assets/images/posts/keyboard-kc-v6max/keyboard-full.webp&quot; alt=&quot;Full-size view of the Keychron V6 Max keyboard&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;After 4 full years with my trusty &lt;a href=&quot;https://meckeys.com/shop/keyboard/100-keyboard/ducky-one-2-tuxedo/&quot;&gt;Ducky One 2 Tuxedo&lt;/a&gt;, I finally bought a new keyboard. There is nothing wrong with my old keyboard, it is functioning just as good as the day I bought it. I just wanted an upgrade.&lt;/p&gt;
+&lt;h2&gt;What did I choose?&lt;/h2&gt;
+&lt;p&gt;My absolute minimum requirement was a proper full-size keyboard. None of those squeezing the arrow keys into the main section or moving the &amp;quot;Insert → Page Down&amp;quot; section around. So, after looking at the limited options available in the full-size mechanical keyboard segment, I decided to go with the &lt;a href=&quot;https://keychron.in/product/keychron-v6-qmk-custom-mechanical-keyboard/&quot;&gt;Keychron V6 Max&lt;/a&gt; (I went with the red switches).&lt;/p&gt;
+&lt;h2&gt;Why did I choose it?&lt;/h2&gt;
+&lt;p&gt;It was literally the only mechanical keyboard available in India which ticked all the above boxes. And it also came with these upgrades over my existing keyboard:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Triple connectivity options
+&lt;ul&gt;
+&lt;li&gt;Bluetooth&lt;/li&gt;
+&lt;li&gt;Wired&lt;/li&gt;
+&lt;li&gt;2.4 GHz dongle-based&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QMK/VIA programmable&lt;/li&gt;
+&lt;li&gt;Configurable backlight&lt;/li&gt;
+&lt;li&gt;A rotary encoder knob&lt;/li&gt;
+&lt;li&gt;Hot swappable switches&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;How has it been?&lt;/h2&gt;
+&lt;p&gt;I am sometimes hitting the wrong keys because of the slightly changed keycap profile, but otherwise the experience has been nice. After three weeks of use, I am back at around the same efficiency I had with my previous keyboard.&lt;/p&gt;
+&lt;p&gt;I haven&#39;t yet made any customisations to the keymap, but I plan to change some small things around this weekend. I&#39;ll report back next weekend with how that works out over the week.&lt;/p&gt;
+
+      </content>
+      <author>
+        <name>Varun Barad</name>
+      </author>
+      
+      <category term="blaugust-2025"/>
+      
+      <category term="toys"/>
+      
+      <summary type="html">My first impressions with my new Keychron V6 Max</summary>
+    </entry>
   
     
     <entry>
