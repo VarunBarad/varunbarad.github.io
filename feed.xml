@@ -99,6 +99,9 @@ buttonStopRecording&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt
 	
 	recordedChunks &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Sample&lt;/h2&gt;
+&lt;p&gt;Here&#39;s a sample demo to test:&lt;/p&gt;
+&lt;iframe src=&quot;https://varunbarad.com/experiments/canvas-recording.html&quot; style=&quot;width: 100%; min-height: 700px;&quot;&gt;&lt;/iframe&gt;
 
       </content>
       <author>
