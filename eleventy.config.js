@@ -7,6 +7,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("favicon.png");
   eleventyConfig.addPassthroughCopy("assets");
   eleventyConfig.addPassthroughCopy("podcasts");
+  eleventyConfig.addPassthroughCopy("experiments");
   
   eleventyConfig.addNunjucksFilter('dateToRfc3339WithTimezone', (inputDateObj) => {
     return ZonedDateTime.parse(inputDateObj.toISOString())
