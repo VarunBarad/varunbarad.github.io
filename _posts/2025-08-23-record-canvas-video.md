@@ -112,3 +112,9 @@ const downloadRecording = () => {
 	recordedChunks = [];
 };
 ```
+
+## Sample
+
+Here's a sample demo to test:
+
+<iframe src="/experiments/canvas-recording.html" style="width: 100%; min-height: 700px;"></iframe>
