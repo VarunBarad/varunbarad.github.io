@@ -4,12 +4,50 @@
   <subtitle>My online home where I post about new things I learn or find interesting.</subtitle>
   <link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml"/>
   <link href="https://varunbarad.com/" rel="alternate" type="text/html"/>
-  <updated>2025-08-24T10:12:48+05:30</updated>
+  <updated>2025-08-24T13:08:17+05:30</updated>
   <id>https://varunbarad.com/feed.xml</id>
   <author>
     <name>Varun Barad</name>
   </author>
 
+  
+    
+    <entry>
+      <title type="html">📝 Serve local sites over HTTPS connections</title>
+      <link href="https://varunbarad.com/blog/https-local-sites.html" rel="alternate" type="text/html" title="📝 Serve local sites over HTTPS connections"/>
+      <published>2025-08-24T13:08:17+05:30</published>
+      <updated>2025-08-24T13:08:17+05:30</updated>
+      <id>https://varunbarad.com/blog/https-local-sites.html</id>
+      <content type="html">
+      &lt;p&gt;Let&#39;s say you are building a website and testing it locally, assume it is on &lt;code&gt;localhost:8080&lt;/code&gt;. Now if you were to visit that URL in a browser, it would take you to &lt;code&gt;http://localhost:8080&lt;/code&gt;. And it won&#39;t work if you tried using the HTTPS protocol as you don&#39;t have a proper SSL/TLS certificate. But we can use the &lt;a href=&quot;https://caddyserver.com/&quot;&gt;Caddy&lt;/a&gt; server to serve a site over HTTPS.&lt;/p&gt;
+&lt;p&gt;We will need to use a hostname because it&#39;s easier to get SSL/TLS cert for a domain than an IP address. We will use &lt;code&gt;garden.varun&lt;/code&gt; domain because I am pretty sure &lt;code&gt;.varun&lt;/code&gt; is not going to be a TLD ever and thus no chances of clashes with actual domains.&lt;/p&gt;
+&lt;h2&gt;Installing and configuring Caddy&lt;/h2&gt;
+&lt;p&gt;You can install Caddy using Homebrew on macOS with &lt;code&gt;brew install caddy&lt;/code&gt; (please look up the specific steps if you are using a different OS). After that in your project directory (or working directory, your choice) create a file named &lt;code&gt;Caddyfile&lt;/code&gt; with these contents:&lt;/p&gt;
+&lt;pre class=&quot;language-caddyfile&quot;&gt;&lt;code class=&quot;language-caddyfile&quot;&gt;{
+    local_certs
+}
+
+garden.varun {
+    reverse_proxy 127.0.0.1:8080
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Pointing garden.varun to our own computer&lt;/h2&gt;
+&lt;p&gt;Next we need to modify our computer&#39;s hosts file (in Mac or Linux it is situated at &lt;code&gt;/etc/hosts&lt;/code&gt;) to tell it to point &lt;code&gt;garden.varun&lt;/code&gt; to &lt;code&gt;127.0.0.1&lt;/code&gt;. We would need to add the below record at the bottom of the existing file&#39;s contents:&lt;/p&gt;
+&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;127.0.0.1   garden.varun&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You might need to use admin privileges to update the &lt;code&gt;/etc/hosts&lt;/code&gt; file.&lt;/p&gt;
+&lt;h2&gt;Firing up caddy&lt;/h2&gt;
+&lt;p&gt;Next, start the caddy server using the command &lt;code&gt;caddy run&lt;/code&gt; and you should be good to go. Visit &lt;code&gt;https://garden.varun&lt;/code&gt; in your browser and it should show you the website/whatever served on your local &lt;code&gt;8080&lt;/code&gt; port with an HTTPS connection.&lt;/p&gt;
+
+      </content>
+      <author>
+        <name>Varun Barad</name>
+      </author>
+      
+      <category term="til"/>
+      
+      <category term="blaugust-2025"/>
+      
+      <summary type="html">TIL: How to serve your local website over HTTPS</summary>
+    </entry>
   
     
     <entry>
