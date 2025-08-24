@@ -4,12 +4,59 @@
   <subtitle>My online home where I post about new things I learn or find interesting.</subtitle>
   <link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml"/>
   <link href="https://varunbarad.com/" rel="alternate" type="text/html"/>
-  <updated>2025-08-23T16:14:07+05:30</updated>
+  <updated>2025-08-24T10:12:48+05:30</updated>
   <id>https://varunbarad.com/feed.xml</id>
   <author>
     <name>Varun Barad</name>
   </author>
 
+  
+    
+    <entry>
+      <title type="html">🃏 Card game: Mindikot / Dehla Pakad / Catch the Ten</title>
+      <link href="https://varunbarad.com/blog/tabletop-game-mindikot.html" rel="alternate" type="text/html" title="🃏 Card game: Mindikot / Dehla Pakad / Catch the Ten"/>
+      <published>2025-08-24T10:12:48+05:30</published>
+      <updated>2025-08-24T10:12:48+05:30</updated>
+      <id>https://varunbarad.com/blog/tabletop-game-mindikot.html</id>
+      <content type="html">
+      &lt;p&gt;I learned this card game back in my college days. It is a team-based 4-player game played with a standard deck of cards. Players sitting opposite are in the same team and the goal is to capture as many Tens as you can.&lt;/p&gt;
+&lt;h2&gt;Setup&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;4 players: Two teams of two, partners sit opposite&lt;/li&gt;
+&lt;li&gt;Standard 52 card deck&lt;/li&gt;
+&lt;li&gt;Dealer is chosen randomly for the first game, then rotates clockwise&lt;/li&gt;
+&lt;li&gt;The person sitting to the left of dealer decides the trump suit after getting their first 5 cards and&lt;/li&gt;
+&lt;li&gt;The aim is to capture as many of the four Tens as possible. Each Ten counts as one point, no other card counts for any points.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Gameplay&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;The dealer distributes 5 cards to each player&lt;/li&gt;
+&lt;li&gt;The person to the left of dealer selects the trump suit after seeing their 5 cards&lt;/li&gt;
+&lt;li&gt;Then the dealer distributes the remaining cards (8 to each player)&lt;/li&gt;
+&lt;li&gt;The person who decided the trump suit starts the first trick&lt;/li&gt;
+&lt;li&gt;Players must follow the suit if possible, if not they may play any card&lt;/li&gt;
+&lt;li&gt;The highest card of the led suit wins the trick, but if the trump suit has also been played then the highest card of trump suit wins&lt;/li&gt;
+&lt;li&gt;The winner of the trick starts the next one&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Scoring&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Scores are calculated for teams, and not individuals.&lt;/li&gt;
+&lt;li&gt;Each captured Ten counts for 1 point&lt;/li&gt;
+&lt;li&gt;No other card capture counts towards points&lt;/li&gt;
+&lt;li&gt;Four games together make up a session&lt;/li&gt;
+&lt;/ul&gt;
+
+      </content>
+      <author>
+        <name>Varun Barad</name>
+      </author>
+      
+      <category term="blaugust-2025"/>
+      
+      <category term="tabletop-games"/>
+      
+      <summary type="html">5 video games that captured me through the years</summary>
+    </entry>
   
     
     <entry>
