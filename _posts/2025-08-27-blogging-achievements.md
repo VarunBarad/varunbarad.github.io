@@ -3,7 +3,7 @@ tags:
   - post
 layout: post
 title: "🏆 Gamifying blogging and personal site maintenance"
-summary: ""
+summary: "How adding small badges/achievements can improve the blogging experience"
 date: 2025-08-27T23:21:49+0530
 categories:
   - "blaugust-2025"
