@@ -3,7 +3,7 @@ tags:
   - post
 layout: post
 title: "📝 Link to a specific piece of text on a webpage"
-summary: "TIL: How to link to a specific "
+summary: "TIL: How to link to a specific piece of text on a webpage"
 date: 2025-08-02T16:18:43+0530
 categories:
   - "til"
