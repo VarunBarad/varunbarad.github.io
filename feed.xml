@@ -4,12 +4,54 @@
   <subtitle>My online home where I post about new things I learn or find interesting.</subtitle>
   <link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml"/>
   <link href="https://varunbarad.com/" rel="alternate" type="text/html"/>
-  <updated>2025-08-28T22:17:43+05:30</updated>
+  <updated>2025-08-29T10:30:01+05:30</updated>
   <id>https://varunbarad.com/feed.xml</id>
   <author>
     <name>Varun Barad</name>
   </author>
 
+  
+    
+    <entry>
+      <title type="html">📝 Pixel art images should be scaled and not resized</title>
+      <link href="https://varunbarad.com/blog/til-scale-pixel-art.html" rel="alternate" type="text/html" title="📝 Pixel art images should be scaled and not resized"/>
+      <published>2025-08-29T10:30:01+05:30</published>
+      <updated>2025-08-29T10:30:01+05:30</updated>
+      <id>https://varunbarad.com/blog/til-scale-pixel-art.html</id>
+      <content type="html">
+      &lt;p&gt;This week I wanted to turn a 512x512 pixel image down to a 128x128 sized image. A noteworthy point is that this image was a pixel-art, and thus we needed to keep the edges sharp. Below is the image in question:&lt;/p&gt;
+&lt;figure&gt;
+  &lt;img alt=&quot;Full sized badge image&quot; src=&quot;https://varunbarad.com/assets/images/posts/til-scale-pixel-art/badge-full.webp&quot; style=&quot;width: fit-content; height: fit-content;&quot; /&gt;
+  &lt;figcaption style=&quot;text-align: center;&quot;&gt;Full sized badge image&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;I brought out the trusty old imagemagick and resized it:&lt;/p&gt;
+&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;magick convert badge-full.webp &lt;span class=&quot;token parameter variable&quot;&gt;-resize&lt;/span&gt; 128x128 badge-resize.webp&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;That got me this image:&lt;/p&gt;
+&lt;figure&gt;
+  &lt;img alt=&quot;Resized badge image&quot; src=&quot;https://varunbarad.com/assets/images/posts/til-scale-pixel-art/badge-resize.webp&quot; style=&quot;width: fit-content; height: fit-content;&quot; /&gt;
+  &lt;figcaption style=&quot;text-align: center;&quot;&gt;Resized badge image&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;If you were to open this new image and zoom in a bit, you will see that the edges of the pixels are not as sharply defined and there is a bit of color blending going on. We obviously don&#39;t want that.&lt;/p&gt;
+&lt;p&gt;Scaling to the rescue. We can scale the image like this:&lt;/p&gt;
+&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;magick convert badge-full.webp &lt;span class=&quot;token parameter variable&quot;&gt;-scale&lt;/span&gt; 128x128 badge-scale.webp&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;That gives you the one you want, with clean and crisp borders:&lt;/p&gt;
+&lt;figure&gt;
+  &lt;img alt=&quot;Scaled badge image&quot; src=&quot;https://varunbarad.com/assets/images/posts/til-scale-pixel-art/badge-scale.webp&quot; style=&quot;width: fit-content; height: fit-content;&quot; /&gt;
+  &lt;figcaption style=&quot;text-align: center;&quot;&gt;Scaled badge image&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;The relevant documentation page for &lt;a href=&quot;https://usage.imagemagick.org/resize/#resize&quot;&gt;resize&lt;/a&gt; and &lt;a href=&quot;https://usage.imagemagick.org/resize/#scale&quot;&gt;scale&lt;/a&gt;.&lt;/p&gt;
+
+      </content>
+      <author>
+        <name>Varun Barad</name>
+      </author>
+      
+      <category term="til"/>
+      
+      <category term="blaugust-2025"/>
+      
+      <summary type="html">TIL: Why pixel art images should be scaled and how to do it with imagemagick</summary>
+    </entry>
   
     
     <entry>
@@ -1243,7 +1285,7 @@ Sync Pull&lt;/code&gt;&lt;/pre&gt;
       
       <category term="blaugust-2025"/>
       
-      <summary type="html">TIL: How to link to a specific </summary>
+      <summary type="html">TIL: How to link to a specific piece of text on a webpage</summary>
     </entry>
   
     
