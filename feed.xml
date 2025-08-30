@@ -4,12 +4,76 @@
   <subtitle>My online home where I post about new things I learn or find interesting.</subtitle>
   <link href="https://varunbarad.com/feed.xml" rel="self" type="application/atom+xml"/>
   <link href="https://varunbarad.com/" rel="alternate" type="text/html"/>
-  <updated>2025-08-30T20:05:13+05:30</updated>
+  <updated>2025-08-31T02:00:29+05:30</updated>
   <id>https://varunbarad.com/feed.xml</id>
   <author>
     <name>Varun Barad</name>
   </author>
 
+  
+    
+    <entry>
+      <title type="html">📝 Set git identity based on project-directory</title>
+      <link href="https://varunbarad.com/blog/til-subdirectory-based-git-identity.html" rel="alternate" type="text/html" title="📝 Set git identity based on project-directory"/>
+      <published>2025-08-31T02:00:29+05:30</published>
+      <updated>2025-08-31T02:00:29+05:30</updated>
+      <id>https://varunbarad.com/blog/til-subdirectory-based-git-identity.html</id>
+      <content type="html">
+      &lt;p&gt;I am done looking this up online every time I think of doing this. This time I am writing the canonical (for me) guide on how to do this. My sincerest gratitude to the original author (&lt;a href=&quot;https://www.shirishpadalkar.com/using-separate-git-identities-on-the-same-machine/&quot;&gt;Shirish Padalkar&#39;s post&lt;/a&gt;) whose guide I followed this time.&lt;/p&gt;
+&lt;p&gt;The premise is that we have multiple identities for various projects that we work on. Let&#39;s say I work as a consultant with two companies Frame and Clock, and this is how I organise my projects:&lt;/p&gt;
+&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;Projects
+├── all-other-projects-go-here
+├── clock
+│   └── projects-for-Clock-stay-here
+└── frame
+    └── projects-for-Frame-stay-here&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And these are the identities I need to be using in these projects:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Projects for Frame: varun@frame.com&lt;/li&gt;
+&lt;li&gt;Projects for Clock: varun@clock.com&lt;/li&gt;
+&lt;li&gt;Everything else: varun@varunbarad.com&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The way to solve this is to have three config files for git; a base/global config and then two additional files which are decided (based on the repo-root) whether to import or not.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# ~/.gitconfig-frame
+
+[user]
+    name = Varun Barad
+    email = varun@frame.com
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;# ~/.gitconfig-clock
+
+[user]
+    name = Varun Barad
+    email = varun@clock.com
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The above are our files to set the appropriate identity. Now we need to tell our global gitconfig to import either of these two files when in the correct directory.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# ~/.gitconfig
+
+[user]
+    name = Varun Barad
+    email = varun@varunbarad.com
+
+[includeIf &amp;quot;gitdir:~/Projects/frame&amp;quot;]
+    path: .gitconfig-frame
+
+[includeIf &amp;quot;gitdir:~/Projects/clock&amp;quot;]
+    path: .gitconfig-clock
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And that&#39;s how it&#39;s done. That&#39;s all folks. Now wherever you create your repo, appropriate author information is applied based on where the repo was created.&lt;/p&gt;
+
+      </content>
+      <author>
+        <name>Varun Barad</name>
+      </author>
+      
+      <category term="til"/>
+      
+      <category term="blaugust-2025"/>
+      
+      <category term="programming"/>
+      
+      <summary type="html">TIL: How to set the author identity in git for all projects under a single parent directory</summary>
+    </entry>
   
     
     <entry>
