@@ -7,4 +7,3 @@ node_modules/
 *.prod.*
 */.DS_Store
 .DS_Store
-assets/css/main.out.css
