@@ -6,9 +6,12 @@ permalink: '/blog/{{ page.fileSlug }}.html'
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
     <link rel="stylesheet" href="/assets/css/main.css">
     <link href="/assets/css/prism-theme/prism-darcula.css" rel="stylesheet"/>
+
     <link rel="icon" type="image/png" href="/favicon.png"/>
+
     <title>{{ title }} - Varun Barad</title>
     <meta name="description" content="{{ summary }}"/>
 
@@ -37,25 +40,18 @@ permalink: '/blog/{{ page.fileSlug }}.html'
 </head>
 <body>
 <div>
-    <div id="header">
-        <div class="row header">
-            <div class="title col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
-                <a href="/">
-                    <div class="title">Varun Barad</div>
-                </a>
-            </div>
-            <div class="col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8">
-                <nav class="menu text-right">
-                    <a href="/blog">Blog</a>
-                    <a href="/projects">Projects</a>
-                    <a href="/books">Books</a>
-                    <a href="/ideas">Ideas</a>
-                    <a href="/contact">Contact</a>
-                    <a href="/resume">My Resume</a>
-                </nav>
-            </div>
-        </div>
-    </div>
+    <header>
+        <a href="/">Varun Barad</a>
+        <nav>
+            {% if page.url == "/blog" %}<span>Blog</span>{% else %}<a href="/blog">Blog</a>{% endif %}
+            {% if page.url == "/projects" %}<span>Projects</span>{% else %}<a href="/projects">Projects</a>{% endif %}
+            {% if page.url == "/books" %}<span>Books</span>{% else %}<a href="/books">Books</a>{% endif %}
+            {% if page.url == "/ideas" %}<span>Ideas</span>{% else %}<a href="/ideas">Ideas</a>{% endif %}
+            {% if page.url == "/contact" %}<span>Contact</span>{% else %}<a href="/contact">Contact</a>{% endif %}
+            {% if page.url == "/resume" %}<span>Resume</span>{% else %}<a href="/resume">Resume</a>{% endif %}
+        </nav>
+    </header>
+
     <article class="h-entry">
         <div class="content row">
             <div class="post-container">

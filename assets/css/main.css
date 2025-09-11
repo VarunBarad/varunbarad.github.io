@@ -1,2 +1,65 @@
 @import "reset.css";
 @import "colors.css";
+@import "vars.css";
+
+:root {
+  color-scheme: light dark;
+}
+
+html, body {
+  min-height: 100vh;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: var(--font-body), sans-serif;
+}
+
+header {
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: stretch;
+  row-gap: 0.25rem;
+}
+
+header > a {
+  font-size: 1.75rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--accent-color);
+}
+
+header > nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  row-gap: 0.5rem;
+  column-gap: 0.5rem;
+  text-align: center;
+  font-size: 1.125rem;
+  font-weight: var(--font-weight-semibold);
+}
+
+header > nav * {
+  text-decoration: none;
+}
+
+@media screen and (min-width: 512px) {
+  header > nav {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  }
+}
+
+header > nav > a {
+  background-color: var(--accent-color);
+  color: var(--text-color-inverted);
+  border-radius: var(--border-radius-slight);
+  padding: var(--spacing-xs) var(--spacing-md);
+}
+header > nav > span {
+  background-color: var(--background-color-inverted);
+  color: var(--text-color-inverted);
+  border: 2px solid var(--accent-color);
+  border-radius: var(--border-radius-slight);
+  padding: var(--spacing-xs) var(--spacing-md);
+}
