@@ -39,64 +39,62 @@ permalink: '/blog/{{ page.fileSlug }}.html'
     <meta property="og:description" content="{{ summary }}"/>
 </head>
 <body>
-<div>
-    <header>
-        <a href="/">Varun Barad</a>
-        <nav>
-            {% if page.url == "/blog" %}<span>Blog</span>{% else %}<a href="/blog">Blog</a>{% endif %}
-            {% if page.url == "/projects" %}<span>Projects</span>{% else %}<a href="/projects">Projects</a>{% endif %}
-            {% if page.url == "/books" %}<span>Books</span>{% else %}<a href="/books">Books</a>{% endif %}
-            {% if page.url == "/ideas" %}<span>Ideas</span>{% else %}<a href="/ideas">Ideas</a>{% endif %}
-            {% if page.url == "/contact" %}<span>Contact</span>{% else %}<a href="/contact">Contact</a>{% endif %}
-            {% if page.url == "/resume" %}<span>Resume</span>{% else %}<a href="/resume">Resume</a>{% endif %}
-        </nav>
-    </header>
+<header>
+    <a href="/">Varun Barad</a>
+    <nav>
+        {% if page.url == "/blog" %}<span>Blog</span>{% else %}<a href="/blog">Blog</a>{% endif %}
+        {% if page.url == "/projects" %}<span>Projects</span>{% else %}<a href="/projects">Projects</a>{% endif %}
+        {% if page.url == "/books" %}<span>Books</span>{% else %}<a href="/books">Books</a>{% endif %}
+        {% if page.url == "/ideas" %}<span>Ideas</span>{% else %}<a href="/ideas">Ideas</a>{% endif %}
+        {% if page.url == "/contact" %}<span>Contact</span>{% else %}<a href="/contact">Contact</a>{% endif %}
+        {% if page.url == "/resume" %}<span>Resume</span>{% else %}<a href="/resume">Resume</a>{% endif %}
+    </nav>
+</header>
 
-    <article class="h-entry">
-        <div class="content row">
-            <div class="post-container">
-                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                    <div>
-                        <div class="page-title text-uppercase text-center p-name">
-                            <a class="u-url" href="{{ page.url }}">{{ title }}</a>
-                        </div>
-                        <div class="text-center">
-                            By <a class="p-author h-card" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="{{ page.date }}">{{ page.date | date: '%B %d, %Y' }}</time>
-                        </div>
-                        <div class="post-content e-content">{{ content }}</div>
+<article class="h-entry">
+    <div class="content row">
+        <div class="post-container">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                <div>
+                    <div class="page-title text-uppercase text-center p-name">
+                        <a class="u-url" href="{{ page.url }}">{{ title }}</a>
                     </div>
-                    <div class="post-categories-container">
-                        Categories:
-                        <div>
-                            {% for category in categories %}
-                                <a href="/category/{{ category }}.html" class="badge badge-warning">#{{ category }}</a>
-                            {% endfor %}
-                            <a href="/blog" class="badge badge-warning">#all</a>
-                        </div>
+                    <div class="text-center">
+                        By <a class="p-author h-card" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="{{ page.date }}">{{ page.date | date: '%B %d, %Y' }}</time>
+                    </div>
+                    <div class="post-content e-content">{{ content }}</div>
+                </div>
+                <div class="post-categories-container">
+                    Categories:
+                    <div>
+                        {% for category in categories %}
+                            <a href="/category/{{ category }}.html" class="badge badge-warning">#{{ category }}</a>
+                        {% endfor %}
+                        <a href="/blog" class="badge badge-warning">#all</a>
                     </div>
                 </div>
             </div>
         </div>
-    </article>
-    <div>
-        <div class="footer">
-            <div>
-                <a href="https://github.com/VarunBarad" rel="me">
-                    <i class="fab fa-github social-links"></i>
-                </a>
-                <a href="https://twitter.com/varun_barad" rel="me">
-                    <i class="fab fa-twitter social-links"></i>
-                </a>
-                <a href="https://dev.to/varunbarad" rel="me">
-                    <i class="fab fa-dev social-links"></i>
-                </a>
-                <a href="https://stackoverflow.com/users/4717436/varunbarad" rel="me">
-                    <i class="fab fa-stack-overflow social-links"></i>
-                </a>
-            </div>
-            <div class="developer-attribution">
-                Made by <a href="https://dixita0607.github.io">Dixita Ganatra</a>
-            </div>
+    </div>
+</article>
+<div>
+    <div class="footer">
+        <div>
+            <a href="https://github.com/VarunBarad" rel="me">
+                <i class="fab fa-github social-links"></i>
+            </a>
+            <a href="https://twitter.com/varun_barad" rel="me">
+                <i class="fab fa-twitter social-links"></i>
+            </a>
+            <a href="https://dev.to/varunbarad" rel="me">
+                <i class="fab fa-dev social-links"></i>
+            </a>
+            <a href="https://stackoverflow.com/users/4717436/varunbarad" rel="me">
+                <i class="fab fa-stack-overflow social-links"></i>
+            </a>
+        </div>
+        <div class="developer-attribution">
+            Made by <a href="https://dixita0607.github.io">Dixita Ganatra</a>
         </div>
     </div>
 </div>
