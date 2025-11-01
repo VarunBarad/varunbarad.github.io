@@ -10,7 +10,7 @@ This is Varun Barad's personal website and blog built with Eleventy (11ty). It's
 
 ### Core Commands
 - `npm run build` - Build the site using Eleventy (outputs to `_site/`)  
-- `npm run serve` - Start development server with live reload
+- `npm run serve` - Start development server on port 8080 with live reload
 - `npm run clean` - Remove build artifacts from `_site/`
 - `npm run setup-hooks` - Install git pre-commit hook
 - `npm run sync-resources` - Run resource sync script and copy blog posts
