@@ -52,32 +52,32 @@ permalink: '/blog/{{ page.fileSlug }}.html'
     </nav>
 </header>
 
-<article class="h-entry">
-    <div class="content row">
-        <div class="post-container">
-            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                <div>
-                    <div class="page-title text-uppercase text-center p-name">
-                        <a class="u-url" href="{{ page.url }}">{{ title }}</a>
-                    </div>
-                    <div class="text-center">
-                        By <a class="p-author h-card" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="{{ page.date }}">{{ page.date | date: '%B %d, %Y' }}</time>
-                    </div>
-                    <div class="post-content e-content">{{ content }}</div>
-                </div>
-                <div class="post-categories-container">
-                    Categories:
-                    <div>
-                        {% for category in categories %}
-                            <a href="/category/{{ category }}.html" class="badge badge-warning">#{{ category }}</a>
-                        {% endfor %}
-                        <a href="/blog" class="badge badge-warning">#all</a>
-                    </div>
-                </div>
+<main>
+    <article class="h-entry">
+        <div class="post-header">
+            <h1 class="post-title p-name">
+                <a class="u-url" href="{{ page.url }}">{{ title }}</a>
+            </h1>
+            <div class="post-meta">
+                By <a class="p-author h-card" href="https://varunbarad.com">Varun Barad</a> on <time class="dt-published" datetime="{{ page.date }}">{{ page.date | date: '%B %d, %Y' }}</time>
             </div>
         </div>
-    </div>
-</article>
+
+        <div class="post-content e-content">
+            {{ content }}
+        </div>
+
+        <div class="post-categories">
+            <div class="post-categories-label">Categories:</div>
+            <div>
+                {% for category in categories %}
+                    <a href="/category/{{ category }}.html">#{{ category }}</a>
+                {% endfor %}
+                <a href="/blog">#all</a>
+            </div>
+        </div>
+    </article>
+</main>
 <footer>
     <!-- Core -> Blog, Now, Contact, Resume, Wishlist -->
     <div class="footer-group">
