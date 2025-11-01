@@ -58,3 +58,10 @@
   --max-width-content: 768px;
   --max-width-prose: 65ch;
 }
+
+@media screen and (min-width: 1280px) {
+  :root {
+    --max-width-content: 1080px;
+    --max-width-prose: 80ch;
+  }
+}
