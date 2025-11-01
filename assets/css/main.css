@@ -82,7 +82,7 @@ main {
 .post-header {
   font-size: var(--font-size-lg);
   max-width: var(--max-width-prose);
-  margin-bottom: var(--spacing-3xl);
+  margin: 0 auto var(--spacing-3xl);
 }
 
 .post-title {
@@ -114,6 +114,7 @@ main {
 
 .post-content {
   max-width: var(--max-width-prose);
+  margin: 0 auto;
   font-size: var(--font-size-lg);
   line-height: var(--line-height-relaxed);
   text-align: justify;
