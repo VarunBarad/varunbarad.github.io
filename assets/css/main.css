@@ -80,6 +80,8 @@ main {
 
 /* Post styles */
 .post-header {
+  font-size: var(--font-size-lg);
+  max-width: var(--max-width-prose);
   margin-bottom: var(--spacing-3xl);
 }
 
@@ -114,6 +116,7 @@ main {
   max-width: var(--max-width-prose);
   font-size: var(--font-size-lg);
   line-height: var(--line-height-relaxed);
+  text-align: justify;
 }
 
 .post-content h1,
@@ -132,7 +135,11 @@ main {
 .post-content h1 { font-size: var(--font-size-3xl); }
 .post-content h2 { font-size: var(--font-size-2xl); }
 .post-content h3 { font-size: var(--font-size-xl); }
-.post-content h4 { font-size: var(--font-size-lg); }
+.post-content h4,
+.post-content h5,
+.post-content h6 {
+  font-size: var(--font-size-lg);
+}
 
 .post-content p {
   margin-bottom: var(--spacing-xl);
@@ -194,7 +201,23 @@ main {
   max-width: 100%;
   height: auto;
   border-radius: var(--border-radius-md);
+  margin: var(--spacing-2xl) auto;
+}
+
+.post-content figure {
   margin: var(--spacing-2xl) 0;
+}
+
+.post-content figure img {
+  margin: 0 auto;
+}
+
+.post-content figcaption {
+  margin-top: var(--spacing-sm);
+  text-align: center;
+  font-size: var(--font-size-sm);
+  color: var(--text-color-muted);
+  font-style: italic;
 }
 
 .post-categories {
@@ -232,7 +255,7 @@ main {
 /* Footer */
 footer {
   max-width: var(--max-width-content);
-  margin: var(--spacing-4xl) auto 0;
+  margin: 0 auto;
   padding: var(--spacing-3xl) var(--spacing-lg);
   border-top: 1px solid var(--border-color);
   display: grid;
