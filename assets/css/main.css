@@ -20,7 +20,7 @@ header {
 }
 
 header > a {
-  display: block;
+  display: inline-block;
   font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-bold);
   color: var(--accent-color);
