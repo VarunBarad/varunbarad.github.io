@@ -222,9 +222,18 @@ main {
 }
 
 .post-categories {
-  margin-top: var(--spacing-3xl);
+  font-size: var(--font-size-lg);
+  max-width: calc(var(--max-width-prose) + var(--spacing-2xl));
+  margin: var(--spacing-3xl) auto 0;
   padding-top: var(--spacing-2xl);
   border-top: 1px solid var(--border-color);
+}
+
+.post-categories > * {
+  font-size: var(--font-size-lg);
+  max-width: var(--max-width-prose);
+  padding-left: var(--spacing-lg);
+  padding-right: var(--spacing-lg);
 }
 
 .post-categories-label {
