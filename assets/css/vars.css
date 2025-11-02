@@ -2,6 +2,7 @@
   /* Dark theme colors */
   --background-color: var(--gray-950);
   --text-color: var(--gray-50);
+  --text-on-accent-color: var(--gray-950);
   --text-color-muted: var(--gray-400);
 
   /* Green accent colors */
