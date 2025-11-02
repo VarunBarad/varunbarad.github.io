@@ -39,18 +39,7 @@ permalink: '/blog/{{ page.fileSlug }}.html'
     <meta property="og:description" content="{{ summary }}"/>
 </head>
 <body>
-<header>
-    <a href="/">Varun Barad</a>
-    <nav>
-        <!-- Blog, Projects, Now, Contact, Postroll, Feeds -->
-        {% if page.url == "/blog" %}<span>Blog</span>{% else %}<a href="/blog">Blog</a>{% endif %}
-        {% if page.url == "/projects" %}<span>Projects</span>{% else %}<a href="/projects">Projects</a>{% endif %}
-        {% if page.url == "/books" %}<span>Books</span>{% else %}<a href="/books">Books</a>{% endif %}
-        {% if page.url == "/ideas" %}<span>Ideas</span>{% else %}<a href="/ideas">Ideas</a>{% endif %}
-        {% if page.url == "/contact" %}<span>Contact</span>{% else %}<a href="/contact">Contact</a>{% endif %}
-        {% if page.url == "/resume" %}<span>Resume</span>{% else %}<a href="/resume">Resume</a>{% endif %}
-    </nav>
-</header>
+{% include 'header.liquid' %}
 
 <main>
     <article class="h-entry">
@@ -78,34 +67,7 @@ permalink: '/blog/{{ page.fileSlug }}.html'
         </div>
     </article>
 </main>
-<footer>
-    <!-- Core -> Blog, Now, Contact, Resume, Wishlist -->
-    <div class="footer-group">
-        <h4>Core</h4>
-        <ul>
-            <li><a href="/blog">Blog</a></li>
-            <li><a href="/contact">Contact</a></li>
-            <li><a href="/resume">Resume</a></li>
-        </ul>
-    </div>
-    <!-- Creation -> Projects, Ideas, Uses, Changelog, Feeds, Colophon -->
-    <div class="footer-group">
-        <h4>Creation</h4>
-        <ul>
-            <li><a href="/projects">Projects</a></li>
-            <li><a href="/ideas">Ideas</a></li>
-        </ul>
-    </div>
-    <!-- Consumption -> Books, Movies, Games, Recipes, Blogroll, Postroll -->
-    <div class="footer-group">
-        <h4>Consumption</h4>
-        <ul>
-            <li><a href="/books">Books</a></li>
-            <li><a href="/category/movies.html">Movies</a></li>
-            <li><a href="/category/video-games.html">Games</a></li>
-            <li><a href="/recipes">Recipes</a></li>
-        </ul>
-    </div>
-</footer>
+
+{% include 'footer.liquid' %}
 </body>
 </html>
