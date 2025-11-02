@@ -1,6 +1,12 @@
 ---
-layout: relayout-markdown.liquid
 permalink: '/test-markdown.html'
+layout: post
+title: "🧪 Testing markdown elements"
+summary: "How adding small badges/achievements can improve the blogging experience"
+date: 2025-08-27T23:21:49+0530
+categories:
+  - "blaugust-2025"
+  - "meta"
 ---
 
 # Markdown: Syntax
@@ -293,7 +299,7 @@ after the link text's closing square bracket. Inside the parentheses,
 put the URL where you want the link to point, along with an *optional*
 title for the link, surrounded in quotes. For example:
 
-This is [an example](http://example.com/) inline link.
+This is [an example](http://example.com/ "some title") inline link.
 
 [This link](http://example.net/) has no title attribute.
 
