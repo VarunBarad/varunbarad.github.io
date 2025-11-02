@@ -7,36 +7,36 @@ permalink: '/blog/{{ page.fileSlug }}.html'
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/main.css" />
     <link href="/assets/css/prism-theme/prism-darcula.css" rel="stylesheet"/>
 
-    <link rel="icon" type="image/png" href="/favicon.png"/>
+    <link rel="icon" type="image/png" href="/favicon.png" />
 
     <title>{{ title }} - Varun Barad</title>
-    <meta name="description" content="{{ summary }}"/>
+    <meta name="description" content="{{ summary }}" />
 
     {% if canonical_url %}
         <!-- Canonical URL -->
-        <link rel="canonical" href="{{ canonical_url }}">
+        <link rel="canonical" href="{{ canonical_url }}" />
     {% endif %}
 
     <!-- RSS Feed meta-data -->
-    <link type="application/atom+xml" rel="alternate" href="{{ site.url }}/feed.xml" title="{{ site.title }}"/>
+    <link type="application/atom+xml" rel="alternate" href="{{ site.url }}/feed.xml" title="{{ site.title }}" />
 
     <!-- Twitter meta-data -->
-    <meta name="twitter:site" content="@{{ site.twitter_username }}"/>
-    <meta name="twitter:image:src" content="{{ site.url }}/assets/images/logo-hd.png"/>
-    <meta name="twitter:card" content="summary"/>
-    <meta name="twitter:title" content="{{ title }}"/>
-    <meta name="twitter:description" content="{{ summary }}"/>
+    <meta name="twitter:site" content="@{{ site.twitter_username }}" />
+    <meta name="twitter:image:src" content="{{ site.url }}/assets/images/logo-hd.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="{{ title }}" />
+    <meta name="twitter:description" content="{{ summary }}" />
 
     <!-- Open-Graph meta-data -->
-    <meta property="og:site_name" content="{{ site.title }}"/>
-    <meta property="og:image" content="{{ site.url }}/assets/images/logo-hd.png"/>
-    <meta property="og:type" content="object"/>
-    <meta property="og:title" content="{{ title }}"/>
-    <meta property="og:url" content="{{ site.url }}{{ page.url }}"/>
-    <meta property="og:description" content="{{ summary }}"/>
+    <meta property="og:site_name" content="{{ site.title }}" />
+    <meta property="og:image" content="{{ site.url }}/assets/images/logo-hd.png" />
+    <meta property="og:type" content="object" />
+    <meta property="og:title" content="{{ title }}" />
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
+    <meta property="og:description" content="{{ summary }}" />
 </head>
 <body>
 {% include 'header.liquid' %}

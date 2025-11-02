@@ -2,11 +2,11 @@
     <a href="/">Varun Barad</a>
     <nav>
         <!-- Blog, Projects, Now, Contact, Postroll, Feeds -->
-        {% if page.url == "/blog" %}<span>Blog</span>{% else %}<a href="/blog">Blog</a>{% endif %}
-        {% if page.url == "/projects" %}<span>Projects</span>{% else %}<a href="/projects">Projects</a>{% endif %}
-        {% if page.url == "/books" %}<span>Books</span>{% else %}<a href="/books">Books</a>{% endif %}
-        {% if page.url == "/ideas" %}<span>Ideas</span>{% else %}<a href="/ideas">Ideas</a>{% endif %}
-        {% if page.url == "/contact" %}<span>Contact</span>{% else %}<a href="/contact">Contact</a>{% endif %}
-        {% if page.url == "/resume" %}<span>Resume</span>{% else %}<a href="/resume">Resume</a>{% endif %}
+        {% if page.url == "/blog" or page.url == "/blog.html" %}<span>Blog</span>{% else %}<a href="/blog">Blog</a>{% endif %}
+        {% if page.url == "/projects" or page.url == "/projects.html" %}<span>Projects</span>{% else %}<a href="/projects">Projects</a>{% endif %}
+        {% if page.url == "/books" or page.url == "/books.html" %}<span>Books</span>{% else %}<a href="/books">Books</a>{% endif %}
+        {% if page.url == "/ideas" or page.url == "/ideas.html" %}<span>Ideas</span>{% else %}<a href="/ideas">Ideas</a>{% endif %}
+        {% if page.url == "/contact" or page.url == "/contact.html" %}<span>Contact</span>{% else %}<a href="/contact">Contact</a>{% endif %}
+        {% if page.url == "/resume" or page.url == "/resume.html" %}<span>Resume</span>{% else %}<a href="/resume">Resume</a>{% endif %}
     </nav>
 </header>
