@@ -68,7 +68,7 @@ header > nav > a:hover {
 
 header > nav > span {
   background-color: var(--accent-color);
-  color: var(--gray-950);
+  color: var(--text-on-accent-color);
   border: 1px solid var(--accent-color);
 }
 
@@ -259,7 +259,7 @@ main {
 
 .post-categories a:hover {
   background-color: var(--accent-color);
-  color: var(--gray-950);
+  color: var(--text-on-accent-color);
   border-color: var(--accent-color);
 }
 
