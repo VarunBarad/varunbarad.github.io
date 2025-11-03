@@ -1,74 +1,38 @@
 ---
+layout: page.liquid
 pagination:
   data: collections.blogPostCategories
   size: 1
   alias: category
 permalink: "/category/{{ category.name }}.html"
+eleventyComputed:
+  title: "Blog (#{{ category.name }})"
 ---
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="icon" type="image/png" href="/favicon.png"/>
-  <title>Blog ({{ category.name }}) - Varun Barad</title>
-  <meta name="description" content="{{site.description}}"/>
-
-  <!-- RSS Feed meta-data -->
-  <link type="application/atom+xml" rel="alternate" href="{{ site.url }}/feed.xml" title="{{ site.title }}"/>
-
-  <!-- Twitter meta-data -->
-  <meta name="twitter:site" content="@{{site.twitter_username}}"/>
-  <meta name="twitter:image:src" content="{{site.url}}/assets/images/logo-hd.png"/>
-  <meta name="twitter:card" content="summary"/>
-  <meta name="twitter:title" content="{{site.title}}"/>
-  <meta name="twitter:description" content="{{site.description}}"/>
-
-  <!-- Open-Graph meta-data -->
-  <meta property="og:site_name" content="{{site.title}}"/>
-  <meta property="og:image" content="{{site.url}}/assets/images/logo-hd.png"/>
-  <meta property="og:type" content="object"/>
-  <meta property="og:title" content="{{site.title}}"/>
-  <meta property="og:url" content="{{site.url}}{{page.url}}"/>
-  <meta property="og:description" content="{{site.description}}"/>
-
-  <!-- Styles kept here for now -->
-  {% include '_new_styles.html' %}
-</head>
-<body>
-{% include '_header.html' %}
-
-{% assign contactDetails = site.data.personal.contact %}
-<main>
-  <h1>Blog (#{{ category.name }})</h1>
-
-  <div class="badge-list">
+<div class="category-tags">
     {% for blogPostCategory in collections.blogPostCategories %}
-      <a href="/category/{{ blogPostCategory.name }}" class="badge">#{{ blogPostCategory.name }}</a>
+        {% if blogPostCategory.name == category.name %}
+            <span class="category-tag category-tag-active">#{{ blogPostCategory.name }}</span>
+        {% else %}
+            <a href="/category/{{ blogPostCategory.name }}" class="category-tag">#{{ blogPostCategory.name }}</a>
+        {% endif %}
     {% endfor %}
-    <a href="/blog.html" class="badge">#all</a>
-  </div>
+    <a href="/blog.html" class="category-tag">#all</a>
+</div>
 
-  {% assign postsByYear = category.posts |  reverse |  group_by_exp:"post", "post.date | date: '%Y'" %}
-  <div class="periods-wrapper">
+{% assign postsByYear = category.posts | reverse | group_by_exp: "post", "post.date | date: '%Y'" %}
+<div class="blog-listing">
     {% for year in postsByYear %}
-      <div class="period">
-        <h2 class="period-title">{{ year.name }} ({{ year.items | size }})</h2>
+        <div class="year-section">
+            <h2 class="year-heading">{{ year.name }} ({{ year.items | size }})</h2>
 
-        <div class="post-list">
-          {% for post in year.items %}
-            <p class="post-item">
-              <a href="{{ post.url }}" class="post-title">{{ post.data.title }}</a>
-              <br>
-              <span class="post-description">{{ post.data.summary }}</span>
-            </p>
-          {% endfor %}
+            <div class="post-list">
+                {% for post in year.items %}
+                    <article class="post-item">
+                        <a href="{{ post.url }}" class="post-item-title">{{ post.data.title }}</a>
+                        <p class="post-item-summary">{{ post.data.summary }}</p>
+                    </article>
+                {% endfor %}
+            </div>
         </div>
-      </div>
     {% endfor %}
-  </div>
-</main>
-
-{% include '_footer.html' %}
-</body>
-</html>
+</div>

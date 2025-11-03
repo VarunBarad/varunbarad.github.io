@@ -60,9 +60,9 @@ permalink: '/blog/{{ page.fileSlug }}.html'
             <div class="post-categories-label">Categories:</div>
             <div>
                 {% for category in categories %}
-                    <a href="/category/{{ category }}.html">#{{ category }}</a>
+                    <a href="/category/{{ category }}.html" class="category-tag">#{{ category }}</a>
                 {% endfor %}
-                <a href="/blog">#all</a>
+                <a href="/blog" class="category-tag">#all</a>
             </div>
         </div>
     </article>
