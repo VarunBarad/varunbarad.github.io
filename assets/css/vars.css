@@ -11,7 +11,7 @@
   --accent-color-dark: var(--emerald-600);
 
   /* Secondary colors */
-  --border-color: var(--gray-800);
+  --border-color: var(--gray-700);
   --surface-color: var(--gray-900);
   --code-bg: var(--gray-900);
   --code-color: var(--emerald-300);
