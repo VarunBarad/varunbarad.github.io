@@ -58,7 +58,7 @@ header > nav > span {
 
 header > nav > a {
   color: var(--text-color);
-  border: 1px solid var(--border-color);
+  border: 1.5px solid var(--border-color);
 }
 
 header > nav > a:hover {
@@ -69,7 +69,7 @@ header > nav > a:hover {
 header > nav > span {
   background-color: var(--accent-color);
   color: var(--text-on-accent-color);
-  border: 1px solid var(--accent-color);
+  border: 1.5px solid var(--accent-color);
 }
 
 /* Main content */
@@ -262,7 +262,7 @@ main {
   border-radius: var(--border-radius-sm);
   text-decoration: none;
   font-size: var(--font-size-sm);
-  border: 1px solid var(--border-color);
+  border: 1.5px solid var(--border-color);
   transition: all 0.2s ease;
 }
 
