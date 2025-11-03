@@ -263,6 +263,59 @@ main {
   border-color: var(--accent-color);
 }
 
+/* Blog listing */
+.blog-listing {
+  max-width: var(--max-width-prose);
+}
+
+.year-section {
+  margin-bottom: var(--spacing-4xl);
+}
+
+.year-section:last-child {
+  margin-bottom: 0;
+}
+
+.year-heading {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--accent-color);
+  margin-bottom: var(--spacing-xl);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 2px solid var(--border-color);
+}
+
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.post-item {
+  display: block;
+}
+
+.post-item-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-color);
+  text-decoration: none;
+  margin-bottom: var(--spacing-xs);
+  display: block;
+}
+.post-item-title:visited {
+  color: var(--text-color);
+}
+.post-item-title:hover {
+  color: var(--accent-color-hover);
+}
+
+.post-item-summary {
+  color: var(--text-color-muted);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+}
+
 /* Footer */
 footer {
   max-width: var(--max-width-content);
