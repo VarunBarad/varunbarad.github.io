@@ -7,20 +7,20 @@ redirect_from: [
 ]
 ---
 {% assign postsByYear = collections.post | reverse | group_by_exp:"post", "post.date | date: '%Y'" %}
-<div class="periods-wrapper">
+<div class="blog-listing">
   {% for year in postsByYear %}
-  <div class="period">
-    <h2 class="period-title">{{ year.name }} ({{ year.items | size }})</h2>
+    {% assign postCount = year.items | size %}
+    <div class="year-section">
+      <p class="year-heading">{{ year.name }} ({{ postCount }})</p>
 
-    <div class="post-list">
-      {% for post in year.items %}
-      <p class="post-item">
-        <a href="{{ post.url }}" class="post-title">{{ post.data.title }}</a>
-        <br>
-        <span class="post-description">{{ post.data.summary }}</span>
-      </p>
-      {% endfor %}
+      <div class="post-list">
+        {% for post in year.items %}
+        <article class="post-item">
+          <a href="{{ post.url }}" class="post-item-title">{{ post.data.title }}</a>
+          <p class="post-item-summary">{{ post.data.summary }}</p>
+        </article>
+        {% endfor %}
+      </div>
     </div>
-  </div>
   {% endfor %}
 </div>
