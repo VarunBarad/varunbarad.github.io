@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link href="/assets/css/prism-theme/prism-darcula.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/assets/css/fontawesome-all.css">
+    <link rel="icon" type="image/png" href="/favicon.png"/>
+    <title>🖨️ My scribe writes my documents out in the physical world - Varun Barad</title>
+    <meta name="description" content="My trusty HP LaserJet 1020 now can print over network"/>
+
+    
+
+    <!-- RSS Feed meta-data -->
+    <link type="application/atom+xml" rel="alternate" href="https://varunbarad.com/feed.xml" title="Varun Barad - Curious Developer"/>
+
+    <!-- Twitter meta-data -->
+    <meta name="twitter:site" content="@varun_barad"/>
+    <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png"/>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="🖨️ My scribe writes my documents out in the physical world"/>
+    <meta name="twitter:description" content="My trusty HP LaserJet 1020 now can print over network"/>
+
+    <!-- Open-Graph meta-data -->
+    <meta property="og:site_name" content="Varun Barad - Curious Developer"/>
+    <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png"/>
+    <meta property="og:type" content="object"/>
+    <meta property="og:title" content="🖨️ My scribe writes my documents out in the physical world"/>
+    <meta property="og:url" content="https://varunbarad.com/blog/project-scribe.html"/>
+    <meta property="og:description" content="My trusty HP LaserJet 1020 now can print over network"/>
+</head>
+<body>
+<div>
+    <div id="header">
+        <div class="row header">
+            <div class="title col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+                <a href="/">
+                    <div class="title">Varun Barad</div>
+                </a>
+            </div>
+            <div class="col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8">
+                <nav class="menu text-right">
+                    <a href="/blog">Blog</a>
+                    <a href="/projects">Projects</a>
+                    <a href="/books">Books</a>
+                    <a href="/ideas">Ideas</a>
+                    <a href="/contact">Contact</a>
+                    <a href="/resume">My Resume</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <article class="h-entry">
+        <div class="content row">
+            <div class="post-container">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <div>
+                        <div class="page-title text-uppercase text-center p-name">
+                            <a class="u-url" href="/blog/project-scribe.html">🖨️ My scribe writes my documents out in the physical world</a>
+                        </div>
+                        <div class="text-center">
+                            By <a class="p-author h-card" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="Wed Aug 13 2025 11:59:13 GMT+0530 (India Standard Time)">August 13, 2025</time>
+                        </div>
+                        <div class="post-content e-content"><p>More than a decade ago was when I first learned of network connected printers and then when I learned that we can turn a local-only printer into a networked printer just by using a Raspberry Pi I jumped into the pool to try it. I had a HP LaserJet 1020 (which I still have) which works flawlessly when using over a local USB connection from a Windows machine which I wanted to be able to use over network.</p>
+<p>When I first tried that back around 2014-2015 I learned that the particular printer I had was not directly supported by <a href="https://en.wikipedia.org/wiki/CUPS">CUPS</a>. So I had to leave it there. Sometime near the end of last year I came across <a href="https://tripad.medium.com/turning-my-old-printer-into-a-wireless-printer-with-a-raspberry-pi-1fb6d73e35a4">an article</a> where the author had achieved exactly what I strived to all those years ago. That is when I found out that CUPS can be extended to add support for these printers.</p>
+<p>I knew things weren't going to work perfectly the first time and even if they did, I wanted to be able to reproduce it for multiple other such printers that my dad has (a Pi will be deployed at each one). So I went through the article step-by-step and turned all the required steps into a script which I can run on a newly flashed card containing Raspbian OS. You can see the script <a href="https://github.com/VarunBarad/scribe">here</a>.</p>
+<p>And it works. I tested it by printing from a Mac, an Android phone, even an iPhone and it does print from all those devices. I then connected it through a <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/">Cloudflare Tunnel</a> and was able to print over the internet from outside my local network.</p>
+<p>Now, there are a few hiccups which would need to be ironed out before I can use this as my full-time printer setup.</p>
+<p>First and the most annoying, it takes a very long time between hitting &quot;Print&quot; and it actually starting the print. My suspicion is that both the network transfer as well as processing the document on a Pi might be the cause.</p>
+<p>The second one I don't hit as frequently is that it can't handle double-sided printing as well as HP's proprietary driver handles on Windows. Not sure if there is a solution for this or not but will try looking around.</p>
+<p>And the easiest to fix one is that the script currently depends on two external resources (<a href="https://github.com/koenkooi/foo2zjs">first</a> and <a href="https://www.quirinux.org/printers/sihp1020.tar.gz">second</a>) which I will eventually bring in-house (just a local mirror should do the trick) to avoid them being rug-pulled.</p>
+</div>
+                    </div>
+                    <div class="post-categories-container">
+                        Categories:
+                        <div>
+                            
+                                <a href="/category/scribe.html" class="badge badge-warning">#scribe</a>
+                            
+                                <a href="/category/blaugust-2025.html" class="badge badge-warning">#blaugust-2025</a>
+                            
+                            <a href="/blog" class="badge badge-warning">#all</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+    <div>
+        <div class="footer">
+            <div>
+                <a href="https://github.com/VarunBarad" rel="me">
+                    <i class="fab fa-github social-links"></i>
+                </a>
+                <a href="https://twitter.com/varun_barad" rel="me">
+                    <i class="fab fa-twitter social-links"></i>
+                </a>
+                <a href="https://dev.to/varunbarad" rel="me">
+                    <i class="fab fa-dev social-links"></i>
+                </a>
+                <a href="https://stackoverflow.com/users/4717436/varunbarad" rel="me">
+                    <i class="fab fa-stack-overflow social-links"></i>
+                </a>
+            </div>
+            <div class="developer-attribution">
+                Made by <a href="https://dixita0607.github.io">Dixita Ganatra</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+</body>
+</html>

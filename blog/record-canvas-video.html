@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link href="/assets/css/prism-theme/prism-darcula.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/assets/css/fontawesome-all.css">
+    <link rel="icon" type="image/png" href="/favicon.png"/>
+    <title>📝 Record HTML &lt;canvas&gt; video using JavaScript - Varun Barad</title>
+    <meta name="description" content="TIL: How to record a video of the HTML canvas element using JavaScript"/>
+
+    
+
+    <!-- RSS Feed meta-data -->
+    <link type="application/atom+xml" rel="alternate" href="https://varunbarad.com/feed.xml" title="Varun Barad - Curious Developer"/>
+
+    <!-- Twitter meta-data -->
+    <meta name="twitter:site" content="@varun_barad"/>
+    <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png"/>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="📝 Record HTML &lt;canvas&gt; video using JavaScript"/>
+    <meta name="twitter:description" content="TIL: How to record a video of the HTML canvas element using JavaScript"/>
+
+    <!-- Open-Graph meta-data -->
+    <meta property="og:site_name" content="Varun Barad - Curious Developer"/>
+    <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png"/>
+    <meta property="og:type" content="object"/>
+    <meta property="og:title" content="📝 Record HTML &lt;canvas&gt; video using JavaScript"/>
+    <meta property="og:url" content="https://varunbarad.com/blog/record-canvas-video.html"/>
+    <meta property="og:description" content="TIL: How to record a video of the HTML canvas element using JavaScript"/>
+</head>
+<body>
+<div>
+    <div id="header">
+        <div class="row header">
+            <div class="title col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+                <a href="/">
+                    <div class="title">Varun Barad</div>
+                </a>
+            </div>
+            <div class="col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8">
+                <nav class="menu text-right">
+                    <a href="/blog">Blog</a>
+                    <a href="/projects">Projects</a>
+                    <a href="/books">Books</a>
+                    <a href="/ideas">Ideas</a>
+                    <a href="/contact">Contact</a>
+                    <a href="/resume">My Resume</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <article class="h-entry">
+        <div class="content row">
+            <div class="post-container">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <div>
+                        <div class="page-title text-uppercase text-center p-name">
+                            <a class="u-url" href="/blog/record-canvas-video.html">📝 Record HTML &lt;canvas&gt; video using JavaScript</a>
+                        </div>
+                        <div class="text-center">
+                            By <a class="p-author h-card" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="Sat Aug 23 2025 16:14:07 GMT+0530 (India Standard Time)">August 23, 2025</time>
+                        </div>
+                        <div class="post-content e-content"><p>You can record a <code>canvas</code> element into a video without requiring any screen-recording permissions from the user. We use the <code>canvas.captureStream</code> and <code>MediaRecorder</code> API to do that.</p>
+<h2>Setup</h2>
+<p>Our example has a canvas, two buttons (to start and stop the recording) and a status message. We record the video of canvas and then download it once the recording is finished.</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">let</span> mediaRecorder <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> recordedChunks <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> isRecording <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> canvas <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'gameCanvas'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> buttonStartRecording <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'startRecord'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> buttonStopRecording <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'stopRecord'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> status <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'status'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h2>Start recording</h2>
+<p>We get the video stream from a canvas with <code>canvas.captureStream</code> and specify our desired FPS there. Then we feed it to the <code>MediaRecorder</code> instance. Lastly, when the media-recorder receives the stop command, it will start downloading the recorded video.</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> <span class="token function-variable function">startRecording</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+	<span class="token keyword">try</span> <span class="token punctuation">{</span>
+		<span class="token comment">// Request a stream at 30 FPS</span>
+		<span class="token keyword">const</span> stream <span class="token operator">=</span> canvas<span class="token punctuation">.</span><span class="token function">captureStream</span><span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		
+		mediaRecorder <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MediaRecorder</span><span class="token punctuation">(</span>stream<span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">mimeType</span><span class="token operator">:</span> <span class="token string">'video/webm'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		recordedChunks <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+		
+		mediaRecorder<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'dataavailable'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+			<span class="token keyword">if</span> <span class="token punctuation">(</span>event<span class="token punctuation">.</span>data<span class="token punctuation">.</span>size <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				recordedChunks<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		
+		mediaRecorder<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'stop'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+			<span class="token function">downloadRecording</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		
+		mediaRecorder<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		isRecording <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+		
+		<span class="token function">updateUi</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">'Error starting recording:'</span><span class="token punctuation">,</span> error<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'Error starting recording:'</span><span class="token punctuation">,</span> error<span class="token punctuation">.</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+buttonStartRecording<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> startRecording<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h2>Stopping the recording</h2>
+<p>We simply ask the <code>mediaRecorder</code> to stop recording, and it fires the <code>stop</code> event on itself which then triggers the download.</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> <span class="token function-variable function">stopRecording</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>mediaRecorder <span class="token operator">&amp;&amp;</span> isRecording<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		mediaRecorder<span class="token punctuation">.</span><span class="token function">stop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		isRecording <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+		<span class="token function">updateUi</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+buttonStopRecording<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> stopRecording<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h2>Downloading the video</h2>
+<p>We add an invisible <code>&lt;a&gt;</code> element and then click it.</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> <span class="token function-variable function">downloadRecording</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>recordedChunks<span class="token punctuation">.</span>length <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'No recording data available!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">return</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	
+	<span class="token keyword">const</span> blob <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Blob</span><span class="token punctuation">(</span>recordedChunks<span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token string">'video/webm'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	
+	<span class="token keyword">const</span> url <span class="token operator">=</span> <span class="token constant">URL</span><span class="token punctuation">.</span><span class="token function">createObjectURL</span><span class="token punctuation">(</span>blob<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">const</span> a <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	a<span class="token punctuation">.</span>style<span class="token punctuation">.</span>display <span class="token operator">=</span> <span class="token string">'none'</span><span class="token punctuation">;</span>
+	a<span class="token punctuation">.</span>href <span class="token operator">=</span> url<span class="token punctuation">;</span>
+	
+	a<span class="token punctuation">.</span>download <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">canvas-recording-</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">.webm</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+	
+	document<span class="token punctuation">.</span>body<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	a<span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	
+	<span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+		document<span class="token punctuation">.</span>body<span class="token punctuation">.</span><span class="token function">removeChild</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token constant">URL</span><span class="token punctuation">.</span><span class="token function">revokeObjectURL</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	
+	recordedChunks <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<h2>Sample</h2>
+<p>Here's a sample demo to test:</p>
+<iframe src="/experiments/canvas-recording.html" style="width: 100%; min-height: 700px;"></iframe>
+</div>
+                    </div>
+                    <div class="post-categories-container">
+                        Categories:
+                        <div>
+                            
+                                <a href="/category/til.html" class="badge badge-warning">#til</a>
+                            
+                                <a href="/category/blaugust-2025.html" class="badge badge-warning">#blaugust-2025</a>
+                            
+                                <a href="/category/javascript.html" class="badge badge-warning">#javascript</a>
+                            
+                                <a href="/category/programming.html" class="badge badge-warning">#programming</a>
+                            
+                            <a href="/blog" class="badge badge-warning">#all</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+    <div>
+        <div class="footer">
+            <div>
+                <a href="https://github.com/VarunBarad" rel="me">
+                    <i class="fab fa-github social-links"></i>
+                </a>
+                <a href="https://twitter.com/varun_barad" rel="me">
+                    <i class="fab fa-twitter social-links"></i>
+                </a>
+                <a href="https://dev.to/varunbarad" rel="me">
+                    <i class="fab fa-dev social-links"></i>
+                </a>
+                <a href="https://stackoverflow.com/users/4717436/varunbarad" rel="me">
+                    <i class="fab fa-stack-overflow social-links"></i>
+                </a>
+            </div>
+            <div class="developer-attribution">
+                Made by <a href="https://dixita0607.github.io">Dixita Ganatra</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+</body>
+</html>

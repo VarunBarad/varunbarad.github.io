@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" type="image/png" href="/favicon.png"/>
+  <title>Blog (til) - Varun Barad</title>
+  <meta name="description" content="My online home where I post about new things I learn or find interesting."/>
+
+  <!-- RSS Feed meta-data -->
+  <link type="application/atom+xml" rel="alternate" href="https://varunbarad.com/feed.xml" title="Varun Barad - Curious Developer"/>
+
+  <!-- Twitter meta-data -->
+  <meta name="twitter:site" content="@varun_barad"/>
+  <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png"/>
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:title" content="Varun Barad - Curious Developer"/>
+  <meta name="twitter:description" content="My online home where I post about new things I learn or find interesting."/>
+
+  <!-- Open-Graph meta-data -->
+  <meta property="og:site_name" content="Varun Barad - Curious Developer"/>
+  <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png"/>
+  <meta property="og:type" content="object"/>
+  <meta property="og:title" content="Varun Barad - Curious Developer"/>
+  <meta property="og:url" content="https://varunbarad.com/category/til.html"/>
+  <meta property="og:description" content="My online home where I post about new things I learn or find interesting."/>
+
+  <!-- Styles kept here for now -->
+  <style>
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: sans-serif;
+    margin: 0;
+    background: #313131;
+  }
+  
+  header {
+    background: #661111;
+    color: #dfdfdf;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  
+  header a {
+    color: #dfdfdf;
+  }
+  
+  header a:visited {
+    color: #dfdfdf;
+  }
+  
+  header a:hover {
+    text-decoration: underline;
+  }
+  
+  #title {
+    width: 100%;
+    padding: 1em;
+    font-size: 2rem;
+    text-align: center;
+  }
+  
+  #title > a {
+    text-decoration: none;
+  }
+  
+  #title > a:hover {
+    text-decoration: underline;
+  }
+  
+  nav {
+    display: block;
+    padding: 0;
+  }
+  
+  nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    gap: 8px;
+  }
+  
+  nav ul li a {
+    padding: 1em;
+    display: block;
+    font-size: 1.2rem;
+    text-decoration: none;
+  }
+  
+  nav ul li a:hover {
+  }
+  
+  main {
+    padding: 1em;
+    background: #121212;
+    color: #dfdfdf;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  
+  main h2 {
+    font-size: 1.6rem;
+  }
+  
+  main p {
+    text-align: justify;
+    font-size: 1.1rem;
+  }
+  
+  main a {
+    color: #dfdfdf;
+    font-size: 1.1rem;
+  }
+  
+  main a:visited {
+    color: #dfdfdf;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  footer {
+    border-top: #dfdfdf 1px solid;
+    background: #121212;
+    color: #dfdfdf;
+    text-align: center;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0.5em;
+  }
+  
+  .container-full-width {
+    display: flex;
+    width: 100%;
+    justify-content: center
+  }
+  
+  .page-title {
+    text-align: center;
+    font-size: 3rem;
+  }
+  
+  .link-non-decorated {
+    text-decoration: none;
+  }
+  
+  .period-title {
+    color: #dd1111;
+  }
+  
+  .post-item {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    max-width: 720px;
+  }
+  
+  .post-title {
+    text-decoration: none;
+  }
+  
+  .post-description {
+    color: #999999;
+  }
+  
+  .badge-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 8px;
+  }
+  
+  .badge {
+    background: #dfdfdf;
+    color: #050505;
+    padding: 0.2em 0.5em 0.1em 0.5em;
+    border-radius: 0.2em;
+    font-size: 1rem;
+    text-decoration: none;
+  }
+  
+  .badge:visited {
+    color: #050505;
+  }
+  
+  .contacts-list {
+    line-height: 1.3rem;
+  }
+</style>
+
+</head>
+<body>
+<header>
+  <div id="title">
+    <a href="/">Varun Barad</a>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/projects/">Projects</a></li>
+      <li><a href="/books/">Books</a></li>
+      <li><a href="/ideas/">Ideas</a></li>
+      <li><a href="/contact/">Contact</a></li>
+      <li><a href="/resume/">My Resume</a></li>
+    </ul>
+  </nav>
+  <div>
+    <p style="margin: 0; padding: 8px; text-align: center; color: #ffffff44;">This website is going under a redesign slowly</p>
+  </div>
+</header>
+
+
+
+<main>
+  <h1>Blog (#til)</h1>
+
+  <div class="badge-list">
+    
+      <a href="/category/android" class="badge">#android</a>
+    
+      <a href="/category/backups" class="badge">#backups</a>
+    
+      <a href="/category/blaugust-2025" class="badge">#blaugust-2025</a>
+    
+      <a href="/category/book-highlights" class="badge">#book-highlights</a>
+    
+      <a href="/category/books" class="badge">#books</a>
+    
+      <a href="/category/cheat-sheet" class="badge">#cheat-sheet</a>
+    
+      <a href="/category/computers" class="badge">#computers</a>
+    
+      <a href="/category/cooking" class="badge">#cooking</a>
+    
+      <a href="/category/dart" class="badge">#dart</a>
+    
+      <a href="/category/exercise" class="badge">#exercise</a>
+    
+      <a href="/category/fitness" class="badge">#fitness</a>
+    
+      <a href="/category/flutter" class="badge">#flutter</a>
+    
+      <a href="/category/interesting" class="badge">#interesting</a>
+    
+      <a href="/category/javascript" class="badge">#javascript</a>
+    
+      <a href="/category/javascript-30" class="badge">#javascript-30</a>
+    
+      <a href="/category/life-hack" class="badge">#life-hack</a>
+    
+      <a href="/category/medicine" class="badge">#medicine</a>
+    
+      <a href="/category/meta" class="badge">#meta</a>
+    
+      <a href="/category/miscellaneous" class="badge">#miscellaneous</a>
+    
+      <a href="/category/movies" class="badge">#movies</a>
+    
+      <a href="/category/personal" class="badge">#personal</a>
+    
+      <a href="/category/personal-growth" class="badge">#personal-growth</a>
+    
+      <a href="/category/privacy" class="badge">#privacy</a>
+    
+      <a href="/category/programming" class="badge">#programming</a>
+    
+      <a href="/category/project" class="badge">#project</a>
+    
+      <a href="/category/python" class="badge">#python</a>
+    
+      <a href="/category/recipe" class="badge">#recipe</a>
+    
+      <a href="/category/repair" class="badge">#repair</a>
+    
+      <a href="/category/rust" class="badge">#rust</a>
+    
+      <a href="/category/rx-java" class="badge">#rx-java</a>
+    
+      <a href="/category/scribe" class="badge">#scribe</a>
+    
+      <a href="/category/stretch" class="badge">#stretch</a>
+    
+      <a href="/category/tabletop-games" class="badge">#tabletop-games</a>
+    
+      <a href="/category/til" class="badge">#til</a>
+    
+      <a href="/category/tools" class="badge">#tools</a>
+    
+      <a href="/category/toys" class="badge">#toys</a>
+    
+      <a href="/category/travel" class="badge">#travel</a>
+    
+      <a href="/category/typractice" class="badge">#typractice</a>
+    
+      <a href="/category/valet" class="badge">#valet</a>
+    
+      <a href="/category/video-games" class="badge">#video-games</a>
+    
+      <a href="/category/web" class="badge">#web</a>
+    
+      <a href="/category/wracker" class="badge">#wracker</a>
+    
+      <a href="/category/yoga" class="badge">#yoga</a>
+    
+    <a href="/blog.html" class="badge">#all</a>
+  </div>
+
+  
+  <div class="periods-wrapper">
+    
+      <div class="period">
+        <h2 class="period-title">2025 (9)</h2>
+
+        <div class="post-list">
+          
+            <p class="post-item">
+              <a href="/blog/til-subdirectory-based-git-identity.html" class="post-title">📝 Set git identity based on project-directory</a>
+              <br>
+              <span class="post-description">TIL: How to set the author identity in git for all projects under a single parent directory</span>
+            </p>
+          
+            <p class="post-item">
+              <a href="/blog/til-scale-pixel-art.html" class="post-title">📝 Pixel art images should be scaled and not resized</a>
+              <br>
+              <span class="post-description">TIL: Why pixel art images should be scaled and how to do it with imagemagick</span>
+            </p>
+          
+            <p class="post-item">
+              <a href="/blog/https-local-sites.html" class="post-title">📝 Serve local sites over HTTPS connections</a>
+              <br>
+              <span class="post-description">TIL: How to serve your local website over HTTPS</span>
+            </p>
+          
+            <p class="post-item">
+              <a href="/blog/record-canvas-video.html" class="post-title">📝 Record HTML &lt;canvas&gt; video using JavaScript</a>
+              <br>
+              <span class="post-description">TIL: How to record a video of the HTML canvas element using JavaScript</span>
+            </p>
+          
+            <p class="post-item">
+              <a href="/blog/mongodb-local-docker-compose.html" class="post-title">📝 Setting up MongoDB for local development with docker compose</a>
+              <br>
+              <span class="post-description">TIL: How to setup MongoDB for local development</span>
+            </p>
+          
+            <p class="post-item">
+              <a href="/blog/til-link-text-on-webpage.html" class="post-title">📝 Link to a specific piece of text on a webpage</a>
+              <br>
+              <span class="post-description">TIL: How to link to a specific piece of text on a webpage</span>
+            </p>
+          
+            <p class="post-item">
+              <a href="/blog/til-macos_mount_remote_smb_share.html" class="post-title">📝 Mount an SMB share on Mac OS using Rust</a>
+              <br>
+              <span class="post-description">TIL: How to mount an SMB share on Mac OS programmatically using Rust</span>
+            </p>
+          
+            <p class="post-item">
+              <a href="/blog/til-rust-build-time-env-vars.html" class="post-title">📝 Rust read build-time environment variables at run-time</a>
+              <br>
+              <span class="post-description">TIL: How to read in a rust program at run-time the environment variables that were only defined at build-time</span>
+            </p>
+          
+            <p class="post-item">
+              <a href="/blog/til-read-smb-share-password-from-macos-keychain.html" class="post-title">📝 Read SMB share password from MacOS Keychain</a>
+              <br>
+              <span class="post-description">TIL: How to access entries from MacOS Keychain programmatically, specifically an SMB share's record</span>
+            </p>
+          
+        </div>
+      </div>
+    
+      <div class="period">
+        <h2 class="period-title">2024 (4)</h2>
+
+        <div class="post-list">
+          
+            <p class="post-item">
+              <a href="/blog/til-git-author-committer.html" class="post-title">📝 Specifying different author and committer in git</a>
+              <br>
+              <span class="post-description">TIL: How to specify different author and committer for a commit in git</span>
+            </p>
+          
+            <p class="post-item">
+              <a href="/blog/til-ffmpeg-delay-subtitles.html" class="post-title">📝 Delay subtitles using ffmpeg</a>
+              <br>
+              <span class="post-description">TIL: How to delay all subtitles in a file by a fixed amount using ffmpeg</span>
+            </p>
+          
+            <p class="post-item">
+              <a href="/blog/til-remove-pdf-password.html" class="post-title">📝 Remove password from PDF files using qpdf</a>
+              <br>
+              <span class="post-description">TIL: If you know the password then you can remove it from PDF files using qpdf</span>
+            </p>
+          
+            <p class="post-item">
+              <a href="/blog/til-echo-without-newline.html" class="post-title">📝 Outputting text with echo without a newline</a>
+              <br>
+              <span class="post-description">TIL: How to output text with echo without a newline at the end of it</span>
+            </p>
+          
+        </div>
+      </div>
+    
+      <div class="period">
+        <h2 class="period-title">2023 (14)</h2>
+
+        <div class="post-list">
+          
+            <p class="post-item">
+              <a href="/blog/til-postgresql-make-existing-column-non-nullable.html" class="post-title">📝 PostgreSQL: Mark a column non-nullable after creating it</a>
+              <br>
+              <span class="post-description">TIL: How to add a not null constraint to an existing column in a PostgreSQL table</span>
+            </p>
+          
+            <p class="post-item">
+              <a href="/blog/til-postgresql-make-existing-column-unique.html" class="post-title">📝 PostgreSQL: Make a column unique after creating it</a>
+              <br>
+              <span class="post-description">TIL: How to add unique constraint to an existing column in a PostgreSQL table</span>
+            </p>
+          
+            <p class="post-item">
+              <a href="/blog/til-avoid-ds-store.html" class="post-title">📝 Avoid .DS_Store files on removable media</a>
+              <br>
+              <span class="post-description">TIL: Settings change on Mac to avoid having .DS_Store files being created on USB and Network shares</span>
+            </p>
+          
+            <p class="post-item">
+              <a href="/blog/remove-ds-store-files.html" class="post-title">📝 Recursively remove .DS_Store files</a>
+              <br>
+              <span class="post-description">TIL: Shell command to recursively remove .DS_Store files</span>
+            </p>
+          
+            <p class="post-item">
+              <a href="/blog/til-handle-404-node-express.html" class="post-title">📝 Custom 404 in Express</a>
+              <br>
+              <span class="post-description">TIL: How to return custom response for a 404 in Express on NodeJS</span>
+            </p>
+          
+            <p class="post-item">
+              <a href="/blog/emoji-as-favicon.html" class="post-title">📝 Using emoji as a favicon</a>
+              <br>
+              <span class="post-description">TIL: How to write a simple SVG which renders an emoji as a favicon</span>
+            </p>
+          
+            <p class="post-item">
+              <a href="/blog/til-python-save-dependency-list.html" class="post-title">📝 Save dependency list of your python project to a file</a>
+              <br>
+              <span class="post-description">TIL: How to do for python what we get with `dependencies` in npm `package.json`</span>
+            </p>
+          
+            <p class="post-item">
+              <a href="/blog/til-postgres-map-array.html" class="post-title">📝 Map an array of ids in postgres to matching data from another table</a>
+              <br>
+              <span class="post-description">TIL: How to map an array in postgres to other data</span>
+            </p>
+          
+            <p class="post-item">
+              <a href="/blog/til-postgres-days-between-dates.html" class="post-title">📝 Counting days between 2 dates in PostgreSQL</a>
+              <br>
+              <span class="post-description">TIL: You can use the extract function to find difference in days between 2 dates</span>
+            </p>
+          
+            <p class="post-item">
+              <a href="/blog/til-postgres-first-in-each-group.html" class="post-title">📝 Find the first entry in each group</a>
+              <br>
+              <span class="post-description">TIL: How to get the first entry from each group given a sort order</span>
+            </p>
+          
+            <p class="post-item">
+              <a href="/blog/til-navigate-path-mac-finder.html" class="post-title">📝 Navigate to a path in Mac Finder</a>
+              <br>
+              <span class="post-description">TIL: How to navigate to a given system path without clicking through folders</span>
+            </p>
+          
+            <p class="post-item">
+              <a href="/blog/til-most-used-commands.html" class="post-title">📝 Most used commands</a>
+              <br>
+              <span class="post-description">TIL: How to view your most used terminal commands on a Mac</span>
+            </p>
+          
+            <p class="post-item">
+              <a href="/blog/til-wget-custom-filename.html" class="post-title">📝 wget with custom filename</a>
+              <br>
+              <span class="post-description">TIL: How to download a file with wget to a custom filename</span>
+            </p>
+          
+            <p class="post-item">
+              <a href="/blog/til-heap-dump-from-jvm.html" class="post-title">📝 Taking a heap-dump from a running JVM process</a>
+              <br>
+              <span class="post-description">TIL: How to take heap-dump from a running JVM process</span>
+            </p>
+          
+        </div>
+      </div>
+    
+      <div class="period">
+        <h2 class="period-title">2022 (4)</h2>
+
+        <div class="post-list">
+          
+            <p class="post-item">
+              <a href="/blog/til-figma-styles-unavailable-in-api.html" class="post-title">📝 Figma styles not present in the API response</a>
+              <br>
+              <span class="post-description">TIL: Why Figma returns empty styles in API and how to fix it</span>
+            </p>
+          
+            <p class="post-item">
+              <a href="/blog/til-authentication-with-wget.html" class="post-title">📝 Authentication with wget</a>
+              <br>
+              <span class="post-description">TIL: How to provide username and password for simple authentication when downloading files using wget</span>
+            </p>
+          
+            <p class="post-item">
+              <a href="/blog/til-regex-non-capturing-groups.html" class="post-title">📝 How to make non-capturing groups in RegEx</a>
+              <br>
+              <span class="post-description">TIL: What are non-capturing groups and how we can use them</span>
+            </p>
+          
+            <p class="post-item">
+              <a href="/blog/til-indias-national-aquatic-animal.html" class="post-title">📝 India's national aquatic animal</a>
+              <br>
+              <span class="post-description">TIL: India has a species of dolphin as its national aquatic animal.</span>
+            </p>
+          
+        </div>
+      </div>
+    
+      <div class="period">
+        <h2 class="period-title">2021 (10)</h2>
+
+        <div class="post-list">
+          
+            <p class="post-item">
+              <a href="/blog/til-list-files-in-a-git-commit.html" class="post-title">📝 List files updated in a git commit</a>
+              <br>
+              <span class="post-description">TIL: How to see a list of files updated in a git commit</span>
+            </p>
+          
+            <p class="post-item">
+              <a href="/blog/til-centering-elements-with-css.html" class="post-title">📝 Centering elements with CSS</a>
+              <br>
+              <span class="post-description">TIL: How to center (horizontally and vertically) elements with CSS.</span>
+            </p>
+          
+            <p class="post-item">
+              <a href="/blog/til-resizing-images-from-command-line.html" class="post-title">📝 Resizing images from command-line</a>
+              <br>
+              <span class="post-description">TIL: Resizing images from command-line while centering them and adding a transparent background.</span>
+            </p>
+          
+            <p class="post-item">
+              <a href="/blog/comparing-two-BigDecimal-instances.html" class="post-title">📝 Comparing two BigDecimal instances</a>
+              <br>
+              <span class="post-description">TIL: Turns out that 7.5.toBigDecimal() and 7.50.toBigDecimal() are not equal</span>
+            </p>
+          
+            <p class="post-item">
+              <a href="/blog/til-castle-under-threat.html" class="post-title">📝 Castle Under Threat</a>
+              <br>
+              <span class="post-description">TIL: You cannot castle your king in chess if king's path is under threat</span>
+            </p>
+          
+            <p class="post-item">
+              <a href="/blog/til-ugh-fields.html" class="post-title">📝 Ugh fields</a>
+              <br>
+              <span class="post-description">TIL: What are "ugh fields" and why everyone should atleast know about them.</span>
+            </p>
+          
+            <p class="post-item">
+              <a href="/blog/til-opening-current-terminal-command-in-editor.html" class="post-title">📝 Opening current terminal command in $EDITOR</a>
+              <br>
+              <span class="post-description">TIL: Ctrl+X followed by Ctrl+E opens the command you are currently editing in your $EDITOR program</span>
+            </p>
+          
+            <p class="post-item">
+              <a href="/blog/til-google-gives-refresh-token-only-once.html" class="post-title">📝 Google gives refresh token only once</a>
+              <br>
+              <span class="post-description">TIL: Google doesn't return refresh token on subsequent authentication after the first one.</span>
+            </p>
+          
+            <p class="post-item">
+              <a href="/blog/til-javascript-can-throw-the-table.html" class="post-title">📝 JavaScript can "throw" the table</a>
+              <br>
+              <span class="post-description">TIL: JavaScript can throw anything</span>
+            </p>
+          
+            <p class="post-item">
+              <a href="/blog/til-css-support-browser-dark-mode-preference.html" class="post-title">📝 CSS support for browser dark-mode preference</a>
+              <br>
+              <span class="post-description">TIL: How to support dark-mode preference of browser via CSS</span>
+            </p>
+          
+        </div>
+      </div>
+    
+  </div>
+</main>
+
+<footer>
+  <p>
+    © 2025 🚀 Varun Barad
+  </p>
+</footer>
+
+</body>
+</html>
