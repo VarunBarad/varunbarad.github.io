@@ -23,6 +23,6 @@ categories:
 >
 > — [Open Library](https://openlibrary.org/books/OL26394601M/The_Phoenix_Project)
 
-While there are a lot of cliché tropes, I still highly recommend this book to every IT professional as it is the only (along with [The Unicorn Project]()) story/novel written about out profession.
+While there are a lot of cliché tropes, I still highly recommend this book to every IT professional as it is the only (along with [The Unicorn Project]()) story/novel written about our profession.
 
 It helps a lot to learn about "The Three Ways" and to try and incorporate them into our daily lives whether we are a developer or an ops person or someone else along the chain of software production. You will also be able to spot yourself and quite a few of your colleagues in the characters in here.
