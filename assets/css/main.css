@@ -329,6 +329,51 @@ main {
   line-height: var(--line-height-normal);
 }
 
+/* Books listing */
+.books-listing {
+  max-width: var(--max-width-prose);
+}
+
+.book-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.book-item {
+  display: block;
+}
+
+.book-item-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-color);
+  text-decoration: none;
+  margin-bottom: var(--spacing-xs);
+  display: block;
+}
+
+.book-item-title:visited {
+  color: var(--text-color);
+}
+
+a.book-item-title:hover {
+  color: var(--accent-color-hover);
+}
+
+.book-item-author {
+  color: var(--text-color-muted);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  margin-bottom: var(--spacing-xs);
+}
+
+.book-item-dates {
+  color: var(--text-color-muted);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+}
+
 /* Footer */
 footer {
   max-width: var(--max-width-content);
