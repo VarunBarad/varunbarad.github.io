@@ -51,8 +51,9 @@ module.exports = function(eleventyConfig) {
     return categories.toSorted((a, b) => a.name.localeCompare(b.name));
   });
 
-  eleventyConfig.addCollection('idea', function(collectionApi) {
-    return collectionApi.getFilteredByTag('idea');
+  eleventyConfig.addCollection('ideas', function(collectionApi) {
+    return collectionApi.getFilteredByTag('idea')
+      .toSorted((a, b) => a.data.title.localeCompare(b.data.title));
   });
   
   return {
