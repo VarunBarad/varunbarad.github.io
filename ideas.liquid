@@ -1,0 +1,55 @@
+---
+layout: page.liquid
+title: Ideas
+permalink: "/ideas.html"
+redirect_from: [
+  "/ideas/index.html",
+]
+---
+<style>
+  .ideas-page {
+    max-width: var(--max-width-prose);
+  }
+  .ideas-page > p {
+    margin-bottom: var(--spacing-2xl);
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-relaxed);
+    text-align: justify;
+  }
+
+  .idea-container {
+    padding: var(--spacing-xl) 0;
+    border-top: 1px solid var(--border-color);
+  }
+  .idea-title {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--spacing-md);
+    color: var(--text-color);
+  }
+  .idea-content {
+    margin: 0;
+  }
+  .idea-content p {
+    margin-bottom: var(--spacing-md);
+  }
+</style>
+
+<div class="ideas-page">
+  <p>
+    I have realized that there are a lot more ideas (for things to do or make) in my head than I can remember or hope
+    to execute upon. So this is just a holding pen for now of all the ideas that I can someday build upon. I would be
+    glad if you like something from this and decide to build it yourself. Do let me know if you do so, it would be fun
+    to discuss these with someone else 🙂
+  </p>
+
+  {% for idea in collections.idea %}
+  <div class="idea-container">
+    <h2 class="idea-title">{{ idea.data.title }}</h2>
+
+    <div class="post-content idea-content">
+      {{ idea.content }}
+    </div>
+  </div>
+  {% endfor %}
+</div>
