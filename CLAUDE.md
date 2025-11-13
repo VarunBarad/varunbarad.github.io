@@ -13,7 +13,6 @@ This is Varun Barad's personal website and blog built with Eleventy (11ty). It's
 - `npm run serve` - Start development server on port 8080 with live reload
 - `npm run clean` - Remove build artifacts from `_site/`
 - `npm run setup-hooks` - Install git pre-commit hook
-- `npm run sync-resources` - Run resource sync script and copy blog posts
 
 ### Build Process
 The site uses Eleventy with:
@@ -62,7 +61,6 @@ categories:
 ## Scripts and Automation
 
 ### Resource Management
-- `_scripts/sync-resources` - Copies files to legacy `_eleventy` directory structure
 - `_scripts/copy-blog-posts.js` - Processes post metadata and copies to target directory
 - `_scripts/pre-commit` - Git hook (currently minimal implementation)
 
