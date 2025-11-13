@@ -6,8 +6,7 @@
     "build": "eleventy",
     "clean": "rm -rf _site/ && rm -rf _site/",
     "serve": "eleventy --serve",
-    "setup-hooks": "cp _scripts/pre-commit .git/hooks/pre-commit",
-    "sync-resources": "_scripts/sync-resources && node _scripts/copy-blog-posts.js"
+    "setup-hooks": "cp _scripts/pre-commit .git/hooks/pre-commit"
   },
   "repository": {
     "type": "git",
