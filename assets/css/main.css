@@ -374,6 +374,75 @@ a.book-item-title:hover {
   line-height: var(--line-height-normal);
 }
 
+/* Resume styles */
+.resume-section {
+  margin-top: var(--spacing-4xl);
+}
+
+.resume-section:last-child {
+  margin-bottom: 0;
+}
+
+.resume-section h2 {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-xl);
+  color: var(--text-color);
+}
+
+.resume-section h3 {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--spacing-lg);
+  color: var(--text-color);
+}
+
+.resume-section p {
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--spacing-xl);
+}
+
+.resume-section ul {
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--spacing-xl);
+  padding-left: var(--spacing-2xl);
+}
+
+.resume-section li {
+  margin-bottom: var(--spacing-sm);
+}
+
+.resume-section a {
+  color: var(--accent-color);
+  text-decoration: underline;
+  text-decoration-color: var(--accent-color-dark);
+  text-underline-offset: 2px;
+}
+
+.resume-section a:visited {
+  color: var(--accent-color);
+}
+
+.resume-section a:hover {
+  color: var(--accent-color-hover);
+}
+
+.resume-experience-item {
+  margin-bottom: var(--spacing-2xl);
+}
+
+.resume-experience-item:last-child {
+  margin-bottom: 0;
+}
+
+.resume-download {
+  border-top: 1px solid var(--border-color);
+  margin-top: var(--spacing-3xl);
+  padding-top: var(--spacing-xl);
+}
+
 /* Footer */
 footer {
   max-width: var(--max-width-content);
