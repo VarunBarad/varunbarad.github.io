@@ -374,6 +374,58 @@ a.book-item-title:hover {
   line-height: var(--line-height-normal);
 }
 
+/* Projects listing */
+.projects-page {
+  max-width: var(--max-width-prose);
+}
+
+.projects-page > p {
+  margin-bottom: var(--spacing-2xl);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-relaxed);
+  text-align: justify;
+}
+
+.project-item {
+  padding: var(--spacing-xl) 0;
+  border-top: 1px solid var(--border-color);
+}
+
+.project-item-title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-md);
+  color: var(--text-color);
+}
+
+.project-item-description {
+  margin: 0;
+}
+
+.project-item-description p {
+  margin-bottom: var(--spacing-md);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  text-align: justify;
+}
+
+.project-item-links {
+  margin-top: var(--spacing-md);
+  padding-left: var(--spacing-lg);
+}
+
+.project-item-links li {
+  margin-bottom: var(--spacing-sm);
+}
+
+.projects-footer {
+  margin-top: var(--spacing-2xl);
+  padding-top: var(--spacing-xl);
+  border-top: 1px solid var(--border-color);
+  font-size: var(--font-size-lg);
+  text-align: center;
+}
+
 /* Resume styles */
 .resume-section {
   margin-top: var(--spacing-4xl);
