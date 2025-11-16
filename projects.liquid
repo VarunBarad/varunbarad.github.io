@@ -8,37 +8,36 @@ redirect_from: [
   "/portfolio.html",
 ]
 ---
-<p>
-  I like to use free time to create fun stuff or useful things, mainly for myself, but I share them too. They might
-  not even have any practical purpose.
-</p>
-<p>
-  This page lists some of my projects, so you can get an idea of what I've been up to:
-</p>
+<div class="projects-page">
+  <p>
+    I like to use free time to create fun stuff or useful things, mainly for myself, but I share them too. They might
+    not even have any practical purpose.
+  </p>
+  <p>
+    This page lists some of my projects, so you can get an idea of what I've been up to:
+  </p>
 
-<div class="project-wrapper">
   {% for project in projects %}
-  <div class="project">
-    <hr>
-    
-    <h2 class="project-title">{{project.name}}</h2>
-    
-    <div class="project-description">
+  <div class="project-item">
+    <h2 class="project-item-title">{{ project.name }}</h2>
+
+    <div class="project-item-description">
       {% for paragraph in project.description %}
-      <p>{{paragraph}}</p>
+      <p>{{ paragraph }}</p>
       {% endfor %}
-      {% if project.links %}
-      <ul>
-        {% for link in project.links %}
-        <li><a href="{{link.destination}}">{{link.text}}</a></li>
-        {% endfor %}
-      </ul>
-      {% endif %}
     </div>
+
+    {% if project.links %}
+    <ul class="project-item-links">
+      {% for link in project.links %}
+      <li><a href="{{ link.destination }}">{{ link.text }}</a></li>
+      {% endfor %}
+    </ul>
+    {% endif %}
   </div>
   {% endfor %}
-</div>
 
-<p>
-  You can find all my open-source projects on <a href="https://github.com/VarunBarad" rel="me">my GitHub account</a>.
-</p>
+  <p class="projects-footer">
+    You can find all my open-source projects on <a href="https://github.com/VarunBarad" rel="me">my GitHub account</a>.
+  </p>
+</div>
