@@ -8,37 +8,82 @@ redirect_from: [
   "/portfolio.html",
 ]
 ---
-<p>
-  I like to use free time to create fun stuff or useful things, mainly for myself, but I share them too. They might
-  not even have any practical purpose.
-</p>
-<p>
-  This page lists some of my projects, so you can get an idea of what I've been up to:
-</p>
+<style>
+  .projects-page {
+    max-width: var(--max-width-prose);
+  }
+  .projects-page > p {
+    margin-bottom: var(--spacing-2xl);
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-relaxed);
+    text-align: justify;
+  }
 
-<div class="project-wrapper">
+  .project-item {
+    padding: var(--spacing-xl) 0;
+    border-top: 1px solid var(--border-color);
+  }
+  .project-item-title {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--spacing-md);
+    color: var(--text-color);
+  }
+  .project-item-description {
+    margin: 0;
+  }
+  .project-item-description p {
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-relaxed);
+    text-align: justify;
+  }
+  .project-item-links {
+    margin-top: var(--spacing-md);
+    padding-left: var(--spacing-lg);
+  }
+  .project-item-links li {
+    margin-bottom: var(--spacing-sm);
+  }
+  .projects-footer {
+    margin-top: var(--spacing-2xl);
+    padding-top: var(--spacing-xl);
+    border-top: 1px solid var(--border-color);
+    font-size: var(--font-size-lg);
+    text-align: center;
+  }
+</style>
+
+<div class="projects-page">
+  <p>
+    I like to use free time to create fun stuff or useful things, mainly for myself, but I share them too. They might
+    not even have any practical purpose.
+  </p>
+  <p>
+    This page lists some of my projects, so you can get an idea of what I've been up to:
+  </p>
+
   {% for project in projects %}
-  <div class="project">
-    <hr>
-    
-    <h2 class="project-title">{{project.name}}</h2>
-    
-    <div class="project-description">
+  <div class="project-item">
+    <h2 class="project-item-title">{{ project.name }}</h2>
+
+    <div class="project-item-description">
       {% for paragraph in project.description %}
-      <p>{{paragraph}}</p>
+      <p>{{ paragraph }}</p>
       {% endfor %}
-      {% if project.links %}
-      <ul>
-        {% for link in project.links %}
-        <li><a href="{{link.destination}}">{{link.text}}</a></li>
-        {% endfor %}
-      </ul>
-      {% endif %}
     </div>
+
+    {% if project.links %}
+    <ul class="project-item-links">
+      {% for link in project.links %}
+      <li><a href="{{ link.destination }}">{{ link.text }}</a></li>
+      {% endfor %}
+    </ul>
+    {% endif %}
   </div>
   {% endfor %}
-</div>
 
-<p>
-  You can find all my open-source projects on <a href="https://github.com/VarunBarad" rel="me">my GitHub account</a>.
-</p>
+  <p class="projects-footer">
+    You can find all my open-source projects on <a href="https://github.com/VarunBarad" rel="me">my GitHub account</a>.
+  </p>
+</div>
