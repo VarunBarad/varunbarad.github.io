@@ -1,4 +1,5 @@
 ---
+title: "404"
 permalink: "404.html"
 ---
 <!DOCTYPE html>
@@ -6,69 +7,82 @@ permalink: "404.html"
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="icon" type="image/png" href="/favicon.png"/>
-    <title>Where did I put it? - Varun Barad</title>
-    <meta name="description" content="{{site.description}}"/>
+
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <link rel="stylesheet" href="/assets/css/prism-theme/prism-darcula.css" />
+
+    <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <title>404 - Varun Barad</title>
+    <meta name="description" content="{{ site.description }}" />
 
     <!-- RSS Feed meta-data -->
-    <link type="application/atom+xml" rel="alternate" href="{{ site.url }}/feed.xml" title="{{ site.title }}"/>
+    <link type="application/atom+xml" rel="alternate" href="{{ site.url }}/feed.xml" title="{{ site.title }}" />
 
     <!-- Twitter meta-data -->
-    <meta name="twitter:site" content="@{{site.twitter_username}}"/>
-    <meta name="twitter:image:src" content="{{site.url}}/assets/images/logo-hd.png"/>
-    <meta name="twitter:card" content="summary"/>
-    <meta name="twitter:title" content="{{site.title}}"/>
-    <meta name="twitter:description" content="{{site.description}}"/>
+    <meta name="twitter:site" content="@{{site.twitter_username}}" />
+    <meta name="twitter:image:src" content="{{site.url}}/assets/images/logo-hd.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="{{site.title}}" />
+    <meta name="twitter:description" content="{{site.description}}" />
 
     <!-- Open-Graph meta-data -->
-    <meta property="og:site_name" content="{{site.title}}"/>
-    <meta property="og:image" content="{{site.url}}/assets/images/logo-hd.png"/>
-    <meta property="og:type" content="object"/>
-    <meta property="og:title" content="{{site.title}}"/>
-    <meta property="og:url" content="{{site.url}}{{page.url}}"/>
-    <meta property="og:description" content="{{site.description}}"/>
+    <meta property="og:site_name" content="{{site.title}}" />
+    <meta property="og:image" content="{{site.url}}/assets/images/logo-hd.png" />
+    <meta property="og:type" content="object" />
+    <meta property="og:title" content="{{site.title}}" />
+    <meta property="og:url" content="{{site.url}}{{page.url}}" />
+    <meta property="og:description" content="{{site.description}}" />
 
-    <!-- Styles kept here for now -->
-    {% include '_legacy_styles.html' %}
+    <style>
+        #title-container {
+          max-width: var(--max-width-prose);
+          margin-left: auto;
+          margin-right: auto;
+        }
+    </style>
 </head>
 <body>
-{% include '_header.html' %}
+{% include 'header.liquid' %}
 
+{% assign contactDetails = site.data.personal.contact %}
 <main>
-    <div>
-        <h2 class="page-title">404</h2>
+    <div id="title-container" >
+        <h1>404</h1>
     </div>
-    <div class="container-full-width">
-        <img src="/assets/images/looking.gif" alt="Real life picture of me trying to find the thing">
-    </div>
-    <div>
-        <p>
+
+    <div class="not-found-page">
+        <div class="not-found-image">
+            <img src="/assets/images/looking.gif" alt="Real life picture of me trying to find the thing">
+        </div>
+
+        <p class="not-found-message">
             Oopsie, it looks like I couldn't find what you were looking for. Maybe meanwhile you can read up on one of my projects or check out one of the recent articles.
         </p>
+
+        <div class="not-found-section">
+            <h2>Recent articles ({{ collections.post | size }} posts)</h2>
+            <ul>
+                {% assign reverse_chronological_posts = collections.post | reverse %}
+                {% for post in reverse_chronological_posts limit:3 %}
+                    <li><a href="{{ post.url }}">{{ post.data.title }}</a></li>
+                {% endfor %}
+            </ul>
+            <p><a href="/blog/">View all articles</a></p>
+        </div>
+
+        <div class="not-found-section">
+            <h2>Recent projects ({{ projects | size }} projects)</h2>
+            <ul>
+                {% for project in projects limit:3 %}
+                    <li><a href="{{ project.link }}" target="_blank" rel="noopener noreferrer">{{ project.name }}</a></li>
+                {% endfor %}
+            </ul>
+            <p><a href="/projects">View all projects</a></p>
+        </div>
     </div>
-
-    <hr>
-
-    <h2>Recent articles ({{ collections.post |  size }} posts)</h2>
-    <ul>
-        {% assign reverse_chronological_posts = collections.post | reverse %}
-        {% for post in reverse_chronological_posts limit:3 %}
-            <li>{{ post.data.title }}</li>
-        {% endfor %}
-    </ul>
-    <p><a href="/blog/">View all articles</a></p>
-
-    <hr>
-
-    <h2>Recent projects ({{ projects | size }} projects)</h2>
-    <ul>
-        {% for project in projects limit:3 %}
-            <li>{{ project.name }}</li>
-        {% endfor %}
-    </ul>
-    <p><a href="/projects">View all projects</a></p>
 </main>
 
-{% include '_footer.html' %}
+{% include 'footer.liquid' %}
 </body>
 </html>
