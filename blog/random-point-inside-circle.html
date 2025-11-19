@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link href="/assets/css/prism-theme/prism-darcula.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/assets/css/fontawesome-all.css">
+    <link rel="icon" type="image/png" href="/favicon.png"/>
+    <title>How to get a random point inside a circle - Varun Barad</title>
+    <meta name="description" content="Generate random points in a circle using polar coordinates instead of brute force"/>
+
+    
+
+    <!-- RSS Feed meta-data -->
+    <link type="application/atom+xml" rel="alternate" href="https://varunbarad.com/feed.xml" title="Varun Barad - Curious Developer"/>
+
+    <!-- Twitter meta-data -->
+    <meta name="twitter:site" content="@varun_barad"/>
+    <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png"/>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="How to get a random point inside a circle"/>
+    <meta name="twitter:description" content="Generate random points in a circle using polar coordinates instead of brute force"/>
+
+    <!-- Open-Graph meta-data -->
+    <meta property="og:site_name" content="Varun Barad - Curious Developer"/>
+    <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png"/>
+    <meta property="og:type" content="object"/>
+    <meta property="og:title" content="How to get a random point inside a circle"/>
+    <meta property="og:url" content="https://varunbarad.com/blog/random-point-inside-circle.html"/>
+    <meta property="og:description" content="Generate random points in a circle using polar coordinates instead of brute force"/>
+</head>
+<body>
+<div>
+    <div id="header">
+        <div class="row header">
+            <div class="title col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+                <a href="/">
+                    <div class="title">Varun Barad</div>
+                </a>
+            </div>
+            <div class="col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8">
+                <nav class="menu text-right">
+                    <a href="/blog">Blog</a>
+                    <a href="/projects">Projects</a>
+                    <a href="/books">Books</a>
+                    <a href="/ideas">Ideas</a>
+                    <a href="/contact">Contact</a>
+                    <a href="/resume">My Resume</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <article class="h-entry">
+        <div class="content row">
+            <div class="post-container">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <div>
+                        <div class="page-title text-uppercase text-center p-name">
+                            <a class="u-url" href="/blog/random-point-inside-circle.html">How to get a random point inside a circle</a>
+                        </div>
+                        <div class="text-center">
+                            By <a class="p-author h-card" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="Sun Aug 17 2025 16:15:48 GMT+0530 (India Standard Time)">August 17, 2025</time>
+                        </div>
+                        <div class="post-content e-content"><p>This is something from years ago, I needed to get a random point within a circular radius from a different point. The brute-force way would have to be &quot;just get a random point and check if it is within the specified distance&quot;.</p>
+<p>Below is a circle of radius 'r' centered at origin, and a point situated at (x,y) somewhere within the circle.</p>
+<p><img src="/assets/images/posts/random-point-inside-circle/circle.svg" alt="An image of a circle of radius 'r' centered at origin showing a point at (x,y) inside the circle"></p>
+<p>It would be something like this:</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> x <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> r<span class="token punctuation">;</span> <span class="token comment">// A number between 0 (inclusive) and r (exclusive)</span>
+<span class="token keyword">const</span> y <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> r<span class="token punctuation">;</span> <span class="token comment">// A number between 0 (inclusive) and r (exclusive)</span>
+
+<span class="token comment">// According to mathematical equation of this circle</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>x<span class="token operator">^</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token punctuation">(</span>y<span class="token operator">^</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token punctuation">(</span>r<span class="token operator">^</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Hurray, we can use (</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>x<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">,</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>y<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">).</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+	console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Sorry, (</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>x<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">,</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>y<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">) doesn't fall inside the circle.</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>The problem with this approach is that each time we have to check and we aren't sure how many iterations it might take to land on workable coordinates. But we have another way that we can approach this problem.</p>
+<h2>Polar coordinates for the win</h2>
+<p>We can even show the same point in terms of its polar coordinates: (d, θ)</p>
+<p><img src="/assets/images/posts/random-point-inside-circle/circle-polar.svg" alt="The same point represented with its polar coordinates"></p>
+<p>Now, rather than having a constraint only on the combined values of these parameters we have individual constraints on both of them:</p>
+<ul>
+<li>0 ≤ θ ≤ 2π</li>
+<li>0 ≤ d &lt; r</li>
+</ul>
+<p>This makes it much easier to generate both values, which can be done like this:</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> d <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> r<span class="token punctuation">;</span> <span class="token comment">// A value between 0 (inclusive) and r (exclusive)</span>
+<span class="token keyword">const</span> angle <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">*</span> Math<span class="token punctuation">.</span><span class="token constant">PI</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// A value between 0 (inclusive) and 2π (exclusive)</span>
+
+<span class="token comment">// Using their projections on both the axes we get the values of x and y</span>
+<span class="token keyword">const</span> x <span class="token operator">=</span> d <span class="token operator">*</span> Math<span class="token punctuation">.</span><span class="token function">cos</span><span class="token punctuation">(</span>angle<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> y <span class="token operator">=</span> d <span class="token operator">*</span> Math<span class="token punctuation">.</span><span class="token function">sin</span><span class="token punctuation">(</span>angle<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>With this, in a single execution we are guaranteed to get one of the points that we desire.</p>
+<h2>Side-bonus: How to get a random point in a disc around a point</h2>
+<p>What if we want to instead of getting the point inside a circle, want to get one inside a disc centered around origin with inner-radius being <code>r<sub>i</sub></code> and outer-radius being <code>r<sub>o</sub></code> (<code>= r</code> from before).</p>
+<p>The only condition we need to update here is this one:</p>
+<ul>
+<li>Before: 0 ≤ d &lt; r</li>
+<li>Now: <code>r<sub>i</sub></code> ≤ d &lt; <code>r<sub>o</sub></code></li>
+</ul>
+<p>The code gets updated to:</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> d <span class="token operator">=</span> <span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span>rOuter <span class="token operator">-</span> rInner<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">+</span> rInner<span class="token punctuation">;</span> <span class="token comment">// A value between rInner (inclusive) and rOuter (exclusive)</span>
+<span class="token keyword">const</span> angle <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">*</span> Math<span class="token punctuation">.</span><span class="token constant">PI</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// A value between 0 (inclusive) and 2π (exclusive)</span>
+
+<span class="token comment">// Using their projections on both the axes we get the values of x and y</span>
+<span class="token keyword">const</span> x <span class="token operator">=</span> d <span class="token operator">*</span> Math<span class="token punctuation">.</span><span class="token function">cos</span><span class="token punctuation">(</span>angle<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> y <span class="token operator">=</span> d <span class="token operator">*</span> Math<span class="token punctuation">.</span><span class="token function">sin</span><span class="token punctuation">(</span>angle<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+</div>
+                    </div>
+                    <div class="post-categories-container">
+                        Categories:
+                        <div>
+                            
+                                <a href="/category/blaugust-2025.html" class="badge badge-warning">#blaugust-2025</a>
+                            
+                                <a href="/category/programming.html" class="badge badge-warning">#programming</a>
+                            
+                            <a href="/blog" class="badge badge-warning">#all</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+    <div>
+        <div class="footer">
+            <div>
+                <a href="https://github.com/VarunBarad" rel="me">
+                    <i class="fab fa-github social-links"></i>
+                </a>
+                <a href="https://twitter.com/varun_barad" rel="me">
+                    <i class="fab fa-twitter social-links"></i>
+                </a>
+                <a href="https://dev.to/varunbarad" rel="me">
+                    <i class="fab fa-dev social-links"></i>
+                </a>
+                <a href="https://stackoverflow.com/users/4717436/varunbarad" rel="me">
+                    <i class="fab fa-stack-overflow social-links"></i>
+                </a>
+            </div>
+            <div class="developer-attribution">
+                Made by <a href="https://dixita0607.github.io">Dixita Ganatra</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+</body>
+</html>

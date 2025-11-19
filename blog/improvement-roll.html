@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link href="/assets/css/prism-theme/prism-darcula.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/assets/css/fontawesome-all.css">
+    <link rel="icon" type="image/png" href="/favicon.png"/>
+    <title>Improvement Roll - Varun Barad</title>
+    <meta name="description" content="A tiny website to suggest you useful things to do in down-time"/>
+
+    
+
+    <!-- RSS Feed meta-data -->
+    <link type="application/atom+xml" rel="alternate" href="https://varunbarad.com/feed.xml" title="Varun Barad - Curious Developer"/>
+
+    <!-- Twitter meta-data -->
+    <meta name="twitter:site" content="@varun_barad"/>
+    <meta name="twitter:image:src" content="https://varunbarad.com/assets/images/logo-hd.png"/>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="Improvement Roll"/>
+    <meta name="twitter:description" content="A tiny website to suggest you useful things to do in down-time"/>
+
+    <!-- Open-Graph meta-data -->
+    <meta property="og:site_name" content="Varun Barad - Curious Developer"/>
+    <meta property="og:image" content="https://varunbarad.com/assets/images/logo-hd.png"/>
+    <meta property="og:type" content="object"/>
+    <meta property="og:title" content="Improvement Roll"/>
+    <meta property="og:url" content="https://varunbarad.com/blog/improvement-roll.html"/>
+    <meta property="og:description" content="A tiny website to suggest you useful things to do in down-time"/>
+</head>
+<body>
+<div>
+    <div id="header">
+        <div class="row header">
+            <div class="title col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+                <a href="/">
+                    <div class="title">Varun Barad</div>
+                </a>
+            </div>
+            <div class="col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8">
+                <nav class="menu text-right">
+                    <a href="/blog">Blog</a>
+                    <a href="/projects">Projects</a>
+                    <a href="/books">Books</a>
+                    <a href="/ideas">Ideas</a>
+                    <a href="/contact">Contact</a>
+                    <a href="/resume">My Resume</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <article class="h-entry">
+        <div class="content row">
+            <div class="post-container">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <div>
+                        <div class="page-title text-uppercase text-center p-name">
+                            <a class="u-url" href="/blog/improvement-roll.html">Improvement Roll</a>
+                        </div>
+                        <div class="text-center">
+                            By <a class="p-author h-card" href="https://varunbarad.com">Varun Barad</a> on <time class="post-date dt-published" datetime="Mon Nov 22 2021 00:00:00 GMT+0530 (India Standard Time)">November 22, 2021</time>
+                        </div>
+                        <div class="post-content e-content"><p>So I finally finished a side-project after a long time and rolled it out public. You can find it <a href="https://improvement-roll.varunbarad.com">here</a>.</p>
+<p>It is a tiny website which suggests you useful things you can do in your down-time instead of letting it be sucked in the maw of social media.</p>
+<p>The idea for this came when I saw an app by the same name on the F-Droid store. The experience I wanted was a bit different from what I had with that app and also I thought that this was so trivial that it didn't need a full-fledged native app and that just a simple website should do the trick.</p>
+<p>So I set out to building it. As with some of my other frontend related stuff, my aim was to keep this thing as less dependent on external libraries as I can (0 external dependencies sounds perfect for something of this size). Ended up not importing any external libraries/frameworks in either JS or CSS land.</p>
+<p>Later I thought that it would be awesome if I could access it offline too, if it has loaded itself in my browser once before. And so I looked into PWAs and implemented the simplest version I could find online to just setup a basic cache using the service-worker so that if the website has been loaded once in your browser it will load fine even if there is no internet connection.</p>
+<p>After doing all that it occurred to me, this website might turn out to be something completely useless to people who have JS disabled in their browsers. So I started thinking as to what value I can provide to users with JS even though the whole core of this is built using conditionals and random number generators and other stuff which can't be replicated with just HTML &amp; CSS. So then I landed on the idea to provide <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code> tags for each block of time where the whole list of that tasks for that time-block will be visible.</p>
+</div>
+                    </div>
+                    <div class="post-categories-container">
+                        Categories:
+                        <div>
+                            
+                                <a href="/category/javascript.html" class="badge badge-warning">#javascript</a>
+                            
+                                <a href="/category/web.html" class="badge badge-warning">#web</a>
+                            
+                                <a href="/category/programming.html" class="badge badge-warning">#programming</a>
+                            
+                            <a href="/blog" class="badge badge-warning">#all</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+    <div>
+        <div class="footer">
+            <div>
+                <a href="https://github.com/VarunBarad" rel="me">
+                    <i class="fab fa-github social-links"></i>
+                </a>
+                <a href="https://twitter.com/varun_barad" rel="me">
+                    <i class="fab fa-twitter social-links"></i>
+                </a>
+                <a href="https://dev.to/varunbarad" rel="me">
+                    <i class="fab fa-dev social-links"></i>
+                </a>
+                <a href="https://stackoverflow.com/users/4717436/varunbarad" rel="me">
+                    <i class="fab fa-stack-overflow social-links"></i>
+                </a>
+            </div>
+            <div class="developer-attribution">
+                Made by <a href="https://dixita0607.github.io">Dixita Ganatra</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+</body>
+</html>
