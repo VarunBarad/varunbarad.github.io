@@ -413,6 +413,17 @@ a.book-item-title:hover {
   text-align: justify;
 }
 
+.projects-page a {
+  color: var(--accent-color);
+  text-decoration: underline;
+  text-decoration-color: var(--accent-color-dark);
+  text-underline-offset: 2px;
+}
+
+.projects-page a:hover {
+  color: var(--accent-color-hover);
+}
+
 .project-item {
   padding: var(--spacing-xl) 0;
   border-top: 1px solid var(--border-color);
