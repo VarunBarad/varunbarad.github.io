@@ -14,14 +14,15 @@
       "title": "Malgudi Days",
       "author": "R. K. Narayan",
       "startDate": "2025-05-23"
-    },
-    {
-      "title": "The Tail Hooker",
-      "author": "Sareshth Kumar",
-      "startDate": "2025-11-09"
     }
   ],
   "2025": [
+    {
+      "title": "The Tail Hooker",
+      "author": "Sareshth Kumar",
+      "startDate": "2025-11-09",
+      "finishDate": "2025-11-18"
+    },
     {
       "title": "His Dark Materials: Northern Lights",
       "author": "Philip Pullman",
