@@ -303,6 +303,104 @@ main > h1 {
   border-color: var(--accent-color);
 }
 
+/* Homepage styles */
+.home-page {
+  max-width: var(--max-width-prose);
+  margin: 0 auto;
+}
+
+.home-intro {
+  text-align: center;
+  margin-bottom: var(--spacing-4xl);
+}
+
+.home-profile-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin: 0 auto var(--spacing-2xl);
+  display: block;
+}
+
+.home-intro p {
+  margin-bottom: var(--spacing-xl);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-relaxed);
+  text-align: justify;
+}
+
+.home-intro a {
+  color: var(--accent-color);
+  text-decoration: underline;
+  text-decoration-color: var(--accent-color-dark);
+  text-underline-offset: 2px;
+}
+
+.home-intro a:hover {
+  color: var(--accent-color-hover);
+}
+
+.home-section {
+  margin-bottom: var(--spacing-4xl);
+  padding-top: var(--spacing-3xl);
+  border-top: 1px solid var(--border-color);
+}
+
+.home-section:last-child {
+  margin-bottom: 0;
+}
+
+.home-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-2xl);
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+}
+
+.home-section-header h2 {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-color);
+  margin: 0;
+}
+
+.home-view-all {
+  color: var(--accent-color);
+  text-decoration: none;
+  font-size: var(--font-size-base);
+}
+
+.home-view-all:hover {
+  color: var(--accent-color-hover);
+  text-decoration: underline;
+}
+
+.home-project-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.home-project-item {
+  display: block;
+}
+
+.home-project-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-color);
+  margin-bottom: var(--spacing-xs);
+}
+
+.home-project-description {
+  color: var(--text-color-muted);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  margin: 0;
+}
+
 /* Blog listing */
 .blog-listing {
   max-width: var(--max-width-prose);

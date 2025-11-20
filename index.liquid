@@ -4,72 +4,84 @@ permalink: "/"
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="icon" type="image/png" href="/favicon.png"/>
-  <title>Varun Barad</title>
-  <meta name="description" content="{{site.description}}"/>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <!-- RSS Feed meta-data -->
-  <link type="application/atom+xml" rel="alternate" href="{{ site.url }}/feed.xml" title="{{ site.title }}"/>
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <link rel="stylesheet" href="/assets/css/prism-theme/prism-darcula.css" />
 
-  <!-- Twitter meta-data -->
-  <meta name="twitter:site" content="@{{site.twitter_username}}"/>
-  <meta name="twitter:image:src" content="{{site.url}}/assets/images/logo-hd.png"/>
-  <meta name="twitter:card" content="summary"/>
-  <meta name="twitter:title" content="{{site.title}}"/>
-  <meta name="twitter:description" content="{{site.description}}"/>
+    <link rel="icon" type="image/png" href="/favicon.png" />
 
-  <!-- Open-Graph meta-data -->
-  <meta property="og:site_name" content="{{site.title}}"/>
-  <meta property="og:image" content="{{site.url}}/assets/images/logo-hd.png"/>
-  <meta property="og:type" content="object"/>
-  <meta property="og:title" content="{{site.title}}"/>
-  <meta property="og:url" content="{{site.url}}{{page.url}}"/>
-  <meta property="og:description" content="{{site.description}}"/>
+    <title>Varun Barad</title>
+    <meta name="description" content="{{ site.description }}" />
 
-  <!-- Styles kept here for now -->
-  {% include '_legacy_styles.html' %}
+    <!-- RSS Feed meta-data -->
+    <link type="application/atom+xml" rel="alternate" href="{{ site.url }}/feed.xml" title="{{ site.title }}" />
+
+    <!-- Twitter meta-data -->
+    <meta name="twitter:site" content="@{{site.twitter_username}}" />
+    <meta name="twitter:image:src" content="{{site.url}}/assets/images/logo-hd.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="{{site.title}}" />
+    <meta name="twitter:description" content="{{site.description}}" />
+
+    <!-- Open-Graph meta-data -->
+    <meta property="og:site_name" content="{{site.title}}" />
+    <meta property="og:image" content="{{site.url}}/assets/images/logo-hd.png" />
+    <meta property="og:type" content="object" />
+    <meta property="og:title" content="{{site.title}}" />
+    <meta property="og:url" content="{{site.url}}{{page.url}}" />
+    <meta property="og:description" content="{{site.description}}" />
 </head>
 <body>
-{% include '_header.html' %}
+{% include 'header.liquid' %}
 
 <main>
-  <div class="container-full-width">
-    <img src="/assets/images/profile.png" alt="Profile picture of Varun">
+  <div class="home-page">
+    <section class="home-intro">
+      <img src="/assets/images/profile.png" alt="Profile picture of Varun" class="home-profile-image">
+      <p>
+        I am a fullstack developer working currently at <a href="https://qweebi.com">Qweebi</a>. I enjoy building quality software and learning new things.
+      </p>
+      <p>
+        I am interested in online-privacy, owning our content/data, sci-fi stories and many other things. So feel free to
+        <a href="/contact">contact me</a> to discuss those or anything else.
+      </p>
+    </section>
+
+    <section class="home-section">
+      <div class="home-section-header">
+        <h2>Recent articles</h2>
+        <a href="/blog" class="home-view-all">View all {{ collections.post | size }} posts →</a>
+      </div>
+      <div class="post-list">
+        {% assign reverse_chronological_posts = collections.post | reverse %}
+        {% for post in reverse_chronological_posts limit:3 %}
+        <article class="post-item">
+          <a href="{{ post.url }}" class="post-item-title">{{ post.data.title }}</a>
+          <p class="post-item-summary">{{ post.data.summary }}</p>
+        </article>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="home-section">
+      <div class="home-section-header">
+        <h2>Recent projects</h2>
+        <a href="/projects" class="home-view-all">View all {{ projects | size }} projects →</a>
+      </div>
+      <div class="home-project-list">
+        {% for project in projects limit:3 %}
+        <article class="home-project-item">
+          <h3 class="home-project-title">{{ project.name }}</h3>
+          <p class="home-project-description">{{ project.description[0] }}</p>
+        </article>
+        {% endfor %}
+      </div>
+    </section>
   </div>
-  <div>
-    <p>
-      I am a fullstack developer working currently at <a href="https://qweebi.com">Qweebi</a>. I enjoy building quality software and learning new things.
-    </p>
-    <p>
-      I am interested in online-privacy, owning our content/data, sci-fi stories and many other things. So feel free to
-      <a href="/contact">contact me</a> to discuss those or anything else.
-    </p>
-  </div>
-
-  <hr>
-
-  <h2>Recent articles ({{ collections.post | size }} posts)</h2>
-  <ul>
-    {% assign reverse_chronological_posts = collections.post | reverse %}
-    {% for post in reverse_chronological_posts limit:3 %}
-      <li>{{ post.data.title }}</li>
-    {% endfor %}
-  </ul>
-  <p><a href="/blog">View all articles</a></p>
-
-  <hr>
-
-  <h2>Recent projects ({{ projects | size }} projects)</h2>
-  <ul>
-    {% for project in projects limit:3 %}
-      <li>{{ project.name }}</li>
-    {% endfor %}
-  </ul>
-  <p><a href="/projects">View all projects</a></p>
 </main>
 
-{% include '_footer.html' %}
+{% include 'footer.liquid' %}
 </body>
 </html>
