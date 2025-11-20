@@ -464,6 +464,79 @@ a.book-item-title:hover {
   text-align: center;
 }
 
+/* Contact page styles */
+.contact-page {
+  max-width: var(--max-width-prose);
+}
+
+.contact-page > p {
+  margin-bottom: var(--spacing-2xl);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-relaxed);
+  text-align: justify;
+}
+
+.contact-page a {
+  color: var(--accent-color);
+  text-decoration: underline;
+  text-decoration-color: var(--accent-color-dark);
+  text-underline-offset: 2px;
+}
+
+.contact-page a:hover {
+  color: var(--accent-color-hover);
+}
+
+.contact-section {
+  margin: var(--spacing-3xl) 0;
+  padding: var(--spacing-2xl) 0;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.contact-section h2 {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--accent-color);
+  margin-bottom: var(--spacing-xl);
+}
+
+.contact-links {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--spacing-md) var(--spacing-lg);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-normal);
+}
+
+.contact-links dt {
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-color);
+}
+
+.contact-links dd {
+  margin: 0;
+}
+
+.contact-links a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+.contact-links a:hover {
+  color: var(--accent-color-hover);
+  text-decoration: underline;
+}
+
+.contact-attribution {
+  font-size: var(--font-size-sm);
+  color: var(--text-color-muted);
+  font-style: italic;
+  margin-top: var(--spacing-3xl);
+  padding-top: var(--spacing-xl);
+  border-top: 1px solid var(--border-color);
+}
+
 /* Resume styles */
 .resume-section {
   margin-top: var(--spacing-4xl);
