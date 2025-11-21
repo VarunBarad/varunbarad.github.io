@@ -95,7 +95,7 @@ header > nav > span {
 
 /* Main content */
 main {
-  max-width: var(--max-width-content);
+  max-width: calc(var(--max-width-prose) + var(--spacing-lg) + var(--spacing-lg));
   margin: 0 auto;
   padding: var(--spacing-3xl) var(--spacing-lg);
 }
