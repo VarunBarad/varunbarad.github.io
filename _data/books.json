@@ -14,9 +14,20 @@
       "title": "Malgudi Days",
       "author": "R. K. Narayan",
       "startDate": "2025-05-23"
+    },
+    {
+      "title": "The Code Breaker",
+      "author": "Walter Isaacson",
+      "startDate": "2025-11-31"
     }
   ],
   "2025": [
+    {
+      "title": "Lakshadweep Adventure",
+      "author": "Deepak Dalal",
+      "startDate": "2025-11-20",
+      "finishDate": "2025-11-27"
+    },
     {
       "title": "The Tail Hooker",
       "author": "Sareshth Kumar",
