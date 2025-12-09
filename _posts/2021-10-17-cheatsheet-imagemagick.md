@@ -53,4 +53,20 @@ convert original.jpg -resize 720x576^ -gravity center -crop 720x576+0+0 +repage 
 magick original.webp -scale 128x128 scaled.webp
 ```
 
+## Get info from an image file
+
+Find more details [here](/blog/til-image-info-using-imagemagick).
+
+```shell
+magick identify -format "%m %w %h %x %%y" input.jpg
+# This gives an output like below
+# JPEG 4960 7015 600 600
+```
+
+- `%m`: Format of the image file (`JPEG`, `PNG`, `WEBP`, etc.)
+- `%w`: Width of the image (in pixels)
+- `%h`: Height of the image (in pixels)
+- `%x`: Resolution/Density in the x direction
+- `%y`: Resolution/Density in the y direction
+
 Automation is exciting 🤖
