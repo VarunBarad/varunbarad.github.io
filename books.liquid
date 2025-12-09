@@ -15,7 +15,7 @@ redirect_from: [
         {% for book in books.currentlyReading %}
           <article class="book-item">
             {% if book.link %}
-              <a href="{{ book.link }}" class="book-item-title" target="_blank" rel="noopener noreferrer">{{ book.title }}</a>
+              <a href="{{ book.link }}" class="book-item-title">{{ book.title }}</a>
             {% else %}
               <div class="book-item-title">{{ book.title }}</div>
             {% endif %}
