@@ -8,6 +8,7 @@ date: 2025-08-29T10:30:01+0530
 categories:
   - "til"
   - "blaugust-2025"
+  - "imagemagick"
 ---
 
 This week I wanted to turn a 512x512 pixel image down to a 128x128 sized image. A noteworthy point is that this image was a pixel-art, and thus we needed to keep the edges sharp. Below is the image in question:

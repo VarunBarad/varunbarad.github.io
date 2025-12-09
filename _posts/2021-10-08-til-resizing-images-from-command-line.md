@@ -7,6 +7,7 @@ summary: "TIL: Resizing images from command-line while centering them and adding
 date: 2021-10-08T00:00:00+0530
 categories:
   - "til"
+  - "imagemagick"
 ---
 
 I had to resize a bunch of images today to a specific target size while padding the remaining space with a transparent background. Out came ImageMagick

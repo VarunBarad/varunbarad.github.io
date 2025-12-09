@@ -7,6 +7,7 @@ summary: "A cheat-sheet for ImageMagick"
 date: 2021-10-17T00:00:00+0530
 categories:
   - "cheat-sheet"
+  - "imagemagick"
 ---
 
 ## Resize images to specific target size while padding remaining space with transparency
@@ -44,6 +45,12 @@ convert input.png -channel RGB -negate output.png
 
 ```shell
 convert original.jpg -resize 720x576^ -gravity center -crop 720x576+0+0 +repage resized.png
+```
+
+## Scale (not resize) an image
+
+```shell
+magick original.webp -scale 128x128 scaled.webp
 ```
 
 Automation is exciting 🤖
