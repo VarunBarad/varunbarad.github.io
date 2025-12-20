@@ -9,6 +9,7 @@ categories:
   - "javascript"
   - "web"
   - "programming"
+  - "improvement-roll"
 ---
 
 So I finally finished a side-project after a long time and rolled it out public. You can find it [here](https://improvement-roll.varunbarad.com).
@@ -22,3 +23,8 @@ So I set out to building it. As with some of my other frontend related stuff, my
 Later I thought that it would be awesome if I could access it offline too, if it has loaded itself in my browser once before. And so I looked into PWAs and implemented the simplest version I could find online to just setup a basic cache using the service-worker so that if the website has been loaded once in your browser it will load fine even if there is no internet connection.
 
 After doing all that it occurred to me, this website might turn out to be something completely useless to people who have JS disabled in their browsers. So I started thinking as to what value I can provide to users with JS even though the whole core of this is built using conditionals and random number generators and other stuff which can't be replicated with just HTML & CSS. So then I landed on the idea to provide `<details>` and `<summary>` tags for each block of time where the whole list of that tasks for that time-block will be visible.
+
+## Articles on this project
+
+1. Public release (this article)
+2. [Adding custom tasks](./improvement-roll-custom-tasks)
