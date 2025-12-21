@@ -9,6 +9,7 @@ categories:
   - "javascript"
   - "web"
   - "programming"
+  - "project"
   - "improvement-roll"
 ---
 

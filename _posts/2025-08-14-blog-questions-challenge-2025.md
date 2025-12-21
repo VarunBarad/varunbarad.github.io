@@ -8,7 +8,6 @@ date: 2025-08-15T13:12:02+0530
 categories:
   - "blaugust-2025"
   - "meta"
-  - "personal"
 ---
 
 This was a challenge/chain letter that went around near the beginning of this year. I wasn't tagged, but after reading [Sophie's post](https://localghost.dev/blog/the-blog-questions-challenge/) yesterday, I accepted the tag from her.

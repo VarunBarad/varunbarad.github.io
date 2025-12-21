@@ -7,6 +7,7 @@ summary: "Start of making a silent clock/alarm clock to get me to stand up every
 date: 2025-12-20T00:58:36+0530
 categories:
   - "clock-up"
+  - "project"
 ---
 
 I recently read about a [timer made by Hannah](https://hannahilea.com/blog/button-box-timer/) which reminds her to stand up regularly (thus being less sedentary) using a few LEDs. I wanted to build something similar as this would finally be a tiny project which I would regularly use, I definitely need to stand up more frequently. This project would also be my first electronics project in a long time, and it provides an opportunity to build my custom circuit board.

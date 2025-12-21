@@ -6,6 +6,7 @@ title: "🖨️ My scribe writes my documents out in the physical world"
 summary: "My trusty HP LaserJet 1020 now can print over network"
 date: 2025-08-13T11:59:13+0530
 categories:
+  - "project"
   - "scribe"
   - "blaugust-2025"
 ---

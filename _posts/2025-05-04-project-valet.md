@@ -10,6 +10,7 @@ categories:
   - "rust"
   - "tools"
   - "programming"
+  - "project"
 ---
 
 I was increasingly getting annoyed by having to handle various filing tasks and was looking for a way to automate it. The two most regular and straight-forward ones to handle were my credit-card statements as they came monthly and had a bunch of steps (listed below) that needed to be followed for each one:

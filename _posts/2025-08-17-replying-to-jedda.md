@@ -7,7 +7,7 @@ summary: "And why am I targetting the Rainbow Diamond badge after all?"
 date: 2025-08-17T22:29:49+0530
 categories:
   - "blaugust-2025"
-  - "personal"
+  - "personal-growth"
 ---
 
 Recently, Jedda, a fellow Blaugustan, posted a sort-of mid-way check-in and reminder for herself and others in this challenge: ["Blogging, Breaks, and Being Kind to Ourselves"](https://notes.jeddacp.com/blogging-breaks-and-being-kind-to-ourselves/)
