@@ -3,7 +3,7 @@ tags:
   - post
 layout: post
 title: "🃏 Card game: Mindikot / Dehla Pakad / Catch the Ten"
-summary: "5 video games that captured me through the years"
+summary: "Guidebook on how to play the game"
 date: 2025-08-24T10:12:48+0530
 categories:
   - "blaugust-2025"
