@@ -1,6 +1,6 @@
 [
   {
-    "name": "🗃️️Valet",
+    "name": "🗃️️ Valet",
     "description": [
       "As a valet in the real world parks cars in their appropriate places, so does this valet of mine scans the inbox directory and processes and parks various files into their appropriate destinations."
     ],
@@ -37,7 +37,7 @@
     ]
   },
   {
-    "name": "Pause",
+    "name": "🌴 Pause",
     "description": [
       "A leave-management SaaS tool which I am building (of-course with a team) as my day-job at Obvious. I have worked as the backend-engineer of the project since its inception in August 2020."
     ],
@@ -159,6 +159,10 @@
       {
         "text": "Source code",
         "destination": "https://github.com/VarunBarad/improvement-roll"
+      },
+      {
+        "text": "Release blog post",
+        "destination": "/blog/improvement-roll"
       }
     ]
   },
