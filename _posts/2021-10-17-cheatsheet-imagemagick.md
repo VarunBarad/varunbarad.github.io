@@ -69,4 +69,12 @@ magick identify -format "%m %w %h %x %%y" input.jpg
 - `%x`: Resolution/Density in the x direction
 - `%y`: Resolution/Density in the y direction
 
+## Trim image to central content
+
+You can trim the borders/background of an image to only keep the central content. Read [here](/blog/til-trim-image-background.html) for more details and example.
+
+```shell
+magick input.png -trim trimmed.png
+```
+
 Automation is exciting 🤖
