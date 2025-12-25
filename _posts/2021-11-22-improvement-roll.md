@@ -2,7 +2,7 @@
 tags:
   - post
 layout: post
-title: "Improvement Roll"
+title: "🎲 Improvement Roll"
 summary: "A tiny website to suggest you useful things to do in down-time"
 date: 2021-11-22T00:00:00+0530
 categories:
