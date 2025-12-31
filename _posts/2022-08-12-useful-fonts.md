@@ -14,3 +14,8 @@ This is a list of interesting/useful fonts which can be used:
 - [Saira](https://fonts.google.com/specimen/Saira?sort=popularity&preview.text=Workout%20Log&preview.text_type=custom)
 - [Chakra Petch](https://fonts.google.com/specimen/Chakra+Petch?sort=popularity&preview.text=Workout%20Log&preview.text_type=custom)
 - [Cinzel](https://fonts.google.com/specimen/Cinzel?sort=popularity&preview.text=Workout%20Log&preview.text_type=custom)
+- [Lkdown](https://rostype.com/lkdown/)
+- [Graph](https://wehtt.am/fonts/#graph)
+- [Katwijk Mono](https://wehtt.am/fonts/#katwijk-mono)
+- [Turbeu](https://simplebits.shop/products/turbeau)
+- [Parkly](https://simplebits.shop/products/parkly?variant=43482079002839)
