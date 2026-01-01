@@ -12,7 +12,7 @@ categories:
 
 <img alt="Poster of the movie Dhurandhar" src="/assets/images/movies/dhurandhar-poster.webp" style="width: fit-content; height: 320px;" /> <br />
 
-Score: 5/5 🤷️
+Score: 5/5 🎖
 
 > A death-row prisoner turned covert agent infiltrates Karachi’s deadly underworld to destroy a terror network before it engulfs India.
 >
