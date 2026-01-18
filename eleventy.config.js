@@ -1,5 +1,6 @@
 const feedPlugin = require('@11ty/eleventy-plugin-rss');
 const syntaxHighlightPlugin = require("@11ty/eleventy-plugin-syntaxhighlight");
+const prismLanguageLox = require("./prism_language_lox");
 const { ZonedDateTime, ZoneId, DateTimeFormatter } = require('@js-joda/core');
 require('@js-joda/timezone');
 
@@ -34,7 +35,11 @@ module.exports = function(eleventyConfig) {
     },
   });
   
-  eleventyConfig.addPlugin(syntaxHighlightPlugin);
+  eleventyConfig.addPlugin(syntaxHighlightPlugin, {
+    init: ({ Prism }) => {
+      prismLanguageLox(Prism);
+    },
+  });
   
   eleventyConfig.addCollection('blogPostCategories', function(collectionApi) {
     const categoryNames = new Set();
