@@ -7,6 +7,7 @@ summary: "TIL: How to add a not null constraint to an existing column in a Postg
 date: 2023-08-20T14:23:22+0530
 categories:
   - "til"
+  - "postgresql"
 ---
 
 If we have a table `people` with a column `email` and we want to make it non-nullable after we have already added it to table:

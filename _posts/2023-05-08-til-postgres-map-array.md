@@ -7,6 +7,7 @@ summary: "TIL: How to map an array in postgres to other data"
 date: 2023-05-08T23:10:27+0530
 categories:
   - "til"
+  - "postgresql"
 ---
 
 If we have two tables, `people` and `groups`, where `people` has a column `group_ids` which is an array of ids from `groups`, we can map the array of ids to the matching name from `groups` using the following query:

@@ -7,6 +7,7 @@ summary: "A cheat-sheet for PostgreSQL database"
 date: 2021-05-17T00:00:00+0530
 categories:
   - "cheat-sheet"
+  - "postgresql"
 ---
 
 ## Dump database to a script (.sql) file

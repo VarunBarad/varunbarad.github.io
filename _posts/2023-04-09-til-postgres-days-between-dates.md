@@ -7,6 +7,7 @@ summary: "TIL: You can use the extract function to find difference in days betwe
 date: 2023-04-09T07:52:44+0530
 categories:
   - "til"
+  - "postgresql"
 ---
 
 |    payments    |
