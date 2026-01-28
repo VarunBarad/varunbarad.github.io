@@ -186,4 +186,14 @@ If we have a table `people` with a column `email` and we want to make it non-nul
 alter table people alter column email set not null;
 ```
 
+## Sub-string matching
+
+If we have a `people_info` table with a column email and we only want rows where email contains (but not necessarily is the exact value) `varun`:
+
+```sql
+select *
+from people_info
+where email like '%varun%';
+```
+
 Have a great day people 👋
