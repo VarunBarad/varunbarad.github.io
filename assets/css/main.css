@@ -105,6 +105,41 @@ main > h1 {
   font-weight: var(--font-weight-bold);
 }
 
+/* Table styles */
+table {
+  width: fit-content;
+  max-width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  margin-bottom: var(--spacing-xl);
+  overflow-x: auto;
+  display: block;
+}
+
+th,
+td {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-right: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+th:last-child,
+td:last-child {
+  border-right: none;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+th {
+  background-color: var(--surface-color);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-color);
+}
+
 /* Post styles */
 .post-header {
   font-size: var(--font-size-lg);
