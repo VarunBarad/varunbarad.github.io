@@ -19,11 +19,15 @@
       "title": "The Code Breaker",
       "author": "Walter Isaacson",
       "startDate": "2025-11-31"
-    },
+    }
+  ],
+  "2026": [
     {
       "title": "All Systems Red (The Murderbot Diaries)",
       "author": "Martha Wells",
-      "startDate": "2026-03-08"
+      "startDate": "2026-03-08",
+      "finishDate": "2026-03-12",
+      "link": "/blog/book-the-murderbot-diaries-all-systems-red"
     }
   ],
   "2025": [
