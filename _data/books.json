@@ -11,17 +11,19 @@
       "startDate": "2025-02-16"
     },
     {
-      "title": "Malgudi Days",
-      "author": "R. K. Narayan",
-      "startDate": "2025-05-23"
-    },
-    {
       "title": "The Code Breaker",
       "author": "Walter Isaacson",
       "startDate": "2025-11-31"
     }
   ],
   "2026": [
+    {
+      "title": "Malgudi Days",
+      "author": "R. K. Narayan",
+      "startDate": "2025-05-23",
+      "abandonDate": "2026-03-18",
+      "link": "/blog/ditching-malgudi-days"
+    },
     {
       "title": "All Systems Red (The Murderbot Diaries)",
       "author": "Martha Wells",
