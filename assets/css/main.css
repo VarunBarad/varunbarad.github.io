@@ -524,6 +524,10 @@ a.book-item-title:hover {
   color: var(--accent-color-hover);
 }
 
+.book-item-title.abandoned {
+  text-decoration: line-through;
+}
+
 .book-item-author {
   color: var(--text-color-muted);
   font-size: var(--font-size-base);

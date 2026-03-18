@@ -46,18 +46,30 @@ redirect_from: [
           {% for book in yearBooks %}
             <article class="book-item">
               {% if book.link %}
-                <a href="{{ book.link }}" class="book-item-title">{{ book.title }}</a>
+                <a href="{{ book.link }}" class="book-item-title {% if book.abandonDate %}abandoned{% endif %}">{{ book.title }}</a>
               {% else %}
-                <div class="book-item-title">{{ book.title }}</div>
+                <div class="book-item-title {% if book.abandonDate %}abandoned{% endif %}">{{ book.title }}</div>
               {% endif %}
 
               <p class="book-item-author">{{ book.author }}</p>
 
               {% if book.startDate or book.finishDate %}
                 <p class="book-item-dates">
-                  {% if book.startDate %}Started: {{ book.startDate | date: "%Y-%m-%d" }}{% endif %}
-                  {% if book.startDate and book.finishDate %} | {% endif %}
-                  {% if book.finishDate %}Finished: {{ book.finishDate | date: "%Y-%m-%d" }}{% endif %}
+                  {% if book.startDate and book.abandonDate and book.finishDate %}
+                      Started: {{ book.startDate | date: "%Y-%m-%d" }} | Finished: {{ book.finishDate | date: "%Y-%m-%d" }} | Abandoned: {{ book.abandonDate | date: "%Y-%m-%d" }}
+                  {% elsif book.startDate and book.finishDate %}
+                      Started: {{ book.startDate | date: "%Y-%m-%d" }} | Finished: {{ book.finishDate | date: "%Y-%m-%d" }}
+                  {% elsif book.startDate and book.abandonDate %}
+                      Started: {{ book.startDate | date: "%Y-%m-%d" }} | Abandoned: {{ book.abandonDate | date: "%Y-%m-%d" }}
+                  {% elsif book.finishDate and book.abandonDate %}
+                      Finished: {{ book.finishDate | date: "%Y-%m-%d" }} | Abandoned: {{ book.abandonDate | date: "%Y-%m-%d" }}
+                  {% elsif book.startDate %}
+                      Started: {{ book.startDate | date: "%Y-%m-%d" }}
+                  {% elsif book.finishDate %}
+                      Finished: {{ book.finishDate | date: "%Y-%m-%d" }}
+                  {% elsif book.abandonDate %}
+                      Abandoned: {{ book.abandonDate | date: "%Y-%m-%d" }}
+                  {% endif %}
                 </p>
               {% endif %}
             </article>
