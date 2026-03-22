@@ -1,11 +1,6 @@
 {
   "currentlyReading": [
     {
-      "title": "Little Brother",
-      "author": "Cory Doctorow",
-      "startDate": "2023-10-17"
-    },
-    {
       "title": "The 12-Week Fitness Project",
       "author": "Rujuta Diwekar",
       "startDate": "2025-02-16"
@@ -17,6 +12,12 @@
     }
   ],
   "2026": [
+    {
+      "title": "Little Brother",
+      "author": "Cory Doctorow",
+      "startDate": "2023-10-17",
+      "finishDate": "2026-03-22"
+    },
     {
       "title": "Malgudi Days",
       "author": "R. K. Narayan",
