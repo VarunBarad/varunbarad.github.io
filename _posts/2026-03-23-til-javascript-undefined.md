@@ -2,7 +2,7 @@
 tags:
   - post
 layout: post
-title: "📝 <code>undefined</code> is not defined at the language level"
+title: "📝 \"undefined\" is not defined at the language level"
 summary: "JavaScript's infamous <code>undefined</code> is not a language-level constant and can indeed be made to behave like a different value"
 date: 2026-03-23T00:50:56+0530
 categories:
