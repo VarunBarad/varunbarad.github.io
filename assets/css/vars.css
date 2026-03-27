@@ -1,20 +1,21 @@
 :root {
   /* Dark theme colors */
-  --background-color: var(--gray-950);
-  --text-color: var(--gray-50);
-  --text-on-accent-color: var(--gray-950);
-  --text-color-muted: var(--gray-400);
+  color-scheme: light dark;
+  --background-color: light-dark(var(--gray-50), var(--gray-950));
+  --text-color: light-dark(var(--gray-950), var(--gray-50));
+  --text-on-accent-color: light-dark(var(--gray-50), var(--gray-950));
+  --text-color-muted: light-dark(var(--gray-600), var(--gray-400));
 
   /* Green accent colors */
-  --accent-color: var(--emerald-500);
-  --accent-color-hover: var(--emerald-400);
-  --accent-color-dark: var(--emerald-600);
+  --accent-color: light-dark(var(--emerald-500), var(--emerald-500));
+  --accent-color-hover: light-dark(var(--emerald-400), var(--emerald-400));
+  --accent-color-dark: light-dark(var(--emerald-600), var(--emerald-600));
 
   /* Secondary colors */
-  --border-color: var(--gray-700);
-  --surface-color: var(--gray-900);
-  --code-bg: var(--gray-900);
-  --code-color: var(--emerald-300);
+  --border-color: light-dark(var(--gray-200), var(--gray-700));
+  --surface-color: light-dark(var(--gray-100), var(--gray-900));
+  --code-bg: light-dark(var(--gray-200), var(--gray-900));
+  --code-color: light-dark(var(--emerald-600), var(--emerald-300));
 
   /* fonts */
   --font-body: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, Adwaita Sans, Cantarell, Ubuntu, roboto, noto, helvetica, arial, sans-serif;
