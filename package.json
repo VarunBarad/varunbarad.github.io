@@ -9,7 +9,8 @@
     "setup-hooks": "cp _scripts/pre-commit .git/hooks/pre-commit",
     "add:book": "node _scripts/create-book-post.js",
     "add:til": "node _scripts/create-til-post.js",
-    "add:movie": "node _scripts/create-movie-post.js"
+    "add:movie": "node _scripts/create-movie-post.js",
+    "add:post": "node _scripts/create-post.js"
   },
   "repository": {
     "type": "git",
