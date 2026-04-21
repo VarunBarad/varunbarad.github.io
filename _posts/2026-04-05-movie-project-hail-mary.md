@@ -18,7 +18,7 @@ Score: 3/5 👍 (Only because I have read the book, otherwise it would be a 4/5 
 >
 > — [TheTVDB.com](https://www.thetvdb.com/movies/project-hail-mary)
 
-Since I have already read the book, I couldn't stop myself from comparing the movie with the book. The movie falls short on a lot of details that were explained in the books, and it is understandable that the director could not cover the whole thing in 2.5 hours. I am glad though that they didn't modify any incident/detail to be different from the book, all the differences were of omission and not of modification (even if there were modifications I could not recognize them as I read the book quite a few years ago now).
+Since I have already read the book, I couldn't stop myself from comparing the movie with the book. The movie falls short on a lot of details that were explained in the book, and it is understandable that the director could not cover the whole thing in 2.5 hours. I am glad though that they didn't modify any incident/detail to be different from the book, all the differences were of omission and not of modification (even if there were modifications I could not recognize them as I read the book quite a few years ago now).
 
 The actors also deserve credit here. Ryan Gosling has done a good job of enacting the personality of Dr Ryland Grace. And Sandra Hüller matches the flat no-nonsense attitude of Eva Stratt. The star of the show though was definitely my beloved Rocky. The voice-acting, the motion-capture, the character was given proper justice when bringing it on-screen.
 
