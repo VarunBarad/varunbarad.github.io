@@ -23,7 +23,6 @@ The PyCharm IDE now creates a project named "PyCharmMisc" in your home directory
 <figure>
    <img
      alt="Screenshot of PyCharm with an arrow pointing to the checkbox that needs to be unchecked"
-     src="../assets/images/posts/pycharm-prevent-pycharmmisc-project/pycharm.webp"
-     style="width: fit-content; height: fit-content;" />
-  <figcaption style="text-align: center;">Screenshot of PyCharm with an arrow pointing to the checkbox that needs to be unchecked</figcaption>
+     src="../assets/images/posts/pycharm-prevent-pycharmmisc-project/pycharm.webp" />
+  <figcaption>Screenshot of PyCharm with an arrow pointing to the checkbox that needs to be unchecked</figcaption>
 </figure>

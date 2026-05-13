@@ -32,8 +32,8 @@ After that was done, the complete text-block needed to be pressed under heavy we
    <img
      alt="Spongebob meme saying &quot;Three years later…&quot;"
      src="../assets/images/posts/first-bookbinding-project/meme-three-years-later.webp"
-     style="width: fit-content; height: fit-content;" />
-  <figcaption style="text-align: center;">Spongebob meme saying "Three years later"</figcaption>
+     />
+  <figcaption>Spongebob meme saying "Three years later"</figcaption>
 </figure>
 
 And somehow this project ended up going on the backburner for around three years after this point. I can't tell what conditions triggered this hiatus or why I never picked it up again before now. But somehow, a couple of weeks ago, I got determined to continue the project and see it through to fruition.
@@ -58,8 +58,8 @@ These two mistakes combined have made it so that when I open my notebook it does
    <img
      alt="You can see the endpaper getting unstuck near the spine"
      src="../assets/images/posts/first-bookbinding-project/endpaper-unstuck.webp"
-     style="width: fit-content; height: fit-content;" />
-  <figcaption style="text-align: center;">You can see the endpaper getting unstuck near the spine</figcaption>
+     />
+  <figcaption>You can see the endpaper getting unstuck near the spine</figcaption>
 </figure>
 
 ## Joining the text-block and the cover
@@ -85,48 +85,48 @@ I gave up after around six hours and took it out of the press. While I was findi
    <img
      alt="This is how the final book looks, quite pleased with it"
      src="../assets/images/posts/first-bookbinding-project/book-isometric.webp"
-     style="width: fit-content; height: fit-content;" />
-  <figcaption style="text-align: center;">This is how the final book looks, quite pleased with it</figcaption>
+     />
+  <figcaption>This is how the final book looks, quite pleased with it</figcaption>
 </figure>
 
 <figure>
    <img
      alt="You can see how the cover-boards have warped towards the inside from this angle"
      src="../assets/images/posts/first-bookbinding-project/warping-cover-board.webp"
-     style="width: fit-content; height: fit-content;" />
-  <figcaption style="text-align: center;">You can see how the cover-boards have warped towards the inside from this angle</figcaption>
+     />
+  <figcaption>You can see how the cover-boards have warped towards the inside from this angle</figcaption>
 </figure>
 
 <figure>
    <img
      alt="And here's the endpaper warping in the other direction, the cover boards also warp mostly because of the endpapers"
      src="../assets/images/posts/first-bookbinding-project/warping-endpaper.webp"
-     style="width: fit-content; height: fit-content;" />
-  <figcaption style="text-align: center;">And here's the endpaper warping in the other direction, the cover boards also warp mostly because of the endpapers</figcaption>
+     />
+  <figcaption>And here's the endpaper warping in the other direction, the cover boards also warp mostly because of the endpapers</figcaption>
 </figure>
 
 <figure>
    <img
      alt="This is how the endpapers look glued down with the cover and the text-block"
      src="../assets/images/posts/first-bookbinding-project/endpaper.webp"
-     style="width: fit-content; height: fit-content;" />
-  <figcaption style="text-align: center;">This is how the endpapers look glued down with the cover and the text-block</figcaption>
+     />
+  <figcaption>This is how the endpapers look glued down with the cover and the text-block</figcaption>
 </figure>
 
 <figure>
    <img
      alt="From the title-page you can see that I have started my first foray into writing week-notes"
      src="../assets/images/posts/first-bookbinding-project/title-page.webp"
-     style="width: fit-content; height: fit-content;" />
-  <figcaption style="text-align: center;">From the title-page you can see that I have started my first foray into writing week-notes</figcaption>
+     />
+  <figcaption>From the title-page you can see that I have started my first foray into writing week-notes</figcaption>
 </figure>
 
 <figure>
    <img
      alt="This is how the sewing looks like from inside; I think I should buy a white thread"
      src="../assets/images/posts/first-bookbinding-project/signature-sewing-inside.webp"
-     style="width: fit-content; height: fit-content;" />
-  <figcaption style="text-align: center;">This is how the sewing looks like from inside; I think I should buy a white thread</figcaption>
+     />
+  <figcaption>This is how the sewing looks like from inside; I think I should buy a white thread</figcaption>
 </figure>
 
 Thanks for reading about my first step in trying to find a hobby outside of digital screens. This has my attention captured, and I can already think of a lot of different binding projects I would like to follow up with. One dream project would be to someday have my own bound set of [Harry Potter and the Methods of Rationality](https://hpmor.com). But that is in the future, for now I need to decide what I am going to bind next.

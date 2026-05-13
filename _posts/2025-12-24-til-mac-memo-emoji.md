@@ -15,9 +15,8 @@ Recently when writing another one of my TIL entries, I got curious whether the ð
 <figure>
   <img
     alt="Screenshot of memo emoji taken on a Mac OS device showing the text written in it"
-    src="../assets/images/posts/til-mac-memo-emoji/emoji-memo.webp"
-    style="width: fit-content; height: fit-content;" />
-  <figcaption style="text-align: center;">Screenshot of memo emoji taken on a Mac OS device showing the text written in it</figcaption>
+    src="../assets/images/posts/til-mac-memo-emoji/emoji-memo.webp" />
+  <figcaption>Screenshot of memo emoji taken on a Mac OS device showing the text written in it</figcaption>
 </figure>
 
 Turns out, it does contain actual text, and that too from the famous poem "Here's to the crazy ones". I first heard that poem at the end of the [Jobs movie](https://www.thetvdb.com/movies/jobs).

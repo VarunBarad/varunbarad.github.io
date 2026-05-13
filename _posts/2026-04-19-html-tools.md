@@ -24,9 +24,8 @@ This time I tasked Claude to make a single-file HTML webpage where I can supply 
 <figure>
    <img
      alt="A definitely genuine driver's license for one John Wick"
-     src="../assets/images/posts/html-tools/a4-id-layout.webp"
-     style="width: fit-content; height: fit-content;" />
-  <figcaption style="text-align: center;">A definitely genuine driver's license for one John Wick</figcaption>
+     src="../assets/images/posts/html-tools/a4-id-layout.webp" />
+  <figcaption>A definitely genuine driver's license for one John Wick</figcaption>
 </figure>
 
 ## Gaming tracker
@@ -40,9 +39,8 @@ Claude fetched all the mission names and made a webpage with the complete list s
 <figure>
    <img
      alt="Progress-state image exported directly from the tool"
-     src="../assets/images/posts/html-tools/hfw-tracker.webp"
-     style="width: fit-content; height: fit-content;" />
-  <figcaption style="text-align: center;">Progress-state image exported directly from the tool</figcaption>
+     src="../assets/images/posts/html-tools/hfw-tracker.webp" />
+  <figcaption>Progress-state image exported directly from the tool</figcaption>
 </figure>
 
 ## Random Starred Repos
@@ -56,9 +54,8 @@ Then from that list of five repos, I can open whichever ones seem un-star worthy
 <figure>
    <img
      alt="Atleast three of these five repos are going to be un-starred"
-     src="../assets/images/posts/html-tools/random-starred-repos.webp"
-     style="width: fit-content; height: fit-content;" />
-  <figcaption style="text-align: center;">Atleast three of these five repos are going to be un-starred</figcaption>
+     src="../assets/images/posts/html-tools/random-starred-repos.webp" />
+  <figcaption>Atleast three of these five repos are going to be un-starred</figcaption>
 </figure>
 
 ## Memory Sharpener
@@ -72,9 +69,8 @@ You can play it yourself over at [https://tools.varunbarad.com/mm2-game.html](ht
 <figure>
    <img
      alt="A blank board with all 48 cards face-down"
-     src="../assets/images/posts/html-tools/mm2-game.webp"
-     style="width: fit-content; height: fit-content;" />
-  <figcaption style="text-align: center;">A blank board with all 48 cards face-down</figcaption>
+     src="../assets/images/posts/html-tools/mm2-game.webp" />
+  <figcaption>A blank board with all 48 cards face-down</figcaption>
 </figure>
 
 These are the ones I have made till now, I would keep adding more as my needs keep changing.

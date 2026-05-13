@@ -16,7 +16,6 @@ To battle that onset of post-lunch drowsiness (the meds were making it more diff
 <figure>
   <img
     alt="Aloy aiming at a Tremortusk in Horizon Forbidden West"
-    src="/assets/images/posts/battling-tremortusk-wakefulness/aloy-aim-tremortusk.webp"
-    style="width: fit-content; height: fit-content;" />
-  <figcaption style="text-align: center;">Aloy aiming at a Tremortusk in Horizon Forbidden West</figcaption>
+    src="/assets/images/posts/battling-tremortusk-wakefulness/aloy-aim-tremortusk.webp" />
+  <figcaption>Aloy aiming at a Tremortusk in Horizon Forbidden West</figcaption>
 </figure>

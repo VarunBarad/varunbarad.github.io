@@ -18,9 +18,8 @@ When I first held the printed version of this in hand, it made me feel that I al
 <figure>
    <img
      alt="Cross section of the bracket with the snap-fit mechanism on the left side"
-     src="../assets/images/posts/first-3d-model-proud/cross-section.webp"
-     style="width: fit-content; height: fit-content;" />
-  <figcaption style="text-align: center;">Cross section of the bracket with the snap-fit mechanism on the left side</figcaption>
+     src="../assets/images/posts/first-3d-model-proud/cross-section.webp" />
+  <figcaption>Cross section of the bracket with the snap-fit mechanism on the left side</figcaption>
 </figure>
 
 During designing it felt like the walls around the stick were too thin for the snap-fit to work correctly, but I also didn't want to thicken them up so much that they would not bend at all. I kept thinking that swapping the support stick in-and-out a few times would cause the walls to permanently deform. Thus losing the shape which made the snap-fit mechanism work in the first place. Then when the printer started printing and I saw a few layers come up, that feeling grew stronger as there was no in-fill material at those points, it was just a couple of wall layers. I thought of but decided not to cancel the print.
@@ -30,7 +29,6 @@ I only printed out one to begin with (I actually needed two) and when it was fin
 <figure>
    <img
      alt="The bracket in use on a chair with the support pipe snapped into it"
-     src="../assets/images/posts/first-3d-model-proud/bracket-in-action.webp"
-     style="width: fit-content; height: fit-content;" />
-  <figcaption style="text-align: center;">The bracket in use on a chair with the support pipe snapped into it</figcaption>
+     src="../assets/images/posts/first-3d-model-proud/bracket-in-action.webp" />
+  <figcaption>The bracket in use on a chair with the support pipe snapped into it</figcaption>
 </figure>

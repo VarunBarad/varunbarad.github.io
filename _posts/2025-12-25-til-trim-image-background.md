@@ -19,17 +19,15 @@ magick input.png -trim trimmed.png
 <figure>
   <img
     alt="Full sized image"
-    src="../assets/images/posts/til-trim-png-background/full-image.png"
-    style="width: fit-content; height: fit-content;" />
-  <figcaption style="text-align: center;">Image by <a href="https://pixabay.com/users/haninabz-24628630">Hanin Abouzeid</a> from <a href="https://pixabay.com">Pixabay</a></figcaption>
+    src="../assets/images/posts/til-trim-png-background/full-image.png" />
+  <figcaption>Image by <a href="https://pixabay.com/users/haninabz-24628630">Hanin Abouzeid</a> from <a href="https://pixabay.com">Pixabay</a></figcaption>
 </figure>
 
 <figure>
   <img
     alt="Image cropped/trimmed using ImageMagick"
-    src="../assets/images/posts/til-trim-png-background/cropped-image.png"
-    style="width: fit-content; height: fit-content;" />
-  <figcaption style="text-align: center;">Image cropped/trimmed using ImageMagick</figcaption>
+    src="../assets/images/posts/til-trim-png-background/cropped-image.png" />
+  <figcaption>Image cropped/trimmed using ImageMagick</figcaption>
 </figure>
 
 ### References

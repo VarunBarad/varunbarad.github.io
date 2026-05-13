@@ -22,9 +22,8 @@ In the evening we decided to visit a newly opened attraction [SPECTRA - MUSEUM](
 <figure>
   <img
     alt="Complimentary snacks aboard the Vande Bharat Express"
-    src="../assets/images/posts/trip-meghalaya/snacks-on-vande-bharat.webp"
-    style="width: fit-content; height: fit-content;" />
-  <figcaption style="text-align: center;">Complimentary snacks aboard the Vande Bharat Express</figcaption>
+    src="../assets/images/posts/trip-meghalaya/snacks-on-vande-bharat.webp" />
+  <figcaption>Complimentary snacks aboard the Vande Bharat Express</figcaption>
 </figure>
 
 ## Day — 1 (Reaching Shillong, some lake and some blossoms)
@@ -38,9 +37,8 @@ On reaching our hotel (we stayed at the wonderful, and highly recommended by me,
 <figure>
   <img
     alt="A random Varun spotted posing besides a Cherry blossom tree. Photo credit: My Awesome Wife"
-    src="../assets/images/posts/trip-meghalaya/varun-in-front-of-cherry-blossoms.webp"
-    style="width: fit-content; height: fit-content;" />
-  <figcaption style="text-align: center;">A random Varun spotted posing besides a Cherry blossom tree. Photo credit: My Awesome Wife</figcaption>
+    src="../assets/images/posts/trip-meghalaya/varun-in-front-of-cherry-blossoms.webp" />
+  <figcaption>A random Varun spotted posing besides a Cherry blossom tree. Photo credit: My Awesome Wife</figcaption>
 </figure>
 
 ## Day — 2 (The day I touched a real jet engine)
@@ -60,9 +58,8 @@ Like [in Goa](/blog/trip-goa.html#:~:text=Naval%20Aviation%20Museum), we found a
 <figure>
   <img
     alt="Me poking in stuff on a jet-engine"
-    src="../assets/images/posts/trip-meghalaya/varun-poking-jet-engine.webp"
-    style="width: fit-content; height: fit-content;" />
-  <figcaption style="text-align: center;">Me poking in stuff on a jet-engine</figcaption>
+    src="../assets/images/posts/trip-meghalaya/varun-poking-jet-engine.webp" />
+  <figcaption>Me poking in stuff on a jet-engine</figcaption>
 </figure>
 
 ## Day — 3 (Discovering that spelunking is not for me)
@@ -78,9 +75,8 @@ Our last stop before reaching the hotel was [Mawsmai Cave](https://maps.app.goo.
 <figure>
   <img
     alt="A place inside the Mawsmai Cave where it widens up"
-    src="../assets/images/posts/trip-meghalaya/mawsmai-cave.webp"
-    style="width: fit-content; height: fit-content;" />
-  <figcaption style="text-align: center;">A place inside the Mawsmai Cave where it widens up</figcaption>
+    src="../assets/images/posts/trip-meghalaya/mawsmai-cave.webp" />
+  <figcaption>A place inside the Mawsmai Cave where it widens up</figcaption>
 </figure>
 
 ## Day — 4 (The day I became a disney princess)
@@ -98,9 +94,8 @@ The trek back was one of the physically most challenging things I have ever done
 <figure>
   <img
     alt="Me posing with the butterfly on my left arm"
-    src="../assets/images/posts/trip-meghalaya/varun-with-butterfly.webp"
-    style="width: fit-content; height: fit-content;" />
-  <figcaption style="text-align: center;">Me posing with the butterfly on my left arm</figcaption>
+    src="../assets/images/posts/trip-meghalaya/varun-with-butterfly.webp" />
+  <figcaption>Me posing with the butterfly on my left arm</figcaption>
 </figure>
 
 ## Day — 5 (Back to base)
@@ -118,7 +113,6 @@ If you ever visit Meghalaya, then make sure to hit these places while there:
 <figure>
   <img
     alt="The most durable slide I have ever seen"
-    src="../assets/images/posts/trip-meghalaya/rock-slide.webp"
-    style="width: fit-content; height: fit-content;" />
-  <figcaption style="text-align: center;">The most durable slide I have ever seen</figcaption>
+    src="../assets/images/posts/trip-meghalaya/rock-slide.webp" />
+  <figcaption>The most durable slide I have ever seen</figcaption>
 </figure>

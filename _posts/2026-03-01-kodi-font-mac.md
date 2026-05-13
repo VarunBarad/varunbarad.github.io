@@ -24,15 +24,13 @@ Here's a small before-and-after:
 <figure>
   <img
     alt="Kodi trying to show a देवनागरी movie title with its default font"
-    src="/assets/images/posts/kodi-font-mac/before.webp"
-    style="width: fit-content; height: fit-content;" />
-  <figcaption style="text-align: center;">Kodi trying to show a देवनागरी movie title with its default font</figcaption>
+    src="/assets/images/posts/kodi-font-mac/before.webp" />
+  <figcaption>Kodi trying to show a देवनागरी movie title with its default font</figcaption>
 </figure>
 
 <figure>
   <img
     alt="Kodi successfully rendering देवनागरी movie title after updating the font"
-    src="/assets/images/posts/kodi-font-mac/after.webp"
-    style="width: fit-content; height: fit-content;" />
-  <figcaption style="text-align: center;">Kodi successfully rendering देवनागरी movie title after updating the font</figcaption>
+    src="/assets/images/posts/kodi-font-mac/after.webp" />
+  <figcaption>Kodi successfully rendering देवनागरी movie title after updating the font</figcaption>
 </figure>

@@ -20,25 +20,22 @@ I did all of this without writing a single line of code myself. But there was on
 <figure>
   <img
     alt="Default homepage with button to toggle customisation controls"
-    src="../assets/images/posts/project-improvement-roll/customise-homepage.webp"
-    style="width: fit-content; height: fit-content;" />
-  <figcaption style="text-align: center;">Default homepage with button to toggle customisation controls</figcaption>
+    src="../assets/images/posts/project-improvement-roll/customise-homepage.webp" />
+  <figcaption>Default homepage with button to toggle customisation controls</figcaption>
 </figure>
 
 <figure>
   <img
     alt="Form to enter custom tasks"
-    src="../assets/images/posts/project-improvement-roll/customise-task-entry.webp"
-    style="width: fit-content; height: fit-content;" />
-  <figcaption style="text-align: center;">Form to enter custom tasks</figcaption>
+    src="../assets/images/posts/project-improvement-roll/customise-task-entry.webp" />
+  <figcaption>Form to enter custom tasks</figcaption>
 </figure>
 
 <figure>
   <img
     alt="List of custom tasks"
-    src="../assets/images/posts/project-improvement-roll/customise-list-tasks.webp"
-    style="width: fit-content; height: fit-content;" />
-  <figcaption style="text-align: center;">List of custom tasks</figcaption>
+    src="../assets/images/posts/project-improvement-roll/customise-list-tasks.webp" />
+  <figcaption>List of custom tasks</figcaption>
 </figure>
 
 ## Articles on this project
