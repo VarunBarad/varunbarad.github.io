@@ -11,6 +11,24 @@ html, body {
   line-height: var(--line-height-normal);
 }
 
+/* Global link styles */
+a {
+  color: var(--accent-color);
+  text-decoration: underline;
+  text-decoration-color: var(--accent-color);
+  text-underline-offset: 2px;
+}
+
+a:visited {
+  color: var(--accent-color-dark);
+  text-decoration-color: var(--accent-color-dark);
+}
+
+a:hover {
+  color: var(--accent-color-hover);
+  text-decoration-color: var(--accent-color-hover);
+}
+
 /* Header */
 header {
   max-width: var(--max-width-content);
@@ -85,6 +103,10 @@ header > nav > a {
 header > nav > a:hover {
   border-color: var(--accent-color);
   color: var(--accent-color);
+}
+
+header > nav > a:visited {
+  color: var(--text-color);
 }
 
 header > nav > span {
@@ -209,17 +231,6 @@ th {
 
 .post-content p {
   margin-bottom: var(--spacing-xl);
-}
-
-.post-content a {
-  color: var(--accent-color);
-  text-decoration: underline;
-  text-decoration-color: var(--accent-color-dark);
-  text-underline-offset: 2px;
-}
-
-.post-content a:hover {
-  color: var(--accent-color-hover);
 }
 
 .post-content ul,
@@ -367,17 +378,6 @@ th {
   text-align: justify;
 }
 
-.home-intro a {
-  color: var(--accent-color);
-  text-decoration: underline;
-  text-decoration-color: var(--accent-color-dark);
-  text-underline-offset: 2px;
-}
-
-.home-intro a:hover {
-  color: var(--accent-color-hover);
-}
-
 .home-section {
   margin-bottom: var(--spacing-4xl);
   padding-top: var(--spacing-3xl);
@@ -413,6 +413,11 @@ th {
 .home-view-all:hover {
   color: var(--accent-color-hover);
   text-decoration: underline;
+  text-decoration-color: var(--accent-color-hover);
+}
+
+.home-view-all:visited {
+  color: var(--accent-color);
 }
 
 .home-project-list {
@@ -553,17 +558,6 @@ a.book-item-title:hover {
   text-align: justify;
 }
 
-.projects-page a {
-  color: var(--accent-color);
-  text-decoration: underline;
-  text-decoration-color: var(--accent-color-dark);
-  text-underline-offset: 2px;
-}
-
-.projects-page a:hover {
-  color: var(--accent-color-hover);
-}
-
 .project-item {
   padding: var(--spacing-xl) 0;
   border-top: 1px solid var(--border-color);
@@ -614,17 +608,6 @@ a.book-item-title:hover {
   font-size: var(--font-size-lg);
   line-height: var(--line-height-relaxed);
   text-align: justify;
-}
-
-.contact-page a {
-  color: var(--accent-color);
-  text-decoration: underline;
-  text-decoration-color: var(--accent-color-dark);
-  text-underline-offset: 2px;
-}
-
-.contact-page a:hover {
-  color: var(--accent-color-hover);
 }
 
 .contact-section {
@@ -717,21 +700,6 @@ a.book-item-title:hover {
   margin-bottom: var(--spacing-sm);
 }
 
-.resume-section a {
-  color: var(--accent-color);
-  text-decoration: underline;
-  text-decoration-color: var(--accent-color-dark);
-  text-underline-offset: 2px;
-}
-
-.resume-section a:visited {
-  color: var(--accent-color);
-}
-
-.resume-section a:hover {
-  color: var(--accent-color-hover);
-}
-
 .resume-experience-item {
   margin-bottom: var(--spacing-2xl);
 }
@@ -805,17 +773,6 @@ a.book-item-title:hover {
 
 .not-found-section > p {
   font-size: var(--font-size-base);
-}
-
-.not-found-section > p a {
-  color: var(--accent-color);
-  text-decoration: underline;
-  text-decoration-color: var(--accent-color-dark);
-  text-underline-offset: 2px;
-}
-
-.not-found-section > p a:hover {
-  color: var(--accent-color-hover);
 }
 
 /* Footer */
