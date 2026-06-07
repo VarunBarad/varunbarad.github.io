@@ -12,7 +12,7 @@ categories:
 
 <img alt="Poster of the movie Swapped" src="/assets/images/movies/swapped-poster.webp" style="width: fit-content; height: 320px;" /> <br />
 
-Score: 3/5 👍 (Only because I have read the book, otherwise it would be a 4/5 👌)
+Score: 3/5 👍
 
 > When two natural sworn enemies of The Valley, a small woodland creature and a majestic bird, magically trade places, they must set off on an adventure of a lifetime to save their home.
 >
@@ -20,6 +20,10 @@ Score: 3/5 👍 (Only because I have read the book, otherwise it would be a 4/5 
 
 It is a fun one-time watch. But I can see why some kids would want to see it multiple times. The villain Firewolf was done well in the English dub, quite scary I would say. But the hindi dub lost most of that scariness when they gave it a Jaat accent.
 
-While the premise of experiencing life from others' perspectives is appealing, for me the most important (find word about brain involving) aspect was being able to communicate with other species. Just imagine, how different life would be if we could understand what our pets or cows or lions or elephants were trying to talk about.
+While the premise of experiencing life from others' perspectives is appealing, for me the most valuable aspect was being able to communicate with other species (even after turning back into your own). Just imagine, how different life would be if we could understand what our pets or cows or lions or elephants were trying to talk about.
 
 For me the favorite part was watching Ollie making a scuba mask, failing every iteration in a new way and finally settling on a working prototype.
+
+### Updates
+
+- 2026-06-07: Fixed some editorial errors.
