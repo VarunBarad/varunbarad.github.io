@@ -9,14 +9,16 @@
       "title": "The Code Breaker",
       "author": "Walter Isaacson",
       "startDate": "2025-11-31"
-    },
-    {
-      "title": "The Hobbit",
-      "author": "J. R. R. Tolkien",
-      "startDate": "2026-05-21"
     }
   ],
   "2026": [
+    {
+      "title": "The Hobbit",
+      "author": "J. R. R. Tolkien",
+      "startDate": "2026-05-21",
+      "finishDate": "2026-06-14",
+      "link": "/blog/book-the-hobbit"
+    },
     {
       "title": "Little Brother",
       "author": "Cory Doctorow",
