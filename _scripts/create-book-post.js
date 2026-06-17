@@ -124,7 +124,7 @@ const main = async () => {
   }
 
   const subtitle = bookData.subtitle || (workData && workData.subtitle) || null;
-  const displayTitle = subtitle ? `${subtitle}: ${title}` : title;
+  const displayTitle = subtitle ? `${title}: ${subtitle}` : title;
 
   const rawDesc = bookData.description || (workData && workData.description);
   let description = null;
