@@ -1,4 +1,5 @@
 const feedPlugin = require('@11ty/eleventy-plugin-rss');
+const { EleventyRenderPlugin } = require('@11ty/eleventy');
 const syntaxHighlightPlugin = require("@11ty/eleventy-plugin-syntaxhighlight");
 const prismLanguageLox = require("./prism_language_lox");
 const { ZonedDateTime, ZoneId, DateTimeFormatter } = require('@js-joda/core');
@@ -16,6 +17,8 @@ module.exports = function(eleventyConfig) {
       .format(DateTimeFormatter.ofPattern('yyyy-MM-dd^HH:mm:ssXXX'))
       .replace('^', 'T');
   });
+  
+  eleventyConfig.addPlugin(EleventyRenderPlugin);
   
   eleventyConfig.addPlugin(feedPlugin, {
     type: 'atom',
