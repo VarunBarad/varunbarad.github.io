@@ -5,7 +5,7 @@ layout: post
 open_library_book_id: "OL28374591M"
 title:  "📚 The Hobbit"
 summary: "My thoughts and opinions on this book"
-date: 2026-06-19T08:43:08+0530
+date: 2026-06-18T08:43:08+0530
 categories:
   - "book-highlights"
 ---
