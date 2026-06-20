@@ -29,6 +29,13 @@ a:hover {
   text-decoration-color: var(--accent-color-hover);
 }
 
+hr {
+  border-top: 1px solid var(--border-color);
+  border-right: 0;
+  border-bottom: 0;
+  border-left: 0;
+}
+
 /* Header */
 header {
   max-width: var(--max-width-content);
