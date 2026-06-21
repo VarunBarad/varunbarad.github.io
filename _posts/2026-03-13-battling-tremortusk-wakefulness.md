@@ -7,6 +7,7 @@ summary: "I was feeling extremely drowsy and decided to use a video-game to brea
 date: 2026-03-13T08:40:50+0530
 categories:
   - "miscellaneous"
+  - "video-games"
 ---
 
 One day this week, I had caught some infection and had sore throat. On taking a tablet for the same, it made me extremely drowsy and knocked me out for the first half of the day. It was a work day and I had some important tasks to finish before closing the day, so couldn't afford to doze-off again after lunch.
