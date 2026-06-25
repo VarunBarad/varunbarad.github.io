@@ -37,6 +37,10 @@ permalink: '/blog/{{ page.fileSlug }}.html'
     <meta property="og:title" content="{{ title }}" />
     <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
     <meta property="og:description" content="{{ summary }}" />
+
+    <!-- Mastodon meta-data -->
+    <link rel="me" href="https://hachyderm.io/@VarunBarad" />
+    <meta name="fediverse:creator" content="@VarunBarad@hachyderm.io">
 </head>
 <body>
 {% include 'header.liquid' %}
