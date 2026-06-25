@@ -17,3 +17,12 @@ All long-term projects should have a changelog. This website is my longest maint
 ### 2026-06-19
 
 - \[Changed\] Generalized anchor style code across the website
+
+<figure>
+   <img
+     alt="This beautiful logo is for the Keep a Changelog project"
+     src="/assets/images/logo-keep-a-changelog.svg"
+     style="width: 128px;"
+     />
+  <figcaption>This beautiful logo is for the <a href="https://keepachangelog.com/en/2.0.0/">Keep a Changelog</a> project</figcaption>
+</figure>
