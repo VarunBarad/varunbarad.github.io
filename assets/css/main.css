@@ -304,6 +304,34 @@ th {
   font-style: italic;
 }
 
+.post-content dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--spacing-md) var(--spacing-lg);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-normal);
+  margin-bottom: var(--spacing-xl);
+}
+
+.post-content dl dt {
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-color);
+}
+
+.post-content dl dd {
+  margin: 0;
+}
+
+.post-content dl a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+.post-content dl a:hover {
+  color: var(--accent-color-hover);
+  text-decoration: underline;
+}
+
 .post-categories {
   font-size: var(--font-size-lg);
   max-width: calc(var(--max-width-prose) + var(--spacing-2xl));
@@ -603,68 +631,6 @@ a.book-item-title:hover {
   border-top: 1px solid var(--border-color);
   font-size: var(--font-size-lg);
   text-align: center;
-}
-
-/* Contact page styles */
-.contact-page {
-  max-width: var(--max-width-prose);
-}
-
-.contact-page > p {
-  margin-bottom: var(--spacing-2xl);
-  font-size: var(--font-size-lg);
-  line-height: var(--line-height-relaxed);
-  text-align: justify;
-}
-
-.contact-section {
-  margin: var(--spacing-3xl) 0;
-  padding: var(--spacing-2xl) 0;
-  border-top: 1px solid var(--border-color);
-  border-bottom: 1px solid var(--border-color);
-}
-
-.contact-section h2 {
-  font-size: var(--font-size-2xl);
-  font-weight: var(--font-weight-bold);
-  color: var(--accent-color);
-  margin-bottom: var(--spacing-xl);
-}
-
-.contact-links {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: var(--spacing-md) var(--spacing-lg);
-  font-size: var(--font-size-lg);
-  line-height: var(--line-height-normal);
-}
-
-.contact-links dt {
-  font-weight: var(--font-weight-semibold);
-  color: var(--text-color);
-}
-
-.contact-links dd {
-  margin: 0;
-}
-
-.contact-links a {
-  color: var(--accent-color);
-  text-decoration: none;
-}
-
-.contact-links a:hover {
-  color: var(--accent-color-hover);
-  text-decoration: underline;
-}
-
-.contact-attribution {
-  font-size: var(--font-size-sm);
-  color: var(--text-color-muted);
-  font-style: italic;
-  margin-top: var(--spacing-3xl);
-  padding-top: var(--spacing-xl);
-  border-top: 1px solid var(--border-color);
 }
 
 /* Resume styles */
