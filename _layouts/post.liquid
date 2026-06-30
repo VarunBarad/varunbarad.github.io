@@ -33,10 +33,15 @@ permalink: '/blog/{{ page.fileSlug }}.html'
     <!-- Open-Graph meta-data -->
     <meta property="og:site_name" content="{{ site.title }}" />
     <meta property="og:image" content="{{ site.url }}/assets/images/logo-hd.png" />
-    <meta property="og:type" content="object" />
+    <meta property="og:type" content="article" />
     <meta property="og:title" content="{{ title }}" />
     <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
     <meta property="og:description" content="{{ summary }}" />
+    <meta property="article:author" content="{{ site.url }}" />
+    <meta property="article:published_time" content="{{ page.date | dateToRfc3339WithTimezone }}" />
+    {% for category in categories %}
+        <meta property="article:tag" content="{{ category }}" />
+    {% endfor %}
 
     <!-- Mastodon meta-data -->
     <link rel="me" href="https://hachyderm.io/@VarunBarad" />

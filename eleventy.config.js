@@ -11,7 +11,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("podcasts");
   eleventyConfig.addPassthroughCopy("experiments");
   
-  eleventyConfig.addNunjucksFilter('dateToRfc3339WithTimezone', (inputDateObj) => {
+  eleventyConfig.addFilter('dateToRfc3339WithTimezone', (inputDateObj) => {
     return ZonedDateTime.parse(inputDateObj.toISOString())
       .withZoneSameInstant(ZoneId.of('Asia/Kolkata'))
       .format(DateTimeFormatter.ofPattern('yyyy-MM-dd^HH:mm:ssXXX'))

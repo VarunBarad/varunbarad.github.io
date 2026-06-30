@@ -9,6 +9,11 @@ redirect_from: [
 
 All long-term projects should have a changelog. This website is my longest maintained personal project, and this page documents all notable changes to it. The format of this changelog is based on [Keep a Changelog](https://keepachangelog.com/en/2.0.0/)
 
+### 2026-06-30
+
+- \[Fixed\] Use the appropriate type in open-graph tags for blog posts
+- \[Changed\] Add open-graph tags for author, publication timestamp and post-categories 
+
 ### 2026-06-21
 
 - \[Changed\] Simplified the code of [Ideas page](/ideas)
