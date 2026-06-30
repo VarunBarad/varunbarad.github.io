@@ -11,7 +11,7 @@ All long-term projects should have a changelog. This website is my longest maint
 
 ### 2026-06-30
 
-- \[Fixed\] Use the appropriate type in open-graph tags for blog posts
+- \[Fixed\] Use the appropriate type in open-graph tags for blog posts and other pages
 - \[Changed\] Add open-graph tags for author, publication timestamp and post-categories 
 
 ### 2026-06-21
