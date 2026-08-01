@@ -9,6 +9,10 @@ redirect_from: [
 
 All long-term projects should have a changelog. This website is my longest maintained personal project, and this page documents all notable changes to it. The format of this changelog is based on [Keep a Changelog](https://keepachangelog.com/en/2.0.0/)
 
+### 2026-08-02
+
+- \[Added\] Added a ["Now" page](/now) inspired by the idea from Derek Sivers
+
 ### 2026-06-30
 
 - \[Fixed\] Use the appropriate type in open-graph tags for blog posts and other pages

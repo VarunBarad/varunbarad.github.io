@@ -1,0 +1,29 @@
+---
+layout: simple-page.liquid
+title: What I'm doing now
+permalink: "/now.html"
+redirect_from: [
+    "/now/index.html",
+]
+eleventyComputed:
+    subtitle: "Last updated: {{ collections.now | reverse | map: 'date' | first | date: '%B %d, %Y' }}"
+---
+
+{% assign latestEntry = collections.now | reverse | first %}
+{{ latestEntry.content }}
+
+<p>
+    <small>
+        This is a <a href="https://nownownow.com/about">Now page</a> which highlights my work and life priorities at the time of writing.
+    </small>
+</p>
+
+{% assign remainingEntries = collections.now | reverse | slice: 1, collections.now.size %}
+{% if remainingEntries.size > 0 %}
+    <h2>What I was doing earlier</h2>
+    <ol style="list-style: disc">
+        {% for entry in remainingEntries %}
+            <li><a href="{{ entry.url }}">{{ entry.date | date: '%B %d, %Y' }}</a></li>
+        {% endfor %}
+    </ol>
+{% endif %}
