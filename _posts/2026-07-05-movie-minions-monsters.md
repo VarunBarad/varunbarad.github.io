@@ -12,7 +12,7 @@ categories:
 
 <img alt="Poster of the movie Minions & Monsters" src="/assets/images/movies/minions-monsters-poster.webp" style="width: fit-content; height: 320px;" /> <br />
 
-Score: 3/5 👍
+Score: 2/5 🤷️
 
 > This is the rambunctious, ridiculous and totally true story of how the Minions conquered Hollywood, became movie stars, lost everything, unleashed monsters onto the world and then banded together to try and save the planet from the mayhem they had just created.
 >
