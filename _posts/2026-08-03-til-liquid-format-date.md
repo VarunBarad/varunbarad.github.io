@@ -15,6 +15,8 @@ We use the `date` filter in Liquid to format dates and/or timestamps. You can fi
 
 {% raw %}
 ```liquid
-{{ entry.date | date: '%B %d, %Y' }}
+{{ entry.date | date: '%B %d, %Y', 'Asia/Kolkata' }}
 ```
 {% endraw %}
+
+The `date` filter defaults to the timezone that the host machine is running on. It does not automatically follow the timezone offset mentioned in the incoming timestamp. So we need to specify the particular timezone in which the formatted date/timestamp needs to be computed.

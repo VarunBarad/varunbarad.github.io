@@ -6,7 +6,7 @@ redirect_from: [
     "/now/index.html",
 ]
 eleventyComputed:
-    subtitle: "Last updated: {{ collections.now | reverse | map: 'date' | first | date: '%B %d, %Y' }}"
+    subtitle: "Last updated: {{ collections.now | reverse | map: 'date' | first | date: '%B %d, %Y', 'Asia/Kolkata' }}"
 ---
 
 {% assign latestEntry = collections.now | reverse | first %}
@@ -23,7 +23,7 @@ eleventyComputed:
     <h2>What I was doing earlier</h2>
     <ol style="list-style: disc">
         {% for entry in remainingEntries %}
-            <li><a href="{{ entry.url }}">{{ entry.date | date: '%B %d, %Y' }}</a></li>
+            <li><a href="{{ entry.url }}">{{ entry.date | date: '%B %d, %Y', 'Asia/Kolkata' }}</a></li>
         {% endfor %}
     </ol>
 {% endif %}

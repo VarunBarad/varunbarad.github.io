@@ -2,6 +2,6 @@
 permalink: '/now/{{ page.fileSlug }}.html'
 layout: simple-page.liquid
 eleventyComputed:
-    title: "What I was doing on {{ page.date | date: '%B %d, %Y' }}"
+    title: "What I was doing on {{ page.date | date: '%B %d, %Y', 'Asia/Kolkata' }}"
 ---
 {{ content }}
