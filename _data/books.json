@@ -9,14 +9,17 @@
       "title": "The Code Breaker",
       "author": "Walter Isaacson",
       "startDate": "2025-11-31"
-    },
-    {
-      "title": "Dumb Witness",
-      "author": "Agatha Christie",
-      "startDate": "2026-06-17"
     }
   ],
   "2026": [
+    {
+      "title": "Dumb Witness",
+      "author": "Agatha Christie",
+      "startDate": "2026-06-17",
+      "finishDate": "2026-08-06",
+      "link": "https://openlibrary.org/books/OL7258028M/Dumb_Witness",
+      "pageCount": "308"
+    },
     {
       "title": "The Hobbit",
       "author": "J. R. R. Tolkien",
