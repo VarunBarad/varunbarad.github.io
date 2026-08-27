@@ -1,20 +1,20 @@
 :root {
-  /* Dark theme colors */
-  --background-color: var(--gray-950);
-  --text-color: var(--gray-50);
-  --text-on-accent-color: var(--gray-950);
-  --text-color-muted: var(--gray-400);
+  /* Light theme colors */
+  --background-color: var(--gray-100);
+  --text-color: var(--gray-900);
+  --text-on-accent-color: var(--gray-50);
+  --text-color-muted: var(--gray-500);
 
   /* Green accent colors */
-  --accent-color: var(--emerald-500);
-  --accent-color-hover: var(--emerald-400);
-  --accent-color-dark: var(--emerald-600);
+  --accent-color: var(--emerald-600);
+  --accent-color-hover: var(--emerald-500);
+  --accent-color-dark: var(--emerald-700);
 
   /* Secondary colors */
-  --border-color: var(--gray-700);
-  --surface-color: var(--gray-900);
-  --code-bg: var(--gray-900);
-  --code-color: var(--emerald-300);
+  --border-color: var(--gray-300);
+  --surface-color: var(--gray-50);
+  --code-bg: var(--gray-200);
+  --code-color: var(--emerald-700);
 
   /* fonts */
   --font-body: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, Adwaita Sans, Cantarell, Ubuntu, roboto, noto, helvetica, arial, sans-serif;
@@ -61,7 +61,8 @@
 }
 
 @media screen and (min-width: 1280px) {
-  :root {
+:root {
+  color-scheme: light;
     --max-width-content: 1080px;
     --max-width-prose: 80ch;
   }
