@@ -11,13 +11,21 @@
       "startDate": "2025-11-31"
     },
     {
-      "title": "My India: Ideas for the Future",
-      "author": "A.P.J. Abdul Kalam",
-      "startDate": "2026-08-19",
-      "pageCount": "206"
+      "title": "I, Robot",
+      "author": "Isaac Asimov",
+      "startDate": "2025-02-16",
+      "pageCount": "244"
     }
   ],
   "2026": [
+    {
+      "title": "My India: Ideas for the Future",
+      "author": "A.P.J. Abdul Kalam",
+      "startDate": "2026-08-19",
+      "finishDate": "2026-09-26",
+      "link": "https://openlibrary.org/books/OL35500463M/My_India",
+      "pageCount": "206"
+    },
     {
       "title": "Dumb Witness",
       "author": "Agatha Christie",
