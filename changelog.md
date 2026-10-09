@@ -9,6 +9,10 @@ redirect_from: [
 
 All long-term projects should have a changelog. This website is my longest maintained personal project, and this page documents all notable changes to it. The format of this changelog is based on [Keep a Changelog](https://keepachangelog.com/en/2.0.0/)
 
+### 2026-10-09
+
+- \[Fixed\] HTML page titles showing HTML tags by stripping them before setting the title value
+
 ### 2026-08-02
 
 - \[Added\] Added a ["Now" page](/now) inspired by the idea from Derek Sivers

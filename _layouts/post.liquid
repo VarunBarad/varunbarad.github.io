@@ -12,7 +12,7 @@ permalink: '/blog/{{ page.fileSlug }}.html'
 
     <link rel="icon" type="image/png" href="/favicon.png" />
 
-    <title>{{ title }} - Varun Barad</title>
+    <title>{{ title | strip_html }} - Varun Barad</title>
     <meta name="description" content="{{ summary }}" />
 
     {% if canonical_url %}
