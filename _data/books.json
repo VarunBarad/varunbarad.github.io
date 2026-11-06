@@ -11,25 +11,35 @@
       "startDate": "2025-11-31"
     },
     {
-      "title": "I, Robot",
-      "author": "Isaac Asimov",
-      "startDate": "2026-10-18",
-      "pageCount": "244"
-    },
-    {
       "title": "Way of the Warrior Kid: Where there's a will",
       "author": "Jocko Wilink",
       "startDate": "2026-10-30",
+      "link": "https://openlibrary.org/works/OL22094822W/Way_of_the_Warrior_Kid_3",
       "pageCount": "224"
+    },
+    {
+      "title": "Bangalore Detectives Club",
+      "author": "Harini Nagendra",
+      "startDate": "2026-11-06",
+      "link": "https://openlibrary.org/works/OL25318067W/Bangalore_Detectives_Club",
+      "pageCount": "304"
     }
   ],
   "2026": [
+    {
+      "title": "I, Robot",
+      "author": "Isaac Asimov",
+      "startDate": "2026-10-18",
+      "finishDate": "2026-11-05",
+      "link": "https://openlibrary.org/works/OL46241W/I_Robot",
+      "pageCount": "244"
+    },
     {
       "title": "My India: Ideas for the Future",
       "author": "A.P.J. Abdul Kalam",
       "startDate": "2026-08-19",
       "finishDate": "2026-09-26",
-      "link": "https://openlibrary.org/books/OL35500463M/My_India",
+      "link": "https://openlibrary.org/works/OL26318936W/My_India",
       "pageCount": "206"
     },
     {
